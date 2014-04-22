@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>For Jan TomTom</title>
+	</head>
+	<body>
+		<h1>JT is so JANerous. His favourite month is JANuary. I want to wash his JANitals.</h1>
+		<img style='top:1200px;position:relative;' src='jt.png' id='jt' alt='jan tomtom'>
+		
+		<script>
+			var img = document.getElementById("jt");
+			doMove();
+			
+			function doMove() {
+				if(parseInt(img.style.top) > -500)
+				{
+					img.style.top = parseInt(img.style.top)-2+'px';
+					setTimeout(doMove,20); // call doMove in 20msec
+				}
+			}
+		</script>
+	</body>
+</html>
