@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014 -->
+<?php 
+	$user = $_GET["username"];
+	
+>
 <html>
 	<head>
-		<title id='title'>10102</title>
+		<title id='title'><?php echo $user;></title>
 		
 		<meta charset="UTF-8">
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
