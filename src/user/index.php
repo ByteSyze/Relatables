@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014 -->
 <?php 
-	$user = $_GET["username"];
+	//Predefined variables
 	
->
+	include($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	
+	$user = getExactUsername($_GET["username"]);
+	$joindate = getJoinDate($user);
+	
+?>
 <html>
 	<head>
-		<title id='title'><?php echo $user;></title>
+		<title id='title'><?php echo $user; ?></title>
 		
 		<meta charset="UTF-8">
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
@@ -23,8 +28,8 @@
 		<div id='infobanner'>
 			<div id='infolayout'>
 				<div id='info'>
-					<span id='username'>10102</span><br>
-					<span id='location' class='right-spacer'>N/A</span><span id='date'>March 23, 2014</span><br>
+					<span id='username'><?php echo $user; ?></span><br>
+					<span id='location' class='right-spacer'>N/A</span><span id='date'><?php echo $joindate; ?></span><br>
 					<p id='user-description'>[Description]</p>
 				</div>
 			</div>
