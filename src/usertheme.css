@@ -41,6 +41,23 @@
 	height:98px;
 	overflow-y:auto;
 }
+#moduleslayout
+{
+	position:relative;
+	top:50px;
+	margin:auto;
+	width:1100px;
+}
+#relatedmodule
+{
+	float:left;
+	width:700px;
+}
+#statsmodule
+{
+	float:right;
+	width:300px;
+}
 .right-spacer
 {
 	margin-right:30px;
