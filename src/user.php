@@ -16,21 +16,13 @@
 	
 	require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
 	
-	$user = getExactUsername($user);
+	$data = getProfileData($user);
 	
-	if($user == false)
+	if($data['username'] == false)
 		header('Location: http://www.relatablez.com/notfound.php');
-	
-	$id = getUserId($user);
-	$joindate = getJoinDate($id);
-	
-	$postcount		= getUserColumn($id,'posts');
-	$commentcount 	= getUserColumn($id,'comments');
-	$moderatedcount	= getUserColumn($id,'moderated');
-	
 ?>
 	<head>
-		<title id='title'><?php echo $user; ?></title>
+		<title id='title'><?php echo $data['username']; ?></title>
 		
 		<meta charset="UTF-8">
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
@@ -47,8 +39,8 @@
 		<div id='infobanner'>
 			<div id='infolayout'>
 				<div id='info'>
-					<span id='username'><?php echo $user; ?></span><br>
-					<span id='location' class='right-spacer'>No country specified</span><span id='date'><?php echo $joindate; ?></span><br>
+					<span id='username'><?php echo $data['username']; ?></span><br>
+					<span id='location' class='right-spacer'>No country specified</span><span id='date'><?php echo $data['joined']; ?></span><br>
 					<p id='user-description'>I'm not the only one who hasn't bothered to change my description!</p>
 				</div>
 			</div>
@@ -61,9 +53,9 @@
 			<div id='statsmodule'>
 				<h3>Stats</h3>
 				<div id='stats'>
-					<span>Posts: <?php echo $postcount; ?></span><br>
-					<span>Comments: <?php echo $commentcount; ?></span><br>
-					<span>Moderated: <?php echo $moderatedcount; ?></span>
+					<span>Posts: <?php echo $data['posts']; ?></span><br>
+					<span>Comments: <?php echo $data['comments']; ?></span><br>
+					<span>Moderated: <?php echo $data['moderated']; ?></span>
 				</div>
 			</div>
 		</div>
