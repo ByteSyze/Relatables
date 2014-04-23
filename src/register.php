@@ -87,19 +87,6 @@
 			 
 			mail($to,$subject,$body,$from);
 			
-			$placeholders = array("[Username]","[Location]","[Date]");
-			$user_info = array('Username'=>$user,'Location'=>"N/A","Date"=>date("F d, Y"));
-			
-			$template = file_get_contents("templates/user_template.php");
-			
-			$profile = str_replace($placeholders, $user_info, $template);
-			
-			mkdir("user/".$user."/");
-			
-			$fp = fopen("user/".$user."/index.php","w") or die("Couldn't open file");
-			fwrite($fp, $profile);
-			fclose($fp);
-			
 			die("success");
 		}
 	}

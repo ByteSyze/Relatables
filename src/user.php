@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014 -->
+<html>
 <?php 
 	//Predefined variables
 	
+	$user = $_GET['username'];
+	
+	//If username ends in a /, remove it.
+	if(stripos(strrev($user), '/') === 0)
+	{
+		$user = substr($user,0,strlen($user)-1);
+	}
+	
 	require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
 	
-	$user = getExactUsername($_GET["username"]);
+	$user = getExactUsername($user);
 	$joindate = getJoinDate($user);
 	
 ?>
-<html>
 	<head>
 		<title id='title'><?php echo $user; ?></title>
 		
