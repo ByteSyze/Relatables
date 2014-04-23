@@ -15,6 +15,10 @@
 	require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
 	
 	$user = getExactUsername($user);
+	
+	if($user == false)
+		header('Location: http://www.relatablez.com/notfound.php');
+	
 	$id = getUserId($user);
 	$joindate = getJoinDate($id);
 	
