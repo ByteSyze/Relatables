@@ -9,7 +9,10 @@
 	//Returns the case sensitive name of the user, or false if the user does not exist.
 	function getExactUsername($username)
 	{
-		if($statement = getConnection()->prepare("SELECT username FROM accounts WHERE username like (?)"))
+	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT username FROM accounts WHERE username like (?)"))
 		{	
 			$statement->bind_param("s",$username);
 			
@@ -29,7 +32,9 @@
 	//Returns the date the user first joined, or false if the user does not exist.
 	function getJoinDate($username)
 	{
-		if($statement = getConnection()->prepare("SELECT DATE_FORMAT(joined,'%M %d, %Y') AS fjoined FROM accounts WHERE username like (?)"))
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT DATE_FORMAT(joined,'%M %d, %Y') AS fjoined FROM accounts WHERE username like (?)"))
 		{	
 			$statement->bind_param("s",$username);
 			

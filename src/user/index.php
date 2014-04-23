@@ -3,7 +3,7 @@
 <?php 
 	//Predefined variables
 	
-	include($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
 	
 	$user = getExactUsername($_GET["username"]);
 	$joindate = getJoinDate($user);
