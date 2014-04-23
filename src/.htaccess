@@ -8,3 +8,6 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^user/(.*)$ user.php?username=$1 [QSA]
 
 ErrorDocument 404 /notfound.php
+
+php_flag  display_errors        on
+php_value error_reporting       2039

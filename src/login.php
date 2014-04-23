@@ -45,7 +45,8 @@
 		
 		if($passHash == $dbPass)
 		{
-			$_SESSION["username"]=$dbUser;
+			$_SESSION['username']=$dbUser;
+			$_SESSION['id']=$id;
 			
 			//Update their last login date
 			mysqli_query($connection, "UPDATE accounts SET last_login=NOW() WHERE username='".$dbUser."'");
