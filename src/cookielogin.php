@@ -19,10 +19,11 @@
 
 			if(($pass == $dbPass) && ($pending != 1) && (!empty($result)))
 			{
-				$_SESSION["username"]=$dbUser;
+				$_SESSION['username']=$dbUser;
+				$_SESSION['id']=$id;
 				
 				//Update their last login date
-				$result = mysqli_query($connection, "UPDATE accounts SET last_login = [CURDATE()] WHERE id = " . $id);
+				mysqli_query($connection, "UPDATE accounts SET last_login=NOW() WHERE username='".$dbUser."'");
 			}
 		}
 	}
