@@ -7,9 +7,11 @@
 	$user = $_GET['username'];
 	
 	//If username ends in a /, remove it.
-	if(stripos(strrev($user), '/') === 0)
+	$slashpos = strpos($user,'/');
+	
+	if($slashpos != false)
 	{
-		$user = substr($user,0,strlen($user)-1);
+		$user = substr($user,0,$slashpos);
 	}
 	
 	require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
