@@ -48,7 +48,7 @@
 			$_SESSION["username"]=$dbUser;
 			
 			//Update their last login date
-			mysqli_query($connection, "UPDATE accounts SET last_login = CURDATE() WHERE username = " . $dbUser);
+			mysqli_query($connection, "UPDATE accounts SET last_login=NOW() WHERE username='".$dbUser."'");
 			
 			if($remember == 1)
 			{

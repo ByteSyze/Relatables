@@ -11,16 +11,17 @@
 	{
 		$connection = getConnection();
 		
-		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y') AS joined, posts, comments, moderated  FROM accounts WHERE username like (?)"))
+		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), posts, comments, moderated  FROM accounts WHERE username like (?)"))
 		{	
 			$statement->bind_param("s",$username);
 			
 			$statement->execute();
 			
 			$data = array();
+			$data['username']=false;
 			
 			$statement->store_result();
-			$statement->bind_result($data['username']=false,$data['id'],$data['joined'],$data['posts'],$data['comments'],$data['moderated']);
+			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['posts'],$data['comments'],$data['moderated']);
 			$result = $statement->fetch();
 			
 			if(!empty($result))
