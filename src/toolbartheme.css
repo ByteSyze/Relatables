@@ -60,6 +60,7 @@ button.toolbar
 button.toolbar:hover
 {
 	color:#3c5a98;
+	cursor:pointer;
 }
 button.toolbar:active
 {
