@@ -1,0 +1,29 @@
+#settings-wrapper
+{
+	position:relative;
+	top:70px;
+	margin:auto;
+	width:1100px;
+}
+#left-panel
+{
+	float:left;
+}
+#general-settings
+{
+	position:relative;
+	margin:auto;
+	width:700px;
+}
+#general-settings-table
+{
+	width:100%;
+}
+th.settings-header
+{
+	text-align:left;
+}
+td.change-wrapper
+{
+	text-align:right;
+}
