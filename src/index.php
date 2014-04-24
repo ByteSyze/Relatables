@@ -47,7 +47,7 @@
 						<option>Cake</option>
 					</select>
 					<span style='vertical-align:bottom;'>Display</span>
-					<select id='category' style='vertical-align:bottom;'>
+					<select id='display' style='vertical-align:bottom;'>
 						<option>Continuously</option>
 						<option>20 a page</option>
 						<option>50 a page</option>

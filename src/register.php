@@ -74,7 +74,7 @@
 	
 	$pass_hash = md5($pass . $salt); // Create password hash using MD5
 	
-	if($statement = $connection->prepare("INSERT INTO accounts (username, password, salt, joined, last_login, email) VALUES (?,?,?,CURDATE(),CURDATE(),?)"))
+	if($statement = $connection->prepare("INSERT INTO accounts (username, password, salt, last_login, email) VALUES (?,?,?,NOW(),?)"))
 	{
 		$statement->bind_param("ssss",$user, $pass_hash, $salt, $email);
 		
