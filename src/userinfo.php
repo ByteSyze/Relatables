@@ -12,7 +12,7 @@
 	{
 		$connection = getConnection();
 		
-		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), posts, comments, moderated, country_id  FROM accounts WHERE username like (?)"))
+		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), description, posts, comments, moderated, country_id  FROM accounts WHERE username like (?)"))
 		{	
 			$statement->bind_param("s",$username);
 			
@@ -21,7 +21,7 @@
 			$data = array('username'=>false);
 			
 			$statement->store_result();
-			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['posts'],$data['comments'],$data['moderated'],$cid);
+			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$cid);
 			$result = $statement->fetch();
 			
 			$data['country'] = getCountry($cid);
@@ -37,7 +37,7 @@
 	{
 		$connection = getConnection();
 		
-		if($statement = $connection->prepare("SELECT hideposts, hidedescription, hidelocation, description, email, country_id  FROM accounts WHERE id = (?)"))
+		if($statement = $connection->prepare("SELECT hidedescription, hidelocation, description, email, country_id  FROM accounts WHERE id = (?)"))
 		{	
 			$statement->bind_param("i",$id);
 			
@@ -46,7 +46,7 @@
 			$data = array();
 			
 			$statement->store_result();
-			$statement->bind_result($data['hideposts'],$data['hidedescription'],$data['hidelocation'],$data['description'],$data['email'],$cid);
+			$statement->bind_result($data['hidedescription'],$data['hidelocation'],$data['description'],$data['email'],$cid);
 			$result = $statement->fetch();
 			
 			$data['country'] = getCountry($cid);

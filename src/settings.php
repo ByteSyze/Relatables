@@ -43,6 +43,7 @@
 				<?php
 				
 				if($settings == 1)
+				{
 					echo
 					"
 					<h3>Profile Settings</h3>
@@ -60,15 +61,16 @@
 					<table id='general-settings-table'>
 						<tr>
 							<th class='settings-header'>Related With</th>
-							<td><a href='#ShowRelated'>Show</a><a href='#HideRelated'>Hide</a></td>
+							<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo"href='#ShowRelated'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo"href='#HideRelated'>Hide</a></td>
 						<tr>
 							<th class='settings-header'>Location</th>
-							<td><a href='#ShowLocation'>Show</a><a href='#HideLocation'>Hide</a></td>
+							<td class='show-hide-selector'><a "; if($data['hidelocation'] == 0) echo "class='selected'"; echo" href='#ShowLocation'>Show</a> <a "; if($data['hidelocation'] == 1) echo "class='selected'"; echo" href='#HideLocation'>Hide</a></td>
 						<tr>
 							<th class='settings-header'>Description</th>
-							<td><a href='#ShowDescription'>Show</a><a href='#HideDescription'>Hide</a></td>
+							<td class='show-hide-selector'><a "; if($data['hidedescription'] == 0) echo "class='selected'"; echo" href='#ShowDescription'>Show</a> <a "; if($data['hidedescription'] == 1) echo "class='selected'"; echo" href='#HideDescription'>Hide</a></td>
 					</table> 
 					";
+				}
 				else
 					echo
 					"
@@ -84,7 +86,7 @@
 							<td class='change-wrapper'><a href='#ChangePassword'>change</a></td>
 						<tr>
 							<th class='settings-header'>Email</th>
-							<td>".$data['country']."</td>
+							<td>".$data['email']."</td>
 							<td class='change-wrapper'><a href='#ChangeEmail'>change</a></td>
 					</table> 
 					";

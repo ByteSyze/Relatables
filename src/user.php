@@ -41,7 +41,7 @@
 				<div id='info'>
 					<span id='username'><?php echo $data['username']; ?></span><br>
 					<span id='location' class='right-spacer'><?php echo $data['country']; ?></span><span id='date'><?php echo $data['joined']; ?></span><br>
-					<p id='user-description'>I'm not the only one who hasn't bothered to change my description!<br> last login was <?php echo $data['last_login']; ?></p>
+					<p id='user-description'><?php if($data['description'] == null) echo"I'm not the only one who hasn't bothered to change my description!"; else echo $data['description']; ?></p>
 				</div>
 			</div>
 		</div>
