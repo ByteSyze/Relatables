@@ -40,7 +40,7 @@
 			<div id='infolayout'>
 				<div id='info'>
 					<span id='username'><?php echo $data['username']; ?></span><br>
-					<span id='location' class='right-spacer'>No country specified</span><span id='date'><?php echo $data['joined']; ?></span><br>
+					<span id='location' class='right-spacer'><?php echo $data['country']; ?></span><span id='date'><?php echo $data['joined']; ?></span><br>
 					<p id='user-description'>I'm not the only one who hasn't bothered to change my description!<br> last login was <?php echo $data['last_login']; ?></p>
 				</div>
 			</div>

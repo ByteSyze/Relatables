@@ -1,4 +1,5 @@
-<?php
+<?php	
+	/*Copyright (C) Tyler Hackett 2014*/
 	
 	//Returns a connection to the MySQL database.
 	function getConnection()
@@ -11,21 +12,71 @@
 	{
 		$connection = getConnection();
 		
-		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), posts, comments, moderated  FROM accounts WHERE username like (?)"))
+		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), posts, comments, moderated, country_id  FROM accounts WHERE username like (?)"))
 		{	
 			$statement->bind_param("s",$username);
 			
 			$statement->execute();
 			
-			$data = array();
-			$data['username']=false;
+			$data = array('username'=>false);
 			
 			$statement->store_result();
-			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['posts'],$data['comments'],$data['moderated']);
+			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['posts'],$data['comments'],$data['moderated'],$cid);
 			$result = $statement->fetch();
+			
+			$data['country'] = getCountry($cid);
 			
 			if(!empty($result))
 				return $data;
+			else
+				return false;
+		}	
+	}
+	
+	function getProfileSettings($id)
+	{
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT hideposts, hidedescription, hidelocation, description, email, country_id  FROM accounts WHERE id = (?)"))
+		{	
+			$statement->bind_param("i",$id);
+			
+			$statement->execute();
+			
+			$data = array();
+			
+			$statement->store_result();
+			$statement->bind_result($data['hideposts'],$data['hidedescription'],$data['hidelocation'],$data['description'],$data['email'],$cid);
+			$result = $statement->fetch();
+			
+			$data['country'] = getCountry($cid);
+			
+			if(!empty($result))
+				return $data;
+			else
+				return false;
+		}	
+	}
+		
+	function getCountry($id)
+	{
+		if($id == -1)
+			return "No country specified";
+			
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT short_name FROM countries WHERE country_id = (?)"))
+		{	
+			$statement->bind_param("i",$id);
+			
+			$statement->execute();
+			
+			$statement->store_result();
+			$statement->bind_result($country);
+			$result = $statement->fetch();
+			
+			if(!empty($result))
+				return $country;
 			else
 				return false;
 		}	

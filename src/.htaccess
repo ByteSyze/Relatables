@@ -7,6 +7,10 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^user/(.*)$ user.php?username=$1 [QSA]
 
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^settings/(.*)$ settings.php?s=$1 [QSA]
+
 ErrorDocument 404 /notfound.php
 
 php_flag  display_errors        on

@@ -27,7 +27,7 @@
 						"
 						<table class='profile' id='profile-dropdown'>
 							<tr><td><a class='profile' href='http://www.relatablez.com/user/" . $_SESSION["username"] ."'>Profile</a></td></tr>
-							<tr><td><a class='profile' href='http://www.relatablez.com/settings'>Settings</a></td></tr>
+							<tr><td><a class='profile' href='http://www.relatablez.com/settings/profile'>Settings</a></td></tr>
 							<tr><td><a class='profile' href='http://www.relatablez.com/signout.php'>Sign Out</a></td></tr>
 						</table>
 						";	
