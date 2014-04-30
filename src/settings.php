@@ -50,12 +50,12 @@
 					<table id='general-settings-table'>
 						<tr>
 							<th class='settings-header'>Location</th>
-							<td>".$data['country']."</td>
-							<td class='change-wrapper'><a href='#ChangeLocation'>change</a></td>
+							<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); echo "</td>
+							<td class='change-wrapper'><a href='javascript:editLocation();'>edit</a></td>
 						<tr>
 							<th class='settings-header'>Description<br><span>(130 characters)</span></th>
 							<td>".$data['description']."</td>
-							<td class='change-wrapper'><a href='#ChangePassword'>change</a></td>
+							<td class='change-wrapper'><a href='#ChangePassword'>edit</a></td>
 					</table> 
 					<h3>What To Show</h3>
 					<table id='general-settings-table'>
@@ -79,15 +79,15 @@
 						<tr>
 							<th class='settings-header'>Username</th>
 							<td>".$_SESSION['username']."</td>
-							<td class='change-wrapper'><a href='#ChangeUsername'>change</a></td>
+							<td class='change-wrapper'><a href='#ChangeUsername'>edit</a></td>
 						<tr>
 							<th class='settings-header'>Password</th>
 							<td>Password</td>
-							<td class='change-wrapper'><a href='#ChangePassword'>change</a></td>
+							<td class='change-wrapper'><a href='#ChangePassword'>edit</a></td>
 						<tr>
 							<th class='settings-header'>Email</th>
 							<td>".$data['email']."</td>
-							<td class='change-wrapper'><a href='#ChangeEmail'>change</a></td>
+							<td class='change-wrapper'><a href='#ChangeEmail'>edit</a></td>
 					</table> 
 					";
 				?>
@@ -96,10 +96,10 @@
 		</div>
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://relatablez.com/vote.js'></script>
 		<script src='http://relatablez.com/verify.js'></script>
 		<script src='http://relatablez.com/popups.js'></script>
 		<script src='http://relatablez.com/toolbar.js'></script>
+		<script src='http://relatablez.com/settings.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 	</body>
 </html>

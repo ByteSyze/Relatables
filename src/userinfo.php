@@ -82,6 +82,27 @@
 		}	
 	}
 	
+	function setCountry($country_id,$id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET country_id=(?) WHERE id=(?)"))
+		{	
+			$statement->bind_param('ii',$country_id,$id);
+			
+			$statement->execute();
+			
+			$statement->store_result();
+			$statement->bind_result($country);
+			$result = $statement->fetch();
+			
+			if(!empty($result))
+				return $country;
+			else
+				return false;
+		}	
+	}
+	
 	//Returns the data from the specified column for the specified id, or false if the id does not match any current user.
 	function getUserColumn($id, $column)
 	{
