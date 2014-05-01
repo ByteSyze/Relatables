@@ -50,7 +50,7 @@
 					<table id='general-settings-table'>
 						<tr>
 							<th class='settings-header'>Location</th>
-							<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); echo "</td>
+							<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
 							<td class='change-wrapper'><a id='location-button' href='javascript:editLocation();'>Edit</a></td>
 						<tr>
 							<th class='settings-header'>Description<br><span>(130 characters)</span></th>

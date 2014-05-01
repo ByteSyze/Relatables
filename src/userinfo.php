@@ -49,6 +49,7 @@
 			$statement->bind_result($data['hidedescription'],$data['hidelocation'],$data['description'],$data['email'],$cid);
 			$result = $statement->fetch();
 			
+			$data['country_id'] = $cid;
 			$data['country'] = getCountry($cid);
 			
 			if(!empty($result))
