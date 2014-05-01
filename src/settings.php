@@ -17,7 +17,7 @@
 ?>
 <html>
 	<head>
-		<title>Account Settings</title>
+		<title><?php if($settings == 1) echo 'Profile Settings'; else echo 'Account Settings'; ?></title>
 		
 		<meta charset="UTF-8">
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
@@ -51,11 +51,11 @@
 						<tr>
 							<th class='settings-header'>Location</th>
 							<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); echo "</td>
-							<td class='change-wrapper'><a id='location-button' href='javascript:editLocation();'>edit</a></td>
+							<td class='change-wrapper'><a id='location-button' href='javascript:editLocation();'>Edit</a></td>
 						<tr>
 							<th class='settings-header'>Description<br><span>(130 characters)</span></th>
 							<td><span id='description'>".$data['description']."</span><form id='description-form' style='display:none;' method='GET' action='http://www.relatablez.com/updatedescription.php'><textarea name='description' onkeypress='keyPressed(this, event)'>".$data['description']."</textarea></form></td>
-							<td class='change-wrapper'><a id='description-button' href='javascript:editDescription();'>edit</a></td>
+							<td class='change-wrapper'><a id='description-button' href='javascript:editDescription();'>Edit</a></td>
 					</table> 
 					<h3>What To Show</h3>
 					<table id='general-settings-table'>
@@ -79,15 +79,15 @@
 						<tr>
 							<th class='settings-header'>Username</th>
 							<td>".$_SESSION['username']."</td>
-							<td class='change-wrapper'><a href='#ChangeUsername'>edit</a></td>
+							<td class='change-wrapper'><a href='#ChangeUsername'>Edit</a></td>
 						<tr>
 							<th class='settings-header'>Password</th>
 							<td>Password</td>
-							<td class='change-wrapper'><a href='#ChangePassword'>edit</a></td>
+							<td class='change-wrapper'><a href='#ChangePassword'>Edit</a></td>
 						<tr>
 							<th class='settings-header'>Email</th>
 							<td>".$data['email']."</td>
-							<td class='change-wrapper'><a href='#ChangeEmail'>edit</a></td>
+							<td class='change-wrapper'><a href='#ChangeEmail'>Edit</a></td>
 					</table> 
 					";
 				?>

@@ -4,17 +4,17 @@ function editLocation()
 	var locationForm = document.getElementById('location-form');
 	var locationButton = document.getElementById('location-button');
 	
-	if(locationButton.innerHTML == 'cancel')
+	if(locationButton.innerHTML == 'Cancel')
 	{
 		location.style.display = 'block';
 		locationForm.style.display = 'none';
-		locationButton.innerHTML = 'edit';
+		locationButton.innerHTML = 'Edit';
 	}
 	else
 	{
 		location.style.display = 'none';
 		locationForm.style.display = 'block';
-		locationButton.innerHTML = 'cancel';
+		locationButton.innerHTML = 'Cancel';
 	}
 }
 function editDescription()
@@ -23,17 +23,17 @@ function editDescription()
 	var descriptionForm = document.getElementById('description-form');
 	var descriptionButton = document.getElementById('description-button');
 	
-	if(descriptionButton.innerHTML == 'cancel')
+	if(descriptionButton.innerHTML == 'Cancel')
 	{
 		description.style.display = 'block';
 		descriptionForm.style.display = 'none';
-		descriptionButton.innerHTML = 'edit';
+		descriptionButton.innerHTML = 'Edit';
 	}
 	else
 	{
 		description.style.display = 'none';
 		descriptionForm.style.display = 'block';
-		descriptionButton.innerHTML = 'cancel';
+		descriptionButton.innerHTML = 'Cancel';
 	}
 }
 function keyPressed(element, event)
