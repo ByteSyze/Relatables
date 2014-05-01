@@ -51,11 +51,11 @@
 						<tr>
 							<th class='settings-header'>Location</th>
 							<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); echo "</td>
-							<td class='change-wrapper'><a href='javascript:editLocation();'>edit</a></td>
+							<td class='change-wrapper'><a id='location-button' href='javascript:editLocation();'>edit</a></td>
 						<tr>
 							<th class='settings-header'>Description<br><span>(130 characters)</span></th>
-							<td>".$data['description']."</td>
-							<td class='change-wrapper'><a href='#ChangePassword'>edit</a></td>
+							<td><span id='description'>".$data['description']."</span><form id='description-form' style='display:none;' method='GET' action='http://www.relatablez.com/updatedescription.php'><textarea name='description' onkeypress='keyPressed(this, event)'>".$data['description']."</textarea></form></td>
+							<td class='change-wrapper'><a id='description-button' href='javascript:editDescription();'>edit</a></td>
 					</table> 
 					<h3>What To Show</h3>
 					<table id='general-settings-table'>

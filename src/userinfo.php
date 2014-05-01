@@ -88,18 +88,20 @@
 		
 		if($statement = $connection->prepare("UPDATE accounts SET country_id=(?) WHERE id=(?)"))
 		{	
-			$statement->bind_param('ii',$country_id,$id);
-			
+			$statement->bind_param('ii',$country_id,$id);	
 			$statement->execute();
 			
-			$statement->store_result();
-			$statement->bind_result($country);
-			$result = $statement->fetch();
-			
-			if(!empty($result))
-				return $country;
-			else
-				return false;
+		}	
+	}
+	
+	function setDescription($description,$id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET description=(?) WHERE id=(?)"))
+		{	
+			$statement->bind_param('si',$description,$id);		
+			$statement->execute();
 		}	
 	}
 	
