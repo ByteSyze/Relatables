@@ -14,31 +14,29 @@
 ?>
 
 <div id='toolbar'>
-	<div id='toolbaralignment'>
-		<div style='float:left;padding:0px;height:100%'>
-				<a href='http://www.relatablez.com/'><img style='vertical-align:middle;' height="30" src='http://relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>								
-		</div>		
-		<div  class='account-buttons'>
-			<?php
-				if($_SESSION["username"] != null)
-				{
-					echo "<button class='toolbar'><img src='http://relatablez.com/notification_icon.png' width='25'></button>";
-					echo "<button class='toolbar' onclick='toggleProfileDropdown()'><img src='http://relatablez.com/profile_icon.png' width='25'></button>\r\n";	
-					echo 
-					"
-			<table class='profile' id='profile-dropdown'>
-				<tr><td><a class='profile' href='http://www.relatablez.com/user/" . $_SESSION["username"] ."'>Profile</a></td></tr>
-				<tr><td><a class='profile' href='http://www.relatablez.com/settings/profile'>Settings</a></td></tr>
-				<tr><td><a class='profile' href='http://www.relatablez.com/signout.php'>Sign Out</a></td></tr>
-			</table>";	
-				}
-				else
-				{
-					echo "<button class='toolbar margleft margright' onclick='showLogin()'>Log In</button>\r\n";
-					echo "<button class='toolbar margleft margright' data-header='Sign Up' onclick='showRegister(this)'>Sign Up</button>\r\n";	
-				}
-			?>			
-		</div>
+	<div style='float:left;padding:0px;height:100%'>
+			<a href='http://www.relatablez.com/'><img style='vertical-align:middle;' height="30" src='http://relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>								
+	</div>		
+	<div  class='account-buttons'>
+		<?php
+			if($_SESSION["username"] != null)
+			{
+				echo "<button class='toolbar'><img src='http://relatablez.com/notification_icon.png' width='25'></button>";
+				echo "<button class='toolbar' onclick='toggleProfileDropdown()'><img src='http://relatablez.com/profile_icon.png' width='25'></button>\r\n";	
+				echo 
+				"
+		<table class='profile' id='profile-dropdown'>
+			<tr><td><a class='profile' href='http://www.relatablez.com/user/" . $_SESSION["username"] ."'>Profile</a></td></tr>
+			<tr><td><a class='profile' href='http://www.relatablez.com/settings/profile'>Settings</a></td></tr>
+			<tr><td><a class='profile' href='http://www.relatablez.com/signout.php'>Sign Out</a></td></tr>
+		</table>";	
+			}
+			else
+			{
+				echo "<button class='toolbar margleft margright' onclick='showLogin()'>Log In</button>\r\n";
+				echo "<button class='toolbar margleft margright' data-header='Sign Up' onclick='showRegister(this)'>Sign Up</button>\r\n";	
+			}
+		?>			
 	</div>
 </div>
 

@@ -33,6 +33,7 @@ function editDescription()
 	{
 		description.style.display = 'none';
 		descriptionForm.style.display = 'block';
+		descriptionForm.childNodes[0].focus();
 		descriptionButton.innerHTML = 'Cancel';
 	}
 }

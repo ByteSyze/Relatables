@@ -41,7 +41,7 @@
 				<div id='info'>
 					<span id='username'><?php echo $data['username']; ?></span><br>
 					<span id='location' class='right-spacer'><?php echo $data['country']; ?></span><span id='date'><?php echo $data['joined']; ?></span><br>
-					<p id='user-description'><?php if($data['description'] == null) echo"I'm not the only one who hasn't bothered to change my description!"; else echo $data['description']; ?></p>
+					<p id='user-description'><?php if($data['description'] == null) echo"I'm not the only one who hasn't bothered to change my description!"; else echo htmlspecialchars($data['description']); ?></p>
 				</div>
 			</div>
 		</div>

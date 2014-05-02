@@ -54,7 +54,7 @@
 							<td class='change-wrapper'><a id='location-button' href='javascript:editLocation();'>Edit</a></td>
 						<tr>
 							<th class='settings-header'>Description<br><span>(130 characters)</span></th>
-							<td><span id='description'>".$data['description']."</span><form id='description-form' style='display:none;' method='GET' action='http://www.relatablez.com/updatedescription.php'><textarea name='description' onkeypress='keyPressed(this, event)'>".$data['description']."</textarea></form></td>
+							<td><span id='description'>".htmlspecialchars($data['description'])."</span><form id='description-form' style='display:none;' method='GET' action='http://www.relatablez.com/updatedescription.php'><textarea name='description' onkeypress='keyPressed(this, event)'>".htmlspecialchars($data['description'])."</textarea></form></td>
 							<td class='change-wrapper'><a id='description-button' href='javascript:editDescription();'>Edit</a></td>
 					</table> 
 					<h3>What To Show</h3>

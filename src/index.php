@@ -1,6 +1,14 @@
 <?php  
 	session_start();
 	
+	require_once 'Mobile_Detect.php';
+	$detect = new Mobile_Detect;
+	 
+	if ( $detect->isMobile() ) {
+		$_SESSION['mobile'] = 1;
+		header('Location: http://m.relatablez.com/');
+	}
+	
 	$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
 
 	if (mysqli_connect_errno())
