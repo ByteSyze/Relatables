@@ -61,13 +61,13 @@
 					<table id='general-settings-table'>
 						<tr>
 							<th class='settings-header'>Related With</th>
-							<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo"href='#ShowRelated'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo"href='#HideRelated'>Hide</a></td>
+							<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
 						<tr>
 							<th class='settings-header'>Location</th>
-							<td class='show-hide-selector'><a "; if($data['hidelocation'] == 0) echo "class='selected'"; echo" href='#ShowLocation'>Show</a> <a "; if($data['hidelocation'] == 1) echo "class='selected'"; echo" href='#HideLocation'>Hide</a></td>
+							<td class='show-hide-selector'><a "; if($data['hidelocation'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a "; if($data['hidelocation'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
 						<tr>
 							<th class='settings-header'>Description</th>
-							<td class='show-hide-selector'><a "; if($data['hidedescription'] == 0) echo "class='selected'"; echo" href='#ShowDescription'>Show</a> <a "; if($data['hidedescription'] == 1) echo "class='selected'"; echo" href='#HideDescription'>Hide</a></td>
+							<td class='show-hide-selector'><a "; if($data['hidedescription'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=description'>Show</a> <a "; if($data['hidedescription'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=description'>Hide</a></td>
 					</table> 
 					";
 				}

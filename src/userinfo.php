@@ -12,7 +12,7 @@
 	{
 		$connection = getConnection();
 		
-		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), description, posts, comments, moderated, country_id  FROM accounts WHERE username like (?)"))
+		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), description, posts, comments, moderated, hiderelated, hidelocation, hidedescription, country_id  FROM accounts WHERE username like (?)"))
 		{	
 			$statement->bind_param("s",$username);
 			
@@ -21,7 +21,7 @@
 			$data = array('username'=>false);
 			
 			$statement->store_result();
-			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$cid);
+			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$data['hiderelated'],$data['hidelocation'],$data['hidedescription'],$cid);
 			$result = $statement->fetch();
 			
 			$data['country'] = getCountry($cid);
@@ -106,24 +106,68 @@
 		}	
 	}
 	
-	//Returns the data from the specified column for the specified id, or false if the id does not match any current user.
-	function getUserColumn($id, $column)
-	{
+	function showDescription($id)
+	{	
 		$connection = getConnection();
 		
-		if($statement = $connection->prepare("SELECT ".$column." FROM accounts WHERE id = (?)"))
+		if($statement = $connection->prepare("UPDATE accounts SET hidedescription=0 WHERE id=(?)"))
 		{	
-			$statement->bind_param("i",$id);
-			
+			$statement->bind_param('i',$id);		
 			$statement->execute();
-			
-			$statement->store_result();
-			$statement->bind_result($data);
-			$result = $statement->fetch();
-			
-			if(!empty($result))
-				return $data;
-			else
-				return false;
+		}	
+	}
+	
+	function hideDescription($id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET hidedescription=1 WHERE id=(?)"))
+		{	
+			$statement->bind_param('i',$id);		
+			$statement->execute();
+		}	
+	}
+	
+	function showLocation($id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET hidelocation=0 WHERE id=(?)"))
+		{	
+			$statement->bind_param('i',$id);		
+			$statement->execute();
+		}	
+	}
+	
+	function hideLocation($id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET hidelocation=1 WHERE id=(?)"))
+		{	
+			$statement->bind_param('i',$id);		
+			$statement->execute();
+		}	
+	}
+	
+	function showRelated($id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET hiderelated=0 WHERE id=(?)"))
+		{	
+			$statement->bind_param('i',$id);		
+			$statement->execute();
 		}
+	}
+	
+	function hideRelated($id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET hiderelated=1 WHERE id=(?)"))
+		{	
+			$statement->bind_param('i',$id);		
+			$statement->execute();
+		}	
 	}
