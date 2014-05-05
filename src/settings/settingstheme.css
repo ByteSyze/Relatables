@@ -31,6 +31,13 @@
 	resize:none;
 	font:15px arial;
 }
+#verification
+{
+	position:relative;
+	margin:auto;
+	width:400px;
+	display:none;
+}
 a.selected
 {
 	color:#2654a8;

@@ -12,12 +12,12 @@
 			doMove();
 			
 			function doMove() {
-				if(parseInt(img.style.top) > -500)
-				{
-					img.style.top = parseInt(img.style.top)-2+'px';
-					setTimeout(doMove,20); // call doMove in 20msec
-				}
+			if(parseInt(img.style.top) > -500)
+			{
+				img.style.top = parseInt(img.style.top)-2+'px';
+				setTimeout(doMove,20); // call doMove in 20msec
 			}
+		}
 		</script>
 	</body>
 </html>

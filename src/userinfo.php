@@ -95,6 +95,17 @@
 		}	
 	}
 	
+	function setUsername($username,$id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET username=(?) WHERE id=(?)"))
+		{	
+			$statement->bind_param('si',$username,$id);		
+			$statement->execute();
+		}	
+	}
+	
 	function setDescription($description,$id)
 	{	
 		$connection = getConnection();
