@@ -14,5 +14,7 @@
 		<div style='position:relative;margin:auto;width:900px;top:50px'>
 			<h1>404 - You're not the only one who can't find this page</h1>
 		</div>
+	<script src='http://www.relatablez.com/verify.js'></script>
+	<script src='http://www.relatablez.com/popups.js'></script>
 	</body>
 </html>

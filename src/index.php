@@ -99,7 +99,7 @@
 						echo "\r\n<td><span class='vote-counter' id='na" . $row["id"] . "'>(" . number_format($row["notalone"]) . ")</span></td>";
 						echo "\r\n<td><span class='vote-counter' id='a" . $row["id"] . "'>(" . number_format($row["alone"]) . ")</span></td>";
 						echo "\r\n</table>";
-						echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a href='http://relatablez.com/user/" . $row["username"] . "'>" . $row["username"] . "</a> - " . $row["fdate"] . "</span></div>";
+						echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a href='http://www.relatablez.com/user/" . $row["username"] . "'>" . $row["username"] . "</a> - " . $row["fdate"] . "</span></div>";
 						echo "\r\n</div>";
 					}
 				?>	
@@ -107,10 +107,9 @@
 		</div>
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://relatablez.com/vote.js'></script>
-		<script src='http://relatablez.com/verify.js'></script>
-		<script src='http://relatablez.com/popups.js'></script>
-		<script src='http://relatablez.com/toolbar.js'></script>
+		<script src='http://www.relatablez.com/vote.js'></script>
+		<script src='http://www.relatablez.com/verify.js'></script>
+		<script src='http://www.relatablez.com/popups.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 	</body>
 </html>

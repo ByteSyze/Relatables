@@ -47,45 +47,58 @@
 					echo
 					"
 					<h3>Profile Settings</h3>
-					<table id='general-settings-table'>
-						<tr>
-							<th class='settings-header'>Location</th>
-							<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
-							<td class='change-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
-						<tr>
-							<th class='settings-header'>Description<br><span>(130 characters)</span></th>
-							<td><span id='description'>".htmlspecialchars($data['description'])."</span><form id='description-form' style='display:none;' method='GET' action='http://www.relatablez.com/updatedescription.php'><textarea name='description' onkeypress='keyPressed(this, event)' placeholder='".htmlspecialchars($data['description'])."'></textarea></form></td>
-							<td class='change-wrapper'><a id='description-button' href='javascript:edit(\"description\");'>Edit</a></td>
-					</table> 
-					<h3>What To Show</h3>
-					<table id='general-settings-table'>
-						<tr>
-							<th class='settings-header'>Related With</th>
-							<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
-						<tr>
-							<th class='settings-header'>Location</th>
-							<td class='show-hide-selector'><a "; if($data['hidelocation'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a "; if($data['hidelocation'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
-					</table> 
+					<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
+						<table id='general-settings-table'>
+							<tr>
+								<th class='settings-header'>Location</th>
+								<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
+								<td class='change-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
+							<tr>
+								<th class='settings-header'>Description<br><span>(130 characters)</span></th>
+								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea id='description-input' name='description' onkeypress='keyPressed(this, event)' placeholder='".htmlspecialchars($data['description'])."' style='display:none;'></textarea></td>
+								<td class='change-wrapper'><a id='description-button' href='javascript:edit(\"description\");'>Edit</a></td>
+						</table> 
+						<h3>What To Show</h3>
+						<table id='general-settings-table'>
+							<tr>
+								<th class='settings-header'>Related With</th>
+								<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
+							<tr>
+								<th class='settings-header'>Location</th>
+								<td class='show-hide-selector'><a "; if($data['hidelocation'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a "; if($data['hidelocation'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
+						</table> 
+					</form>
 					";
 				}
 				else
 					echo
 					"
 					<h3>Account Settings</h3>
-					<table id='general-settings-table'>
-						<tr>
-							<th class='settings-header'>Username</th>
-							<td><span id='username'>".$_SESSION['username']."</span><form id='username-form' style='display:none;' method='GET' action='http://www.relatablez.com/updateusername.php'><input name='username' onkeypress='keyPressed(this, event)' placeholder='".$_SESSION['username']."'></input></form></td>
-							<td class='change-wrapper'><a id='username-button' href='javascript:edit(\"username\");'>Edit</a></td>
-						<tr>
-							<th class='settings-header'>Password</th>
-							<td>Password</td>
-							<td class='change-wrapper'><a href='#ChangePassword'>Edit</a></td>
-						<tr>
-							<th class='settings-header'>Email</th>
-							<td>".$data['email']."</td>
-							<td class='change-wrapper'><a href='#ChangeEmail'>Edit</a></td>
-					</table> 
+					<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
+						<table id='general-settings-table'>
+							<tr>
+								<th class='settings-header'>Username</th>
+								<td><span id='username'>".$_SESSION['username']."</span><input id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='".$_SESSION['username']."' style='display:none;'></input></td>
+								<td class='change-wrapper'><a id='username-button' href='javascript:edit(\"username\");'>Edit</a></td>
+							<tr id='password'>
+								<th class='settings-header'>Password</th>
+								<td><span>********</span></td>
+								<td class='change-wrapper'><a id='password-button' href='javascript:edit(\"password\");'>Edit</a></td>
+							<tr id='oldpassword' style='display:none;'>
+								<th class='settings-header'>Old Password</th>
+								<td colspan='2'><input type='password' name='oldpassword' onkeypress='keyPressed(this, event)' /></td>
+							<tr id='newpassword' style='display:none;'>
+								<th class='settings-header'>New Password</th>
+								<td colspan='2'><input type='password' name='newpassword' onkeypress='keyPressed(this, event)' /></td>
+							<tr id='renewpassword' style='display:none;'>
+								<th class='settings-header'>Retype New Password</th>
+								<td colspan='2'><input type='password' name='renewpassword' onkeypress='keyPressed(this, event)' /></td>
+							<tr>
+								<th class='settings-header'>Email</th>
+								<td>".$data['email']."</td>
+								<td class='change-wrapper'><a href='#ChangeEmail'>Edit</a></td>
+						</table> 
+					</form>
 					";
 				?>
 				<a href='#Delete'>Delete Account</a>
@@ -93,10 +106,10 @@
 		</div>
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://relatablez.com/verify.js'></script>
-		<script src='http://relatablez.com/popups.js'></script>
-		<script src='http://relatablez.com/toolbar.js'></script>
-		<script src='http://relatablez.com/settings.js'></script>
+		<script src='http://www.relatablez.com/verify.js'></script>
+		<script src='http://www.relatablez.com/popups.js'></script>
+		<script src='http://www.relatablez.com/toolbar.js'></script>
+		<script src='http://www.relatablez.com/settings.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 	</body>
 </html>
