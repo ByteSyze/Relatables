@@ -1,4 +1,7 @@
 /*Copyright (C) Tyler Hackett 2014*/
+
+var type = document.getElementById('type');
+
 function edit(name)
 {
 	if(name == 'password')
@@ -22,6 +25,8 @@ function edit(name)
 		element.style.display = 'none';
 		elementInput.style.display = 'block';
 		elementButton.innerHTML = 'Cancel';
+		
+		type.value = name;
 	}
 }
 
@@ -48,6 +53,8 @@ function editPassword()
 		newPass.style.display = 'table-row';
 		reNewPass.style.display = 'table-row';
 		passwordButton.innerHTML = 'Cancel';
+		
+		type.value = 'password';
 	}
 }
 

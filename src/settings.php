@@ -48,6 +48,7 @@
 					"
 					<h3>Profile Settings</h3>
 					<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
+						<input id='type' name='t' type='text' style='display:none' />
 						<table id='general-settings-table'>
 							<tr>
 								<th class='settings-header'>Location</th>
@@ -75,6 +76,7 @@
 					"
 					<h3>Account Settings</h3>
 					<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
+						<input id='type' name='t' type='text' style='display:none' />
 						<table id='general-settings-table'>
 							<tr>
 								<th class='settings-header'>Username</th>
