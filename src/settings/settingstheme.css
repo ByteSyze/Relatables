@@ -45,12 +45,26 @@ a.selected
 th.settings-header
 {
 	text-align:left;
+	width:180px;
 }
-td.change-wrapper
+td.edit-button-wrapper
 {
 	text-align:right;
+	vertical-align:top;
+	width:50px;
 }
 td.show-hide-selector
 {
 	text-align:right;
+}
+td
+{
+	height:20px;
+}
+input
+{
+	width:100%;
+	height:25px;
+	border-radius:4px;
+	border:1px solid #bfbfbf;
 }

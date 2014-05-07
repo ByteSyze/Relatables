@@ -23,8 +23,8 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
 		<meta name="description" content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
 		<link rel="shortcut icon" href="favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../toolbartheme.css">
-		<link rel="stylesheet" type="text/css" href="settingstheme.css">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/settings/settingstheme.css">
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -53,11 +53,11 @@
 							<tr>
 								<th class='settings-header'>Location</th>
 								<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
-								<td class='change-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
+								<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
 							<tr>
 								<th class='settings-header'>Description<br><span>(130 characters)</span></th>
 								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea id='description-input' name='description' onkeypress='keyPressed(this, event)' placeholder='".htmlspecialchars($data['description'])."' style='display:none;'></textarea></td>
-								<td class='change-wrapper'><a id='description-button' href='javascript:edit(\"description\");'>Edit</a></td>
+								<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");'>Edit</a></td>
 						</table> 
 						<h3>What To Show</h3>
 						<table id='general-settings-table'>
@@ -81,11 +81,11 @@
 							<tr>
 								<th class='settings-header'>Username</th>
 								<td><span id='username'>".$_SESSION['username']."</span><input id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='".$_SESSION['username']."' style='display:none;'></input></td>
-								<td class='change-wrapper'><a id='username-button' href='javascript:edit(\"username\");'>Edit</a></td>
+								<td class='edit-button-wrapper'><a id='username-button' href='javascript:edit(\"username\");'>Edit</a></td>
 							<tr id='password'>
 								<th class='settings-header'>Password</th>
 								<td><span>********</span></td>
-								<td class='change-wrapper'><a id='password-button' href='javascript:edit(\"password\");'>Edit</a></td>
+								<td class='edit-button-wrapper'><a id='password-button' href='javascript:edit(\"password\");'>Edit</a></td>
 							<tr id='oldpassword' style='display:none;'>
 								<th class='settings-header'>Old Password</th>
 								<td colspan='2'><input type='password' name='oldpassword' onkeypress='keyPressed(this, event)' /></td>
@@ -98,7 +98,7 @@
 							<tr>
 								<th class='settings-header'>Email</th>
 								<td>".$data['email']."</td>
-								<td class='change-wrapper'><a href='#ChangeEmail'>Edit</a></td>
+								<td class='edit-button-wrapper'><a href='#ChangeEmail'>Edit</a></td>
 						</table> 
 					</form>
 					";
