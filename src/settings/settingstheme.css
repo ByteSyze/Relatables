@@ -15,10 +15,6 @@
 	margin:auto;
 	width:700px;
 }
-#general-settings-table
-{
-	width:100%;
-}
 #location-form select
 {
 	width:100%;
@@ -46,11 +42,11 @@ th.settings-header
 {
 	text-align:left;
 	width:180px;
+	color:#808080;
 }
 td.edit-button-wrapper
 {
 	text-align:right;
-	vertical-align:top;
 	width:50px;
 }
 td.show-hide-selector
@@ -59,7 +55,15 @@ td.show-hide-selector
 }
 td
 {
-	height:20px;
+	height:29px;
+}
+table.settings-module
+{
+	background-color:white;
+	border-radius:5px;
+	border:1px solid #BFBFBF;
+	padding:15px;
+	width:100%;
 }
 input
 {
@@ -67,4 +71,15 @@ input
 	height:25px;
 	border-radius:4px;
 	border:1px solid #bfbfbf;
+}
+select
+{
+	width:100%;
+}
+textarea
+{
+	width:100%;
+	border:none;
+	resize:none;
+	font:15px arial;
 }

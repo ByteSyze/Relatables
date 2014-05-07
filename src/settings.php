@@ -49,7 +49,7 @@
 					<h3>Profile Settings</h3>
 					<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
 						<input id='type' name='t' type='text' style='display:none' />
-						<table id='general-settings-table'>
+						<table id='general-settings-table' class='settings-module'>
 							<tr>
 								<th class='settings-header'>Location</th>
 								<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
@@ -60,7 +60,7 @@
 								<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");'>Edit</a></td>
 						</table> 
 						<h3>What To Show</h3>
-						<table id='general-settings-table'>
+						<table id='showhide-settings-table' class='settings-module'>
 							<tr>
 								<th class='settings-header'>Related With</th>
 								<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
@@ -77,7 +77,7 @@
 					<h3>Account Settings</h3>
 					<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
 						<input id='type' name='t' type='text' style='display:none' />
-						<table id='general-settings-table'>
+						<table id='general-settings-table' class='settings-module'>
 							<tr>
 								<th class='settings-header'>Username</th>
 								<td><span id='username'>".$_SESSION['username']."</span><input id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='".$_SESSION['username']."' style='display:none;'></input></td>
