@@ -81,6 +81,44 @@
 			else
 				return false;
 		}	
+	}	
+	
+	function getPasswordAndSalt($id)
+	{
+			
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT password, salt FROM accounts WHERE id = (?)"))
+		{	
+			$statement->bind_param("i",$id);
+			
+			$statement->execute();
+			
+			$data = array('hash'=>'n/a','salt'=>'n/a');
+			
+			$statement->store_result();
+			$statement->bind_result($data['hash'],$data['salt']);
+			$result = $statement->fetch();
+			
+			if(!empty($result))
+				return $data;
+			else
+				return false;
+		}	
+	}
+	
+	function setPassword($password, $id)
+	{
+		$new_salt = mcrypt_create_iv(16);
+		$new_hash = md5($password.$new_salt);
+				
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET password=(?), salt=(?) WHERE id=(?)"))
+		{	
+			$statement->bind_param('ssi',$new_hash,$new_salt,$id);	
+			$statement->execute();	
+		}	
 	}
 	
 	function setCountry($country_id,$id)
@@ -91,7 +129,6 @@
 		{	
 			$statement->bind_param('ii',$country_id,$id);	
 			$statement->execute();
-			
 		}	
 	}
 	

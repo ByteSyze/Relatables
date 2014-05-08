@@ -36,7 +36,7 @@
 				
 				if(!empty($result))
 				{
-					header('Location: http://www.relatablez.com/settings/profile');
+					header('Location: http://www.relatablez.com/settings/account');
 					return;
 				}
 			}
@@ -77,3 +77,32 @@
 
 		header('Location: http://www.relatablez.com/settings/profile');
 	}
+	else if($type == 'password')
+	{
+		$old_pass = 	$_POST['oldpassword'];
+		
+		$new_pass = 	$_POST['newpassword'];
+		$re_new_pass = 	$_POST['renewpassword'];
+		
+		if($new_pass != $re_new_pass)
+		{
+			header('Location: http://www.relatablez.com/settings/profile?e=Password%20verification%20didn\'t%20match');
+			return;
+		}
+		
+		$data = getPasswordAndSalt($_SESSION['id']);
+		
+		$passHash = md5($old_pass.$data['salt']);
+		
+		if($passHash == $data['hash'])
+		{
+			setPassword($new_pass,$_SESSION['id']);			
+			header('Location: http://www.relatablez.com/settings/account');
+		}
+		else
+		{
+			header('Location: http://www.relatablez.com/settings/profile?e=Incorrect%20password%20provided');
+			return;
+		}	
+	}
+	
