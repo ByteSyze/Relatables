@@ -82,19 +82,16 @@
 								<th class='settings-header'>Username</th>
 								<td><span id='username'>".$_SESSION['username']."</span><input data-type='username' id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='".$_SESSION['username']."' style='display:none;'></input></td>
 								<td class='edit-button-wrapper'><a id='username-button' href='javascript:edit(\"username\");'>Edit</a></td>
-							<tr id='password'>
+							<tr>
 								<th class='settings-header'>Password</th>
-								<td><span>********</span></td>
+								<td><span id='password'>********</span><input id='oldpassword' data-type='password' type='password' name='oldpassword' onkeypress='keyPressed(this, event)' style='display:none;' /></td>
 								<td class='edit-button-wrapper'><a id='password-button' href='javascript:edit(\"password\");'>Edit</a></td>
-							<tr id='oldpassword' style='display:none;'>
-								<th class='settings-header'>Old Password</th>
-								<td colspan='2'><input data-type='password' type='password' name='oldpassword' onkeypress='keyPressed(this, event)' /></td>
 							<tr id='newpassword' style='display:none;'>
 								<th class='settings-header'>New Password</th>
-								<td colspan='2'><input data-type='password' type='password' name='newpassword' onkeypress='keyPressed(this, event)' /></td>
+								<td><input data-type='password' type='password' name='newpassword' onkeypress='keyPressed(this, event)' /></td>
 							<tr id='renewpassword' style='display:none;'>
 								<th class='settings-header'>Retype New Password</th>
-								<td colspan='2'><input data-type='password' type='password' name='renewpassword' onkeypress='keyPressed(this, event)' /></td>
+								<td><input data-type='password' type='password' name='renewpassword' onkeypress='keyPressed(this, event)' /></td>
 							<tr>
 								<th class='settings-header'>Email</th>
 								<td>".$data['email']."</td>

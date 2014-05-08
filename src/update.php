@@ -13,12 +13,12 @@
 		
 		if($user == $_SESSION['username'])
 		{
-			header('Location: http://www.relatablez.com/settings/profile');
+			header('Location: http://www.relatablez.com/settings/account');
 			return;
 		}
 		if(!preg_match("/^[A-Za-z0-9_]+$/",$user)) // Check that username only contains alphanumerics and underscore at most
 		{
-			header('Location: http://www.relatablez.com/settings/profile?e=Username%20must%20only%20contain%20letters,%20numbers,%20and/or%20underscores');
+			header('Location: http://www.relatablez.com/settings/account?e=Username%20must%20only%20contain%20letters,%20numbers,%20and/or%20underscores');
 			return;
 		}
 		if(!(strcasecmp($user,$_SESSION['username']) == 0))
@@ -45,7 +45,7 @@
 		setUsername($user,$_SESSION['id']);
 		$_SESSION['username'] = $user;
 		
-		header('Location: http://www.relatablez.com/settings/profile');
+		header('Location: http://www.relatablez.com/settings/account');
 	}
 	else if($type == 'description')
 	{
@@ -86,7 +86,7 @@
 		
 		if($new_pass != $re_new_pass)
 		{
-			header('Location: http://www.relatablez.com/settings/profile?e=Password%20verification%20didn\'t%20match');
+			header('Location: http://www.relatablez.com/settings/account?e=Password%20verification%20didn\'t%20match');
 			return;
 		}
 		
