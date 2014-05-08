@@ -25,8 +25,6 @@ function edit(name)
 		element.style.display = 'none';
 		elementInput.style.display = 'block';
 		elementButton.innerHTML = 'Cancel';
-		
-		type.value = name;
 	}
 }
 
@@ -53,13 +51,13 @@ function editPassword()
 		newPass.style.display = 'table-row';
 		reNewPass.style.display = 'table-row';
 		passwordButton.innerHTML = 'Cancel';
-		
-		type.value = 'password';
 	}
 }
 
 function keyPressed(element, event)
 {
+	type.value = element.getAttribute('data-type');
+	
 	var keyCode = ('which' in event) ? event.which : event.keyCode;
 	
 	if(keyCode == 13)
