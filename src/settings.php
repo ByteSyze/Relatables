@@ -9,6 +9,14 @@
 	
 	if($data['description'] == null)
 		$data['description'] = "You have not set a description.";
+		
+	$page = $_GET['s'];
+	$pos = strpos($page,'/');
+		
+	if($pos !== false)
+	{
+		$page = substr(0,$pos-1);
+	}
 
 	if(strcasecmp($_GET['s'],'profile') == 0)
 		$settings = 1;
@@ -34,9 +42,9 @@
 			<div id='left-panel'>
 				<?php 
 					if($settings == 1)
-						echo "<a href='profile' class='selected'>Profile</a><br><a href='account'>Account</a>";
+						echo "<a href='http://www.relatablez.com/settings/profile' class='selected'>Profile</a><br><a href='http://www.relatablez.com/settings/account'>Account</a>";
 					else						
-						echo "<a href='profile'>Profile</a><br><a href='account' class='selected'>Account</a>";
+						echo "<a href='http://www.relatablez.com/settings/profile'>Profile</a><br><a href='http://www.relatablez.com/settings/account' class='selected'>Account</a>";
 				?>
 			</div>
 			<div id='general-settings'>
@@ -56,8 +64,8 @@
 								<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
 							<tr>
 								<th class='settings-header'>Description<br><span>(130 characters)</span></th>
-								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' placeholder='".htmlspecialchars($data['description'])."' style='display:none;'></textarea></td>
-								<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");'>Edit</a></td>
+								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' style='display:none;'>".htmlspecialchars($data['description'])."</textarea></td>
+								<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");document.getElementById(\"description-input\").focus();'>Edit</a></td>
 						</table> 
 						<h3>What To Show</h3>
 						<table id='showhide-settings-table' class='settings-module'>
