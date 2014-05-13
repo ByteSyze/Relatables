@@ -16,18 +16,18 @@
 			header('Location: http://www.relatablez.com/settings/account');
 			return;
 		}
-		if(!preg_match("/^[A-Za-z0-9_]+$/",$user)) // Check that username only contains alphanumerics and underscore at most
+		if(!preg_match('/^[A-Za-z0-9_]+$/',$user)) // Check that username only contains alphanumerics and underscore at most
 		{
 			header('Location: http://www.relatablez.com/settings/account?e=Username%20must%20only%20contain%20letters,%20numbers,%20and/or%20underscores');
 			return;
 		}
 		if(!(strcasecmp($user,$_SESSION['username']) == 0))
 		{
-			$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+			$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 
-			if($statement = $connection->prepare("SELECT username FROM accounts WHERE username LIKE (?)"))
+			if($statement = $connection->prepare('SELECT username FROM accounts WHERE username LIKE (?)'))
 			{
-				$statement->bind_param("s",$user);
+				$statement->bind_param('s',$user);
 				
 				$statement->execute();
 				
@@ -104,5 +104,18 @@
 			header('Location: http://www.relatablez.com/settings/profile?e=Incorrect%20password%20provided');
 			return;
 		}	
+	}
+	else if($type == 'email')
+	{
+		$email = $_POST['email'];
+		$passwordData = getPassword($_SESSION['id']);
+		$pass_hash = $passwordData['hash'];
+		
+		$from = 'From: Relatablez <noreply@relatablez.com>';
+		$to = $email;
+		$subject = 'Account Verification';
+		$body = 'Hello ' . $user . ',\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?user='. $_SESSION['username'] .'&v=' . md5($_SESSION['username'] . $pass_hash . $email);
+		 
+		mail($to,$subject,$body,$from);
 	}
 	

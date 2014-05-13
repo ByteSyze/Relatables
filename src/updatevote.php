@@ -22,7 +22,6 @@
 		die("Invalid voting type");
 	}
 	
-	echo 'pid: '.$id.' -- uid: '.$_SESSION['id'];
 	if($statement = $connection->prepare("SELECT alone FROM related WHERE pid = (?) AND uid = (?)"))
 	{	
 		$statement->bind_param("ii",$id,$_SESSION['id']);	
@@ -34,8 +33,11 @@
 		$statement->bind_result($alone);
 		$result = $statement->fetch();
 		
-		if(($alone !== false) && (!empty($result)))
-			die("already voted");
+		if(($alone !== false))
+		{
+			if((($alone == 0)&&($voteType == 'notalone')) || (($alone == 1)&&($voteType == 'alone'))
+				die("already voted");
+		}
 	}else
 		echo $connection->error;	
 	if($statement = $connection->prepare("UPDATE submissions SET ".$voteType." = ".$voteType." + 1 WHERE id = (?)"))

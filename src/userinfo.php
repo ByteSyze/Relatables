@@ -154,28 +154,6 @@
 		}	
 	}
 	
-	function showDescription($id)
-	{	
-		$connection = getConnection();
-		
-		if($statement = $connection->prepare("UPDATE accounts SET hidedescription=0 WHERE id=(?)"))
-		{	
-			$statement->bind_param('i',$id);		
-			$statement->execute();
-		}	
-	}
-	
-	function hideDescription($id)
-	{	
-		$connection = getConnection();
-		
-		if($statement = $connection->prepare("UPDATE accounts SET hidedescription=1 WHERE id=(?)"))
-		{	
-			$statement->bind_param('i',$id);		
-			$statement->execute();
-		}	
-	}
-	
 	function showLocation($id)
 	{	
 		$connection = getConnection();

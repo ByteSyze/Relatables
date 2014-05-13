@@ -9,9 +9,7 @@
 	
 	if($type == 'show')
 	{
-		if($data == 'description')
-			showDescription($_SESSION['id']);
-		else if($data == 'location')
+		if($data == 'location')
 			showLocation($_SESSION['id']);
 		else if($data == 'related')
 			showRelated($_SESSION['id']);
@@ -20,9 +18,7 @@
 	}
 	else if($type == 'hide')
 	{
-		if($data == 'description')
-			hideDescription($_SESSION['id']);
-		else if($data == 'location')
+		if($data == 'location')
 			hideLocation($_SESSION['id']);
 		else if($data == 'related')
 			hideRelated($_SESSION['id']);
