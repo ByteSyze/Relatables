@@ -59,11 +59,18 @@ echo
 				<br><button class='question' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div></button>
 			</div>
 			<form method='post' action='javascript:register();'>
-				<input id='user_input' class='textbox' type='text' name='username' onkeyup='verifyUser()' placeholder='Username'><br><label id='user_log'></label>
-				<input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword()' name='password' placeholder='Password'><br><label id='pass_log'></label>
-				<input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><br><label id='repass_log'></label>
-				<input id='email_input' class='textbox' type='text' name='email' onkeyup='verifyEmail()' placeholder='Email'><br><label id='email_log'></label><br>
-				<input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'>
+				<table>
+					<tr>
+						<td><input id='user_input' class='textbox' type='text' name='username' onkeyup='verifyUser()' placeholder='Username'><br><label id='user_log'></label></td>
+					<tr>
+						<td><input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword()' name='password' placeholder='Password'><br><label id='pass_log'></label></td>
+					<tr>
+						<td><input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><br><label id='repass_log'></label></td>
+					<tr>
+						<td><input id='email_input' class='textbox' type='text' name='email' onkeyup='verifyEmail()' placeholder='Email'><br><label id='email_log'></label><br></td>
+					<tr>
+						<td><input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'></td>
+				</table>
 			</form>
 		</div>
 		<label style='font-size:10px'>By clicking Sign Up, you agree to our <a href='javascript:hideRegister();showLogin();'>Terms & Conditions</a>.</label>

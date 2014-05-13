@@ -107,6 +107,40 @@
 		}	
 	}
 	
+	function getPendingEmail($id)
+	{
+			
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT pending_email FROM accounts WHERE id = (?)"))
+		{	
+			$statement->bind_param("i",$id);
+			
+			$statement->execute();
+			
+			$statement->store_result();
+			$statement->bind_result($pendingEmail);
+			$result = $statement->fetch();
+			
+			if(!empty($result))
+				return $pendingEmail;
+			else
+				return false;
+		}	
+	}
+	
+	function setPendingEmail($pendingEmail, $id)
+	{
+			
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("UPDATE accounts SET pending_email=(?) WHERE id = (?)"))
+		{	
+			$statement->bind_param("si",$pendingEmail,$id);		
+			$statement->execute();
+		}	
+	}
+	
 	function setPassword($password, $id)
 	{
 		$new_salt = mcrypt_create_iv(16);
