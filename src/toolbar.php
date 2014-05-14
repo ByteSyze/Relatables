@@ -53,24 +53,39 @@ echo
 	<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a href='javascript:hideRegister();showLogin();'>Log In</a></h6>
 	<div style='text-align:center;margin:auto;width:100%;'>
 		<div>
-			<div style='height:100%;width:50px;float:left;'>
+			<div style='height:100%;width:50px;float:left;display:none;'>
 			
 					<button class='question' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></button>
 				<br><button class='question' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div></button>
 			</div>
 			<form method='post' action='javascript:register();'>
-				<table>
+				<table style='width:100%;'>
 					<tr>
-						<td><input id='user_input' class='textbox' type='text' name='username' onkeyup='verifyUser()' placeholder='Username'><br><label id='user_log'></label></td>
+						<td><button class='question' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></button></td>
+						<td><input id='user_input' class='textbox' type='text' name='username' onkeyup='verifyUser()' placeholder='Username'><label id='user_log'></label></td>
+						<td style='width:29px;'></td>
+					</tr>
+					<tr class='spacer'></tr>
 					<tr>
-						<td><input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword()' name='password' placeholder='Password'><br><label id='pass_log'></label></td>
+						<td><button class='question' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div></button></td>
+						<td><input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword()' name='password' placeholder='Password'><label id='pass_log'></label></td>
+						<td></td>
+					</tr>
+					<tr class='spacer'></tr>
 					<tr>
-						<td><input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><br><label id='repass_log'></label></td>
+						<td></td>
+						<td><input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><label id='repass_log'></label></td>
+						<td></td>
+					</tr>
+					<tr class='spacer'></tr>
 					<tr>
-						<td><input id='email_input' class='textbox' type='text' name='email' onkeyup='verifyEmail()' placeholder='Email'><br><label id='email_log'></label><br></td>
-					<tr>
-						<td><input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'></td>
-				</table>
+						<td></td>
+						<td><input id='email_input' class='textbox' type='text' name='email' onkeyup='verifyEmail()' placeholder='Email'><label id='email_log'></label></td>
+						<td></td>
+					</tr>
+					<tr class='spacer'></tr>
+				</table><br>
+				<input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'></td>
 			</form>
 		</div>
 		<label style='font-size:10px'>By clicking Sign Up, you agree to our <a href='javascript:hideRegister();showLogin();'>Terms & Conditions</a>.</label>
