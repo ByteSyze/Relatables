@@ -18,7 +18,7 @@
 		}
 		if(!preg_match('/^[A-Za-z0-9_]+$/',$user)) // Check that username only contains alphanumerics and underscore at most
 		{
-			header('Location: http://www.relatablez.com/settings/account?e=Username%20must%20only%20contain%20letters,%20numbers,%20and/or%20underscores');
+			header('Location: http://www.relatablez.com/settings/account?e=0&i=2');
 			return;
 		}
 		if(!(strcasecmp($user,$_SESSION['username']) == 0))
@@ -55,7 +55,7 @@
 		
 		if($length > 130)
 		{
-			header('Location: http://www.relatablez.com/settings/profile?e=Description%20must%20be%20under%20130%20characters');
+			header('Location: http://www.relatablez.com/settings/profile?e=0&i=0');
 			return;
 		}
 		
@@ -69,7 +69,7 @@
 	
 		if((!is_numeric($country_id)) || (($country_id < 1) || ($country_id > 250)))
 		{
-			header('Location: http://www.relatablez.com/settings/profile?e=Invalid%20location%20provided');
+			header('Location: http://www.relatablez.com/settings/profile?e=3&i=0');
 			return;
 		}
 
@@ -86,7 +86,7 @@
 		
 		if($new_pass != $re_new_pass)
 		{
-			header('Location: http://www.relatablez.com/settings/account?e=Password%20verification%20didn\'t%20match');
+			header('Location: http://www.relatablez.com/settings/account?e=1&i=1');
 			return;
 		}
 		
@@ -101,20 +101,45 @@
 		}
 		else
 		{
-			header('Location: http://www.relatablez.com/settings/profile?e=Incorrect%20password%20provided');
+			header('Location: http://www.relatablez.com/settings/profile?e=1&i=2');
 			return;
 		}	
 	}
 	else if($type == 'email')
-	{
+	{	
 		$email = $_POST['email'];
 		$passwordData = getPassword($_SESSION['id']);
 		$pass_hash = $passwordData['hash'];
 		
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+		{
+				header('Location: http://www.relatablez.com/settings/account?e=2&i=2');
+				return;
+		}
+		
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT 1 FROM accounts WHERE email LIKE (?)"))
+		{
+			$statement->bind_param("s",$email);
+			
+			$statement->execute();
+			
+			$result = $statement->fetch();
+			
+			if(!empty($result))
+			{
+				header('Location: http://www.relatablez.com/settings/account?e=2&i=3');
+				return;
+			}
+		}
+		
+		setPendingEmail($email,$_SESSION['id']);
+		
 		$from = 'From: Relatablez <noreply@relatablez.com>';
 		$to = $email;
-		$subject = 'Account Verification';
-		$body = 'Hello ' . $user . ',\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?user='. $_SESSION['username'] .'&v=' . md5($_SESSION['username'] . $pass_hash . $email);
+		$subject = 'Email Verification';
+		$body = 'Hey ' . $_SESSION['username'] . ',\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\nhttp://www.relatablez.com/verify?email='. $email .'&v=' . md5($_SESSION['username'] . $pass_hash . $email) . '\n\nIf you didn\'t request this change, please ignore this message.';
 		 
 		mail($to,$subject,$body,$from);
 	}

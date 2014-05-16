@@ -14,19 +14,22 @@
 		"Username too long.",
 		"Username too short.",
 		"Username contains invalid characters.",
+		"Username unavailable"
 	);
 	
 	$_PSW_ERR =
 	array(
 		"Password too short.",
-		"Re entered password does not match"
+		"Re entered password does not match.",
+		"Incorrect password provided."
 	);
 	
 	$_EML_ERR =
 	array(
 		"Email too long.",
 		"Email too short.",
-		"Invalid email." // This would be triggered if the provided email does not contain both @ sign and a period.
+		"Invalid email.", // This would be triggered if the provided email does not contain both @ sign and a period.
+		"Email taken."
 	);
 	
 	$_CTR_ERR =
