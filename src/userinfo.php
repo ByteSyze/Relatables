@@ -108,8 +108,7 @@
 	}
 	
 	function getPendingEmail($id)
-	{
-			
+	{		
 		$connection = getConnection();
 		
 		if($statement = $connection->prepare("SELECT pending_email FROM accounts WHERE id = (?)"))
@@ -130,8 +129,7 @@
 	}
 	
 	function setPendingEmail($pendingEmail, $id)
-	{
-			
+	{		
 		$connection = getConnection();
 		
 		if($statement = $connection->prepare("UPDATE accounts SET pending_email=(?) WHERE id = (?)"))
