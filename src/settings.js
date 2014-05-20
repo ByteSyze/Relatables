@@ -2,6 +2,8 @@
 
 var type = document.getElementById('type');
 
+var count = 0;
+
 function edit(name)
 {
 	if(name == 'password')
@@ -52,6 +54,12 @@ function editPassword()
 		reNewPass.style.display = 'table-row';
 		passwordButton.innerHTML = 'Cancel';
 	}
+}
+
+function charCount(element)
+{
+	count = element.value.length;
+	console.log(count);
 }
 
 function keyPressed(element, event)

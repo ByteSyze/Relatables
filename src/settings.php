@@ -64,7 +64,7 @@
 								<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
 							<tr>
 								<th class='settings-header'>Description<br><span>(130 characters)</span></th>
-								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' style='display:none;'>".htmlspecialchars($data['description'])."</textarea></td>
+								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this)' style='display:none;'>".htmlspecialchars($data['description'])."</textarea></td>
 								<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");document.getElementById(\"description-input\").focus();'>Edit</a></td>
 						</table> 
 						<h3>What To Show</h3>
