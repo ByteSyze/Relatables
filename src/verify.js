@@ -1,10 +1,15 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
 var userElement 	= document.getElementById("user_input");
+var userVerifyImg 	= document.getElementById("user_verify_img");
 var passElement 	= document.getElementById("pass_input");
+var passVerifyImg 	= document.getElementById("pass_verify_img");
 var rePassElement 	= document.getElementById("repass_input");
+var rePassVerifyImg = document.getElementById("repass_verify_img");
 var emailElement 	= document.getElementById("email_input");
+var emailVerifyImg 	= document.getElementById("email_verify_img");
 var reEmailElement 	= document.getElementById("reemail_input");
+var reEmailVerifyImg = document.getElementById("reemail_verify_img");
 
 var rememberElement = document.getElementById("remember_input");
 
@@ -95,32 +100,43 @@ function verifyUser()
 			{
 				//Username is already in use.
 				userElement.style.background=invalidColor;		
+				userVerifyImg.src = "x_mark.png";
 			}
 	});
 	if(user.length < 3)
 	{
 		//Username is too short
 		userElement.style.background=invalidColor;
+		userVerifyImg.style.display = "block";
+		userVerifyImg.src = "x_mark.png";
 	}
 	else if(user.length > 16)
 	{
 		//Username is too long
 		userElement.style.background=invalidColor;
+		userVerifyImg.style.display = "block";
+		userVerifyImg.src = "x_mark.png";
 	}
 	else if(user.length < 1)
 	{	
 		//Username is too short
 		userElement.style.background=invalidColor;
+		userVerifyImg.style.display = "block";
+		userVerifyImg.src = "x_mark.png";
 	}
 	else if(!userRegex.test(user))
 	{	
 		//Username contains invalid characters
 		userElement.style.background=invalidColor;
+		userVerifyImg.style.display = "block";
+		userVerifyImg.src = "x_mark.png";
 	}
 	else
 	{		
 		//Username is A-Okay
 		userElement.style.background=validColor;
+		userVerifyImg.style.display = "block";
+		userVerifyImg.src = "check_mark.png";
 		valid = true;
 	}
 	return valid;
@@ -137,11 +153,15 @@ function verifyPassword()
 	{
 		//Password is too short
 		passElement.style.background=invalidColor;
+		passVerifyImg.style.display = "block";
+		passVerifyImg.src = "x_mark.png";
 	}
 	else
 	{
 		//Hey look, they can make a password!
 		passElement.style.background=validColor;
+		passVerifyImg.style.display = "block";
+		passVerifyImg.src = "check_mark.png";
 		valid = true;
 	}
 	
@@ -161,16 +181,22 @@ function verifyRePassword()
 	{
 		//Too small
 		rePassElement.style.background=invalidColor;
+		rePassVerifyImg.style.display = "block";
+		rePassVerifyImg.src = "x_mark.png";
 	}
 	else if(pass !== rePass)
 	{
 		//Does not match!
 		rePassElement.style.background=invalidColor;
+		rePassVerifyImg.style.display = "block";
+		rePassVerifyImg.src = "x_mark.png";
 	}
 	else
 	{
 		//Matches
 		rePassElement.style.background=validColor;
+		rePassVerifyImg.style.display = "block";
+		rePassVerifyImg.src = "check_mark.png";
 		valid = true;
 	}
 	return valid;
@@ -192,22 +218,30 @@ function verifyEmail()
 			{
 				//email is already in use.
 				emailElement.style.background=invalidColor;	
+				emailVerifyImg.style.display = "block";
+				emailVerifyImg.src = "x_mark.png";
 			}
 	});
 	if(email.length < 4)
 	{
 		//Email is too short.
 		emailElement.style.background=invalidColor;
+		emailVerifyImg.style.display = "block";
+		emailVerifyImg.src = "x_mark.png";
 	}
 	else if((email.indexOf("@") == -1) || (email.indexOf(".") == -1))
 	{
 		//Does not contain @ and/or . characters.
 		emailElement.style.background=invalidColor;
+		emailVerifyImg.style.display = "block";
+		emailVerifyImg.src = "x_mark.png";
 	}
 	else
 	{
 		//Seems valid.
 		emailElement.style.background=validColor;
+		emailVerifyImg.style.display = "block";
+		emailVerifyImg.src = "check_mark.png";
 		valid = true;
 	}
 	return valid;

@@ -195,6 +195,11 @@ tr.spacer
 {
 	height:9px;
 }
+img.verify
+{
+	width:22px;
+	display:none;
+}
 body
 {
 	background-color:#F7F7F7;

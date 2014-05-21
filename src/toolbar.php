@@ -58,25 +58,25 @@ echo
 					<tr>
 						<td><img src='http://www.relatablez.com/question.png' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></td>
 						<td><input id='user_input' class='textbox' type='text' name='username' onkeyup='verifyUser()' placeholder='Username'><label id='user_log'></label></td>
-						<td style='width:22px;'></td>
+						<td style='width:22px;'><img class='verify' src='check_mark.png' id='user_verify_img' /></td>
 					</tr>
 					<tr class='spacer'></tr>
 					<tr>
 						<td><img src='http://www.relatablez.com/question.png' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div></td>
 						<td><input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword()' name='password' placeholder='Password'><label id='pass_log'></label></td>
-						<td></td>
+						<td><img class='verify' src='check_mark.png' id='pass_verify_img' /></td>
 					</tr>
 					<tr class='spacer'></tr>
 					<tr>
 						<td></td>
 						<td><input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><label id='repass_log'></label></td>
-						<td></td>
+						<td><img class='verify' src='check_mark.png' id='repass_verify_img' /></td>
 					</tr>
 					<tr class='spacer'></tr>
 					<tr>
 						<td></td>
 						<td><input id='email_input' class='textbox' type='text' name='email' onkeyup='verifyEmail()' placeholder='Email'><label id='email_log'></label></td>
-						<td></td>
+						<td><img class='verify' src='check_mark.png' id='email_verify_img' /></td>
 					</tr>
 					<tr class='spacer'></tr>
 					<tr>
