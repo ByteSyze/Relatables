@@ -78,10 +78,13 @@ button.closebutton
 	float:right;
 	background-image: url('../close.png');
 	background-repeat: no-repeat;
-	background-size:24px 24px;
-	width:24px;
-	height:24px;
+	background-size:14px 14px;
+	width:14px;
+	height:14px;
+	margin-right:8px;
+	margin-top:8px;
 	border:none;
+	z-index:3;
 }
 button.question
 {
@@ -197,7 +200,7 @@ tr.spacer
 }
 img.verify
 {
-	width:22px;
+	margin-left:3px;
 	display:none;
 }
 body

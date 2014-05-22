@@ -98,43 +98,37 @@ function verifyUser()
 		.done(function(data) {
 			if(data === "user unavailable")
 			{
-				//Username is already in use.
-				userElement.style.background=invalidColor;		
+				//Username is already in use.	
 				userVerifyImg.src = "x_mark.png";
 			}
 	});
 	if(user.length < 3)
 	{
 		//Username is too short
-		userElement.style.background=invalidColor;
 		userVerifyImg.style.display = "block";
 		userVerifyImg.src = "x_mark.png";
 	}
 	else if(user.length > 16)
 	{
 		//Username is too long
-		userElement.style.background=invalidColor;
 		userVerifyImg.style.display = "block";
 		userVerifyImg.src = "x_mark.png";
 	}
 	else if(user.length < 1)
 	{	
 		//Username is too short
-		userElement.style.background=invalidColor;
 		userVerifyImg.style.display = "block";
 		userVerifyImg.src = "x_mark.png";
 	}
 	else if(!userRegex.test(user))
 	{	
 		//Username contains invalid characters
-		userElement.style.background=invalidColor;
 		userVerifyImg.style.display = "block";
 		userVerifyImg.src = "x_mark.png";
 	}
 	else
 	{		
 		//Username is A-Okay
-		userElement.style.background=validColor;
 		userVerifyImg.style.display = "block";
 		userVerifyImg.src = "check_mark.png";
 		valid = true;
@@ -152,14 +146,12 @@ function verifyPassword()
 	if(pass.length < 6)
 	{
 		//Password is too short
-		passElement.style.background=invalidColor;
 		passVerifyImg.style.display = "block";
 		passVerifyImg.src = "x_mark.png";
 	}
 	else
 	{
 		//Hey look, they can make a password!
-		passElement.style.background=validColor;
 		passVerifyImg.style.display = "block";
 		passVerifyImg.src = "check_mark.png";
 		valid = true;
@@ -180,21 +172,18 @@ function verifyRePassword()
 	if(rePass.length < 6)
 	{
 		//Too small
-		rePassElement.style.background=invalidColor;
 		rePassVerifyImg.style.display = "block";
 		rePassVerifyImg.src = "x_mark.png";
 	}
 	else if(pass !== rePass)
 	{
 		//Does not match!
-		rePassElement.style.background=invalidColor;
 		rePassVerifyImg.style.display = "block";
 		rePassVerifyImg.src = "x_mark.png";
 	}
 	else
 	{
 		//Matches
-		rePassElement.style.background=validColor;
 		rePassVerifyImg.style.display = "block";
 		rePassVerifyImg.src = "check_mark.png";
 		valid = true;
@@ -217,7 +206,6 @@ function verifyEmail()
 			if(data === "email unavailable")
 			{
 				//email is already in use.
-				emailElement.style.background=invalidColor;	
 				emailVerifyImg.style.display = "block";
 				emailVerifyImg.src = "x_mark.png";
 			}
@@ -225,21 +213,18 @@ function verifyEmail()
 	if(email.length < 4)
 	{
 		//Email is too short.
-		emailElement.style.background=invalidColor;
 		emailVerifyImg.style.display = "block";
 		emailVerifyImg.src = "x_mark.png";
 	}
 	else if((email.indexOf("@") == -1) || (email.indexOf(".") == -1))
 	{
 		//Does not contain @ and/or . characters.
-		emailElement.style.background=invalidColor;
 		emailVerifyImg.style.display = "block";
 		emailVerifyImg.src = "x_mark.png";
 	}
 	else
 	{
 		//Seems valid.
-		emailElement.style.background=validColor;
 		emailVerifyImg.style.display = "block";
 		emailVerifyImg.src = "check_mark.png";
 		valid = true;
