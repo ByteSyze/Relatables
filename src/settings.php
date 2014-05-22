@@ -52,6 +52,7 @@
 				
 				if($settings == 1)
 				{
+					$description = htmlspecialchars($data['description']);
 					echo
 					"
 					<h3>Profile Settings</h3>
@@ -64,8 +65,8 @@
 								<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 							<tr>
-								<th class='settings-header'>Description<br><span>(130 characters)</span></th>
-								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this)' style='display:none;'>".htmlspecialchars($data['description'])."</textarea></td>
+								<th class='settings-header'>Description<br><span id='desc_char_counter'>(".(130-strlen($description))." characters left)</span></th>
+								<td><span id='description'>".$description."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this, desc_char_counter)' style='display:none;'>".$description."</textarea></td>
 								<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");document.getElementById(\"description-input\").focus();'>Edit</a></td>
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 						</table> 

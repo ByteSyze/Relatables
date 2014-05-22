@@ -2,7 +2,7 @@
 
 var type = document.getElementById('type');
 
-var count = 0;
+var descriptionCounter = document.getElementById('desc_char_counter');
 
 function edit(name)
 {
@@ -56,10 +56,9 @@ function editPassword()
 	}
 }
 
-function charCount(element)
+function charCount(element,counter)
 {
-	count = element.value.length;
-	console.log(count);
+	counter.innerHTML = '(' + (130-element.value.length) + ' characters left)';
 }
 
 function keyPressed(element, event)
