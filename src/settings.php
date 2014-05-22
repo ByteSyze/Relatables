@@ -62,10 +62,12 @@
 								<th class='settings-header'>Location</th>
 								<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
 								<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
+								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 							<tr>
 								<th class='settings-header'>Description<br><span>(130 characters)</span></th>
 								<td><span id='description'>".htmlspecialchars($data['description'])."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this)' style='display:none;'>".htmlspecialchars($data['description'])."</textarea></td>
 								<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");document.getElementById(\"description-input\").focus();'>Edit</a></td>
+								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 						</table> 
 						<h3>What To Show</h3>
 						<table id='showhide-settings-table' class='settings-module'>
@@ -90,20 +92,27 @@
 								<th class='settings-header'>Username</th>
 								<td><span id='username'>".$_SESSION['username']."</span><input data-type='username' id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='".$_SESSION['username']."' style='display:none;'></input></td>
 								<td class='edit-button-wrapper'><a id='username-button' href='javascript:edit(\"username\");'>Edit</a></td>
+								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 							<tr>
 								<th class='settings-header'>Password</th>
-								<td><span id='password'>********</span><input id='oldpassword' data-type='password' type='password' name='oldpassword' onkeypress='keyPressed(this, event)' style='display:none;' /></td>
+								<td><span id='password'>********</span><input id='old_pass_input' data-type='password' type='password' name='oldpassword' onkeypress='keyPressed(this, event)' style='display:none;' /></td>
 								<td class='edit-button-wrapper'><a id='password-button' href='javascript:edit(\"password\");'>Edit</a></td>
+								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='password_verify_img' /></td>
 							<tr id='newpassword' style='display:none;'>
 								<th class='settings-header'>New Password</th>
-								<td><input data-type='password' type='password' name='newpassword' onkeypress='keyPressed(this, event)' /></td>
+								<td><input id='new_pass_input' data-type='password' type='password' name='newpassword' onkeypress='keyPressed(this, event)' /></td>
+								<td></td>
+								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='new_password_verify_img' /></td>
 							<tr id='renewpassword' style='display:none;'>
 								<th class='settings-header'>Retype New Password</th>
-								<td><input data-type='password' type='password' name='renewpassword' onkeypress='keyPressed(this, event)' /></td>
+								<td><input id='renew_pass_input' data-type='password' type='password' name='renewpassword' onkeypress='keyPressed(this, event)' /></td>
+								<td></td>
+								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
 							<tr>
 								<th class='settings-header'>Email</th>
 								<td>".$data['email']."</td>
 								<td class='edit-button-wrapper'><a href='#ChangeEmail'>Edit</a></td>
+								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 						</table> 
 					</form>
 					";
