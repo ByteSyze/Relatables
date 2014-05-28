@@ -11,6 +11,8 @@
 	// and B) if the user was messing with our code that makes sure they entered correct info, they're
 	// stupid and gonna get what they deserve. End of.
 	
+	include('userinfo.php');
+	
 	if(!isset($_POST["password"]))
 		echo "password not set";
 	if(!isset($_POST["username"]))
@@ -80,10 +82,12 @@
 		
 		if($statement->execute())
 		{
+			$uid = getId($user);
+		
 			$from = "From: Relatablez <noreply@relatablez.com>";
 			$to = $email;
 			$subject = "Account Verification";
-			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?user=". $user ."&v=" . md5($user . $pass_hash . $email);
+			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?i=". $uid ."&v=" . md5($uid . $pass_hash . $email);
 			 
 			mail($to,$subject,$body,$from);
 			

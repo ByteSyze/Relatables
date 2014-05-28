@@ -128,6 +128,48 @@
 		}	
 	}
 	
+	function getId($username)
+	{		
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT id FROM accounts WHERE username LIKE (?)"))
+		{	
+			$statement->bind_param("s",$username);
+			
+			$statement->execute();
+			
+			$statement->store_result();
+			$statement->bind_result($id);
+			$result = $statement->fetch();
+			
+			if(!empty($result))
+				return $id;
+			else
+				return false;
+		}	
+	}
+	
+	function getUsername($id)
+	{	
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT username FROM accounts WHERE id = (?)"))
+		{	
+			$statement->bind_param("s",$id);
+			
+			$statement->execute();
+			
+			$statement->store_result();
+			$statement->bind_result($username);
+			$result = $statement->fetch();
+			
+			if(!empty($result))
+				return $username;
+			else
+				return false;
+		}	
+	}
+	
 	function setPendingEmail($pendingEmail, $id)
 	{		
 		$connection = getConnection();

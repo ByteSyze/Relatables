@@ -1,39 +1,42 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	
+	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
+	
 	session_start();
 	
-	if(!isset($_GET["user"]))
-		die("No user specified");
+	if(!isset($_GET["i"]))
+		die("No id specified");
 	else if(!isset($_GET["v"]))
 		die("No authentication set");
 		
-	$user = $_GET["user"];
+	$id = $_GET["i"];
 	$verification = $_GET["v"];
 	
 	$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
 	
-	if($statement = $connection->prepare("SELECT password, email FROM accounts WHERE username LIKE (?) AND pending = 1"))
+	if($statement = $connection->prepare("SELECT password, pending_email FROM accounts WHERE id = (?) AND email IS NULL"))
 	{
-		$statement->bind_param("s",$user);
+		$statement->bind_param("i",$id);
 		
 		$statement->execute();
 		
 		$statement->store_result();
-		$statement->bind_result($pass, $email);
+		$statement->bind_result($pass, $pending_email);
 		$result = $statement->fetch();
 		
-		$resultVerification = md5($user . $pass . $email);
+		$resultVerification = md5($id . $pass . $pending_email);
 		
 		if($verification == $resultVerification)
 		{
-			if($statement = $connection->prepare("UPDATE accounts SET pending=0 WHERE username LIKE (?)"))
+			if($statement = $connection->prepare("UPDATE accounts SET email = (?) WHERE id LIKE (?)"))
 			{
-				$statement->bind_param("s",$user);
+				$statement->bind_param("si",$email, $id);
 				
 				$statement->execute();
 				
-				$_SESSION["username"] = $user;
+				$_SESSION['id'] = $id;
+				$_SESSION['username'] = getUsername($id);
 				
 				header("Location: http://www.relatablez.com/?verified=true");
 			}
