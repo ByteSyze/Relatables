@@ -88,51 +88,36 @@ function verifyUser()
 	var user = userElement.value;
 	var valid = false;
 	
-	var email = emailElement.value;
-	
 	$.ajax({
 		type: "POST",
 		url: "verifyUser.php",
-		data: { username: user, email: email}
+		data: { username: user }
 	})
 		.done(function(data) {
 			if(data === "user unavailable")
-			{
-				//Username is already in use.	
-				userVerifyImg.src = "x_mark.png";
+			{	
+				userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 			}
 	});
 	if(user.length < 3)
 	{
-		//Username is too short
-		userVerifyImg.style.display = "block";
-		userVerifyImg.src = "x_mark.png";
+		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if(user.length > 16)
 	{
-		//Username is too long
-		userVerifyImg.style.display = "block";
-		userVerifyImg.src = "x_mark.png";
-	}
-	else if(user.length < 1)
-	{	
-		//Username is too short
-		userVerifyImg.style.display = "block";
-		userVerifyImg.src = "x_mark.png";
+		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if(!userRegex.test(user))
 	{	
-		//Username contains invalid characters
-		userVerifyImg.style.display = "block";
-		userVerifyImg.src = "x_mark.png";
+		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{		
-		//Username is A-Okay
-		userVerifyImg.style.display = "block";
-		userVerifyImg.src = "check_mark.png";
+		userVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
+	
+	userVerifyImg.style.display = 'block';
 	return valid;
 }
 
@@ -147,13 +132,13 @@ function verifyPassword()
 	{
 		//Password is too short
 		passVerifyImg.style.display = "block";
-		passVerifyImg.src = "x_mark.png";
+		passVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
 		//Hey look, they can make a password!
 		passVerifyImg.style.display = "block";
-		passVerifyImg.src = "check_mark.png";
+		passVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
 	
@@ -173,19 +158,19 @@ function verifyRePassword()
 	{
 		//Too small
 		rePassVerifyImg.style.display = "block";
-		rePassVerifyImg.src = "x_mark.png";
+		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if(pass !== rePass)
 	{
 		//Does not match!
 		rePassVerifyImg.style.display = "block";
-		rePassVerifyImg.src = "x_mark.png";
+		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
 		//Matches
 		rePassVerifyImg.style.display = "block";
-		rePassVerifyImg.src = "check_mark.png";
+		rePassVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
 	return valid;
@@ -207,26 +192,26 @@ function verifyEmail()
 			{
 				//email is already in use.
 				emailVerifyImg.style.display = "block";
-				emailVerifyImg.src = "x_mark.png";
+				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 			}
 	});
 	if(email.length < 4)
 	{
 		//Email is too short.
 		emailVerifyImg.style.display = "block";
-		emailVerifyImg.src = "x_mark.png";
+		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if((email.indexOf("@") == -1) || (email.indexOf(".") == -1))
 	{
 		//Does not contain @ and/or . characters.
 		emailVerifyImg.style.display = "block";
-		emailVerifyImg.src = "x_mark.png";
+		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
 		//Seems valid.
 		emailVerifyImg.style.display = "block";
-		emailVerifyImg.src = "check_mark.png";
+		emailVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
 	return valid;

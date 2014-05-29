@@ -56,6 +56,73 @@ function editPassword()
 	}
 }
 
+function verifyLocation(input,marker)
+{
+	if((input.value >= 0) && (input.value <= 250))
+	{
+		marker.src = 'http://www.relatablez.com/check_mark.png';
+	}
+	else
+	{
+		marker.src = 'http://www.relatablez.com/x_mark.png';
+	}
+	marker.style.display = 'table-row';
+}
+
+function verifyDescription(input,marker)
+{
+	if(input.value.length <= 130)
+	{
+		marker.src = 'http://www.relatablez.com/check_mark.png';
+	}
+	else
+	{
+		marker.src = 'http://www.relatablez.com/x_mark.png';
+	}
+	marker.style.display = 'table-row';
+}
+
+function verifyUsername(input,marker)
+{
+	var user = userElement.value;
+	var valid = false;
+	
+	var email = emailElement.value;
+	
+	$.ajax({
+		type: "POST",
+		url: "verifyUser.php",
+		data: { username: user, email: email}
+	})
+		.done(function(data) {
+			if(data === "user unavailable")
+			{
+				marker.src = "http://www.relatablez.com/x_mark.png";
+			}
+	});
+	if(user.length < 3)
+	{
+		marker.style.display = "block";
+		marker.src = "http://www.relatablez.com/x_mark.png";
+	}
+	else if(user.length > 16)
+	{
+		marker.style.display = "block";
+		marker.src = "http://www.relatablez.com/x_mark.png";
+	}
+	else if(!userRegex.test(user))
+	{	
+		marker.style.display = "block";
+		marker.src = "http://www.relatablez.com/x_mark.png";
+	}
+	else
+	{		
+		marker.style.display = "block";
+		marker.src = "http://www.relatablez.com/check_mark.png";
+		valid = true;
+	}
+}
+
 function charCount(element,counter)
 {
 	counter.innerHTML = '(' + (130-element.value.length) + ' characters left)';
