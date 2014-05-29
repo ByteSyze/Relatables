@@ -22,21 +22,21 @@
 	$pass = $_POST["password"];
 
 	//Check if user exists
-	if($statement = $connection->prepare("SELECT id, username, password, salt, pending_email FROM accounts WHERE username LIKE (?)"))
+	if($statement = $connection->prepare("SELECT id, username, password, salt, email FROM accounts WHERE username LIKE (?)"))
 	{
 		$statement->bind_param("s",$user);
 		
 		$statement->execute();
 		
 		$statement->store_result();
-		$statement->bind_result($id, $dbUser, $dbPass, $salt, $pending_email);
+		$statement->bind_result($id, $dbUser, $dbPass, $salt, $email);
 		$result = $statement->fetch();
 		
 		if(empty($result))
 		{
 			die("invalid username");
 		}
-		if($pending_email == null)
+		if($email == null)
 		{
 			die("not verified");
 		}

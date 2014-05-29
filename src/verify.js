@@ -59,6 +59,7 @@ function login()
 		data: { username: user, password: pass, rememberme: remember }
 	})
 		.done(function(data) {
+			console.log(data);
 			if(data.indexOf("logged in") != -1)
 			{
 				location.reload();
