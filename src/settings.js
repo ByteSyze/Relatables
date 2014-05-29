@@ -66,7 +66,7 @@ function verifyLocation(input,marker)
 	{
 		marker.src = 'http://www.relatablez.com/x_mark.png';
 	}
-	marker.style.display = 'table-row';
+	marker.style.display = 'block';
 }
 
 function verifyDescription(input,marker)
@@ -79,20 +79,17 @@ function verifyDescription(input,marker)
 	{
 		marker.src = 'http://www.relatablez.com/x_mark.png';
 	}
-	marker.style.display = 'table-row';
+	marker.style.display = 'block';
 }
 
 function verifyUsername(input,marker)
 {
-	var user = userElement.value;
-	var valid = false;
-	
-	var email = emailElement.value;
+	var user = input.value;
 	
 	$.ajax({
 		type: "POST",
 		url: "verifyUser.php",
-		data: { username: user, email: email}
+		data: { username: user }
 	})
 		.done(function(data) {
 			if(data === "user unavailable")
@@ -102,25 +99,21 @@ function verifyUsername(input,marker)
 	});
 	if(user.length < 3)
 	{
-		marker.style.display = "block";
 		marker.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if(user.length > 16)
 	{
-		marker.style.display = "block";
 		marker.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if(!userRegex.test(user))
 	{	
-		marker.style.display = "block";
 		marker.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{		
-		marker.style.display = "block";
 		marker.src = "http://www.relatablez.com/check_mark.png";
-		valid = true;
 	}
+	marker.style.display = 'block';
 }
 
 function charCount(element,counter)

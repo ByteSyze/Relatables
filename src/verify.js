@@ -131,17 +131,16 @@ function verifyPassword()
 	if(pass.length < 6)
 	{
 		//Password is too short
-		passVerifyImg.style.display = "block";
 		passVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
 		//Hey look, they can make a password!
-		passVerifyImg.style.display = "block";
 		passVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
 	
+	passVerifyImg.style.display = "block";
 	verifyRePassword();
 	return valid;
 }
@@ -157,22 +156,20 @@ function verifyRePassword()
 	if(rePass.length < 6)
 	{
 		//Too small
-		rePassVerifyImg.style.display = "block";
 		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if(pass !== rePass)
 	{
 		//Does not match!
-		rePassVerifyImg.style.display = "block";
 		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
 		//Matches
-		rePassVerifyImg.style.display = "block";
 		rePassVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
+	rePassVerifyImg.style.display = "block";
 	return valid;
 }
 
@@ -191,28 +188,25 @@ function verifyEmail()
 			if(data === "email unavailable")
 			{
 				//email is already in use.
-				emailVerifyImg.style.display = "block";
 				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 			}
 	});
 	if(email.length < 4)
 	{
 		//Email is too short.
-		emailVerifyImg.style.display = "block";
 		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else if((email.indexOf("@") == -1) || (email.indexOf(".") == -1))
 	{
 		//Does not contain @ and/or . characters.
-		emailVerifyImg.style.display = "block";
 		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
 		//Seems valid.
-		emailVerifyImg.style.display = "block";
 		emailVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
+	emailVerifyImg.style.display = "block";
 	return valid;
 }
