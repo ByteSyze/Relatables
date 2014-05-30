@@ -49,6 +49,9 @@ function hideRegister()
 {
 	registerOpen = false;
 	registerPopup.style.display = "none";
+	
+	for(input in registerPopup.getElementsByTagName('input'))
+		input.value = '';
 }
 
 function showGuidelines(element)
