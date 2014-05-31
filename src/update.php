@@ -108,8 +108,7 @@
 	else if($type == 'email')
 	{	
 		$email = $_POST['email'];
-		//$passwordData = getPassword($_SESSION['id']);
-		//$pass_hash = $passwordData['hash'];
+		echo 'was email: ' . $email;
 		
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
@@ -136,11 +135,15 @@
 		
 		setPendingEmail($email,$_SESSION['id']);
 		
+		$data = getPasswordAndSalt($_SESSION['id']);
+		
 		$from = 'From: Relatablez <noreply@relatablez.com>';
 		$to = $email;
 		$subject = 'Email Verification';
-		$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\nhttp://www.relatablez.com/verify?email=". $email .'&v=' . md5($_SESSION['username'] . $pass_hash . $email) . "\n\nIf you didn't request this change, please ignore this message.";
+		$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\nhttp://www.relatablez.com/verify?i=". $_SESSION['id'] .'&v=' . md5($_SESSION['id'] . $data['hash'] . $email) . "\n\nIf you didn't request this change, please ignore this message.";
 		 
 		mail($to,$subject,$body,$from);
+		
+		header('Location: http://www.relatablez.com/settings/account');
 	}
 	

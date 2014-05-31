@@ -111,8 +111,8 @@
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
 							<tr>
 								<th class='settings-header'>Email</th>
-								<td>".$data['email']."</td>
-								<td class='edit-button-wrapper'><a href='#ChangeEmail'>Edit</a></td>
+								<td><span id='email'>".$data['email']."</span><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='".$data['email']."' style='display:none;'></input></td>
+								<td class='edit-button-wrapper'><a id='email-button' href='javascript:edit(\"email\");'>Edit</a></td>
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 						</table> 
 					</form>
