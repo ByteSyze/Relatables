@@ -146,4 +146,8 @@
 		
 		header('Location: http://www.relatablez.com/settings/account');
 	}
+	else if($type == 'delete')
+	{
+		deleteAccount($_SESSION['id']);
+	}
 	

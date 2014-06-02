@@ -58,6 +58,17 @@
 				return false;
 		}	
 	}
+	
+	function deleteAccount($id)
+	{
+		$connection = getConnection();
+				
+		if($statement = $connection->prepare("DELETE FROM accounts WHERE id=(?)"))
+		{	
+			$statement->bind_param('i',$id);		
+			$statement->execute();
+		}	
+	}
 		
 	function getCountry($id)
 	{

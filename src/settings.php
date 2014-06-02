@@ -118,7 +118,7 @@
 					</form>
 					";
 				?>
-				<a href='#Delete'>Delete Account</a>
+				<a href='http://www.relatablez.com/update.php?t=delete'>Delete Account</a>
 			</div>
 		</div>
 		
