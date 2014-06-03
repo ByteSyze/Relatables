@@ -32,7 +32,7 @@
 		<meta name="description" content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
 		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/settings/settingstheme.css">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/settingstheme.css">
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -118,7 +118,16 @@
 					</form>
 					";
 				?>
-				<a href='http://www.relatablez.com/update.php?t=delete'>Delete Account</a>
+				<form id='delete-account-form' method='POST' action='http://www.relatablez.com/update.php'>
+					<a href='http://www.relatablez.com/update.php?t=delete'>Delete Account</a>
+				</form>
+				<div id='delete-account-popup'>
+					<h2>Delete account?</h2>
+					<form>
+						<input class='dialoguebutton' style='float:left' type='submit' name='confirm' value='Confirm'>
+						<input class='dialoguebutton' style='float:right' type='button' value='Cancel'>
+					</form>
+				</div>
 			</div>
 		</div>
 		
