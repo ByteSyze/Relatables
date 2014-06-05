@@ -116,6 +116,16 @@ function verifyUsername(input,marker)
 	marker.style.display = 'block';
 }
 
+function hideDeletePopup()
+{
+	document.getElementById('delete-account-popup').style.display = 'none';
+}
+
+function showDeletePopup()
+{
+	document.getElementById('delete-account-popup').style.display = 'block';
+}
+
 function charCount(element,counter)
 {
 	counter.innerHTML = '(' + (130-element.value.length) + ' characters left)';

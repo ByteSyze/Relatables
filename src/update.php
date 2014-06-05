@@ -149,5 +149,14 @@
 	else if($type == 'delete')
 	{
 		deleteAccount($_SESSION['id']);
+		
+		session_unset();
+		
+		$expire = -60*60*24*365*5;
+		
+		setcookie("rrmp",0,$expire);
+		setcookie("rrmi",0,$expire);
+		
+		header('Location: http://www.relatablez.com/');
 	}
 	

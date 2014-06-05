@@ -118,14 +118,13 @@
 					</form>
 					";
 				?>
-				<form id='delete-account-form' method='POST' action='http://www.relatablez.com/update.php'>
-					<a href='http://www.relatablez.com/update.php?t=delete'>Delete Account</a>
-				</form>
+				<a href='javascript:showDeletePopup()'>Delete Account</a>
 				<div id='delete-account-popup'>
 					<h2>Delete account?</h2>
-					<form>
-						<input class='dialoguebutton' style='float:left' type='submit' name='confirm' value='Confirm'>
-						<input class='dialoguebutton' style='float:right' type='button' value='Cancel'>
+					<form method='POST' action='http://www.relatablez.com/update.php'>
+						<input type='hidden' name='t' value='delete'>
+						<input class='dialoguebutton' style='float:left' type='submit' value='Confirm'>
+						<input class='dialoguebutton' style='float:right' type='button' value='Cancel' onclick='hideDeletePopup()'>
 					</form>
 				</div>
 			</div>

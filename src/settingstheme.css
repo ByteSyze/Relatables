@@ -36,14 +36,20 @@
 }
 #delete-account-popup
 {
-	width:300;
-	height:200;
+	display:none;
+	width:220px;
+	height:100px;
 	background-color:white;
+	text-align:center;
 	z-index:2;
 	padding:15px;
 	border-radius:5px;
 	border:1px solid #BFBFBF;
+	position:fixed;
+	left:calc(50% - 135px); /*Subtract half of width + padding.*/
+	top:calc(50% - 75px); /*Subtract half of height + padding.*/
 }
+#delete-account-popup
 .dialoguebutton
 {
 	padding-top:3px;
@@ -57,6 +63,11 @@
 	height:30px;
 	font-size:15px;
 	color:white;
+	cursor:pointer;
+}
+.dialoguebutton:hover
+{
+	color:#3c5a98;
 }
 a.selected
 {

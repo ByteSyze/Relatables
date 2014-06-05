@@ -47,11 +47,11 @@ textarea.dialogue
 	background-color:#2654a8;
 	color:white;
 }
-.vote:visited
+.dialoguebutton:hover
 {
 	color:#3c5a98;
 }
-.dialoguebutton:hover
+.vote:visited
 {
 	color:#3c5a98;
 }
