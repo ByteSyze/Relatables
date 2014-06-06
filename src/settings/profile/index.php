@@ -13,6 +13,14 @@
 <html>
 	<head>
 		<title>Profile Settings</title>
+			
+		<meta charset="UTF-8">
+		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
+		<meta name="description" content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
+		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/settingstheme.css">
+		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
 		<h3>Profile Settings</h3>
@@ -21,7 +29,7 @@
 			<table id='general-settings-table' class='settings-module'>
 				<tr>
 					<th class='settings-header'>Location</th>
-					<td><span id='location'>"<?php echo $data['country']; ?></span><?php include($_SERVER['DOCUMENT_ROOT'].'locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
+					<td><span id='location'>"<?php echo $data['country']; ?></span><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
 					<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
 					<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 				<tr>
@@ -34,10 +42,10 @@
 			<table id='showhide-settings-table' class='settings-module'>
 				<tr>
 					<th class='settings-header'>Related With</th>
-					<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
+					<td class='show-hide-selector'><a <?php if($data['hiderelated'] == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a <?php if($data['hiderelated'] == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
 				<tr>
 					<th class='settings-header'>Location</th>
-					<td class='show-hide-selector'><a "; if($data['hidelocation'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a "; if($data['hidelocation'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
+					<td class='show-hide-selector'><a <?php if($data['hidelocation'] == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if($data['hidelocation'] == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
 			</table>
 		</form>
 	</body>

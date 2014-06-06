@@ -12,7 +12,15 @@
 ?>
 <html>
 	<head>
-		<title>Account Settings</title>
+		<title>Account Settings</title>	
+		
+		<meta charset="UTF-8">
+		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
+		<meta name="description" content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
+		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/settingstheme.css">
+		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
 		<h3>Account Settings</h3>
