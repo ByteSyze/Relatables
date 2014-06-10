@@ -6,9 +6,6 @@
 	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
 	
 	$data = getProfileSettings($_SESSION['id']);
-	
-	if($data['description'] == null)
-		$data['description'] = "You have not set a description.";
 ?>
 <html>
 	<head>
@@ -27,13 +24,8 @@
 		<?php require($_SERVER["DOCUMENT_ROOT"] . '/toolbar.php'); ?>
 		
 		<div id='settings-wrapper'>
-			<div id='left-panel'>
-				<?php 
-					if($settings == 1)
-						echo "<a href='http://www.relatablez.com/settings/profile' class='selected'>Profile</a><br><a href='http://www.relatablez.com/settings/account'>Account</a>";
-					else						
-						echo "<a href='http://www.relatablez.com/settings/profile'>Profile</a><br><a href='http://www.relatablez.com/settings/account' class='selected'>Account</a>";
-				?>
+			<div id='left-panel'>					
+				<a href='http://www.relatablez.com/settings/profile'>Profile</a><br><a href='http://www.relatablez.com/settings/account' class='selected'>Account</a>
 			</div>			
 			<div id='general-settings'>
 				<h3>Account Settings</h3>
@@ -62,7 +54,7 @@
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
 						<tr>
 							<th class='settings-header'>Email</th>
-							<td><span id='email'>".$data['email']."</span><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='<?php echo $data['email']; ?>' style='display:none;'></input></td>
+							<td><span id='email'><?php echo $data['email']; ?></span><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='<?php echo $data['email']; ?>' style='display:none;'></input></td>
 							<td class='edit-button-wrapper'><a id='email-button' href='javascript:edit("email");'>Edit</a></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 					</table> 
@@ -82,7 +74,6 @@
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/verify.js'></script>
 		<script src='http://www.relatablez.com/popups.js'></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script src='http://www.relatablez.com/settings.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 	</body>

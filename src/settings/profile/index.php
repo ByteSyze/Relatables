@@ -9,6 +9,8 @@
 	
 	if($data['description'] == null)
 		$data['description'] = "You have not set a description.";
+		
+	$description = htmlspecialchars($data['description']);
 ?>
 <html>
 	<head>
@@ -23,14 +25,13 @@
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
+		<?php require($_SERVER["DOCUMENT_ROOT"] . '/toolbar.php'); ?>
+		
 		<div id='settings-wrapper'>
 			<div id='left-panel'>
-				<?php 
-					if($settings == 1)
-						echo "<a href='http://www.relatablez.com/settings/profile' class='selected'>Profile</a><br><a href='http://www.relatablez.com/settings/account'>Account</a>";
-					else						
-						echo "<a href='http://www.relatablez.com/settings/profile'>Profile</a><br><a href='http://www.relatablez.com/settings/account' class='selected'>Account</a>";
-				?>
+				<a href='http://www.relatablez.com/settings/profile' class='selected'>Profile</a>
+				<br>
+				<a href='http://www.relatablez.com/settings/account'>Account</a>
 			</div>			
 			<div id='general-settings'>
 				<h3>Profile Settings</h3>
@@ -39,13 +40,13 @@
 					<table id='general-settings-table' class='settings-module'>
 						<tr>
 							<th class='settings-header'>Location</th>
-							<td><span id='location'>"<?php echo $data['country']; ?></span><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
-							<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
+							<td><span id='location'><?php echo $data['country']; ?></span><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
+							<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit("location");'>Edit</a></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 						<tr>
-							<th class='settings-header'>Description<br><span id='desc_char_counter'>(".(130-strlen($description))." characters left)</span></th>
-							<td><span id='description'>".$description."</span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this, desc_char_counter)' style='display:none;'>".$description."</textarea></td>
-							<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit(\"description\");document.getElementById(\"description-input\").focus();'>Edit</a></td>
+							<th class='settings-header'>Description<br><span id='desc_char_counter'>(<?php echo (130-strlen($description)); ?> characters left)</span></th>
+							<td><span id='description'><?php echo $description; ?></span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this, desc_char_counter)' style='display:none;'><?php echo $description; ?></textarea></td>
+							<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit("description");document.getElementById("description-input").focus();'>Edit</a></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 					</table> 
 					<h3>What To Show</h3>
@@ -73,7 +74,6 @@
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/verify.js'></script>
 		<script src='http://www.relatablez.com/popups.js'></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script src='http://www.relatablez.com/settings.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 	</body>
