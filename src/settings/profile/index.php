@@ -34,22 +34,17 @@
 				<a href='http://www.relatablez.com/settings/account'>Account</a>
 			</div>			
 			<div id='general-settings'>
-				<h3>Profile Settings</h3>
 				<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
-					<input id='type' name='t' type='text' style='display:none' />
 					<table id='general-settings-table' class='settings-module'>
 						<tr>
 							<th class='settings-header'>Location</th>
-							<td><span id='location'><?php echo $data['country']; ?></span><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
-							<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit("location");'>Edit</a></td>
+							<td><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 						<tr>
 							<th class='settings-header'>Description<br><span id='desc_char_counter'>(<?php echo (130-strlen($description)); ?> characters left)</span></th>
-							<td><span id='description'><?php echo $description; ?></span><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this, desc_char_counter)' style='display:none;'><?php echo $description; ?></textarea></td>
-							<td class='edit-button-wrapper'><a id='description-button' href='javascript:edit("description");document.getElementById("description-input").focus();'>Edit</a></td>
+							<td><textarea data-type='description' id='description-input' name='description' onkeypress='keyPressed(this, event)' oninput='charCount(this, desc_char_counter)'><?php echo $description; ?></textarea></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 					</table> 
-					<h3>What To Show</h3>
 					<table id='showhide-settings-table' class='settings-module'>
 						<tr>
 							<th class='settings-header'>Related With</th>
@@ -59,15 +54,6 @@
 							<td class='show-hide-selector'><a <?php if($data['hidelocation'] == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if($data['hidelocation'] == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
 					</table>
 				</form>
-				<a href='javascript:showDeletePopup()'>Delete Account</a>
-				<div id='delete-account-popup'>
-					<h2>Delete account?</h2>
-					<form method='POST' action='http://www.relatablez.com/update.php'>
-						<input type='hidden' name='t' value='delete'>
-						<input class='dialoguebutton' style='float:left' type='submit' value='Confirm'>
-						<input class='dialoguebutton' style='float:right' type='button' value='Cancel' onclick='hideDeletePopup()'>
-					</form>
-				</div>
 			</div>
 		</div>
 		

@@ -1,34 +1,6 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
-var type = document.getElementById('type');
-
 var descriptionCounter = document.getElementById('desc_char_counter');
-
-function edit(name)
-{
-	if(name == 'password')
-	{
-		editPassword();
-		return;
-	}
-		
-	var element = document.getElementById(name);
-	var elementInput = document.getElementById(name+'-input');
-	var elementButton = document.getElementById(name+'-button');
-	
-	if(elementButton.innerHTML == 'Cancel')
-	{
-		element.style.display = 'block';
-		elementInput.style.display = 'none';
-		elementButton.innerHTML = 'Edit';
-	}
-	else
-	{
-		element.style.display = 'none';
-		elementInput.style.display = 'block';
-		elementButton.innerHTML = 'Cancel';
-	}
-}
 
 function editPassword()
 {	
@@ -133,8 +105,6 @@ function charCount(element,counter)
 
 function keyPressed(element, event)
 {
-	type.value = element.getAttribute('data-type');
-	
 	var keyCode = ('which' in event) ? event.which : event.keyCode;
 	
 	if(keyCode == 13)
