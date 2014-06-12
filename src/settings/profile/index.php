@@ -35,6 +35,7 @@
 			</div>			
 			<div id='general-settings'>
 				<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
+					<input type='hidden' name='t' value='profile' />
 					<table id='general-settings-table' class='settings-module'>
 						<tr>
 							<th class='settings-header'>Location</th>
@@ -53,6 +54,7 @@
 							<th class='settings-header'>Location</th>
 							<td class='show-hide-selector'><a <?php if($data['hidelocation'] == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if($data['hidelocation'] == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
 					</table>
+					<input type='submit' value='Save Settings' />
 				</form>
 			</div>
 		</div>

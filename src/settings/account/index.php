@@ -30,6 +30,7 @@
 			<div id='general-settings'>
 				<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
 					<table id='general-settings-table' class='settings-module'>
+						<input type='hidden' name='t' value='account' />
 						<tr>
 							<th class='settings-header'>Username</th>
 							<td><input data-type='username' id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
@@ -53,6 +54,7 @@
 							<td><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='<?php echo $data['email']; ?>'></input></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 					</table> 
+					<input type='submit' value='Save Settings' />
 				</form>		
 				<a href='javascript:showDeletePopup()'>Delete Account</a>
 				<div id='delete-account-popup'>
