@@ -2,32 +2,6 @@
 
 var descriptionCounter = document.getElementById('desc_char_counter');
 
-function editPassword()
-{	
-	var password = document.getElementById('password');
-	var oldPass = document.getElementById('oldpassword');
-	var newPass = document.getElementById('newpassword');
-	var reNewPass = document.getElementById('renewpassword');
-	var passwordButton = document.getElementById('password-button');
-	
-	if(passwordButton.innerHTML == 'Cancel')
-	{
-		password.style.display = 'table-row';
-		oldPass.style.display = 'none';
-		newPass.style.display = 'none';
-		reNewPass.style.display = 'none';
-		passwordButton.innerHTML = 'Edit';
-	}
-	else
-	{
-		password.style.display = 'none';
-		oldPass.style.display = 'table-row';
-		newPass.style.display = 'table-row';
-		reNewPass.style.display = 'table-row';
-		passwordButton.innerHTML = 'Cancel';
-	}
-}
-
 function verifyLocation(input,marker)
 {
 	if((input.value >= 0) && (input.value <= 250))
@@ -103,10 +77,10 @@ function charCount(element,counter)
 	counter.innerHTML = '(' + (130-element.value.length) + ' characters left)';
 }
 
-function keyPressed(element, event)
+function checkEntered(element, event)
 {
 	var keyCode = ('which' in event) ? event.which : event.keyCode;
 	
 	if(keyCode == 13)
-		element.form.submit();
+		event.preventDefault();
 }
