@@ -36,19 +36,19 @@
 							<td><input data-type='username' id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 						<tr>
-							<th class='settings-header'>Password</th>
+							<th class='settings-header' style='text-align:right;'>Password</th>
 							<td><input id='old_pass_input' data-type='password' type='password' name='oldpassword' onkeypress='keyPressed(this, event)' /></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='password_verify_img' /></td>
 						<tr id='newpassword'>
-							<th class='settings-header'>New Password</th>
+							<th class='settings-header' style='text-align:right;'>New Password</th>
 							<td><input id='new_pass_input' data-type='password' type='password' name='newpassword' onkeypress='keyPressed(this, event)' /></td>
 							<td></td>
-							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='new_password_verify_img' /></td>
+							<img class='verify' src='http://www.relatablez.com/check_mark.png' id='new_password_verify_img' /></td>
 						<tr id='renewpassword'>
-							<th class='settings-header'>Retype New Password</th>
+							<th class='settings-header' style='text-align:right;'>Retype New Password</th>
 							<td><input id='renew_pass_input' data-type='password' type='password' name='renewpassword' onkeypress='keyPressed(this, event)' /></td>
 							<td></td>
-							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
+							<img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
 						<tr>
 							<th class='settings-header'>Email</th>
 							<td><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='<?php echo $data['email']; ?>'></input></td>
