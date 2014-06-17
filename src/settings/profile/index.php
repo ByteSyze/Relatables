@@ -43,7 +43,7 @@
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 						<tr>
 							<th class='settings-header'>Description<br><span id='desc_char_counter'>(<?php echo (130-strlen($description)); ?> characters left)</span></th>
-							<td><textarea data-type='description' id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='charCount(this, desc_char_counter)'><?php echo $description; ?></textarea></td>
+							<td><textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='charCount(this, desc_char_counter)'><?php echo $description; ?></textarea></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 					</table> 
 					<table id='showhide-settings-table' class='settings-module'>

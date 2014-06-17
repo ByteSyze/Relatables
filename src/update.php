@@ -14,14 +14,11 @@
 		
 		if(($user !== null) && ($user !== ''))
 		{		
-			
-			if($user == $_SESSION['username'])
-				header('Location: http://www.relatablez.com/settings/account');
 				
 			if(!preg_match('/^[A-Za-z0-9_]+$/',$user)) // Check that username only contains alphanumerics and underscore at most
 				header('Location: http://www.relatablez.com/settings/account?e=0&i=2');
 				
-			if(!(strcasecmp($user,$_SESSION['username']) == 0))
+			if((!(strcasecmp($user,$_SESSION['username']) == 0)) && ($user !== $_SESSION['username']))
 			{
 				$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 
@@ -41,17 +38,16 @@
 			
 			setUsername($user,$_SESSION['id']);
 			$_SESSION['username'] = $user;
-			
-			header('Location: http://www.relatablez.com/settings/account');
 		}
 		
 		$old_pass = $_POST['oldpassword'];
 		
-		if(($old_pass !== null) && ($old_pass !== ''))
+		$new_pass = 	$_POST['newpassword'];
+		$re_new_pass = 	$_POST['renewpassword'];
+		
+		if((($old_pass !== null) && ($old_pass !== '')) && (($new_pass !== null) && ($new_pass !== '')) && (($re_new_pass !== null) && ($re_new_pass !== '')))
 		{
 			
-			$new_pass = 	$_POST['newpassword'];
-			$re_new_pass = 	$_POST['renewpassword'];
 			
 			if($new_pass != $re_new_pass)
 				header('Location: http://www.relatablez.com/settings/account?e=1&i=1');
@@ -63,7 +59,6 @@
 			if($passHash == $data['hash'])
 			{
 				setPassword($new_pass,$_SESSION['id']);			
-				header('Location: http://www.relatablez.com/settings/account');
 			}
 			else
 				header('Location: http://www.relatablez.com/settings/profile?e=1&i=2');
@@ -102,8 +97,8 @@
 			 
 			mail($to,$subject,$body,$from);
 			
-			header('Location: http://www.relatablez.com/settings/account');
 		}
+		header('Location: http://www.relatablez.com/settings/account');
 	}	
 	else if($type == 'profile')
 	{
@@ -113,26 +108,16 @@
 		$length = strlen($description);
 		
 		if($length > 130)
-		{
 			header('Location: http://www.relatablez.com/settings/profile?e=0&i=0');
-			return;
-		}
 		
 		setDescription($description, $_SESSION['id']);
-		
-		header('Location: http://www.relatablez.com/settings/profile');
 			
 		$country_id = $_POST['location'];
 	
-		if((!is_numeric($country_id)) || (($country_id < 1) || ($country_id > 250)))
-		{
-			header('Location: http://www.relatablez.com/settings/profile?e=3&i=0');
-		}
-		else
-		{
+		if(is_numeric($country_id) && ($country_id => 1) && ($country_id <= 250))
 			setCountry($country_id, $_SESSION['id']);
-			header('Location: http://www.relatablez.com/settings/profile');
-		}
+			
+		header('Location: http://www.relatablez.com/settings/profile');
 	}
 	else if($type == 'delete')
 	{

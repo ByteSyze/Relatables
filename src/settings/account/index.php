@@ -33,25 +33,25 @@
 						<input type='hidden' name='t' value='account' />
 						<tr>
 							<th class='settings-header'>Username</th>
-							<td><input data-type='username' id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
-							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
+							<td><input id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
+							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td> 
 						<tr>
 							<th class='settings-header' style='text-align:right;'>Password</th>
-							<td><input id='old_pass_input' data-type='password' type='password' name='oldpassword' onkeypress='keyPressed(this, event)' /></td>
+							<td><input id='old_pass_input' type='password' name='oldpassword' onkeypress='keyPressed(this, event)' autocomplete='off' /></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='password_verify_img' /></td>
 						<tr id='newpassword'>
 							<th class='settings-header' style='text-align:right;'>New Password</th>
-							<td><input id='new_pass_input' data-type='password' type='password' name='newpassword' onkeypress='keyPressed(this, event)' /></td>
+							<td><input id='new_pass_input' type='password' name='newpassword' onkeypress='keyPressed(this, event)' autocomplete='off' /></td>
 							<td></td>
 							<img class='verify' src='http://www.relatablez.com/check_mark.png' id='new_password_verify_img' /></td>
 						<tr id='renewpassword'>
 							<th class='settings-header' style='text-align:right;'>Retype New Password</th>
-							<td><input id='renew_pass_input' data-type='password' type='password' name='renewpassword' onkeypress='keyPressed(this, event)' /></td>
+							<td><input id='renew_pass_input' type='password' name='renewpassword' onkeypress='keyPressed(this, event)' autocomplete='off' /></td>
 							<td></td>
 							<img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
 						<tr>
 							<th class='settings-header'>Email</th>
-							<td><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='<?php echo $data['email']; ?>'></input></td>
+							<td><input id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='<?php echo $data['email']; ?>'></input></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 					</table> 
 					<input type='submit' value='Save Settings' />
