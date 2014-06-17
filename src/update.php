@@ -114,7 +114,7 @@
 			
 		$country_id = $_POST['location'];
 	
-		if(is_numeric($country_id) && ($country_id => 1) && ($country_id <= 250))
+		if(is_numeric($country_id) && ($country_id >= 1) && ($country_id <= 250))
 			setCountry($country_id, $_SESSION['id']);
 			
 		header('Location: http://www.relatablez.com/settings/profile');
