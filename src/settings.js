@@ -72,17 +72,22 @@ function showDeletePopup()
 	document.getElementById('delete-account-popup').style.display = 'block';
 }
 
-function charCount(event,element,counter)
+function charCount(element,counter)
 {
-	var count = 130-element.value.length;
+	counter.innerHTML = '(' + (130-element.value.length) + ' characters left)';
+}
+
+function checkLimit(event, element, limit, substr)
+{
+	var remaining = limit - element.value.length;
 	
-	if(count < 0)
+	if(remaining < 0)
 	{
-		element.value = element.value.substring(0,130);
-		count = 0; //Fixes an issue pertaining to copy/pasting.
+		if(substr) //Use substring method for refusing further input
+			element.value = element.value.substring(0,limit);
+		else
+			event.preventDefault();
 	}
-	
-	counter.innerHTML = '(' + count + ' characters left)';
 }
 
 function checkEntered(element, event)
