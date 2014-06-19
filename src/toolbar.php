@@ -16,7 +16,7 @@
 <div id='toolbar'>
 	<div id='toolbaralignment'>
 		<div style='float:left;padding:0px;height:100%'>
-				<a href='http://www.relatablez.com/'><img style='vertical-align:middle;' height="30" src='http://www.relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>								
+				<a href='http://www.relatablez.com/'><img style='vertical-align:middle;' height='35' src='http://www.relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>								
 		</div>		
 		<div  class='account-buttons'>
 			<?php

@@ -72,9 +72,17 @@ function showDeletePopup()
 	document.getElementById('delete-account-popup').style.display = 'block';
 }
 
-function charCount(element,counter)
+function charCount(event,element,counter)
 {
-	counter.innerHTML = '(' + (130-element.value.length) + ' characters left)';
+	var count = 130-element.value.length;
+	
+	if(count < 0)
+	{
+		element.value = element.value.substring(0,130);
+		count = 0; //Fixes an issue pertaining to copy/pasting.
+	}
+	
+	counter.innerHTML = '(' + count + ' characters left)';
 }
 
 function checkEntered(element, event)

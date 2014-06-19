@@ -6,11 +6,10 @@
 	z-index:1;
 	left:0px;
 	top:0px;
-	padding-top:9px;
-	padding-bottom:9px;
-	height:30px;
-	background-color:#2654A8;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding-top:13px;
+	padding-bottom:13px;
+	height:35px;
+	background-color:#0067b1;
 }
 #toolbaralignment
 {
@@ -153,7 +152,7 @@ div.account-buttons
 }
 input.bigbluebutton
 {
-	background-color:#2654a8;
+	background-color:#0067b1;
 	border-radius:15px;
 	border:none;
 	min-height:40px;
@@ -190,7 +189,7 @@ h1.popup-header
 {
 	position:relative;
 	top:-20px;
-	color:#2654A8;
+	color:#0067b1;
 	text-align:center;
 	margin-bottom:0px;
 }
