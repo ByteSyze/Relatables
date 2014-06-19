@@ -6,11 +6,8 @@
 	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
 	
 	$data = getProfileSettings($_SESSION['id']);
-	
-	if($data['description'] == null)
-		$data['description'] = "You have not set a description.";
 		
-	$description = htmlspecialchars($data['description']);
+	$fDescription = htmlspecialchars($data['description']); // Formatted Description
 ?>
 <html>
 	<head>
@@ -42,8 +39,8 @@
 							<td><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 						<tr>
-							<th class='settings-header'>Description<br><span id='desc_char_counter'>(<?php echo (130-strlen($description)); ?> characters left)</span></th>
-							<td><textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);'><?php echo $description; ?></textarea></td>
+							<th class='settings-header'>Description<br><span id='desc_char_counter'>(<?php echo (130-strlen($fDescription)); ?> characters left)</span></th>
+							<td><textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);' <?php if($data['description'] == null) echo 'placeholder=\'You have not set a description.\''; ?> ><?php if($data['description'] != null) echo $fDescription; ?></textarea></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 					</table> 
 					<table id='showhide-settings-table' class='settings-module'>
