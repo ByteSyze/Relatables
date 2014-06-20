@@ -33,7 +33,7 @@
 						<input type='hidden' name='t' value='account' />
 						<tr>
 							<th class='settings-header'>Username</th>
-							<td><input id='username-input' name='username' onkeypress='checkLimit(event,this,32,false);' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
+							<td><input id='username-input' name='username' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td> 
 						<tr>
 							<th class='settings-header' style='text-align:right;'>Password</th>
@@ -51,10 +51,10 @@
 							<img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
 						<tr>
 							<th class='settings-header'>Email</th>
-							<td><input id='email-input' name='email' onkeypress='checkLimit(event,this,32,false);' placeholder='<?php echo $data['email']; ?>'></input></td>
+							<td><input id='email-input' name='email' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo $data['email']; ?>'></input></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 					</table> 
-					<input type='submit' value='Save Settings' />
+					<input id='save-button' type='submit' value='Save Settings' />
 				</form>		
 				<a href='javascript:showDeletePopup()'>Delete Account</a>
 				<div id='delete-account-popup'>

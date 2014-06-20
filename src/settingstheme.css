@@ -50,7 +50,15 @@
 	left:calc(50% - 135px); /*Subtract half of width + padding.*/
 	top:calc(50% - 75px); /*Subtract half of height + padding.*/
 }
-#delete-account-popup
+#save-button
+{
+	float:right;
+	width:100px;
+	margin-top:10px;
+	color:white;
+	background-color:#0067B1;
+	border:none;
+}
 .dialoguebutton
 {
 	padding-top:3px;

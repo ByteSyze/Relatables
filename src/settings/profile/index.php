@@ -51,7 +51,7 @@
 							<th class='settings-header'>Location</th>
 							<td class='show-hide-selector'><a <?php if($data['hidelocation'] == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if($data['hidelocation'] == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
 					</table>
-					<input type='submit' value='Save Settings' />
+					<input id='save-button' type='submit' value='Save Settings' />
 				</form>
 			</div>
 		</div>
