@@ -58,6 +58,12 @@
 	color:white;
 	background-color:#0067B1;
 	border:none;
+	cursor:pointer;
+}
+#delete-button
+{
+	position:relative;
+	top:10px;
 }
 .dialoguebutton
 {

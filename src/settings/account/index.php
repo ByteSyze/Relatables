@@ -56,7 +56,7 @@
 					</table> 
 					<input id='save-button' type='submit' value='Save Settings' />
 				</form>		
-				<a href='javascript:showDeletePopup()'>Delete Account</a>
+				<a id='delete-button' href='javascript:showDeletePopup()'>Delete Account</a>
 				<div id='delete-account-popup'>
 					<h2>Delete account?</h2>
 					<form method='POST' action='http://www.relatablez.com/update.php'>
