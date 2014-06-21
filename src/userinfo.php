@@ -12,7 +12,7 @@
 	{
 		$connection = getConnection();
 		
-		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), description, posts, comments, moderated, hiderelated, hidelocation, hidedescription, country_id  FROM accounts WHERE username like (?)"))
+		if($statement = $connection->prepare("SELECT username, id, DATE_FORMAT(joined,'%M %d, %Y'), DATE_FORMAT(last_login,'%M %d, %Y'), description, posts, comments, moderated, hiderelated, hidelocation, hidedescription, admin, country_id  FROM accounts WHERE username like (?)"))
 		{	
 			$statement->bind_param("s",$username);
 			
@@ -21,7 +21,7 @@
 			$data = array('username'=>false);
 			
 			$statement->store_result();
-			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$data['hiderelated'],$data['hidelocation'],$data['hidedescription'],$cid);
+			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$data['hiderelated'],$data['hidelocation'],$data['hidedescription'],$data['admin'],$cid);
 			$result = $statement->fetch();
 			
 			$data['country'] = getCountry($cid);
@@ -93,6 +93,7 @@
 				return false;
 		}	
 	}	
+	
 	
 	function getPasswordAndSalt($id)
 	{
@@ -166,7 +167,7 @@
 		
 		if($statement = $connection->prepare("SELECT username FROM accounts WHERE id = (?)"))
 		{	
-			$statement->bind_param("s",$id);
+			$statement->bind_param("i",$id);
 			
 			$statement->execute();
 			
@@ -236,6 +237,24 @@
 		{	
 			$statement->bind_param('si',$description,$id);		
 			$statement->execute();
+		}	
+	}
+	
+	function isAdmin($id)
+	{
+		$connection = getConnection();
+		
+		if($statement = $connection->prepare("SELECT admin FROM accounts WHERE id = (?)"))
+		{	
+			$statement->bind_param("i",$id);
+			
+			$statement->execute();
+			
+			$statement->store_result();
+			$statement->bind_result($admin);
+			$result = $statement->fetch();
+			
+			return($admin === 1);
 		}	
 	}
 	

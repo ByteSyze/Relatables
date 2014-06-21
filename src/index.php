@@ -1,8 +1,10 @@
 <?php  
 	session_start();
 	
+	include 'userinfo.php';
 	require_once 'Mobile_Detect.php';
 	$detect = new Mobile_Detect;
+	
 	 
 	if ( $detect->isMobile() ) {
 		$_SESSION['mobile'] = 1;
@@ -50,9 +52,12 @@
 					<span style='vertical-align:bottom;'>Category</span>
 					<select id='category' style='vertical-align:bottom;'>
 						<option>All Categories</option>
-						<option>Love</option>
-						<option>Hate</option>
-						<option>Cake</option>
+						<option>Health</option>
+						<option>Family</option>
+						<option>Funny</option>
+						<option>Food</option>
+						<option>Odd</option>
+						<option>Other</option>
 					</select>
 					<span style='vertical-align:bottom;'>Display</span>
 					<select id='display' style='vertical-align:bottom;'>
@@ -80,7 +85,9 @@
 				</div>
 				<?php
 					while($row = mysqli_fetch_array($submissions))
-					{
+					{	
+						$user = getUsername($row['uid']);
+						
 						echo "\r\n<div class='dialogue uppadding' id='" . $row["id"] . "'>";
 						echo "\r\n<p class='dialogue'>" . $row["submission"] . "</p>";
 						echo "\r\n<table class='vote-table'>";
@@ -99,7 +106,10 @@
 						echo "\r\n<td><span class='vote-counter' id='na" . $row["id"] . "'>(" . number_format($row["notalone"]) . ")</span></td>";
 						echo "\r\n<td><span class='vote-counter' id='a" . $row["id"] . "'>(" . number_format($row["alone"]) . ")</span></td>";
 						echo "\r\n</table>";
-						echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a href='http://www.relatablez.com/user/" . $row["username"] . "'>" . $row["username"] . "</a> - " . $row["fdate"] . "</span></div>";
+						echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
+						if(isAdmin($row['uid']))
+							echo 'class=\'admin\'';
+						echo " href='http://www.relatablez.com/user/" . $user . "'>" . $user . "</a> - " . $row["fdate"] . "</span></div>";
 						echo "\r\n</div>";
 					}
 				?>	

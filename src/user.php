@@ -43,9 +43,11 @@
 					<span id='location' class='right-spacer'>
 						<?php if($data['hidelocation'] == 0){ echo $data['country']; } ?>
 					</span>
-					<span id='date'>
+					<span id='date' class='right-spacer'>
 						<?php echo $data['joined']; ?>
-					</span><br>
+					</span>
+					<?php if($data['admin'] === 1) echo '<span style=\'color:red;font:bold 15px arial;\'>[Admin]</span>'; ?>
+					<br>
 					<p id='user-description'><?php echo htmlspecialchars($data['description']); ?></p>
 				</div>
 			</div>

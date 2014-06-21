@@ -139,6 +139,11 @@ table.submission-table
 	position:relative;
 	width:100%;
 }
+a.admin
+{
+	color:red;
+	font-style:italic;
+}
 ::-ms-input-placeholder
 {
 	font-size:17px;
