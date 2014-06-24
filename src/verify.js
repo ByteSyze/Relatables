@@ -1,20 +1,22 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
-var userElement 	= document.getElementById("user_input");
+var user 	= document.getElementById("user_input");
 var userVerifyImg 	= document.getElementById("user_verify_img");
-var passElement 	= document.getElementById("pass_input");
+var pass 	= document.getElementById("pass_input");
 var passVerifyImg 	= document.getElementById("pass_verify_img");
-var rePassElement 	= document.getElementById("repass_input");
+var rePass 	= document.getElementById("repass_input");
 var rePassVerifyImg = document.getElementById("repass_verify_img");
-var emailElement 	= document.getElementById("email_input");
+var currentPass = document.getElementById("currentpass_input");
+var currentPassVerifyImg = document.getElementById("currentpass_verify_img");
+var email 	= document.getElementById("email_input");
 var emailVerifyImg 	= document.getElementById("email_verify_img");
-var reEmailElement 	= document.getElementById("reemail_input");
+var reEmail 	= document.getElementById("reemail_input");
 var reEmailVerifyImg = document.getElementById("reemail_verify_img");
 
-var rememberElement = document.getElementById("remember_input");
+var remember = document.getElementById("remember_input");
 
-var loginUserElement	= document.getElementById("login_user_input");
-var loginPassElement	= document.getElementById("login_pass_input");
+var loginUser	= document.getElementById("login_user_input");
+var loginPass	= document.getElementById("login_pass_input");
 
 var validColor 		= "#A4D4A4";
 var invalidColor 	= "#FF5C5C";
@@ -23,16 +25,16 @@ var userRegex 	= /^[A-Za-z0-9_]+$/;
 
 function register()
 {
-	var user	 = userElement.value;
-	var pass	 = passElement.value;
-	var email	 = emailElement.value;
+	var userVal	 	= user.value;
+	var passVal		= pass.value;
+	var emailVal	= email.value;
 	
 	if(verify())
 	{
 		$.ajax({
 		type: "POST",
 		url: "register.php",
-		data: { username: user, password: pass, email: email }
+		data: { username: userVal, password: passVal, email: emailVal }
 	})
 		.done(function(data) {
 			if(data.indexOf("success") != -1)
@@ -45,18 +47,18 @@ function register()
 
 function login()
 {
-	var user = loginUserElement.value;
-	var pass = loginPassElement.value;
+	var userVal = loginUser.value;
+	var passVal = loginPass.value;
 	
 	var remember = 0;
 	
-	if(rememberElement.checked)
+	if(remember.checked)
 		remember = 1;
 	
 	$.ajax({
 		type: "POST",
 		url: "login.php",
-		data: { username: user, password: pass, rememberme: remember }
+		data: { username: userVal, password: passVal, rememberme: remember }
 	})
 		.done(function(data) {
 			console.log(data);
@@ -73,7 +75,6 @@ function login()
 	});
 }
 
-// Verify everything. Returns true if everything is valid
 function verify()
 {
 	if(verifyUser() && verifyPassword() && verifyRePassword() && verifyEmail())
@@ -83,32 +84,31 @@ function verify()
 	return false;
 }
 
-// Verify username
 function verifyUser()
 {
-	var user = userElement.value;
+	var userVal = user.value;
 	var valid = false;
 	
 	$.ajax({
 		type: "POST",
-		url: "verifyUser.php",
-		data: { username: user }
+		url: "/verifyUser.php",
+		data: { username: userVal }
 	})
 		.done(function(data) {
-			if(data === "user unavailable")
+			if(data === "userVal unavailable")
 			{	
 				userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 			}
 	});
-	if(user.length < 3)
+	if(userVal.length < 3)
 	{
 		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
-	else if(user.length > 16)
+	else if(userVal.length > 16)
 	{
 		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
-	else if(!userRegex.test(user))
+	else if(!userRegex.test(userVal))
 	{	
 		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
@@ -122,21 +122,18 @@ function verifyUser()
 	return valid;
 }
 
-// Verify password
 function verifyPassword()
 {
-	var pass = passElement.value;
+	var passVal = pass.value;
 	
 	var valid = false;
 	
-	if(pass.length < 6)
+	if(passVal.length < 6)
 	{
-		//Password is too short
 		passVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
-		//Hey look, they can make a password!
 		passVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
@@ -146,20 +143,19 @@ function verifyPassword()
 	return valid;
 }
 
-// Verify re-entered password
 function verifyRePassword()
 {
-	var pass 		= passElement.value;
-	var rePass 		= rePassElement.value;
+	var passVal 		= pass.value;
+	var rePassVal 		= rePass.value;
 	
 	var valid = false;
 	
-	if(rePass.length < 6)
+	if(rePassVal.length < 6)
 	{
 		//Too small
 		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
-	else if(pass !== rePass)
+	else if(passVal !== rePassVal)
 	{
 		//Does not match!
 		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
@@ -174,37 +170,63 @@ function verifyRePassword()
 	return valid;
 }
 
-// Verify Email
+function verifyCurrentPassword()
+{
+	var passVal = currentPass.value;
+	var valid = false;
+	
+	if(passVal.length < 6)
+	{
+		currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+	}
+	else
+	{		
+		$.ajax({
+			type: "POST",
+			url: "/verifyPassword.php",
+			data: { p: passVal }
+		})
+			.done(function(data) {
+				if(data == "0")
+				{
+					currentPassVerifyImg.src = "http://www.relatablez.com/check_mark.png";
+				}
+				else
+				{
+					currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+				}
+		});
+	}
+	
+	currentPassVerifyImg.style.display = 'block';
+}
+
 function verifyEmail()
 {
-	var email = emailElement.value;
+	var emailVal = email.value;
 	var valid = false;
 	
 	$.ajax({
 		type: "POST",
-		url: "verifyEmail.php",
-		data: { email: email }
+		url: "/verifyEmail.php",
+		data: { emailVal: emailVal }
 	})
 		.done(function(data) {
-			if(data === "email unavailable")
+			if(data === "emailVal unavailable")
 			{
-				//email is already in use.
 				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 			}
 	});
-	if(email.length < 4)
+	if(emailVal.length < 4)
 	{
-		//Email is too short.
 		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
-	else if((email.indexOf("@") == -1) || (email.indexOf(".") == -1))
+	else if((emailVal.indexOf("@") == -1) || (emailVal.indexOf(".") == -1))
 	{
-		//Does not contain @ and/or . characters.
 		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
 	}
 	else
 	{
-		//Seems valid.
 		emailVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}

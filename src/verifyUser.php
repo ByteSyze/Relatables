@@ -1,6 +1,6 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	// verifyUser.php wil check if a username is taken.
+	// verifyUser.php will check if a username is taken.
 	
 	
 	if(!isset($_POST["username"]))

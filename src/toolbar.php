@@ -37,7 +37,7 @@
 					echo "<button class='toolbar margleft margright' onclick='showLogin()'>Log In</button>\r\n";
 					echo "<button class='toolbar margleft margright' data-header='Sign Up' onclick='showRegister(this)'>Sign Up</button>\r\n";	
 				}
-			?>			
+			?>
 		</div>
 	</div>
 </div>

@@ -37,8 +37,8 @@
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td> 
 						<tr>
 							<th class='settings-header' style='text-align:right;'>Password</th>
-							<td><input id='oldpass_input' type='password' name='oldpassword' onkeyup='verifyPassword()' autocomplete='off' /></td>
-							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='oldpass_verify_img' /></td>
+							<td><input id='currentpass_input' type='password' name='oldpassword' onkeyup='verifyCurrentPassword()' autocomplete='off' /></td>
+							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='currentpass_verify_img' /></td>
 						<tr id='newpassword'>
 							<th class='settings-header' style='text-align:right;'>New Password</th>
 							<td><input id='pass_input' type='password' name='newpassword' onkeyup='verifyPassword()' autocomplete='off' /></td>
