@@ -33,23 +33,23 @@
 						<input type='hidden' name='t' value='account' />
 						<tr>
 							<th class='settings-header'>Username</th>
-							<td><input id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
+							<td><input id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser()' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td> 
 						<tr>
 							<th class='settings-header' style='text-align:right;'>Password</th>
-							<td><input id='oldpass_input' type='password' name='oldpassword' autocomplete='off' /></td>
+							<td><input id='oldpass_input' type='password' name='oldpassword' onkeyup='verifyPassword()' autocomplete='off' /></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='oldpass_verify_img' /></td>
 						<tr id='newpassword'>
 							<th class='settings-header' style='text-align:right;'>New Password</th>
-							<td><input id='pass_input' type='password' name='newpassword' autocomplete='off' /></td>
-							<img class='verify' src='http://www.relatablez.com/check_mark.png' id='pass_verify_img' /></td>
+							<td><input id='pass_input' type='password' name='newpassword' onkeyup='verifyPassword()' autocomplete='off' /></td>
+							<td><img class='verify' src='http://www.relatablez.com/check_mark.png' id='pass_verify_img' /></td>
 						<tr id='renewpassword'>
 							<th class='settings-header' style='text-align:right;'>Retype New Password</th>
-							<td><input id='repass_input' type='password' name='renewpassword' autocomplete='off' /></td>
-							<img class='verify' src='http://www.relatablez.com/check_mark.png' id='repass_verify_img' /></td>
+							<td><input id='repass_input' type='password' name='renewpassword' onkeyup='verifyRePassword()'  autocomplete='off' /></td>
+							<td><img class='verify' src='http://www.relatablez.com/check_mark.png' id='repass_verify_img' /></td>
 						<tr>
 							<th class='settings-header'>Email</th>
-							<td><input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo $data['email']; ?>'></input></td>
+							<td><input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail()' placeholder='<?php echo $data['email']; ?>'></input></td>
 							<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 					</table> 
 					<input id='save-button' type='submit' value='Save Settings' />
