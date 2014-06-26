@@ -1,22 +1,28 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
-var user 	= document.getElementById("user_input");
-var userVerifyImg 	= document.getElementById("user_verify_img");
-var pass 	= document.getElementById("pass_input");
-var passVerifyImg 	= document.getElementById("pass_verify_img");
-var rePass 	= document.getElementById("repass_input");
-var rePassVerifyImg = document.getElementById("repass_verify_img");
-var currentPass = document.getElementById("currentpass_input");
-var currentPassVerifyImg = document.getElementById("currentpass_verify_img");
-var email 	= document.getElementById("email_input");
-var emailVerifyImg 	= document.getElementById("email_verify_img");
-var reEmail 	= document.getElementById("reemail_input");
-var reEmailVerifyImg = document.getElementById("reemail_verify_img");
+var user 	= document.getElementById('user_input');
+var userVerifyImg 	= document.getElementById('user_verify_img');
+var pass 	= document.getElementById('pass_input');
+var passVerifyImg 	= document.getElementById('pass_verify_img');
+var rePass 	= document.getElementById('repass_input');
+var rePassVerifyImg = document.getElementById('repass_verify_img');
+var currentPass = document.getElementById('currentpass_input');
+var currentPassVerifyImg = document.getElementById('currentpass_verify_img');
+var email 	= document.getElementById('email_input');
+var emailVerifyImg 	= document.getElementById('email_verify_img');
+var reEmail 	= document.getElementById('reemail_input');
+var reEmailVerifyImg = document.getElementById('reemail_verify_img');
 
-var remember = document.getElementById("remember_input");
+var remember = document.getElementById('remember_input');
 
-var loginUser	= document.getElementById("login_user_input");
-var loginPass	= document.getElementById("login_pass_input");
+var loginUser	= document.getElementById('login_user_input');
+var loginPass	= document.getElementById('login_pass_input');
+
+var usernamePopup = document.getElementById('username-popup');
+var currentPasswordPopup = document.getElementById('current-password-popup');
+var newPasswordPopup = document.getElementById('new-password-popup');
+var renewPasswordPopup = document.getElementById('renew-password-popup');
+var emailPopup = document.getElementById('email-popup');
 
 var validColor 		= "#A4D4A4";
 var invalidColor 	= "#FF5C5C";
@@ -89,28 +95,34 @@ function verifyUser()
 	var userVal = user.value;
 	var valid = false;
 	
+	usernamePopup.innerHTML = '';
+	
 	$.ajax({
 		type: "POST",
 		url: "/verifyUser.php",
 		data: { username: userVal }
 	})
 		.done(function(data) {
-			if(data === "userVal unavailable")
+			if(data === "user unavailable")
 			{	
 				userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+				usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username is already in use.');
 			}
 	});
 	if(userVal.length < 3)
 	{
 		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username must be atleast 3 characters long.');
 	}
 	else if(userVal.length > 16)
 	{
 		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username must be under 16 characters long.');
 	}
 	else if(!userRegex.test(userVal))
 	{	
 		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username can only contain characters a-z and 0-9.');
 	}
 	else
 	{		

@@ -64,3 +64,16 @@ function hideGuidelines(element)
 	element.firstChild.style.display="none";
 }
 
+function showErrors(element)
+{
+	var popup = element.nextSibling.children[0];
+	
+	if(popup.innerHTML)
+		popup.style.display = 'block';
+}
+
+function hideErrors(element)
+{
+	element.nextSibling.children[0].style.display = 'none';
+}
+
