@@ -140,9 +140,12 @@ function verifyPassword()
 	
 	var valid = false;
 	
+	newPasswordPopup.innerHTML = '';
+	
 	if(passVal.length < 6)
 	{
 		passVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		newPasswordPopup.innerHTML = newPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
 	}
 	else
 	{
@@ -162,19 +165,20 @@ function verifyRePassword()
 	
 	var valid = false;
 	
+	renewPasswordPopup.innerHTML = '';
+	
 	if(rePassVal.length < 6)
 	{
-		//Too small
 		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		renewPasswordPopup.innerHTML = renewPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
 	}
 	else if(passVal !== rePassVal)
 	{
-		//Does not match!
 		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		renewPasswordPopup.innerHTML = renewPasswordPopup.innerHTML.concat(' Password verification doesn\'t match original password. ');
 	}
 	else
 	{
-		//Matches
 		rePassVerifyImg.src = "http://www.relatablez.com/check_mark.png";
 		valid = true;
 	}
@@ -187,9 +191,12 @@ function verifyCurrentPassword()
 	var passVal = currentPass.value;
 	var valid = false;
 	
+	currentPasswordPopup.innerHTML = '';
+	
 	if(passVal.length < 6)
 	{
 		currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		currentPasswordPopup.innerHTML = currentPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
 	}
 	else
 	{		
@@ -206,6 +213,7 @@ function verifyCurrentPassword()
 				else
 				{
 					currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+					currentPasswordPopup.innerHTML = currentPasswordPopup.innerHTML.concat(' Password is incorrect. ');
 				}
 		});
 	}
@@ -218,6 +226,8 @@ function verifyEmail()
 	var emailVal = email.value;
 	var valid = false;
 	
+	emailPopup.innerHTML = '';
+	
 	$.ajax({
 		type: "POST",
 		url: "/verifyEmail.php",
@@ -227,15 +237,18 @@ function verifyEmail()
 			if(data === "emailVal unavailable")
 			{
 				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
 			}
 	});
 	if(emailVal.length < 4)
 	{
 		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email must be atleast 4 characters long. ');
 	}
 	else if((emailVal.indexOf("@") == -1) || (emailVal.indexOf(".") == -1))
 	{
 		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is invalid. ');
 	}
 	else
 	{
