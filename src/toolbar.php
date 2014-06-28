@@ -22,8 +22,8 @@
 			<?php
 				if($_SESSION["username"] != null)
 				{
-					echo "<button class='toolbar'><img src='http://www.relatablez.com/notification_icon.png' width='25'></button>";
-					echo "<button class='toolbar' onclick='toggleProfileDropdown()'><img src='http://www.relatablez.com/profile_icon.png' width='25'></button>\r\n";	
+					echo "<button class='toolbar'><img src='http://www.relatablez.com/notification_icon.png'></button>";
+					echo "<button class='toolbar' onclick='toggleProfileDropdown()'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
 					echo 
 					"
 			<table class='profile' id='profile-dropdown'>

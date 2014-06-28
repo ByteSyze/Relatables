@@ -208,12 +208,13 @@ function verifyCurrentPassword()
 			.done(function(data) {
 				if(data == "0")
 				{
-					currentPassVerifyImg.src = "http://www.relatablez.com/check_mark.png";
+					currentPassVerifyImg.src = "http://www.relatablez.com/check_mark.png";	
+					currentPasswordPopup.innerHTML = '';
 				}
 				else
 				{
 					currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
-					currentPasswordPopup.innerHTML = currentPasswordPopup.innerHTML.concat(' Password is incorrect. ');
+					currentPasswordPopup.innerHTML = ' Password is incorrect. ';
 				}
 		});
 	}
