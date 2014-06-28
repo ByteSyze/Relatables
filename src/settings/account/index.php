@@ -33,15 +33,15 @@
 						<input type='hidden' name='t' value='account' />
 						<tr>
 							<th class='settings-header'>Username</th>
-							<td><input id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser()' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
+							<td><input id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo $_SESSION['username']; ?>'></input></td>
 							<td style='width:12px;'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></td> 
 						<tr>
 							<th class='settings-header' style='text-align:right;'>Current Password</th>
-							<td><input id='currentpass_input' type='password' name='oldpassword' onkeyup='verifyCurrentPassword()' autocomplete='off' /></td>
+							<td><input id='currentpass_input' type='password' name='oldpassword' onkeyup='verifyCurrentPassword();checkHideErrors(this, currentpass_verify_img);' autocomplete='off' /></td>
 							<td style='width:12px;'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='currentpass_verify_img' /><div class='popup-offset'><div class='error-popup' id='current-password-popup'></div></div></td>
 						<tr id='newpassword'>
 							<th class='settings-header' style='text-align:right;'>New Password</th>
-							<td><input id='pass_input' type='password' name='newpassword' onkeyup='verifyPassword()' autocomplete='off' /></td>
+							<td><input id='pass_input' type='password' name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' /></td>
 							<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='pass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></td>
 						<tr id='renewpassword'>
 							<th class='settings-header' style='text-align:right;'>Retype New Password</th>
@@ -49,7 +49,7 @@
 							<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></td>
 						<tr>
 							<th class='settings-header'>Email</th>
-							<td><input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail()' placeholder='<?php echo $data['email']; ?>'></input></td>
+							<td><input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo $data['email']; ?>'></input></td>
 							<td style='width:12px;'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></td>
 					</table> 
 					<input id='save-button' type='submit' value='Save Settings' />

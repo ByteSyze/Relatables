@@ -77,3 +77,9 @@ function hideErrors(element)
 	element.nextSibling.children[0].style.display = 'none';
 }
 
+function checkHideErrors(element, errorPopup)
+{
+	if(element.value == '')
+		errorPopup.style.display = 'none';
+}
+
