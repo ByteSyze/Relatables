@@ -114,6 +114,10 @@ td.show-hide-selector
 {
 	text-align:right;
 }
+td.marker
+{
+	width:15px;
+}
 table.settings-module
 {
 	background-color:white;
