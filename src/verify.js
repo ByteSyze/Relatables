@@ -24,9 +24,6 @@ var newPasswordPopup = document.getElementById('new-password-popup');
 var renewPasswordPopup = document.getElementById('renew-password-popup');
 var emailPopup = document.getElementById('email-popup');
 
-var validColor 		= "#A4D4A4";
-var invalidColor 	= "#FF5C5C";
-
 var userRegex 	= /^[A-Za-z0-9_]+$/;
 
 function register()
