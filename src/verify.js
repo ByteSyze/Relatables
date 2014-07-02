@@ -226,18 +226,7 @@ function verifyEmail()
 	
 	emailPopup.innerHTML = '';
 	
-	$.ajax({
-		type: "POST",
-		url: "/verifyEmail.php",
-		data: { emailVal: emailVal }
-	})
-		.done(function(data) {
-			if(data === "emailVal unavailable")
-			{
-				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
-				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
-			}
-	});
+	
 	if(emailVal.length < 4)
 	{
 		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
@@ -250,8 +239,23 @@ function verifyEmail()
 	}
 	else
 	{
-		emailVerifyImg.src = "http://www.relatablez.com/check_mark.png";
-		valid = true;
+		$.ajax({
+			type: "POST",
+			url: "/verifyEmail.php",
+			data: { e: emailVal }
+		})
+		.done(function(data){
+			if(data === "1")
+			{
+				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
+			}
+			else
+			{
+				emailVerifyImg.src = "http://www.relatablez.com/check_mark.png";
+				valid = true;
+			}
+		});	
 	}
 	emailVerifyImg.style.display = "block";
 	return valid;
