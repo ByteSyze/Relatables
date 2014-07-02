@@ -73,35 +73,34 @@
 		if(($email !== null) && ($email !== ''))
 		{	
 			
-			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-					header('Location: http://www.relatablez.com/settings/account?e=2&i=2');
-			
-			$connection = getConnection();
-			
-			if($statement = $connection->prepare("SELECT 1 FROM accounts WHERE email LIKE (?)"))
+			if(filter_var($email, FILTER_VALIDATE_EMAIL))
 			{
-				$statement->bind_param("s",$email);
+				$connection = getConnection();
 				
-				$statement->execute();
+				if($statement = $connection->prepare("SELECT 1 FROM accounts WHERE email LIKE (?)"))
+				{
+					$statement->bind_param("s",$email);
+					
+					$statement->execute();
+					
+					$result = $statement->fetch();
+					
+					if(empty($result))
+					{
+						setPendingEmail($email,$_SESSION['id']);
 				
-				$result = $statement->fetch();
-				
-				if(!empty($result))
-					header('Location: http://www.relatablez.com/settings/account?e=2&i=3');
+						$data = getPasswordAndSalt($_SESSION['id']);
+						
+						$from = 'From: Relatablez <noreply@relatablez.com>';
+						$to = $email;
+						$subject = 'Email Verification';
+						$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\nhttp://www.relatablez.com/verify?i=". $_SESSION['id'] .'&v=' . md5($_SESSION['id'] . $data['hash'] . $email) . "\n\nIf you didn't request this change, please ignore this message.";
+						 
+						mail($to,$subject,$body,$from);
+					}
+				}	
 			}
-			
-			setPendingEmail($email,$_SESSION['id']);
-			
-			$data = getPasswordAndSalt($_SESSION['id']);
-			
-			$from = 'From: Relatablez <noreply@relatablez.com>';
-			$to = $email;
-			$subject = 'Email Verification';
-			$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\nhttp://www.relatablez.com/verify?i=". $_SESSION['id'] .'&v=' . md5($_SESSION['id'] . $data['hash'] . $email) . "\n\nIf you didn't request this change, please ignore this message.";
-			 
-			mail($to,$subject,$body,$from);
-			
-		}
+		}	
 		header('Location: http://www.relatablez.com/settings/account');
 	}	
 	else if($type == 'profile')
