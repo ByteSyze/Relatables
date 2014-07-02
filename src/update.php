@@ -52,21 +52,20 @@
 		
 		if((($old_pass !== null) && ($old_pass !== '')) && (($new_pass !== null) && ($new_pass !== '')) && (($re_new_pass !== null) && ($re_new_pass !== '')))
 		{
-			
-			
-			if($new_pass != $re_new_pass)
-				header('Location: http://www.relatablez.com/settings/account?e=1&i=1');
-			
-			$data = getPasswordAndSalt($_SESSION['id']);
-			
-			$passHash = md5($old_pass.$data['salt']);
-			
-			if($passHash == $data['hash'])
+			if(strlen($new_pass) >= 6)
 			{
-				setPassword($new_pass,$_SESSION['id']);			
+				if($new_pass === $re_new_pass)
+				{		
+					$data = getPasswordAndSalt($_SESSION['id']);
+					
+					$passHash = md5($old_pass.$data['salt']);
+					
+					if($passHash == $data['hash'])
+					{
+						setPassword($new_pass,$_SESSION['id']);			
+					}
+				}
 			}
-			else
-				header('Location: http://www.relatablez.com/settings/profile?e=1&i=2');
 		}
 		
 		$email = $_POST['email'];
