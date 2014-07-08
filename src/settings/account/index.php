@@ -28,7 +28,7 @@
 				<a href='http://www.relatablez.com/settings/profile'>Profile</a><br><a href='http://www.relatablez.com/settings/account' class='selected'>Account</a>
 			</div>			
 			<div id='general-settings'>
-				<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
+				<form id='settings-form' method='POST' action='javascript:saveSettings(this);'>
 					<table id='general-settings-table' class='settings-module'>
 						<input type='hidden' name='t' value='account' />
 						<tr>
@@ -37,7 +37,7 @@
 							<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></td> 
 						<tr>
 							<th class='settings-header' style='text-align:right;'>Current Password</th>
-							<td><input id='currentpass_input' type='password' name='oldpassword' onkeyup='verifyCurrentPassword();checkHideErrors(this, currentpass_verify_img);' autocomplete='off' /></td>
+							<td><input id='currentpass_input' type='password' name='oldpassword' autocomplete='off' /></td>
 							<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='currentpass_verify_img' /><div class='popup-offset'><div class='error-popup' id='current-password-popup'></div></div></td>
 						<tr id='newpassword'>
 							<th class='settings-header' style='text-align:right;'>New Password</th>

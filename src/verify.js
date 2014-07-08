@@ -32,7 +32,7 @@ function register()
 	var passVal		= pass.value;
 	var emailVal	= email.value;
 	
-	if(verify())
+	if(verifyRegister())
 	{
 		$.ajax({
 		type: "POST",
@@ -78,13 +78,21 @@ function login()
 	});
 }
 
-function verify()
+function verifyRegister()
 {
 	if(verifyUser() && verifyPassword() && verifyRePassword() && verifyEmail())
-	{
 		return true;
-	}
+		
 	return false;
+}
+
+function saveSettings(form)
+{
+	if(verifyUser() && verifyCurrentPassword && verifyEmail())
+	{
+		form.action='http://www.relatablez.com/update.php';
+		form.submit();
+	}
 }
 
 function verifyUser()
@@ -93,6 +101,9 @@ function verifyUser()
 	var valid = false;
 	
 	usernamePopup.innerHTML = '';
+	
+	if(userVal == '')
+		return true;
 	
 	$.ajax({
 		type: "POST",
@@ -133,8 +144,7 @@ function verifyUser()
 
 function verifyPassword()
 {
-	var passVal = pass.value;
-	
+	var passVal = pass.value;	
 	var valid = false;
 	
 	newPasswordPopup.innerHTML = '';
@@ -190,6 +200,9 @@ function verifyCurrentPassword()
 	
 	currentPasswordPopup.innerHTML = '';
 	
+	if((passVal == '') && (pass.value == '') && (rePass.value == ''))
+		return true;
+	
 	if(passVal.length < 6)
 	{
 		currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
@@ -207,6 +220,7 @@ function verifyCurrentPassword()
 				{
 					currentPassVerifyImg.src = "http://www.relatablez.com/check_mark.png";	
 					currentPasswordPopup.innerHTML = '';
+					valid = true;
 				}
 				else
 				{
@@ -217,6 +231,7 @@ function verifyCurrentPassword()
 	}
 	
 	currentPassVerifyImg.style.display = 'block';
+	return valid;
 }
 
 function verifyEmail()
@@ -226,6 +241,8 @@ function verifyEmail()
 	
 	emailPopup.innerHTML = '';
 	
+	if(emailVal == '')
+		return true;
 	
 	if(emailVal.length < 4)
 	{
