@@ -28,7 +28,7 @@
 				<a href='http://www.relatablez.com/settings/profile'>Profile</a><br><a href='http://www.relatablez.com/settings/account' class='selected'>Account</a>
 			</div>			
 			<div id='general-settings'>
-				<form id='settings-form' method='POST' action='javascript:saveSettings(this);'>
+				<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php' >
 					<table id='general-settings-table' class='settings-module'>
 						<input type='hidden' name='t' value='account' />
 						<tr>
@@ -52,9 +52,10 @@
 							<td><input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo $data['email']; ?>'></input></td>
 							<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></td>
 					</table> 
-					<input id='save-button' type='submit' value='Save Settings' />
 				</form>		
 				<a id='delete-button' href='javascript:showDeletePopup()'>Delete Account</a>
+				<button id='save-button' type='button' onclick='saveSettings(document.getElementById("settings-form"));'>Save Settings</button>
+				
 				<div id='delete-account-popup'>
 					<h2>Delete account?</h2>
 					<form method='POST' action='http://www.relatablez.com/update.php'>

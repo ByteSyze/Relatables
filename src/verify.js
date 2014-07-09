@@ -88,10 +88,15 @@ function verifyRegister()
 
 function saveSettings(form)
 {
-	if(verifyUser() && verifyCurrentPassword && verifyEmail())
+	//Store all results so that all are checked, regardless of whether any are wrong.
+	var validUser = verifyUser();
+	var validPass = verifyCurrentPassword();
+	var validEmail = verifyEmail();
+	
+	if(validUser && validPass && validEmail)
 	{
-		form.action='http://www.relatablez.com/update.php';
-		form.submit();
+		console.log('form is valid');
+		//form.submit();
 	}
 }
 
@@ -201,7 +206,10 @@ function verifyCurrentPassword()
 	currentPasswordPopup.innerHTML = '';
 	
 	if((passVal == '') && (pass.value == '') && (rePass.value == ''))
+	{
+		currentPassVerifyImg.style.display = 'none';
 		return true;
+	}
 	
 	if(passVal.length < 6)
 	{
