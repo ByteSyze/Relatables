@@ -9,6 +9,13 @@
 	margin:auto;
 	background-color:#F7F7F7;
 }
+b.warning
+{
+	position:relative;
+	margin:auto;
+	color:black;
+	font-size:13px;
+}
 p.dialogue
 {
 	position:relative;
@@ -28,32 +35,10 @@ textarea.dialogue
 	padding-bottom:3px;
 	font:15px arial;
 }
-.dialoguebutton
+div.submission
 {
-	padding-top:3px;
-	padding-bottom:3px;
-	margin-top:4px;
-	border:1px solid gray;
-	background-color:#bfbfbf;
-	border:none;
-	border-radius:4px;
-	width:105px;
-	height:30px;
-	font-size:15px;
-	color:white;
-}
-.dialoguebutton:disabled
-{
-	background-color:#2654a8;
-	color:white;
-}
-.dialoguebutton:hover
-{
-	color:#3c5a98;
-}
-.vote:visited
-{
-	color:#3c5a98;
+	height:60px;
+	overflow:hidden;
 }
 div.dialogue
 {
@@ -130,6 +115,10 @@ span.vote-counter-wrapper
 	clear: both; 
 	margin-right:5px;
 }
+span.guideline-title
+{
+	color:#0067B1;
+}
 table.vote-table
 {
 	text-align:center;
@@ -143,6 +132,33 @@ a.admin
 {
 	color:red;
 	font-style:italic;
+}
+.dialoguebutton
+{
+	padding-top:3px;
+	padding-bottom:3px;
+	margin-top:4px;
+	border:1px solid gray;
+	background-color:#bfbfbf;
+	border:none;
+	border-radius:4px;
+	width:105px;
+	height:30px;
+	font-size:15px;
+	color:white;
+}
+.dialoguebutton:disabled
+{
+	background-color:#2654a8;
+	color:white;
+}
+.dialoguebutton:hover
+{
+	color:#3c5a98;
+}
+.vote:visited
+{
+	color:#3c5a98;
 }
 ::-ms-input-placeholder
 {

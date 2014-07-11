@@ -66,22 +66,30 @@
 						<option>50 a page</option>
 						<option>Cake</option>
 					</select>
-				<div class='dialogue' style='margin-top:13px;'>
-					<table class='submission-table'>
+				<div class='dialogue submission' style='margin-top:13px;'>
 					<?php
 						if($loggedIn)
 						{
-							echo "\r\n<tr><td><textarea class='dialogue' placeholder=' Am I the only one who...'></textarea>";
-							echo "\r\n<tr><td align='center'><input class='dialoguebutton' type='submit' name='submit' value='Submit'></input>";
+							echo "\r\n<textarea class='dialogue' placeholder=' Am I the only one who...'></textarea>";
+							echo "\r\n<input class='submit-button' type='submit' name='submit' value='Submit'></input>";
 						}
 						else
 						{
-							echo "\r\n<tr><td><textarea class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>";
-							echo "\r\n<tr><td align='center'><button class='dialoguebutton' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
+							echo "\r\n<textarea class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>";
+							echo "\r\n<button class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
 						}
 					?>
-					</table>
-					
+					<hr>
+					<span class='guideline-title'><b>Guidelines:</b></span>
+					<ul>
+						<li>Your post must be well written and original.</li>
+						<li>Your post must start with "Am I the only one" and end with a question mark.</li>
+					</ul>
+					<span class='guideline-title'><b>Rules:</b></span>
+					<ul>
+						<li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will NOT be tolerated.</li>
+					</ul>
+					<b class='warning'><i>Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</i></b>
 				</div>
 				<?php
 					while($row = mysqli_fetch_array($submissions))
