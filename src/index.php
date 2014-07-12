@@ -66,12 +66,12 @@
 						<option>50 a page</option>
 						<option>Cake</option>
 					</select>
-				<div class='dialogue submission' style='margin-top:13px;'>
+				<div id='submission-wrapper' class='dialogue submission' style='margin-top:13px;height:62px;'>
 					<?php
-						if($loggedIn)
+						if($_SESSION['username'] !== null)
 						{
-							echo "\r\n<textarea class='dialogue' placeholder=' Am I the only one who...'></textarea>";
-							echo "\r\n<input class='submit-button' type='submit' name='submit' value='Submit'></input>";
+							echo "\r\n<textarea class='dialogue' onclick='showSubmissionGuidelines()' placeholder=' Am I the only one who...'></textarea>";
+							echo "\r\n<div style='float:right;'><span>Anonymous</span><input type='checkbox' name='anon' value='true' /><span id='post-counter'> 300 </span><button class='submit-button' type='submit' name='submit'><b>Submit</b></button></div><br>";
 						}
 						else
 						{
@@ -129,5 +129,35 @@
 		<script src='http://www.relatablez.com/verify.js'></script>
 		<script src='http://www.relatablez.com/popups.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+		<script type='text/javascript'>
+			
+			function showSubmissionGuidelines()
+			{
+				var submission = document.getElementById('submission-wrapper');
+				
+				var a = 0.5;
+				
+				//nextFrame(submission, -110, 110, a);
+				var interval = setInterval(function(){expand(submission,interval)},5);
+			}
+			/*function nextFrame(element,frame,lastFrame,a)
+			{
+				var delay = parseInt(a*Math.pow(frame/20,2)+20);
+				console.log(delay);
+				if(frame < lastFrame)
+				{
+					expand(element);
+					setTimeout(function(){nextFrame(element,frame+1,lastFrame,a)},delay);
+				}
+			}*/
+			function expand(element,interval)
+			{
+				var height = parseInt(element.style.height);
+				if(height < 280)
+					element.style.height = height+1+'px';
+				else
+					clearInterval(interval);
+			}
+		</script>
 	</body>
 </html>
