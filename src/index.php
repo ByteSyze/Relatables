@@ -67,18 +67,17 @@
 						<option>Cake</option>
 					</select>
 				<div id='submission-wrapper' class='dialogue submission' style='margin-top:13px;height:62px;'>
-					<?php
-						if($_SESSION['username'] !== null)
-						{
-							echo "\r\n<textarea class='dialogue' onclick='showSubmissionGuidelines()' placeholder=' Am I the only one who...'></textarea>";
-							echo "\r\n<div style='float:right;'><span>Anonymous</span><input type='checkbox' name='anon' value='true' /><span id='post-counter'> 300 </span><button class='submit-button' type='submit' name='submit'><b>Submit</b></button></div><br>";
-						}
-						else
-						{
-							echo "\r\n<textarea class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>";
-							echo "\r\n<button class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
-						}
-					?>
+						<?php
+							if($_SESSION['username'] !== null)
+							{
+								include('submission-form.html');
+							}
+							else
+							{
+								echo "\r\n<textarea class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>";
+								echo "\r\n<button class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
+							}
+						?>
 					<hr>
 					<span class='guideline-title'><b>Guidelines:</b></span>
 					<ul>
