@@ -1,0 +1,44 @@
+#main
+{
+	position:relative;
+	top:80px;
+}
+button.vote
+{
+	margin:10px;
+	width:80px;
+	height:40px;
+	border:none;
+	border-radius:5px;
+	color:white;
+	font-size:19px;
+}
+button.green
+{
+	background-color:green;
+}
+button.red
+{
+	background-color:red;
+}
+div.pending-submission-wrapper
+{
+	position:relative;
+	margin:auto;
+	width:1100px;
+	height:250px;
+	padding:25px;
+	background-color:#bfbfbf;
+	text-align:center;
+}
+p.pending-submission
+{
+	position:relative;
+	margin:auto;
+	width:650px;
+	height:80px;
+	padding:10px;
+	background-color:white;
+	border-radius:4px;
+	text-align:left;
+}
