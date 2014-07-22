@@ -1,17 +1,31 @@
 #main
 {
 	position:relative;
-	top:80px;
+	top:90px;
+}
+#guidelines
+{
+	position:relative;
+	margin:auto;
+	margin-top:30px;
+	width:700px;
+}
+#nsfw-notice
+{
+	display:block;
+	text-align:center;
+	color:#404040;
 }
 button.vote
 {
-	margin:10px;
+	margin:20px;
 	width:80px;
 	height:40px;
 	border:none;
 	border-radius:5px;
 	color:white;
 	font-size:19px;
+	cursor:pointer;
 }
 button.green
 {
@@ -28,7 +42,6 @@ div.pending-submission-wrapper
 	width:1100px;
 	height:250px;
 	padding:25px;
-	background-color:#bfbfbf;
 	text-align:center;
 }
 p.pending-submission
@@ -36,9 +49,17 @@ p.pending-submission
 	position:relative;
 	margin:auto;
 	width:650px;
-	height:80px;
+	height:70px;
 	padding:10px;
 	background-color:white;
 	border-radius:4px;
 	text-align:left;
+}
+span.guideline-title
+{
+	color:#0067B1;
+}
+ul
+{
+	color:#404040;
 }

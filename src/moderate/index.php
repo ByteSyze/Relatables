@@ -12,7 +12,7 @@
 ?>
 <html>
 	<head>
-		<title>Am I The Only One?</title>
+		<title>Moderate Relatablez</title>
 		<link rel="shortcut icon" href="favicon.ico"/>
 		<link rel='stylesheet' type='text/css' href='moderate.css'>
 		<link rel="stylesheet" type="text/css" href="/toolbartheme.css">
@@ -20,13 +20,25 @@
 	<body>
 		<?php require("../toolbar.php"); ?>
 		<div id='main'>
-			<div style='width:100%;background:#BFBFBF;'>
+			<div style='width:100%;background:#C4C4C4;'>
 				<div class='pending-submission-wrapper' id='<?php echo $submission["id"]; ?>'>
 					<h2>Does this post obey the rules & guidelines?</h2>
 					<p class='pending-submission'><?php echo $submission["submission"]; ?></p>
 					<button class='vote green' >Yes</button>
 					<button class='vote red' >No</button>
 				</div>
+			</div>
+			<div id='guidelines'>
+				<span class='guideline-title'><b>Guidelines:</b></span>
+				<ul>
+					<li>Your post must be well written and original.</li>
+					<li>Your post must start with "Am I the only one" and end with a question mark.</li>
+				</ul>
+				<span class='guideline-title'><b>Rules:</b></span>
+				<ul>
+					<li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will NOT be tolerated.</li>
+				</ul>
+				<i id='nsfw-notice'>Only check NSFW if the post follows the rules and guidelines but may not be suitable for younger users.</i>
 			</div>
 		</div>
 	</body>
