@@ -25,14 +25,13 @@
 	<head>
 		<title>Relatablez</title>
 		
-		<meta charset="UTF-8">
-		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
-		<meta name="description" content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
-		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="indextheme.css">
-		<link rel="stylesheet" type="text/css" href="toolbartheme.css">
-		<link rel="canonical" href="http://www.relatablez.com/">
-		
+		<meta charset='UTF-8'>
+		<meta name='keywords' content='Am I The Only One, Relatablez, Am I The Only One That'>
+		<meta name='description' content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
+		<link rel='shortcut icon' href='http://www.relatablez.com/favicon.ico'>
+		<link rel='stylesheet' type='text/css' href='indextheme.css'>
+		<link rel='stylesheet' type='text/css' href='toolbartheme.css'>
+		<link rel='canonical' href='http://www.relatablez.com/'>
 	</head>
 	<body>		
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
