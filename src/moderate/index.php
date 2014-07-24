@@ -1,4 +1,7 @@
 <?php  
+	session_start();
+	require_once('../userinfo.php');
+	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 
 	if (mysqli_connect_errno())
@@ -6,21 +9,40 @@
 		echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
 	}	
 	
-	$index = $_POST['i'];
+	$index = getModerationIndex($_SESSION['id']);
 	
-	if($index == null)
-		$index = 0;
-	
-	$submissions = mysqli_query($connection,'SELECT submission, id FROM submissions WHERE pending = 1 ORDER BY submissions.date DESC LIMIT ' . $index . ', ' . ++$index);
+	if($_POST['v'] !== null)
+	{
+		if($_SESSION['id'] !== null)
+		{
+			$submissions = mysqli_query($connection,'SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT '.$index.', '.($index+2));
+			$submission = mysqli_fetch_array($submissions); // The submission that was voted on.
+			
+			if($_POST['v'] === 'Yes')
+			{
+				mysqli_query($connection, 'UPDATE submissions SET notalone=notalone+1 WHERE id=' . $submission['id']);
+				incModerationIndex($_SESSION['id']);
+			}
+			else if($_POST['v'] === 'No')
+			{
+				mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
+				incModerationIndex($_SESSION['id']);
+			}
+		}
+	}
+	else
+		$submissions = mysqli_query($connection,'SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT '.$index.', '.($index+1));
 	
 	$submission = mysqli_fetch_array($submissions);
 ?>
+<!DOCTYPE html>
+<!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
 		<title>Moderate Relatablez</title>
-		<link rel="shortcut icon" href="favicon.ico"/>
+		<link rel='shortcut icon' href='favicon.ico'/>
 		<link rel='stylesheet' type='text/css' href='moderate.css'>
-		<link rel="stylesheet" type="text/css" href="/toolbartheme.css">
+		<link rel='stylesheet' type='text/css' href='/toolbartheme.css'>
 	</head>
 	<body>
 		<?php require("../toolbar.php"); ?>
@@ -39,8 +61,6 @@
 					<form method='POST'>
 						<input type='submit' name='v' class='vote green' value='Yes' />
 						<input type='submit' name='v' class='vote red' value='No' />
-						<input type='hidden' name='pid' value='<?php echo $submission['id']; ?>' />
-						<input type='hidden' name='i' value='<?php echo $index; ?>' />
 					</form>
 				</div>
 				<a id='help'>Help</a>

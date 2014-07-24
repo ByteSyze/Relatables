@@ -4,7 +4,6 @@
 	include 'userinfo.php';
 	require_once 'Mobile_Detect.php';
 	$detect = new Mobile_Detect;
-	
 	 
 	if ( $detect->isMobile() ) {
 		$_SESSION['mobile'] = 1;
