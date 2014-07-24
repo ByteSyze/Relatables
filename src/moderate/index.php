@@ -1,6 +1,6 @@
 <?php  
 	session_start();
-	require_once('../userinfo.php');
+	include('../userinfo.php');
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 
@@ -9,29 +9,34 @@
 		echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
 	}	
 	
-	$index = getModerationIndex($_SESSION['id']);
+	$index = getModerationIndex($connection, $_SESSION['id']);
 	
 	if($_POST['v'] !== null)
 	{
 		if($_SESSION['id'] !== null)
 		{
-			$submissions = mysqli_query($connection,'SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT '.$index.', '.($index+2));
+			$end = $index+2;
+			
+			$submissions = mysqli_query($connection, "SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
 			$submission = mysqli_fetch_array($submissions); // The submission that was voted on.
 			
 			if($_POST['v'] === 'Yes')
 			{
 				mysqli_query($connection, 'UPDATE submissions SET notalone=notalone+1 WHERE id=' . $submission['id']);
-				incModerationIndex($_SESSION['id']);
+				incModerationIndex($connection, $_SESSION['id']);
 			}
 			else if($_POST['v'] === 'No')
 			{
 				mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
-				incModerationIndex($_SESSION['id']);
+				incModerationIndex($connection, $_SESSION['id']);
 			}
 		}
 	}
 	else
-		$submissions = mysqli_query($connection,'SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT '.$index.', '.($index+1));
+	{
+		$end = $index+1;
+		$submissions = mysqli_query($connection, "SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
+	}
 	
 	$submission = mysqli_fetch_array($submissions);
 ?>

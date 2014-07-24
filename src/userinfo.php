@@ -167,7 +167,7 @@
 	
 	function getModerationIndex($connection, $id)
 	{
-		if($statement = $connection->prepare('SELECT modindex FROM accounts WHERE id = (?)'))
+		if($statement = $connection->prepare("SELECT mod_index FROM accounts WHERE id = (?)"))
 		{	
 			$statement->bind_param('i',$id);
 			
@@ -180,7 +180,7 @@
 			if(!empty($result))
 				return $index;
 			else
-				return 0;
+				return false;
 		}	
 	}
 	
@@ -225,7 +225,7 @@
 	
 	function incModerationindex($connection, $id)
 	{
-		mysqli_query($connection, 'UDPATE accounts SET modindex=modindex+1 WHERE id=' . $id);
+		mysqli_query($connection, "UPDATE accounts SET mod_index=mod_index+1 WHERE id=$id") or die(mysqli_error($connection));
 	}
 	
 	function setDescription($connection, $description,$id)
