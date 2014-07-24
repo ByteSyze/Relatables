@@ -91,7 +91,7 @@
 				<?php
 					while($row = mysqli_fetch_array($submissions))
 					{	
-						$user = getUsername($row['uid']);
+						$user = getUsername($connection, $row['uid']);
 						
 						echo "\r\n<div class='dialogue uppadding' id='" . $row["id"] . "'>";
 						echo "\r\n<p class='dialogue'>" . $row["submission"] . "</p>";
@@ -112,7 +112,7 @@
 						echo "\r\n<td><span class='vote-counter' id='a" . $row["id"] . "'>(" . number_format($row["alone"]) . ")</span></td>";
 						echo "\r\n</table>";
 						echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
-						if(isAdmin($row['uid']))
+						if(isAdmin($connection, $row['uid']))
 							echo 'class=\'admin\'';
 						echo " href='http://www.relatablez.com/user/" . $user . "'>" . $user . "</a> - " . $row["fdate"] . "</span></div>";
 						echo "\r\n</div>";

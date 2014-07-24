@@ -10,7 +10,7 @@
 	//Returns an array of relevant information pertaining to the specified user's profile.
 	function getProfileData($connection, $username)
 	{
-		if($statement = $connection->prepare('SELECT username, id, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), description, posts, comments, moderated, hiderelated, hidelocation, hidedescription, admin, country_id  FROM accounts WHERE username like (?)'))
+		if($statement = $connection->prepare('SELECT username, id, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), description, posts, comments, moderated, hiderelated, hidelocation, admin, country_id  FROM accounts WHERE username like (?)'))
 		{	
 			$statement->bind_param('s',$username);
 			
@@ -19,10 +19,10 @@
 			$data = array('username'=>false);
 			
 			$statement->store_result();
-			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$data['hiderelated'],$data['hidelocation'],$data['hidedescription'],$data['admin'],$cid);
+			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$data['hiderelated'],$data['hidelocation'],$data['admin'],$cid);
 			$result = $statement->fetch();
 			
-			$data['country'] = getCountry($cid);
+			$data['country'] = getCountry($connection, $cid);
 			
 			if(!empty($result))
 				return $data;

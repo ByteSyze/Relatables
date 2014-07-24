@@ -16,10 +16,11 @@
 	
 	require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
 	
-	$data = getProfileData($user);
+	$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+	$data = getProfileData($connection, $user);
 	
-	if($data['username'] == false)
-		header('Location: http://www.relatablez.com/notfound.php');
+	//if($data['username'] === null)
+		//header('Location: http://www.relatablez.com/notfound.php');
 ?>
 	<head>
 		<title id='title'><?php echo $data['username']; ?></title>
