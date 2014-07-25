@@ -88,22 +88,6 @@ a.selected
 {
 	color:#2654a8;
 }
-div.popup-offset
-{
-	position:fixed;
-}
-div.error-popup
-{
-	position:relative;
-	left:8px;
-	bottom:7px;
-	width:150px;
-	background-color:white;
-	border-radius:5px;
-	border:1px solid #BFBFBF;
-	text-align:center;
-	display:none;
-}
 th.settings-header
 {
 	text-align:left;

@@ -177,6 +177,10 @@ div.unread
 	height:10px;
 	border-radius:10px;
 	background:#26a832;
+    transition:background 2s ease;  
+    -o-transition:background 2s ease;  
+    -moz-transition:background 2s ease;  
+	-webkit-transition:background 2s ease;  
 }
 div.read
 {

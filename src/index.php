@@ -132,38 +132,9 @@
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/vote.js'></script>
+		<script src='http://www.relatablez.com/index.js'></script>
 		<script src='http://www.relatablez.com/verify.js'></script>
 		<script src='http://www.relatablez.com/popups.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
-		<script type='text/javascript'>
-			
-			function showSubmissionGuidelines()
-			{
-				var submission = document.getElementById('submission-wrapper');
-				
-				var a = 0.5;
-				
-				//nextFrame(submission, -110, 110, a);
-				var interval = setInterval(function(){expand(submission,interval)},5);
-			}
-			/*function nextFrame(element,frame,lastFrame,a)
-			{
-				var delay = parseInt(a*Math.pow(frame/20,2)+20);
-				console.log(delay);
-				if(frame < lastFrame)
-				{
-					expand(element);
-					setTimeout(function(){nextFrame(element,frame+1,lastFrame,a)},delay);
-				}
-			}*/
-			function expand(element,interval)
-			{
-				var height = parseInt(element.style.height);
-				if(height < 280)
-					element.style.height = height+1+'px';
-				else
-					clearInterval(interval);
-			}
-		</script>
 	</body>
 </html>

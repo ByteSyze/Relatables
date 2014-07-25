@@ -93,3 +93,19 @@ function checkHideErrors(element, errorPopup)
 		errorPopup.style.display = 'none';
 }
 
+function updateMessageStatus(id, vid)
+{
+	$.ajax({
+	type: "POST",
+	url: "/readmessage.php",
+	data: { id: id, vid: vid }
+	})
+		.done(function(data) {
+			if(data == '1')
+			{
+				$('#ntf'+id).addClass('read');
+			}
+	});
+	
+	document.getElementById('ntfmsg'+id).removeAttribute('onmouseover');
+}

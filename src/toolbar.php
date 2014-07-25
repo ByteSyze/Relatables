@@ -20,7 +20,7 @@
 		while($notification = mysqli_fetch_array($notifications))
 		{
 			//Check for unread messages.
-			if(!$notification['read'])
+			if(!$notification['seen'])
 			{
 				$unreadNotifications = true;
 				break;
@@ -42,7 +42,7 @@
 					if($unreadNotifications)
 						echo "<button class='toolbar' onclick='toggleNotificationDropdown()'><img src='http://www.relatablez.com/notification_icon2.png'></button>";
 					else
-						echo "<button class='toolbar'><img src='http://www.relatablez.com/notification_icon.png'></button>";
+						echo "<button class='toolbar' onclick='toggleNotificationDropdown()'><img src='http://www.relatablez.com/notification_icon.png'></button>";
 					echo "<button class='toolbar' onclick='toggleProfileDropdown()'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
 					include($_SERVER['DOCUMENT_ROOT'].'/user-popups.php');
 				}
