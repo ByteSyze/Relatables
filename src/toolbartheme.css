@@ -38,6 +38,18 @@
 	padding-bottom:7px;
 	padding-left:7px;
 }
+#notification-dropdown
+{
+	position:absolute;
+	top:46px;
+	right:45px;
+	display:none;
+	max-height:200px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	background:white;
+	border:1px solid #BFBFBF;
+}
 body
 {
 	margin:0px;
@@ -92,6 +104,22 @@ button.question
 	background:url('question.png') no-repeat right white;
 	border:none;
 }
+div.popup-offset
+{
+	position:fixed;
+}
+div.error-popup
+{
+	position:relative;
+	left:8px;
+	bottom:7px;
+	width:150px;
+	background-color:white;
+	border-radius:5px;
+	border:1px solid #BFBFBF;
+	text-align:center;
+	display:none;
+}
 div.popup
 {
 	background-color:white;
@@ -143,6 +171,20 @@ div.questionpopup
 	color:#404040;
 	display:none;
 }
+div.unread
+{
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	background:#26a832;
+}
+div.read
+{
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	background:#BFBFBF;
+}
 div.account-buttons
 {
 	float:right;
@@ -168,11 +210,17 @@ table.profile
 {
 	display:none;
 	position:fixed;
-	top:48px;
+	top:61px;
 	z-index:2;
 	background-color:white;
 	border:1px solid #808080;
 	border-collapse:collapse;
+}
+table.notifications
+{
+	width:300px;
+	padding-left:15px;
+	padding-right:15px;
 }
 a.profile
 {
@@ -196,6 +244,32 @@ h1.popup-header
 tr.spacer
 {
 	height:9px;
+}
+tr.notification-header
+{
+	height:20px;
+}
+tr.notification-message
+{
+	vertical-align:top;
+}
+td.notification-subject
+{
+	text-align:right;
+	font-weight:bold;
+}
+td.notification-date
+{
+	font-size:13px;
+	font-weight:bold;
+	color:#808080;
+}
+td.notification-sender
+{
+	text-align:right;
+	font-size:13px;
+	font-weight:bold;
+	color:#808080;
 }
 img.verify
 {

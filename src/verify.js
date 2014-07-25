@@ -28,23 +28,26 @@ var userRegex 	= /^[A-Za-z0-9_]+$/;
 
 function register()
 {
+	console.log('Registering');
 	var userVal	 	= user.value;
 	var passVal		= pass.value;
 	var emailVal	= email.value;
 	
 	if(verifyRegister())
 	{
+		console.log('Verified');
 		$.ajax({
 		type: "POST",
 		url: "register.php",
 		data: { username: userVal, password: passVal, email: emailVal }
-	})
-		.done(function(data) {
-			if(data.indexOf("success") != -1)
-			{
-				document.getElementById("registerbutton").setAttribute("value","Thank you");
-			}
-	});
+		})
+			.done(function(data) {
+				console.log(data);
+				if(data.indexOf("success") != -1)
+				{
+					document.getElementById("registerbutton").setAttribute("value","Thank you");
+				}
+		});
 	}
 }
 
@@ -284,4 +287,17 @@ function verifyEmail()
 	}
 	emailVerifyImg.style.display = "block";
 	return valid;
+}
+
+function checkLimit(event, element, limit, substr)
+{
+	var remaining = limit - element.value.length;
+	
+	if(remaining < 0)
+	{
+		if(substr) //Use substring method for refusing further input
+			element.value = element.value.substring(0,limit);
+		else
+			event.preventDefault();
+	}
 }

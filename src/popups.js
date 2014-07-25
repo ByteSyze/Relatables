@@ -25,6 +25,16 @@ function toggleProfileDropdown()
 		dropdown.style.display = "block";
 }
 
+function toggleNotificationDropdown()
+{
+	var dropdown = document.getElementById("notification-dropdown");
+	
+	if(dropdown.style.display == "block")
+		dropdown.style.display = "none";
+	else
+		dropdown.style.display = "block";
+}
+
 function showLogin()
 {
 	hideAll();
