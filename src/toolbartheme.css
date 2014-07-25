@@ -275,6 +275,11 @@ td.notification-sender
 	font-weight:bold;
 	color:#808080;
 }
+td.no-messages
+{
+	height:50px;
+	text-align:center;
+}
 img.verify
 {
 	margin-left:3px;

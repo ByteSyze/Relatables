@@ -1,6 +1,8 @@
 <?php
 	session_start();
 	
+	usleep(100000);
+	
 	$id = $_POST['id'];
 	$vid = $_POST['vid'];
 	

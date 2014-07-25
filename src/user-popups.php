@@ -4,6 +4,9 @@
 	
 	if($_SESSION['username'] == null)
 		return;
+		
+	$notification_count = mysqli_num_rows($notifications);
+	$i = 0;
 ?>
 <table class='profile' id='profile-dropdown'>
 	<tr><td><a class='profile' href='http://www.relatablez.com/user/<?php echo $_SESSION['username']; ?>'>Profile</a></td></tr>
@@ -13,22 +16,31 @@
 <div id='notification-dropdown'>
 	<table class='notifications' >
 		<?php
-			while($notification = mysqli_fetch_array($notifications))
+			if($notification_count < 1)
 			{
-				$sender = getUsername($connection, $notification['sid']);
-				echo '<tr class=\'notification-header\'>';
-				if(!$notification['seen'])
-					echo '<td><div id=\'ntf'.$notification['id'].'\' class=\'unread\'></div></td>';
-				else
-					echo '<td><div class=\'read\'></div></td>';
-				echo '<td class=\'notification-subject\'>'.$notification['subject'].'</td>';
-				echo '</tr><tr>';
-				echo '<td colspan=\'2\' id=\'ntfmsg'.$notification['id'].'\' onmouseover=\'updateMessageStatus('.$notification['id'].',"'.$notification['vid'].'")\'>'.$notification['message'].'</td>';
-				echo '</tr>';
-				echo '<tr>';
-				echo '<td class=\'notification-date\'>'.$notification['fdate'].'</td>';
-				echo '<td class=\'notification-sender\'><a href=\'http://www.relatablez.com/user/'.$sender.'\'>'.$sender.'</a></td>';
-				echo '</tr><tr><td colspan=\'2\'><hr style=\'margin:0px\'></td></tr>';
+				echo '<tr><td class=\'no-messages\'><b>You have no messages</b></td></tr>';
+			}
+			else
+			{
+				while($notification = mysqli_fetch_array($notifications))
+				{
+					$i++;
+					$sender = getUsername($connection, $notification['sid']);
+					echo '<tr class=\'notification-header\'>';
+					if(!$notification['seen'])
+						echo '<td><div id=\'ntf'.$notification['id'].'\' class=\'unread\'></div></td>';
+					else
+						echo '<td><div class=\'read\'></div></td>';
+					echo '<td class=\'notification-subject\'>'.$notification['subject'].'</td>';
+					echo '</tr><tr>';
+					echo '<td colspan=\'2\' id=\'ntfmsg'.$notification['id'].'\' onmouseover=\'updateMessageStatus('.$notification['id'].',"'.$notification['vid'].'")\'>'.$notification['message'].'</td>';
+					echo '</tr>';
+					echo '<tr>';
+					echo '<td class=\'notification-date\'>'.$notification['fdate'].'</td>';
+					echo '<td class=\'notification-sender\'><a href=\'http://www.relatablez.com/user/'.$sender.'\'>'.$sender.'</a></td>';
+					if($i < $notification_count)
+						echo '</tr><tr><td colspan=\'2\'><hr style=\'margin:0px\'></td></tr>';
+				}
 			}
 		?>
 	</table>
