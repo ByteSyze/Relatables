@@ -33,7 +33,7 @@
 	
 	function getProfileSettings($connection, $id)
 	{
-		if($statement = $connection->prepare('SELECT hidedescription, hidelocation, description, email, country_id  FROM accounts WHERE id = (?)'))
+		if($statement = $connection->prepare('SELECT hidelocation, description, email, country_id  FROM accounts WHERE id = (?)'))
 		{	
 			$statement->bind_param('i',$id);
 			
@@ -42,17 +42,17 @@
 			$data = array();
 			
 			$statement->store_result();
-			$statement->bind_result($data['hidedescription'],$data['hidelocation'],$data['description'],$data['email'],$cid);
+			$statement->bind_result($data['hidelocation'],$data['description'],$data['email'],$cid);
 			$result = $statement->fetch();
 			
 			$data['country_id'] = $cid;
-			$data['country'] = getCountry($cid);
+			$data['country'] = getCountry($connection, $cid);
 			
 			if(!empty($result))
 				return $data;
 			else
 				return false;
-		}	
+		}
 	}
 	
 	function deleteAccount($connection, $id)
@@ -278,6 +278,8 @@
 			$statement->bind_param('i',$id);		
 			$statement->execute();
 		}
+		else
+			die(mysqli_error($connection));
 	}
 	
 	function hideRelated($connection, $id)
@@ -287,4 +289,6 @@
 			$statement->bind_param('i',$id);		
 			$statement->execute();
 		}	
+		else
+			die(mysqli_error($connection));
 	}

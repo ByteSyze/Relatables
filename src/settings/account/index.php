@@ -5,7 +5,7 @@
 	
 	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
 	
-	$data = getProfileSettings($_SESSION['id']);
+	$data = getProfileSettings(getConnection(), $_SESSION['id']);
 ?>
 <html>
 	<head>

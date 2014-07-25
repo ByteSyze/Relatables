@@ -6,27 +6,28 @@
 	$type = $_GET['t'];
 	
 	require_once('userinfo.php');
+	$connection = getConnection();
 	
 	if($type == 'show')
 	{
 		if($data == 'location')
-			showLocation($_SESSION['id']);
+			showLocation($connection, $_SESSION['id']);
 		else if($data == 'related')
-			showRelated($_SESSION['id']);
+			showRelated($connection, $_SESSION['id']);
 		else
 			die('invalid data.');
 	}
 	else if($type == 'hide')
 	{
 		if($data == 'location')
-			hideLocation($_SESSION['id']);
+			hideLocation($connection, $_SESSION['id']);
 		else if($data == 'related')
-			hideRelated($_SESSION['id']);
+			hideRelated($connection, $_SESSION['id']);
 		else
 			die('invalid data.');
 	}
 	else
 		die('invalid type.');
 		
-	header('Location: http://www.relatablez.com/settings/profile');
+	//header('Location: http://www.relatablez.com/settings/profile');
 	
