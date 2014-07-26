@@ -42,7 +42,6 @@ function register()
 		data: { username: userVal, password: passVal, email: emailVal }
 		})
 			.done(function(data) {
-				console.log(data);
 				if(data.indexOf("success") != -1)
 				{
 					document.getElementById("registerbutton").setAttribute("value","Thank you");

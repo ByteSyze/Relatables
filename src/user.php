@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014 -->
 <html>
-<?php 
-	session_start();
-	
-	$user = $_GET['username'];
-	
-	//If username ends in a /, remove it.
-	$slashpos = strpos($user,'/');
-	
-	if($slashpos != false)
-	{
-		$user = substr($user,0,$slashpos);
-	}
-	
-	require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
-	
-	$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
-	$data = getProfileData($connection, $user);
-	
-	//if($data['username'] === null)
-		//header('Location: http://www.relatablez.com/notfound.php');
-?>
+	<?php 
+		session_start();
+		
+		$user = $_GET['username'];
+		
+		//If username ends in a /, remove it.
+		$slashpos = strpos($user,'/');
+		
+		if($slashpos != false)
+		{
+			$user = substr($user,0,$slashpos);
+		}
+		
+		require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
+		
+		$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+		$data = getProfileData($connection, $user);
+	?>
 	<head>
 		<title id='title'><?php echo $data['username']; ?></title>
 		
@@ -39,6 +36,7 @@
 	
 		<div id='infobanner'>
 			<div id='infolayout'>
+				<button id='message-button'>Send Message</button>
 				<div id='info'>
 					<span id='username'><?php echo $data['username']; ?></span><br>
 					<span id='location' class='right-spacer'>

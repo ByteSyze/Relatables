@@ -11,6 +11,12 @@
 	height:35px;
 	background-color:#0067b1;
 }
+#toolbar-spacer
+{
+	height:35px;
+	padding-top:13px;
+	padding-bottom:13px;
+}
 #toolbaralignment
 {
 	position:relative;

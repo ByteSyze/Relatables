@@ -11,9 +11,9 @@
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
-	if($statement = $connection->prepare('SELECT vid FROM notifications WHERE id=(?)'))
+	if($statement = $connection->prepare('SELECT vid FROM notifications WHERE id=(?) AND vid=(?)'))
 	{
-		$statement->bind_param('i',$id);	
+		$statement->bind_param('is',$id, $vid);	
 		$statement->execute();
 		
 		$statement->store_result();
@@ -26,15 +26,12 @@
 			
 		else
 		{
-			if($dbVid == $vid)
+			if($statement = $connection->prepare('UPDATE notifications SET seen=1 WHERE id=(?)'))
 			{
-				if($statement = $connection->prepare('UPDATE notifications SET seen=1 WHERE id=(?)'))
-				{
-					$statement->bind_param('i',$id);	
-					$statement->execute();
-					
-					die('1');
-				}
+				$statement->bind_param('i',$id);	
+				$statement->execute();
+				
+				die('1');
 			}
 		}
 	}

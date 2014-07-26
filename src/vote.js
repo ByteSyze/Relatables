@@ -1,20 +1,22 @@
 /*Copyright (C) Tyler Hackett 2014*/
-function vote(element)
+function vote(vote, notaloneEl, aloneEl, v)
 {
-	var count = element.innerHTML.replace("(","").replace(")","").replace(",",""); // Take out all formatting
-	count++;
-	element.innerHTML = "(" + count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ")"; // Re-format
+	// Take out all formatting
+	var notalone = notAloneEl.innerHTML.replace("(","").replace(")","").replace(",",""); 
+	var alone = aloneEl.innerHTML.replace("(","").replace(")","").replace(",","");
 	
-	element.parentNode.disabled='disabled';
-	
-	if (window.XMLHttpRequest)
-	{
-		xmlhttp=new XMLHttpRequest();
-	}
-	else
-	{
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.open("GET","updatevote.php?q="+element.getAttribute("id"),true);
-	xmlhttp.send();	
+	$.ajax({
+		type: "POST",
+		url: "/vote.php",
+		data: { q: vote, v : v}
+	})
+	.done(function(data) {
+		console.log(data);
+		if(data == '00')
+		{	
+			
+		}
+			vote.innerHTML = '(' + voteCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')'; // Re-format
+			vote.parentNode.disabled='disabled';
+	});
 }

@@ -11,11 +11,6 @@
 	}
 	
 	$connection = getConnection();
-
-	if (mysqli_connect_errno())
-	{
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}	
 	
 	$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");
 ?>
@@ -65,17 +60,30 @@
 						<option>Cake</option>
 					</select>
 				<div id='submission-wrapper' class='dialogue submission' style='margin-top:13px;height:71px;'>
-						<?php
-							if($_SESSION['username'] !== null)
-							{
-								include('submission-form.html');
-							}
-							else
-							{
-								echo "\r\n<textarea class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>";
-								echo "\r\n<button class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
-							}
-						?>
+					<?php 
+						if($_SESSION['username'] !== null)
+						{
+							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n"; 
+							echo "	<textarea name='s' class='dialogue' onclick='showSubmissionGuidelines()' placeholder=' Am I the only one who...'></textarea>\r\n";
+						}
+					?>
+						<div style='float:right'>
+							<select name='c'>
+								<option value=''>Select a Category</option>
+								<option value='1'>Category 1</option>
+								<option value='2'>Category 2</option>
+							</select>
+							<span> Anonymous</span><input type='checkbox' name='a' value='true' />
+							<span id='post-counter'> 300 </span>
+							<?php
+								if($_SESSION['username'] !== null)
+									echo "<button class='submit-button' type='submit' ><b>Submit</b></button>";
+								else
+									echo "\r\n<button class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
+							?>
+						</div>
+						<br>
+					<?php if($_SESSION['username'] !== null) echo '</form>'; ?>
 					<hr>
 					<span class='guideline-title'><b>Guidelines:</b></span>
 					<ul>
@@ -102,8 +110,8 @@
 						echo "\r\n<tr>";
 						if($_SESSION["username"] != null)
 						{
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote(na" . $row["id"] . ")'>No, me too!</button></td>";
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote(a" . $row["id"] . ")'>You're alone.</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' onclick='vote(na" . $row["id"] . ", \"".$row['verification']."\")'>No, me too!</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' onclick='vote(a" . $row["id"] . ", \"".$row['verification']."\")'>You're alone.</button></td>";
 						}
 						else
 						{

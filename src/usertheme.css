@@ -58,6 +58,17 @@
 	float:right;
 	width:300px;
 }
+#message-button
+{
+	float:right;
+	background:#0067B1;
+	border-radius:4px;
+	border:none;
+	color:white;
+	height:30px;
+	font-weight:bold;
+	cursor:pointer;
+}
 .right-spacer
 {
 	margin-right:30px;
