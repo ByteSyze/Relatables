@@ -104,6 +104,7 @@ function updateMessageStatus(id, vid)
 			if(data == '1')
 			{
 				$('#ntf'+id).addClass('read');
+				setTimeout(function(){$('#ntf'+id).removeClass('unread');}, 3000);
 			}
 	});
 	
