@@ -28,7 +28,7 @@
 		{
 			if($dbVid == $vid)
 			{
-				if($statement = $connection->prepare('UPDATE notifications SET seen=1 WHERE id=(?)'))
+				if($statement = $connection->prepare('UPDATE notifications SET deleted=1 WHERE id=(?)'))
 				{
 					$statement->bind_param('i',$id);	
 					$statement->execute();

@@ -15,7 +15,7 @@
 	{
 		$connection = getConnection();
 		
-		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(date,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' ORDER BY notifications.date DESC');
+		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(date,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0 ORDER BY notifications.date DESC');
 		
 		while($notification = mysqli_fetch_array($notifications))
 		{

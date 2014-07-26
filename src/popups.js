@@ -109,3 +109,18 @@ function updateMessageStatus(id, vid)
 	
 	document.getElementById('ntfmsg'+id).removeAttribute('onmouseover');
 }
+
+function deleteMessage(id, vid)
+{
+	$.ajax({
+	type: "POST",
+	url: "/deletemessage.php",
+	data: { id: id, vid: vid }
+	})
+		.done(function(data) {
+			if(data == '1')
+			{
+				$('[data-nid="'+id+'"]').remove();
+			}
+	});
+}

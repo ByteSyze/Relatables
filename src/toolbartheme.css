@@ -171,6 +171,13 @@ div.questionpopup
 	color:#404040;
 	display:none;
 }
+div.read
+{
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	background:#BFBFBF;
+}
 div.unread
 {
 	width:10px;
@@ -182,12 +189,15 @@ div.unread
     -moz-transition:background 2s ease;  
 	-webkit-transition:background 2s ease;  
 }
-div.read
+div.notification-delete
 {
+	display:inline-block;
+	background-image:url('http://www.relatablez.com/close.png');
+	background-size:10px 10px;
 	width:10px;
 	height:10px;
-	border-radius:10px;
-	background:#BFBFBF;
+	margin-left:10px;
+	cursor:pointer;
 }
 div.account-buttons
 {
