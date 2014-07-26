@@ -13,7 +13,7 @@
 	}
 	else
 	{
-		$connection = getConnection();
+		$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 		
 		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(date,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0 ORDER BY notifications.date DESC');
 		
