@@ -110,8 +110,8 @@
 						echo "\r\n<tr>";
 						if($_SESSION["username"] != null)
 						{
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote(na" . $row["id"] . ", \"".$row['verification']."\")'>No, me too!</button></td>";
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote(a" . $row["id"] . ", \"".$row['verification']."\")'>You're alone.</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' onclick='vote(".$row['id'].", 0, na" . $row["id"] . ",  a" . $row["id"] . ", \"".$row['verification']."\")'>No, me too!</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' onclick='vote(".$row['id'].", 1, na" . $row["id"] . ",  a" . $row["id"] . ", \"".$row['verification']."\")'>You're alone.</button></td>";
 						}
 						else
 						{

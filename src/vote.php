@@ -3,27 +3,14 @@
 	
 	session_start();
 	
-	$query = $_POST['q'];
+	$id = $_POST['q'];
+	$voteTypeNum = $_POST['vtn'];
 	$verification = $_POST['v'];
 	
-	if(substr($query,0,1) == 'n')
-	{
-		$voteType = 'notalone';
-		$voteTypeNum = 0;
-		
-		$id = intval(substr($query,2,strlen($query)));
-	}
-	else if(substr($query,0,1) == 'a')
-	{
+	if($voteTypeNum)
 		$voteType = 'alone';
-		$voteTypeNum = 1;
-		
-		$id = intval(substr($query,1,strlen($query)));
-	}
 	else
-	{
-		die('Invalid');
-	}
+		$voteType = 'notalone';
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
