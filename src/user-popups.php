@@ -15,33 +15,35 @@
 </table>
 <div id='notification-dropdown'>
 	<table class='notifications' >
-		<?php
-			if($notification_count < 1)
-			{
-				echo '<tr><td class=\'no-messages\'><b>You have no messages</b></td></tr>';
-			}
-			else
-			{
-				while($notification = mysqli_fetch_array($notifications))
+		<tbody id='notification-tbody'>
+			<?php
+				if($notification_count < 1)
 				{
-					$i++;
-					$sender = getUsername($connection, $notification['sid']);
-					echo '<tr data-nid=\''.$notification['id'].'\' class=\'notification-header\'>';
-					if(!$notification['seen'])
-						echo '<td><div id=\'ntf'.$notification['id'].'\' class=\'unread\'></div></td>';
-					else
-						echo '<td><div class=\'read\'></div></td>';
-					echo '<td class=\'notification-subject\'>'.$notification['subject'].'<div class=\'notification-delete\' onclick=\'deleteMessage('.$notification['id'].',"'.$notification['vid'].'")\'></div></td>';
-					echo '</tr><tr data-nid=\''.$notification['id'].'\'>';
-					echo '<td colspan=\'2\' id=\'ntfmsg'.$notification['id'].'\' onmouseover=\'updateMessageStatus('.$notification['id'].',"'.$notification['vid'].'")\'>'.$notification['message'].'</td>';
-					echo '</tr>';
-					echo '<tr data-nid=\''.$notification['id'].'\'>';
-					echo '<td class=\'notification-date\'>'.$notification['fdate'].'</td>';
-					echo '<td class=\'notification-sender\'><a href=\'http://www.relatablez.com/user/'.$sender.'\'>'.$sender.'</a></td>';
-					if($i < $notification_count)
-						echo '</tr><tr data-nid=\''.$notification['id'].'\'><td colspan=\'2\'><hr style=\'margin:0px\'></td></tr>';
+					echo '<tr><td class=\'no-messages\'><b>You have no messages</b></td></tr>';
 				}
-			}
-		?>
+				else
+				{
+					while($notification = mysqli_fetch_array($notifications))
+					{
+						$i++;
+						$sender = getUsername($connection, $notification['sid']);
+						echo '<tr data-nid=\''.$notification['id'].'\' class=\'notification-header\'>';
+						if(!$notification['seen'])
+							echo '<td><div id=\'ntf'.$notification['id'].'\' class=\'unread\'></div></td>';
+						else
+							echo '<td><div class=\'read\'></div></td>';
+						echo '<td class=\'notification-subject\'>'.$notification['subject'].'<div class=\'notification-delete\' onclick=\'deleteMessage('.$notification['id'].',"'.$notification['vid'].'")\'></div></td>';
+						echo '</tr><tr data-nid=\''.$notification['id'].'\'>';
+						echo '<td colspan=\'2\' id=\'ntfmsg'.$notification['id'].'\' onmouseover=\'updateMessageStatus('.$notification['id'].',"'.$notification['vid'].'")\'>'.$notification['message'].'</td>';
+						echo '</tr>';
+						echo '<tr data-nid=\''.$notification['id'].'\'>';
+						echo '<td class=\'notification-date\'>'.$notification['fdate'].'</td>';
+						echo '<td class=\'notification-sender\'><a href=\'http://www.relatablez.com/user/'.$sender.'\'>'.$sender.'</a></td>';
+						if($i < $notification_count)
+							echo '</tr><tr data-nid=\''.$notification['id'].'\'><td colspan=\'2\'><hr style=\'margin:0px\'></td></tr>';
+					}
+				}
+			?>
+		</tbody>
 	</table>
 </div>
