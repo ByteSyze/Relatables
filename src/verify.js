@@ -16,7 +16,10 @@ var reEmailVerifyImg = document.getElementById('reemail_verify_img');
 var remember = document.getElementById('remember_input');
 
 var loginUser	= document.getElementById('login_user_input');
+var userLog		= document.getElementById('login_user_log');
+
 var loginPass	= document.getElementById('login_pass_input');
+var passLog		= document.getElementById('login_pass_log');
 
 var usernamePopup = document.getElementById('username-popup');
 var currentPasswordPopup = document.getElementById('current-password-popup');
@@ -63,20 +66,44 @@ function login()
 	$.ajax({
 		type: "POST",
 		url: "login.php",
-		data: { username: userVal, password: passVal, rememberme: remember }
+		data: { u: userVal, p: passVal, r: remember }
 	})
-		.done(function(data) {
-			console.log(data);
-			if(data.indexOf("logged in") != -1)
-			{
-				location.reload();
-			}
-			if(data.indexOf("invalid username") != -1)
-			{
-			}
-			if(data.indexOf("invalid password") != -1)
-			{
-			}
+	.done(function(data) {
+		console.log(data);
+		
+		var hideUserLog = true;
+		var hidePassLog = true;
+		
+		if(data == '0')
+		{
+			location.reload();
+		}
+		else if(data == '1')
+		{
+			userLog.innerHTML = 'Account does not exist.';
+			hideUserLog = false;
+		}
+		else if(data == '2')
+		{
+			userLog.innerHTML = 'Account not verified.';
+			hideUserLog = false;
+		}
+		else if(data == '3')
+		{
+			passLog.innerHTML = 'Password is incorrect.';
+			hidePassLog = false;
+		}
+		
+		if(hideUserLog)
+			userLog.style.display = 'none';
+		else
+			userLog.style.display = 'block';
+			
+		if(hidePassLog)
+			passLog.style.display = 'none';
+		else
+			passLog.style.display = 'block';
+		
 	});
 }
 

@@ -111,22 +111,22 @@ echo
 	<button class='closebutton' onclick='hideLogin()'></button><br>
 	<h1 id='loginheader' class='popup-header'>Log In</h1>
 	<div style='text-align:center'>
-		<form method='post' action='javascript:login();'>	
+		<form method='POST' action='javascript:login();'>	
 			<table style='width:100%;'>
 				<tr>
-					<td><input id='login_user_input' class='textbox' type='text' name='username' placeholder='Username'><br><label id='login_user_log'></label></td>
+					<td><input id='login_user_input' class='textbox' type='text' name='u' placeholder='Username'><br><span id='login_user_log'></span></td>
 				</tr>
 				
 				<tr class='spacer'></tr>
 				
 				<tr>
-					<td><input id='login_pass_input' class='textbox' type='password' name='password' placeholder='Password'><br><label id='login_pass_log'></label></td>
+					<td><input id='login_pass_input' class='textbox' type='password' name='p' placeholder='Password'><br><span id='login_pass_log'></span></td>
 				</tr>
 				
 				<tr class='spacer'></tr>
 				
 				<tr>
-					<td><div><label style='bottom:0px;'>Remember me</label><input style='width:auto;height:auto;bottom:0px;' id='remember_input' type='checkbox' name='rememberme' value='1'></div></td>
+					<td><div><label style='bottom:0px;'>Remember me</label><input style='width:auto;height:auto;bottom:0px;' id='remember_input' type='checkbox' name='r' value='1' /></div></td>
 				</tr>
 			</table>
 			<input id='loginbutton' class='bigbluebutton' type='submit' value='Login'>

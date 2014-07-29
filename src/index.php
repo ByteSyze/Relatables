@@ -32,7 +32,7 @@
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
 		
 		<div id='main'>
-			<article id='content' style='float:left;width:700px;'>
+			<div id='content' style='float:left;width:700px;'>
 				
 					<span style='vertical-align:bottom;'>NSFW</span><input type='checkbox' id='nsfw' style='vertical-align:bottom;'>
 					<span style='vertical-align:bottom;'>Sort by</span>
@@ -104,14 +104,14 @@
 						else
 							$user = getUsername($connection, $row['uid']);
 						
-						echo "\r\n<div class='dialogue uppadding' id='" . $row["id"] . "'>";
-						echo "\r\n<p class='dialogue'>" . $row["submission"] . "</p>";
+						echo "\r\n<div class='dialogue uppadding' id='{$row['id']}'>";
+						echo "\r\n<p class='dialogue'>{$row['submission']}</p>";
 						echo "\r\n<table class='vote-table'>";
 						echo "\r\n<tr>";
 						if($_SESSION["username"] != null)
 						{
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote(".$row['id'].", 0, na" . $row["id"] . ",  a" . $row["id"] . ", \"".$row['verification']."\")'>No, me too!</button></td>";
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote(".$row['id'].", 1, na" . $row["id"] . ",  a" . $row["id"] . ", \"".$row['verification']."\")'>You're alone.</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' onclick='vote({$row['id']}, 0, na{$row['id']},  a{$row['id']}, \"".$row['verification']."\")'>No, me too!</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' onclick='vote({$row['id']}, 1, na{$row['id']},  a{$row['id']}, \"".$row['verification']."\")'>You're alone.</button></td>";
 						}
 						else
 						{
@@ -119,13 +119,13 @@
 							echo "\r\n<td><button class='dialoguebutton' data-header='Please sign up to vote' onclick='showRegister(this)'>You're alone.</button></td>";				
 						}
 						echo "\r\n<tr>";
-						echo "\r\n<td><span class='vote-counter' id='na" . $row["id"] . "'>(" . number_format($row["notalone"]) . ")</span></td>";
-						echo "\r\n<td><span class='vote-counter' id='a" . $row["id"] . "'>(" . number_format($row["alone"]) . ")</span></td>";
+						echo "\r\n<td><span class='vote-counter' id='na{$row['id']}'>(" . number_format($row["notalone"]) . ")</span></td>";
+						echo "\r\n<td><span class='vote-counter' id='a{$row['id']}'>(" . number_format($row["alone"]) . ")</span></td>";
 						echo "\r\n</table>";
 						echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
 						
 						if($row['anonymous'])
-							echo ' >' . $user . "</a> - " . $row["fdate"] . "</span></div>";
+							echo ' >' . $user . "</a> - {$row['fdate']}</span></div>";
 						else
 						{
 							if(isAdmin($connection, $row['uid']))
@@ -135,7 +135,7 @@
 						echo "\r\n</div>";
 					}
 				?>	
-			</article>		
+			</div>		
 		</div>
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

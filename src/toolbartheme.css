@@ -56,6 +56,14 @@
 	background:white;
 	border:1px solid #BFBFBF;
 }
+#login_user_log
+{
+	color:#c82828;
+}
+#login_pass_log
+{
+	color:#c82828;
+}
 body
 {
 	margin:0px;
