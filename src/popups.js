@@ -93,12 +93,12 @@ function checkHideErrors(element, errorPopup)
 		errorPopup.style.display = 'none';
 }
 
-function updateMessageStatus(id, vid)
+function updateMessageStatus(id)
 {
 	$.ajax({
 	type: "POST",
 	url: "/readmessage.php",
-	data: { id: id, vid: vid }
+	data: { id: id, }
 	})
 		.done(function(data) {
 			if(data == '1')
@@ -111,12 +111,12 @@ function updateMessageStatus(id, vid)
 	document.getElementById('ntfmsg'+id).removeAttribute('onmouseover');
 }
 
-function deleteMessage(id, vid)
+function deleteMessage(id)
 {
 	$.ajax({
 	type: "POST",
 	url: "/deletemessage.php",
-	data: { id: id, vid: vid }
+	data: { id: id, }
 	})
 		.done(function(data) {
 			if(data == '1')

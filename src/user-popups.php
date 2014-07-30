@@ -32,9 +32,9 @@
 							echo '<td><div id=\'ntf'.$notification['id'].'\' class=\'unread\'></div></td>';
 						else
 							echo '<td><div class=\'read\'></div></td>';
-						echo '<td class=\'notification-subject\'>'.$notification['subject'].'<div class=\'notification-delete\' onclick=\'deleteMessage('.$notification['id'].',"'.$notification['vid'].'")\'></div></td>';
+						echo '<td class=\'notification-subject\'>'.$notification['subject'].'<div class=\'notification-delete\' onclick=\'deleteMessage('.$notification['id'].')\'></div></td>';
 						echo '</tr><tr data-nid=\''.$notification['id'].'\'>';
-						echo '<td colspan=\'2\' id=\'ntfmsg'.$notification['id'].'\' onmouseover=\'updateMessageStatus('.$notification['id'].',"'.$notification['vid'].'")\'>'.$notification['message'].'</td>';
+						echo '<td colspan=\'2\' id=\'ntfmsg'.$notification['id'].'\' onmouseover=\'updateMessageStatus('.$notification['id'].')\'>'.$notification['message'].'</td>';
 						echo '</tr>';
 						echo '<tr data-nid=\''.$notification['id'].'\'>';
 						echo '<td class=\'notification-date\'>'.$notification['fdate'].'</td>';
