@@ -93,6 +93,16 @@ function checkHideErrors(element, errorPopup)
 		errorPopup.style.display = 'none';
 }
 
+function showSendMessagePopup()
+{
+	document.getElementById('send-message-popup').style.display='block';
+}
+
+function hideSendMessagePopup()
+{
+	document.getElementById('send-message-popup').style.display='none';	
+}
+
 function updateMessageStatus(id)
 {
 	$.ajax({

@@ -36,7 +36,7 @@
 	
 		<div id='infobanner'>
 			<div id='infolayout'>
-				<button id='message-button'>Send Message</button>
+				<button id='message-button' onclick='showSendMessagePopup()'>Send Message</button>
 				<div id='info'>
 					<span id='username'><?php echo $data['username']; ?></span><br>
 					<span id='location' class='right-spacer'>
@@ -50,6 +50,15 @@
 					<p id='user-description'><?php echo htmlspecialchars($data['description']); ?></p>
 				</div>
 			</div>
+		</div>
+		
+		<div id='message-popup' style='display:hidden;'>
+			<form method='POST' action='http://www.relatablez.com/sendmessage.php'>
+				<input class='message'  name='s' id='message-subject' placeholder='Subject' />
+				<hr>
+				<textarea class='message'  name='c' id='message-contents' placeholder='Message'></textarea>
+				<submit value='Send' ></submit>
+			</form>
 		</div>
 		
 		<div id='moduleslayout'>
