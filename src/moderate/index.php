@@ -17,18 +17,40 @@
 		{
 			$end = $index+2;
 			
-			$submissions = mysqli_query($connection, "SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
+			$submissions = mysqli_query($connection, "SELECT submission, alone, notalone, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
 			$submission = mysqli_fetch_array($submissions); // The submission that was voted on.
 			
-			if($_POST['v'] === 'Yes')
+			$alone	  = $submission['alone'];
+			$notalone = $submission['notalone'];
+			
+			if($alone + $notalone >= 100)
 			{
-				mysqli_query($connection, 'UPDATE submissions SET notalone=notalone+1 WHERE id=' . $submission['id']);
-				incModerationIndex($connection, $_SESSION['id']);
+				//If there are atleast 1000 votes, decide the fate of the submission.
+				if($notalone/$alone >= 3)
+				{
+					//If the yes-to-no vote ratio is atleast 3:1,
+					//Send it to the front page.
+					mysqli_query($connection, 'UPDATE submissions SET pending=0, alone=0, notalone=0 WHERE id='.$submission['id']);
+				}
+				else
+				{
+					//If the vast majority didn't say yes, play it safe
+					//and discard it instead of posting it.
+					mysqli_query($connection, 'DELETE FROM submissions WHERE id='.$submission['id']);
+				}
 			}
-			else if($_POST['v'] === 'No')
+			else
 			{
-				mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
-				incModerationIndex($connection, $_SESSION['id']);
+				if($_POST['v'] === 'Yes')
+				{
+					mysqli_query($connection, 'UPDATE submissions SET notalone=notalone+1 WHERE id=' . $submission['id']);
+					incModerationIndex($connection, $_SESSION['id']);
+				}
+				else if($_POST['v'] === 'No')
+				{
+					mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
+					incModerationIndex($connection, $_SESSION['id']);
+				}
 			}
 		}
 	}
