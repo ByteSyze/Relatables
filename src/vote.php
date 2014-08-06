@@ -61,9 +61,21 @@
 				$statement->execute();
 				
 				if($voteTypeNum == 1)
+				{
+					$statement = $connection->prepare('UPDATE submissions SET notalone=notalone-1 WHERE id=(?)');
+					$statement->bind_param('i',$id);
+					$statement->execute();
+					
 					die('00');
+				}
 				else
+				{
+					$statement = $connection->prepare('UPDATE submissions SET alone=alone-1 WHERE id=(?)');
+					$statement->bind_param('i',$id);
+					$statement->execute();
+					
 					die('01');
+				}
 			}	
 		}
 		else
