@@ -66,6 +66,10 @@
 							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n"; 
 							echo "	<textarea name='s' class='dialogue' onclick='showSubmissionGuidelines()' placeholder=' Am I the only one who...'></textarea>\r\n";
 						}
+						else
+						{
+							echo "	<textarea name='s' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>\r\n";
+						}
 					?>
 						<div style='float:right'>
 							<select name='c'>
