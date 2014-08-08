@@ -40,16 +40,17 @@
 				if($_SESSION["username"] != null)
 				{
 					if($unreadNotifications)
-						echo "<button class='toolbar' onclick='toggleNotificationDropdown()'><img src='http://www.relatablez.com/notification_icon2.png'></button>";
+						echo "<button class='toolbar notifs'><img src='http://www.relatablez.com/notification_icon2.png'></button>";
 					else
-						echo "<button class='toolbar' onclick='toggleNotificationDropdown()'><img src='http://www.relatablez.com/notification_icon.png'></button>";
-					echo "<button class='toolbar' onclick='toggleProfileDropdown()'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
+						echo "<button class='toolbar notifs'><img src='http://www.relatablez.com/notification_icon.png'></button>";
+						
+					echo "<button class='toolbar profile'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
 					include($_SERVER['DOCUMENT_ROOT'].'/user-popups.php');
 				}
 				else
 				{
-					echo "<button class='toolbar margleft margright' onclick='showLogin()'>Log In</button>\r\n";
-					echo "<button class='toolbar margleft margright' data-header='Sign Up' onclick='showRegister(this)'>Sign Up</button>\r\n";	
+					echo "<button class='toolbar margleft margright showlogin'>Log In</button>\r\n";
+					echo "<button class='toolbar margleft margright showreg' data-header='Sign Up'>Sign Up</button>\r\n";	
 				}
 			?>
 		</div>
@@ -63,7 +64,7 @@ if($_SESSION['username'] == null)
 echo
 "
 <div class='popup' id='registerpopup'>
-	<button class='closebutton' onclick='hideRegister()'></button><br>
+	<button class='closebutton hidereg'></button><br>
 	<h1 id='registerheader' class='popup-header'>Sign Up</h1>			
 	<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a href='javascript:hideRegister();showLogin();'>Log In</a></h6>
 	<div style='text-align:center;margin:auto;width:100%;'>
@@ -108,7 +109,7 @@ echo
 </div>
 
 <div class='popup' id='loginpopup'>
-	<button class='closebutton' onclick='hideLogin()'></button><br>
+	<button class='closebutton hidelogin'></button><br>
 	<h1 id='loginheader' class='popup-header'>Log In</h1>
 	<div style='text-align:center'>
 		<form method='POST' action='javascript:login();'>	

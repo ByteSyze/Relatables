@@ -64,7 +64,7 @@
 						if($_SESSION['username'] !== null)
 						{
 							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n"; 
-							echo "	<textarea name='s' class='dialogue' onclick='showSubmissionGuidelines()' placeholder=' Am I the only one who...'></textarea>\r\n";
+							echo "	<textarea name='s' class='dialogue showguides' placeholder=' Am I the only one who...'></textarea>\r\n";
 						}
 						else
 						{
@@ -114,13 +114,13 @@
 						echo "\r\n<tr>";
 						if($_SESSION["username"] != null)
 						{
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote({$row['id']}, 0, na{$row['id']},  a{$row['id']}, \"".$row['verification']."\")'>No, me too!</button></td>";
-							echo "\r\n<td><button class='dialoguebutton' onclick='vote({$row['id']}, 1, na{$row['id']},  a{$row['id']}, \"".$row['verification']."\")'>You're alone.</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' id='bna{$row['id']}' data-vid='{$row['id']}' data-v='{$row['verification']}'>No, me too!</button></td>";
+							echo "\r\n<td><button class='dialoguebutton' id='ba{$row['id']}'  data-vid='{$row['id']}' data-v='{$row['verification']}'>You're alone.</button></td>";
 						}
 						else
 						{
-							echo "\r\n<td><button class='dialoguebutton' data-header='Please sign up to vote' onclick='showRegister(this)'>No, me too!</button></td>";
-							echo "\r\n<td><button class='dialoguebutton' data-header='Please sign up to vote' onclick='showRegister(this)'>You're alone.</button></td>";				
+							echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
+							echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone.</button></td>";				
 						}
 						echo "\r\n<tr>";
 						echo "\r\n<td><span class='vote-counter' id='na{$row['id']}'>(" . number_format($row["notalone"]) . ")</span></td>";
@@ -143,9 +143,10 @@
 		</div>
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://www.relatablez.com/vote.js'></script>
+		<script src='http://www.relatablez.com/index.js'></script>
 		<script src='http://www.relatablez.com/verify.js'></script>
 		<script src='http://www.relatablez.com/popups.js'></script>
+		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 		<script type="text/javascript">
 			function showSubmissionGuidelines()

@@ -1,6 +1,13 @@
 /*Copyright (C) Tyler Hackett 2014*/
-function vote(id, vote, notAloneEl, aloneEl, v)
+
+$("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
+$("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
+
+function vote(id, vote, v)
 {
+	var notAloneEl  = document.getElementById('na'+id);
+	var aloneEl 	= document.getElementById('a'+id);
+	
 	// Take out all formatting
 	var notAlone = notAloneEl.innerHTML.replace("(","").replace(")","").replace(",",""); 
 	var alone = aloneEl.innerHTML.replace("(","").replace(")","").replace(",","");
@@ -18,8 +25,8 @@ function vote(id, vote, notAloneEl, aloneEl, v)
 			alone++;
 			notAlone--;
 			
-			notAloneEl.disabled='false';
-			aloneEl.disabled='disabled';
+			document.getElementById('bna'+id).disabled = false;
+			document.getElementById('ba'+id).disabled = true;
 			
 			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -29,8 +36,8 @@ function vote(id, vote, notAloneEl, aloneEl, v)
 			notAlone++;
 			alone--;
 			
-			notAloneEl.disabled='disabled';
-			aloneEl.disabled='false';
+			document.getElementById('bna'+id).disabled = true;
+			document.getElementById('ba'+id).disabled = false;
 			
 			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -38,13 +45,13 @@ function vote(id, vote, notAloneEl, aloneEl, v)
 		else if(data == '10')
 		{
 			alone++;
-			aloneEl.disabled='disabled';
+			document.getElementById('ba'+id).disabled = true;
 			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 		else if(data == '11')
 		{
 			notAlone++;
-			notAloneEl.disabled='disabled';
+			document.getElementById('bna'+id).disabled = true;
 			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 	});
