@@ -2,6 +2,7 @@
 
 $("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
 $("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
+$(".showguides").click(function(){ showSubmissionGuidelines(); });
 
 function vote(id, vote, v)
 {
@@ -55,4 +56,9 @@ function vote(id, vote, v)
 			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 	});
+}
+
+function showSubmissionGuidelines()
+{
+	$('#submission-wrapper').animate({height: "280px"}, 1000);
 }

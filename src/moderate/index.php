@@ -106,5 +106,9 @@
 				<i id='nsfw-notice'>Only check NSFW if the post follows the rules and guidelines but may not be suitable for younger users.</i>
 			</div>
 		</div>
+		
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src='http://www.relatablez.com/toolbar.js'></script>
+		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 	</body>
 </html>

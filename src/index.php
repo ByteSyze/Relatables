@@ -144,15 +144,7 @@
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/index.js'></script>
-		<script src='http://www.relatablez.com/verify.js'></script>
-		<script src='http://www.relatablez.com/popups.js'></script>
 		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
-		<script type="text/javascript">
-			function showSubmissionGuidelines()
-			{
-				$('#submission-wrapper').animate({height: "280px"}, 1000);
-			}
-		</script>
 	</body>
 </html>

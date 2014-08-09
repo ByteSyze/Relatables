@@ -52,15 +52,6 @@
 			</div>
 		</div>
 		
-		<div id='message-popup' style='display:hidden;'>
-			<form method='POST' action='http://www.relatablez.com/sendmessage.php'>
-				<input class='message'  name='s' id='message-subject' placeholder='Subject' />
-				<hr>
-				<textarea class='message'  name='c' id='message-contents' placeholder='Message'></textarea>
-				<submit value='Send' ></submit>
-			</form>
-		</div>
-		
 		<div id='moduleslayout'>
 			<div id='relatedmodule'>
 				<h3>Related With</h3>
@@ -76,8 +67,7 @@
 		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src='http://www.relatablez.com/popups.js'></script>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>		
 	</body>
 </html>
