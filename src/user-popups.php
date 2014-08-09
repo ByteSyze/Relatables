@@ -1,9 +1,6 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	session_start();
-	
-	if($_SESSION['username'] == null)
-		return;
 		
 	$notification_count = mysqli_num_rows($notifications);
 	$i = 0;

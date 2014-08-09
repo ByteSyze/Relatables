@@ -11,7 +11,9 @@
 			login($_COOKIE["rrmi"],$_COOKIE["rrmp"]);
 		}
 	}
-	else
+	
+	//Recheck, to give cookielogin.php a chance.
+	if($_SESSION['username'] != null)
 	{
 		$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 		
