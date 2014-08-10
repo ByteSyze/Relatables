@@ -55,6 +55,18 @@
 		<div id='moduleslayout'>
 			<div id='relatedmodule'>
 				<h3>Related With</h3>
+				<?php
+					if(!$data['hiderelated'])
+					{
+						$related_posts = getRelated($connection, $data['id']);
+						
+						while($related = mysqli_fetch_array($related_posts))
+						{
+							echo $related['submission'];
+							echo "\r\n";
+						}
+					}
+				?>
 			</div>		
 			<div id='statsmodule'>
 				<h3>Stats</h3>

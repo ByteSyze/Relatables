@@ -55,6 +55,23 @@
 		}
 	}
 	
+	function getRelated($connection, $id)
+	{
+		if($statement = $connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y') AS fdate, alone, notalone, submission, anonymous FROM submissions WHERE submissions.pending=0 AND submissions.id IN (SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0)"))
+		{
+			$statement->bind_param('i',$id);
+			$statement->execute();
+			
+			$related = array();
+			
+			$statement->store_result();
+			$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
+			$result = $statement->fetch();
+			
+			return $result;
+		}
+	}
+	
 	function deleteAccount($connection, $id)
 	{
 		if($statement = $connection->prepare('DELETE FROM accounts WHERE id=(?)'))
