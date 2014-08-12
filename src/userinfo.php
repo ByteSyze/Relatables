@@ -18,16 +18,12 @@
 			
 			$data = array('username'=>false);
 			
-			$statement->store_result();
 			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$data['hiderelated'],$data['hidelocation'],$data['admin'],$cid);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
 			$data['country'] = getCountry($connection, $cid);
 			
-			if(!empty($result))
-				return $data;
-			else
-				return false;
+			return $data;
 		}	
 	}
 	
@@ -41,17 +37,13 @@
 			
 			$data = array();
 			
-			$statement->store_result();
 			$statement->bind_result($data['hidelocation'],$data['description'],$data['email'],$cid);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
 			$data['country_id'] = $cid;
 			$data['country'] = getCountry($connection, $cid);
 			
-			if(!empty($result))
-				return $data;
-			else
-				return false;
+			return $data;
 		}
 	}
 	
@@ -64,11 +56,13 @@
 			
 			$related = array();
 			
-			$statement->store_result();
 			$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
-			$result = $statement->fetch();
+			$success = $statement->fetch();
 			
-			return $result;
+			if(!$success)
+				die('Failed to get related');
+			
+			return $related;
 		}
 	}
 	
@@ -92,11 +86,10 @@
 			
 			$statement->execute();
 			
-			$statement->store_result();
 			$statement->bind_result($country);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
-			if(!empty($result))
+			if($country)
 				return $country;
 			else
 				return false;
@@ -114,14 +107,10 @@
 			
 			$data = array('hash'=>'n/a','salt'=>'n/a');
 			
-			$statement->store_result();
 			$statement->bind_result($data['hash'],$data['salt']);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
-			if(!empty($result))
-				return $data;
-			else
-				return false;
+			return $data;
 		}	
 	}
 	
@@ -133,14 +122,10 @@
 			
 			$statement->execute();
 			
-			$statement->store_result();
 			$statement->bind_result($pendingEmail);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
-			if(!empty($result))
-				return $pendingEmail;
-			else
-				return false;
+			return $pendingEmail;
 		}	
 	}
 	
@@ -152,14 +137,10 @@
 			
 			$statement->execute();
 			
-			$statement->store_result();
 			$statement->bind_result($id);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
-			if(!empty($result))
-				return $id;
-			else
-				return false;
+			return $id;
 		}	
 	}
 	
@@ -171,14 +152,10 @@
 			
 			$statement->execute();
 			
-			$statement->store_result();
 			$statement->bind_result($username);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
-			if(!empty($result))
-				return $username;
-			else
-				return false;
+			return $username;
 		}	
 	}
 	
@@ -190,14 +167,10 @@
 			
 			$statement->execute();
 			
-			$statement->store_result();
 			$statement->bind_result($index);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
-			if(!empty($result))
-				return $index;
-			else
-				return false;
+			return $index;
 		}	
 	}
 	
@@ -262,9 +235,8 @@
 			
 			$statement->execute();
 			
-			$statement->store_result();
 			$statement->bind_result($admin);
-			$result = $statement->fetch();
+			$statement->fetch();
 			
 			return($admin === 1);
 		}	

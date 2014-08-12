@@ -62,7 +62,7 @@
 						
 						while($related = mysqli_fetch_array($related_posts))
 						{
-							echo $related['submission'];
+							echo $related[0];
 							echo "\r\n";
 						}
 					}
