@@ -18,6 +18,7 @@
 			
 			$data = array('username'=>false);
 			
+			$statement->store_result();
 			$statement->bind_result($data['username'],$data['id'],$data['joined'],$data['last_login'],$data['description'],$data['posts'],$data['comments'],$data['moderated'],$data['hiderelated'],$data['hidelocation'],$data['admin'],$cid);
 			$statement->fetch();
 			
@@ -37,6 +38,7 @@
 			
 			$data = array();
 			
+			$statement->store_result();
 			$statement->bind_result($data['hidelocation'],$data['description'],$data['email'],$cid);
 			$statement->fetch();
 			
@@ -54,15 +56,16 @@
 			$statement->bind_param('i',$id);
 			$statement->execute();
 			
-			$related = array();
+			//$related = array();
 			
-			$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
+			//$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
+			$statement->store_result();
 			$success = $statement->fetch();
 			
-			if(!$success)
-				die('Failed to get related');
-			
-			return $related;
+			//if(!$success)
+			//	die('Failed to get related');
+			die(mysqli_error($connection));
+			return $success;
 		}
 	}
 	
@@ -86,6 +89,7 @@
 			
 			$statement->execute();
 			
+			$statement->store_result();
 			$statement->bind_result($country);
 			$statement->fetch();
 			
@@ -93,7 +97,7 @@
 				return $country;
 			else
 				return false;
-		}	
+		}
 	}	
 	
 	

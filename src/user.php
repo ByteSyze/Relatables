@@ -39,9 +39,7 @@
 				<button id='message-button' onclick='showSendMessagePopup()'>Send Message</button>
 				<div id='info'>
 					<span id='username'><?php echo $data['username']; ?></span><br>
-					<span id='location' class='right-spacer'>
-						<?php if($data['hidelocation'] == 0){ echo $data['country']; } ?>
-					</span>
+					<?php if($data['hidelocation'] == 0){ echo "<span id='location' class='right-spacer'>".$data['country']."</span>"; } ?>
 					<span id='date' class='right-spacer'>
 						<?php echo $data['joined']; ?>
 					</span>
