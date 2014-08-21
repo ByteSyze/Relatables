@@ -10,9 +10,7 @@
 		$slashpos = strpos($user,'/');
 		
 		if($slashpos != false)
-		{
 			$user = substr($user,0,$slashpos);
-		}
 		
 		require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
 		

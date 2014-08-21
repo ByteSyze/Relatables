@@ -56,16 +56,11 @@
 			$statement->bind_param('i',$id);
 			$statement->execute();
 			
-			//$related = array();
-			
-			//$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
 			$statement->store_result();
-			$success = $statement->fetch();
-			
-			//if(!$success)
-			//	die('Failed to get related');
-			die(mysqli_error($connection));
-			return $success;
+			$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
+			//$result = $statement->get_result();
+			//die($related['submission']);
+			return $statement->fetch();
 		}
 	}
 	
