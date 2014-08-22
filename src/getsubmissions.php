@@ -21,7 +21,7 @@
 	//Convert a numerical code to MYSQL syntax for selecting a submission category.
 	function cat2mysql($cat)
 	{
-		if($cat >= 0 && $cat <= 100)
+		if($cat >= 1 && $cat <= 100)
 			return 'AND category = '.$cat;
 		else
 			return '';
@@ -39,15 +39,17 @@
 	$start		= $_GET['s'] ? $_GET['s'] : 0;
 	$count 		= $_GET['x'] ? $_GET['x'] : 20;
 	
+	$count+=$start;
+	
 	$order 		= order2mysql($_GET['o']);
 	$category 	= cat2mysql($_GET['c']);
-	$nsfw		= nsfw2mysql$_GET['n']);
+	$nsfw		= nsfw2mysql($_GET['n']);
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
-	if($statement = $connection->prepare("SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 $nsfw $category $order DESC LIMIT (?), (?)"))
+	if($statement = $connection->prepare("SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
 	{
-		$statement->bind_param('iii', $nsfw, $start, $start+$count);
+		$statement->bind_param('ii', $start, $count);
 		$statement->execute();
 
 		$row = array();
@@ -59,3 +61,5 @@
 			//TODO create the submission elements retrieved.
 		}
 	}
+	else
+		die($connection->error);
