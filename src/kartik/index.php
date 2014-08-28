@@ -1,9 +1,8 @@
 <?php  
 	session_start();
 	
-	include $_SERVER["DOCUMENT_ROOT"].'/userinfo.php';
-	
-	$connection = getConnection();
+	$_SESSION['username'] = 'kartik';
+	$_SESSION['id'] = 1;
 	
 ?>
 <!DOCTYPE html>
@@ -15,13 +14,11 @@
 		<meta charset='UTF-8'>
 		<meta name='keywords' content='Am I The Only One, Relatablez, Am I The Only One That'>
 		<meta name='description' content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
-		<link rel='shortcut icon' href='http://www.relatablez.com/favicon.ico'>
-		<link rel='stylesheet' type='text/css' href='http://www.relatablez.com/indextheme.css'>
-		<link rel='stylesheet' type='text/css' href='http://www.relatablez.com/toolbartheme.css'>
-		<link rel='canonical' href='http://www.relatablez.com/'>
+		<link rel='stylesheet' type='text/css' href='http://www.relatablez.com/kartik/indextheme.css'>
+		<link rel='stylesheet' type='text/css' href='http://www.relatablez.com/kartik/toolbartheme.css'>
 	</head>
 	<body>		
-		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
+		<?php require('toolbar.php'); ?>
 		
 		<div id='main'>
 			<div id='content' style='float:left;width:700px;'>
@@ -54,7 +51,7 @@
 					<?php 
 						if($_SESSION['username'] !== null)
 						{
-							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n"; 
+							echo "<form action='http://www.relatablez.com/kartik/submit.php' method='POST' >\r\n"; 
 							echo "	<textarea name='s' class='dialogue showguides' placeholder=' Am I the only one who...'></textarea>\r\n";
 						}
 						else
@@ -96,7 +93,7 @@
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/kartik/index.js'></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
+		<script src='http://www.relatablez.com/kartik/toolbar.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 	</body>
 </html>
