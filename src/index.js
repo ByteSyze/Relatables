@@ -60,5 +60,55 @@ function vote(id, vote, v)
 
 function showSubmissionGuidelines()
 {
-	$('#submission-wrapper').animate({height: "280px"}, 1000);
+	$('#submission-wrapper').animate({height: "260px"}, 1000);
+}
+
+$( "body" ).on( "click", "#submit_form", function() {
+
+	submission = $("#submission").val();
+	$( "#submission-wrapper" ).append("");
+	category = $("#submit_category").val();
+	$a = $('#anonymous');
+	chk = $a[0].checked;
+	if(chk === true){
+		anonymous = 1;
+	}
+	else{
+		anonymous = 0;
+	}
+	objData = {s: submission, c: category, a: anonymous };
+	objData = validate_data(objData);
+	if(objData){
+		$.post( "http://www.relatablez.com/submit.php",objData,function( res ) {
+			console.log(res);
+			return;
+			if(res == '0')
+		 		$( "#submission-wrapper" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-wrapper" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");});
+			else if(res ==	'1')
+				$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
+			else if(res == '2')
+				$("submit_category").css("box-shadow", "0px 0px 5px #DD0000");
+		});
+	}
+    return false;
+});
+
+function validate_data(objData){
+	s = objData.s;
+	c = objData.c;
+	if(!s.trim()) {
+		$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
+		return false;
+	}
+	else
+		$("#submission").css("box-shadow", "");
+		
+	if(!c.trim()) {
+		$("#submit_category").css("box-shadow", "0px 0px 5px #DD0000");
+		return false;
+	}
+	else
+		$("#submit_category").css("box-shadow", "");
+		
+	return objData;
 }

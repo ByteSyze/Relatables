@@ -9,6 +9,28 @@
 	margin:auto;
 	background-color:#F7F7F7;
 }
+#qotw
+{
+	height:160px;
+	width:340px;
+	background:white;
+	border-radius:5px;
+	border:1px solid #BFBFBF;
+}
+#qotw-header
+{
+	margin:0px;
+	padding:5px;
+	background:#0067B1;
+	text-align:left;
+	color:white;
+	border-top-left-radius:3px;
+	border-top-right-radius:3px;
+}
+#success_msg
+{
+	font-weight:bold;
+}
 b.warning
 {
 	position:relative;
@@ -44,7 +66,7 @@ div.submission
 div.dialogue
 {
 	margin:0px;
-	padding:10px 10px 0px;
+	padding:10px;
 	font: 15px arial;
 	background-color:white;
 	color:#bfbfbf;
@@ -203,4 +225,9 @@ a
 {
 	color:gray;
 	text-decoration:none;
+}
+#success_msg
+{	
+	text-align:center;
+    color:#000;
 }
