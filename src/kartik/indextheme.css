@@ -9,27 +9,6 @@
 	margin:auto;
 	background-color:#F7F7F7;
 }
-#qotw
-{
-	width:340px;
-	background:white;
-	border-radius:5px;
-	border:1px solid #BFBFBF;
-}
-#qotw-header
-{
-	margin:0px;
-	padding:5px;
-	background:#0067B1;
-	text-align:left;
-	color:white;
-	border-top-left-radius:3px;
-	border-top-right-radius:3px;
-}
-#qotw-submit
-{
-	float:right;
-}
 #success_msg
 {
 	font-weight:bold;

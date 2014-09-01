@@ -1,0 +1,110 @@
+/*Copyright (C) Tyler Hackett 2014*/
+
+$("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
+$("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
+$(".showguides").click(function(){ showSubmissionGuidelines(); });
+
+function vote(id, vote, v)
+{
+	var notAloneEl  = document.getElementById('na'+id);
+	var aloneEl 	= document.getElementById('a'+id);
+	
+	// Take out all formatting
+	var notAlone = notAloneEl.innerHTML.replace("(","").replace(")","").replace(",",""); 
+	var alone = aloneEl.innerHTML.replace("(","").replace(")","").replace(",","");
+	
+	$.ajax({
+		type: "POST",
+		url: "/vote.php",
+		data: { q: id, vtn: vote, v : v}
+	})
+	.done(function(data) {
+		console.log(data);
+		
+		if(data == '00')
+		{
+			alone++;
+			notAlone--;
+			
+			document.getElementById('bna'+id).disabled = false;
+			document.getElementById('ba'+id).disabled = true;
+			
+			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+		else if(data == '01')
+		{	
+			notAlone++;
+			alone--;
+			
+			document.getElementById('bna'+id).disabled = true;
+			document.getElementById('ba'+id).disabled = false;
+			
+			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+		else if(data == '10')
+		{
+			alone++;
+			document.getElementById('ba'+id).disabled = true;
+			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+		else if(data == '11')
+		{
+			notAlone++;
+			document.getElementById('bna'+id).disabled = true;
+			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+	});
+}
+
+function showSubmissionGuidelines()
+{
+	$('#submission-wrapper').animate({height: "260px"}, 1000);
+}
+
+$( "body" ).on( "click", "#submit_form", function() {
+
+	submission = $("#submission").val();
+	$( "#submission-wrapper" ).append("");
+	category = $("#category1").val();
+	$a = $('#anonymous');
+	chk = $a[0].checked;
+	if(chk === true){
+		anonymous = 1;
+	}
+	else{
+		anonymous = 0;
+	}
+	objData = {s: submission, c: category, a: anonymous };
+	objData = validate_data(objData);
+	if(objData){
+		$.post( "http://www.relatablez.com/kartik/submit.php",objData,function( res ) {
+			res = 0;
+			if(res == '0'){
+		 		$( "#submission-wrapper" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-wrapper" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");})
+		 	}
+		});
+	}
+    return false;
+});
+
+function validate_data(objData){
+	s = objData.s;
+	c = objData.c;
+	if(!s.trim()) {
+		$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
+		return false;
+	}
+	else
+		$("#submission").css("box-shadow", "");
+		
+	if(!c.trim()) {
+		$("#category1").css("box-shadow", "0px 0px 5px #DD0000");
+		return false;
+	}
+	else
+		$("#category1").css("box-shadow", "");
+		
+	return objData;
+}

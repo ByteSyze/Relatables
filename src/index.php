@@ -143,6 +143,14 @@
 			<div style='float:right;'>
 				<div id='qotw'>
 					<h4 id='qotw-header'>QOTW</h4>
+					<div style='padding:10px;'>
+						<span>Select a test option.</span>
+						<form action='http://www.relatablez.com/qotw.php' method='POST'>
+							<input type='radio' name='v' value='0' />Option A.<br>
+							<input type='radio' name='v' value='1' />Option B.
+							<input type='submit' value='vote' id='qotw-submit' />
+						</form>
+					</div>
 				</div>
 			</div>	
 		</div>

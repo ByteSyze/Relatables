@@ -6,6 +6,7 @@
 	
 ?>
 <!DOCTYPE html>
+
 <!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
@@ -48,30 +49,31 @@
 						<option>50 a page</option>
 					</select>
 				<div id='submission-wrapper' class='dialogue submission' style='margin-top:13px;height:71px;'>
+				
 					<?php 
 						if($_SESSION['username'] !== null)
 						{
 							echo "<form action='http://www.relatablez.com/kartik/submit.php' method='POST' >\r\n"; 
-							echo "	<textarea name='s' class='dialogue showguides' placeholder=' Am I the only one who...'></textarea>\r\n";
+							echo "<textarea name='s' id='submission' class='dialogue showguides' placeholder=' Am I the only one who...'></textarea>\r\n";
 						}
 						else
 						{
-							echo "	<textarea name='s' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>\r\n";
+							echo "	<textarea name='s' id='submission' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>\r\n";
 						}
 					?>
 						<div style='float:right'>
-							<select name='c'>
+							<select name='c' id='category1'>
 								<option value=''>Select a Category</option>
 								<option value='1'>Category 1</option>
 								<option value='2'>Category 2</option>
 							</select>
-							<span> Anonymous</span><input type='checkbox' name='a' value='true' />
+							<span> Anonymous</span><input type='checkbox' name='a' value='true' id='anonymous'/>
 							<span id='post-counter'> 300 </span>
 							<?php
 								if($_SESSION['username'] !== null)
-									echo "<button class='submit-button' type='submit' ><b>Submit</b></button>";
+									echo "<button id='submit_form' class='submit-button' type='submit' ><b>Submit</b></button>";
 								else
-									echo "\r\n<button class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
+									echo "\r\n<button id='submit_form' class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
 							?>
 						</div>
 						<br>
@@ -89,6 +91,19 @@
 					<b class='warning'><i>Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</i></b>
 				</div>
 			</div>		
+			<div style='float:right;'>
+				<div id='qotw'>
+					<h4 id='qotw-header'>QOTW</h4>
+					<div style='padding:10px;'>
+						<span>Select a test option.</span>
+						<form action='http://www.relatablez.com/kartik/qotw.php' method='POST'>
+							<input type='radio' name='v' value='0' />Option A.<br>
+							<input type='radio' name='v' value='1' />Option B.
+							<input type='submit' value='vote' id='qotw-submit' />
+						</form>
+					</div>
+				</div>
+			</div>	
 		</div>
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
