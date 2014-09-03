@@ -97,9 +97,11 @@
 					<div style='padding:10px;'>
 						<span>Select a test option.</span>
 						<form action='http://www.relatablez.com/kartik/qotw.php' method='POST'>
-							<input type='radio' name='v' value='0' />Option A.<br>
-							<input type='radio' name='v' value='1' />Option B.
-							<input type='submit' value='vote' id='qotw-submit' />
+							<div id='qotw-wrapper'>
+								<input type='radio' name='v' value='0' />Yes<br>
+								<input type='radio' name='v' value='1' />No
+								<input type='submit' value='vote' id='qotw-submit' />
+							</div>
 						</form>
 					</div>
 				</div>

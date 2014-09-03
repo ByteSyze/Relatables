@@ -4,6 +4,11 @@ $("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).att
 $("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
 $(".showguides").click(function(){ showSubmissionGuidelines(); });
 
+/**
+ * Base url of site
+ */
+baseURL = 'http://www.relatablez.com/kartik/';
+
 function vote(id, vote, v)
 {
 	var notAloneEl  = document.getElementById('na'+id);
@@ -62,7 +67,9 @@ function showSubmissionGuidelines()
 {
 	$('#submission-wrapper').animate({height: "260px"}, 1000);
 }
-
+/**
+ * User post form submition 	
+ */
 $( "body" ).on( "click", "#submit_form", function() {
 
 	submission = $("#submission").val();
@@ -79,7 +86,7 @@ $( "body" ).on( "click", "#submit_form", function() {
 	objData = {s: submission, c: category, a: anonymous };
 	objData = validate_data(objData);
 	if(objData){
-		$.post( "http://www.relatablez.com/kartik/submit.php",objData,function( res ) {
+		$.post( baseURL + "submit.php", objData, function( res ) {
 			res = 0;
 			if(res == '0'){
 		 		$( "#submission-wrapper" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-wrapper" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");})
@@ -88,7 +95,9 @@ $( "body" ).on( "click", "#submit_form", function() {
 	}
     return false;
 });
-
+/**
+ * Validate user data  	
+ */
 function validate_data(objData){
 	s = objData.s;
 	c = objData.c;
@@ -108,3 +117,22 @@ function validate_data(objData){
 		
 	return objData;
 }
+
+/**
+ * Submit voting form 	
+ */
+
+ $( "body" ).on( "click", "#qotw-submit", function() {
+ 		var val = $('input:radio[name=v]:checked').val();
+ 		console.log(val);
+ 		if( $('input:radio[name=v]').is(":checked") ){
+ 			vote = { v : val };
+ 			$.post( baseURL + "qotw.php", vote, function( res ) {
+			 	$( "#qotw-wrapper" ).empty().append(res+'<h3 class="vote-msg">Thanks for voting!</h3>');
+			});
+ 		}
+ 		else{
+ 			alert("Please select voting option.");
+ 		}
+ 		return false;
+ });

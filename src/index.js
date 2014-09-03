@@ -112,3 +112,15 @@ function validate_data(objData){
 		
 	return objData;
 }
+
+ $( "body" ).on( "click", "#qotw-submit", function() {
+ 		var val = $('input:radio[name=v]:checked').val();
+		
+ 		if( $('input:radio[name=v]').is(":checked") ){
+ 			vote = { v : val };
+ 			$.post( "http://www.relatablez.com/qotw.php", vote, function( res ) {
+			 	$( "#qotw-wrapper" ).empty().append(res+'<h3 id="vote-msg">Thanks for voting!</h3>');
+			});
+ 		}
+ 		return false;
+ });

@@ -33,6 +33,11 @@
 #success_msg
 {
 	font-weight:bold;
+	text-align:center;
+}
+#vote-msg{
+    color: #2754a6;
+    text-align: center;
 }
 b.warning
 {
@@ -228,9 +233,4 @@ a
 {
 	color:gray;
 	text-decoration:none;
-}
-#success_msg
-{	
-	text-align:center;
-    color:#000;
 }
