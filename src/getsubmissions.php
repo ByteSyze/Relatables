@@ -7,13 +7,13 @@
 	{
 		switch($order)
 		{
-			case 0:
+			case '0':
 				return 'ORDER BY submissions.date ASC';
-			case 1:
+			case '1':
 				return 'ORDER BY submissions.date DESC';
-			case 2:
+			case '2':
 				return 'ORDER BY submissions.notalone DESC';
-			case 2:
+			case '3':
 				return 'ORDER BY submissions.alone DESC';
 			default:
 				return 'ORDER BY submissions.date DESC';
