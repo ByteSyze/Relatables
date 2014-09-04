@@ -1,7 +1,8 @@
 <?php  
 	session_start();
 	
-	include 'userinfo.php';
+	include('userinfo.php');
+	
 	require_once 'Mobile_Detect.php';
 	$detect = new Mobile_Detect;
 	 
@@ -109,7 +110,7 @@
 							$user = getUsername($connection, $row['uid']);
 						
 						echo "\r\n<div class='dialogue uppadding' id='{$row['id']}'>";
-						echo "\r\n<p class='dialogue'>{$row['submission']}</p>";
+						echo "\r\n<p data-submission-id='{$row['id']}' data-category='{$row['category']}' data-nsfw='{$row['nsfw']}' data-date='{$row['fdate']}' class='dialogue'>{$row['submission']}</p>";
 						echo "\r\n<table class='vote-table'>";
 						echo "\r\n<tr>";
 						if($_SESSION["username"] != null)
