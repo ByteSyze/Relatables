@@ -3,6 +3,7 @@
 $("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
 $("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
 $(".showguides").click(function(){ showSubmissionGuidelines(); });
+$("#submission").on('change keypress paste', function(event){ document.getElementById("post-counter").innerHTML = checkLimit(event, this, 300, true); });
 
 function vote(id, vote, v)
 {
@@ -113,14 +114,15 @@ function validate_data(objData){
 	return objData;
 }
 
- $( "body" ).on( "click", "#qotw-submit", function() {
- 		var val = $('input:radio[name=v]:checked').val();
-		
- 		if( $('input:radio[name=v]').is(":checked") ){
- 			vote = { v : val };
- 			$.post( "http://www.relatablez.com/qotw.php", vote, function( res ) {
-			 	$( "#qotw-wrapper" ).empty().append(res+'<h3 id="vote-msg">Thanks for voting!</h3>');
-			});
- 		}
- 		return false;
- });
+$( "body" ).on( "click", "#qotw-submit", function() {
+	var val = $('input:radio[name=v]:checked').val();
+	
+	if( $('input:radio[name=v]').is(":checked") ){
+		vote = { v : val };
+		$.post( "http://www.relatablez.com/qotw.php", vote, function( res ) {
+			$( "#qotw-wrapper" ).empty().append(res+'<h3 id="vote-msg">Thanks for voting!</h3>');
+		});
+	}
+	return false;
+});
+ 

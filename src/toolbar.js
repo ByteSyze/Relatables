@@ -325,13 +325,20 @@ function checkLimit(event, element, limit, substr)
 {
 	var remaining = limit - element.value.length;
 	
-	if(remaining < 0)
+	if(event.which < 0x20)
+		return remaining;
+	
+	if(remaining < 1)
 	{
 		if(substr) //Use substring method for refusing further input
 			element.value = element.value.substring(0,limit);
 		else
 			event.preventDefault();
+		
+		remaining = 0;
 	}
+	
+	return remaining;
 }
 
 function hideAll()
