@@ -81,8 +81,6 @@ $( "body" ).on( "click", "#submit_form", function() {
 	objData = validate_data(objData);
 	if(objData){
 		$.post( "http://www.relatablez.com/submit.php",objData,function( res ) {
-			console.log(res);
-			return;
 			if(res == '0')
 		 		$( "#submission-wrapper" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-wrapper" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");});
 			else if(res ==	'1')

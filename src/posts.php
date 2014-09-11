@@ -79,10 +79,9 @@
 				<span>Comments (<span id='comment-count'>0</span>)</span>
 				<div id='comments'>
 					<div id='comment-submit-wrapper'>
-						<form>
-						<textarea id='comment-submit-text'>
-						</textarea>
-						<input type='submit' value='Post' />
+						<form action='http://www.relatablez.com/comment.php' method='POST'>
+							<textarea id='comment-submit-text' name='c'></textarea>
+							<input id='comment-submit-button' type='submit' value='Post' />
 						</form>
 					</div>
 				</div>
@@ -91,6 +90,23 @@
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script src='http://www.relatablez.com/vote.js'></script>
-		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>	
+		<script type='text/css'>
+			$('#comment-submit-button').click(function()
+			{
+				comment = $('#comment-submit-text').val();
+				
+				if(comment.length <= 140)
+				{
+					$.post('http://www.relatablez.com/comment.php', {c: comment}, function(result)
+					{
+						
+					});
+				}
+				else
+				{
+					//TODO red border around comment box.
+				}
+			});
+		</script>
 	</body>
 </html>
