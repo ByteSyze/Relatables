@@ -14,7 +14,21 @@
 	margin:auto;
 	background-color:#F7F7F7;
 }
-a.admin
+#comments
+{
+	background-color:white;
+	border:1px solid #BFBFBF;
+	border-radius:5px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:10px;
+}
+#comment-submit-text
+{
+	width:100%;
+	resize:none;
+	box-sizing:border-box;
+}
 {
 	color:red;
 	font-style:italic;

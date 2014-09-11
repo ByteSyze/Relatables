@@ -25,8 +25,8 @@
 		<meta name='keywords' content='Am I The Only One, Relatablez, Am I The Only One That'>
 		<meta name='description' content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
 		<link rel='shortcut icon' href='http://www.relatablez.com/favicon.ico'>
-		<link rel='stylesheet' type='text/css' href='indextheme.css'>
 		<link rel='stylesheet' type='text/css' href='toolbartheme.css'>
+		<link rel='stylesheet' type='text/css' href='indextheme.css'>
 		<link rel='canonical' href='http://www.relatablez.com/'>
 	</head>
 	<body>		
@@ -69,7 +69,7 @@
 						}
 						else
 						{
-							echo "	<textarea name='s' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>\r\n";
+							echo "	<textarea name='s' id='submission' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>\r\n";
 						}
 					?>
 						<div style='float:right'>

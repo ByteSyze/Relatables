@@ -31,8 +31,8 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/post.css">
 		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/post.css">
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -72,27 +72,22 @@
 					{
 						if(isAdmin($connection, $uid))
 							echo 'class=\'admin\'';
-						echo " href='http://www.relatablez.com/user/" . $user . "'>" . $user . "</a> - " . $fdate . "</span></div>";
+						echo " href='http://www.relatablez.com/user/" . $user . "'>" . $user . "</a>  " . $fdate . "</span></div>";
 					}
 					echo "\r\n</div>";
 				?>
+				<span>Comments (<span id='comment-count'>0</span>)</span>
+				<div id='comments'>
+					<div id='comment-submit-wrapper'>
+						<form>
+						<textarea id='comment-submit-text'>
+						</textarea>
+						<input type='submit' value='Post' />
+						</form>
+					</div>
+				</div>
 			</div>
-			<div id="disqus_thread"></div>
 		</div>
-		<script type="text/javascript">
-			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-			var disqus_shortname = 'rel2'; // required: replace example with your forum shortname
-
-			/* * * DON'T EDIT BELOW THIS LINE * * */
-			(function() {
-				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script src='http://www.relatablez.com/vote.js'></script>
