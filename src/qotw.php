@@ -24,7 +24,7 @@
 		$statement->execute();
 	}
 	
-	$query = $connection->query("SELECT COUNT(v) AS total_votes, (SELECT answer FROM qotw_options WHERE qotw_options.id=v AND qotw_options.qid={$qotw[0]}) AS answer FROM qotw_votes WHERE qid={$qotw[0]} GROUP BY v");
+	$query = $connection->query("SELECT answer, (SELECT COUNT(v) FROM qotw_votes WHERE qotw_votes.qid={$qotw[0]} AND v=id) AS total_votes FROM qotw_options WHERE qid={$qotw[0]}");
 	
 	echo '<table><tr>';
 	while($votes = $query->fetch_assoc())
