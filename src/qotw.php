@@ -18,19 +18,18 @@
 	$query = $connection->query("SELECT id FROM qotw ORDER BY created LIMIT 1"); //Grab latest QOTW
 	$qotw = $query->fetch_row();
 	
-	if($statement = $connection->prepare("REPLACE INTO qotw_votes (uid, v, qid) VALUES ({$_SESSION['id']}, ?, {$qotw['id']})"))
+	if($statement = $connection->prepare("REPLACE INTO qotw_votes (uid, v, qid) VALUES ({$_SESSION['id']}, ?, {$qotw[0]})"))
 	{
 		$statement->bind_param('i',$vote);
 		$statement->execute();
 	}
 	
-	//$query = $connection->query("SELECT option, id FROM qotw_options WHERE qid = {$qotw['id']}");
-	$query = $connection->query("SELECT COUNT(v) AS total_votes, (SELECT option FROM qotw_options WHERE qotw_options.id=v AND qotw_options.qid={$qotw['id']}) AS answer FROM qotw_votes WHERE qid={$qotw['id']} GROUP BY v");
+	$query = $connection->query("SELECT COUNT(v) AS total_votes, (SELECT answer FROM qotw_options WHERE qotw_options.id=v AND qotw_options.qid={$qotw[0]}) AS answer FROM qotw_votes WHERE qid={$qotw[0]} GROUP BY v");
 	
 	echo '<table><tr>';
-	while($votes = $query->fetch_row())
+	while($votes = $query->fetch_assoc())
 	{
-		echo "<td>{$votes['answer']} ({$votes['total_votes'})</td>";
+		echo "<td>{$votes['answer']} ({$votes['total_votes']})</td>";
 	}
 	echo '</table>';
 	
