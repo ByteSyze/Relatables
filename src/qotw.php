@@ -5,13 +5,7 @@
 	
 	$vote = $_POST['v'];
 	
-	$yes_votes 	= 1234;
-	$no_votes 	= 4321;
-	
 	$total_votes = $yes_votes+$no_votes;
-	
-	$yes_prcnt = (int)($yes_votes/$total_votes*100);
-	$no_prcnt  = (int)($no_votes/$total_votes*100);
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
@@ -26,10 +20,28 @@
 	
 	$query = $connection->query("SELECT answer, (SELECT COUNT(v) FROM qotw_votes WHERE qotw_votes.qid={$qotw[0]} AND v=id) AS total_votes FROM qotw_options WHERE qid={$qotw[0]}");
 	
-	echo '<table><tr>';
+	$tallies = array();
+	$total_votes = 0;
+	
 	while($votes = $query->fetch_assoc())
 	{
-		echo "<td>{$votes['answer']} ({$votes['total_votes']})</td>";
+		$tallies[$votes['answer']] = $votes['total_votes'];
+		$total_votes += $votes['total_votes'];
+	}
+	
+	arsort($tallies);
+	$first_tally = true;
+	
+	foreach($tallies as $answer => $tally)
+	{
+		$vote_percentage = (int)($tally/$total_votes*100);
+		if($first_tally === true)
+		{
+			echo "<b>$answer ($tally) $vote_percentage%</b><br>";
+			$first_tally = false;
+		}
+		else
+			echo "$answer ($tally) $vote_percentage%<br>";
 	}
 	echo '</table>';
 	
