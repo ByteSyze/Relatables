@@ -18,14 +18,22 @@
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
 		<div id='main'>
-			<h1>Blog</h1>
-			<div id='content-wrapper'>
-				<div class='article'>
-					<h3>New features</h3>
-					<span>Sunday September 21 2014</span>
-					<p class='article-summary'>We've added a bunch of cool new features; here's a list of them.</p>
+			<nav id='navigation'>
+				<a href='http://www.relatablez.com/blog/' class='selected'>Blog</a>
+				<a href='http://www.relatablez.com/FAQ/'>FAQ</a>
+				<a href='http://www.relatablez.com/privacy/'>Privacy</a>
+				<a href='http://www.relatablez.com/terms/'>Terms</a>
+			</nav>
+			<div id='blog'>
+				<h1>Blog</h1>
+				<div id='content-wrapper'>
+					<div class='article'>
+						<h3>New features</h3>
+						<span>Sunday September 21 2014</span>
+						<p class='article-summary'>We've added a bunch of cool new features; here's a list of them.</p>
+					</div>
+					<hr>
 				</div>
-				<hr>
 			</div>
 		</div>
 		

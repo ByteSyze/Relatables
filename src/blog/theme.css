@@ -1,21 +1,40 @@
 /*Copyright (C) Tyler Hackett 2014*/
+#blog
+{
+	position:relative;
+	margin:auto;
+	width:850px;
+	box-shadow:0px 0px 10px #BFBFBF;
+}
+#blog h1
+{
+	margin:0px;
+	padding:20px;
+	color:#FFF;
+	background-color:#0067B1;
+}
 #content-wrapper
 {
 	padding:20px;
 }
 #main
 {
-	position:relative;
+	width:1100px;
 	margin:70px auto auto;
-	width:850px;
-	box-shadow:0px 0px 10px #BFBFBF;
 }
-#main h1
+#navigation
 {
-	margin:0px;
-	padding:20px;
-	color:#FFF;
-	background-color:#0067B1;
+	float:left;
+}
+#navigation a
+{
+	font:17px arial;
+	display:block;
+	margin-bottom:5px;
+}
+a.selected
+{
+	color:#4a66d8;
 }
 div.article h3
 {

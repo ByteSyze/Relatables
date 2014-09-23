@@ -7,6 +7,36 @@
 		<link rel="stylesheet" type="text/css" href="../toolbartheme.css">
 		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
 		<style type='text/css'>
+			#content
+			{
+				padding:20px;
+			}
+			#main
+			{
+				width:1100px;
+				margin:70px auto auto;
+			}
+			#navigation
+			{
+				float:left;
+			}
+			#navigation a
+			{
+				font:17px arial;
+				display:block;
+				margin-bottom:5px;
+			}
+			#title
+			{
+				margin:0px;
+				padding:20px;
+				color:#FFF;
+				background-color:#0067B1;
+			}
+			a.selected
+			{
+				color:#4a66d8;
+			}
 			body
 			{
 				font: 15px arial;
@@ -15,61 +45,68 @@
 			{
 				color:#666666;
 			}
-			div.layout
+			div.privacy
 			{
-				position:relative;
-				top:70px;
-				width:1060px;
+				width:850px;
 				margin:auto;
-				box-shadow: 0px 0px 5px gray;
-				padding:20px;
+				box-shadow: 0px 0px 10px #BFBFBF;
 			}
 		</style>
 	</head>
 	<body>
 		<?php include("../toolbar.php"); ?>
-		<div class='layout'>
-			
-			<h1>Privacy Policy</h1>
-			
-			<p>Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". 
-			We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover 
-			how similar we truly are. This Privacy Policy describes how Relatablez collects, uses and shares your 
-			information when you use our website.</p>
-			
-			<hr>
-			
-			<h3>What Information Do We Collect and What Do We Do With It?</h3>
-			
-			<ol style="padding-left:20px;">
-				<li><span>Upon registration, you will provide a username, password and email address. Your username will be listed publicly on your profile page and on the posts you submit. Your email address and password will be kept private with us. We may use your email address to send you information regarding our website or your account.
-				We give you the option to provide information about you publicly, such as your location, posts you submit and a brief description about yourself.</span></li>
-				<br></br><li><span>We promise not to transfer any private information you provide to third party services.</span></li>
-				<br></br><li><span>If at any time you would like to unsubscribe to our services, please send an email to <a href='mailto:contact@relatablez.com'>Contact@Relatablez.com</a> for your data to be 100% deleted.</span></li>
-			</ol>
-			
-			<hr>
-			
-			<h3>Cookies</h3>
-			
-			<p>
-				A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides to the website each time the visitor returns.<br></br>
-				We use cookies to improve your experience on our website. As a way of automatically signing you in when you visit our website.<br></br>
-				We store session cookies to improve your navigation through the website. Though, these cookies are automatically deleted once you close your browser.<br></br>
-				By changing the settings on your browser, you are able to stop accepting cookies. Although, this may cause our website to not run as smoothly for you.<br></br>
-			</p>
-			
-			<hr>
-			
-			<h3>Changes to the Policy</h3>
-			
-			<p>
-				This policy may be changed in the future; we will notify you via email and a notification on our website. The most current privacy policy will always be at www.relatablez.com/privacy<br></br>
-			</p>
-			
-			<hr>
-			
-			<span>Thanks,<br>Relatablez<br><br>Effective Date: February 15 2014<br>If you have any questions, please email us at <a href='mailto:contact@relatablez.com'>Contact@Relatablez.com</a>.</span>
+		<div id='main'>
+			<nav id='navigation'>
+				<a href='http://www.relatablez.com/blog/'>Blog</a>
+				<a href='http://www.relatablez.com/FAQ/'>FAQ</a>
+				<a href='http://www.relatablez.com/privacy/' class='selected'>Privacy</a>
+				<a href='http://www.relatablez.com/terms/'>Terms</a>
+			</nav>
+			<div class='privacy'>
+				
+				<h1 id='title'>Privacy Policy</h1>
+				
+				<div id='content'>
+					<p>Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". 
+					We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover 
+					how similar we truly are. This Privacy Policy describes how Relatablez collects, uses and shares your 
+					information when you use our website.</p>
+					
+					<hr>
+					
+					<h3>What Information Do We Collect and What Do We Do With It?</h3>
+					
+					<ol style="padding-left:20px;">
+						<li><span>Upon registration, you will provide a username, password and email address. Your username will be listed publicly on your profile page and on the posts you submit. Your email address and password will be kept private with us. We may use your email address to send you information regarding our website or your account.
+						We give you the option to provide information about you publicly, such as your location, posts you submit and a brief description about yourself.</span></li>
+						<br></br><li><span>We promise not to transfer any private information you provide to third party services.</span></li>
+						<br></br><li><span>If at any time you would like to unsubscribe to our services, please send an email to <a href='mailto:contact@relatablez.com'>Contact@Relatablez.com</a> for your data to be 100% deleted.</span></li>
+					</ol>
+					
+					<hr>
+					
+					<h3>Cookies</h3>
+					
+					<p>
+						A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides to the website each time the visitor returns.<br></br>
+						We use cookies to improve your experience on our website. As a way of automatically signing you in when you visit our website.<br></br>
+						We store session cookies to improve your navigation through the website. Though, these cookies are automatically deleted once you close your browser.<br></br>
+						By changing the settings on your browser, you are able to stop accepting cookies. Although, this may cause our website to not run as smoothly for you.<br></br>
+					</p>
+					
+					<hr>
+					
+					<h3>Changes to the Policy</h3>
+					
+					<p>
+						This policy may be changed in the future; we will notify you via email and a notification on our website. The most current privacy policy will always be at www.relatablez.com/privacy<br></br>
+					</p>
+					
+					<hr>
+					
+					<span>Thanks,<br>Relatablez<br><br>Effective Date: February 15 2014<br>If you have any questions, please email us at <a href='mailto:contact@relatablez.com'>Contact@Relatablez.com</a>.</span>
+				</div>
+			</div>
 		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
