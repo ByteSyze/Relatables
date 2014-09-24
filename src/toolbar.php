@@ -35,7 +35,9 @@
 <div id='toolbar'>
 	<div id='toolbaralignment'>
 		<div style='float:left;padding:0px;height:100%'>
-				<a href='http://www.relatablez.com/'><img style='vertical-align:middle;' height='35' src='http://www.relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>								
+				<a href='http://www.relatablez.com/'><img height='35' src='http://www.relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>
+				<span class='toolbar-item' id='aitoo-dropdown'>Am I The Only One?</span>
+				<a class='toolbar-item' href='http://www.relatablez.com/blog/'>Blog</a>
 		</div>		
 		<div  class='account-buttons'>
 			<?php
@@ -140,10 +142,10 @@ echo
 ";
 ?>
 
-<div class='infobarwrapper'>
+<!-- <div class='infobarwrapper'>
 	<div class='infobar'>
 		<div id='infobar'>
 			<a href='http://www.relatablez.com/FAQ'>FAQ</a> <a href='http://www.relatablez.com/privacy'>Privacy</a> <a href='mailto:contact@relatablez.com' title='Contact@Relatablez.com'>Contact</a> Relatablez &copy; 2014
 		</div>
 	</div>
-</div>
+</div>-->

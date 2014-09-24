@@ -41,6 +41,10 @@ table {
 	border-spacing: 0;
 }
 /*Copyright (C) Tyler Hackett 2014*/
+#aitoo-dropdown
+{
+	cursor:pointer;
+}
 #toolbar
 {
 	position:fixed;
@@ -363,4 +367,12 @@ a
 div
 {
 	font: 15px arial;
+}
+.toolbar-item
+{
+	position:relative;
+	bottom:10px;
+	font-weight:bold;
+	color:white;
+	margin-left:20px;
 }
