@@ -31,8 +31,18 @@
 			#article-title
 			{
 				width:100%;
-				height:25px;
+				height:38px;
+				font-size:26px;
 				box-sizing:border-box;
+			}
+			#cheatsheet
+			{
+				position:absolute;
+				width:310px;
+				margin-left:-330px;
+				background:white;
+				box-shadow:0px 0px 10px #BFBFBF;
+				text-align:center;
 			}
 			#content
 			{
@@ -61,6 +71,14 @@
 			{
 				font-size:12px;
 			}
+			table
+			{
+				margin:auto;
+			}
+			td
+			{
+				border: 1px solid #808080;
+			}
 		</style>
 	</head>
 	<body>
@@ -68,6 +86,25 @@
 	
 		<div id='new-blog'>
 			<h1 id='title' >Create a Blog Article</h1>
+			
+			<div id='cheatsheet'>
+				<h3>HTML Cheatsheet</h3>
+				
+				<table>
+					<tr>
+						<td> Bold Text </td>
+						<td> &#60b&#62Text&#60/b&#62 </td>
+					<tr>
+						<td> Italic Text </td>
+						<td> &#60i&#62Text&#60/i&#62 </td>
+					<tr>
+						<td> Image </td>
+						<td> &#60img src='example.com/img.jpg' /&#62 </td>
+					<tr>
+						<td> Paragraphs </td>
+						<td> &#60p&#62Paragraph&#60/p&#62 </td>
+				</table>
+			</div>
 			
 			<div id='content'>
 				<form id='article-form' method='POST'>
@@ -86,8 +123,7 @@
 					<h3>Contents:</h3>
 					<textarea id='article-contents' name='contents'></textarea>
 					
-					<hr>
-					
+					<input id='preview' type='submit' value='Preview' />
 					<input id='submit' type='submit' value='Create' />
 				</form>
 			</div>
@@ -96,6 +132,8 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src='http://www.relatablez.com/toolbar.js'></script>
 	<script type='text/javascript'>
+		var reader = new FileReader();
+		
 		$('#submit').click(function(event)
 		{
 			if(!$('#article-title').val())
@@ -117,7 +155,6 @@
 			var img = document.getElementById("img-preview");
 			img.file = file;
 
-			var reader = new FileReader();
 			reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
 			reader.readAsDataURL(file);
 		});
