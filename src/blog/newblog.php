@@ -19,73 +19,14 @@
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
+		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/blog/newblogtheme.css">
 		<link rel="canonical" href="http://www.relatablez.com/">
-		<style type='text/css'>
-			#article-contents
-			{
-				width:100%;
-				height:300px;
-				box-sizing:border-box;
-				resize:none;
-			}
-			#article-title
-			{
-				width:100%;
-				height:38px;
-				font-size:26px;
-				box-sizing:border-box;
-			}
-			#cheatsheet
-			{
-				position:absolute;
-				width:310px;
-				margin-left:-330px;
-				background:white;
-				box-shadow:0px 0px 10px #BFBFBF;
-				text-align:center;
-			}
-			#content
-			{
-				padding:20px;
-			}
-			#img-preview
-			{
-				width:150px;
-				height:150px;
-			}
-			#new-blog
-			{
-				width:850px;
-				margin:70px auto auto;
-				background:white;
-				box-shadow:0px 0px 10px #BFBFBF;
-			}
-			#title
-			{
-				margin:0px;
-				padding:20px;
-				color:#FFF;
-				background-color:#4a66d8;
-			}
-			span.footnote
-			{
-				font-size:12px;
-			}
-			table
-			{
-				margin:auto;
-			}
-			td
-			{
-				border: 1px solid #808080;
-			}
-		</style>
 	</head>
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
 	
 		<div id='new-blog'>
-			<h1 id='title' >Create a Blog Article</h1>
+			<h1 class='header' >Create a Blog Article</h1>
 			
 			<div id='cheatsheet'>
 				<h3>HTML Cheatsheet</h3>
@@ -118,7 +59,7 @@
 				<a href='http://www.relatablez.com/'><img style='background:#BFBFBF;' src='http://www.relatablez.com/logotextwhite.png' /></a>
 			</div>
 			
-			<div id='content'>
+			<div id='article-creation' class='content'>
 				<form id='article-form' method='POST'>
 					<h3>Title:</h3>
 					<input id='article-title' type='text' name='title' />
@@ -128,16 +69,21 @@
 					<h3>Front Page Image:</h3>
 					<input id='article-img' type='file' name='image' /><br>
 					<img id='img-preview' ></img><br>
-					<span  class='footnote'>Accepts .png, .jpg, and .gif</span>
+					<span  class='footnote'>Image should be atleast 850x300 to avoid pixelation.</span>
 					
 					<hr>
 					
 					<h3>Contents:</h3>
 					<textarea id='article-contents' name='contents'></textarea>
 					
-					<input id='preview' type='submit' value='Preview' />
 					<input id='submit' type='submit' value='Create' />
 				</form>
+			</div>
+			
+			<h1 class='header' id='preview-title'>Preview</h1>
+			<div id='article-preview' class='content'>
+				<img id='preview-img' width='100%' height='300px' />
+				<div style='padding:20px;font-size:17px;' id='preview-contents'></div>
 			</div>
 		</div>
 	
@@ -145,6 +91,7 @@
 	<script src='http://www.relatablez.com/toolbar.js'></script>
 	<script type='text/javascript'>
 		var reader = new FileReader();
+		var preview = document.getElementById("preview-img");
 		
 		$('#submit').click(function(event)
 		{
@@ -164,12 +111,18 @@
 			if (!file.type.match(/image.*/))
 				$('#article-img').css('box-shadow', '0px 0px 10px red');
 
-			var img = document.getElementById("img-preview");
-			img.file = file;
+			preview.file = file;	
+			reader.onload = function (e) {
+				$('#preview-img').attr('src', e.target.result);
+			}
 
-			reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
 			reader.readAsDataURL(file);
+				
 		});
+		
+		$("#article-title").on('keyup change paste', function(event){ $('#preview-title').html($(this).val()); });
+		$("#article-contents").keypress(function(event){ if(event.keyCode == 13) $('#article-contents').val($('#article-contents').val() + "<br>"); });
+		$("#article-contents").on('keyup change paste', function(event){ $('#preview-contents').html($(this).val()); });
 	</script>
 	</body>
 </html>
