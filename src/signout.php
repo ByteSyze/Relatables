@@ -2,6 +2,7 @@
 	session_start();
 	
 	$_SESSION["username"] = null;
+	$_SESSION['id'] = null;
 	
 	$deadcookie = time()-3600;
 	

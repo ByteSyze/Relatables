@@ -133,7 +133,7 @@
 			
 			<h1 class='header' id='preview-title'><?php echo $title; ?></h1>
 			<div id='article-preview' class='content'>
-				<img id='preview-img' src='<?php echo $image; ?>' width='100%' height='300px' />
+				<img id='preview-img' <?php if($image != null) echo "src='$image'"; ?> width='100%' height='300px' />
 				<div style='padding:20px;font-size:17px;' id='preview-contents'><?php echo $content; ?></div>
 			</div>
 		</div>

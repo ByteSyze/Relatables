@@ -6,7 +6,6 @@
 	$connection = getConnection();
 	
 	$articles = mysqli_query($connection, "SELECT *, DATE_FORMAT(created,'%W %M %d, %Y') AS fCreated FROM blog_articles ORDER BY created DESC LIMIT 0, 5");
-	
 ?>
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
@@ -36,8 +35,14 @@
 				<h1>Blog</h1>
 				<div id='content-wrapper'>
 					<?php
+						$admin = isAdmin($connection, $_SESSION['id']);
+						
 						while($article = mysqli_fetch_array($articles))
+						{
+							if($admin)
+								echo "<a class='edit-article' href='http://www.relatablez.com/blog/editblog.php?id={$article['id']}'>Edit</a>";
 							echo "<div class='article'><h3><a href='http://www.relatablez.com/blog/article/{$article['id']}'>{$article['title']}</a></h3><span>{$article['fCreated']}</span><p class='article-summary'>{$article['content']}</p></div><hr>";
+						}
 					?>
 				</div>
 			</div>
