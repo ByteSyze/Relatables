@@ -5,7 +5,7 @@
 	
 	$connection = getConnection();
 	
-	$articles = mysqli_query($connection, "SELECT *, DATE_FORMAT(created,'%W %M %d, %Y') AS fCreated FROM blog_articles ORDER BY created LIMIT 0, 5");
+	$articles = mysqli_query($connection, "SELECT *, DATE_FORMAT(created,'%W %M %d, %Y') AS fCreated FROM blog_articles ORDER BY created DESC LIMIT 0, 5");
 	
 ?>
 <!DOCTYPE html>

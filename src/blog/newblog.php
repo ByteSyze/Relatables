@@ -19,14 +19,14 @@
 				mkdir($full_image_path, 0777, true);
 			
 			$image_path .= '/'.$_FILES['image']['name'];
-			move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
+			move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path);
 			
 			if($statement = $connection->prepare("INSERT INTO blog_articles (uid, title, content, image) VALUES (?,?,?,?)"))
 			{
 				$statement->bind_param('isss', $_SESSION['id'], $_POST['title'], $_POST['contents'], $image_path);
 				$statement->execute();
 				
-				header('Location: http://www.relatablez.com/blog/' . $mysqli->insert_id);
+				header('Location: http://www.relatablez.com/blog/article/' . $mysqli->insert_id);
 			}
 		}
 	}
@@ -52,6 +52,7 @@
 			<h1 class='header' >Create a Blog Article</h1>
 			
 			<div id='cheatsheet'>
+				<button id='cheatsheet-view-button'> &gt </button>
 				<h3>HTML Cheatsheet</h3>
 				
 				<table>
@@ -115,6 +116,7 @@
 	<script type='text/javascript'>
 		var reader = new FileReader();
 		var preview = document.getElementById("preview-img");
+		var cheatsheetVisible = false;
 		
 		$('#submit').click(function(event)
 		{
@@ -150,9 +152,25 @@
 				
 		});
 		
+		$('#cheatsheet-view-button').click(function(event)
+		{
+			if(cheatsheetVisible)
+			{
+				$('#cheatsheet').animate({left:"-310px"}, 1000);
+				cheatsheetVisible = !cheatsheetVisible;
+			}
+			else
+			{
+				$('#cheatsheet').animate({left:"0px"}, 1000);
+				cheatsheetVisible = !cheatsheetVisible;
+			}
+		});
+		
 		$("#article-title").on('keyup change paste', function(event){ $('#preview-title').html($(this).val()); });
-		$("#article-contents").keypress(function(event){ if(event.keyCode == 13) $('#article-contents').val($('#article-contents').val() + "<br>"); });
 		$("#article-contents").on('keyup change paste', function(event){ $('#preview-contents').html($(this).val()); });
+		$('#cheatsheet-view-button').mouseout(function(event){if(!cheatsheetVisible) $('#cheatsheet').animate({left:"-310px"}, 500); });
+		$('#cheatsheet-view-button').mouseover(function(event){if(!cheatsheetVisible) $('#cheatsheet').animate({left:"-290px"}, 500); });
+		$("#article-contents").keypress(function(event){ if(event.keyCode == 13) $('#article-contents').val($('#article-contents').val() + "<br>"); });
 	</script>
 	</body>
 </html>

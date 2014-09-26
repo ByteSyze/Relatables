@@ -21,10 +21,25 @@
 {
 	position:absolute;
 	width:310px;
-	margin-left:-330px;
+	left:-310px;
 	background:white;
 	box-shadow:0px 0px 10px #BFBFBF;
 	text-align:center;
+}
+#cheatsheet-view-button
+{
+	width:75px;
+	height:75px;
+	border:none;
+	position:absolute;
+	margin-left:155px;
+	background-color:rgba(32, 32, 32, .7);
+	cursor:pointer;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+	font-size:50px;
+	font-weight:bold;
+	color:rgba(12, 12, 12, .5);
 }
 #content
 {
