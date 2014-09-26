@@ -1,5 +1,12 @@
 <?php
 	session_start();
+	
+	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	
+	$connection = getConnection();
+	
+	$articles = mysqli_query($connection, "SELECT *, DATE_FORMAT(created,'%W %M %d, %Y') AS fCreated FROM blog_articles ORDER BY created LIMIT 0, 5");
+	
 ?>
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
@@ -24,15 +31,14 @@
 				<a href='http://www.relatablez.com/privacy/'>Privacy</a>
 				<a href='http://www.relatablez.com/terms/'>Terms</a>
 			</nav>
+
 			<div id='blog'>
 				<h1>Blog</h1>
 				<div id='content-wrapper'>
-					<div class='article'>
-						<h3>New features</h3>
-						<span>Sunday September 21 2014</span>
-						<p class='article-summary'>We've added a bunch of cool new features; here's a list of them.</p>
-					</div>
-					<hr>
+					<?php
+						while($article = mysqli_fetch_array($articles))
+							echo "<div class='article'><h3><a href='http://www.relatablez.com/blog/article/{$article['id']}'>{$article['title']}</a></h3><span>{$article['fCreated']}</span><p class='article-summary'>{$article['content']}</p></div><hr>";
+					?>
 				</div>
 			</div>
 		</div>

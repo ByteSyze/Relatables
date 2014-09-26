@@ -1,3 +1,4 @@
+/*Copyright (C) Tyler Hackett 2014*/
 #article-contents
 {
 	width:100%;
@@ -28,11 +29,6 @@
 #content
 {
 	padding:20px;
-}
-#img-preview
-{
-	width:150px;
-	height:150px;
 }
 #new-blog
 {

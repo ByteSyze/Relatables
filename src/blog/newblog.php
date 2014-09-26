@@ -7,6 +7,29 @@
 		
 	if(!isAdmin($connection, $_SESSION['id']) || $_SESSION['username'] == null)
 		header('Location: http://www.relatablez.com/404/');
+	else
+	{
+		if($_POST['submit'] === 'Create' && $_POST['title'] && $_POST['contents'] && $_FILES['image']['error'] == 0)
+		{
+			$date = getdate();
+			$image_path = "/images/{$date['year']}/{$date['mon']}/{$date['mday']}";
+			$full_image_path = $_SERVER['DOCUMENT_ROOT'].$image_path;
+			
+			if(!is_dir($full_image_path))
+				mkdir($full_image_path, 0777, true);
+			
+			$image_path .= '/'.$_FILES['image']['name'];
+			move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
+			
+			if($statement = $connection->prepare("INSERT INTO blog_articles (uid, title, content, image) VALUES (?,?,?,?)"))
+			{
+				$statement->bind_param('isss', $_SESSION['id'], $_POST['title'], $_POST['contents'], $image_path);
+				$statement->execute();
+				
+				header('Location: http://www.relatablez.com/blog/' . $mysqli->insert_id);
+			}
+		}
+	}
 ?>
 <!-- Copyright (C) Tyler Hackett 2014 -->
 <!DOCTYPE html>
@@ -60,7 +83,7 @@
 			</div>
 			
 			<div id='article-creation' class='content'>
-				<form id='article-form' method='POST'>
+				<form id='article-form' action='http://www.relatablez.com/blog/newblog.php' method='POST' enctype='multipart/form-data'>
 					<h3>Title:</h3>
 					<input id='article-title' type='text' name='title' />
 					
@@ -76,7 +99,7 @@
 					<h3>Contents:</h3>
 					<textarea id='article-contents' name='contents'></textarea>
 					
-					<input id='submit' type='submit' value='Create' />
+					<input id='submit' type='submit' name='submit' value='Create' />
 				</form>
 			</div>
 			
@@ -96,13 +119,20 @@
 		$('#submit').click(function(event)
 		{
 			if(!$('#article-title').val())
+			{
 				$('#article-title').css('box-shadow', '0px 0px 10px red');
+				return false;
+			}
 			if(!$('#article-img').val())
+			{
 				$('#article-img').css('box-shadow', '0px 0px 10px red');
+				return false;
+			}
 			if(!$('#article-contents').val())
+			{
 				$('#article-contents').css('box-shadow', '0px 0px 10px red');
-			
-			event.preventDefault();
+				return false;
+			}
 		});
 		$('#article-img').change(function(event)
 		{
