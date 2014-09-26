@@ -92,18 +92,30 @@
 				
 				<table>
 					<tr>
-						<td> Bold Text </td>
+						<td><b>Bold Text</b></td>
 						<td> &#60b&#62Text&#60/b&#62 </td>
 					<tr>
-						<td> Italic Text </td>
+						<td><i>Italic Text</i></td>
 						<td> &#60i&#62Text&#60/i&#62 </td>
 					<tr>
-						<td> Image </td>
+						<td>Image</td>
 						<td> &#60img src='example.com/img.jpg' /&#62 </td>
 					<tr>
-						<td> Paragraphs </td>
+						<td>Paragraphs</td>
 						<td> &#60p&#62Paragraph&#60/p&#62 </td>
+					<tr>
+						<td>Line<br>Break</td>
+						<td>&#60br&#62</td>
+					<tr>
+						<td>Line<hr></td>
+						<td>&#60hr&#62</td>
+					<tr>
+						<td><a style='cursor:pointer;'>Link</a></td>
+						<td>&#60a href='example.com'&#62Link&#60/a&#62
 				</table>
+				
+				<span class='footnote'>HTML elements can be combined. For example, you can make an image link with <br> <b>&#60a href='http://www.relatablez.com/'&#62 &#60img src='http://www.relatablez.com/logotextwhite.png'/&#62&#60/a&#62 </b> for this result:</span><br>
+				<a href='http://www.relatablez.com/'><img style='background:#BFBFBF;' src='http://www.relatablez.com/logotextwhite.png' /></a>
 			</div>
 			
 			<div id='content'>
