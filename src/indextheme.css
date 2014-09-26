@@ -20,7 +20,7 @@
 {
 	margin:0px;
 	padding:5px;
-	background:#0067B1;
+	background:#4a66d8;
 	text-align:left;
 	color:white;
 	border-top-left-radius:3px;
@@ -105,7 +105,7 @@ button.notification
 }
 button.submit-button
 {
-	background-color:#0067B1;
+	background-color:#4a66d8;
 	border:none;
 	border-radius:4px;
 	height:22px;
