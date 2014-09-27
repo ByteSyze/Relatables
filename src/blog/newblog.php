@@ -125,11 +125,6 @@
 				$('#article-title').css('box-shadow', '0px 0px 10px red');
 				return false;
 			}
-			if(!$('#article-img').val())
-			{
-				$('#article-img').css('box-shadow', '0px 0px 10px red');
-				return false;
-			}
 			if(!$('#article-contents').val())
 			{
 				$('#article-contents').css('box-shadow', '0px 0px 10px red');

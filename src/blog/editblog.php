@@ -11,24 +11,26 @@
 	{
 		if($_POST['submit'] === 'Update' && $_POST['title'] && $_POST['contents'])
 		{
-			if($_POST['editimage'] && $_FILES['image']['error'] == 0)
-			{
-				$date = getdate();
-				$image_path = "/images/{$date['year']}/{$date['mon']}/{$date['mday']}";
-				$full_image_path = $_SERVER['DOCUMENT_ROOT'].$image_path;
-				
-				if(!is_dir($full_image_path))
-					mkdir($full_image_path, 0777, true);
-				
-				$image_path .= '/'.$_FILES['image']['name'];
-				move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path);
+			if(isset($_POST['editimage']) && $_POST['editimage'])
+			{	
+				$image_path = "";
+				if($_FILES['image']['error'] == 0)
+				{
+					$date = getdate();
+					$image_path = "/images/{$date['year']}/{$date['mon']}/{$date['mday']}";
+					$full_image_path = $_SERVER['DOCUMENT_ROOT'].$image_path;
+					
+					if(!is_dir($full_image_path))
+						mkdir($full_image_path, 0777, true);
+					
+					$image_path .= '/'.$_FILES['image']['name'];
+					move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path);
+				}
 				
 				if($statement = $connection->prepare("UPDATE blog_articles SET title=(?), content=(?), image=(?) WHERE id=(?)"))
 				{
-					$statement->bind_param('sssi', $_POST['title'], $_POST['content'], $image_path, $_POST['id']);
+					$statement->bind_param('sssi', $_POST['title'], $_POST['contents'], $image_path, $_POST['id']);
 					$statement->execute();
-					
-					header('Location: http://www.relatablez.com/blog/article/' . $_POST['id']);
 				}
 			}
 			else
@@ -36,11 +38,10 @@
 				if($statement = $connection->prepare("UPDATE blog_articles SET title=(?), content=(?) WHERE id=(?)"))
 				{
 					$statement->bind_param('ssi', $_POST['title'], $_POST['contents'], $_POST['id']);
-					$statement->execute();
-					
-					header('Location: http://www.relatablez.com/blog/article/' . $_POST['id']);
+					$statement->execute();	
 				}
 			}
+			header('Location: http://www.relatablez.com/blog/article/' . $_POST['id']);
 		}
 	}
 	
@@ -133,7 +134,7 @@
 			
 			<h1 class='header' id='preview-title'><?php echo $title; ?></h1>
 			<div id='article-preview' class='content'>
-				<img id='preview-img' <?php if($image != null) echo "src='$image'"; ?> width='100%' height='300px' />
+				<?php if($image != null) echo "<img id='preview-img' src='$image' width='100%' height='300px' />"; ?>
 				<div style='padding:20px;font-size:17px;' id='preview-contents'><?php echo $content; ?></div>
 			</div>
 		</div>

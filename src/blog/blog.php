@@ -35,7 +35,7 @@
 		<div id='main'>
 			<h1 class='header' id='article-title'><?php echo $title; ?></h1>
 			<div id='article' class='content'>
-				<img id='article-image' src='<?php echo $image; ?>' />
+				<?php if($image != null) echo "<img id='article-image' src='$image' />"; ?>
 				<div id='article-content' >	
 					<?php echo $content; ?>
 					<div id='footer'>

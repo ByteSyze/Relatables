@@ -41,7 +41,7 @@
 						{
 							if($admin)
 								echo "<a class='edit-article' href='http://www.relatablez.com/blog/editblog.php?id={$article['id']}'>Edit</a>";
-							echo "<div class='article'><h3><a href='http://www.relatablez.com/blog/article/{$article['id']}'>{$article['title']}</a></h3><span>{$article['fCreated']}</span><p class='article-summary'>{$article['content']}</p></div><hr>";
+							echo "<div class='article'><h3><a href='http://www.relatablez.com/blog/article/{$article['id']}'>{$article['title']}</a></h3><span>{$article['fCreated']}</span><p class='article-summary'>{$article['content']}</p></div><div class='footer-wrapper'><a href='http://www.relatablez.com/blog/article/{$article['id']}'>Read More</a></div><hr>\r\n";
 						}
 					?>
 				</div>

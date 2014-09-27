@@ -44,6 +44,11 @@ div.article h3
 {
 	margin:0px;
 }
+div.footer-wrapper
+{
+	width:100%;
+	text-align:right;
+}
 p.article-summary
 {
 	margin-top:20px;
