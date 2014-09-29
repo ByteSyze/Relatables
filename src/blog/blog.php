@@ -34,10 +34,16 @@
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
 		<div id='main'>
 			<h1 class='header' id='article-title'><?php echo $title; ?></h1>
+			
 			<div id='article' class='content'>
 				<?php if($image != null) echo "<img id='article-image' src='$image' />"; ?>
-				<div id='article-content' >	
-					<?php echo $content; ?>
+				<div id='article-content' >
+					<?php 	
+						if(isAdmin($connection, $_SESSION['id'])) 
+							echo "<a style='float:right' href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a>"; 
+						
+						echo $content;
+					?>
 					<div id='footer'>
 						<span id='created'><?php echo $fCreated; ?></span>
 						

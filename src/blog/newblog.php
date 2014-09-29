@@ -113,59 +113,6 @@
 	
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src='http://www.relatablez.com/toolbar.js'></script>
-	<script type='text/javascript'>
-		var reader = new FileReader();
-		var preview = document.getElementById("preview-img");
-		var cheatsheetVisible = false;
-		
-		$('#submit').click(function(event)
-		{
-			if(!$('#article-title').val())
-			{
-				$('#article-title').css('box-shadow', '0px 0px 10px red');
-				return false;
-			}
-			if(!$('#article-contents').val())
-			{
-				$('#article-contents').css('box-shadow', '0px 0px 10px red');
-				return false;
-			}
-		});
-		$('#article-img').change(function(event)
-		{
-			var file = document.getElementById("article-img").files[0];
-
-			if (!file.type.match(/image.*/))
-				$('#article-img').css('box-shadow', '0px 0px 10px red');
-
-			preview.file = file;	
-			reader.onload = function (e) {
-				$('#preview-img').attr('src', e.target.result);
-			}
-
-			reader.readAsDataURL(file);
-				
-		});
-		
-		$('#cheatsheet-view-button').click(function(event)
-		{
-			if(cheatsheetVisible)
-			{
-				$('#cheatsheet').animate({left:"-310px"}, 1000);
-				cheatsheetVisible = !cheatsheetVisible;
-			}
-			else
-			{
-				$('#cheatsheet').animate({left:"0px"}, 1000);
-				cheatsheetVisible = !cheatsheetVisible;
-			}
-		});
-		
-		$("#article-title").on('keyup change paste', function(event){ $('#preview-title').html($(this).val()); });
-		$("#article-contents").on('keyup change paste', function(event){ $('#preview-contents').html($(this).val()); });
-		$('#cheatsheet-view-button').mouseout(function(event){if(!cheatsheetVisible) $('#cheatsheet').animate({left:"-310px"}, 500); });
-		$('#cheatsheet-view-button').mouseover(function(event){if(!cheatsheetVisible) $('#cheatsheet').animate({left:"-290px"}, 500); });
-		$("#article-contents").keypress(function(event){ if(event.keyCode == 13) $('#article-contents').val($('#article-contents').val() + "<br>"); });
-	</script>
+	<script src='http://www.relatablez.com/blog/blog.js'></script>
 	</body>
 </html>
