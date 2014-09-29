@@ -106,7 +106,8 @@
 				</table>
 				
 				<span class='footnote'>HTML elements can be combined. For example, you can make an image link with <br> <b>&#60a href='http://www.relatablez.com/'&#62 &#60img src='http://www.relatablez.com/logotextwhite.png'/&#62&#60/a&#62 </b> for this result:</span><br>
-				<a href='http://www.relatablez.com/'><img style='background:#BFBFBF;' src='http://www.relatablez.com/logotextwhite.png' /></a>
+				<a href='http://www.relatablez.com/'><img style='background:#BFBFBF;' src='http://www.relatablez.com/logotextwhite.png' /></a><br>
+				<span class='footnote'>For a more complete list of HTML tags, check out this <br><a href='http://www.w3schools.com/tags/default.asp'>W3Schools Page</a>.</span>
 			</div>
 			
 			<div id='article-creation' class='content'>
