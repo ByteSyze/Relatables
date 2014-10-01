@@ -11,12 +11,12 @@
 	if($type == 0)
 	{
 		//Long ass MYSQL query ftw
-		if($statement = $connection->prepare("SELECT cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT SUM(vote) FROM comment_ratings WHERE comment_ratings.cid = cid) AS points FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
+		if($statement = $connection->prepare("SELECT cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, (SELECT username FROM accounts WHERE 0) AS rUser, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
 		{
 			$statement->bind_param('iii',$id,$index,$count);
 			$statement->execute();
 			
-			$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['submitted'],$com['rid'],$com['points']);
+			$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['rUser'],$com['submitted'],$com['rid'],$com['points']);
 			$statement->store_result();
 		}
 	}
@@ -35,11 +35,11 @@
 		echo "<a href='http://www.relatablez.com/user/{$com['user']}'>{$com['user']}</a>";
 			
 		if($com['points'] < 0)
-			echo "<span id='points' class='negative'>{$com['points']}</span>";
+			echo "<span class='points negative'>{$com['points']}</span>";
 		else if($com['points'] > 0)
-			echo "<span id='points' class='positive'>{$com['points']}</span>";
-		if($com['points'] < 0)
-			echo "<span id='points'>{$com['points']}</span>";
+			echo "<span class='points positive'>{$com['points']}</span>";
+		else
+			echo "<span class='points'>{$com['points']}</span>";
 			
 		$submitted = DateTime::createFromFormat("m d Y H i", $com['submitted']);
 		$time_diff = $submitted->diff($now);
@@ -59,7 +59,10 @@
 		
 		echo "<span>$time_diff</span>";
 		
-		echo "<p>{$com['comment']}</p>";
+		if($com['rid'] != 0)
+			echo "<p><a href='http://www.relatablez.com/user/{$com['rUser']}'>@{$com['rUser']}</a> {$com['comment']}</p>";
+		else
+			echo "<p>{$com['comment']}</p>";
 			
 		echo "</div>\r\n";
 	}

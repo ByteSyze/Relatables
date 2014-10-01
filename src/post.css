@@ -76,6 +76,19 @@ span.submissioninfo
 	vertical-align:bottom;
 	width:auto;
 }
+span.negative
+{
+	color:#C82828;
+}
+span.points
+{
+	font-weight:bold;
+	color:#808080;
+}
+span.positive
+{
+	color:#26A832;
+}
 span.vote-counter
 {
 	position:relative;

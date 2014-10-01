@@ -17,6 +17,7 @@
 	{
 		$statement->bind_param('i',$pid);
 		$statement->execute();
+		
 		$statement->bind_result($uid, $verif, $cat, $fdate, $alone, $notalone, $pending, $submission, $anon);
 		$statement->fetch();
 	}
