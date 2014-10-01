@@ -90,7 +90,7 @@
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script src='http://www.relatablez.com/vote.js'></script>
-		<script type='text/css'>
+		<script type='text/javascript'>
 			$('#comment-submit-button').click(function()
 			{
 				comment = $('#comment-submit-text').val();
@@ -106,6 +106,14 @@
 				{
 					//TODO red border around comment box.
 				}
+			});
+			$(document).ready(function()
+			{
+				//Load up first comments.
+				$.post('/getcomments.php', {i:0, x:0, c:10, t:0}, function(result)
+				{
+					$('#comments').append(result);
+				});
 			});
 		</script>
 	</body>

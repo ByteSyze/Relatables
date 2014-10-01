@@ -1,10 +1,10 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 
-	$id 	= $_GET['i'];
-	$index 	= $_GET['x'];
-	$count 	= $_GET['c'] + $index;
-	$type 	= $_GET['t'];
+	$id 	= $_POST['i'];
+	$index 	= $_POST['x'];
+	$count 	= $_POST['c'] + $index;
+	$type 	= $_POST['t'];
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
@@ -27,12 +27,12 @@
 	
 	while($statement->fetch())
 	{
-		echo "<div>";
-		
-		if($com['reply'])
-			echo "<a href='http://www.relatablez.com/user/{$com['user']}' class='reply'>{$com['user']}</a>";
+		if($com['rid'] != 0)
+			echo "<div class='comment reply'>";
 		else
-			echo "<a href='http://www.relatablez.com/user/{$com['user']}'>{$com['user']}</a>";
+			echo "<div class='comment'>";
+		
+		echo "<a href='http://www.relatablez.com/user/{$com['user']}'>{$com['user']}</a>";
 			
 		if($com['points'] < 0)
 			echo "<span id='points' class='negative'>{$com['points']}</span>";

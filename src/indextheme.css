@@ -39,6 +39,11 @@
     color: #2754a6;
     text-align: center;
 }
+a.admin
+{
+	color:red;
+	font-style:italic;
+}
 b.warning
 {
 	position:relative;
@@ -168,11 +173,6 @@ table.submission-table
 {
 	position:relative;
 	width:100%;
-}
-a.admin
-{
-	color:red;
-	font-style:italic;
 }
 .dialoguebutton
 {

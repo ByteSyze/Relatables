@@ -29,9 +29,18 @@
 	resize:none;
 	box-sizing:border-box;
 }
+a.admin
 {
 	color:red;
 	font-style:italic;
+}
+div.comment
+{
+	height:50px;
+}
+div.comment a, span
+{
+	margin-right:10px;
 }
 div.dialogue
 {
@@ -45,6 +54,10 @@ div.dialogue
 	border: 1px solid #bfbfbf;
 	width:100%;
 	vertical-align:-40px;
+}
+div.reply
+{
+	padding-left:50px;
 }
 p.dialogue
 {
