@@ -12,12 +12,12 @@
 	if($type == 0)
 	{
 		//Long ass MYSQL query ftw
-		if($statement = $connection->prepare("SELECT cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, reply, (SELECT SUM(vote) FROM comment_ratings WHERE comment_ratings.cid = cid) AS points FROM comments WHERE pid=(?) ORDER BY submitted LIMIT ?,?"))
+		if($statement = $connection->prepare("SELECT cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT SUM(vote) FROM comment_ratings WHERE comment_ratings.cid = cid) AS points FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
 		{
 			$statement->bind_param('iii',$id,$index,$count);
 			$statement->execute();
 			
-			$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['submitted'],$com['rid'],$com['reply'],$com['points']);
+			$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['submitted'],$com['rid'],$com['points']);
 			$statement->store_result();
 		}
 	}
