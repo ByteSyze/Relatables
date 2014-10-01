@@ -1,13 +1,12 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
 
 	$id 	= $_GET['i'];
 	$index 	= $_GET['x'];
 	$count 	= $_GET['c'] + $index;
 	$type 	= $_GET['t'];
 	
-	$connection = getConnection();
+	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
 	if($type == 0)
 	{
@@ -21,6 +20,8 @@
 			$statement->store_result();
 		}
 	}
+	
+	$now = new DateTime();
 	
 	echo $connection->error;
 	
@@ -41,7 +42,7 @@
 			echo "<span id='points'>{$com['points']}</span>";
 			
 		$submitted = DateTime::createFromFormat("m d Y H i", $com['submitted']);
-		$time_diff = $submitted->diff(new DateTime());
+		$time_diff = $submitted->diff($now);
 		
 		if($time_diff->y)
 			$time_diff = $time_diff->y . ' years ago';
