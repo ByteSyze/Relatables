@@ -41,9 +41,24 @@
 			echo "<span id='points'>{$com['points']}</span>";
 			
 		$submitted = DateTime::createFromFormat("m d Y H i", $com['submitted']);
-		$time_since_upload = $submitted->diff(new DateTime());
+		$time_diff = $submitted->diff(new DateTime());
 		
-		echo $time_since_upload->i;
+		if($time_diff->y)
+			$time_diff = $time_diff->y . ' years ago';
+		else if($time_diff->m)
+			$time_diff = $time_diff->m . ' months ago';
+		else if($time_diff->d)
+			$time_diff = $time_diff->d . ' days ago';
+		else if($time_diff->h)
+			$time_diff = $time_diff->h . ' hours ago';
+		else if($time_diff->i)
+			$time_diff = $time_diff->i . ' minutes ago';
+		else if($time_diff->s)
+			$time_diff = $time_diff->s . ' seconds ago';
+		
+		echo "<span>$time_diff</span>";
+		
+		echo "<p>{$com['comment']}</p>";
 			
 		echo "</div>\r\n";
 	}
