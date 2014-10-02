@@ -98,7 +98,7 @@
 				
 				if(comment.length <= 140)
 				{
-					$.post('http://www.relatablez.com/comment.php', {p:<?php echo $pid; ?>, c: comment, r:0}, function(result)
+					$.post('http://www.relatablez.com/comment.php', {p: <?php echo $pid; ?>, c: comment, r: 0}, function(result)
 					{
 						if(result != 0)
 						{
@@ -117,15 +117,39 @@
 			$(document).ready(function()
 			{
 				//Load up first comments.
-				$.post('/getcomments.php', {i:<?php echo $pid; ?>, x:0, c:10}, function(result)
+				$.post('/getcomments.php', {i: <?php echo $pid; ?>, x: 0, c: 10}, function(result)
 				{
 					$('#comments').append(result);
 				});
 			});
-			$(document).on("click","[data-reply]", function()
+			$(document).on("click","span[data-reply]", function()
 			{
-				$(this).parent().after("<div><textarea></textarea><button data-reply='"+$(this).attr("data-reply")+"'>Reply</button></div>");
+				$(this).parent().after("<div class='reply'><textarea class='reply'></textarea><button data-reply='"+$(this).attr("data-reply")+"'>Reply</button></div>");
 				$(this).remove();
+			});
+			$(document).on("click","button[data-reply]", function()
+			{
+				//Grab value from the textarea behind the reply button.
+				comment = $(this).prev().val();
+				rid = $(this).attr('data-reply');
+				
+				if(comment.length <= 140)
+				{
+					$.post('http://www.relatablez.com/comment.php', {p: <?php echo $pid; ?>, c: comment, r: rid}, function(result)
+					{
+						if(result != 0)
+						{
+							var comment = $.parseHTML(result);
+							$(this).parent().append(comment);
+						}
+					});
+				}
+				else
+				{
+					//TODO red border around comment box.
+				}
+				
+				return false;
 			});
 		</script>
 	</body>

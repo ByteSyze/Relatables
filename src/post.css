@@ -37,7 +37,7 @@ a.admin
 }
 div.comment
 {
-	height:50px;
+	padding-bottom:10px;
 }
 div.comment a, 
 div.comment span
@@ -107,6 +107,12 @@ span.vote-counter-wrapper
 table.vote-table
 {
 	text-align:center;
+}
+textarea.reply
+{
+	width:100%;
+	box-sizing:border-box;
+	resize:none;
 }
 .dialoguebutton
 {
