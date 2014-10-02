@@ -18,25 +18,33 @@
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
+	if($rid != 0)
+	{
+		$rUser = getUsername($connection, $rid);
+		$comment = "@$rUser ".$comment;
+	}
+	
 	if($statement = $connection->prepare("INSERT INTO comments (pid, comment, uid, rid) VALUES (?,?,?,?)"))
 	{
 		$statement->bind_param('isii',$pid, $comment, $_SESSION['id'], $rid);
-		$statement->execute();
+		//$statement->execute();
 		
 		$comment = htmlspecialchars($comment);
 		
 		if($rid != 0)
-		{
 			echo "<div class='comment reply'>";
-			$rUser = getUsername($connection, $rid);
-		}
 		else
 			echo "<div class='comment'>";
 		
 		echo "<a href='http://www.relatablez.com/user/{$_SESSION['username']}'>{$_SESSION['username']}</a><span class='points'>0</span><span>0 seconds ago</span>";	
 
 		if($rid != 0)
+		{
+			$rUserPos = strpos($comment, ' ');
+			$rUser = substr($comment, 0, $rUserPos);
+			$comment = substr($comment, $rUserPos, strlen($comment));
 			echo "<p><a href='http://www.relatablez.com/user/$rUser'>@$rUser</a> $comment</p>";
+		}
 		else
 			echo "<p>$comment</p>";
 			

@@ -3,7 +3,7 @@
 
 	$pid 	= $_POST['i'];
 	$index 	= $_POST['x'];
-	$count 	= $_POST['c'] + $index;
+	$count 	= $_POST['c'] > 50 ? 50 + $index : $_POST['c'] + $index;
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
@@ -61,6 +61,8 @@
 			echo "<p><a href='http://www.relatablez.com/user/{$com['rUser']}'>@{$com['rUser']}</a> {$com['comment']}</p>";
 		else
 			echo "<p>{$com['comment']}</p>";
+			
+		echo "<span data-reply='{$com['cid']}'>Reply</span>";
 			
 		echo "</div>\r\n";
 	}

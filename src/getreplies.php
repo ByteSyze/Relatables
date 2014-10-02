@@ -4,7 +4,7 @@
 	$id 	= $_POST['i'];
 	$rid	= $_POST['r'];
 	$index 	= $_POST['x'];
-	$count 	= $_POST['c'] + $index;
+	$count 	= $_POST['c'] > 50 ? 50 + $index : $_POST['c'] + $index;
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	

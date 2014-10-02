@@ -122,6 +122,11 @@
 					$('#comments').append(result);
 				});
 			});
+			$(document).on("click","[data-reply]", function()
+			{
+				$(this).parent().after("<div><textarea></textarea><button data-reply='"+$(this).attr("data-reply")+"'>Reply</button></div>");
+				$(this).remove();
+			});
 		</script>
 	</body>
 </html>
