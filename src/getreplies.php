@@ -19,6 +19,8 @@
 			
 			$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['rUser'],$com['submitted'],$com['rid'],$com['points']);
 			$statement->store_result();
+			
+			$com['comment'] = htmlspecialchars($com['comment']);
 		}
 	}
 	

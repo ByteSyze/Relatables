@@ -98,15 +98,21 @@
 				
 				if(comment.length <= 140)
 				{
-					$.post('http://www.relatablez.com/comment.php', {c: comment}, function(result)
+					$.post('http://www.relatablez.com/comment.php', {p:<?php echo $pid; ?>, c: comment, r:0}, function(result)
 					{
-						
+						if(result != 0)
+						{
+							var comment = $.parseHTML(result);
+							$('#comment-submit-wrapper').after(comment);
+						}
 					});
 				}
 				else
 				{
 					//TODO red border around comment box.
 				}
+				
+				return false;
 			});
 			$(document).ready(function()
 			{
