@@ -125,7 +125,7 @@
 			$(document).on("click","span[data-reply]", function()
 			{
 				$(this).parent().after("<div class='reply'><textarea class='reply'></textarea><button data-reply='"+$(this).attr("data-reply")+"'>Reply</button></div>");
-				$(this).remove();
+				$(this).removeAttr('data-reply');
 			});
 			$(document).on("click","button[data-reply]", function()
 			{

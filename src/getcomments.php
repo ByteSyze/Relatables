@@ -62,7 +62,7 @@
 		else
 			echo "<p>{$com['comment']}</p>";
 			
-		echo "<span data-reply='{$com['cid']}'>Reply</span>";
+		echo "<span data-reply='{$com['cid']}'>Reply</span><button class='up vote'></button><button class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
 			
 		echo "</div>\r\n";
 	}

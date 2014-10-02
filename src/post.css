@@ -35,12 +35,40 @@ a.admin
 	color:red;
 	font-style:italic;
 }
+button.vote
+{
+	width:16px;
+	height:16px;
+	border:none;
+	cursor:pointer;
+	vertical-align:middle;
+	background-repeat:no-repeat;
+	background-position:center;
+	background-color:transparent;
+}
+button.up
+{
+	background-image: url('/upvote.png');
+}
+button.up:hover
+{
+	background-image: url('/upvote-hover.png');
+}
+button.down
+{
+	background-image: url('/downvote.png');
+}
+button.down:hover
+{
+	background-image: url('/downvote-hover.png');
+}
 div.comment
 {
 	padding-bottom:10px;
 }
 div.comment a, 
-div.comment span
+div.comment span,
+div.comment button
 {
 	margin-right:10px;
 }
