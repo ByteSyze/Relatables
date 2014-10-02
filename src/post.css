@@ -22,6 +22,7 @@
 	padding-left:15px;
 	padding-right:15px;
 	padding-top:10px;
+	padding-bottom:10px;
 }
 #comment-submit-text
 {
@@ -38,7 +39,8 @@ div.comment
 {
 	height:50px;
 }
-div.comment a, span
+div.comment a, 
+div.comment span
 {
 	margin-right:10px;
 }

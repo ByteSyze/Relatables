@@ -5,23 +5,19 @@
 	$rid	= $_POST['r'];
 	$index 	= $_POST['x'];
 	$count 	= $_POST['c'] + $index;
-	$type 	= $_POST['t'];
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
-	if($type == 0)
+	//Long ass MYSQL query ftw
+	if($statement = $connection->prepare("SELECT cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user,(SELECT username FROM accounts WHERE accounts.id=rid) AS rUser, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points FROM comments WHERE pid=(?) AND rid=(?) ORDER BY rid DESC, cid LIMIT ?,?"))
 	{
-		//Long ass MYSQL query ftw
-		if($statement = $connection->prepare("SELECT cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user,(SELECT username FROM accounts WHERE accounts.id=rid) AS rUser, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points FROM comments WHERE pid=(?) AND rid=(?) ORDER BY rid DESC, cid LIMIT ?,?"))
-		{
-			$statement->bind_param('iiii',$id,$rid,$index,$count);
-			$statement->execute();
-			
-			$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['rUser'],$com['submitted'],$com['rid'],$com['points']);
-			$statement->store_result();
-			
-			$com['comment'] = htmlspecialchars($com['comment']);
-		}
+		$statement->bind_param('iiii',$id,$rid,$index,$count);
+		$statement->execute();
+		
+		$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['rUser'],$com['submitted'],$com['rid'],$com['points']);
+		$statement->store_result();
+		
+		$com['comment'] = htmlspecialchars($com['comment']);
 	}
 	
 	echo $connection->error;

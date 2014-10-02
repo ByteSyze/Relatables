@@ -21,7 +21,7 @@
 	if($statement = $connection->prepare("INSERT INTO comments (pid, comment, uid, rid) VALUES (?,?,?,?)"))
 	{
 		$statement->bind_param('isii',$pid, $comment, $_SESSION['id'], $rid);
-		//$statement->execute();
+		$statement->execute();
 		
 		$comment = htmlspecialchars($comment);
 		

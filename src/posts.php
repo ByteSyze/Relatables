@@ -117,7 +117,7 @@
 			$(document).ready(function()
 			{
 				//Load up first comments.
-				$.post('/getcomments.php', {i:0, x:0, c:10, t:0}, function(result)
+				$.post('/getcomments.php', {i:<?php echo $pid; ?>, x:0, c:10}, function(result)
 				{
 					$('#comments').append(result);
 				});
