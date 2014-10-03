@@ -50,19 +50,25 @@
 			$time_diff = $time_diff->d . ' days ago';
 		else if($time_diff->h)
 			$time_diff = $time_diff->h . ' hours ago';
-		else if($time_diff->i)
+		else
 			$time_diff = $time_diff->i . ' minutes ago';
-		else if($time_diff->s)
-			$time_diff = $time_diff->s . ' seconds ago';
 		
 		echo "<span>$time_diff</span>";
 		
 		if($com['rid'] != 0)
-			echo "<p><a href='http://www.relatablez.com/user/{$com['rUser']}'>@{$com['rUser']}</a> {$com['comment']}</p>";
+		{
+			$rUserPos = strpos($com['comment'], ' ');
+			$rUser = substr($com['comment'], 0, $rUserPos);
+			$comment = substr($com['comment'], $rUserPos, strlen($com['comment']));
+			echo "<p><a href='http://www.relatablez.com/user/$rUser'>$rUser</a> $comment</p>";
+		}
 		else
 			echo "<p>{$com['comment']}</p>";
-			
-		echo "<span data-reply='{$com['cid']}'>Reply</span><button class='up vote'></button><button class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+		
+		if($com['rid'] == 0)
+			echo "<span data-user='{$com['user']}' data-reply='{$com['cid']}'>Reply</span><button class='up vote'></button><button class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+		else
+			echo "<span data-user='{$com['user']}' data-reply='{$com['rid']}'>Reply</span><button class='up vote'></button><button class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
 			
 		echo "</div>\r\n";
 	}

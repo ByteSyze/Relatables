@@ -124,7 +124,7 @@
 			});
 			$(document).on("click","span[data-reply]", function()
 			{
-				$(this).parent().after("<div class='reply'><textarea class='reply'></textarea><button data-reply='"+$(this).attr("data-reply")+"'>Reply</button></div>");
+				$(this).parent().after("<div class='reply'><textarea class='reply'></textarea><button data-reply='"+$(this).attr("data-reply")+"' data-user='"+$(this).attr("data-user")+"'>Reply</button></div>");
 				$(this).removeAttr('data-reply');
 			});
 			$(document).on("click","button[data-reply]", function()
@@ -132,15 +132,18 @@
 				//Grab value from the textarea behind the reply button.
 				comment = $(this).prev().val();
 				rid = $(this).attr('data-reply');
+				user = $(this).attr('data-user');
 				
 				if(comment.length <= 140)
 				{
-					$.post('http://www.relatablez.com/comment.php', {p: <?php echo $pid; ?>, c: comment, r: rid}, function(result)
+					$.post('http://www.relatablez.com/comment.php', {p: <?php echo $pid; ?>, c: comment, r: rid, u: user}, function(result)
 					{
 						if(result != 0)
 						{
-							var comment = $.parseHTML(result);
-							$(this).parent().append(comment);
+							var commentEl = $.parseHTML(result);
+							var lastReply = $(this).parent();
+							while(lastReply.next().attr('class') === 'reply') lastReply = lastReply.next();
+							lastReply.after(commentEl);
 						}
 					});
 				}

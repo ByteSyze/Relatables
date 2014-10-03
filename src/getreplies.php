@@ -48,10 +48,8 @@
 			$time_diff = $time_diff->d . ' days ago';
 		else if($time_diff->h)
 			$time_diff = $time_diff->h . ' hours ago';
-		else if($time_diff->i)
+		else
 			$time_diff = $time_diff->i . ' minutes ago';
-		else if($time_diff->s)
-			$time_diff = $time_diff->s . ' seconds ago';
 		
 		echo "<span>$time_diff</span>";
 		

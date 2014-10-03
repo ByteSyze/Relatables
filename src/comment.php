@@ -9,6 +9,7 @@
 	
 	$pid 	 = $_POST['p'];
 	$rid	 = $_POST['r'];
+	$rUser	 = $_POST['u'];
 	
 	$comment = $_POST['c'];
 	$clen = strlen($comment);
@@ -19,15 +20,12 @@
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
 	if($rid != 0)
-	{
-		$rUser = getUsername($connection, $rid);
 		$comment = "@$rUser ".$comment;
-	}
 	
 	if($statement = $connection->prepare("INSERT INTO comments (pid, comment, uid, rid) VALUES (?,?,?,?)"))
 	{
 		$statement->bind_param('isii',$pid, $comment, $_SESSION['id'], $rid);
-		//$statement->execute();
+		$statement->execute();
 		
 		$comment = htmlspecialchars($comment);
 		
