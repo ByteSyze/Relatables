@@ -20,7 +20,7 @@
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
 	if($rid != 0)
-		$comment = "@$rUser ".$comment;
+		$comment = "@$rUser $comment";
 	
 	if($statement = $connection->prepare("INSERT INTO comments (pid, comment, uid, rid) VALUES (?,?,?,?)"))
 	{
@@ -30,7 +30,10 @@
 		$comment = htmlspecialchars($comment);
 		
 		if($rid != 0)
+		{
+			notify($connection, 0, getId($connection, $rUser), "Reply from ".$_SESSION['username'], "You have received a reply from ".$_SESSION['username']." on <a href='http://www.relatablez.com/post/$pid'>this post</a>.");
 			echo "<div class='comment reply'>";
+		}
 		else
 			echo "<div class='comment'>";
 		

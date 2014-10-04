@@ -280,3 +280,23 @@
 		else
 			die(mysqli_error($connection));
 	}
+	
+	/**
+	*	Send a notification to specified user ID.
+	*
+	*	@param	$sid		ID of notification sender (0 for non-specified)
+	*	@param	$uid		ID of notification recipient
+	*	@param	$subect		Subject of the notification
+	*	@param	$message	Message to send to user.
+	*
+	*/
+	function notify($connection, $sid = 0, $uid, $subject, $message)
+	{
+		if($statement = $connection->prepare("INSERT INTO notifications (sid, uid, subject, message) VALUES (?,?,?,?)"))
+		{
+			$statement->bind_param('iiss', $sid, $uid, $subject, $message);
+			$statement->execute();
+		}
+		return $connection->error;
+	}
+	
