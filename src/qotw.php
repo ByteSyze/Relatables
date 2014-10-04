@@ -12,9 +12,9 @@
 	$query = $connection->query("SELECT id FROM qotw ORDER BY created LIMIT 1"); //Grab latest QOTW
 	$qotw = $query->fetch_row();
 	
-	if($statement = $connection->prepare("REPLACE INTO qotw_votes (uid, v, qid) VALUES ({$_SESSION['id']}, ?, {$qotw[0]})"))
+	if($statement = $connection->prepare("INSERT INTO qotw_votes SET uid={$_SESSION['id']}, qid={$qotw[0]}, v=(?) ON DUPLICATE KEY UPDATE v=(?)"))
 	{
-		$statement->bind_param('i',$vote);
+		$statement->bind_param('ii',$vote,$vote);
 		$statement->execute();
 	}
 	

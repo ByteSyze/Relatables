@@ -3,9 +3,9 @@
 	
 	session_start();
 	
-	$id = $_POST['q'];
-	$voteTypeNum = $_POST['vtn'];
-	$verification = $_POST['v'];
+	$id 			= $_POST['q'];	//Submission ID.
+	$voteTypeNum 	= $_POST['vtn'];//Numerical representation of voting option.
+	$verification 	= $_POST['v'];	//Sumbission's verification ID.
 	
 	if($voteTypeNum)
 		$voteType = 'alone';
