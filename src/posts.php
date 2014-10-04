@@ -154,6 +154,20 @@
 				
 				return false;
 			});
+			$(document).on("click","button[data-v]", function()
+			{
+				c = $(this).attr('data-c');
+				v = $(this).attr('data-v');
+				
+				$.post('http://www.relatablez.com/ratecomment.php', {c: c, v: v}, function(result)
+				{
+					console.log(result);
+					if(v == 'up')
+						$('#points-'+c).val($('#points-'+c).val()+1);
+					else
+						$('#points-'+c).val($('#points-'+c).val()-1);
+				});
+			});
 		</script>
 	</body>
 </html>

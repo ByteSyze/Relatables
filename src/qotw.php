@@ -5,8 +5,6 @@
 	
 	$vote = $_POST['v'];
 	
-	$total_votes = $yes_votes+$no_votes;
-	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
 	$query = $connection->query("SELECT id FROM qotw ORDER BY created LIMIT 1"); //Grab latest QOTW

@@ -33,11 +33,11 @@
 		echo "<a href='http://www.relatablez.com/user/{$com['user']}'>{$com['user']}</a>";
 			
 		if($com['points'] < 0)
-			echo "<span class='points negative'>{$com['points']}</span>";
+			echo "<span id='points-{$com['cid']}' class='points negative'>{$com['points']}</span>";
 		else if($com['points'] > 0)
-			echo "<span class='points positive'>{$com['points']}</span>";
+			echo "<span id='points-{$com['cid']}' class='points positive'>{$com['points']}</span>";
 		else
-			echo "<span class='points'>{$com['points']}</span>";
+			echo "<span id='points-{$com['cid']}' class='points'>{$com['points']}</span>";
 			
 		$submitted = DateTime::createFromFormat("m d Y H i", $com['submitted']);
 		$time_diff = $submitted->diff($now);
@@ -66,9 +66,9 @@
 			echo "<p>{$com['comment']}</p>";
 		
 		if($com['rid'] == 0)
-			echo "<span data-user='{$com['user']}' data-reply='{$com['cid']}'>Reply</span><button class='up vote'></button><button class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+			echo "<span data-user='{$com['user']}' data-reply='{$com['cid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
 		else
-			echo "<span data-user='{$com['user']}' data-reply='{$com['rid']}'>Reply</span><button class='up vote'></button><button class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+			echo "<span data-user='{$com['user']}' data-reply='{$com['rid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
 			
 		echo "</div>\r\n";
 	}
