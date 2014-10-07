@@ -156,16 +156,16 @@
 			});
 			$(document).on("click","button[data-v]", function()
 			{
-				c = $(this).attr('data-c');
-				v = $(this).attr('data-v');
+				cid = $(this).attr('data-c');
+				vote = $(this).attr('data-v');
 				
-				$.post('http://www.relatablez.com/ratecomment.php', {c: c, v: v}, function(result)
+				$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
 				{
 					console.log(result);
-					if(v == 'up')
-						$('#points-'+c).val($('#points-'+c).val()+1);
+					if(vote == 'up')
+						$('span[id=points-'+c+']').val($('#points-'+c).val()+1);
 					else
-						$('#points-'+c).val($('#points-'+c).val()-1);
+						$('span[id=points-'+c+']').val($('#points-'+c).val()-1);
 				});
 			});
 		</script>

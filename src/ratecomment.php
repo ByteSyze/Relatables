@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	if($_SESSION['username'] == null) die();
+	if($_SESSION['username'] == null) die('Not logged in.');
 	
 	$vote 	= $_POST['v'];
 	$cid	= $_POST['c'];

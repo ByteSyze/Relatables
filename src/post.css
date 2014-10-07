@@ -110,14 +110,14 @@ span.submissioninfo
 	vertical-align:bottom;
 	width:auto;
 }
-span.negative
-{
-	color:#C82828;
-}
 span.points
 {
 	font-weight:bold;
 	color:#808080;
+}
+span.negative
+{
+	color:#C82828;
 }
 span.positive
 {

@@ -66,9 +66,9 @@
 			echo "<p>{$com['comment']}</p>";
 		
 		if($com['rid'] == 0)
-			echo "<span data-user='{$com['user']}' data-reply='{$com['cid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+			echo "<span data-user='{$com['user']}' data-reply='{$com['cid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-c='{$com['cid']}' data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
 		else
-			echo "<span data-user='{$com['user']}' data-reply='{$com['rid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+			echo "<span data-user='{$com['user']}' data-reply='{$com['rid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-c='{$com['cid']}' data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
 			
 		echo "</div>\r\n";
 	}
