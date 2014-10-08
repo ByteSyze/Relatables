@@ -132,7 +132,7 @@
 				//Grab value from the textarea behind the reply button.
 				comment = $(this).prev().val();
 				rid = $(this).attr('data-reply');
-				user = $(this).attr('data-user');
+				user = $(this).parent().attr('data-user');
 				
 				if(comment.length <= 140)
 				{
@@ -156,16 +156,16 @@
 			});
 			$(document).on("click","button[data-v]", function()
 			{
-				cid = $(this).attr('data-c');
+				cid = $(this).parent().attr('data-c');
 				vote = $(this).attr('data-v');
 				
 				$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
 				{
 					console.log(result);
 					if(vote == 'up')
-						$('span[id=points-'+c+']').val($('#points-'+c).val()+1);
+						$('#points-'+cid+']').val($('#points-'+cid).val()+1);
 					else
-						$('span[id=points-'+c+']').val($('#points-'+c).val()-1);
+						$('#points-'+cid+']').val($('#points-'+cid).val()-1);
 				});
 			});
 		</script>

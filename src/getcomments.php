@@ -1,5 +1,6 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
+	session_start();
 
 	$pid 	= $_POST['i'];
 	$index 	= $_POST['x'];
@@ -13,10 +14,10 @@
 		$statement->bind_param('iii',$pid,$index,$count);
 		$statement->execute();
 		
-		$statement->bind_result($com['cid'],$com['comment'],$com['user'],$com['rUser'],$com['submitted'],$com['rid'],$com['points']);
+		$statement->bind_result($cid, $comment, $user, $rUser, $submitted, $rid, $points);
 		$statement->store_result();
 		
-		$com['comment'] = htmlspecialchars($com['comment']);
+		$comment = htmlspecialchars($comment);
 	}
 	
 	$now = new DateTime();
@@ -25,21 +26,24 @@
 	
 	while($statement->fetch())
 	{
-		if($com['rid'] != 0)
-			echo "<div class='comment reply'>";
+		if($rid != 0)
+			echo "<div class='comment reply' data-uid='$cid' data-user='$user' data-c='$cid' data-r='$rid'>";
 		else
-			echo "<div class='comment'>";
+			echo "<div class='comment' data-uid='$cid' data-user='$user' data-c='$cid'>";
+			
+		if($user == $_SESSION['username'])
+			echo "<button id='delete-$cid' class='delete'></button>";
 		
-		echo "<a href='http://www.relatablez.com/user/{$com['user']}'>{$com['user']}</a>";
+		echo "<a href='http://www.relatablez.com/user/$user'>$user</a>";
 			
-		if($com['points'] < 0)
-			echo "<span id='points-{$com['cid']}' class='points negative'>{$com['points']}</span>";
-		else if($com['points'] > 0)
-			echo "<span id='points-{$com['cid']}' class='points positive'>{$com['points']}</span>";
+		if($points < 0)
+			echo "<span id='points-$cid' class='points negative'>$points</span>";
+		else if($points > 0)
+			echo "<span id='points-$cid' class='points positive'>$points</span>";
 		else
-			echo "<span id='points-{$com['cid']}' class='points'>{$com['points']}</span>";
+			echo "<span id='points-$cid' class='points'>$points</span>";
 			
-		$submitted = DateTime::createFromFormat("m d Y H i", $com['submitted']);
+		$submitted = DateTime::createFromFormat("m d Y H i", $submitted);
 		$time_diff = $submitted->diff($now);
 		
 		if($time_diff->y)
@@ -55,20 +59,20 @@
 		
 		echo "<span>$time_diff</span>";
 		
-		if($com['rid'] != 0)
+		if($rid != 0)
 		{
-			$rUserPos = strpos($com['comment'], ' ');
-			$rUser = substr($com['comment'], 0, $rUserPos);
-			$comment = substr($com['comment'], $rUserPos, strlen($com['comment']));
+			$rUserPos = strpos($comment, ' ');
+			$rUser = substr($comment, 0, $rUserPos);
+			$comment = substr($comment, $rUserPos, strlen($comment));
 			echo "<p><a href='http://www.relatablez.com/user/$rUser'>$rUser</a> $comment</p>";
 		}
 		else
-			echo "<p>{$com['comment']}</p>";
+			echo "<p>$comment</p>";
 		
-		if($com['rid'] == 0)
-			echo "<span data-user='{$com['user']}' data-reply='{$com['cid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-c='{$com['cid']}' data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+		if($rid == 0)
+			echo "<span data-user='$user' data-reply='$cid'>Reply</span><button data-c='$cid' data-v='up' class='up vote'></button><button data-c='$cid' data-v='down' class='down vote'></button><span data-report='$cid'>Report</span>";
 		else
-			echo "<span data-user='{$com['user']}' data-reply='{$com['rid']}'>Reply</span><button data-c='{$com['cid']}' data-v='up' class='up vote'></button><button data-c='{$com['cid']}' data-v='down' class='down vote'></button><span data-report='{$com['cid']}'>Report</span>";
+			echo "<span data-user='$user' data-reply='$rid'>Reply</span><button data-c='$rid' data-v='up' class='up vote'></button><button data-c='$rid' data-v='down' class='down vote'></button><span data-report='$rid'>Report</span>";
 			
 		echo "</div>\r\n";
 	}
