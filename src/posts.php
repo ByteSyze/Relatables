@@ -122,12 +122,12 @@
 					$('#comments').append(result);
 				});
 			});
-			$(document).on("click","span[data-reply]", function()
+			$(document).on("click", "span[data-reply]", function()
 			{
 				$(this).parent().after("<div class='reply'><textarea class='reply'></textarea><button data-reply='"+$(this).attr("data-reply")+"' data-user='"+$(this).attr("data-user")+"'>Reply</button></div>");
 				$(this).removeAttr('data-reply');
 			});
-			$(document).on("click","button[data-reply]", function()
+			$(document).on("click", "button[data-reply]", function()
 			{
 				//Grab value from the textarea behind the reply button.
 				comment = $(this).prev().val();
@@ -156,7 +156,7 @@
 				
 				return false;
 			});
-			$(document).on("click","button[data-v]", function()
+			$(document).on("click", "button[data-v]", function()
 			{
 				cid = $(this).parent().attr('data-c');
 				vote = $(this).attr('data-v');
@@ -168,6 +168,15 @@
 						$('#points-'+cid).html(parseInt($('#points-'+cid).html())+1);
 					else
 						$('#points-'+cid).html($('#points-'+cid).html()-1);
+				});
+			});
+			$(document).on("click", "button[data-delete]", function(result)
+			{
+				cid = $(this).parent().attr('data-c');
+				
+				$.post('http://www.relatablez.com/deletecomment.php', {c: cid}, function(result)
+				{
+					console.log(result);
 				});
 			});
 		</script>
