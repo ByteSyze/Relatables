@@ -35,6 +35,17 @@ a.admin
 	color:red;
 	font-style:italic;
 }
+button.delete
+{
+	width:16px;
+	height:16px;
+	float:right;
+	border:none;
+	cursor:pointer;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	background-image:url('/x_mark.png');
+}
 button.vote
 {
 	width:16px;
