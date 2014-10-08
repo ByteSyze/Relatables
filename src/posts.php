@@ -131,8 +131,9 @@
 			{
 				//Grab value from the textarea behind the reply button.
 				comment = $(this).prev().val();
-				rid = $(this).attr('data-reply');
-				user = $(this).parent().attr('data-user');
+				
+				rid = $(this).parent().prev().attr('data-r');
+				user = $(this).parent().prev().attr('data-user');
 				
 				if(comment.length <= 140)
 				{
@@ -142,6 +143,7 @@
 						{
 							var commentEl = $.parseHTML(result);
 							var lastReply = $(this).parent();
+							
 							while(lastReply.next().attr('class') === 'reply') lastReply = lastReply.next();
 							lastReply.after(commentEl);
 						}
@@ -163,9 +165,9 @@
 				{
 					console.log(result);
 					if(vote == 'up')
-						$('#points-'+cid+']').val($('#points-'+cid).val()+1);
+						$('#points-'+cid).html(parseInt($('#points-'+cid).html())+1);
 					else
-						$('#points-'+cid+']').val($('#points-'+cid).val()-1);
+						$('#points-'+cid).html($('#points-'+cid).html()-1);
 				});
 			});
 		</script>

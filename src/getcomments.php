@@ -9,12 +9,12 @@
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
 	//Long ass MYSQL query ftw
-	if($statement = $connection->prepare("SELECT cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, (SELECT username FROM accounts WHERE 0) AS rUser, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
+	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, (SELECT username FROM accounts WHERE 0) AS rUser, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
 	{
 		$statement->bind_param('iii',$pid,$index,$count);
 		$statement->execute();
 		
-		$statement->bind_result($cid, $comment, $user, $rUser, $submitted, $rid, $points);
+		$statement->bind_result($uid, $cid, $comment, $user, $rUser, $submitted, $rid, $points);
 		$statement->store_result();
 		
 		$comment = htmlspecialchars($comment);
@@ -27,9 +27,9 @@
 	while($statement->fetch())
 	{
 		if($rid != 0)
-			echo "<div class='comment reply' data-uid='$cid' data-user='$user' data-c='$cid' data-r='$rid'>";
+			echo "<div class='comment reply' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$rid'>";
 		else
-			echo "<div class='comment' data-uid='$cid' data-user='$user' data-c='$cid'>";
+			echo "<div class='comment' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
 			
 		if($user == $_SESSION['username'])
 			echo "<button id='delete-$cid' class='delete'></button>";
@@ -70,9 +70,9 @@
 			echo "<p>$comment</p>";
 		
 		if($rid == 0)
-			echo "<span data-user='$user' data-reply='$cid'>Reply</span><button data-c='$cid' data-v='up' class='up vote'></button><button data-c='$cid' data-v='down' class='down vote'></button><span data-report='$cid'>Report</span>";
+			echo "<span data-reply>Reply</span><button data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report>Report</span>";
 		else
-			echo "<span data-user='$user' data-reply='$rid'>Reply</span><button data-c='$rid' data-v='up' class='up vote'></button><button data-c='$rid' data-v='down' class='down vote'></button><span data-report='$rid'>Report</span>";
+			echo "<span data-reply>Reply</span><button data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report>Report</span>";
 			
 		echo "</div>\r\n";
 	}

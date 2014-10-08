@@ -18,5 +18,5 @@
 	{
 		$statement->bind_param('iii', $cid, $vote, $vote);
 		$statement->execute();
+		echo $mysqli->affected_rows;
 	}
-	echo $connection->error;
