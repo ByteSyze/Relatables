@@ -9,12 +9,12 @@
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
 	//Long ass MYSQL query ftw
-	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, (SELECT username FROM accounts WHERE 0) AS rUser, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
+	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, (SELECT username FROM accounts WHERE 0) AS rUser, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, deleted FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
 	{
 		$statement->bind_param('iii',$pid,$index,$count);
 		$statement->execute();
 		
-		$statement->bind_result($uid, $cid, $comment, $user, $rUser, $submitted, $rid, $points);
+		$statement->bind_result($uid, $cid, $comment, $user, $rUser, $submitted, $rid, $points, $deleted);
 		$statement->store_result();
 		
 		$comment = htmlspecialchars($comment);
@@ -59,7 +59,11 @@
 		
 		echo "<span>$time_diff</span>";
 		
-		if($rid != 0)
+		if($deleted)
+		{
+			echo "<p><i>Comment removed by author.</i></p>";
+		}
+		else if($rid != 0)
 		{
 			$rUserPos = strpos($comment, ' ');
 			$rUser = substr($comment, 0, $rUserPos);
