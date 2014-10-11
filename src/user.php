@@ -54,15 +54,50 @@
 				<?php
 					if(!$data['hiderelated'])
 					{
-						$related_posts = getRelated($connection, $data['id']);
+						$data = getRelated($connection, $data['id']);
 						
-						while($related = mysqli_fetch_array($related_posts))
-						{
-							echo $related[0];
-							echo "\r\n";
+						$related = $data['related'];
+						$statement = $data['statement'];
+						
+						while($statement->fetch())
+						{	
+							if($related['anonymous'])
+								$user='Anonymous';
+							else
+								$user = getUsername($connection, $related['uid']);
+							
+							echo "\r\n<div class='dialogue uppadding' id='{$related['id']}' data-category='{$related['category']}' data-nsfw='{$related['nsfw']}' data-date='{$related['fdate']}'>";
+							echo "\r\n<p class='dialogue'>{$related['submission']}</p>";
+							echo "\r\n<table class='vote-table'>";
+							echo "\r\n<tr>";
+							if($_SESSION["username"] != null)
+							{
+								echo "\r\n<td><button class='dialoguebutton' id='bna{$related['id']}' data-vid='{$related['id']}' data-v='{$related['verification']}'>No, me too!</button></td>";
+								echo "\r\n<td><button class='dialoguebutton' id='ba{$related['id']}'  data-vid='{$related['id']}' data-v='{$related['verification']}'>You're alone.</button></td>";
+							}
+							else
+							{
+								echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
+								echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone.</button></td>";				
+							}
+							echo "\r\n<tr>";
+							echo "\r\n<td><span class='vote-counter' id='na{$related['id']}'>(" . number_format($related["notalone"]) . ")</span></td>";
+							echo "\r\n<td><span class='vote-counter' id='a{$related['id']}'>(" . number_format($related["alone"]) . ")</span></td>";
+							echo "\r\n</table>";
+							echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
+							
+							if($related['anonymous'])
+								echo ' >' . $user . "</a> - {$related['fdate']}</span></div>";
+							else
+							{
+								if(isAdmin($connection, $related['uid']))
+									echo 'class=\'admin\'';
+								echo " href='http://www.relatablez.com/user/" . $user . "'>" . $user . "</a> - " . $related["fdate"] . "</span></div>";
+							}
+							echo "\r\n</div>";
 						}
 					}
-				?>
+				?>	
 			</div>		
 			<div id='statsmodule'>
 				<h3>Stats</h3>

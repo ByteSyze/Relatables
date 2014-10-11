@@ -31,7 +31,7 @@
 		else
 			echo "<div class='comment' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
 			
-		if($user == $_SESSION['username'])
+		if($user == $_SESSION['username'] && !$deleted)
 			echo "<button data-delete class='delete'></button>";
 		
 		echo "<a href='http://www.relatablez.com/user/$user'>$user</a>";

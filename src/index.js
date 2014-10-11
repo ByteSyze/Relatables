@@ -17,7 +17,7 @@ function vote(id, vote, v)
 	$.ajax({
 		type: "POST",
 		url: "/vote.php",
-		data: { q: id, vtn: vote, v : v}
+		data: {q: id, vtn: vote, v : v}
 	})
 	.done(function(data) {
 		console.log(data);

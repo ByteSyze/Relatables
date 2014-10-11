@@ -58,9 +58,10 @@
 			
 			$statement->store_result();
 			$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
-			//$result = $statement->get_result();
-			//die($related['submission']);
-			return $statement->fetch();
+			
+			$data = array("related" => $related, "statement" => $statement);
+			
+			return $data;
 		}
 	}
 	
