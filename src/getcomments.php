@@ -73,10 +73,7 @@
 		else
 			echo "<p>$comment</p>";
 		
-		if($rid == 0)
-			echo "<span data-reply>Reply</span><button data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report>Report</span>";
-		else
-			echo "<span data-reply>Reply</span><button data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report>Report</span>";
+		echo "<span data-reply>Reply</span><button data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report>Report</span>";
 			
 		echo "</div>\r\n";
 	}

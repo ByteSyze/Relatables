@@ -164,10 +164,30 @@
 				$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
 				{
 					console.log(result);
+					points = parseInt($('#points-'+cid).html());
+					
 					if(vote == 'up')
-						$('#points-'+cid).html(parseInt($('#points-'+cid).html())+1);
+					{
+						points += 1;
+						
+						if(points > 0)
+							$('#points-'+cid).addClass('positive');
+						else if(points === 0)
+							$('#points-'+cid).removeClass('negative');
+							
+						$('#points-'+cid).html(points);
+					}
 					else
-						$('#points-'+cid).html($('#points-'+cid).html()-1);
+					{
+						points -= 1;
+						
+						if(points < 0)
+							$('#points-'+cid).addClass('negative');
+						else if(points === 0)
+							$('#points-'+cid).removeClass('positive');
+							
+						$('#points-'+cid).html(points);
+					}
 				});
 			});
 			$(document).on("click", "button[data-delete]", function(result)

@@ -49,7 +49,9 @@
 		else
 			echo "<p>$comment</p>";
 			
-		echo "</div>";
+		echo "<span data-reply>Reply</span><button data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report>Report</span>";
+			
+		echo "</div>\r\n";
 		return;
 	}
 	
