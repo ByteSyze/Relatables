@@ -2,7 +2,7 @@
 	/*Copyright (C) Tyler Hackett 2014*/
 	session_start();
 
-	$pid 	= $_POST['i'];
+	$pid 	= intval($_POST['i']);
 	$index 	= $_POST['x'];
 	$count 	= $_POST['c'] > 50 ? 50 + $index : $_POST['c'] + $index;
 	
@@ -77,4 +77,9 @@
 			
 		echo "</div>\r\n";
 	}
+	
+	$remaining = $connection->query("SELECT COUNT(cid) FROM comments WHERE pid=$pid")->fetch_array()[0] - $statement->num_rows;
+	
+	if($remaining)
+		echo "<span data-show>Show More</span>";
 	

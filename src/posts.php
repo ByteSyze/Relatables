@@ -192,11 +192,13 @@
 			});
 			$(document).on("click", "button[data-delete]", function(result)
 			{
+				button = $(this);
 				cid = $(this).parent().attr('data-c');
 				
 				$.post('http://www.relatablez.com/deletecomment.php', {c: cid}, function(result)
 				{
-					console.log(result);
+					button.nextAll().eq(3).html('<i>Comment removed.</i>');
+					button.remove();
 				});
 			});
 		</script>
