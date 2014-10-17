@@ -104,6 +104,16 @@ div.reply
 {
 	padding-left:50px;
 }
+div.show
+{
+	text-align:center;
+	font-size:17px;
+	color:#808080;
+}
+div.show span
+{
+	cursor:pointer;
+}
 p.dialogue
 {
 	position:relative;

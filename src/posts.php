@@ -190,7 +190,7 @@
 					}
 				});
 			});
-			$(document).on("click", "button[data-delete]", function(result)
+			$(document).on("click", "button[data-delete]", function()
 			{
 				button = $(this);
 				cid = $(this).parent().attr('data-c');
@@ -199,6 +199,16 @@
 				{
 					button.nextAll().eq(3).html('<i>Comment removed.</i>');
 					button.remove();
+				});
+			});
+			$(document).on("click", "span[data-show]", function()
+			{
+				show = $(this);
+
+				$.post('/getcomments.php', {i: <?php echo $pid; ?>, x: show.attr('data-show'), c: 10}, function(result)
+				{
+					$('#comments').append(result);
+					show.remove();
 				});
 			});
 		</script>
