@@ -26,10 +26,10 @@
 <!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
-		<title>Post</title>
+		<title><?php echo $submission; ?></title>
 		
 		<meta charset="UTF-8">
-		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
+		<meta name="keywords" content="Am I The Only One, Relatablez, <?php echo $submission; ?>">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">

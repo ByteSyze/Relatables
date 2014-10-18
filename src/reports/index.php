@@ -7,12 +7,13 @@
 	
 	if(!isAdmin($connection, $_SESSION['id']))
 	{
+		echo "not admin";
 		header("HTTP/1.0 404 Not Found");
 		die();
 	}
 	else
 	{
-		$reported_comments = $connection->query("SELECT id, comment, (SELECT username FROM accounts WHERE id=comments.uid) AS author, reports FROM comments WHERE reported = 0 AND deleted = 0");
+		$reported_comments = $connection->query("SELECT cid, comment, (SELECT username FROM accounts WHERE id=comments.uid) AS author, reports FROM comments WHERE reported = 0 AND deleted = 0");
 	}
 ?>
 <!DOCTYPE html>
@@ -47,6 +48,26 @@
 				color:#FFF;
 				background-color:#4a66d8;
 			}
+			div.reported
+			{
+				max-height:300px;
+				overflow-y:auto;
+				padding:5px;
+			}
+			table
+			{
+				width:100%;
+			}
+			th
+			{
+				font-weight:bold;
+				font-size:19px;
+			}
+			td
+			{
+				text-align:center;
+				border:1px solid #BFBFBF;
+			}
 		</style>
 	</head>
 	<body>
@@ -57,12 +78,15 @@
 			
 				<h3>Reported Comments:</h3>
 				<div class='reported'>
-					<?php
-						while($comment = $reported_comments->fetch_array())
-						{
-							echo "<span>{$comment['comment']}</span>";
-						}
-					?>
+					<table>
+						<tr><th>Author</th><th>Comment</th><th>Reports</th>
+						<?php
+							while($comment = $reported_comments->fetch_array())
+							{
+								echo "<tr><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}";
+							}
+						?>
+					</table>
 				</div>
 				
 				<h3>Reported Posts:</h3>
