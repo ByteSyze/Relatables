@@ -7,13 +7,13 @@
 	
 	if(!isAdmin($connection, $_SESSION['id']))
 	{
-		echo "not admin";
 		header("HTTP/1.0 404 Not Found");
 		die();
 	}
 	else
 	{
-		$reported_comments = $connection->query("SELECT cid, comment, (SELECT username FROM accounts WHERE id=comments.uid) AS author, reports FROM comments WHERE reported = 0 AND deleted = 0");
+		$reported_comments  = $connection->query("SELECT pid, cid, comment, (SELECT username FROM accounts WHERE id=comments.uid) AS author, (SELECT COUNT(cid) FROM comment_reports WHERE comment_reports.cid=comments.cid) AS reports FROM comments WHERE reported = 0 AND deleted = 0 ORDER BY reports DESC");
+		$reported_posts		= $connection->query("SELECT id, submission, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT COUNT(pid) FROM submission_reports WHERE submission_reports.pid=submissions.id) AS reports FROM submissions WHERE reported = 0 AND reported = 0 ORDER BY reports DESC");
 	}
 ?>
 <!DOCTYPE html>
@@ -23,8 +23,6 @@
 		<title>Reported Content</title>
 		
 		<meta charset="UTF-8">
-		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
-		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
 		<link rel="canonical" href="http://www.relatablez.com/">
@@ -79,11 +77,11 @@
 				<h3>Reported Comments:</h3>
 				<div class='reported'>
 					<table>
-						<tr><th>Author</th><th>Comment</th><th>Reports</th>
+						<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
 						<?php
 							while($comment = $reported_comments->fetch_array())
 							{
-								echo "<tr><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}";
+								echo "<tr><td><a href='http://www.relatablez.com/post/{$comment['pid']}#{$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}";
 							}
 						?>
 					</table>
@@ -91,7 +89,15 @@
 				
 				<h3>Reported Posts:</h3>
 				<div class='reported'>
-				
+					<table>
+						<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
+						<?php
+							while($post = $reported_posts->fetch_array())
+							{
+								echo "<tr><td><a href='http://www.relatablez.com/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}";
+							}
+						?>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -100,4 +106,3 @@
 		<script src='http://www.relatablez.com/toolbar.js'></script>
 	</body>
 </html>
-
