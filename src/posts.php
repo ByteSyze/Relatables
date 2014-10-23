@@ -131,6 +131,7 @@
 			{
 				//Grab value from the textarea behind the reply button.
 				comment = $(this).prev().val();
+				rootCommentEl = $(this);
 				
 				rid = $(this).parent().prev().attr('data-r');
 				user = $(this).parent().prev().attr('data-user');
@@ -142,7 +143,7 @@
 						if(result != 0)
 						{
 							var commentEl = $.parseHTML(result);
-							var lastReply = $(this).parent();
+							var lastReply = rootCommentEl.parent();
 							
 							while(lastReply.next().attr('class') === 'reply') lastReply = lastReply.next();
 							lastReply.after(commentEl);

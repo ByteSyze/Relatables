@@ -70,6 +70,8 @@
 			{
 				text-align:center;
 				border:1px solid #BFBFBF;
+				max-width:350px;
+				word-wrap:break-word;
 			}
 		</style>
 	</head>

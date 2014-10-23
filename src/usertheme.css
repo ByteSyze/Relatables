@@ -1,8 +1,7 @@
 /*Copyright (C) Tyler Hackett 2014*/
 #infobanner
 {
-	position:relative;
-	top:55px;
+	margin-top:55px;
 	height:200px;
 	background-color:#f4f4f4;	
 	border-top:1px solid #808080;
@@ -74,8 +73,7 @@
 }
 #moduleslayout
 {
-	position:relative;
-	top:50px;
+	margin-top:50px;
 	margin:auto;
 	width:1100px;
 }
