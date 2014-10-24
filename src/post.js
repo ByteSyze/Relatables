@@ -121,3 +121,13 @@ $(document).on("click", "span[data-show]", function()
 		show.remove();
 	});
 });
+$(document).on("click", "span[data-report]", function()
+{
+	cid = $(this).parent().attr('data-c');
+	button = $(this);
+
+	$.post('/report.php', {c: cid}, function(result)
+	{
+		button.html('<i>Reported</i>');
+	});
+});
