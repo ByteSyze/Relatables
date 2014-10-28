@@ -22,7 +22,7 @@
 	
 	$connection = getConnection();
 	
-	if(isAdmin($connection, $_SESSION['id']))
+	if(/*isAdmin($connection, $_SESSION['id'])*/false)
 	{
 		if($statement = $connection->prepare("UPDATE {$type}s SET reported=1 WHERE $id_name = (?)"))
 		{
@@ -37,4 +37,6 @@
 			$statement->bind_param('i', $id);
 		}
 	}
+	
+	echo $connection->error;
 	

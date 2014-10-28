@@ -71,6 +71,8 @@ $(document).on("click", "button[data-v]", function()
 	cid = $(this).parent().attr('data-c');
 	vote = $(this).attr('data-v');
 	
+	button = $(this);
+	
 	$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
 	{
 		console.log(result);
@@ -98,6 +100,13 @@ $(document).on("click", "button[data-v]", function()
 				
 			$('#points-'+cid).html(points);
 		}
+		
+		button.prop('disabled', true);
+		if(vote == 'up')
+			button.next().prop('disabled', false);
+		else
+			button.prev().prop('disabled', false);
+			
 	});
 });
 $(document).on("click", "button[data-delete]", function()
@@ -128,6 +137,7 @@ $(document).on("click", "span[data-report]", function()
 
 	$.post('/report.php', {c: cid}, function(result)
 	{
+		console.log(result);
 		button.html('<i>Reported</i>');
 	});
 });
