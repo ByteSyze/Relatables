@@ -73,41 +73,44 @@ $(document).on("click", "button[data-v]", function()
 	
 	button = $(this);
 	
-	$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
+	if(!button.data('disabled'))
 	{
-		console.log(result);
-		points = parseInt($('#points-'+cid).html());
-		
-		if(vote == 'up')
+		$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
 		{
-			points += 1;
+			console.log(result);
+			points = parseInt($('#points-'+cid).html());
 			
-			if(points > 0)
-				$('#points-'+cid).addClass('positive');
-			else if(points === 0)
-				$('#points-'+cid).removeClass('negative');
+			if(vote == 'up')
+			{
+				points += 1;
 				
-			$('#points-'+cid).html(points);
-		}
-		else
-		{
-			points -= 1;
-			
-			if(points < 0)
-				$('#points-'+cid).addClass('negative');
-			else if(points === 0)
-				$('#points-'+cid).removeClass('positive');
+				if(points > 0)
+					$('#points-'+cid).addClass('positive');
+				else if(points === 0)
+					$('#points-'+cid).removeClass('negative');
+					
+				$('#points-'+cid).html(points);
+			}
+			else
+			{
+				points -= 1;
 				
-			$('#points-'+cid).html(points);
-		}
-		
-		button.prop('disabled', true);
-		if(vote == 'up')
-			button.next().prop('disabled', false);
-		else
-			button.prev().prop('disabled', false);
+				if(points < 0)
+					$('#points-'+cid).addClass('negative');
+				else if(points === 0)
+					$('#points-'+cid).removeClass('positive');
+					
+				$('#points-'+cid).html(points);
+			}
 			
-	});
+			button.prop('disabled', true);
+			if(vote == 'up')
+				button.next().data('disabled', false);
+			else
+				button.prev().data('disabled', false);
+				
+		});
+	}
 });
 $(document).on("click", "button[data-delete]", function()
 {
