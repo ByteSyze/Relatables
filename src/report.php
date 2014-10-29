@@ -35,6 +35,7 @@
 		if($statement = $connection->prepare("INSERT INTO {$type}_reports (uid, id) VALUES ({$_SESSION['id']}, ?)"))
 		{
 			$statement->bind_param('i', $id);
+			$statement->execute();
 		}
 	}
 	

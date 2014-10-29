@@ -68,13 +68,13 @@ $(document).on("click", "button[data-reply]", function()
 });
 $(document).on("click", "button[data-v]", function()
 {
-	cid = $(this).parent().attr('data-c');
-	vote = $(this).attr('data-v');
-	
 	button = $(this);
 	
 	if(!button.data('disabled'))
 	{
+		cid = $(this).parent().attr('data-c');
+		vote = $(this).attr('data-v');
+	
 		$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
 		{
 			console.log(result);
