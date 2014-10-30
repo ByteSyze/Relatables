@@ -53,10 +53,10 @@
 				<?php
 					if(!$data['hiderelated'])
 					{
-						$data = getRelated($connection, $data['id']);
+						$related_data = getRelated($connection, $data['id']);
 						
-						$related = $data['related'];
-						$statement = $data['statement'];
+						$related = $related_data['related'];
+						$statement = $related_data['statement'];
 						
 						while($statement->fetch())
 						{	

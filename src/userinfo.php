@@ -10,7 +10,7 @@
 	//Returns an array of relevant information pertaining to the specified user's profile.
 	function getProfileData($connection, $username)
 	{
-		if($statement = $connection->prepare('SELECT username, id, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), description, posts, comments, moderated, hiderelated, hidelocation, admin, country_id  FROM accounts WHERE username like (?)'))
+		if($statement = $connection->prepare('SELECT username, id, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), description, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments, (SELECT 1) AS moderated, hiderelated, hidelocation, admin, country_id  FROM accounts WHERE username like (?)'))
 		{	
 			$statement->bind_param('s',$username);
 			
