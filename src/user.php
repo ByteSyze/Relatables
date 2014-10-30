@@ -34,7 +34,6 @@
 	
 		<div id='infobanner'>
 			<div id='infolayout'>
-				<button id='message-button' onclick='showSendMessagePopup()'>Send Message</button>
 				<div id='info'>
 					<span id='username'><?php echo $data['username']; ?></span><br>
 					<?php if($data['hidelocation'] == 0){ echo "<span id='location' class='right-spacer'>".$data['country']."</span>"; } ?>
