@@ -158,6 +158,10 @@ span.vote-counter-wrapper
 	clear: both; 
 	margin-right:5px;
 }
+span[data-reply], span[data-report]
+{
+	cursor:pointer;
+}
 table.vote-table
 {
 	text-align:center;
