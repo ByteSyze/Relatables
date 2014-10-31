@@ -13,12 +13,12 @@
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
-	if($statement = $connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous FROM submissions WHERE id=(?)"))
+	if($statement = $connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
 	{
-		$statement->bind_param('i',$pid);
+		$statement->bind_param('ii', $pid, $pid);
 		$statement->execute();
 		
-		$statement->bind_result($uid, $verif, $cat, $fdate, $alone, $notalone, $pending, $submission, $anon);
+		$statement->bind_result($uid, $verif, $cat, $fdate, $alone, $notalone, $pending, $submission, $anon, $total_comments);
 		$statement->fetch();
 	}
 ?>
@@ -77,7 +77,7 @@
 					}
 					echo "\r\n</div>";
 				?>
-				<span>Comments (<span id='comment-count'>0</span>)</span>
+				<span>Comments (<span id='comment-count'><?php echo $total_comments ?></span>)</span>
 				<div id='comments'>
 					<div id='comment-submit-wrapper'>
 						<form action='http://www.relatablez.com/comment.php' method='POST'>
