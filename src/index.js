@@ -16,7 +16,7 @@ function vote(id, vote, v)
 	
 	$.ajax({
 		type: "POST",
-		url: "/vote.php",
+		url: "http://www.relatablez.com/vote.php",
 		data: {q: id, vtn: vote, v : v}
 	})
 	.done(function(data) {

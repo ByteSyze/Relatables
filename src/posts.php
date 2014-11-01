@@ -26,7 +26,7 @@
 <!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
-		<title><?php echo $submission; ?></title>
+		<title>Relatablez</title>
 		
 		<meta charset="UTF-8">
 		<meta name="keywords" content="Am I The Only One, Relatablez, <?php echo $submission; ?>">

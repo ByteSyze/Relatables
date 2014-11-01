@@ -63,7 +63,7 @@
 		{
 			echo "<p><i>Comment removed by author.</i></p>";
 		}
-		else if($reported)
+		else if($reported > 0)
 		{
 			echo "<p><i>Comment removed by an administrator.</i></p>";
 		}
