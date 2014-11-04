@@ -80,33 +80,46 @@ $(document).on("click", "button[data-v]", function()
 	
 		$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
 		{
-			console.log(result);
+		
 			points = parseInt($('#points-'+cid).html());
 			
 			if(vote == 'up')
 			{
-				points += 1;
+				points += parseInt(result);
 				
 				if(points > 0)
+				{
 					$('#points-'+cid).addClass('positive');
-				else if(points === 0)
 					$('#points-'+cid).removeClass('negative');
-					
+				}
+				else
+				{
+					$('#points-'+cid).addClass('negative');
+					$('#points-'+cid).removeClass('positive');
+				}
+				
 				$('#points-'+cid).html(points);
 			}
 			else
 			{
-				points -= 1;
+				points -= parseInt(result);
 				
 				if(points < 0)
+				{
 					$('#points-'+cid).addClass('negative');
-				else if(points === 0)
 					$('#points-'+cid).removeClass('positive');
+				}
+				else
+				{
+					$('#points-'+cid).addClass('positive');
+					$('#points-'+cid).removeClass('negative');
+				}
 					
 				$('#points-'+cid).html(points);
 			}
 			
-			button.prop('disabled', true);
+			button.data('disabled', true);
+			
 			if(vote == 'up')
 				button.next().data('disabled', false);
 			else
