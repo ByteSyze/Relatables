@@ -2,8 +2,9 @@
 $('#comment-submit-button').click(function()
 {
 	comment = $('#comment-submit-text').val();
+	button = $(this);
 	
-	if(comment.length <= 140)
+	if((comment.length <= 140) && (comment.length > 0))
 	{
 		$.post('http://www.relatablez.com/comment.php', {p: pid, c: comment, r: 0}, function(result)
 		{
@@ -11,12 +12,14 @@ $('#comment-submit-button').click(function()
 			{
 				var comment = $.parseHTML(result);
 				$('#comment-submit-wrapper').after(comment);
+				
+				button.prev().css('border', '');
 			}
 		});
 	}
 	else
 	{
-		//TODO red border around comment box.
+		button.prev().css('border', '1px solid red');
 	}
 	
 	return false;
