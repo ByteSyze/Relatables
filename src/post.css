@@ -77,6 +77,11 @@ div.comment
 {
 	padding-bottom:10px;
 }
+div.comment a
+{
+	color:#4A66D8;
+	font-weight:bold;
+}
 div.comment a, 
 div.comment span,
 div.comment button

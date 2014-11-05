@@ -20,7 +20,7 @@
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 	
 	if($rid != 0)
-		$comment = "@$rUser $comment";
+		$comment = "$rUser $comment";
 	
 	if($statement = $connection->prepare("INSERT INTO comments (pid, comment, uid, rid) VALUES (?,?,?,?)"))
 	{
@@ -44,7 +44,7 @@
 			$rUserPos = strpos($comment, ' ');
 			$rUser = substr($comment, 0, $rUserPos);
 			$comment = substr($comment, $rUserPos, strlen($comment));
-			echo "<p><a href='http://www.relatablez.com/user/$rUser'>$rUser</a> $comment</p>";
+			echo "<p><a href='http://www.relatablez.com/user/$rUser'>@$rUser</a> $comment</p>";
 		}
 		else
 			echo "<p>$comment</p>";
