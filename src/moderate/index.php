@@ -82,7 +82,7 @@
 							if($submission['submission'] !== null)
 								echo $submission['submission'];
 							else
-								echo '<b>There are no more posts to moderate!</b>';
+								echo '<b>There are no posts to moderate at this time</b>';
 						?>
 					</p>
 					<form method='POST'>
@@ -104,6 +104,17 @@
 					<li>Posts should be suitable and appropriate for Relatablez users.</li>
 				</ul>
 				<i id='nsfw-notice'>Only check NSFW if the post follows the rules and guidelines but may not be suitable for younger users.</i>
+			</div>
+			<div id='help-popup'>
+				<h3>What Is This?</h3>
+				<p>To make sure only the best posts reach the front page, we allow users like yourself to choose which posts get in. These are pending posts that have recently been submitted and are awaiting approval.</p>
+				
+				<h3>How Do I Moderate</h3>
+				<p>Choose <b>Yes</b> if it follows our Rules and Guidelines.</p>
+				<p>Choose <b>No</b> if the post does not follow the Rules and Guidelines.</p>
+				<p>Click <b>Report</b> if the post contains any of the following:</p>
+				<p class='subtext'>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation.</p>
+				<p>If a post contains subtle swearing, or is inappropriate for younger audiences, please flag the post as NSFW.</p>
 			</div>
 		</div>
 		
