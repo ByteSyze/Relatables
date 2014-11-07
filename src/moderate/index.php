@@ -41,9 +41,12 @@
 			}
 			else
 			{
-				if($_POST['v'] === 'Yes')
+				if($_POST['v'] === 'Yes' || $_POST['v'] === 'NSFW')
 				{
-					mysqli_query($connection, 'UPDATE submissions SET notalone=notalone+1 WHERE id=' . $submission['id']);
+					if($_POST['v'] === 'NSFW')
+						$nsfw_mysql_code = ',nsfw=nsfw+1';
+						
+					mysqli_query($connection, "UPDATE submissions SET notalone=notalone+1 $nsfw_mysql_code WHERE id=" . $submission['id']);
 					incModerationIndex($connection, $_SESSION['id']);
 				}
 				else if($_POST['v'] === 'No')
@@ -85,9 +88,10 @@
 								echo '<b>There are no posts to moderate at this time</b>';
 						?>
 					</p>
-					<form method='POST'>
-						<input type='submit' name='v' class='vote green' value='Yes' />
-						<input type='submit' name='v' class='vote red' value='No' />
+					<form id='moderation-form' method='POST'>
+						<button type='submit' name='v' class='vote green' style='float:left;' value='Yes'>Yes</button>
+						<button type='submit' name='v' class='vote amber' value='NSFW'><span class='subtext'>Yes, but</span>NSFW</button>
+						<button type='submit' name='v' class='vote red' style='float:right;' value='No'>No</button>
 					</form>
 				</div>
 				<a id='help'>Help</a>
