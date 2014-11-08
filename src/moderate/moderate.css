@@ -6,15 +6,42 @@
 	margin-top:30px;
 	width:700px;
 }
-#help
+#help-open
 {
 	position:relative;
+	cursor:pointer;
 	bottom:35px;
 	display:block;
 	float:right;
 	font-size:16px;
 	font-weight:bold;
 	margin-right:20px;
+	color:#BFBFBF;
+}
+#help-popup
+{
+	width:560px;
+	height:400px;
+	position:fixed;
+	top:calc(50% - 200px); /*subtract half the popup height from half of the total window height.*/
+	left:calc(50% - 280px); /*subtract half the popup width and padding from half of the total window width.*/
+	background:#FFF;
+	border:1px solid #BFBFBF;
+	border-radius:5px;
+	z-index:3;
+}
+#help-popup h3
+{
+	color:#4a66d8;
+}
+#help-popup p
+{
+	padding-top:3px;
+	padding-bottom:3px;
+}
+#help-popup-content
+{
+	padding:30px;
 }
 #main
 {
@@ -70,6 +97,11 @@ p.pending-submission
 	background-color:white;
 	border-radius:4px;
 	text-align:left;
+}
+p.subtext
+{
+	font-style:italic;
+	color:#808080;
 }
 span.guideline-title
 {

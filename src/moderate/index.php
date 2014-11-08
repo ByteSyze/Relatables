@@ -77,7 +77,7 @@
 	<body>
 		<?php require("../toolbar.php"); ?>
 		<div id='main'>
-			<div style='width:100%;background:#C4C4C4;'>
+			<div style='width:100%;background:#808080;'>
 				<div class='pending-submission-wrapper' >
 					<h2>Does this post obey the rules & guidelines?</h2>
 					<p class='pending-submission'>
@@ -94,7 +94,7 @@
 						<button type='submit' name='v' class='vote red' style='float:right;' value='No'>No</button>
 					</form>
 				</div>
-				<a id='help'>Help</a>
+				<a id='help-open'>Help</a>
 			</div>
 			<div id='guidelines'>
 				<span class='guideline-title'><b>Guidelines:</b></span>
@@ -109,21 +109,34 @@
 				</ul>
 				<i id='nsfw-notice'>Only check NSFW if the post follows the rules and guidelines but may not be suitable for younger users.</i>
 			</div>
-			<div id='help-popup'>
+			<div id='help-popup' class='hidden'>
+				<button id='help-close' class='closebutton'></button>
+				<div id='help-popup-content'>
 				<h3>What Is This?</h3>
 				<p>To make sure only the best posts reach the front page, we allow users like yourself to choose which posts get in. These are pending posts that have recently been submitted and are awaiting approval.</p>
 				
-				<h3>How Do I Moderate</h3>
+				<h3>How Do I Moderate?</h3>
 				<p>Choose <b>Yes</b> if it follows our Rules and Guidelines.</p>
 				<p>Choose <b>No</b> if the post does not follow the Rules and Guidelines.</p>
 				<p>Click <b>Report</b> if the post contains any of the following:</p>
 				<p class='subtext'>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation.</p>
-				<p>If a post contains subtle swearing, or is inappropriate for younger audiences, please flag the post as NSFW.</p>
+				<p>If a post contains subtle swearing, or is inappropriate for younger audiences, please flag the post as <b>NSFW</b>.</p>
+				</div>
 			</div>
 		</div>
 		
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src='http://www.relatablez.com/toolbar.js'></script>
 		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+		<script type='text/javascript'>
+			$('#help-open').click(function()
+			{
+				$('#help-popup').toggleClass('hidden');
+			});	
+			$('#help-close').click(function()
+			{
+				$('#help-popup').addClass('hidden');
+			});
+		</script>
 	</body>
 </html>

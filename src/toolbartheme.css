@@ -144,6 +144,7 @@ button:focus
 }
 button.closebutton
 {
+	cursor:pointer;
 	position:relative;
 	background-color:transparent;
 	float:right;
@@ -367,6 +368,10 @@ a
 div
 {
 	font: 15px arial;
+}
+.hidden
+{
+	display:none;
 }
 .toolbar-item
 {
