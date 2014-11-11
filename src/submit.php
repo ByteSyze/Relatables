@@ -1,6 +1,4 @@
 <?php
-	$random = openssl_random_pseudo_bytes(4);
-	die($random);
 	session_start();
 	
 	$submission = $_POST['s'];	
@@ -20,7 +18,7 @@
 		
 		if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, anonymous) VALUES (?,?,?,?,?)"))
 		{	
-			$statement->bind_param("iiisi",$_SESSION['id'], intval(openssl_random_pseudo_bytes(4)), $category, $submission, $anon);
+			$statement->bind_param("iiisi",$_SESSION['id'], 1234, $category, $submission, $anon);
 			
 			$statement->execute();
 			

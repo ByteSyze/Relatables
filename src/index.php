@@ -45,13 +45,16 @@
 					</select>
 					<span style='vertical-align:bottom;'>Category</span>
 					<select id='category' style='vertical-align:bottom;'>
-						<option>All Categories</option>
-						<option>Health</option>
-						<option>Family</option>
-						<option>Funny</option>
-						<option>Food</option>
-						<option>Odd</option>
-						<option>Other</option>
+						<option value='0'>All Categories</option>
+						<option value='1'>Health</option>
+						<option value='2'>Internet</option>
+						<option value='3'>Funny</option>
+						<option value='4'>People</option>
+						<option value='5'>Family</option>
+						<option value='6'>Food</option>
+						<option value='7'>Personal</option>
+						<option value='8'>Odd</option>
+						<option value='9'>Other</option>
 					</select>
 					<span style='vertical-align:bottom;'>Display</span>
 					<select id='display' style='vertical-align:bottom;'>
@@ -65,18 +68,25 @@
 						if($_SESSION['username'] !== null)
 						{
 							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n"; 
-							echo "<textarea name='s' id='submission' class='dialogue showguides' placeholder=' Am I the only one who...'></textarea>\r\n";
+							echo "<textarea name='s' id='submission' class='dialogue showguides'>Am I the only one who</textarea>\r\n";
 						}
 						else
 						{
-							echo "	<textarea name='s' id='submission' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)' placeholder=' Am I the only one who...'></textarea>\r\n";
+							echo "	<textarea name='s' id='submission' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)'>Am I the only one who</textarea>\r\n";
 						}
 					?>
 						<div style='float:right'>
 							<select name='c' id='submit_category'>
-								<option value=''>Select a Category</option>
-								<option value='1'>Category 1</option>
-								<option value='2'>Category 2</option>
+								<option value='0'>Select a Category</option>
+								<option value='1'>Health</option>
+								<option value='2'>Internet</option>
+								<option value='3'>Funny</option>
+								<option value='4'>People</option>
+								<option value='5'>Family</option>
+								<option value='6'>Food</option>
+								<option value='7'>Personal</option>
+								<option value='8'>Odd</option>
+								<option value='9'>Other</option>
 							</select>
 							<span> Anonymous</span><input type='checkbox' name='a' value='true' id='anonymous' />
 							<span id='post-counter'> 300 </span>
