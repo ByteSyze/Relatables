@@ -69,7 +69,7 @@
 <!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
-		<title>Moderate Relatablez</title>
+		<title>Moderate</title>
 		<link rel='shortcut icon' href='favicon.ico'/>
 		<link rel='stylesheet' type='text/css' href='moderate.css'>
 		<link rel='stylesheet' type='text/css' href='/toolbartheme.css'>
