@@ -130,8 +130,7 @@ function saveSettings(form)
 	
 	if(validUser && validPass && validEmail)
 	{
-		console.log('form is valid');
-		//form.submit();
+		form.submit();
 	}
 }
 
@@ -335,7 +334,7 @@ function checkLimit(event, element, limit, substr)
 		else
 			event.preventDefault();
 		
-		remaining = 0;
+		return 0;
 	}
 	
 	return remaining;

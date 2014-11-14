@@ -13,7 +13,10 @@
 	
 	$connection = getConnection();
 	
-	$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");
+	if($_SESSION['username'] != null)
+		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");
+	else
+		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");
 ?>
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
@@ -125,8 +128,15 @@
 						echo "\r\n<tr>";
 						if($_SESSION["username"] != null)
 						{
-							echo "\r\n<td><button class='dialoguebutton' id='bna{$row['id']}' data-vid='{$row['id']}' data-v='{$row['verification']}'>No, me too!</button></td>";
-							echo "\r\n<td><button class='dialoguebutton' id='ba{$row['id']}'  data-vid='{$row['id']}' data-v='{$row['verification']}'>You're alone.</button></td>";
+							if($row['user_vote'] === '0')
+								echo "\r\n<td><button class='dialoguebutton' id='bna{$row['id']}' data-vid='{$row['id']}' data-v='{$row['verification']}' disabled>No, me too!</button></td>";
+							else
+								echo "\r\n<td><button class='dialoguebutton' id='bna{$row['id']}' data-vid='{$row['id']}' data-v='{$row['verification']}'>No, me too!</button></td>";
+								
+							if($row['user_vote'] === '1')
+								echo "\r\n<td><button class='dialoguebutton' id='ba{$row['id']}'  data-vid='{$row['id']}' data-v='{$row['verification']}' disabled>You're alone.</button></td>";
+							else
+								echo "\r\n<td><button class='dialoguebutton' id='ba{$row['id']}'  data-vid='{$row['id']}' data-v='{$row['verification']}'>You're alone.</button></td>";
 						}
 						else
 						{

@@ -3,7 +3,18 @@
 $("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
 $("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
 $(".showguides").click(function(){ showSubmissionGuidelines(); });
-$("#submission").on('change keypress paste', function(event){ document.getElementById("post-counter").innerHTML = checkLimit(event, this, 300, true); });
+$("#submission").on('change keypress paste', function(event)
+{
+	var count = checkLimit(event, this, 300, true);
+	var counter = $("#post-counter");
+	
+	counter.html(count);
+	
+	if(count == 0)
+		counter.css('color', '#c82828');
+	else
+		counter.css('color', '#BFBFBF');
+});
 
 function vote(id, vote, v)
 {
