@@ -102,7 +102,7 @@
 						</div>
 						<br>
 					<?php if($_SESSION['username'] !== null) echo '</form>'; ?>
-					<hr>
+					<br><hr>
 					<span class='guideline-title'><b>Guidelines:</b></span>
 					<ul>
 						<li>Your post must be well written and original.</li>
@@ -166,7 +166,7 @@
 					<h4 id='qotw-header'>QOTW</h4>
 					<div style='padding:10px;'>
 						<span>Select a test option.</span>
-						<form action='http://www.relatablez.com/kartik/qotw.php' method='POST'>
+						<form action='http://www.relatablez.com/qotw.php' method='POST'>
 							<div id='qotw-wrapper'>
 								<input type='radio' name='v' value='0' />Option A.<br>
 								<input type='radio' name='v' value='1' />Option B.

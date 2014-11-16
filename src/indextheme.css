@@ -81,6 +81,7 @@ div.dialogue
 {
 	margin:0px;
 	padding:10px;
+	padding-bottom:0px;
 	font: 15px arial;
 	background-color:white;
 	color:#bfbfbf;
@@ -141,7 +142,7 @@ select.category
 span.submissioninfo
 {
 	position:relative;
-	bottom:41px;
+	bottom:29px;
 	float:right;
 	color:#808080;
 	vertical-align:bottom;
@@ -168,6 +169,8 @@ span.guideline-title
 table.vote-table
 {
 	text-align:center;
+	border-collapse:initial;
+	border-spacing:3px;
 }
 table.submission-table
 {
