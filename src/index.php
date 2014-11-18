@@ -143,6 +143,7 @@
 							echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
 							echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone.</button></td>";				
 						}
+						echo "\r\n<td><a href='http://www.relatablez.com/post/{$row['id']}' class='comment-button'></a></td>";
 						echo "\r\n<tr>";
 						echo "\r\n<td><span class='vote-counter' id='na{$row['id']}'>(" . number_format($row["notalone"]) . ")</span></td>";
 						echo "\r\n<td><span class='vote-counter' id='a{$row['id']}'>(" . number_format($row["alone"]) . ")</span></td>";
