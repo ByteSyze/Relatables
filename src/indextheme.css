@@ -85,6 +85,16 @@ textarea.dialogue
 	font:15px arial;
 	box-sizing:border-box;
 }
+div.share-button
+{
+	margin-left:50px;
+	border:1px solid #BFBFBF;
+	border-radius:4px;
+	width:70px;
+	padding-bottom:4px;
+	padding-top:5px;
+	cursor:pointer;
+}
 div.submission
 {
 	height:60px;
