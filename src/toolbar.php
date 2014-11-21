@@ -50,6 +50,7 @@
 						
 					echo "<button class='toolbar profile'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
 					include($_SERVER['DOCUMENT_ROOT'].'/user-popups.php');
+					getPopup($notifications, $connection);
 				}
 				else
 				{
