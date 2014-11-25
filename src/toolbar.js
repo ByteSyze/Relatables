@@ -45,12 +45,7 @@ function register()
 	if(verifyRegister())
 	{
 		console.log('Verified');
-		$.ajax({
-		type: "POST",
-		url: "register.php",
-		data: { username: userVal, password: passVal, email: emailVal }
-		})
-			.done(function(data) {
+		$.post("http://www.relatablez.com/register.php", { username: userVal, password: passVal, email: emailVal }, function(data) {
 				if(data.indexOf("success") != -1)
 				{
 					document.getElementById("registerbutton").setAttribute("value","Thank you");
@@ -69,12 +64,7 @@ function login()
 	if(rememberEl.checked)
 		remember = 1;
 	
-	$.ajax({
-		type: "POST",
-		url: "login.php",
-		data: { u: userVal, p: passVal, r: remember }
-	})
-	.done(function(data) {
+	$.post("http://www.relatablez.com/login.php", { u: userVal, p: passVal, r: remember }, function(data) {
 		console.log(data);
 		
 		var hideUserLog = true;
@@ -144,12 +134,8 @@ function verifyUser()
 	if(userVal == '')
 		return true;
 	
-	$.ajax({
-		type: "POST",
-		url: "/verifyUser.php",
-		data: { username: userVal }
-	})
-		.done(function(data) {
+	$.post("http://www.relatablez.com/verifyUser.php", {username: userVal}, function(data)
+	{
 			if(data === "user unavailable")
 			{	
 				userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
@@ -252,12 +238,8 @@ function verifyCurrentPassword()
 	}
 	else
 	{		
-		$.ajax({
-			type: "POST",
-			url: "/verifyPassword.php",
-			data: { p: passVal }
-		})
-			.done(function(data) {
+		$.post("http://www.relatablez.com/verifyPassword.php", {p: passVal}, function(data)
+		{
 				if(data == "0")
 				{
 					currentPassVerifyImg.src = "http://www.relatablez.com/check_mark.png";	
@@ -298,12 +280,8 @@ function verifyEmail()
 	}
 	else
 	{
-		$.ajax({
-			type: "POST",
-			url: "/verifyEmail.php",
-			data: { e: emailVal }
-		})
-		.done(function(data){
+		$.post("http://www.relatablez.com/verifyEmail.php", {e: emailVal}, function(data)
+		{
 			if(data === "1")
 			{
 				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
@@ -438,12 +416,8 @@ function hideSendMessagePopup()
 
 function updateMessageStatus(id)
 {
-	$.ajax({
-	type: "POST",
-	url: "/readmessage.php",
-	data: { id: id, }
-	})
-		.done(function(data) {
+	$.post("http://www.relatablez.com/readmessage.php", {id: id}, function(data)
+	{
 			if(data == '1')
 			{
 				$('#ntf'+id).addClass('read');
@@ -456,12 +430,8 @@ function updateMessageStatus(id)
 
 function deleteMessage(id)
 {
-	$.ajax({
-	type: "POST",
-	url: "/deletemessage.php",
-	data: { id: id, }
-	})
-		.done(function(data) {
+	$.post("http://www.relatablez.com/deletemessage.php", {id: id}, function(data)
+	{
 			if(data == '1')
 			{
 				$('[data-nid="'+id+'"]').remove();

@@ -39,6 +39,7 @@
 				<?php if($image != null) echo "<img id='article-image' src='$image' />"; ?>
 				<div id='article-content' >
 					<?php 	
+						$author = getUsername($connection, $uid);
 						if(isAdmin($connection, $_SESSION['id'])) 
 							echo "<a style='float:right' href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a>"; 
 						
@@ -46,11 +47,6 @@
 					?>
 					<div id='footer'>
 						<span id='created'><?php echo $fCreated; ?></span>
-						
-						<?php
-							$author = getUsername($connection, $uid);
-						?>
-						
 						<span id='author'>Written by <a href='http://www.relatablez.com/user/<?php echo $author; ?>/'><?php echo $author; ?></a></span>
 					</div>
 				</div>
