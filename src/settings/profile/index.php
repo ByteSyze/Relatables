@@ -3,6 +3,12 @@
 <?php 
 	session_start();
 	
+	if($_SESSION['username'] == null)
+	{
+		header('Location: http://www.relatablez.com/');
+		exit;
+	}
+	
 	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
 	
 	$data = getProfileSettings(getConnection(), $_SESSION['id']);

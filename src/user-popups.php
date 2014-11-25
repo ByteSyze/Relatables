@@ -11,7 +11,7 @@
 "<table class='profile' id='profile-dropdown'>
 <tr><td><a class='profile' href='http://www.relatablez.com/user/{$_SESSION['username']}'>Profile</a></td></tr>
 <tr><td><a class='profile' href='http://www.relatablez.com/settings/profile'>Settings</a></td></tr>
-<tr><td><a class='profile' href='http://www.relatablez.com/signout.php'>Sign Out</a></td></tr>
+<tr><td><a class='profile' href='http://www.relatablez.com/signout.php?dir=$_SERVER[REQUEST_URI]'>Sign Out</a></td></tr>
 </table>
 <div id='notification-dropdown'>
 <table class='notifications' >

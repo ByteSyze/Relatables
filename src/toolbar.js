@@ -45,11 +45,12 @@ function register()
 	if(verifyRegister())
 	{
 		console.log('Verified');
-		$.post("http://www.relatablez.com/register.php", { username: userVal, password: passVal, email: emailVal }, function(data) {
-				if(data.indexOf("success") != -1)
-				{
-					document.getElementById("registerbutton").setAttribute("value","Thank you");
-				}
+		$.post("http://www.relatablez.com/register.php", { username: userVal, password: passVal, email: emailVal }, function(data)
+		{
+			if(data.indexOf("success") != -1)
+			{
+				document.getElementById("registerbutton").setAttribute("value","Thank you");
+			}
 		});
 	}
 }
