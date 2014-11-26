@@ -5,7 +5,7 @@
 	
 	$connection = getConnection();
 	
-	$articles = mysqli_query($connection, "SELECT *, DATE_FORMAT(created,'%W %M %d, %Y') AS fCreated FROM blog_articles ORDER BY created DESC LIMIT 0, 5");
+	$articles = mysqli_query($connection, "SELECT id, title, IF(CHAR_LENGTH(content) > 300, CONCAT(LEFT(content, 100),'...'), content) AS content, DATE_FORMAT(created,'%W %M %d, %Y') AS fCreated FROM blog_articles WHERE deleted=0 ORDER BY created DESC LIMIT 0, 5");
 ?>
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
@@ -41,7 +41,7 @@
 						{
 							if($admin)
 								echo "<a class='edit-article' href='http://www.relatablez.com/blog/editblog.php?id={$article['id']}'>Edit</a>";
-							echo "<div class='article'><h3><a href='http://www.relatablez.com/blog/article/{$article['id']}'>{$article['title']}</a></h3><span>{$article['fCreated']}</span><p class='article-summary'>{$article['content']}</p></div><div class='footer-wrapper'><a href='http://www.relatablez.com/blog/article/{$article['id']}'>Read More</a></div><hr>\r\n";
+							echo "<div class='article'><h3 style='color:#808080;'>{$article['title']}</h3><span>{$article['fCreated']}</span><p class='article-summary'>{$article['content']}</p></div><div class='footer-wrapper'><a href='http://www.relatablez.com/blog/article/{$article['id']}'>Read More</a></div><hr>\r\n";
 						}
 					?>
 				</div>

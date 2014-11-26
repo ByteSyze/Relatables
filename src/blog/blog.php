@@ -11,9 +11,8 @@
 		$statement->bind_param('i', $bid);
 		$statement->execute();
 		
-		$statement->bind_result($id, $uid, $title, $content, $image, $created, $fCreated);
+		$statement->bind_result($id, $uid, $title, $content, $image, $created, $deleted, $fCreated);
 		$statement->fetch();
-		
 	}
 ?>
 <!-- Copyright (C) Tyler Hackett 2014 -->
@@ -40,8 +39,9 @@
 				<div id='article-content' >
 					<?php 	
 						$author = getUsername($connection, $uid);
+						
 						if(isAdmin($connection, $_SESSION['id'])) 
-							echo "<a style='float:right' href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a>"; 
+							echo "<div style='float:right'><a href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='http://www.relatablez.com/blog/deleteblog.php?i=$bid'></a></div>"; 
 						
 						echo $content;
 					?>

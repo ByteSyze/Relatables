@@ -1,4 +1,6 @@
 <?php
+	/*Copyright (C) Tyler Hackett 2014*/
+	
 	session_start();
 	
 	$_SESSION["username"] = null;
