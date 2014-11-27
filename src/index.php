@@ -157,7 +157,7 @@
 						{
 							if(isAdmin($connection, $row['uid']))
 								echo 'class=\'admin\'';
-							echo " href='http://www.relatablez.com/user/" . $user . "'>" . $user . "</a> - " . $row["fdate"] . "</span></div>";
+							echo " href='http://www.relatablez.com/user/$user'>$user</a> - $row[fdate]</span></div>";
 						}
 						echo "\r\n</div>";
 					}

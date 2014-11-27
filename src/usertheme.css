@@ -20,6 +20,13 @@
 	height:150px;
 	margin-top:40px;
 }
+#stats
+{
+	background:#FFF;
+	border:1px solid #BFBFBF;
+	border-radius:4px;
+	padding:15px;
+}
 #username
 {
 	color:#2654a8;
