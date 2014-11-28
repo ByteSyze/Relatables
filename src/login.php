@@ -47,14 +47,14 @@
 			$_SESSION['username']=$dbUser;
 			$_SESSION['id']=$id;
 			
-			//Update their last login date
-			mysqli_query($connection, "UPDATE accounts SET last_login=NOW() WHERE id=$id");
+			//Update their last login date and unique cookie login ID.
+			$cookie_login = md5(date('isdHYm').$id.$dbPass);
+			mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login=$cookie_login WHERE id=$id");
 			
 			if($remember == 1)
 			{
 				$expire = time()+(60*60*24*365*5);
-				setcookie("rrmp",$dbPass,$expire);
-				setcookie("rrmi",$id,$expire);
+				setcookie("rrm",$cookie_login,$expire);
 			}
 			
 			die('0');

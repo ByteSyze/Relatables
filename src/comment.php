@@ -31,7 +31,7 @@
 		
 		if($rid != 0)
 		{
-			notify($connection, 0, getId($connection, $rUser), "Reply from ".$_SESSION['username'], "You have received a reply from ".$_SESSION['username']." on <a href='http://www.relatablez.com/post/$pid'>this post</a>.");
+			notify($connection, 0, getId($connection, $rUser), "Reply from ".$_SESSION['username'], "<a href='http://www.relatablez.com/post/$pid'>Reply from $_SESSION[username]</a>.");
 			echo "<div class='comment reply'>";
 		}
 		else

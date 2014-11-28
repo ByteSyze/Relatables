@@ -8,7 +8,7 @@
 		{
 			include($_SERVER['DOCUMENT_ROOT']."/cookielogin.php");
 			
-			login($_COOKIE["rrmi"],$_COOKIE["rrmp"]);
+			login($_COOKIE['rrm']);
 		}
 	}
 	
