@@ -9,7 +9,7 @@
 		
 			$statement->bind_param("s",$cookie_login);
 			
-			$valid = $statement->execute();
+			$statement->execute();
 
             $not_pending = 1;
 			
@@ -17,7 +17,7 @@
 			$statement->bind_result($id, $dbUser, $dbPass, $not_pending);
 			$result = $statement->fetch();
 			
-			if($valid && $not_pending)
+			if($statement->num_rows && $not_pending)
 			{
 				$_SESSION['username']=$dbUser;
 				$_SESSION['id']=$id;
@@ -25,7 +25,8 @@
 				//Update their last login date and unique cookie login ID.
 				$cookie_login = md5(date('isdHYm').$id.$dbPass);
 				$expire = time()+(60*60*24*365*5);
-				mysqli_query($connection, "UPDATE accounts SET last_login=NOW() WHERE username='".$dbUser."'");
+				
+				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login=$cookie_login WHERE id=$id");
 				setcookie("rrm",$cookie_login,$expire);
 			}
 			else
