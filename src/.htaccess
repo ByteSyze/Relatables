@@ -3,11 +3,18 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^relatablez.com
 RewriteRule (.*) http://www.relatablez.com/$1 [R=301,L]
 
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond %{SCRIPT_FILENAME} !-f
-RewriteRule ^user/(.*)$ user/?username=$1 [QSA]
-RewriteRule ^blog/article/(.*)$ blog/article/?id=$1 [QSA]
-RewriteRule ^post/(.*)$ post/?id=$1 [QSA]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
+RewriteRule ^user/(.*)$ user/index.html?username=$1 [QSA]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
+RewriteRule ^blog/article/(.*)$ blog/article/index.html?id=$1 [QSA]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
+RewriteRule ^post/(.*)$ post/index.html?id=$1 [QSA]
 
 ErrorDocument 404 /notfound/
 
