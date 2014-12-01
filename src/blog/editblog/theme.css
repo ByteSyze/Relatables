@@ -1,0 +1,73 @@
+/*Copyright (C) Tyler Hackett 2014*/
+#article-contents
+{
+	width:100%;
+	height:300px;
+	box-sizing:border-box;
+	resize:none;
+}
+#article-creation
+{
+	padding:20px;
+}
+#article-title
+{
+	width:100%;
+	height:38px;
+	font-size:26px;
+	box-sizing:border-box;
+}
+#cheatsheet
+{
+	position:absolute;
+	width:310px;
+	left:-310px;
+	background:white;
+	box-shadow:0px 0px 10px #BFBFBF;
+	text-align:center;
+}
+#cheatsheet-view-button
+{
+	width:75px;
+	height:75px;
+	border:none;
+	position:absolute;
+	margin-left:155px;
+	background-color:rgba(32, 32, 32, .7);
+	cursor:pointer;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+	font-size:50px;
+	font-weight:bold;
+	color:rgba(12, 12, 12, .5);
+}
+#content
+{
+	padding:20px;
+}
+#new-blog
+{
+	width:850px;
+	margin:70px auto auto;
+	background:white;
+	box-shadow:0px 0px 10px #BFBFBF;
+}
+h1.header
+{
+	margin:0px;
+	padding:20px;
+	color:#FFF;
+	background-color:#4a66d8;
+}
+span.footnote
+{
+	font-size:12px;
+}
+table
+{
+	margin:auto;
+}
+td
+{
+	border: 1px solid #808080;
+}
