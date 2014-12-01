@@ -39,83 +39,12 @@
     color: #2754a6;
     text-align: center;
 }
-a.admin
-{
-	color:red;
-	font-style:italic;
-}
-a.comment-button
-{
-	position:absolute;
-	display:block;
-	width:46px;
-	height:46px;
-	margin-top:-25px;
-	background-image:url('/comment_icon.png');
-}
-a.comment-button:hover
-{
-	background-image:url('/comment_icon_hover.png');
-}
 b.warning
 {
 	position:relative;
 	margin:auto;
 	color:black;
 	font-size:13px;
-}
-p.dialogue
-{
-	position:relative;
-	margin:auto;
-	font: normal 16px Arial;
-	padding-left:4px;
-	color:#404040;
-}
-textarea.dialogue
-{
-	border: 1px solid #C8C8C8;
-	border-radius: 4px;
-	resize:none;
-	width:100%;
-	height:25px;
-	padding-top:3px;
-	padding-bottom:3px;
-	margin-bottom:10px;
-	font:15px arial;
-	box-sizing:border-box;
-}
-div.share-button
-{
-	margin-left:50px;
-	border:1px solid #BFBFBF;
-	border-radius:4px;
-	width:70px;
-	padding-bottom:4px;
-	padding-top:5px;
-	cursor:pointer;
-}
-div.submission
-{
-	height:60px;
-	overflow:hidden;
-}
-div.dialogue
-{
-	margin:0px;
-	padding:10px;
-	padding-bottom:0px;
-	font: 15px arial;
-	background-color:white;
-	color:#bfbfbf;
-	border:1px solid gray;
-	border-radius:4px;
-	border: 1px solid #bfbfbf;
-	vertical-align:-40px;
-}
-div.uppadding
-{
-	margin-top:20px;
 }
 button
 {
@@ -162,86 +91,14 @@ select.category
 	position:relative;
 	left:0px;
 }
-span.submissioninfo
-{
-	position:relative;
-	bottom:29px;
-	float:right;
-	color:#808080;
-	vertical-align:bottom;
-	width:auto;
-}
-span.vote-counter
-{
-	position:relative;
-	bottom:5px;
-	font-size: 12px;
-}
-span.vote-counter-wrapper
-{
-	display: block; 
-	width: 105px; 
-	text-align: center; 
-	clear: both; 
-	margin-right:5px;
-}
 span.guideline-title
 {
 	color:#0067B1;
-}
-table.vote-table
-{
-	text-align:center;
-	border-collapse:initial;
-	border-spacing:3px;
 }
 table.submission-table
 {
 	position:relative;
 	width:100%;
-}
-.dialoguebutton
-{
-	padding-top:3px;
-	padding-bottom:3px;
-	margin-top:4px;
-	border:1px solid gray;
-	background-color:#bfbfbf;
-	border:none;
-	border-radius:4px;
-	width:105px;
-	height:30px;
-	font-size:15px;
-	color:white;
-}
-.dialoguebutton:disabled
-{
-	background-color:#2654a8;
-	color:white;
-}
-.dialoguebutton:hover
-{
-	color:#3c5a98;
-}
-::-ms-input-placeholder
-{
-	font-size:17px;
-	vertical-align:center;
-}
-:-moz-placeholder
-{
-	font-size:17px;
-	vertical-align:center;
-}
-::-moz-placeholder
-{
-	font-size:17px;
-	vertical-align:center;
-}
-::-webkit-input-placeholder
-{
-	font-size:17px;
-	vertical-align:center;
 }
 .float-left
 {
