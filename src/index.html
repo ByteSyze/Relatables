@@ -3,14 +3,6 @@
 	
 	include('userinfo.php');
 	
-	require_once 'Mobile_Detect.php';
-	$detect = new Mobile_Detect;
-	 
-	if ( $detect->isMobile() ) {
-		$_SESSION['mobile'] = 1;
-		header('Location: http://m.relatablez.com/');
-	}
-	
 	$connection = getConnection();
 	
 	if($_SESSION['username'] != null)
