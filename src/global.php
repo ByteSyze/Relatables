@@ -4,9 +4,8 @@
 	function getCSS()
 	{
 		$cwd = substr(getcwd(), strlen($_SERVER['DOCUMENT_ROOT']));
-		$base = basename(getcwd());
 		echo "\r\n<link rel='stylesheet' type='text/css' href='/global.css'>";
-		echo "\r\n<link rel='stylesheet' type='text/css' href='$cwd/$base.css'>";
+		echo "\r\n<link rel='stylesheet' type='text/css' href='$cwd/theme.css'>";
 		foreach(func_get_args() as $extra)
 			echo "\r\n<link rel='stylesheet' type='text/css' href='/$extra.css'>";	
 		echo "\r\n";
