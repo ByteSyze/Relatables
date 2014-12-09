@@ -1,12 +1,6 @@
 <?php	
 	/*Copyright (C) Tyler Hackett 2014*/
 	
-	//Returns a connection to the MySQL database.
-	function getConnection()
-	{
-		return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
-	}
-	
 	//Returns an array of relevant information pertaining to the specified user's profile.
 	function getProfileData($connection, $username)
 	{
