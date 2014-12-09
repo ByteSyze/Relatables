@@ -3,6 +3,9 @@
 <html>
 	<?php 
 		session_start();
+			
+		require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+		require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 		
 		$user = $_GET['username'];
 		
@@ -11,8 +14,6 @@
 		
 		if($slashpos != false)
 			$user = substr($user,0,$slashpos);
-		
-		require($_SERVER['DOCUMENT_ROOT']."/userinfo.php");
 		
 		$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
 		$data = getProfileData($connection, $user);
@@ -24,9 +25,7 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/submissiontheme.css">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/user/theme.css">
+		<?php getCSS('submissiontheme'); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body style='margin:0px;'>
@@ -108,8 +107,6 @@
 			</div>
 		</div>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
-		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>		
+		<?php getJS(); ?>
 	</body>
 </html>

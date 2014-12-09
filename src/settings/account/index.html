@@ -3,6 +3,8 @@
 <?php 
 	session_start();
 	
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+	
 	if($_SESSION['username'] == null)
 	{
 		header('Location: http://www.relatablez.com/');
@@ -21,8 +23,7 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
 		<meta name="description" content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
 		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/settings/account/theme.css">
+		<?php getCSS(); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -73,9 +74,6 @@
 			</div>
 		</div>
 		
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
-		<script src='http://www.relatablez.com/settings/settings.js'></script>
-		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+		<?php getJS('settings/settings'); ?>
 	</body>
 </html>

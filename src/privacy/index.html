@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014 -->
 <?php
-	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
+	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 ?>
 <html>
 	<head>
 		<title>Privacy</title>
 	
 		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../toolbartheme.css">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/privacy/theme.css">
+		<?php getCSS(); ?>
 	</head>
 	<body>
 		<?php include("../toolbar.php"); ?>
@@ -67,8 +67,6 @@
 			</div>
 		</div>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src='http://relatablez.com/toolbar.js'></script>
-		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>		
+		<?php getJS(); ?>
 	</body>
 </html>

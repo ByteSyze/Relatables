@@ -1,6 +1,8 @@
 <?php  
 	session_start();
-	include('../userinfo.php');
+	
+	include($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
 	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 
@@ -71,8 +73,7 @@
 	<head>
 		<title>Moderate</title>
 		<link rel='shortcut icon' href='favicon.ico'/>
-		<link rel='stylesheet' type='text/css' href='/toolbartheme.css'>
-		<link rel='stylesheet' type='text/css' href='http://www.relatablez.com/moderate/theme.css'>
+		<?php getCSS(); ?>
 	</head>
 	<body>
 		<?php require("../toolbar.php"); ?>
@@ -125,9 +126,7 @@
 			</div>
 		</div>
 		
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
-		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+		<?php getJS(); ?>
 		<script type='text/javascript'>
 			$('#help-open').click(function()
 			{

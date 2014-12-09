@@ -2,6 +2,7 @@
 <!-- Copyright (C) Tyler Hackett 2014 -->
 <?php
 	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 ?>
 <html>
 	<head>
@@ -9,8 +10,7 @@
 			
 		<meta charset="UTF-8">
 		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../toolbartheme.css">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/FAQ/theme.css">
+		<?php getCSS(); ?>
 	</head>
 	<body>
 		<?php include($_SERVER['DOCUMENT_ROOT'] . '/toolbar.php'); ?>
@@ -86,8 +86,6 @@
 			</div>
 		</div>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src='http://relatablez.com/toolbar.js'></script>
-		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>		
+		<?php getJS(); ?>	
 	</body>
 </html>
