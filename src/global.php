@@ -6,8 +6,20 @@
 		$cwd = substr(getcwd(), strlen($_SERVER['DOCUMENT_ROOT']));
 		echo "\r\n<link rel='stylesheet' type='text/css' href='/global.css'>";
 		echo "\r\n<link rel='stylesheet' type='text/css' href='$cwd/theme.css'>";
+		
 		foreach(func_get_args() as $extra)
 			echo "\r\n<link rel='stylesheet' type='text/css' href='/$extra.css'>";	
+		echo "\r\n";
+	}
+	
+	//Prints default JavaScript script tags, as well as any extras that are passed in.
+	function getJS()
+	{
+		echo "\r\n<script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
+		echo "\r\n<script src='http://www.relatablez.com/global.js'></script>";
+		
+		foreach(func_get_args() as $extra)
+			echo "\r\n<link rel='stylesheet' type='text/css' href='/$extra.js'>";	
 		echo "\r\n";
 	}
 	

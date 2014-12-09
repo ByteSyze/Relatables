@@ -2,6 +2,7 @@
 	session_start();
 	
 	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
 	$connection = getConnection();
 	
@@ -17,8 +18,7 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/toolbartheme.css">
-		<link rel="stylesheet" type="text/css" href="http://www.relatablez.com/blog/theme.css">
+		<?php getCSS(); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -48,8 +48,6 @@
 			</div>
 		</div>
 		
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
-		<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+		<?php getJS(); ?>
 	</body>
 </html>
