@@ -36,7 +36,7 @@
 		
 		if(($alone !== false))
 		{
-			if(($alone == 0 && $voteType == 'notalone') || ($alone == 1 && $voteType == 'alone')
+			if(($alone == 0 && $voteType == 'notalone') || ($alone == 1 && $voteType == 'alone'))
 				die();
 		}
 	}

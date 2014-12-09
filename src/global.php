@@ -15,11 +15,11 @@
 	//Prints default JavaScript script tags, as well as any extras that are passed in.
 	function getJS()
 	{
-		echo "\r\n<script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
-		echo "\r\n<script src='http://www.relatablez.com/global.js'></script>";
+		echo "\r\n<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
+		echo "\r\n<script type='text/javascript' src='http://www.relatablez.com/global.js'></script>";
 		
 		foreach(func_get_args() as $extra)
-			echo "\r\n<link rel='stylesheet' type='text/css' href='/$extra.js'>";	
+			echo "\r\n<script type='text/javascript' href='/$extra.js'></script>";	
 		echo "\r\n";
 	}
 	
