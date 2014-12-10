@@ -1,7 +1,11 @@
 <?php
+	session_start();
+	
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/userinfo.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
+	
 	class GlobalUtils
 	{
-		
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
 		public static function getCSS()
 		{
