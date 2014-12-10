@@ -4,7 +4,7 @@
 	include($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
 	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 
 	if (mysqli_connect_errno())
 	{
@@ -73,7 +73,7 @@
 	<head>
 		<title>Moderate</title>
 		<link rel='shortcut icon' href='favicon.ico'/>
-		<?php getCSS(); ?>
+		<?php GlobalUtils::getCSS(); ?>
 	</head>
 	<body>
 		<?php require("../toolbar.php"); ?>
@@ -126,7 +126,7 @@
 			</div>
 		</div>
 		
-		<?php getJS(); ?>
+		<?php GlobalUtils::getJS(); ?>
 		<script type='text/javascript'>
 			$('#help-open').click(function()
 			{

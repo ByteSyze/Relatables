@@ -15,7 +15,7 @@
 		if($slashpos != false)
 			$user = substr($user,0,$slashpos);
 		
-		$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+		$connection = GlobalUtils::getConnection();
 		$data = getProfileData($connection, $user);
 	?>
 	<head>
@@ -25,7 +25,7 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
-		<?php getCSS('submissiontheme'); ?>
+		<?php GlobalUtils::getCSS('submissiontheme'); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body style='margin:0px;'>
@@ -107,6 +107,6 @@
 			</div>
 		</div>
 		
-		<?php getJS(); ?>
+		<?php GlobalUtils::getJS(); ?>
 	</body>
 </html>

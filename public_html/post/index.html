@@ -12,7 +12,7 @@
 	if($slashpos != false)
 		$pid = substr($pid,0,$slashpos);
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 	
 	if($statement = $connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
 	{
@@ -33,7 +33,7 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, <?php echo $submission; ?>">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
-		<?php getCSS('submissiontheme'); ?>
+		<?php GlobalUtils::getCSS('submissiontheme'); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -88,7 +88,7 @@
 				</div>
 			</div>
 		</div>
-		<?php getJS('vote', 'post/post'); ?>
+		<?php GlobalUtils::getJS('vote', 'post/post'); ?>
 		<script>var pid = <?php echo $pid; ?>;</script>
 	</body>
 </html>

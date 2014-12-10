@@ -15,7 +15,7 @@
 		header('Location: http://m.relatablez.com/');
 	}
 	
-	$connection = getConnection();
+	$connection = GlobalUtils::getConnection();
 	
 	if($_SESSION['username'] != null)
 		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");

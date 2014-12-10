@@ -4,7 +4,7 @@
 	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
 	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
-	$connection = getConnection();
+	$connection = GlobalUtils::getConnection();
 		
 	if(!isAdmin($connection, $_SESSION['id']) || $_SESSION['username'] == null)
 		header('Location: http://www.relatablez.com/404/');
@@ -42,7 +42,7 @@
 		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
-		<?php getCSS(); ?>
+		<?php GlobalUtils::getCSS(); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -112,6 +112,6 @@
 			</div>
 		</div>
 		
-		<?php getJS('blog/blog'); ?>
+		<?php GlobalUtils::getJS('blog/blog'); ?>
 	</body>
 </html>

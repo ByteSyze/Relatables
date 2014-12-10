@@ -4,7 +4,7 @@
 	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
 	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
-	$connection = getConnection();
+	$connection = GlobalUtils::getConnection();
 	
 	if(!isAdmin($connection, $_SESSION['id']))
 	{
@@ -25,7 +25,7 @@
 		
 		<meta charset="UTF-8">
 		<link rel="shortcut icon" href="../favicon.ico">
-		<?php getCSS(); ?>
+		<?php GlobalUtils::getCSS(); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
@@ -61,8 +61,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src='http://www.relatablez.com/toolbar.js'></script>
+		<?php GlobalUtils::getJS(); ?>
 		<script type='text/javascript'>
 			$('[data-creport]').click(function()
 			{
