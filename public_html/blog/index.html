@@ -1,3 +1,6 @@
+
+<!DOCTYPE html>
+<!-- Copyright (C) Tyler Hackett 2014-->
 <?php
 	session_start();
 	
@@ -8,8 +11,6 @@
 	
 	$articles = mysqli_query($connection, "SELECT id, title, IF(CHAR_LENGTH(content) > 300, CONCAT(LEFT(content, 100),'...'), content) AS content, DATE_FORMAT(created,'%W %M %d, %Y') AS fCreated FROM blog_articles WHERE deleted=0 ORDER BY created DESC LIMIT 0, 5");
 ?>
-<!DOCTYPE html>
-<!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
 		<title>Relatablog</title>

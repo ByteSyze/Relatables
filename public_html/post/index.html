@@ -14,12 +14,12 @@
 	
 	$connection = GlobalUtils::getConnection();
 	
-	if($statement = $connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
+	if($statement = $connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
 	{
 		$statement->bind_param('ii', $pid, $pid);
 		$statement->execute();
 		
-		$statement->bind_result($uid, $verif, $cat, $fdate, $alone, $notalone, $pending, $submission, $anon, $total_comments);
+		$statement->bind_result($user, $verif, $cat, $fdate, $alone, $notalone, $pending, $submission, $anon, $total_comments);
 		$statement->fetch();
 	}
 ?>
@@ -44,8 +44,8 @@
 				<?php
 					if($anon)
 						$user='Anonymous';
-					else
-						$user = getUsername($connection, $uid);
+					//else
+						//$user = getUsername($connection, $uid);
 					
 					echo "\r\n<div class='dialogue uppadding' id='{$pid}'>";
 					echo "\r\n<p class='dialogue'>{$submission}</p>";
@@ -88,7 +88,7 @@
 				</div>
 			</div>
 		</div>
-		<?php GlobalUtils::getJS('vote', 'post/post'); ?>
 		<script>var pid = <?php echo $pid; ?>;</script>
+		<?php GlobalUtils::getJS('vote', 'post/post'); ?>
 	</body>
 </html>
