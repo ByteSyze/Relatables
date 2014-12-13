@@ -1,0 +1,94 @@
+<?php
+	session_start();
+	
+	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+	
+	$pid = $_GET['id'];
+	
+	//If post id ends in a /, remove it.
+	$slashpos = strpos($pid,'/');
+	
+	if($slashpos != false)
+		$pid = substr($pid,0,$slashpos);
+	
+	$connection = GlobalUtils::getConnection();
+	
+	if($statement = $connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
+	{
+		$statement->bind_param('ii', $pid, $pid);
+		$statement->execute();
+		
+		$statement->bind_result($user, $verif, $cat, $fdate, $alone, $notalone, $pending, $submission, $anon, $total_comments);
+		$statement->fetch();
+	}
+?>
+<!DOCTYPE html>
+<!-- Copyright (C) Tyler Hackett 2014-->
+<html>
+	<head>
+		<title>Relatablez</title>
+		
+		<meta charset="UTF-8">
+		<meta name="keywords" content="Am I The Only One, Relatablez, <?php echo $submission; ?>">
+		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
+		<link rel="shortcut icon" href="../favicon.ico">
+		<?php GlobalUtils::getCSS('submissiontheme'); ?>
+		<link rel="canonical" href="http://www.relatablez.com/">
+	</head>
+	<body>
+		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
+		
+		<div id='main'>
+			<div id='content'>
+				<?php
+					if($anon)
+						$user='Anonymous';
+					//else
+						//$user = getUsername($connection, $uid);
+					
+					echo "\r\n<div class='dialogue uppadding' id='{$pid}'>";
+					echo "\r\n<p class='dialogue'>{$submission}</p>";
+					echo "\r\n<table class='vote-table'>";
+					echo "\r\n<tr>";
+					if($_SESSION["username"] != null)
+					{
+						echo "\r\n<td><button class='dialoguebutton' id='bna{$pid}' data-vid='{$pid}' data-v='{$verif}'>No, me too!</button></td>";
+						echo "\r\n<td><button class='dialoguebutton' id='ba{$pid}'  data-vid='{$pid}' data-v='{$verif}'>You're alone.</button></td>";
+					}
+					else
+					{
+						echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
+						echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone.</button></td>";				
+					}
+					echo "\r\n<tr>";
+					echo "\r\n<td><span class='vote-counter' id='na{$pid}'>(" . number_format($notalone) . ")</span></td>";
+					echo "\r\n<td><span class='vote-counter' id='a{$pid}'>(" . number_format($alone) . ")</span></td>";
+					echo "\r\n</table>";
+					echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
+					
+					if($anon)
+						echo ' >' . $user . "</a> - {$fdate}</span></div>";
+					else
+					{
+						if(isAdmin($connection, $uid))
+							echo 'class=\'admin\'';
+						echo " href='http://www.relatablez.com/user/" . $user . "'>" . $user . "</a>  " . $fdate . "</span></div>";
+					}
+					echo "\r\n</div>";
+				?>
+				<span>Comments (<span id='comment-count'><?php echo $total_comments ?></span>)</span>
+				<div id='comments'>
+					<div id='comment-submit-wrapper'>
+						<form action='http://www.relatablez.com/comment.php' method='POST'>
+							<textarea id='comment-submit-text' name='c'></textarea>
+							<input id='comment-submit-button' type='submit' value='Post' />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>var pid = <?php echo $pid; ?>;</script>
+		<?php GlobalUtils::getJS('vote', 'post/post'); ?>
+	</body>
+</html>

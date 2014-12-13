@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Copyright (C) Tyler Hackett 2014 -->
+<?php
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+?>
+<html>
+	<head>
+		<title>Page not found</title>
+		
+		<?php GlobalUtils::getCSS(); ?>
+	</head>
+	<body>
+		<?php
+			require($_SERVER["DOCUMENT_ROOT"] . '/toolbar.php');
+		?>
+		<div style='position:relative;margin:auto;width:900px;top:50px'>
+			<h1>404 - You're not the only one who can't find this page</h1>
+		</div>
+	
+		<?php GlobalUtils::getJS('verify', 'popups'); ?>
+	</body>
+</html>
