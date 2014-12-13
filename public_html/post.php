@@ -3,6 +3,7 @@
 	{
 		private $connection; //Connection to MySQL database.
 		
+		private $id;			/**ID of this post. Only valid if it exists in database.*/
 		private $uid; 			/**ID of the user that submitted this post.*/
 		private $username; 		/**Username of the user that submitted this post.*/
 		private $verification;	/**4-byte verification code associated with this post.*/

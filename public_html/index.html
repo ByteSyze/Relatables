@@ -2,22 +2,46 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
 <?php  
-	session_start();
-	
 	require('global.php');
-	
-	require_once 'Mobile_Detect.php';
-	$detect = new Mobile_Detect;
-	 
-	if ( $detect->isMobile() ) {
-		$_SESSION['mobile'] = 1;
-		header('Location: http://m.relatablez.com/');
-	}
 	
 	$connection = GlobalUtils::getConnection();
 	
+	$page 		= intval($_GET['p']);
+	$order_by 	= $_GET['o'];
+	$category 	= intval($_GET['c']);
+	$nsfw		= $_GET['n'];
+	$display	= $GET['d'];
+	
+	if($order_by == 2)
+		$order_by = ' ORDER BY submissions.date ASC ';
+	else if($order_by == 3)
+		$order_by = ' ORDER BY notalone DESC ';
+	else if($order_by == 4)
+		$order_by = ' ORDER BY alone DESC ';
+	else
+		$order_by = ' ORDER BY submissions.date DESC ';	
+		
+	if($display == 1)
+	{
+		$display = ' LIMIT $page*20, $page*20+20';
+	}
+	else if($display == 2)
+	{
+		$display = ' LIMIT $page*50, $page*50+50';
+	}
+	else
+	{
+		$continuous = true;	
+		$display = ' LIMIT $page*20, $page*20+20';
+	}
+				
+	if($nsfw == 1)
+		$nsfw = '';
+	else 
+		$nsfw = ' AND nsfw=0 ';
+	
 	if($_SESSION['username'] != null)
-		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");
+		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 	else
 		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");
 ?>
@@ -36,6 +60,7 @@
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
 		
 		<div id='main'>
+			beep
 			<div id='content' style='float:left;width:700px;'>
 				
 					<span style='vertical-align:bottom;'>NSFW</span><input type='checkbox' id='nsfw' style='vertical-align:bottom;'>
