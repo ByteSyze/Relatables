@@ -29,7 +29,7 @@
 			echo "\r\n";
 		}
 
-		public static function getMeta($keywords = NULL, $description = 'Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.')
+		public static function getMeta($keywords = array(), $description = 'Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.')
 		{
 			echo "\r\n<meta charset='UTF-8'>";
 			echo "\r\n<meta name='keywords' content='Am I The Only One, Relatablez, Am I The Only One That";

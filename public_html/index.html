@@ -23,16 +23,22 @@
 		
 	if($display == 1)
 	{
-		$display = ' LIMIT $page*20, $page*20+20';
+		$page *= 20;
+		$end = $page+20;
+		$display = " LIMIT $page, $end";
 	}
 	else if($display == 2)
 	{
-		$display = ' LIMIT $page*50, $page*50+50';
+		$page *= 50;
+		$end = $page+50;
+		$display = " LIMIT $page, $end";
 	}
 	else
 	{
+		$page *= 20;
+		$end = $page+20;
 		$continuous = true;	
-		$display = ' LIMIT $page*20, $page*20+20';
+		$display = " LIMIT $page, $end";
 	}
 				
 	if($nsfw == 1)
@@ -43,17 +49,16 @@
 	if($_SESSION['username'] != null)
 		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 	else
-		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 ORDER BY submissions.date DESC LIMIT 0, 20");
+		$submissions = mysqli_query($connection,"SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 ?>
 <html>
 	<head>
 		<title>Relatablez</title>
 		
-		<meta charset='UTF-8'>
-		<meta name='keywords' content='Am I The Only One, Relatablez, Am I The Only One That'>
-		<meta name='description' content='Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.'>
-		<link rel='shortcut icon' href='http://www.relatablez.com/favicon.ico'>
-		<?php GlobalUtils::getCSS('submissiontheme'); ?>
+		<?php 
+			GlobalUtils::getMeta();
+			GlobalUtils::getCSS('submissiontheme'); 
+		?>
 		<link rel='canonical' href='http://www.relatablez.com/'>
 	</head>
 	<body>		
