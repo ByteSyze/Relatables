@@ -95,7 +95,7 @@ table {
 	position:absolute;
 	top:46px;
 	right:45px;
-	display:none;
+	display:block;
 	max-height:200px;
 	overflow-y:auto;
 	overflow-x:hidden;
@@ -283,7 +283,7 @@ input.textbox
 }
 table.profile
 {
-	display:none;
+	display:table;
 	position:fixed;
 	top:61px;
 	z-index:2;
@@ -371,7 +371,7 @@ div
 }
 .hidden
 {
-	display:none;
+	display:none !important;
 }
 .toolbar-item
 {

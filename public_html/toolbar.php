@@ -37,7 +37,7 @@
 		<div style='float:left;padding:0px;height:100%'>
 				<a href='http://www.relatablez.com/'><img height='35' src='http://www.relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>
 				<span class='toolbar-item' id='aitoo-dropdown'>Am I The Only One?</span>
-				<a class='toolbar-item' href='http://www.relatablez.com/blog/'>Blog</a>
+				<button class='toolbar-item notifs' href='http://www.relatablez.com/about/'>About</button>
 		</div>		
 		<div  class='account-buttons'>
 			<?php

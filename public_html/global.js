@@ -329,22 +329,18 @@ function hideAll()
 
 function toggleProfileDropdown()
 {
-	var dropdown = document.getElementById("profile-dropdown");
-	
-	if(dropdown.style.display == "block")
-		dropdown.style.display = "none";
-	else
-		dropdown.style.display = "block";
+	$('#profile-dropdown').toggleClass('hidden');
 }
 
 function toggleNotificationDropdown()
 {
-	var dropdown = document.getElementById("notification-dropdown");
 	
-	if(dropdown.style.display == "block")
-		dropdown.style.display = "none";
-	else
-		dropdown.style.display = "block";
+	$('#notification-dropdown').toggleClass('hidden');
+}
+
+function toggleAboutDropdown()
+{
+	$('#about-dropdown').toggleClass('hidden');
 }
 
 function showLogin()
