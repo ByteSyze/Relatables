@@ -37,18 +37,24 @@
 		<div style='float:left;padding:0px;height:100%'>
 				<a href='http://www.relatablez.com/'><img height='35' src='http://www.relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>
 				<span class='toolbar-item' id='aitoo-dropdown'>Am I The Only One?</span>
-				<button class='toolbar-item notifs' href='http://www.relatablez.com/about/'>About</button>
+				<button class='toolbar-item' id='about-button'>About</button>
+				<table class='dropdown-list hidden' id='about-dropdown'>
+					<tr><td><a class='profile' href='http://www.relatablez.com/blog/'>Blog</a></td></tr>
+					<tr><td><a class='profile' href='http://www.relatablez.com/faq/'>FAQ</a></td></tr>
+					<tr><td><a class='profile' href='http://www.relatablez.com/privacy'>Privacy</a></td></tr>
+					<tr><td><a class='profile' href='http://www.relatablez.com/contact/'>Contact</a></td></tr>
+				</table>
 		</div>		
 		<div  class='account-buttons'>
 			<?php
 				if($_SESSION["username"] != null)
 				{
 					if($unreadNotifications)
-						echo "<button class='toolbar notifs'><img src='http://www.relatablez.com/notification_icon2.png'></button>";
+						echo "<button class='toolbar' id='notifications-button'><img src='http://www.relatablez.com/notification_icon2.png'></button>";
 					else
-						echo "<button class='toolbar notifs'><img src='http://www.relatablez.com/notification_icon.png'></button>";
+						echo "<button class='toolbar' id='notifications-button'><img src='http://www.relatablez.com/notification_icon.png'></button>";
 						
-					echo "<button class='toolbar profile'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
+					echo "<button class='toolbar' id='profile-button'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
 					include($_SERVER['DOCUMENT_ROOT'].'/user-popups.php');
 					getPopup($notifications, $connection);
 				}

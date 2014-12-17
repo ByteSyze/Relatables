@@ -8,7 +8,7 @@
 		$i = 0;
 		
 		echo
-"<table class='profile hidden' id='profile-dropdown'>
+"<table class='dropdown-list hidden' id='profile-dropdown'>
 <tr><td><a class='profile' href='http://www.relatablez.com/user/{$_SESSION['username']}'>Profile</a></td></tr>
 <tr><td><a class='profile' href='http://www.relatablez.com/settings/profile'>Settings</a></td></tr>
 <tr><td><a class='profile' href='http://www.relatablez.com/signout.php?dir=$_SERVER[REQUEST_URI]'>Sign Out</a></td></tr>

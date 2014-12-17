@@ -445,8 +445,9 @@ function deleteMessage(id)
 	});
 }
 
-$('.notifs').click(function(){toggleNotificationDropdown();});
-$('.profile').click(function(){toggleProfileDropdown();});
+$('#notifications-button').click(function(){toggleNotificationDropdown();});
+$('#profile-button').click(function(){toggleProfileDropdown();});
+$('#about-button').click(function(){toggleAboutDropdown();});
 $('.showlogin').click(function(){showLogin();});
 $('.hidelogin').click(function(){hideLogin();});
 $('.showreg').click(function(){showRegister($(this));});
