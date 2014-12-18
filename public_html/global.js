@@ -36,6 +36,10 @@ var registerPopup 		 = document.getElementById("registerpopup");
 var registerHeader 		 = document.getElementById("registerheader");
 var registerOpen 		 = false;
 
+var showAboutDropdown	 = false;
+var showProfDropdown 	 = false;
+var showNotifDropdown 	 = false;
+
 function register()
 {
 	var userVal	 	= user.value;
@@ -445,9 +449,43 @@ function deleteMessage(id)
 	});
 }
 
-$('#notifications-button').click(function(){toggleNotificationDropdown();});
-$('#profile-button').click(function(){toggleProfileDropdown();});
-$('#about-button').click(function(){toggleAboutDropdown();});
+function hideAllDropdowns()
+{
+	if(showNotifDropdown)
+	{
+		$('#notifications-dropdown').addClass('hidden');
+		showNotifDropdown = false;
+	}
+	if(showProfDropdown)
+	{
+		$('#profile-dropdown').addClass('hidden');
+		showProfDropdown = !showProfDropdown;
+	}
+	if(showAboutDropdown)
+	{
+		$('#about-dropdown').addClass('hidden');
+		showAboutDropdown = !showAboutDropdown;
+	}
+}
+
+$('#notifications-button').click(function()
+{
+	hideAllDropdowns();
+	$('#notifications-dropdown').toggleClass('hidden');
+	showNotifDropdown = !showNotifDropdown;
+});
+$('#profile-button').click(function()
+{
+	hideAllDropdowns();
+	$('#profile-dropdown').toggleClass('hidden');
+	showProfDropdown = !showProfDropdown;
+});
+$('#about-button').click(function()
+{
+	hideAllDropdowns();
+	$('#about-dropdown').toggleClass('hidden');
+	showAboutDropdown = !showAboutDropdown;
+});
 $('.showlogin').click(function(){showLogin();});
 $('.hidelogin').click(function(){hideLogin();});
 $('.showreg').click(function(){showRegister($(this));});

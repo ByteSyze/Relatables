@@ -40,8 +40,9 @@
 				<button class='toolbar-item' id='about-button'>About</button>
 				<table class='dropdown-list hidden' id='about-dropdown'>
 					<tr><td><a class='profile' href='http://www.relatablez.com/blog/'>Blog</a></td></tr>
-					<tr><td><a class='profile' href='http://www.relatablez.com/faq/'>FAQ</a></td></tr>
-					<tr><td><a class='profile' href='http://www.relatablez.com/privacy'>Privacy</a></td></tr>
+					<tr><td><a class='profile' href='http://www.relatablez.com/FAQ/'>FAQ</a></td></tr>
+					<tr><td><a class='profile' href='http://www.relatablez.com/privacy/'>Privacy</a></td></tr>
+					<tr><td><a class='profile' href='http://www.relatablez.com/terms/'>Terms</a></td></tr>
 					<tr><td><a class='profile' href='http://www.relatablez.com/contact/'>Contact</a></td></tr>
 				</table>
 		</div>		
