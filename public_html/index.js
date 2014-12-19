@@ -1,7 +1,7 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
-var openedShareText = "Share &laquo;";
-var closedShareText = "Share &raquo;";
+var openedShareText = 'Share «';
+var closedShareText = 'Share »';
 
 $("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
 $("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
@@ -32,7 +32,7 @@ $('body').on('click', '#qotw-submit', function() {
 $('body').on('click','[data-share-button]',function()
 {
 	var button = $(this);
-	if(button.html() == openedShareText)
+	if(button.text() == openedShareText)
 		button.next().animate({width: '0px'},500,function(){button.html(closedShareText);});
 	else
 		button.next().animate({width: '110px'},500,function(){button.html(openedShareText);});
