@@ -25,7 +25,7 @@
 			echo "\r\n<script type='text/javascript' src='http://www.relatablez.com/global.js'></script>";
 			
 			foreach(func_get_args() as $extra)
-				echo "\r\n<script type='text/javascript' href='/$extra.js'></script>";	
+				echo "\r\n<script type='text/javascript' src='http://www.relatablez.com/$extra.js'></script>";	
 			echo "\r\n";
 		}
 
