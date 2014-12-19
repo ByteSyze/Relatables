@@ -59,6 +59,8 @@ div.dialogue
 }
 div.share-button
 {
+	display:inline-block;
+	background-color:#FFF;
 	margin-left:50px;
 	border:1px solid #BFBFBF;
 	border-radius:4px;
@@ -66,6 +68,20 @@ div.share-button
 	padding-bottom:4px;
 	padding-top:5px;
 	cursor:pointer;
+}
+div.share-links
+{
+	height:30px;
+	width:100px;
+	float:right;
+}
+div.share-wrapper
+{
+	display:inline-block;
+	float:right;
+	overflow:hidden;
+	margin-left:-2px;
+	width:0px;
 }
 div.submission
 {

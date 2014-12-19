@@ -40,6 +40,15 @@
 			echo "\r\n<link rel='shortcut icon' href='/favicon.ico'>";
 		}
 		
+		public static function getShareButton()
+		{
+			echo "\r\n<div class='share-button' data-share-button=''>Share &raquo;</div>";
+			echo "\r\n<div class='share-wrapper'><div class='share-links'>";
+			echo "\r\n<a href=''><img src='fb_ico.png' /></a>";
+			echo "\r\n<a href=''><img src='gp_ico.png' /></a>";
+			echo "\r\n<a href=''><img src='tw_ico.png' /></a>";
+			echo "\r\n</div></div>";
+		}
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
