@@ -35,7 +35,7 @@ $('body').on('click','[data-share-button]',function()
 	if(button.text() == openedShareText)
 		button.next().animate({width: '0px'},500,function(){button.html(closedShareText);});
 	else
-		button.next().animate({width: '110px'},500,function(){button.html(openedShareText);});
+		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
 function vote(id, vote, v)
