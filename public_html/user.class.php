@@ -4,6 +4,7 @@
 	class User
 	{
 		private var $id;
+		private static var $db = mysqli::connect();
 		
 		function __construct($id)
 		{

@@ -36,9 +36,9 @@ var registerPopup 		 = document.getElementById("registerpopup");
 var registerHeader 		 = document.getElementById("registerheader");
 var registerOpen 		 = false;
 
-var showAboutDropdown	 = false;
-var showProfDropdown 	 = false;
-var showNotifDropdown 	 = false;
+var showAboutDropdown	 = true; //Default to true because
+var showProfDropdown 	 = true; //of the hideAllDropdowns()
+var showNotifDropdown 	 = true; //call when document is ready.
 
 function register()
 {
@@ -453,39 +453,60 @@ function hideAllDropdowns()
 {
 	if(showNotifDropdown)
 	{
-		$('#notifications-dropdown').addClass('hidden');
-		showNotifDropdown = false;
+		$('#notification-dropdown').hide();
+		showNotifDropdown = !showNotifDropdown;
+		console.log('hiding notificiations');
 	}
 	if(showProfDropdown)
 	{
-		$('#profile-dropdown').addClass('hidden');
+		$('#profile-dropdown').hide();
 		showProfDropdown = !showProfDropdown;
+		console.log('hiding profile');
 	}
 	if(showAboutDropdown)
 	{
-		$('#about-dropdown').addClass('hidden');
+		$('#about-dropdown').hide();
 		showAboutDropdown = !showAboutDropdown;
+		console.log('hiding about');
 	}
 }
 
-$('#notifications-button').click(function()
+$(document).ready(function(){hideAllDropdowns();});
+$('#notification-button').click(function(){showNotifDropdown = true;});
+$('#profile-button').click(function(){showProfDropdown = true;});
+$('#about-button').click(function(){showAboutDropdown = true;});
+
+$('body').on('click', function()
 {
-	hideAllDropdowns();
-	$('#notifications-dropdown').toggleClass('hidden');
-	showNotifDropdown = !showNotifDropdown;
+	if(showNotifDropdown)
+	{
+		$('#notification-dropdown').show();
+		$('#profile-dropdown').hide();
+		$('#about-dropdown').hide();
+		showNotifDropdown = false;
+	}
+	else if(showProfDropdown)
+	{
+		$('#profile-dropdown').show();
+		$('#notification-dropdown').hide();
+		$('#about-dropdown').hide();
+		showProfDropdown = false;
+	}
+	else if(showAboutDropdown)
+	{
+		$('#about-dropdown').show();
+		$('#profile-dropdown').hide();
+		$('#notification-dropdown').hide();
+		showAboutDropdown = false;
+	}
+	else
+	{
+		$('#notification-dropdown').hide();
+		$('#profile-dropdown').hide();
+		$('#about-dropdown').hide();
+	}
 });
-$('#profile-button').click(function()
-{
-	hideAllDropdowns();
-	$('#profile-dropdown').toggleClass('hidden');
-	showProfDropdown = !showProfDropdown;
-});
-$('#about-button').click(function()
-{
-	hideAllDropdowns();
-	$('#about-dropdown').toggleClass('hidden');
-	showAboutDropdown = !showAboutDropdown;
-});
+
 $('.showlogin').click(function(){showLogin();});
 $('.hidelogin').click(function(){hideLogin();});
 $('.showreg').click(function(){showRegister($(this));});
