@@ -454,27 +454,24 @@ function hideAllDropdowns()
 	if(showNotifDropdown)
 	{
 		$('#notification-dropdown').hide();
-		showNotifDropdown = !showNotifDropdown;
-		console.log('hiding notificiations');
+		showNotifDropdown = false;
 	}
 	if(showProfDropdown)
 	{
 		$('#profile-dropdown').hide();
-		showProfDropdown = !showProfDropdown;
-		console.log('hiding profile');
+		showProfDropdown = false;
 	}
 	if(showAboutDropdown)
 	{
 		$('#about-dropdown').hide();
-		showAboutDropdown = !showAboutDropdown;
-		console.log('hiding about');
+		showAboutDropdown = false;
 	}
 }
 
 $(document).ready(function(){hideAllDropdowns();});
-$('#notification-button').click(function(){showNotifDropdown = true;});
-$('#profile-button').click(function(){showProfDropdown = true;});
-$('#about-button').click(function(){showAboutDropdown = true;});
+$('#notification-button').click(function(){showNotifDropdown = !showNotifDropdown;});
+$('#profile-button').click(function(){showProfDropdown = !showProfDropdown;});
+$('#about-button').click(function(){console.log(showAboutDropdown);showAboutDropdown = !showAboutDropdown;console.log(showAboutDropdown);});
 
 $('body').on('click', function()
 {
