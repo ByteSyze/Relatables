@@ -49,6 +49,66 @@
 			echo "\r\n<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='tw_ico.png' /></a>";
 			echo "\r\n</div></div>";
 		}
+		
+		public static function parseSubmission($submission)
+		{
+			$date_diff = $submission['date_diff'];
+			
+			if($date_diff/60/24/365 >= 1)
+				$date_diff = '(' . floor($date_diff/60/24/365) . ' years ago)'; 
+			else if($date_diff/60/24 >= 1)
+				$date_diff = '(' . floor($date_diff/60/24) . ' days ago)'; 
+			else if($date_diff/60 >= 1)
+				$date_diff = '(' . floor($date_diff/60) . ' hours ago)'; 
+			else
+				$date_diff = '(' . floor($date_diff) . ' minutes ago)'; 
+				
+			if($submission['anonymous'])
+				$user='Anonymous';
+			else
+				$user = $submission['author'];
+			
+			echo "\r\n<div class='dialogue uppadding' id='{$submission['id']}'>";
+			echo "\r\n<p class='dialogue'>{$submission['submission']}</p>";
+			echo "\r\n<table class='vote-table'>";
+			echo "\r\n<tr>";
+			if($_SESSION["username"] != null)
+			{
+				if($submission['user_vote'] === '0')
+					echo "\r\n<td><button class='dialoguebutton' id='bna{$submission['id']}' data-vid='{$submission['id']}' data-v='{$submission['verification']}' disabled>No, me too!</button></td>";
+				else
+					echo "\r\n<td><button class='dialoguebutton' id='bna{$submission['id']}' data-vid='{$submission['id']}' data-v='{$submission['verification']}'>No, me too!</button></td>";
+					
+				if($submission['user_vote'] === '1')
+					echo "\r\n<td><button class='dialoguebutton' id='ba{$submission['id']}'  data-vid='{$submission['id']}' data-v='{$submission['verification']}' disabled>You're alone.</button></td>";
+				else
+					echo "\r\n<td><button class='dialoguebutton' id='ba{$submission['id']}'  data-vid='{$submission['id']}' data-v='{$submission['verification']}'>You're alone.</button></td>";
+			}
+			else
+			{
+				echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
+				echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone</button></td>";				
+			}
+			echo "\r\n<td><a href='http://www.relatablez.com/post/{$submission['id']}'  target='_blank' class='comment-button'></a></td>";
+			//echo "\r\n<td><div class='share-button' data-share-button=''>Share »</div></td>";
+			echo "\r\n<td>"; GlobalUtils::getShareButton("http://www.relatablez.com/post/$submission[id]", $submission['submission']); echo "</td>";
+			echo "\r\n<tr>";
+			echo "\r\n<td><span class='vote-counter' id='na{$submission['id']}'>(" . number_format($submission["notalone"]) . ")</span></td>";
+			echo "\r\n<td><span class='vote-counter' id='a{$submission['id']}'>(" . number_format($submission["alone"]) . ")</span></td>";
+			echo "\r\n</table>";
+			echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
+			
+			if($submission['anonymous'])
+				echo ' >' . $user . "</a> - $date_diff</span></div>";
+			else
+			{
+				if($submission['admin'])
+					echo 'class=\'admin\'';
+				echo " href='http://www.relatablez.com/user/$user'>$user</a> - $date_diff</span></div>";
+			}
+			echo "\r\n</div>";
+		}
+		
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
