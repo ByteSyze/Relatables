@@ -1,5 +1,8 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
+var openedShareText = 'Share «';
+var closedShareText = 'Share »';
+
 $("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
 $("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
 $(".showguides").click(function(){ showSubmissionGuidelines(); });
@@ -14,6 +17,25 @@ $("#submission").on('change keypress paste', function(event)
 		counter.css('color', '#c82828');
 	else
 		counter.css('color', '#BFBFBF');
+});
+$('body').on('click', '#qotw-submit', function() {
+	var val = $('input:radio[name=v]:checked').val();
+	
+	if( $('input:radio[name=v]').is(":checked") ){
+		vote = { v : val };
+		$.post( "http://www.relatablez.com/qotw.php", vote, function( res ) {
+			$( "#qotw-wrapper" ).empty().append(res+'<h3 id="vote-msg">Thanks for voting!</h3>');
+		});
+	}
+	return false;
+});
+$('body').on('click','[data-share-button]',function()
+{
+	var button = $(this);
+	if(button.text() == openedShareText)
+		button.next().animate({width: '0px'},500,function(){button.html(closedShareText);});
+	else
+		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
 function vote(id, vote, v)
@@ -122,16 +144,4 @@ function validate_data(objData){
 		
 	return objData;
 }
-
-$( "body" ).on( "click", "#qotw-submit", function() {
-	var val = $('input:radio[name=v]:checked').val();
-	
-	if( $('input:radio[name=v]').is(":checked") ){
-		vote = { v : val };
-		$.post( "http://www.relatablez.com/qotw.php", vote, function( res ) {
-			$( "#qotw-wrapper" ).empty().append(res+'<h3 id="vote-msg">Thanks for voting!</h3>');
-		});
-	}
-	return false;
-});
  

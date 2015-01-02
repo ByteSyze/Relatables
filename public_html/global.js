@@ -36,6 +36,10 @@ var registerPopup 		 = document.getElementById("registerpopup");
 var registerHeader 		 = document.getElementById("registerheader");
 var registerOpen 		 = false;
 
+var showAboutDropdown	 = true; //Default to true because
+var showProfDropdown 	 = true; //of the hideAllDropdowns()
+var showNotifDropdown 	 = true; //call when document is ready.
+
 function register()
 {
 	var userVal	 	= user.value;
@@ -329,22 +333,18 @@ function hideAll()
 
 function toggleProfileDropdown()
 {
-	var dropdown = document.getElementById("profile-dropdown");
-	
-	if(dropdown.style.display == "block")
-		dropdown.style.display = "none";
-	else
-		dropdown.style.display = "block";
+	$('#profile-dropdown').toggleClass('hidden');
 }
 
 function toggleNotificationDropdown()
 {
-	var dropdown = document.getElementById("notification-dropdown");
 	
-	if(dropdown.style.display == "block")
-		dropdown.style.display = "none";
-	else
-		dropdown.style.display = "block";
+	$('#notification-dropdown').toggleClass('hidden');
+}
+
+function toggleAboutDropdown()
+{
+	$('#about-dropdown').toggleClass('hidden');
 }
 
 function showLogin()
@@ -449,8 +449,61 @@ function deleteMessage(id)
 	});
 }
 
-$('.notifs').click(function(){toggleNotificationDropdown();});
-$('.profile').click(function(){toggleProfileDropdown();});
+function hideAllDropdowns()
+{
+	if(showNotifDropdown)
+	{
+		$('#notification-dropdown').hide();
+		showNotifDropdown = false;
+	}
+	if(showProfDropdown)
+	{
+		$('#profile-dropdown').hide();
+		showProfDropdown = false;
+	}
+	if(showAboutDropdown)
+	{
+		$('#about-dropdown').hide();
+		showAboutDropdown = false;
+	}
+}
+
+$(document).ready(function(){hideAllDropdowns();});
+$('#notification-button').click(function(){showNotifDropdown = !showNotifDropdown;});
+$('#profile-button').click(function(){showProfDropdown = !showProfDropdown;});
+$('#about-button').click(function(){console.log(showAboutDropdown);showAboutDropdown = !showAboutDropdown;console.log(showAboutDropdown);});
+
+$('body').on('click', function()
+{
+	if(showNotifDropdown)
+	{
+		$('#notification-dropdown').show();
+		$('#profile-dropdown').hide();
+		$('#about-dropdown').hide();
+		showNotifDropdown = false;
+	}
+	else if(showProfDropdown)
+	{
+		$('#profile-dropdown').show();
+		$('#notification-dropdown').hide();
+		$('#about-dropdown').hide();
+		showProfDropdown = false;
+	}
+	else if(showAboutDropdown)
+	{
+		$('#about-dropdown').show();
+		$('#profile-dropdown').hide();
+		$('#notification-dropdown').hide();
+		showAboutDropdown = false;
+	}
+	else
+	{
+		$('#notification-dropdown').hide();
+		$('#profile-dropdown').hide();
+		$('#about-dropdown').hide();
+	}
+});
+
 $('.showlogin').click(function(){showLogin();});
 $('.hidelogin').click(function(){hideLogin();});
 $('.showreg').click(function(){showRegister($(this));});

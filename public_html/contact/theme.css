@@ -1,0 +1,39 @@
+/*Copyright (C) Tyler Hackett 2014*/
+#content
+{
+	padding:20px;
+}
+#main
+{
+	width:1100px;
+	margin:70px auto auto;
+}
+#title
+{
+	margin:0px;
+	padding:20px;
+	color:#FFF;
+	background-color:#4a66d8;
+}
+a.selected
+{
+	color:#4a66d8;
+}
+body
+{
+	font: 15px arial;
+}
+p, span
+{
+	color:#666666;
+}
+div.contact
+{
+	width:850px;
+	margin:auto;
+	box-shadow: 0px 0px 10px #BFBFBF;
+}
+li span
+{
+	color:#666666;
+}

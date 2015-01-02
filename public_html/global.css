@@ -95,7 +95,7 @@ table {
 	position:absolute;
 	top:46px;
 	right:45px;
-	display:none;
+	display:block;
 	max-height:200px;
 	overflow-y:auto;
 	overflow-x:hidden;
@@ -281,9 +281,9 @@ input.textbox
 	width:238px;
 	height:27px;
 }
-table.profile
+table.dropdown-list
 {
-	display:none;
+	display:table;
 	position:fixed;
 	top:61px;
 	z-index:2;
@@ -368,10 +368,6 @@ a
 div
 {
 	font: 15px arial;
-}
-.hidden
-{
-	display:none;
 }
 .toolbar-item
 {

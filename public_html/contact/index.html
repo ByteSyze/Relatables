@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Copyright (C) Tyler Hackett 2014-->
+<html>
+	<?php
+		session_start();
+		
+		require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+		
+		if(isset($_POST['e']) && isset($_POST['n']) && isset($_POST['m']))
+		{
+			$email		= $_POST['e'];
+			$name		= $_POST['n'];
+			$message	= $_POST['m'];
+			
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+				die("bad email"); // if email isn't valid, die for now.
+			if(strlen($name) < 1)
+				die("This may seem rude, but the guys running this show do not accept input from nameless people. Friggin' name elitists...");
+			if(strlen($message) < 1)
+				die("I'm assuming your lack of input is a good thing? Carry on, then.");
+				
+			$from		= "From: Relatablez <noreply@relatablez.com>";
+			$subject	= "$name Has Submitted a Contact Form.";
+			$body		= "Greetings! We hast hath taken feedback from a valorous chap by the name of $name. He hath submitted the following:\r\n\r\n\"$message\"\r\n\r\nYou may reacheth this lad/madam via their electronic-mail address:\r\n$email";
+			 
+			mail('contact@relatablez.com, ins10102@gmail.com',$subject,$body,$from);
+		}
+	?>
+	<head>
+		<title>Contact</title>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
+		<?php GlobalUtils::getCSS(); ?>
+	</head>
+	<body>
+		<?php require("../toolbar.php"); ?>
+		<div>
+			<div>
+				<h1>Contact Us</h1>
+				<p>Send us your comments, questions, suggestions, or concerns by filling out the form to the right. We will try our best to respond as quickly as possible.</p>
+				<h3>- The Relatablez Team</h3>
+			</div>
+			<form method='POST'>
+				<input type='text' name='n' placeholder='First Name' />
+				<input type='text' name='e' placeholder='Email' />
+				<textarea name='m' placeholder='Message'></textarea>
+				<input type='submit' value='Submit'>
+			</form>
+		</div>
+		<?php GlobalUtils::getJS(); ?>
+	</body>
+</html>
