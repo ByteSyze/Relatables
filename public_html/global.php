@@ -86,8 +86,8 @@
 			}
 			else
 			{
-				echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
-				echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone</button></td>";				
+				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>No, me too!</button></td>";
+				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>You're alone</button></td>";				
 			}
 			echo "\r\n<td><a href='http://www.relatablez.com/post/{$submission['id']}'  target='_blank' class='comment-button'></a></td>";
 			//echo "\r\n<td><div class='share-button' data-share-button=''>Share »</div></td>";

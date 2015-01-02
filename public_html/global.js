@@ -506,5 +506,5 @@ $('body').on('click', function()
 
 $('.showlogin').click(function(){showLogin();});
 $('.hidelogin').click(function(){hideLogin();});
-$('.showreg').click(function(){showRegister($(this));});
-$('.hidereg').click(function(){hideRegister();});
+$('[data-register-header]').click(function(){showRegister($(this)[0]);});
+$('[data-register-hide]').click(function(){hideRegister();});

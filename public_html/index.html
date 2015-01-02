@@ -46,9 +46,9 @@
 		$nsfw = ' AND nsfw=0 ';
 	
 	if($_SESSION['username'] != null)
-		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
+		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 	else
-		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff FROM submissions WHERE pending = 0 $nsfw $order_by $display");
+		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 ?>
 <html>
 	<head>
@@ -102,7 +102,7 @@
 						}
 						else
 						{
-							echo "	<textarea name='s' id='submission' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)'>Am I the only one who</textarea>\r\n";
+							echo "	<textarea name='s' id='submission' class='dialogue' data-signup-header='Please sign up to submit'>Am I the only one who</textarea>\r\n";
 						}
 					?>
 						<div style='float:right'>

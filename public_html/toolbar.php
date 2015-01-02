@@ -62,7 +62,7 @@
 				else
 				{
 					echo "<button class='toolbar margleft margright showlogin'>Log In</button>\r\n";
-					echo "<button class='toolbar margleft margright showreg' data-header='Sign Up'>Sign Up</button>\r\n";	
+					echo "<button class='toolbar margleft margright' data-signup-header='Sign Up'>Sign Up</button>\r\n";	
 				}
 			?>
 		</div>
@@ -76,7 +76,7 @@ if($_SESSION['username'] == null)
 echo
 "
 <div class='popup' id='registerpopup'>
-	<button class='closebutton hidereg'></button><br>
+	<button class='closebutton' data-register-hide=''></button><br>
 	<h1 id='registerheader' class='popup-header'>Sign Up</h1>			
 	<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a href='javascript:hideRegister();showLogin();'>Log In</a></h6>
 	<div style='text-align:center;margin:auto;width:100%;'>
