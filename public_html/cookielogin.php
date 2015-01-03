@@ -1,4 +1,5 @@
 <?php
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
 	function login($cookie_login)
 	{
@@ -23,10 +24,10 @@
 				$_SESSION['id']=$id;
 					
 				//Update their last login date and unique cookie login ID.
-				$cookie_login = md5(date('isdHYm').$id.$dbPass);
+				$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
 				$expire = time()+(60*60*24*365*5);
 				
-				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login=$cookie_login WHERE id=$id");
+				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
 				setcookie("rrm",$cookie_login,$expire);
 			}
 			else

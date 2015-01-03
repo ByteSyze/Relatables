@@ -2,6 +2,8 @@
 	/*Copyright (C) Tyler Hackett 2014*/
 	session_start();
 	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
+	
 	usleep(100000);
 	
 	if(!isset($_POST['u']))
@@ -48,8 +50,8 @@
 			$_SESSION['id']=$id;
 			
 			//Update their last login date and unique cookie login ID.
-			$cookie_login = md5(date('isdHYm').$id.$dbPass);
-			mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login=$cookie_login WHERE id=$id");
+			$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
+			mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
 			
 			if($remember == 1)
 			{

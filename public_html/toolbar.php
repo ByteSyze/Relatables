@@ -4,7 +4,7 @@
 	
 	if($_SESSION["username"] == null)
 	{
-		if(isset($_COOKIE["rrmi"]) && isset($_COOKIE["rrmp"]))
+		if(isset($_COOKIE["rrm"]))
 		{
 			include($_SERVER['DOCUMENT_ROOT']."/cookielogin.php");
 			
