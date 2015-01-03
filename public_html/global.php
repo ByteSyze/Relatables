@@ -104,7 +104,7 @@
 			{
 				if($submission['admin'])
 					echo 'class=\'admin\'';
-				echo " href='http://www.relatablez.com/user/$user'>$user</a> - $date_diff</span></div>";
+				echo " href='http://www.relatablez.com/user/$user'>$user</a> $date_diff</span></div>";
 			}
 			echo "\r\n</div>";
 		}
