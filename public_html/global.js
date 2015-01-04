@@ -36,10 +36,6 @@ var registerPopup 		 = document.getElementById("registerpopup");
 var registerHeader 		 = document.getElementById("registerheader");
 var registerOpen 		 = false;
 
-var showAboutDropdown	 = true; //Default to true because
-var showProfDropdown 	 = true; //of the hideAllDropdowns()
-var showNotifDropdown 	 = true; //call when document is ready.
-
 function register()
 {
 	var userVal	 	= user.value;
@@ -451,50 +447,32 @@ function deleteMessage(id)
 
 function hideAllDropdowns()
 {
-	if(showNotifDropdown)
-	{
-		$('#notification-dropdown').hide();
-		showNotifDropdown = false;
-	}
-	if(showProfDropdown)
-	{
-		$('#profile-dropdown').hide();
-		showProfDropdown = false;
-	}
-	if(showAboutDropdown)
-	{
-		$('#about-dropdown').hide();
-		showAboutDropdown = false;
-	}
+	$('#notification-dropdown').hide();
+	$('#profile-dropdown').hide();
+	$('#about-dropdown').hide();
 }
 
 $(document).ready(function(){hideAllDropdowns();});
-$('#notification-button').click(function(){showNotifDropdown = !showNotifDropdown;});
-$('#profile-button').click(function(){showProfDropdown = !showProfDropdown;});
-$('#about-button').click(function(){console.log(showAboutDropdown);showAboutDropdown = !showAboutDropdown;console.log(showAboutDropdown);});
 
-$('body').on('click', function()
+$('body').on('click', function(event)
 {
-	if(showNotifDropdown)
+	if(event.target == $('#notification-button')[0])
 	{
-		$('#notification-dropdown').show();
+		$('#notification-dropdown').toggle();
 		$('#profile-dropdown').hide();
 		$('#about-dropdown').hide();
-		showNotifDropdown = false;
 	}
-	else if(showProfDropdown)
+	else if(event.target == $('#profile-button')[0])
 	{
-		$('#profile-dropdown').show();
+		$('#profile-dropdown').toggle();
 		$('#notification-dropdown').hide();
 		$('#about-dropdown').hide();
-		showProfDropdown = false;
 	}
-	else if(showAboutDropdown)
+	else if(event.target == $('#about-button')[0])
 	{
-		$('#about-dropdown').show();
+		$('#about-dropdown').toggle();
 		$('#profile-dropdown').hide();
 		$('#notification-dropdown').hide();
-		showAboutDropdown = false;
 	}
 	else
 	{
