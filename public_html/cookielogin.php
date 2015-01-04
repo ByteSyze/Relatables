@@ -28,7 +28,7 @@
 				$expire = time()+(60*60*24*365*5);
 				
 				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
-				setcookie("rrm",$cookie_login,$expire);
+				setcookie("rrm",$cookie_login,$expire,'/');
 			}
 			else
 				die('not_pending');
