@@ -456,19 +456,20 @@ $(document).ready(function(){hideAllDropdowns();});
 
 $('body').on('click', function(event)
 {
-	if(event.target == $('#notification-button')[0])
+	console.log(event.target);
+	if(event.target == $('#notification-button')[0] || $('#notification-button').has(event.target))
 	{
 		$('#notification-dropdown').toggle();
 		$('#profile-dropdown').hide();
 		$('#about-dropdown').hide();
 	}
-	else if(event.target == $('#profile-button')[0])
+	else if(event.target == $('#profile-button')[0] || $('#profile-button').has(event.target))
 	{
 		$('#profile-dropdown').toggle();
 		$('#notification-dropdown').hide();
 		$('#about-dropdown').hide();
 	}
-	else if(event.target == $('#about-button')[0])
+	else if(event.target == $('#about-button')[0] || $('#about-button').has(event.target))
 	{
 		$('#about-dropdown').toggle();
 		$('#profile-dropdown').hide();
