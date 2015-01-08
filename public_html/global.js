@@ -457,19 +457,19 @@ $(document).ready(function(){hideAllDropdowns();});
 $('body').on('click', function(event)
 {
 	console.log(event.target);
-	if(event.target == $('#notification-button')[0] || $('#notification-button').has(event.target))
+	if(event.target === $('#notification-button')[0] || event.target.parentNode === $('#notification-button')[0])
 	{
 		$('#notification-dropdown').toggle();
 		$('#profile-dropdown').hide();
 		$('#about-dropdown').hide();
 	}
-	else if(event.target == $('#profile-button')[0] || $('#profile-button').has(event.target))
+	else if(event.target === $('#profile-button')[0] || event.target.parentNode === $('#profile-button')[0])
 	{
 		$('#profile-dropdown').toggle();
 		$('#notification-dropdown').hide();
 		$('#about-dropdown').hide();
 	}
-	else if(event.target == $('#about-button')[0] || $('#about-button').has(event.target))
+	else if(event.target === $('#about-button')[0] || event.target.parentNode === $('#about-button')[0])
 	{
 		$('#about-dropdown').toggle();
 		$('#profile-dropdown').hide();
