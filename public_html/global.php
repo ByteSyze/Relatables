@@ -68,7 +68,7 @@
 			else
 				$user = $submission['author'];
 			
-			echo "\r\n<div class='dialogue uppadding' id='{$submission['id']}'>";
+			echo "\r\n<div class='dialogue downpadding' id='{$submission['id']}'>";
 			echo "\r\n<p class='dialogue'>{$submission['submission']}</p>";
 			echo "\r\n<table class='vote-table'>";
 			echo "\r\n<tr>";

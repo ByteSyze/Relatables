@@ -94,9 +94,9 @@ div.submission
 	height:60px;
 	overflow:hidden;
 }
-div.uppadding
+div.downpadding
 {
-	margin-top:20px;
+	margin-bottom:20px;
 }
 p.dialogue
 {
