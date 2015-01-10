@@ -3,6 +3,9 @@
 var openedShareText = 'Share «';
 var closedShareText = 'Share »';
 
+var subIndex = 0;
+var subCount = 20;
+
 $("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
 $("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
 $(".showguides").click(function(){ showSubmissionGuidelines(); });
@@ -144,4 +147,12 @@ function validate_data(objData){
 		
 	return objData;
 }
+
+$(document).ready(function()
+{
+	$.post('/getsubmissions.php', {o:1, c:0, n:0, s:subIndex, x:subCount}, function(data)
+	{
+		$('#submission-wrapper').append(data);
+	});
+});
  
