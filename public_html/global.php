@@ -22,10 +22,10 @@
 		public static function getJS()
 		{
 			echo "\r\n<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
-			echo "\r\n<script type='text/javascript' src='http://www.relatablez.com/global.js'></script>";
+			echo "\r\n<script type='text/javascript' src='/global.js'></script>";
 			
 			foreach(func_get_args() as $extra)
-				echo "\r\n<script type='text/javascript' src='http://www.relatablez.com/$extra.js'></script>";	
+				echo "\r\n<script type='text/javascript' src='/$extra.js'></script>";	
 			echo "\r\n";
 		}
 
@@ -89,9 +89,9 @@
 				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>No, me too!</button></td>";
 				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>You're alone</button></td>";				
 			}
-			echo "\r\n<td><a href='http://www.relatablez.com/post/{$submission['id']}'  target='_blank' class='comment-button'></a></td>";
+			echo "\r\n<td><a href='/post/{$submission['id']}'  target='_blank' class='comment-button'></a></td>";
 			//echo "\r\n<td><div class='share-button' data-share-button=''>Share »</div></td>";
-			echo "\r\n<td>"; GlobalUtils::getShareButton("http://www.relatablez.com/post/$submission[id]", $submission['submission']); echo "</td>";
+			echo "\r\n<td>"; GlobalUtils::getShareButton("/post/$submission[id]", $submission['submission']); echo "</td>";
 			echo "\r\n<tr>";
 			echo "\r\n<td><span class='vote-counter' id='na{$submission['id']}'>(" . number_format($submission["notalone"]) . ")</span></td>";
 			echo "\r\n<td><span class='vote-counter' id='a{$submission['id']}'>(" . number_format($submission["alone"]) . ")</span></td>";
@@ -104,7 +104,7 @@
 			{
 				if($submission['admin'])
 					echo 'class=\'admin\'';
-				echo " href='http://www.relatablez.com/user/$user'>$user</a> $date_diff</span></div>";
+				echo " href='/user/$user'>$user</a> $date_diff</span></div>";
 			}
 			echo "\r\n</div>";
 		}
