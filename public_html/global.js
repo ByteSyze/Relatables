@@ -45,7 +45,7 @@ function register()
 	if(verifyRegister())
 	{
 		console.log('Verified');
-		$.post("http://www.relatablez.com/register.php", { username: userVal, password: passVal, email: emailVal }, function(data)
+		$.post("/register.php", { username: userVal, password: passVal, email: emailVal }, function(data)
 		{
 			if(data.indexOf("success") != -1)
 			{
@@ -65,7 +65,7 @@ function login()
 	if(rememberEl.checked)
 		remember = 1;
 	
-	$.post("http://www.relatablez.com/login.php", { u: userVal, p: passVal, r: remember }, function(data) {
+	$.post("/login.php", { u: userVal, p: passVal, r: remember }, function(data) {
 		console.log(data);
 		
 		var hideUserLog = true;
@@ -135,32 +135,32 @@ function verifyUser()
 	if(userVal == '')
 		return true;
 	
-	$.post("http://www.relatablez.com/verifyUser.php", {username: userVal}, function(data)
+	$.post("/verifyUser.php", {username: userVal}, function(data)
 	{
 			if(data === "user unavailable")
 			{	
-				userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+				userVerifyImg.src = "/x_mark.png";
 				usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username is already in use.');
 			}
 	});
 	if(userVal.length < 3)
 	{
-		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		userVerifyImg.src = "/x_mark.png";
 		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username must be atleast 3 characters long.');
 	}
 	else if(userVal.length > 16)
 	{
-		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		userVerifyImg.src = "/x_mark.png";
 		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username must be under 16 characters long.');
 	}
 	else if(!userRegex.test(userVal))
 	{	
-		userVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		userVerifyImg.src = "/x_mark.png";
 		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username can only contain characters a-z and 0-9.');
 	}
 	else
 	{		
-		userVerifyImg.src = "http://www.relatablez.com/check_mark.png";
+		userVerifyImg.src = "/check_mark.png";
 		valid = true;
 	}
 	
@@ -177,12 +177,12 @@ function verifyPassword()
 	
 	if(passVal.length < 6)
 	{
-		passVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		passVerifyImg.src = "/x_mark.png";
 		newPasswordPopup.innerHTML = newPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
 	}
 	else
 	{
-		passVerifyImg.src = "http://www.relatablez.com/check_mark.png";
+		passVerifyImg.src = "/check_mark.png";
 		valid = true;
 	}
 	
@@ -202,17 +202,17 @@ function verifyRePassword()
 	
 	if(rePassVal.length < 6)
 	{
-		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		rePassVerifyImg.src = "/x_mark.png";
 		renewPasswordPopup.innerHTML = renewPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
 	}
 	else if(passVal !== rePassVal)
 	{
-		rePassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		rePassVerifyImg.src = "/x_mark.png";
 		renewPasswordPopup.innerHTML = renewPasswordPopup.innerHTML.concat(' Password verification doesn\'t match original password. ');
 	}
 	else
 	{
-		rePassVerifyImg.src = "http://www.relatablez.com/check_mark.png";
+		rePassVerifyImg.src = "/check_mark.png";
 		valid = true;
 	}
 	rePassVerifyImg.style.display = "block";
@@ -234,22 +234,22 @@ function verifyCurrentPassword()
 	
 	if(passVal.length < 6)
 	{
-		currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		currentPassVerifyImg.src = "/x_mark.png";
 		currentPasswordPopup.innerHTML = currentPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
 	}
 	else
 	{		
-		$.post("http://www.relatablez.com/verifyPassword.php", {p: passVal}, function(data)
+		$.post("/verifyPassword.php", {p: passVal}, function(data)
 		{
 				if(data == "0")
 				{
-					currentPassVerifyImg.src = "http://www.relatablez.com/check_mark.png";	
+					currentPassVerifyImg.src = "/check_mark.png";	
 					currentPasswordPopup.innerHTML = '';
 					valid = true;
 				}
 				else
 				{
-					currentPassVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+					currentPassVerifyImg.src = "/x_mark.png";
 					currentPasswordPopup.innerHTML = ' Password is incorrect. ';
 				}
 		});
@@ -271,26 +271,26 @@ function verifyEmail()
 	
 	if(emailVal.length < 4)
 	{
-		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		emailVerifyImg.src = "/x_mark.png";
 		emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email must be atleast 4 characters long. ');
 	}
 	else if((emailVal.indexOf("@") == -1) || (emailVal.indexOf(".") == -1))
 	{
-		emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+		emailVerifyImg.src = "/x_mark.png";
 		emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is invalid. ');
 	}
 	else
 	{
-		$.post("http://www.relatablez.com/verifyEmail.php", {e: emailVal}, function(data)
+		$.post("/verifyEmail.php", {e: emailVal}, function(data)
 		{
 			if(data === "1")
 			{
-				emailVerifyImg.src = "http://www.relatablez.com/x_mark.png";
+				emailVerifyImg.src = "/x_mark.png";
 				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
 			}
 			else
 			{
-				emailVerifyImg.src = "http://www.relatablez.com/check_mark.png";
+				emailVerifyImg.src = "/check_mark.png";
 				valid = true;
 			}
 		});	
@@ -413,7 +413,7 @@ function hideSendMessagePopup()
 
 function updateMessageStatus(id)
 {
-	$.post("http://www.relatablez.com/readmessage.php", {id: id}, function(data)
+	$.post("/readmessage.php", {id: id}, function(data)
 	{
 			if(data == '1')
 			{
@@ -427,7 +427,7 @@ function updateMessageStatus(id)
 
 function deleteMessage(id)
 {
-	$.post("http://www.relatablez.com/deletemessage.php", {id: id}, function(data)
+	$.post("/deletemessage.php", {id: id}, function(data)
 	{
 			if(data == '1')
 			{

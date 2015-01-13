@@ -26,7 +26,7 @@ $('body').on('click', '#qotw-submit', function() {
 	
 	if( $('input:radio[name=v]').is(":checked") ){
 		vote = { v : val };
-		$.post( "http://www.relatablez.com/qotw.php", vote, function( res ) {
+		$.post( "/qotw.php", vote, function( res ) {
 			$( "#qotw-wrapper" ).empty().append(res+'<h3 id="vote-msg">Thanks for voting!</h3>');
 		});
 	}
@@ -52,7 +52,7 @@ function vote(id, vote, v)
 	
 	$.ajax({
 		type: "POST",
-		url: "http://www.relatablez.com/vote.php",
+		url: "/vote.php",
 		data: {q: id, vtn: vote, v : v}
 	})
 	.done(function(data) {
@@ -116,7 +116,7 @@ $( "body" ).on( "click", "#submit_form", function() {
 	objData = {s: submission, c: category, a: anonymous };
 	objData = validate_data(objData);
 	if(objData){
-		$.post( "http://www.relatablez.com/submit.php",objData,function( res ) {
+		$.post( "/submit.php",objData,function( res ) {
 			if(res == '0')
 		 		$( "#submission-wrapper" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-wrapper" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");});
 			else if(res ==	'1')
