@@ -113,7 +113,7 @@
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
-			if($_SERVER['SERVER_NAME'] == 'localhost')
+			if($_SERVER['SERVER_NAME'] != 'www.relatablez.com')
 				return mysqli_connect('localhost','root','','u683362690_rtblz');
 			else
 				return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
