@@ -47,11 +47,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `id_5` (`id`),
   UNIQUE KEY `email` (`email`),
-  KEY `id` (`id`),
-  KEY `id_2` (`id`),
-  KEY `id_3` (`id`),
-  KEY `id_4` (`id`),
-  KEY `id_6` (`id`)
+  KEY `id` (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --

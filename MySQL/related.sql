@@ -34,10 +34,7 @@ CREATE TABLE IF NOT EXISTS `related` (
   `alone` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
-  UNIQUE KEY `related_key` (`pid`,`uid`),
-  KEY `pid` (`pid`,`uid`),
-  KEY `pid_2` (`pid`),
-  KEY `uid` (`uid`)
+  UNIQUE KEY `related_key` (`pid`,`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=8 ;
 
 --
