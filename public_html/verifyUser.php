@@ -2,11 +2,12 @@
 	/*Copyright (C) Tyler Hackett 2014*/
 	// verifyUser.php will check if a username is taken.
 	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	if(!isset($_POST["username"]))
 		die("user too short");
 	
-	$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+	$connection = GlobalUtils::getConnection();
 	
 	$user = $_POST["username"];
 

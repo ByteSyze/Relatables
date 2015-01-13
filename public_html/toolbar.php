@@ -1,6 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	session_start();
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	if($_SESSION["username"] == null)
 	{
@@ -15,7 +16,7 @@
 	//Recheck, to give cookielogin.php a chance.
 	if($_SESSION['username'] != null)
 	{
-		$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+		$connection = GlobalUtils::getConnection();
 		
 		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(date,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0 ORDER BY notifications.date DESC');
 		

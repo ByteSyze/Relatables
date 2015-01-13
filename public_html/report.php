@@ -1,7 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	session_start();
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	if(isset($_POST['c']))
 	{
@@ -20,7 +20,7 @@
 	else
 		die();
 	
-	$connection = getConnection();
+	$connection = GlobalUtils::getConnection();
 	
 	if(isAdmin($connection, $_SESSION['id']))
 	{

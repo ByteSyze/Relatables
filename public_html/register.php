@@ -11,7 +11,7 @@
 	// and B) if the user was messing with our code that makes sure they entered correct info, they're
 	// stupid and gonna get what they deserve. End of.
 	
-	include('userinfo.php');
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	if(!isset($_POST["password"]))
 		echo "password not set";
@@ -40,7 +40,7 @@
 		die("username too long"); // if username is larger than max length or less than one, die for now.
 	}
 	
-	$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+	$connection = GlobalUtils::getConnection();
 	
 	if($statement = $connection->prepare("SELECT id FROM accounts WHERE username LIKE (?)"))
 	{

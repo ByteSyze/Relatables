@@ -1,9 +1,10 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	function login($cookie_login)
 	{
-		$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+		$connection = GlobalUtils::getConnection();
 
 		if($statement = $connection->prepare("SELECT id, username, password, IFNULL(email,0) FROM accounts WHERE cookie_login = (?)"))
 		{

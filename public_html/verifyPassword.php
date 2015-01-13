@@ -1,7 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	session_start();	
-	include('userinfo.php');
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	usleep(100000); //Delay execution for 100ms, as a security measure.
 	

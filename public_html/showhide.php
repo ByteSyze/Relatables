@@ -1,12 +1,12 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	session_start();
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$data = $_GET['d'];
 	$type = $_GET['t'];
 	
-	require_once('userinfo.php');
-	$connection = getConnection();
+	$connection = GlobalUtils::getConnection();
 	
 	if($type == 'show')
 	{

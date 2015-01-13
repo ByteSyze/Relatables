@@ -1,8 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
 	
-	session_start();
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	if($_SESSION['username'] == null)
 		die('1');
@@ -17,7 +16,7 @@
 	if($clen < 1 || $clen > 140)
 		die('2');
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 	
 	if($rid != 0)
 		$comment = "$rUser $comment";
