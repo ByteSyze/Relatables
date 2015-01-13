@@ -6,6 +6,7 @@
 	
 	class GlobalUtils
 	{
+	
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
 		public static function getCSS()
 		{
@@ -112,7 +113,10 @@
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
-			return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+			if($_SERVER['SERVER_NAME'] == 'localhost')
+				return mysqli_connect('localhost','root','','u683362690_rtblz');
+			else
+				return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 		}
 	}
 ?>
