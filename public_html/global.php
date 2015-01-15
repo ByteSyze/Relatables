@@ -45,9 +45,9 @@
 		{
 			echo "\r\n<div class='share-button' data-share-button=''>Share &raquo;</div>";
 			echo "\r\n<div class='share-wrapper'><div class='share-links'>";
-			echo "\r\n<a href='http://www.facebook.com/sharer.php?u=$url'><img src='fb_ico.png' /></a>";
-			echo "\r\n<a href='https://plus.google.com/share?url=$url'><img src='gp_ico.png' /></a>";
-			echo "\r\n<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='tw_ico.png' /></a>";
+			echo "\r\n<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>";
+			echo "\r\n<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>";
+			echo "\r\n<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>";
 			echo "\r\n</div></div>";
 		}
 		

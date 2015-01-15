@@ -57,7 +57,7 @@ button.notification
 	width:20px;
 	height:20px;
 	bottom:5px;
-	background-image: url('notification.png');
+	background-image: url('/images/icons/notification.png');
 	background-repeat:no-repeat;
 	background-position:center;
 }

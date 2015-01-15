@@ -18,7 +18,7 @@
 	{
 		$connection = GlobalUtils::getConnection();
 		
-		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(date,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0 ORDER BY notifications.date DESC');
+		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(created,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0 ORDER BY notifications.created DESC');
 		
 		while($notification = mysqli_fetch_array($notifications))
 		{
@@ -36,7 +36,7 @@
 <div id='toolbar'>
 	<div id='toolbaralignment'>
 		<div style='float:left;padding:0px;height:100%'>
-				<a href='http://www.relatablez.com/'><img height='35' src='http://www.relatablez.com/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>
+				<a href='http://www.relatablez.com/'><img height='35' src='/images/icons/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>
 				<span class='toolbar-item' id='aitoo-dropdown'>Am I The Only One?</span>
 				<button class='toolbar-item' id='about-button'>About</button>
 				<table class='dropdown-list hidden' id='about-dropdown'>
@@ -52,11 +52,11 @@
 				if($_SESSION["username"] != null)
 				{
 					if($unreadNotifications)
-						echo "<button class='toolbar' id='notification-button'><img src='http://www.relatablez.com/notification_icon2.png'></button>";
+						echo "<button class='toolbar' id='notification-button'><img src='/images/icons/notification_icon2.png'></button>";
 					else
-						echo "<button class='toolbar' id='notification-button'><img src='http://www.relatablez.com/notification_icon.png'></button>";
+						echo "<button class='toolbar' id='notification-button'><img src='/images/icons/notification_icon.png'></button>";
 						
-					echo "<button class='toolbar' id='profile-button'><img src='http://www.relatablez.com/profile_icon.png'></button>\r\n";	
+					echo "<button class='toolbar' id='profile-button'><img src='/images/icons/profile_icon.png'></button>\r\n";	
 					include($_SERVER['DOCUMENT_ROOT'].'/user-popups.php');
 					getPopup($notifications, $connection);
 				}
@@ -85,27 +85,27 @@ echo
 			<form method='post' action='javascript:register();'>
 				<table style='width:100%;'>
 					<tr>
-						<td><img src='http://www.relatablez.com/question.png' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></td>
+						<td><img src='/images/icons/question.png' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></td>
 						<td><input id='user_input' class='textbox' type='text' name='username'  onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='Username'><label id='user_log'></label></td>
-						<td style='width:15px;'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></td>
+						<td style='width:15px;'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></td>
 					</tr>
 					<tr class='spacer'><td colspan='3'></td></tr>
 					<tr>
-						<td><img src='http://www.relatablez.com/question.png' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div></td>
+						<td><img src='/images/icons/question.png' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div></td>
 						<td><input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' name='password' placeholder='Password'><label id='pass_log'></label></td>
-						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='pass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></td>
+						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='pass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></td>
 					</tr>
 					<tr class='spacer'><td colspan='3'></td></tr>
 					<tr>
 						<td></td>
 						<td><input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><label id='repass_log'></label></td>
-						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></td>
+						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></td>
 					</tr>
 					<tr class='spacer'><td colspan='3'></td></tr>
 					<tr>
 						<td></td>
 						<td><input id='email_input' class='textbox' type='text' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='Email'><label id='email_log'></label></td>
-						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></td>
+						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></td>
 					</tr>
 					<tr class='spacer'><td colspan='3'></td></tr>
 					<tr>

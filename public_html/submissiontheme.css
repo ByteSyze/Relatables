@@ -34,11 +34,11 @@ a.comment-button
 	width:46px;
 	height:46px;
 	margin-top:-25px;
-	background-image:url('/comment_icon.png');
+	background-image:url('/images/icons/comment_icon.png');
 }
 a.comment-button:hover
 {
-	background-image:url('/comment_icon_hover.png');
+	background-image:url('/images/icons/comment_icon_hover.png');
 }
 button
 {
