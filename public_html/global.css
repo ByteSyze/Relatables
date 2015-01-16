@@ -48,12 +48,13 @@ table {
 #notification-button
 {
 	width:26px;
+	height:26px;
 	background-image:url('/images/icons/notification_icon.png');
 }
 #profile-button
 {
 	width:26px;
-	background-image:url('/images/icons/notification_profile.png');
+	background-image:url('/images/icons/profile_icon.png');
 }
 #toolbar
 {
@@ -394,4 +395,8 @@ div
 .hover-icon:hover
 {
 	background-position:bottom;
+}
+.unread
+{
+	background-position:center;
 }
