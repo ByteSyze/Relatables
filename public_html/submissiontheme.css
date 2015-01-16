@@ -34,11 +34,7 @@ a.comment-button
 	width:46px;
 	height:46px;
 	margin-top:-25px;
-	background-image:url('/images/icons/comment-icon.png');
-}
-a.comment-button:hover
-{
-	background-image:url('/images/icons/comment-icon-hover.png');
+	background-image:url('/images/icons/comment_icon.png');
 }
 button
 {

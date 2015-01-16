@@ -49,11 +49,13 @@ table {
 {
 	width:26px;
 	height:26px;
+	margin-right:20px;
 	background-image:url('/images/icons/notification_icon.png');
 }
 #profile-button
 {
 	width:26px;
+	height:30px;
 	background-image:url('/images/icons/profile_icon.png');
 }
 #toolbar
