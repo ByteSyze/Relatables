@@ -48,12 +48,12 @@ table {
 #notification-button
 {
 	width:26px;
-	background-image('/images/icons/notification_icon.png');
+	background-image:url('/images/icons/notification_icon.png');
 }
 #profile-button
 {
 	width:26px;
-	background-image('/images/icons/notification_profile.png');
+	background-image:url('/images/icons/notification_profile.png');
 }
 #toolbar
 {
