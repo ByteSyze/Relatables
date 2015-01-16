@@ -45,6 +45,16 @@ table {
 {
 	cursor:pointer;
 }
+#notification-button
+{
+	width:26px;
+	background-image('/images/icons/notification_icon.png');
+}
+#profile-button
+{
+	width:26px;
+	background-image('/images/icons/notification_profile.png');
+}
 #toolbar
 {
 	position:fixed;
@@ -376,4 +386,12 @@ div
 	font-weight:bold;
 	color:white;
 	margin-left:20px;
+}
+.hover-icon
+{
+	background-position:top;
+}
+.hover-icon:hover
+{
+	background-position:bottom;
 }

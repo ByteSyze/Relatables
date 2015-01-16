@@ -52,11 +52,11 @@
 				if($_SESSION["username"] != null)
 				{
 					if($unreadNotifications)
-						echo "<button class='toolbar unread' id='notification-button'></button>";
+						echo "<button class='toolbar unread hover-icon' id='notification-button'></button>";
 					else
-						echo "<button class='toolbar' id='notification-button'></button>";
+						echo "<button class='toolbar hover-icon' id='notification-button'></button>";
 						
-					echo "<button class='toolbar' id='profile-button'><img src='/images/icons/profile_icon.png'></button>\r\n";	
+					echo "<button class='toolbar hover-icon' id='profile-button'></button>\r\n";	
 					include($_SERVER['DOCUMENT_ROOT'].'/user-popups.php');
 					getPopup($notifications, $connection);
 				}
