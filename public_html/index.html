@@ -5,6 +5,10 @@
 	
 	$connection = GlobalUtils::getConnection();
 	
+	//All of the following variables are pre-processed 
+	//and have determined values before the SQL query 
+	//at the end. DO NOT pass unprocessed user input to
+	//the SQL query, ever.
 	$page 		= intval($_GET['p']);
 	$order_by 	= $_GET['o'];
 	$category 	= intval($_GET['c']);
