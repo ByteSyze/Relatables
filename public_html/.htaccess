@@ -24,6 +24,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
 RewriteRule ^post/(.*)$ post/index.html?id=$1 [QSA]
 
+AddHandler application/x-httpd-php .html
+
 ErrorDocument 404 /notfound/
 
 php_flag  display_errors        on
