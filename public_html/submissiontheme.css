@@ -32,7 +32,7 @@ a.comment-button
 	position:absolute;
 	display:block;
 	width:46px;
-	height:46px;
+	height:45px;
 	margin-top:-25px;
 	background-image:url('/images/icons/comment_icon.png');
 }
