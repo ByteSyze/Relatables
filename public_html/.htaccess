@@ -8,8 +8,8 @@ Require user relteam
 
 RewriteEngine On
 
-RewriteCond %{HTTP_HOST} ^relatablez.com
-RewriteRule (.*) http://www.relatablez.com/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} ^relatablez.com
+#RewriteRule (.*) http://www.relatablez.com/$1 [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -456,7 +456,6 @@ $(document).ready(function(){hideAllDropdowns();});
 
 $('body').on('click', function(event)
 {
-	console.log(event.target);
 	if(event.target === $('#notification-button')[0] || event.target.parentNode === $('#notification-button')[0])
 	{
 		$('#notification-dropdown').toggle();
