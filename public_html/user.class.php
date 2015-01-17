@@ -5,31 +5,50 @@
 	{
 		private static var $CONNECTION = GlobalUtils::getConnection();
 		
-		private var $preloaded;
+		private var $id 			= null;	//User ID
+		private var $username 		= null; //User username
+		private var $password 		= null;	//Encrypted password
+		private var $cookie_login 	= null;	//Encrypted login key
+		private var $joined 		= null;	//Date the user joined
+		private var $last_login 	= null;	//Date the user last logged in
+		private var $email 			= null;	//Current user email
+		private var $pending_email 	= null;	//Current pending user email
+		private var $country	 	= null;	//User country
+		private var $description 	= null;	//User's profile description
+		private var $hide_location 	= null;	//Whether or not user is displaying location
+		private var $hide_related 	= null;	//Whether or not user is displaying related with
+		private var $admin 			= null;	//Whether or not user is an admin
+		private var $mod_index 		= null;	//User's moderation index
 		
-		private var $id;			//User ID
-		private var $username;
-		private var $password;		//Encrypted password
-		private var $cookie_login;	//Encrypted login key
-		private var $join_date;		//Date the user joined
-		private var $last_login;	//Date the user last logged in
-		private var $email;			//Current user email
-		private var $pending_email;	//Current pending user email
-		private var $country_id;	//Country ID. Correlates to a country in the `countries` SQL table.
-		private var $description;	//User's profile description
-		private var $hide_location;	//Whether or not user is displaying location
-		private var $hide_related;	//Whether or not user is displaying related with
-		private var $admin;			//Whether or not user is an admin
-		private var $mod_index;		//User's moderation index
+		private var $post_count 	= null;	//Number of posts user has made
+		private var $comment_count 	= null;	//Number of comments user has made
 		
 		/**
 		*	Retrieve an existing user.
 		*
-		*	@param	$id		ID of the user to get
+		*	@param	$id			ID of the user to get
+		*	@param	$fetch_all	fetch all user data and store it in variables
 		*/
-		function __construct($id)
+		function __construct($id, $fetch_all = false)
 		{
+			$this->$id = $id;
 			
+			if($fetch_all)
+			{
+				if($statement = $CONNECTION->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
+				{	
+					$statement->bind_param('i', $id);
+					
+					$statement->execute();
+					
+					$statement->bind_result($username, $password, $cookie_login, $joined, $last_login, $email, $pending_email, $country_id, $description, $hide_location, $hide_related, $admin, $mod_index, $post_count, $comment_count);
+					$statement->fetch();
+					
+					$data['country'] = getCountry($connection, $cid);
+					
+					return $data;
+				}	
+			}
 		}
 		
 		//Returns an array of relevant information pertaining to the specified user's profile.
