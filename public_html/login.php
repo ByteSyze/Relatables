@@ -1,6 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
-	session_start();
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
 	usleep(100000);
 	
@@ -13,7 +14,7 @@
 		die('no password');
 	}
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 	
 	$user = $_POST['u'];
 	$pass = $_POST['p'];
@@ -48,8 +49,8 @@
 			$_SESSION['id']=$id;
 			
 			//Update their last login date and unique cookie login ID.
-			$cookie_login = md5(date('isdHYm').$id.$dbPass);
-			mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login=$cookie_login WHERE id=$id");
+			$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
+			mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
 			
 			if($remember == 1)
 			{

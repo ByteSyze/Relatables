@@ -1,11 +1,13 @@
 <?php
-	session_start();
+	/*Copyright (C) Tyler Hackett 2015*/
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	if($_SESSION['username'] == null) die();
 	
 	$vote = $_POST['v'];
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 	
 	$query = $connection->query("SELECT id FROM qotw ORDER BY created LIMIT 1"); //Grab latest QOTW
 	$qotw = $query->fetch_row();

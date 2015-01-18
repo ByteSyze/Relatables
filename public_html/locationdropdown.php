@@ -1,10 +1,13 @@
 <?php
+	/*Copyright (C) Tyler Hackett 2014*/
+
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 
 	function getLocationDropdown($id)
 	{
 		echo '<select data-type=\'location\' id=\'location-input\' name=\'location\'>';
 			
-		$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+		$connection = GlobalUtils::getConnection();
 		$countries = mysqli_query($connection,'SELECT country_id, short_name FROM countries');
 		
 		if($id === -1)

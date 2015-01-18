@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	/*Copyright (C) Tyler Hackett 2014*/
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	usleep(200000);
 	

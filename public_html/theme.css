@@ -1,0 +1,115 @@
+/*Copyright (C) Tyler Hackett 2014*/
+#main
+{
+	overflow:hidden;
+	position:relative;
+	top: 10px;
+	width:1100px;
+	height:auto;
+	margin:auto;
+	background-color:#F7F7F7;
+}
+#qotw
+{
+	width:340px;
+	background:white;
+	border-radius:5px;
+	border:1px solid #BFBFBF;
+}
+#qotw-header
+{
+	margin:0px;
+	padding:5px;
+	background:#4a66d8;
+	text-align:left;
+	color:white;
+	border-top-left-radius:3px;
+	border-top-right-radius:3px;
+}
+#qotw-submit
+{
+	float:right;
+}
+#success_msg
+{
+	font-weight:bold;
+	text-align:center;
+}
+#vote-msg{
+    color: #2754a6;
+    text-align: center;
+}
+b.warning
+{
+	position:relative;
+	margin:auto;
+	color:black;
+	font-size:13px;
+}
+button
+{
+	cursor:pointer;
+}
+button.notification
+{
+	position:relative;
+	border:none;
+	width:20px;
+	height:20px;
+	bottom:5px;
+	background-image: url('/images/icons/notification.png');
+	background-repeat:no-repeat;
+	background-position:center;
+}
+button.submit-button
+{
+	background-color:#4a66d8;
+	border:none;
+	border-radius:4px;
+	height:22px;
+	width:60px;
+	color:white;
+	font-size:12px;
+}
+div.vote-layout
+{
+	text-align:center;
+	width:105px;
+}
+div.adwindow
+{
+	float:right;
+	border-radius:4px;
+	width:290px;
+}
+div
+{
+	font: 15px arial;
+}
+select.category
+{
+	position:relative;
+	left:0px;
+}
+span.guideline-title
+{
+	color:#0067B1;
+}
+table.submission-table
+{
+	position:relative;
+	width:100%;
+}
+.float-left
+{
+	float:left;
+}
+.float-right
+{
+	float:right;
+}
+a
+{
+	color:gray;
+	text-decoration:none;
+}

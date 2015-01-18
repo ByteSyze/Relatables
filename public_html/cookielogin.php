@@ -1,8 +1,10 @@
 <?php
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	function login($cookie_login)
 	{
-		$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+		$connection = GlobalUtils::getConnection();
 
 		if($statement = $connection->prepare("SELECT id, username, password, IFNULL(email,0) FROM accounts WHERE cookie_login = (?)"))
 		{
@@ -23,11 +25,11 @@
 				$_SESSION['id']=$id;
 					
 				//Update their last login date and unique cookie login ID.
-				$cookie_login = md5(date('isdHYm').$id.$dbPass);
+				$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
 				$expire = time()+(60*60*24*365*5);
 				
-				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login=$cookie_login WHERE id=$id");
-				setcookie("rrm",$cookie_login,$expire);
+				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
+				setcookie("rrm",$cookie_login,$expire,'/');
 			}
 			else
 				die('not_pending');

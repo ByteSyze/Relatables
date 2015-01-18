@@ -1,12 +1,14 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
+	
 	if(!isset($_POST['e']))
 		die('2');
 		
 	$email = $_POST['e'];
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 	
 	if($statement = $connection->prepare('SELECT 1 FROM accounts WHERE email LIKE (?)'))
 	{

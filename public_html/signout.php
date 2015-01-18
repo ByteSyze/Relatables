@@ -8,8 +8,7 @@
 	
 	$deadcookie = time()-3600;
 	
-	setcookie("rrmi","",$deadcookie);
-	setcookie("rrmp","",$deadcookie);
+	setcookie("rrm","",$deadcookie,'/');
 	
 	header("Location: http://www.relatablez.com$_GET[dir]"); //dir is the directory to send the user to.
 ?>

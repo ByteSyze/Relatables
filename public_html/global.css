@@ -22,6 +22,11 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html, body
+{
+	min-width:100%;
+	min-height:100%;
+}
 body {
 	line-height: 1;
 }
@@ -44,6 +49,19 @@ table {
 #aitoo-dropdown
 {
 	cursor:pointer;
+}
+#notification-button
+{
+	width:26px;
+	height:26px;
+	margin-right:20px;
+	background-image:url('/images/icons/notification_icon.png');
+}
+#profile-button
+{
+	width:26px;
+	height:30px;
+	background-image:url('/images/icons/profile_icon.png');
 }
 #toolbar
 {
@@ -148,7 +166,7 @@ button.closebutton
 	position:relative;
 	background-color:transparent;
 	float:right;
-	background-image: url('../close.png');
+	background-image: url('/images/icons/close.png');
 	background-repeat: no-repeat;
 	background-size:14px 14px;
 	width:14px;
@@ -162,7 +180,7 @@ button.question
 {
 	width:28px;
 	height:31px;
-	background:url('question.png') no-repeat right white;
+	background:url('/images/icons/question.png') no-repeat right white;
 	border:none;
 }
 div.popup-offset
@@ -253,7 +271,7 @@ div.read
 div.notification-delete
 {
 	display:inline-block;
-	background-image:url('http://www.relatablez.com/close.png');
+	background-image:url('/images/icons/close.png');
 	background-size:10px 10px;
 	width:10px;
 	height:10px;
@@ -376,4 +394,16 @@ div
 	font-weight:bold;
 	color:white;
 	margin-left:20px;
+}
+.hover-icon
+{
+	background-position:top;
+}
+.hover-icon:hover
+{
+	background-position:bottom;
+}
+.unread
+{
+	background-position:center;
 }

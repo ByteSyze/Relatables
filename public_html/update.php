@@ -1,9 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	
-	session_start();
-	
-	require_once('userinfo.php');
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$type = $_POST['t'];
 	
@@ -21,7 +19,7 @@
 				{
 					if((!(strcasecmp($user,$_SESSION['username']) == 0)) && ($user !== $_SESSION['username']))
 					{
-						$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+						$connection = GlobalUtils::getConnection();
 
 						if($statement = $connection->prepare('SELECT username FROM accounts WHERE username LIKE (?)'))
 						{

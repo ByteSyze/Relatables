@@ -6,6 +6,7 @@
 	
 	class GlobalUtils
 	{
+	
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
 		public static function getCSS()
 		{
@@ -22,10 +23,10 @@
 		public static function getJS()
 		{
 			echo "\r\n<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
-			echo "\r\n<script type='text/javascript' src='http://www.relatablez.com/global.js'></script>";
+			echo "\r\n<script type='text/javascript' src='/global.js'></script>";
 			
 			foreach(func_get_args() as $extra)
-				echo "\r\n<script type='text/javascript' src='http://www.relatablez.com/$extra.js'></script>";	
+				echo "\r\n<script type='text/javascript' src='/$extra.js'></script>";	
 			echo "\r\n";
 		}
 
@@ -37,22 +38,85 @@
 				echo ", $keyword";
 			echo "'>";
 			echo "\r\n<meta name='description' content='$description'>";
-			echo "\r\n<link rel='shortcut icon' href='/favicon.ico'>";
+			echo "\r\n<link rel='shortcut icon' href='images/icons/favicon.ico'>";
 		}
 		
 		public static function getShareButton($url, $text)
 		{
 			echo "\r\n<div class='share-button' data-share-button=''>Share &raquo;</div>";
 			echo "\r\n<div class='share-wrapper'><div class='share-links'>";
-			echo "\r\n<a href='http://www.facebook.com/sharer.php?u=$url'><img src='fb_ico.png' /></a>";
-			echo "\r\n<a href='https://plus.google.com/share?url=$url'><img src='gp_ico.png' /></a>";
-			echo "\r\n<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='tw_ico.png' /></a>";
+			echo "\r\n<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>";
+			echo "\r\n<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>";
+			echo "\r\n<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>";
 			echo "\r\n</div></div>";
 		}
+		
+		public static function parseSubmission($submission)
+		{
+			$date_diff = $submission['date_diff'];
+			
+			if($date_diff/60/24/365 >= 1)
+				$date_diff = '(' . floor($date_diff/60/24/365) . ' years ago)'; 
+			else if($date_diff/60/24 >= 1)
+				$date_diff = '(' . floor($date_diff/60/24) . ' days ago)'; 
+			else if($date_diff/60 >= 1)
+				$date_diff = '(' . floor($date_diff/60) . ' hours ago)'; 
+			else
+				$date_diff = '(' . floor($date_diff) . ' minutes ago)'; 
+				
+			if($submission['anonymous'])
+				$user='Anonymous';
+			else
+				$user = $submission['author'];
+			
+			echo "\r\n<div class='dialogue downpadding' id='{$submission['id']}'>";
+			echo "\r\n<p class='dialogue'>{$submission['submission']}</p>";
+			echo "\r\n<table class='vote-table'>";
+			echo "\r\n<tr>";
+			if($_SESSION["username"] != null)
+			{
+				if($submission['user_vote'] === '0')
+					echo "\r\n<td><button class='dialoguebutton' id='bna{$submission['id']}' data-vid='{$submission['id']}' data-v='{$submission['verification']}' disabled>No, me too!</button></td>";
+				else
+					echo "\r\n<td><button class='dialoguebutton' id='bna{$submission['id']}' data-vid='{$submission['id']}' data-v='{$submission['verification']}'>No, me too!</button></td>";
+					
+				if($submission['user_vote'] === '1')
+					echo "\r\n<td><button class='dialoguebutton' id='ba{$submission['id']}'  data-vid='{$submission['id']}' data-v='{$submission['verification']}' disabled>You're alone.</button></td>";
+				else
+					echo "\r\n<td><button class='dialoguebutton' id='ba{$submission['id']}'  data-vid='{$submission['id']}' data-v='{$submission['verification']}'>You're alone.</button></td>";
+			}
+			else
+			{
+				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>No, me too!</button></td>";
+				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>You're alone</button></td>";				
+			}
+			echo "\r\n<td><a href='/post/{$submission['id']}'  target='_blank' class='comment-button hover-icon'></a></td>";
+			//echo "\r\n<td><div class='share-button' data-share-button=''>Share »</div></td>";
+			echo "\r\n<td>"; GlobalUtils::getShareButton("http://www.relatablez.com/post/$submission[id]", $submission['submission']); echo "</td>";
+			echo "\r\n<tr>";
+			echo "\r\n<td><span class='vote-counter' id='na{$submission['id']}'>(" . number_format($submission["notalone"]) . ")</span></td>";
+			echo "\r\n<td><span class='vote-counter' id='a{$submission['id']}'>(" . number_format($submission["alone"]) . ")</span></td>";
+			echo "\r\n</table>";
+			echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
+			
+			if($submission['anonymous'])
+				echo ' >' . $user . "</a> - $date_diff</span></div>";
+			else
+			{
+				if($submission['admin'])
+					echo 'class=\'admin\'';
+				echo " href='/user/$user'>$user</a> $date_diff</span></div>";
+			}
+			echo "\r\n</div>";
+		}
+		
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
-			return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+			if($_SERVER['SERVER_NAME'] != 'www.relatablez.com')
+				return mysqli_connect('localhost','root','','u683362690_rtblz');
+			else
+				return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 		}
 	}
 ?>

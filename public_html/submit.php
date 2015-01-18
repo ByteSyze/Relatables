@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	/*Copyright (C) Tyler Hackett 2014*/
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$submission = $_POST['s'];	
 	$category = $_POST['c'];
@@ -14,7 +16,7 @@
 	
 	if(($_SESSION['username'] !== null) && (strlen($submission) <= 300) && ($category != null))
 	{	
-		$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+		$connection = GlobalUtils::getConnection();
 		
 		if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, anonymous) VALUES (?,?,?,?,?)"))
 		{	

@@ -89,6 +89,11 @@
 	float:left;
 	width:700px;
 }
+#related-wrapper
+{
+	height:376px;
+	overflow-y:auto;
+}
 #statsmodule
 {
 	float:right;

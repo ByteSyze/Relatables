@@ -1,6 +1,7 @@
 <?php
+	/*Copyright (C) Tyler Hacket 2015*/
 	
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	//Convert a numerical code to MYSQL syntax for ordering a query.
 	function order2mysql($order)
@@ -47,7 +48,7 @@
 	$category 	= cat2mysql($_GET['c']);
 	$nsfw		= nsfw2mysql($_GET['n']);
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 	
 	if($statement = $connection->prepare("SELECT *, DATE_FORMAT(date,'%M %d, %Y') AS fdate FROM submissions WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
 	{

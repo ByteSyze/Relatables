@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
-<?php  
+<?php
 	require('global.php');
-	
+
 	$connection = GlobalUtils::getConnection();
 
+	//All of the following variables are pre-processed
+	//and have determined values before the SQL query
+	//at the end. DO NOT pass unprocessed user input to
+	//the SQL query, ever.
 	$page 		= intval($_GET['p']);
 	$order_by 	= $_GET['o'];
 	$category 	= intval($_GET['c']);
 	$nsfw		= $_GET['n'];
 	$display	= $GET['d'];
-	
+
 	if($order_by == 2)
 		$order_by = ' ORDER BY submissions.date ASC ';
 	else if($order_by == 3)
@@ -18,8 +22,8 @@
 	else if($order_by == 4)
 		$order_by = ' ORDER BY alone DESC ';
 	else
-		$order_by = ' ORDER BY submissions.date DESC ';	
-		
+		$order_by = ' ORDER BY submissions.date DESC ';
+
 	if($display == 1)
 	{
 		$page *= 20;
@@ -36,36 +40,36 @@
 	{
 		$page *= 20;
 		$end = $page+20;
-		$continuous = true;	
+		$continuous = true;
 		$display = " LIMIT $page, $end";
 	}
-				
+
 	if($nsfw == 1)
 		$nsfw = '';
-	else 
-		$nsfw = ' AND nsfw=0 ';
-	
-	if($_SESSION['username'] != null)
-		$submissions = mysqli_query($connection,"SELECT *, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 as date_diff, DATE_FORMAT(date,'%M %d %Y') AS fdate, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 	else
-		$submissions = mysqli_query($connection,"SELECT *, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 as date_diff, DATE_FORMAT(date,'%M %d %Y') AS fdate FROM submissions WHERE pending = 0 $nsfw $order_by $display");
+		$nsfw = ' AND nsfw=0 ';
+
+	if($_SESSION['username'] != null)
+		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
+	else
+		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 ?>
 <html>
 	<head>
 		<title>Relatablez</title>
-		
-		<?php 
+
+		<?php
 			GlobalUtils::getMeta();
-			GlobalUtils::getCSS('submissiontheme'); 
+			GlobalUtils::getCSS('submissiontheme');
 		?>
 		<link rel='canonical' href='http://www.relatablez.com/'>
 	</head>
-	<body>		
+	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
-		
+
 		<div id='main'>
 			<div id='content' style='float:left;width:700px;'>
-				
+
 					<span style='vertical-align:bottom;'>NSFW</span><input type='checkbox' id='nsfw' style='vertical-align:bottom;'>
 					<span style='vertical-align:bottom;'>Sort by</span>
 					<select id='sort' style='vertical-align:bottom;'>
@@ -93,16 +97,16 @@
 						<option value='1'>20 a page</option>
 						<option value='2'>50 a page</option>
 					</select>
-				<div id='submission-wrapper' class='dialogue submission' style='margin-top:13px;height:71px;'>
-					<?php 
+				<div id='submission-wrapper' class='dialogue submission downpadding' style='margin-top:13px;height:71px;'>
+					<?php
 						if($_SESSION['username'] !== null)
 						{
-							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n"; 
+							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n";
 							echo "<textarea name='s' id='submission' class='dialogue showguides'>Am I the only one who</textarea>\r\n";
 						}
 						else
 						{
-							echo "	<textarea name='s' id='submission' class='dialogue' data-header='Please sign up to submit' onclick='showRegister(this)'>Am I the only one who</textarea>\r\n";
+							echo "	<textarea name='s' id='submission' class='dialogue' data-signup-header='Please sign up to submit'>Am I the only one who</textarea>\r\n";
 						}
 					?>
 						<div style='float:right'>
@@ -143,65 +147,9 @@
 				</div>
 				<?php
 					while($row = mysqli_fetch_array($submissions))
-					{	
-						$date_diff = $row['date_diff'];
-						
-						if($date_diff/60/24/365 >= 1)
-							$date_diff = '(' . floor($date_diff/60/24/365) . ' years ago)'; 
-						else if($date_diff/60/24 >= 1)
-							$date_diff = '(' . floor($date_diff/60/24) . ' days ago)'; 
-						else if($date_diff/60 >= 1)
-							$date_diff = '(' . floor($date_diff/60) . ' hours ago)'; 
-						else
-							$date_diff = '(' . floor($date_diff) . ' minutes ago)'; 
-							
-						if($row['anonymous'])
-							$user='Anonymous';
-						else
-							$user = getUsername($connection, $row['uid']);
-						
-						echo "\r\n<div class='dialogue uppadding' id='{$row['id']}' data-category='{$row['category']}' data-nsfw='{$row['nsfw']}' data-date='{$row['fdate']}'>";
-						echo "\r\n<p class='dialogue'>{$row['submission']}</p>";
-						echo "\r\n<table class='vote-table'>";
-						echo "\r\n<tr>";
-						if($_SESSION["username"] != null)
-						{
-							if($row['user_vote'] === '0')
-								echo "\r\n<td><button class='dialoguebutton' id='bna{$row['id']}' data-vid='{$row['id']}' data-v='{$row['verification']}' disabled>No, me too!</button></td>";
-							else
-								echo "\r\n<td><button class='dialoguebutton' id='bna{$row['id']}' data-vid='{$row['id']}' data-v='{$row['verification']}'>No, me too!</button></td>";
-								
-							if($row['user_vote'] === '1')
-								echo "\r\n<td><button class='dialoguebutton' id='ba{$row['id']}'  data-vid='{$row['id']}' data-v='{$row['verification']}' disabled>You're alone.</button></td>";
-							else
-								echo "\r\n<td><button class='dialoguebutton' id='ba{$row['id']}'  data-vid='{$row['id']}' data-v='{$row['verification']}'>You're alone.</button></td>";
-						}
-						else
-						{
-							echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
-							echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone</button></td>";				
-						}
-						echo "\r\n<td><a href='http://www.relatablez.com/post/{$row['id']}'  target='_blank' class='comment-button'></a></td>";
-						//echo "\r\n<td><div class='share-button' data-share-button=''>Share »</div></td>";
-						echo "\r\n<td>"; GlobalUtils::getShareButton("http://www.relatablez.com/post/$row[id]", $row['submission']); echo "</td>";
-						echo "\r\n<tr>";
-						echo "\r\n<td><span class='vote-counter' id='na{$row['id']}'>(" . number_format($row["notalone"]) . ")</span></td>";
-						echo "\r\n<td><span class='vote-counter' id='a{$row['id']}'>(" . number_format($row["alone"]) . ")</span></td>";
-						echo "\r\n</table>";
-						echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
-						
-						if($row['anonymous'])
-							echo ' >' . $user . "</a> - $row[fdate] $date_diff</span></div>";
-						else
-						{
-							if(isAdmin($connection, $row['uid']))
-								echo 'class=\'admin\'';
-							echo " href='http://www.relatablez.com/user/$user'>$user</a> - $row[fdate] $date_diff</span></div>";
-						}
-						echo "\r\n</div>";
-					}
-				?>	
-			</div>	
+						GlobalUtils::parseSubmission($row);
+				?>
+			</div>
 			<div style='float:right;'>
 				<div id='qotw'>
 					<h4 id='qotw-header'>QOTW</h4>
@@ -216,9 +164,9 @@
 						</form>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
-		
+
 		<?php GlobalUtils::getJS('index'); ?>
 	</body>
 </html>

@@ -32,13 +32,9 @@ a.comment-button
 	position:absolute;
 	display:block;
 	width:46px;
-	height:46px;
+	height:45px;
 	margin-top:-25px;
-	background-image:url('/comment_icon.png');
-}
-a.comment-button:hover
-{
-	background-image:url('/comment_icon_hover.png');
+	background-image:url('/images/icons/comment_icon.png');
 }
 button
 {
@@ -94,9 +90,9 @@ div.submission
 	height:60px;
 	overflow:hidden;
 }
-div.uppadding
+div.downpadding
 {
-	margin-top:20px;
+	margin-bottom:20px;
 }
 p.dialogue
 {

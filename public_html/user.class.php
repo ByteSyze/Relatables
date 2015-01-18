@@ -3,16 +3,56 @@
 	
 	class User
 	{
-		private var $id;
-		private static var $db = mysqli::connect();
+		private static var $CONNECTION = GlobalUtils::getConnection();
 		
-		function __construct($id)
+		private var $id 			= null;	//User ID
+		private var $username 		= null; //User username
+		private var $password 		= null;	//Encrypted password
+		private var $cookie_login 	= null;	//Encrypted login key
+		private var $joined 		= null;	//Date the user joined
+		private var $last_login 	= null;	//Date the user last logged in
+		private var $email 			= null;	//Current user email
+		private var $pending_email 	= null;	//Current pending user email
+		private var $country	 	= null;	//User country
+		private var $description 	= null;	//User's profile description
+		private var $hide_location 	= null;	//Whether or not user is displaying location
+		private var $hide_related 	= null;	//Whether or not user is displaying related with
+		private var $admin 			= null;	//Whether or not user is an admin
+		private var $mod_index 		= null;	//User's moderation index
+		
+		private var $post_count 	= null;	//Number of posts user has made
+		private var $comment_count 	= null;	//Number of comments user has made
+		
+		/**
+		*	Retrieve an existing user.
+		*
+		*	@param	$id			ID of the user to get
+		*	@param	$fetch_all	fetch all user data and store it in variables
+		*/
+		function __construct($id, $fetch_all = false)
 		{
+			$this->$id = $id;
 			
+			if($fetch_all)
+			{
+				if($statement = $CONNECTION->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
+				{	
+					$statement->bind_param('i', $id);
+					
+					$statement->execute();
+					
+					$statement->bind_result($username, $password, $cookie_login, $joined, $last_login, $email, $pending_email, $country_id, $description, $hide_location, $hide_related, $admin, $mod_index, $post_count, $comment_count);
+					$statement->fetch();
+					
+					$data['country'] = getCountry($connection, $cid);
+					
+					return $data;
+				}	
+			}
 		}
 		
 		//Returns an array of relevant information pertaining to the specified user's profile.
-		function getProfileData($connection, $username)
+		public function getProfileData()
 		{
 			if($statement = $connection->prepare('SELECT username, id, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), description, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments, mod_index, hiderelated, hidelocation, admin, country_id  FROM accounts WHERE username like (?)'))
 			{	
@@ -32,7 +72,7 @@
 			}	
 		}
 		
-		function getProfileSettings($connection, $id)
+		public function getProfileSettings()
 		{
 			if($statement = $connection->prepare('SELECT hidelocation, description, email, country_id  FROM accounts WHERE id = (?)'))
 			{	
@@ -53,7 +93,7 @@
 			}
 		}
 		
-		function getRelated($connection, $id)
+		public function getRelated()
 		{
 			if($statement = $connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y') AS fdate, alone, notalone, submission, anonymous FROM submissions WHERE submissions.pending=0 AND submissions.id IN (SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0)"))
 			{
@@ -69,7 +109,7 @@
 			}
 		}
 		
-		function deleteAccount($connection, $id)
+		public function delete()
 		{
 			if($statement = $connection->prepare('DELETE FROM accounts WHERE id=(?)'))
 			{	
@@ -78,7 +118,7 @@
 			}	
 		}
 			
-		function getCountry($connection, $id)
+		public function getCountry()
 		{
 			if($id == -1)
 				return 'No country specified';
@@ -101,7 +141,7 @@
 		}	
 		
 		
-		function getPasswordAndSalt($connection, $id)
+		public function getPasswordAndSalt()
 		{
 			if($statement = $connection->prepare('SELECT password, salt FROM accounts WHERE id = (?)'))
 			{	
@@ -118,7 +158,7 @@
 			}	
 		}
 		
-		function getPendingEmail($connection, $id)
+		public function getPendingEmail()
 		{	
 			if($statement = $connection->prepare('SELECT pending_email FROM accounts WHERE id = (?)'))
 			{	
@@ -133,12 +173,12 @@
 			}	
 		}
 		
-		function getID()
+		public function getID()
 		{
 			return $id;
 		}
 		
-		static function GET_ID($connection, $username)
+		public static function GET_ID($connection, $username)
 		{	
 			if($statement = $connection->prepare('SELECT id FROM accounts WHERE username LIKE (?)'))
 			{	
@@ -153,7 +193,7 @@
 			}	
 		}
 		
-		function getUsername($connection, $id)
+		public function getUsername()
 		{	
 			if($statement = $connection->prepare('SELECT username FROM accounts WHERE id = (?)'))
 			{	
@@ -168,7 +208,7 @@
 			}	
 		}
 		
-		function getModerationIndex($connection, $id)
+		public function getModerationIndex()
 		{
 			if($statement = $connection->prepare("SELECT mod_index FROM accounts WHERE id = (?)"))
 			{	
@@ -183,16 +223,16 @@
 			}	
 		}
 		
-		function setPendingEmail($connection, $pendingEmail, $id)
+		public function setPendingEmail($pending_email)
 		{	
 			if($statement = $connection->prepare('UPDATE accounts SET pending_email=(?) WHERE id = (?)'))
 			{	
-				$statement->bind_param('si',$pendingEmail,$id);		
+				$statement->bind_param('si',$pending_email,$id);		
 				$statement->execute();
 			}	
 		}
 		
-		function setPassword($connection, $password, $id)
+		public function setPassword($password)
 		{
 			$new_salt = mcrypt_create_iv(16);
 			$new_hash = md5($password.$new_salt);
@@ -204,7 +244,7 @@
 			}	
 		}
 		
-		function setCountry($connection, $country_id,$id)
+		public function setCountry($country_id)
 		{
 			if($statement = $connection->prepare('UPDATE accounts SET country_id=(?) WHERE id=(?)'))
 			{	
@@ -213,7 +253,7 @@
 			}	
 		}
 		
-		function setUsername($connection, $username,$id)
+		public function setUsername($username)
 		{
 			if($statement = $connection->prepare('UPDATE accounts SET username=(?) WHERE id=(?)'))
 			{	
@@ -222,12 +262,12 @@
 			}	
 		}
 		
-		function incModerationindex($connection, $id)
+		public function incModerationindex()
 		{
 			mysqli_query($connection, "UPDATE accounts SET mod_index=mod_index+1 WHERE id=$id") or die(mysqli_error($connection));
 		}
 		
-		function setDescription($connection, $description,$id)
+		public function setDescription($description)
 		{
 			if($statement = $connection->prepare('UPDATE accounts SET description=(?) WHERE id=(?)'))
 			{	
@@ -236,7 +276,7 @@
 			}	
 		}
 		
-		function isAdmin($connection, $id)
+		public function isAdmin()
 		{
 			if($statement = $connection->prepare('SELECT admin FROM accounts WHERE id = (?)'))
 			{	
@@ -251,63 +291,58 @@
 			}	
 		}
 		
-		function showLocation($connection, $id)
+		public function showLocation($show = true)
 		{
-			if($statement = $connection->prepare('UPDATE accounts SET hidelocation=0 WHERE id=(?)'))
-			{	
-				$statement->bind_param('i',$id);		
-				$statement->execute();
-			}	
-		}
-		
-		function hideLocation($connection, $id)
-		{
-			if($statement = $connection->prepare('UPDATE accounts SET hidelocation=1 WHERE id=(?)'))
-			{	
-				$statement->bind_param('i',$id);		
-				$statement->execute();
-			}	
-		}
-		
-		function showRelated($connection, $id)
-		{
-			if($statement = $connection->prepare('UPDATE accounts SET hiderelated=0 WHERE id=(?)'))
-			{	
-				$statement->bind_param('i',$id);		
-				$statement->execute();
+			if($show)
+			{
+				if($statement = $connection->prepare('UPDATE accounts SET hidelocation=0 WHERE id=(?)'))
+				{	
+					$statement->bind_param('i',$id);		
+					$statement->execute();
+				}	
 			}
 			else
-				die(mysqli_error($connection));
+			{
+				if($statement = $connection->prepare('UPDATE accounts SET hidelocation=1 WHERE id=(?)'))
+				{	
+					$statement->bind_param('i',$id);		
+					$statement->execute();
+				}	
+			}
 		}
 		
-		function hideRelated($connection, $id)
+		function showRelated($show)
 		{
-			if($statement = $connection->prepare('UPDATE accounts SET hiderelated=1 WHERE id=(?)'))
-			{	
-				$statement->bind_param('i',$id);		
-				$statement->execute();
-			}	
+			if($show)
+			{
+				if($statement = $connection->prepare('UPDATE accounts SET hiderelated=0 WHERE id=(?)'))
+				{	
+					$statement->bind_param('i',$id);		
+					$statement->execute();
+				}
+			}
 			else
-				die(mysqli_error($connection));
+			{
+				if($statement = $connection->prepare('UPDATE accounts SET hiderelated=1 WHERE id=(?)'))
+				{	
+					$statement->bind_param('i',$id);		
+					$statement->execute();
+				}
+			}
 		}
 		
 		/**
 		*	Send a notification to specified user ID.
 		*
-		*	@param	$sid		ID of notification sender (0 for non-specified)
-		*	@param	$uid		ID of notification recipient
-		*	@param	$subect		Subject of the notification
 		*	@param	$message	Message to send to user.
-		*
 		*/
-		function notify($connection, $sid = 0, $uid, $subject, $message)
+		function notify($message)
 		{
-			if($statement = $connection->prepare("INSERT INTO notifications (sid, uid, subject, message) VALUES (?,?,?,?)"))
+			if($statement = $connection->prepare("INSERT INTO notifications (uid, message) VALUES (?,?,?,?)"))
 			{
-				$statement->bind_param('iiss', $sid, $uid, $subject, $message);
+				$statement->bind_param('is', $id, $message);
 				$statement->execute();
 			}
-			return $connection->error;
 		}
 	
 	}

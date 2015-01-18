@@ -1,7 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	
-	session_start();
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$id 			= $_POST['q'];	//Submission ID.
 	$voteTypeNum 	= $_POST['vtn'];//Numerical representation of voting option.
@@ -12,7 +12,7 @@
 	else
 		$voteType = 'notalone';
 	
-	$connection = mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+	$connection = GlobalUtils::getConnection();
 	
 	//Check verification
 	if($statement = $connection->prepare('SELECT 1 FROM submissions WHERE id=(?) AND verification=(?)'))
