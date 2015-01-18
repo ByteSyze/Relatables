@@ -3,7 +3,7 @@
 AuthType Basic
 AuthName "Restricted Access"
 AuthUserFile /home/u683362690/public_html//.htpasswd
-# Require user relteam
+Require user relteam
 # DO NOT REMOVE THIS LINE AND THE LINES ABOVE uBeXujyDas:PWPROTECTID
 
 RewriteEngine On
