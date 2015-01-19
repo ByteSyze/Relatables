@@ -43,17 +43,14 @@
 		
 		public static function getShareButton($url, $text)
 		{
-			$share_button = <<<EOF 
-				<div class='share-button' data-share-button=''>Share &raquo;</div>
-					<div class='share-wrapper'><div class='share-links'>
-					<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>
-					<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>
-					<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>
-					</div>
+			echo "
+			<div class='share-button' data-share-button=''>Share &raquo;</div>
+				<div class='share-wrapper'><div class='share-links'>
+				<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>
+				<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>
+				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>
 				</div>
-			EOF;
-			
-			echo $share_button;
+			</div>";
 		}
 		
 		public static function parseSubmission($submission)
