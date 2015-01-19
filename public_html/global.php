@@ -43,7 +43,7 @@
 		
 		public static function getShareButton($url, $text)
 		{
-			$share_button = <<< EOF 
+			$share_button = <<<EOF 
 				<div class='share-button' data-share-button=''>Share &raquo;</div>
 					<div class='share-wrapper'><div class='share-links'>
 					<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>
