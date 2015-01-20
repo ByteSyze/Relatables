@@ -36,7 +36,19 @@
 
 .moderation-info {
 	max-width: 600px;
-	padding: 20px;
-	padding-top: 40px;
+	padding: 40px 20px;
 	margin: 0 auto;
+}
+
+.moderation-info h3 {
+	color: #4a66d8;
+}
+
+.moderation-info ul {
+	margin-left: 25px;
+}
+
+.moderation-info ul li {
+	list-style-type: disc;
+	margin-bottom: 8px;
 }

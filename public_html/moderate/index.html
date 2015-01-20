@@ -81,7 +81,9 @@
 		<div class="moderate-jumbo">
 			<h1>Does this post obey the rules & guidelines?</h1>
 			<div class="moderate-post">
-				hello
+				<?php echo $submission['submission'] != null
+							 	 ? $submission['submission']
+								 : "There are no posts to moderate at this time"; ?>
 			</div>
 			<form id='moderation-form' method='POST'>
 				<div class="buttons moderate-buttons more-space">
@@ -99,7 +101,7 @@
 			</ul>
 			<h3>Rules</h3>
 			<ul>
-			  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will NOT be tolerated.</li>
+			  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
 			  <li>Posts should be suitable and appropriate for Relatablez users.</li>
 			</ul>
 		</div>

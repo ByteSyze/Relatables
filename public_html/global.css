@@ -381,23 +381,7 @@ ul.navigation-items li a img {
 }
 
 .button:hover {
-	background-color: #c7c7c7;
-}
-
-.button.green-hover:hover {
-	background-color: #4AD88F;
-}
-
-.button.blue-hover:hover {
-	background-color: #4a66d8;
-}
-
-.button.red-hover:hover {
-	background-color: #D84A4A;
-}
-
-.button.yellow-hover:hover {
-	background-color: #DFE620;
+	background-color: #B8BAC5;
 }
 
 .button.green:hover {
@@ -414,6 +398,22 @@ ul.navigation-items li a img {
 
 .button.yellow:hover {
 	background-color: #CBD202;
+}
+
+.button.green-hover:hover {
+	background-color: #4AD88F;
+}
+
+.button.blue-hover:hover {
+	background-color: #4a66d8;
+}
+
+.button.red-hover:hover {
+	background-color: #D84A4A;
+}
+
+.button.yellow-hover:hover {
+	background-color: #DFE620;
 }
 
 a.button {
