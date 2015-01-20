@@ -96,7 +96,7 @@
 
 							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . '>No, me too!</button>';
 							echo '<button class="button small ' . $button_no_classes . '" ' . $button_no_meta . '>No, me too!</button>';
-							echo '<a href="/post/' . $submission[id] . '" class="button small">...</a>';
+							echo '<a href="/post/' . $submission[id] . '" class="button small">' . $submission['total_comments'] . '</a>';
 
 						echo '</div>';
 						echo '<div class="submission-info">';
