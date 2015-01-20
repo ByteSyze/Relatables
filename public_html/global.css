@@ -369,6 +369,10 @@ ul.navigation-items li a img {
 	background-color: #D84A4A;
 }
 
+.button.yellow {
+	background-color: #DFE620;
+}
+
 .button:hover {
 	background-color: #c7c7c7;
 }
@@ -385,6 +389,10 @@ ul.navigation-items li a img {
 	background-color: #D84A4A;
 }
 
+.button.yellow-hover:hover {
+	background-color: #DFE620;
+}
+
 .button.green:hover {
 	background-color: #36C47B;
 }
@@ -395,6 +403,10 @@ ul.navigation-items li a img {
 
 .button.red:hover {
 	background-color: #C43636;
+}
+
+.button.yellow:hover {
+	background-color: #CBD202;
 }
 
 a.button {
