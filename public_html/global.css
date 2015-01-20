@@ -46,3 +46,366 @@ table {
 	border-spacing: 0;
 }
 
+body {
+	background-color: #f8f8f8;
+	color: #474747;
+  text-shadow: 0px 1px #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*
+ * Gridism
+ * A simple, responsive, and handy CSS grid by @cobyism
+ * https://github.com/cobyism/gridism
+ */
+
+/* Preserve some sanity */
+.grid,
+.unit {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Set up some rules to govern the grid */
+.grid {
+  display: block;
+  clear: both;
+}
+.grid .unit {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+
+/* This ensures the outer gutters are equal to the (doubled) inner gutters. */
+.grid .unit:first-child { padding-left: 20px; }
+.grid .unit:last-child { padding-right: 20px; }
+
+/* Nested grids already have padding though, so let’s nuke it */
+.unit .unit:first-child { padding-left: 0; }
+.unit .unit:last-child { padding-right: 0; }
+.unit .grid:first-child > .unit { padding-top: 0; }
+.unit .grid:last-child > .unit { padding-bottom: 0; }
+
+/* Let people nuke the gutters/padding completely in a couple of ways */
+.no-gutters .unit,
+.unit.no-gutters {
+  padding: 0 !important;
+}
+
+/* Wrapping at a maximum width is optional */
+.wrap .grid,
+.grid.wrap {
+  max-width: 978px;
+  margin: 0 auto;
+}
+
+/* Width classes also have shorthand versions numbered as fractions
+ * For example: for a grid unit 1/3 (one third) of the parent width,
+ * simply apply class="w-1-3" to the element. */
+.grid .whole,          .grid .w-1-1 { width: 100%; }
+.grid .half,           .grid .w-1-2 { width: 50%; }
+.grid .one-third,      .grid .w-1-3 { width: 33.3332%; }
+.grid .two-thirds,     .grid .w-2-3 { width: 66.6665%; }
+.grid .one-quarter,
+.grid .one-fourth,     .grid .w-1-4 { width: 25%; }
+.grid .three-quarters,
+.grid .three-fourths,  .grid .w-3-4 { width: 75%; }
+.grid .one-fifth,      .grid .w-1-5 { width: 20%; }
+.grid .two-fifths,     .grid .w-2-5 { width: 40%; }
+.grid .three-fifths,   .grid .w-3-5 { width: 60%; }
+.grid .four-fifths,    .grid .w-4-5 { width: 80%; }
+.grid .golden-small,   .grid .w-g-s { width: 38.2716%; } /* Golden section: smaller piece */
+.grid .golden-large,   .grid .w-g-l { width: 61.7283%; } /* Golden section: larger piece */
+
+/* Clearfix after every .grid */
+.grid {
+  *zoom: 1;
+}
+.grid:before, .grid:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.grid:after {
+  clear: both;
+}
+
+/* Utility classes */
+.align-center { text-align: center; }
+.align-left   { text-align: left; }
+.align-right  { text-align: right; }
+.pull-left    { float: left; }
+.pull-right   { float: right; }
+
+/* A property for a better rendering of images in units: in
+   this way bigger pictures are just resized if the unit
+   becomes smaller */
+.unit img {
+  max-width: 100%;
+}
+
+/* Hide elements using this class by default */
+.only-on-mobiles {
+  display: none !important;
+}
+
+/* Responsive Stuff */
+@media screen and (max-width: 568px) {
+  /* Stack anything that isn’t full-width on smaller screens 
+     and doesn't provide the no-stacking-on-mobiles class */
+  .grid:not(.no-stacking-on-mobiles) > .unit {
+    width: 100% !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .unit .grid .unit {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  /* Sometimes, you just want to be different on small screens */
+  .center-on-mobiles {
+    text-align: center !important;
+  }
+  .hide-on-mobiles {
+    display: none !important;
+  }
+  .only-on-mobiles {
+    display: block !important;
+  }
+}
+
+/* Expand the wrap a bit further on larger screens */
+@media screen and (min-width: 1180px) {
+  .wider .grid,
+  .grid.wider {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+}
+
+.navigation-bar {
+	background: #4a66d8;
+	box-shadow: 0px 1px #2F45A1;
+	position: fixed;
+	width: 100%;
+}
+
+.navigation-spacer {
+	height: 70px;
+}
+
+ul.navigation-items {
+	font-size: 0px; /* for spacing issue */
+}
+
+ul.navigation-items {
+  *zoom: 1;
+}
+ul.navigation-items:before, ul.navigation-items:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+ul.navigation-items:after {
+  clear: both;
+}
+
+ul.navigation-items li {
+	display: inline;
+	font-size: 16px;
+}
+
+ul.navigation-items li a {
+	display: inline-block;
+	height: 60px;
+	line-height: 60px;
+	vertical-align: middle;
+	padding: 0px 20px;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: 0px -1px #2A409C;
+
+	-webkit-transition: background-color 0.2s ease-in-out;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out;
+	-o-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+}
+
+ul.navigation-items li a:hover {
+	background: #3049B0;
+}
+
+ul.navigation-items li a img {
+	height: 30px;
+	vertical-align: middle;
+}
+
+.popup {
+	background-color: #fff;
+	position: fixed;
+	width: 30%;
+	height: 30%;
+	top: 30%;
+	left: 30%;
+	z-index: 100; /* safety net */
+	padding: 20px;
+	border: solid 1px #ddd;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	display: none;
+}
+
+.popup-shade {
+	z-index: 100;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	display: none;
+
+	-webkit-transition: background-color 0.2s ease-in-out;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out;
+	-o-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.box {
+	box-sizing: border-box;
+	border: solid 1px #ddd;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: #fff;
+}
+
+.box-title {
+	display: block;
+	padding: 10px;
+	background-color: #4a66d8;
+	color: #fff;
+	text-shadow: 0px -1px #2A409C;
+	font-weight: bold;
+
+	-webkit-border-top-left-radius: 3px;
+	-moz-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.box-content {
+	padding: 20px;
+}
+
+.box-content.thin {
+	padding: 10px;
+}
+
+.box-content.thinner {
+	padding: 5px;
+}
+
+.box-content.no-gutters {
+	padding: 0px;
+}
+
+.boxes .box {
+	margin-bottom: 20px;
+}
+
+.buttons {
+	font-size: 0px;
+}
+
+.button {
+	display: inline-block;
+	background: #d3d3d3;
+	color: #fff;
+	padding: 8px 10px;
+	font-size: 16px;
+	font-weight: bold;
+	text-shadow: 0px 1px rgba(0, 0, 0, .1);
+	border: none;
+	margin-right: 10px;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	-webkit-transition: background-color 0.2s ease-in-out;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out;
+	-o-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.button.small {
+	font-size: 14px;
+}
+
+.button.large {
+	font-size: 18px;
+	padding: 12px 14px;
+}
+
+.button.green {
+	background-color: #4AD88F;
+}
+
+.button.blue {
+	background-color: #4a66d8;
+} 
+
+.button.red {
+	background-color: #D84A4A;
+}
+
+.button:hover {
+	background-color: #c7c7c7;
+}
+
+.button.green-hover:hover {
+	background-color: #4AD88F;
+}
+
+.button.blue-hover:hover {
+	background-color: #4a66d8;
+}
+
+.button.red-hover:hover {
+	background-color: #D84A4A;
+}
+
+.button.green:hover {
+	background-color: #36C47B;
+}
+
+.button.blue:hover {
+	background-color: #3652C4;
+}
+
+.button.red:hover {
+	background-color: #C43636;
+}
+
+a.button {
+	text-decoration: none;
+}
+
+a.user {
+	text-decoration: none;
+	color: #4a66d8;
+}
+
+a.user.admin {
+	color: #D84A4A;
+}

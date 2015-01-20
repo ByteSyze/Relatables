@@ -69,45 +69,53 @@
 			else
 				$user = $submission['author'];
 			
-			echo "\r\n<div class='dialogue downpadding' id='{$submission['id']}'>";
-			echo "\r\n<p class='dialogue'>{$submission['submission']}</p>";
-			echo "\r\n<table class='vote-table'>";
-			echo "\r\n<tr>";
-			if($_SESSION["username"] != null)
-			{
-				if($submission['user_vote'] === '0')
-					echo "\r\n<td><button class='dialoguebutton' id='bna{$submission['id']}' data-vid='{$submission['id']}' data-v='{$submission['verification']}' disabled>No, me too!</button></td>";
-				else
-					echo "\r\n<td><button class='dialoguebutton' id='bna{$submission['id']}' data-vid='{$submission['id']}' data-v='{$submission['verification']}'>No, me too!</button></td>";
-					
-				if($submission['user_vote'] === '1')
-					echo "\r\n<td><button class='dialoguebutton' id='ba{$submission['id']}'  data-vid='{$submission['id']}' data-v='{$submission['verification']}' disabled>You're alone.</button></td>";
-				else
-					echo "\r\n<td><button class='dialoguebutton' id='ba{$submission['id']}'  data-vid='{$submission['id']}' data-v='{$submission['verification']}'>You're alone.</button></td>";
-			}
-			else
-			{
-				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>No, me too!</button></td>";
-				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>You're alone</button></td>";				
-			}
-			echo "\r\n<td><a href='/post/{$submission['id']}'  target='_blank' class='comment-button hover-icon'></a></td>";
-			//echo "\r\n<td><div class='share-button' data-share-button=''>Share »</div></td>";
-			echo "\r\n<td>"; GlobalUtils::getShareButton("http://www.relatablez.com/post/$submission[id]", $submission['submission']); echo "</td>";
-			echo "\r\n<tr>";
-			echo "\r\n<td><span class='vote-counter' id='na{$submission['id']}'>(" . number_format($submission["notalone"]) . ")</span></td>";
-			echo "\r\n<td><span class='vote-counter' id='a{$submission['id']}'>(" . number_format($submission["alone"]) . ")</span></td>";
-			echo "\r\n</table>";
-			echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
-			
-			if($submission['anonymous'])
-				echo ' >' . $user . "</a> - $date_diff</span></div>";
-			else
-			{
-				if($submission['admin'])
-					echo 'class=\'admin\'';
-				echo " href='/user/$user'>$user</a> $date_diff</span></div>";
-			}
-			echo "\r\n</div>";
+			echo '<div class="box">';
+				echo '<div class="box-content">';
+					echo $submission['submission'];
+					echo '<div class="post-actions">';
+						echo '<div class="buttons">';
+
+							$button_yes_classes = "green-hover";
+							$button_yes_meta = "";
+							$button_no_classes = "red-hover";
+							$button_no_meta = "";
+
+							if($_SESSION["username"] != null) {
+									$button_yes_meta = $button_no_meta = 'id="bna{$submission[\'id\']}" data-vid="{$submission[\'id\']}" data-v="{$submission[\'verification\']}" ';
+									if($submission['user_vote'] === '0') {
+										$button_yes_classes = "green";
+										$button_yes_meta .= "disabled";
+									} else if($submission['user_vote'] === '1') {
+										$button_no_classes = "red";
+										$button_no_meta .= "disabled";
+									}
+							} else {
+								$button_no_meta = "data-signup-header='Please sign up to vote'";
+								$button_yes_meta = "data-signup-header='Please sign up to vote'";
+							}
+
+							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . '>No, me too!</button>';
+							echo '<button class="button small ' . $button_no_classes . '" ' . $button_no_meta . '>No, me too!</button>';
+							echo '<a href="/post/' . $submission[id] . '" class="button small">...</a>';
+
+						echo '</div>';
+						echo '<div class="submission-info">';
+							if($submission['anonymous']) {
+								echo '<span>' . $user . '</span>';
+							} else {
+								echo '<a class="user ';
+
+								if($submission['admin'])
+									echo 'admin';
+
+								echo '" href="/user/' . $user . '">' . $user . '</a>';
+							}
+
+							echo '<span class="datediff">' . $date_diff . '</span>';
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
+			echo '</div>';
 		}
 		
 		/**Returns a connection to the MySQL database. */

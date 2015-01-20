@@ -1,1 +1,44 @@
-/*Copyright (C) Tyler Hackett 2014*/
+.box.sponsored {
+  border-color: #C2CEFF;
+}
+
+.post-actions {
+  padding-top: 20px;
+}
+
+.post-actions {
+  *zoom: 1;
+}
+.post-actions:before, .post-actions:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.post-actions:after {
+  clear: both;
+}
+
+.post-actions .buttons {
+  float: left;
+}
+
+.post-actions .post-info {
+  float: right;
+  text-align: right;
+  height: 100%;
+}
+
+.bottom-navigation {
+  padding-top: 20px;
+  text-align: center;
+}
+
+span.datediff {
+  color: #ccc;
+  padding-left: 10px;
+}
+
+.submission-info {
+  float: right;
+  line-height: 33px;
+}
