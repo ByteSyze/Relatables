@@ -34,18 +34,23 @@
 	</head>
 	<body>
 		<?php require("../navigation.php"); ?>
-		<div>
-			<div>
-				<h1>Contact Us</h1>
-				<p>Send us your comments, questions, suggestions, or concerns by filling out the form to the right. We will try our best to respond as quickly as possible.</p>
-				<h3>- The Relatablez Team</h3>
+		<div class="grid wrap">
+			<div class="unit whole">
+			<div class="boxes">
+				<div class="box">
+					<div class="box-content">
+						<h1>Contact Us</h1>
+						<p>Send us your comments, questions, suggestions, or concerns by filling out the form to the right. We will try our best to respond as quickly as possible.</p>
+						<h3>- The Relatablez Team</h3>
+						<form method='POST'>
+							<input type='text' name='n' placeholder='First Name' />
+							<input type='text' name='e' placeholder='Email' />
+							<textarea name='m' placeholder='Message'></textarea>
+							<input type='submit' value='Submit'>
+						</form>
+					</div>
+				</div>
 			</div>
-			<form method='POST'>
-				<input type='text' name='n' placeholder='First Name' />
-				<input type='text' name='e' placeholder='Email' />
-				<textarea name='m' placeholder='Message'></textarea>
-				<input type='submit' value='Submit'>
-			</form>
 		</div>
 		<?php GlobalUtils::getJS(); ?>
 	</body>
