@@ -47,7 +47,7 @@ table {
 }
 
 body {
-	background-color: #f8f8f8;
+	background-color: #F0F1F7;
 	color: #474747;
   text-shadow: 0px 1px #fff;
   font-family: 'Open Sans', sans-serif;
@@ -278,7 +278,7 @@ ul.navigation-items li a img {
 
 .box {
 	box-sizing: border-box;
-	border: solid 1px #ddd;
+	border: solid 1px #DDDFEB;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -326,16 +326,23 @@ ul.navigation-items li a img {
 	font-size: 0px;
 }
 
+.buttons .button {
+	margin-right: 10px;
+}
+
+.buttons.more-space .button {
+	margin-right: 20px;
+}
+
 .button {
 	display: inline-block;
-	background: #d3d3d3;
+	background: #CCCED9;
 	color: #fff;
 	padding: 8px 10px;
 	font-size: 16px;
 	font-weight: bold;
 	text-shadow: 0px 1px rgba(0, 0, 0, .1);
 	border: none;
-	margin-right: 10px;
 
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
