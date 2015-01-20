@@ -50,9 +50,9 @@
 		$nsfw = ' AND nsfw=0 ';
 
 	if($_SESSION['username'] != null)
-		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
+		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0) AS total_comments FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 	else
-		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff FROM submissions WHERE pending = 0 $nsfw $order_by $display");
+		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0) AS total_comments FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 ?>
 <html>
 	<head>

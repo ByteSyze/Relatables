@@ -81,7 +81,7 @@
 							$button_no_meta = "";
 
 							if($_SESSION["username"] != null) {
-									$button_yes_meta = $button_no_meta = 'id="bna{$submission[\'id\']}" data-vid="{$submission[\'id\']}" data-v="{$submission[\'verification\']}" ';
+									$button_yes_meta = $button_no_meta = 'id="bna' . $submission['id'] . '" data-vid="' . $submission['id'] . '" ';
 									if($submission['user_vote'] === '0') {
 										$button_yes_classes = "green";
 										$button_yes_meta .= "disabled";
