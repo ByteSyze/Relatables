@@ -40,7 +40,7 @@
 		}
 		
 		/**Prints a formatted AITOO post.*/
-		public function formatPost()
+		public function format()
 		{
 			echo "\r\n<div class='dialogue uppadding' id='{$id}' data-category='{$category}' data-nsfw='{$nsfw}' data-date='{$fdate}'>";
 			echo "\r\n<p class='dialogue'>{$submission}</p>";
