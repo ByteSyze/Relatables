@@ -8,6 +8,6 @@
 	<head>
 	</head>
 	<body>
-		<?php post->format(); ?>
+		<?php $post->format(); ?>
 	</body>
 </html>
