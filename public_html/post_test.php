@@ -1,6 +1,5 @@
 <?php
 	include 'global.php';
-	include 'post.php';
 	
 	$post = new Post(1);
 ?>
