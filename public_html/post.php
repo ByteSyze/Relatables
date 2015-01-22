@@ -35,7 +35,7 @@
 					$statement->bind_param('ii', $id, $id);
 					$statement->execute();
 					
-					$statement->bind_result($this->$username,$this->$verification,$this->$category,$this->$fdate,$this->$alone,$this->$notalone,$this->$pending,$this->$submission,$this->$anonymous,$this->$admin,$this->$comment_count);
+					$statement->bind_result($this->username,$this->verification,$this->category,$this->fdate,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->admin,$this->comment_count);
 					$statement->fetch();
 				}
 			}
@@ -44,42 +44,42 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{
-			echo "\r\n<div class='dialogue uppadding' id='{$id}' data-category='{$category}' data-nsfw='{$nsfw}' data-date='{$fdate}'>";
-			echo "\r\n<p class='dialogue'>{$submission}</p>";
+			echo "\r\n<div class='dialogue uppadding' id='{$this->id}' data-category='{$this->category}' data-nsfw='{$this->nsfw}' data-date='{$this->fdate}'>";
+			echo "\r\n<p class='dialogue'>{$this->submission}</p>";
 			echo "\r\n<table class='vote-table'>";
 			echo "\r\n<tr>";
 			if($_SESSION["username"] != null)
 			{
 				if($post['user_vote'] === '0')
-					echo "\r\n<td><button class='dialoguebutton' id='bna{$id}' data-vid='{$id}' data-v='{$verification}' disabled>No, me too!</button></td>";
+					echo "\r\n<td><button class='dialoguebutton' id='bna{$this->id}' data-vid='{$this->id}' data-v='{$this->verification}' disabled>No, me too!</button></td>";
 				else
-					echo "\r\n<td><button class='dialoguebutton' id='bna{$id}' data-vid='{$id}' data-v='{$verification}'>No, me too!</button></td>";
+					echo "\r\n<td><button class='dialoguebutton' id='bna{$this->id}' data-vid='{$this->id}' data-v='{$this->verification}'>No, me too!</button></td>";
 					
 				if($post['user_vote'] === '1')
-					echo "\r\n<td><button class='dialoguebutton' id='ba{$id}'  data-vid='{$id}' data-v='{$verification}' disabled>You're alone.</button></td>";
+					echo "\r\n<td><button class='dialoguebutton' id='ba{$this->id}'  data-vid='{$this->id}' data-v='{$this->verification}' disabled>You're alone.</button></td>";
 				else
-					echo "\r\n<td><button class='dialoguebutton' id='ba{$id}'  data-vid='{$id}' data-v='{$verification}'>You're alone.</button></td>";
+					echo "\r\n<td><button class='dialoguebutton' id='ba{$this->id}'  data-vid='{$this->id}' data-v='{$this->verification}'>You're alone.</button></td>";
 			}
 			else
 			{
 				echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>No, me too!</button></td>";
 				echo "\r\n<td><button class='dialoguebutton showreg' data-header='Please sign up to vote'>You're alone.</button></td>";				
 			}
-			echo "\r\n<td><a href='http://www.relatablez.com/post/{$id}'  target='_blank' class='comment-button'></a></td>";
+			echo "\r\n<td><a href='http://www.relatablez.com/post/{$this->id}'  target='_blank' class='comment-button'></a></td>";
 			echo "\r\n<td><div class='share-button' data-share-button=''>Share &raquo;</div></td>";
 			echo "\r\n<tr>";
-			echo "\r\n<td><span class='vote-counter' id='na{$id}'>(" . number_format($notalone) . ")</span></td>";
-			echo "\r\n<td><span class='vote-counter' id='a{$id}'>(" . number_format($alone) . ")</span></td>";
+			echo "\r\n<td><span class='vote-counter' id='na{$this->id}'>(" . number_format($this->notalone) . ")</span></td>";
+			echo "\r\n<td><span class='vote-counter' id='a{$this->id}'>(" . number_format($this->alone) . ")</span></td>";
 			echo "\r\n</table>";
 			echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
 			
-			if($anonymous)
-				echo " >Anonymous</a> - $fdate</span></div>";
+			if($this->anonymous)
+				echo " >Anonymous</a> - $this->fdate</span></div>";
 			else
 			{
-				if($admin)
+				if($this->admin)
 					echo 'class=\'admin\'';
-				echo " href='http://www.relatablez.com/user/$user'>$user</a> - $fdate</span></div>";
+				echo " href='http://www.relatablez.com/user/$this->user'>$this->user</a> - $this->fdate</span></div>";
 			}
 			echo "\r\n</div>";
 		}
