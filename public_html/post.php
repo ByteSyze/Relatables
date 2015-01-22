@@ -44,6 +44,9 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{
+			echo $admin;
+			echo $this->$admin;
+			
 			echo "\r\n<div class='dialogue uppadding' id='{$id}' data-category='{$category}' data-nsfw='{$nsfw}' data-date='{$fdate}'>";
 			echo "\r\n<p class='dialogue'>{$submission}</p>";
 			echo "\r\n<table class='vote-table'>";
