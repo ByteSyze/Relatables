@@ -23,7 +23,7 @@
 		 * */
 		public function __construct()
 		{
-			$connection = GlobalUtils::getConnection;
+			$connection = GlobalUtils::getConnection();
 			
 			if(func_num_args()>0)//If an anything is passed in, treat it as a post ID
 			{
