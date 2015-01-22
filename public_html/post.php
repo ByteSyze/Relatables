@@ -94,7 +94,7 @@
 			{
 				if($this->admin)
 					echo 'class=\'admin\'';
-				echo " href='http://www.relatablez.com/user/" . $this->user . "'>" . $this->user</a> . " - " . $this->calculateDateDifference() . "</span></div>";
+				echo " href='http://www.relatablez.com/user/" . $this->user . "'>" . $this->user . "</a> - " . $this->calculateDateDifference() . "</span></div>";
 			}
 			echo "\r\n</div>";
 		}
