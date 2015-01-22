@@ -35,7 +35,7 @@
 					$statement->bind_param('ii', $id, $id);
 					$statement->execute();
 					
-					$statement->bind_result($username,$verification,$category,$fdate,$alone,$notalone,$pending,$submission,$anonymous,$admin,$comment_count);
+					$statement->bind_result($this->$username,$this->$verification,$this->$category,$this->$fdate,$this->$alone,$this->$notalone,$this->$pending,$this->$submission,$this->$anonymous,$this->$admin,$this->$comment_count);
 					$statement->fetch();
 				}
 			}
@@ -44,9 +44,6 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{
-			echo $admin;
-			echo $this->$admin;
-			
 			echo "\r\n<div class='dialogue uppadding' id='{$id}' data-category='{$category}' data-nsfw='{$nsfw}' data-date='{$fdate}'>";
 			echo "\r\n<p class='dialogue'>{$submission}</p>";
 			echo "\r\n<table class='vote-table'>";
