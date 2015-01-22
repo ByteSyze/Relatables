@@ -35,7 +35,7 @@
 					$statement->bind_param('ii', $id, $id);
 					$statement->execute();
 					
-					$statement->bind_result($uid,$username,$verification,$category,$fdate,$alone,$notalone,$pending,$submission,$anonymous,$admin,$comment_count);
+					$statement->bind_result($username,$verification,$category,$fdate,$alone,$notalone,$pending,$submission,$anonymous,$admin,$comment_count);
 					$statement->fetch();
 				}
 			}
