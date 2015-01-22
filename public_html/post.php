@@ -15,6 +15,8 @@
 		private $submission;	/**Question submitted by user.*/
 		private $anonymous;		/**Whether or not to display the user as anonymous.*/
 		private $nsfw;			/**Whether or not this post is not safe for work.*/
+		private $admin;			/**Whether or not the author is an admin.*/
+		private $comment_count; /**Number of comments on this post*/
 		
 		/**
 		 * Creates a new Post.
@@ -28,12 +30,12 @@
 			if(func_num_args()>0)//If an anything is passed in, treat it as a post ID
 			{
 				$id = func_get_arg(0);
-				if($statement = $connection->prepare("SELECT (SELECT uid, username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
+				if($statement = $connection->prepare("SELECT (SELECT uid, username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y') AS date, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
 				{
 					$statement->bind_param('ii', $id, $id);
 					$statement->execute();
 					
-					$statement->bind_result($uid,$username,verification,$category,$fdate,$alone,$notalone,$pending,$submission,$anonymous,$comment_count);
+					$statement->bind_result($uid,$username,$verification,$category,$fdate,$alone,$notalone,$pending,$submission,$anonymous,$admin,$comment_count);
 					$statement->fetch();
 				}
 			}
@@ -75,7 +77,7 @@
 				echo " >Anonymous</a> - $fdate</span></div>";
 			else
 			{
-				if(isAdmin($connection, $post['uid']))
+				if($admin)
 					echo 'class=\'admin\'';
 				echo " href='http://www.relatablez.com/user/$user'>$user</a> - $fdate</span></div>";
 			}
