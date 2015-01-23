@@ -35,7 +35,7 @@
 				<?php
 					$post->format();
 				?>
-				<span>Comments (<span id='comment-count'><?php echo $total_comments ?></span>)</span>
+				<span>Comments (<span id='comment-count'><?php echo $post->total_comments; ?></span>)</span>
 				<div id='comments'>
 					<div id='comment-submit-wrapper'>
 						<form action='http://www.relatablez.com/comment.php' method='POST'>

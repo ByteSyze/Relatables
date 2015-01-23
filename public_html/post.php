@@ -42,7 +42,6 @@
 					$statement->fetch();
 				}
 			}
-			echo $connection->error;
 		}
 		
 		private function calculateDateDifference()
