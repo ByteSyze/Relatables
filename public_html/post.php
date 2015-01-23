@@ -98,12 +98,12 @@
 			echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
 			
 			if($this->anonymous)
-				echo ' >' . $user . "</a> - " . this->calculateDateDifference() . "</span></div>";
+				echo ' >' . $user . "</a> - " . $this->calculateDateDifference() . "</span></div>";
 			else
 			{
 				if($this->admin)
 					echo 'class=\'admin\'';
-				echo " href='/user/$user'>$user</a> " . this->calculateDateDifference() . "</span></div>";
+				echo " href='/user/$user'>$user</a> " . $this->calculateDateDifference() . "</span></div>";
 			}
 		}
 	}
