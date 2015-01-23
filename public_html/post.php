@@ -1,7 +1,7 @@
 <?php
 	class Post
 	{
-		private $connection; //Connection to MySQL database.
+		private static $connection; //Connection to MySQL database.
 		
 		private $id;			/**ID of this post. Only valid if it exists in database.*/
 		private $uid; 			/**ID of the user that submitted this post.*/
@@ -26,12 +26,13 @@
 		 * */
 		public function __construct()
 		{
-			$this->connection = GlobalUtils::getConnection();
+			if(self::$connection == null)
+				self::$connection = GlobalUtils::getConnection();
 			
 			if(func_num_args()>0)//If an anything is passed in, treat it as a post ID
 			{
 				$id = func_get_arg(0);
-				if($statement = $this->connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
+				if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
 				{
 					$statement->bind_param('ii', $id, $id);
 					$statement->execute();
