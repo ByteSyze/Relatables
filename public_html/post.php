@@ -42,6 +42,7 @@
 					$statement->fetch();
 				}
 			}
+			echo $connection->error;
 		}
 		
 		private function calculateDateDifference()
@@ -66,7 +67,7 @@
 			else
 				$user = $this->username;
 			
-			echo "\r\n<div class='dialogue downpadding' id='{$this->id}' data-v='{$this->verification}'>";
+			echo "\r\n<div class='dialogue downpadding' id='{$this->id}' data-v='{$this->verification}' data-d='{$this->date_diff}'>";
 			echo "\r\n<p class='dialogue'>{$this->submission}</p>";
 			echo "\r\n<table class='vote-table'>";
 			echo "\r\n<tr>";
@@ -97,12 +98,12 @@
 			echo "\r\n<div style='text-align:right;'><span class='submissioninfo'><a ";
 			
 			if($this->anonymous)
-				echo ' >' . $user . "</a> - $date_diff</span></div>";
+				echo ' >' . $user . "</a> - " . this->calculateDateDifference() . "</span></div>";
 			else
 			{
 				if($this->admin)
 					echo 'class=\'admin\'';
-				echo " href='/user/$user'>$user</a> $date_diff</span></div>";
+				echo " href='/user/$user'>$user</a> " . this->calculateDateDifference() . "</span></div>";
 			}
 		}
 	}
