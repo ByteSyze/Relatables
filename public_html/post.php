@@ -35,7 +35,7 @@
 				$id = func_get_arg(0);
 				if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid={$_SESSION['id']} AND pid=(?)) FROM submissions WHERE id=(?)"))
 				{
-					$statement->bind_param('ii', $id, $id);
+					$statement->bind_param('iii', $id, $id, $id);
 					$statement->execute();
 					
 					$statement->bind_result($this->username,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->admin,$this->comment_count,$this->user_vote);
