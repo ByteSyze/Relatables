@@ -23,7 +23,10 @@
 		/**
 		 * Creates a new Post.
 		 * 
-		 * if a post ID is passed in, the post will be populated with the data of the corresponding ID.
+		 * If a post ID is passed in, the post will be populated with the data of the corresponding ID.
+		 *
+		 * If an array is passed in, variables will start being filled with the data from the array.
+		 * The array's keys must be the exact name of Post variables, else you'd best be ready for some bugs.
 		 * */
 		public function __construct()
 		{
@@ -32,16 +35,66 @@
 			
 			if(func_num_args()>0)//If an anything is passed in, treat it as a post ID
 			{
-				$id = func_get_arg(0);
-				if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid={$_SESSION['id']} AND pid=(?)) FROM submissions WHERE id=(?)"))
+				if(is_array(func_get_arg(0)))
 				{
-					$statement->bind_param('iii', $id, $id, $id);
-					$statement->execute();
-					
-					$statement->bind_result($this->username,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->admin,$this->comment_count,$this->user_vote);
-					$statement->fetch();
+					$post_data = func_get_arg(0);
+					foreach($post_data as $variable => $data)
+					{
+						$this->"$$variable" = $data; //Taking advantage of PHP's crazy ass member access capabilities. Honestly, WTF?
+					}
+				}
+				else
+				{
+					$id = func_get_arg(0);
+					if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid={$_SESSION['id']} AND pid=(?)) FROM submissions WHERE id=(?)"))
+					{
+						$statement->bind_param('iii', $id, $id, $id);
+						$statement->execute();
+						
+						$statement->bind_result($this->username,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->admin,$this->comment_count,$this->user_vote);
+						$statement->fetch();
+					}
 				}
 			}
+		}
+		
+		public function updateDB()
+		{
+			//TODO update the database's information for this post.
+		}
+		
+		public function getID()
+		{
+			return $this->id;
+		}
+		
+		public function getUID()
+		{
+			return $this->uid;
+		}
+		
+		public function setUID($uid)
+		{
+			$this->uid = $uid;
+		}
+		public function getUsername()
+		{
+			return $this->username;
+		}
+		
+		public function setusername($username)
+		{
+			$this->username = $username;
+		}
+		
+		public function getVerification()
+		{
+			return $this->verification;
+		}
+		
+		public function setVerification($verifictaion)
+		{
+			$this->verification = $verification;
 		}
 		
 		private function calculateDateDifference()
@@ -104,6 +157,76 @@
 					echo 'class=\'admin\'';
 				echo " href='/user/$user'>$user</a> " . $this->calculateDateDifference() . "</span></div>";
 			}
+		}
+		
+		//Convert a numerical code to MYSQL syntax for ordering a query.
+		public static function order2mysql($order)
+		{
+			switch($order)
+			{
+				case '0':
+					return 'ORDER BY submissions.date ASC';
+				case '1':
+					return 'ORDER BY submissions.date DESC';
+				case '2':
+					return 'ORDER BY submissions.notalone DESC';
+				case '3':
+					return 'ORDER BY submissions.alone DESC';
+				default:
+					return 'ORDER BY submissions.date DESC';
+			}
+		}
+		
+		//Convert a numerical code to MYSQL syntax for selecting a submission category.
+		public static function cat2mysql($cat)
+		{
+			if($cat >= 1 && $cat <= 100)
+				return 'AND category = '.$cat;
+			else
+				return '';
+		}
+		
+		//Convert a numerical code to MYSQL syntax for including NSFW posts.
+		public static function nsfw2mysql($nsfw)
+		{
+			if($nsfw)
+				return '';
+			else
+				return 'AND nsfw=0';
+		}
+		
+		/**
+		*	Returns an array of Posts.
+		*	The default parameters will grab the latest 20 non-NSFW posts from any category.
+		*
+		*	@param		$index		the index of the query to grab posts from
+		*	@param		$count		the number of posts to grab
+		*	@param		$order		the order to query posts by. The value will be passed to Post::order2mysql()
+		*	@param		$category	the specified category to filter posts by. The value will be passed to Post::cat2mysql()
+		*	@param		$nsfw		whether or not to include NSFW posts. This does not exclusively grab NSFW posts.
+		* */
+		public static function getPosts($index = 0, $count = 20, $order = 0, $category = 0, $nsfw = 0)
+		{
+			$count += $index;
+			
+			$order 		= self::order2mysql($order);
+			$category 	= self::cat2mysql($category);
+			$nsfw 		= self::nsfw2mysql($nsfw);
+			
+			$posts = array();
+			
+			if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid={$_SESSION['id']} AND pid=(?)) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
+			{
+				$statement->bind_param('ii', $start, $count);
+				$statement->execute();
+				
+				$statement->bind_result($p_data['username'],$p_data['verification'],$p_data['category'],$p_data['fdate'],$p_data['date_diff'],$p_data['alone'],$p_data['notalone'],$p_data['pending'],$p_data['submission'],$p_data['anonymous'],$p_data['admin'],$p_data['comment_count'],$p_data['user_vote']);
+				
+				while($statement->fetch())
+					array_push($posts, new Post($p_data));
+			}
+			
+			return $posts;
 		}
 	}
 ?>
