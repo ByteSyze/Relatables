@@ -1,4 +1,6 @@
 <?php
+	require_once 'global.php';
+	
 	class Post
 	{
 		private static $connection; //Connection to MySQL database.
