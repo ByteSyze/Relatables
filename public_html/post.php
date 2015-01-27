@@ -252,7 +252,6 @@
 				echo "\r\n<td><button class='dialoguebutton showreg' data-signup-header='Please sign up to vote'>You're alone</button></td>";				
 			}
 			echo "\r\n<td><a href='/post/{$this->id}'  target='_blank' class='comment-button hover-icon'></a></td>";
-			//echo "\r\n<td><div class='share-button' data-share-button=''>Share »</div></td>";
 			echo "\r\n<td>"; GlobalUtils::getShareButton("http://www.relatablez.com/post/{$this->id}", $this->submission); echo "</td>";
 			echo "\r\n<tr>";
 			echo "\r\n<td><span class='vote-counter' data-c='na'>(" . number_format($this->notalone) . ")</span></td>";
@@ -268,6 +267,7 @@
 					echo 'class=\'admin\'';
 				echo " href='/user/$user'>$user</a> " . $this->calculateDateDifference() . "</span></div>";
 			}
+			echo "\r\n</div>";
 		}
 		
 		//Convert a numerical code to MYSQL syntax for ordering a query.
@@ -316,7 +316,7 @@
 		*	@param		$category	the specified category to filter posts by. The value will be passed to Post::cat2mysql()
 		*	@param		$nsfw		whether or not to include NSFW posts. This does not exclusively grab NSFW posts.
 		* */
-		public static function getPosts($index = 0, $count = 20, $order = 0, $category = 0, $nsfw = 0)
+		public static function getPosts($index = 0, $count = 20, $order = 1, $category = 0, $nsfw = 0)
 		{
 			if(self::$connection == null)
 				self::$connection = GlobalUtils::getConnection();
