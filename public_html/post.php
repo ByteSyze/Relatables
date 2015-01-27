@@ -1,6 +1,5 @@
 <?php
-	require_once 'global.php';
-	
+	/*Copyright (C) Tyler Hacket 2015*/
 	class Post
 	{
 		private static $connection; //Connection to MySQL database.
@@ -78,12 +77,13 @@
 		{
 			$this->uid = $uid;
 		}
+		
 		public function getUsername()
 		{
 			return $this->username;
 		}
 		
-		public function setusername($username)
+		public function setUsername($username)
 		{
 			$this->username = $username;
 		}
@@ -96,6 +96,116 @@
 		public function setVerification($verifictaion)
 		{
 			$this->verification = $verification;
+		}
+		
+		public function getCategory()
+		{
+			return $this->category;
+		}
+		
+		public function setCategory($category)
+		{
+			$this->category = $category;
+		}
+		
+		public function getFormattedDate()
+		{
+			return $this->fdate;
+		}
+		
+		public function setFormattedDate($fdate)
+		{
+			$this->fdate = $fdate;
+		}
+		
+		public function getTimeDifference()
+		{
+			return $this->date_diff;
+		}
+		
+		public function setTimeDifference($date_diff)
+		{
+			$this->date_diff = $date_diff;
+		}
+		
+		public function getAlone()
+		{
+			return $this->alone;
+		}
+		
+		public function setAlone($alone)
+		{
+			$this->alone = $alone;
+		}
+		
+		public function getNotAlone()
+		{
+			return $this->notalone;
+		}
+		
+		public function setNotAlone($notalone)
+		{
+			$this->notalone = $notalone;
+		}
+		
+		public function getPending()
+		{
+			return $this->pending;
+		}
+		
+		public function setPending($pending)
+		{
+			$this->pending = $pending;
+		}
+		
+		public function getSubmission()
+		{
+			return $this->submission;
+		}
+		
+		public function setSubmission($submission)
+		{
+			$this->submission = $submission;
+		}
+		
+		public function getAnonymous()
+		{
+			return $this->anonymous;
+		}
+		
+		public function setAnonymous($anonymous)
+		{
+			$this->anonymous = $anonymous;
+		}
+		
+		public function getNSFW()
+		{
+			return $this->nsfw;
+		}
+		
+		public function setNSFW($nsfw)
+		{
+			$this->nsfw = $nsfw;
+		}
+		
+		public function getAuthorIsAdmin()
+		{
+			return $this->admin;
+		}
+		
+		public function getCommentCount()
+		{
+			return $this->comment_count;
+		}
+		
+		public function setCommentCount($comment_count)
+		{
+			$this->comment_count = $comment_count;
+		}
+		
+		public function getCurrentUserVote()
+		{
+			return $this->user_vote;
 		}
 		
 		private function calculateDateDifference()
@@ -115,6 +225,9 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{	
+			if(self::$connection == null)
+				self::$connection = GlobalUtils::getConnection();
+				
 			if($this->anonymous)
 				$user='Anonymous';
 			else
@@ -231,10 +344,4 @@
 			return $posts;
 		}
 	}
-	
-	new Post(0); //Initialize $connection
-	$posts = Post::getPosts();
-	
-	foreach($posts as $post)
-		$post->format();
 ?>
