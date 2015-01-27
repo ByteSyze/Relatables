@@ -232,6 +232,7 @@
 		}
 	}
 	
+	new Post(0); //Initialize $connection
 	$posts = Post::getPosts();
 	
 	foreach($posts as $post)
