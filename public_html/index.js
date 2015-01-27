@@ -152,7 +152,7 @@ $(document).ready(function()
 {
 	$.post('/getsubmissions.php', {o:1, c:0, n:0, s:subIndex, x:subCount}, function(data)
 	{
-		$('#submission-wrapper').append(data);
+		$('#content').append(data);
 	});
 });
  
