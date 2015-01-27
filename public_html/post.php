@@ -225,9 +225,6 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{	
-			if(self::$connection == null)
-				self::$connection = GlobalUtils::getConnection();
-				
 			if($this->anonymous)
 				$user='Anonymous';
 			else
@@ -321,6 +318,9 @@
 		* */
 		public static function getPosts($index = 0, $count = 20, $order = 0, $category = 0, $nsfw = 0)
 		{
+			if(self::$connection == null)
+				self::$connection = GlobalUtils::getConnection();
+				
 			$count += $index;
 			
 			$order 		= self::order2mysql($order);
