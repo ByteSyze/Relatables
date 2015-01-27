@@ -40,7 +40,8 @@
 					$post_data = func_get_arg(0);
 					foreach($post_data as $variable => $data)
 					{
-						$this->"$$variable" = $data; //Taking advantage of PHP's crazy ass member access capabilities. Honestly, WTF?
+						$var = '$' . $variable;
+						$this->$var = $data; //Taking advantage of PHP's crazy ass member access capabilities. Honestly, WTF?
 					}
 				}
 				else
