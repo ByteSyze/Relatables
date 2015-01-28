@@ -4,10 +4,10 @@
 	require_once 'global.php';
 	
 	$page 		= intval($_GET['p']);
-	$order_by 	= $_GET['o'];
+	$order_by 	= intval($_GET['o']);
 	$category 	= intval($_GET['c']);
-	$nsfw		= $_GET['n'];
-	$display	= $GET['d'];
+	$nsfw		= intval($_GET['n']);
+	$display	= intval($_GET['d']);
 ?>
 <html>
 	<head>
@@ -100,10 +100,6 @@
 					</ul>
 					<b class='warning'><i>Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</i></b>
 				</div>
-				<?php
-					while($row = mysqli_fetch_array($submissions))
-						GlobalUtils::parseSubmission($row);
-				?>	
 			</div>	
 			<div style='float:right;'>
 				<div id='qotw'>
