@@ -58,7 +58,10 @@
 			}
 		}
 		
-		public function updateDB()
+		/**
+		*	Update this post's information in the database.
+		* */
+		public function update()
 		{
 			//TODO update the database's information for this post.
 		}
@@ -73,19 +76,9 @@
 			return $this->uid;
 		}
 		
-		public function setUID($uid)
-		{
-			$this->uid = $uid;
-		}
-		
 		public function getUsername()
 		{
 			return $this->username;
-		}
-		
-		public function setUsername($username)
-		{
-			$this->username = $username;
 		}
 		
 		public function getVerification()
@@ -341,7 +334,7 @@
 					array_push($posts, new Post($p_data));
 			}
 			else
-				return $connection->error;
+				echo $connection->error;
 			
 			return $posts;
 		}

@@ -111,6 +111,55 @@
 			echo "\r\n</div>";
 		}
 		
+		public static function validateRegistrationCredentials($user, $email)
+		{
+			//TODO instead of dying, point the user to a page pointing out what data was wrong.
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+			{
+				return REGISTER_INVALID_EMAIL; // if email isn't valid, die for now.
+			}
+			if(!preg_match("/^[A-Za-z0-9_]+$/",$user)) // Check that username only contains alphanumerics and underscore at most
+			{
+				return REGISTER_INVALID_USER; // if username has wacky characters, die for now.
+			}
+			$uLen = strlen($user); // Get length of username
+			if(($uLen > 32) || ($uLen < 1))
+			{
+				return REGISTER_INVALID_USER; // if username is larger than max length or less than one, die for now.
+			}
+			
+			$connection = GlobalUtils::getConnection();
+			
+			if($statement = $connection->prepare("SELECT id FROM accounts WHERE username LIKE (?)"))
+			{
+				$statement->bind_param("s",$user);
+				
+				$statement->execute();
+				
+				$result = $statement->fetch();
+				
+				if(!empty($result))
+				{
+					return REGISTER_TAKEN_USER;
+				}
+			}
+			
+			if($statement = $connection->prepare("SELECT id FROM accounts WHERE email LIKE (?)"))
+			{
+				$statement->bind_param("s",$email);
+				
+				$statement->execute();
+				
+				$result = $statement->fetch();
+				
+				if(!empty($result))
+				{
+					return REGISTER_TAKEN_EMAIL;
+				}
+			}
+			return REGISTER_SUCCESS;
+		}
+		
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{

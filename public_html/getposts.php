@@ -11,10 +11,5 @@
 	
 	$posts = Post::getPosts($start, $count, $order, $category, $nsfw);
 	
-	if(!is_array($posts))
-		echo $posts;
-	else
-	{
-		foreach($posts as $post)
-			$post->format();
-	}
+	foreach($posts as $post)
+		$post->format();
