@@ -341,7 +341,7 @@
 					array_push($posts, new Post($p_data));
 			}
 			else
-				return false;
+				return $connection->error;
 			
 			return $posts;
 		}
