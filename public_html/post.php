@@ -340,6 +340,8 @@
 				while($statement->fetch())
 					array_push($posts, new Post($p_data));
 			}
+			else
+				return false;
 			
 			return $posts;
 		}

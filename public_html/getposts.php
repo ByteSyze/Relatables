@@ -11,5 +11,8 @@
 	
 	$posts = Post::getPosts($start, $count, $order, $category, $nsfw);
 	
+	if($posts === false)
+		echo "NO POST TOAST TO ROAST";
+	
 	foreach($posts as $post)
 		$post->format();
