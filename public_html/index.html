@@ -1,58 +1,13 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
 <?php  
-	require('global.php');
+	require_once 'global.php';
 	
-	$connection = GlobalUtils::getConnection();
-	
-	//All of the following variables are pre-processed 
-	//and have determined values before the SQL query 
-	//at the end. DO NOT pass unprocessed user input to
-	//the SQL query, ever.
 	$page 		= intval($_GET['p']);
 	$order_by 	= $_GET['o'];
 	$category 	= intval($_GET['c']);
 	$nsfw		= $_GET['n'];
 	$display	= $GET['d'];
-	
-	if($order_by == 2)
-		$order_by = ' ORDER BY submissions.date ASC ';
-	else if($order_by == 3)
-		$order_by = ' ORDER BY notalone DESC ';
-	else if($order_by == 4)
-		$order_by = ' ORDER BY alone DESC ';
-	else
-		$order_by = ' ORDER BY submissions.date DESC ';	
-		
-	if($display == 1)
-	{
-		$page *= 20;
-		$end = $page+20;
-		$display = " LIMIT $page, $end";
-	}
-	else if($display == 2)
-	{
-		$page *= 50;
-		$end = $page+50;
-		$display = " LIMIT $page, $end";
-	}
-	else
-	{
-		$page *= 20;
-		$end = $page+20;
-		$continuous = true;	
-		$display = " LIMIT $page, $end";
-	}
-				
-	if($nsfw == 1)
-		$nsfw = '';
-	else 
-		$nsfw = ' AND nsfw=0 ';
-	
-	if($_SESSION['username'] != null)
-		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff, (SELECT alone FROM related WHERE related.uid={$_SESSION['id']} AND related.pid = submissions.id) AS user_vote FROM submissions WHERE pending = 0 $nsfw $order_by $display");
-	else
-		$submissions = mysqli_query($connection,"SELECT *, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT admin FROM accounts WHERE id=submissions.uid) AS admin, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60 AS date_diff FROM submissions WHERE pending = 0 $nsfw $order_by $display");
 ?>
 <html>
 	<head>
@@ -167,6 +122,13 @@
 			</div>	
 		</div>
 		
+		<script>
+			var page 		= <?php echo $page; ?>;
+			var order 		= <?php echo $order_by; ?>;
+			var category 	= <?php echo $category; ?>;
+			var nsfw 		= <?php echo $nsfw; ?>;
+			var display 	= <?php echo $display; ?>;
+		</script>
 		<?php GlobalUtils::getJS('index'); ?>
 	</body>
 </html>
