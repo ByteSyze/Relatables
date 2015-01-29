@@ -6,6 +6,11 @@
 	
 	class GlobalUtils
 	{
+		const REGISTER_INVALID_EMAIL 	= 1;
+		const REGISTER_INVALID_USER  	= 2;
+		const REGISTER_TAKEN_USER		= 3;
+		const REGISTER_TAKEN_EMAIL		= 4;
+		const REGISTER_SUCCESS			= 5;
 	
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
 		public static function getCSS()
