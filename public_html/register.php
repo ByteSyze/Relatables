@@ -29,8 +29,6 @@
 	if($isValidCredentials !== GlobalUtils::REGISTER_SUCCESS)
 		die $isValidCredentials;
 	
-	// At this point, username and email is valid.
-	
 	$salt = mcrypt_create_iv(16); // Create a new salt for this user
 	
 	$pass_hash = md5($pass . $salt); // Create password hash using MD5
