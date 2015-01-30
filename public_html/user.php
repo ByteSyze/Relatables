@@ -3,7 +3,7 @@
 	
 	class User
 	{
-		private static var $CONNECTION = GlobalUtils::getConnection();
+		private static var $connection;
 		
 		private var $id ;			//User ID
 		private var $username; 		//User username
@@ -30,9 +30,10 @@
 		*/
 		function __construct($id)
 		{
-			$this->$id = $id;
+			if(self::$connection == null)
+				self::$connection = GlobalUtils::getConnection();
 			
-			if($statement = self::$CONNECTION->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
+			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
 			{	
 				$statement->bind_param('i', $id);
 				
@@ -45,23 +46,26 @@
 		
 		public function getRelated()
 		{
-			if($statement = self::$CONNECTION->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y') AS fdate, alone, notalone, submission, anonymous FROM submissions WHERE submissions.pending=0 AND submissions.id IN (SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0)"))
+			if($statement = self::$connection->prepare("SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0"))
 			{
-				$statement->bind_param('i',$id);
+				$statement->bind_param('i',$this->id);
 				$statement->execute();
 				
+				$posts = array();
+				
 				$statement->store_result();
-				$statement->bind_result($related['uid'],$related['verification'],$related['category'],$related['fdate'],$related['alone'],$related['notalone'],$related['submission'],$related['anonymous']);
+				$statement->bind_result($id);
 				
-				$data = array("related" => $related, "statement" => $statement);
+				while($statement->fetch())
+					array_push($posts, new Post($id));
 				
-				return $data;
+				return $posts;
 			}
 		}
 		
 		public function delete()
 		{
-			if($statement = self::$CONNECTION->prepare('DELETE FROM accounts WHERE id=(?)'))
+			if($statement = self::$connection->prepare('DELETE FROM accounts WHERE id=(?)'))
 			{	
 				$statement->bind_param('i',$id);		
 				$statement->execute();
@@ -91,7 +95,7 @@
 		
 		public static function getIDFromUsername($username)
 		{	
-			if($statement = self::$CONNECTION->prepare('SELECT id FROM accounts WHERE username LIKE (?)'))
+			if($statement = self::$connection->prepare('SELECT id FROM accounts WHERE username LIKE (?)'))
 			{	
 				$statement->bind_param('s',$username);
 				
