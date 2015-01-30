@@ -5,23 +5,23 @@
 	{
 		private static var $CONNECTION = GlobalUtils::getConnection();
 		
-		private var $id 			= null;	//User ID
-		private var $username 		= null; //User username
-		private var $password 		= null;	//Encrypted password
-		private var $cookie_login 	= null;	//Encrypted login key
-		private var $joined 		= null;	//Date the user joined
-		private var $last_login 	= null;	//Date the user last logged in
-		private var $email 			= null;	//Current user email
-		private var $pending_email 	= null;	//Current pending user email
-		private var $country	 	= null;	//User country
-		private var $description 	= null;	//User's profile description
-		private var $hide_location 	= null;	//Whether or not user is displaying location
-		private var $hide_related 	= null;	//Whether or not user is displaying related with
-		private var $admin 			= null;	//Whether or not user is an admin
-		private var $mod_index 		= null;	//User's moderation index
+		private var $id ;			//User ID
+		private var $username; 		//User username
+		private var $password;		//Encrypted password
+		private var $cookie_login;	//Encrypted login key
+		private var $joined;		//Date the user joined
+		private var $last_login;	//Date the user last logged in
+		private var $email;			//Current user email
+		private var $pending_email;	//Current pending user email
+		private var $country;		//User country
+		private var $description;	//User's profile description
+		private var $hide_location;	//Whether or not user is displaying location
+		private var $hide_related;	//Whether or not user is displaying related with
+		private var $admin;			//Whether or not user is an admin
+		private var $mod_index;		//User's moderation index
 		
-		private var $post_count 	= null;	//Number of posts user has made
-		private var $comment_count 	= null;	//Number of comments user has made
+		private var $post_count;	//Number of posts user has made
+		private var $comment_count;	//Number of comments user has made
 		
 		/**
 		*	Retrieve an existing user.
@@ -41,12 +41,8 @@
 					
 					$statement->execute();
 					
-					$statement->bind_result($username, $password, $cookie_login, $joined, $last_login, $email, $pending_email, $country_id, $description, $hide_location, $hide_related, $admin, $mod_index, $post_count, $comment_count);
+					$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->hide_location, $this->hide_related, $this->admin, $this->mod_index, $this->post_count, $this->comment_count);
 					$statement->fetch();
-					
-					$data['country'] = getCountry($connection, $cid);
-					
-					return $data;
 				}	
 			}
 		}
