@@ -27,24 +27,20 @@
 		*	Retrieve an existing user.
 		*
 		*	@param	$id			ID of the user to get
-		*	@param	$fetch_all	fetch all user data and store it in variables
 		*/
-		function __construct($id, $fetch_all = false)
+		function __construct($id)
 		{
 			$this->$id = $id;
 			
-			if($fetch_all)
-			{
-				if($statement = $CONNECTION->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
-				{	
-					$statement->bind_param('i', $id);
-					
-					$statement->execute();
-					
-					$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->hide_location, $this->hide_related, $this->admin, $this->mod_index, $this->post_count, $this->comment_count);
-					$statement->fetch();
-				}	
-			}
+			if($statement = $CONNECTION->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
+			{	
+				$statement->bind_param('i', $id);
+				
+				$statement->execute();
+				
+				$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->hide_location, $this->hide_related, $this->admin, $this->mod_index, $this->post_count, $this->comment_count);
+				$statement->fetch();
+			}	
 		}
 		
 		//Returns an array of relevant information pertaining to the specified user's profile.
