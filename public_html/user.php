@@ -143,7 +143,7 @@
 		
 		public function incModerationindex()
 		{
-			mod_index+=1;
+			$this->mod_index+=1;
 			//mysqli_query($connection, "UPDATE accounts SET mod_index=mod_index+1 WHERE id=$id") or die(mysqli_error($connection));
 		}
 		
