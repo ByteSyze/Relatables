@@ -3,22 +3,22 @@
 	
 	class User
 	{
-		private static var $connection;
+		private static $connection;
 		
-		private var $id ;			//User ID
-		private var $username; 		//User username
-		private var $password;		//Encrypted password
-		private var $cookie_login;	//Encrypted login key
-		private var $joined;		//Date the user joined
-		private var $last_login;	//Date the user last logged in
-		private var $email;			//Current user email
-		private var $pending_email;	//Current pending user email
-		private var $country;		//User country
-		private var $description;	//User's profile description
-		private var $hide_location;	//Whether or not user is displaying location
-		private var $hide_related;	//Whether or not user is displaying related with
-		private var $admin;			//Whether or not user is an admin
-		private var $mod_index;		//User's moderation index
+		private $id ;			//User ID
+		private $username; 		//User username
+		private $password;		//Encrypted password
+		private $cookie_login;	//Encrypted login key
+		private $joined;		//Date the user joined
+		private $last_login;	//Date the user last logged in
+		private $email;			//Current user email
+		private $pending_email;	//Current pending user email
+		private $country;		//User country
+		private $description;	//User's profile description
+		private $hide_location;	//Whether or not user is displaying location
+		private $hide_related;	//Whether or not user is displaying related with
+		private $admin;			//Whether or not user is an admin
+		private $mod_index;		//User's moderation index
 		
 		private var $post_count;	//Number of posts user has made
 		private var $comment_count;	//Number of comments user has made
