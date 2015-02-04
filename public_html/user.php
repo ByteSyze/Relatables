@@ -5,7 +5,6 @@
 	{
 		const MAIL_FROM = "From: Relatablez <noreply@relatablez.com>";
 		
-		
 		private static $connection;
 		
 		private $id ;			//User ID
@@ -20,7 +19,6 @@
 		private $description;	//User's profile description
 		private $hide_location;	//Whether or not user is displaying location
 		private $hide_related;	//Whether or not user is displaying related with
-		private $admin;			//Whether or not user is an admin
 		private $mod_index;		//User's moderation index
 		
 		/**
@@ -47,13 +45,13 @@
 				
 			$this->id = $id;
 			
-			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
+			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
 			{	
 				$statement->bind_param('i', $id);
 				
 				$statement->execute();
 				
-				$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->hide_location, $this->hide_related, $this->admin, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
+				$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->hide_location, $this->hide_related, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
 				$statement->fetch();
 			}	
 		}
@@ -168,7 +166,7 @@
 		
 		public function isAdmin()
 		{
-			return $this->admin;
+			return $this->flags & 0x01;
 		}
 		
 		public function showLocation($show = true)
