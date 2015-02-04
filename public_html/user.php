@@ -163,15 +163,15 @@
 		}
 		
 		/**
-		*	Send a notification to specified user ID.
+		*	Send a notification to this user.
 		*
 		*	@param	$message	Message to send to user.
 		*/
 		function notify($message)
 		{
-			if($statement = $connection->prepare("INSERT INTO notifications (uid, message) VALUES (?,?,?,?)"))
+			if($statement = self::$connection->prepare("INSERT INTO notifications (uid, message) VALUES (?,?)"))
 			{
-				$statement->bind_param('is', $id, $message);
+				$statement->bind_param('is', $this->id, $message);
 				$statement->execute();
 			}
 		}
