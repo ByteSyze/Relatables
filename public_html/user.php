@@ -32,6 +32,8 @@
 		{
 			if(self::$connection == null)
 				self::$connection = GlobalUtils::getConnection();
+				
+			$this->id = $id;
 			
 			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, admin, mod_index, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
 			{	
