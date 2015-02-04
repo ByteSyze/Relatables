@@ -3,6 +3,9 @@
 	
 	class User
 	{
+		const MAIL_FROM = "From: Relatablez <noreply@relatablez.com>";
+		
+		
 		private static $connection;
 		
 		private $id ;			//User ID
@@ -177,6 +180,11 @@
 				$statement->execute();
 			}
 			echo self::$connection->error;
+		}
+		
+		function email($subject, $message)
+		{
+			mail($this->email, $subject, $message, self::MAIL_FROM);
 		}
 	
 	}
