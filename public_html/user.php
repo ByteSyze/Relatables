@@ -20,8 +20,8 @@
 		private $admin;			//Whether or not user is an admin
 		private $mod_index;		//User's moderation index
 		
-		private var $post_count;	//Number of posts user has made
-		private var $comment_count;	//Number of comments user has made
+		private $post_count;	//Number of posts user has made
+		private $comment_count;	//Number of comments user has made
 		
 		/**
 		*	Retrieve an existing user.
