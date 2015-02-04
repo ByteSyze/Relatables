@@ -3,6 +3,7 @@
 	
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/userinfo.php';
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
 	
 	class GlobalUtils
 	{
