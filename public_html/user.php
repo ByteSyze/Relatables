@@ -149,7 +149,7 @@
 		
 		public function setDescription($description)
 		{
-			$this->description = $description	
+			$this->description = $description;
 		}
 		
 		public function isAdmin()
