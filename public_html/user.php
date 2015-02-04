@@ -174,6 +174,7 @@
 				$statement->bind_param('is', $this->id, $message);
 				$statement->execute();
 			}
+			echo self::$connection->error;
 		}
 	
 	}
