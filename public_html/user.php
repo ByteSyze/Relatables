@@ -72,7 +72,7 @@
 			
 			echo " '$query' ";
 			
-			if($statement = self::$connection->query($query))
+			if($statement = self::$connection->prepare($query))
 			{
 				$data_types = '';
 				$data = array();
