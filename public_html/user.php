@@ -5,6 +5,9 @@
 	{
 		const MAIL_FROM = "From: Relatablez <noreply@relatablez.com>";
 		
+		const TYPE_STRING 	= 's';
+		const TYPE_INT		= 'i';
+		
 		private static $connection;
 		
 		private $id;
@@ -67,10 +70,10 @@
 				$data_types = '';
 				$data = array();
 				
-				foreach($this->editted_fields as $key => $value)
+				foreach($this->editted_fields as $editted_field => $data_type)
 				{
-					$data_types .= $key;
-					$data[] = $this->$value;
+					$data_types .= $data_type;
+					$data[] = $this->$editted_field;
 				}
 					
 				$statement->bind_param($data_types, ...$data);
@@ -155,7 +158,7 @@
 		public function setPendingEmail($pending_email)
 		{	
 			$this->pending_email = $pending_email;
-			setEditted('pending_email');
+			setEditted('pending_email', self::TYPE_STRING);
 		}
 		
 		public function setPassword($password, $hashed = false)
@@ -165,7 +168,7 @@
 			else
 				$this->password = pass_hash($password, PASSWORD_DEFAULT);
 				
-			setEditted('password');
+			setEditted('password', self::TYPE_STRING);
 		}
 		
 		public function setCountry($country)
@@ -176,7 +179,7 @@
 		public function setUsername($username)
 		{
 			$this->username = $username;	
-			setEditted('username');
+			setEditted('username', self::TYPE_STRING);
 		}
 		
 		public function incModerationindex()
@@ -187,7 +190,7 @@
 		public function setDescription($description)
 		{
 			$this->description = $description;
-			setEditted('description');
+			setEditted('description', self::TYPE_STRING);
 		}
 		
 		public function isAdmin()
@@ -202,7 +205,7 @@
 			else
 				$this->flags &= 0xFE;
 				
-			setEditted('flags');
+			setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function isBetaTester()
@@ -217,7 +220,7 @@
 			else
 				$this->flags &= 0xFD;
 				
-			setEditted('flags');
+			setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getHideRelated()
@@ -232,7 +235,7 @@
 			else
 				$this->flags &= 0xFB;
 				
-			setEditted('flags');
+			setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getHideLocation()
@@ -247,7 +250,7 @@
 			else
 				$this->flags &= 0xF7;
 				
-			setEditted('flags');
+			setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getFlags()
@@ -255,9 +258,9 @@
 			return $this->flags;
 		}
 		
-		private function setEditted($field)
+		private function setEditted($field, $data_type)
 		{
-			$this->editted_fields[$field] = $this->$field;
+			$this->editted_fields[$field] = $data_type;
 		}
 		
 		/**
