@@ -58,7 +58,7 @@
 			$query = 'UPDATE accounts SET ';
 			$field_count = count($this->editted_fields);
 			
-			foreach($this->editted_fields as $editted_field => data_type)
+			foreach($this->editted_fields as $editted_field => $data_type)
 			{
 				$query .= "$editted_field = (?)";
 				
