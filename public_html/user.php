@@ -58,11 +58,9 @@
 			$query = 'UPDATE accounts SET ';
 			$field_count = count($this->editted_fields);
 			
-			for($i = 0; $i < $field_count; $i++)
+			foreach($this->editted_fields as $editted_field => data_type)
 			{
-				$field = $this->editted_fields[$i];
-				
-				$query .= "$field = (?)";
+				$query .= "$editted_field = (?)";
 				
 				if($i < $field_count-1)
 					$query .= ', ';
@@ -87,6 +85,8 @@
 				$statement->execute();
 			}
 			echo self::$connection->error;
+			
+			$this->editted_fields = array();
 		}
 		
 		public function getRelated()
