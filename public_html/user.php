@@ -48,6 +48,11 @@
 			}	
 		}
 		
+		private function setEditted($field, $data_type)
+		{
+			$this->editted_fields[$field] = $data_type;
+		}
+		
 		public function update()
 		{
 			$query = 'UPDATE accounts SET ';
@@ -256,11 +261,6 @@
 		public function getFlags()
 		{
 			return $this->flags;
-		}
-		
-		private function setEditted($field, $data_type)
-		{
-			$this->editted_fields[$field] = $data_type;
 		}
 		
 		/**
