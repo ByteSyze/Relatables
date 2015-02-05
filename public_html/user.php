@@ -64,7 +64,7 @@
 				$i++;
 				$query .= "$editted_field = (?)";
 				
-				if($i < $field_count-1)
+				if($i < $field_count)
 					$query .= ', ';
 			}
 			
