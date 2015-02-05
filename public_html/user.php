@@ -70,8 +70,6 @@
 			
 			$query .= ' WHERE id=' . $this->id;
 			
-			echo " '$query' ";
-			
 			if($statement = self::$connection->prepare($query))
 			{
 				$data_types = '';
@@ -86,7 +84,6 @@
 				$statement->bind_param($data_types, ...$data);
 				$statement->execute();
 			}
-			echo self::$connection->error;
 			
 			$this->editted_fields = array();
 		}
@@ -268,11 +265,6 @@
 			return $this->flags;
 		}
 		
-		/**
-		*	Send a notification to this user.
-		*
-		*	@param	$message	Message to send to user.
-		*/
 		function notify($message)
 		{
 			if($statement = self::$connection->prepare("INSERT INTO notifications (uid, message) VALUES (?,?)"))
@@ -282,12 +274,6 @@
 			}
 		}
 		
-		/**
-		*	Send an email to this user.
-		*
-		*	@param	$subject	Subject of the email
-		*	@param	$message	Body of the email
-		*/
 		function email($subject, $message)
 		{
 			mail($this->email, $subject, $message, self::MAIL_FROM);
