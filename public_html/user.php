@@ -163,7 +163,7 @@
 		public function setPendingEmail($pending_email)
 		{	
 			$this->pending_email = $pending_email;
-			setEditted('pending_email', self::TYPE_STRING);
+			$this->setEditted('pending_email', self::TYPE_STRING);
 		}
 		
 		public function setPassword($password, $hashed = false)
@@ -173,7 +173,7 @@
 			else
 				$this->password = pass_hash($password, PASSWORD_DEFAULT);
 				
-			setEditted('password', self::TYPE_STRING);
+			$this->setEditted('password', self::TYPE_STRING);
 		}
 		
 		public function setCountry($country)
@@ -184,7 +184,7 @@
 		public function setUsername($username)
 		{
 			$this->username = $username;	
-			setEditted('username', self::TYPE_STRING);
+			$this->setEditted('username', self::TYPE_STRING);
 		}
 		
 		public function incModerationindex()
@@ -195,7 +195,7 @@
 		public function setDescription($description)
 		{
 			$this->description = $description;
-			setEditted('description', self::TYPE_STRING);
+			$this->setEditted('description', self::TYPE_STRING);
 		}
 		
 		public function isAdmin()
@@ -210,7 +210,7 @@
 			else
 				$this->flags &= 0xFE;
 				
-			setEditted('flags', self::TYPE_INT);
+			$this->setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function isBetaTester()
@@ -225,7 +225,7 @@
 			else
 				$this->flags &= 0xFD;
 				
-			setEditted('flags', self::TYPE_INT);
+			$this->setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getHideRelated()
@@ -240,7 +240,7 @@
 			else
 				$this->flags &= 0xFB;
 				
-			setEditted('flags', self::TYPE_INT);
+			$this->setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getHideLocation()
@@ -255,7 +255,7 @@
 			else
 				$this->flags &= 0xF7;
 				
-			setEditted('flags', self::TYPE_INT);
+			$this->setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getFlags()
