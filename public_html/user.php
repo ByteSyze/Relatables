@@ -24,12 +24,15 @@
 		private $post_count;
 		private $comment_count;
 		
+		private $editted_fields;
+		
 		function __construct($id)
 		{
 			if(self::$connection == null)
 				self::$connection = GlobalUtils::getConnection();
 				
 			$this->id = $id;
+			$this->editted_fields = array();
 			
 			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
 			{	
@@ -40,6 +43,39 @@
 				$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
 				$statement->fetch();
 			}	
+		}
+		
+		public function update()
+		{
+			$query = 'UPDATE accounts SET ';
+			$field_count = count($this->editted_fields);
+			
+			for($i = 0; $i < $field_count; $i++)
+			{
+				$field = $this->editted_fields[$i];
+				
+				$query .= "$field = (?)";
+				
+				if($i < $field_count-1)
+					$query .= ', ';
+			}
+			
+			$query .= ' WHERE id=' . $this->id;
+			
+			if($statement = self::$connection->query($query))
+			{
+				$data_types = '';
+				$data = array();
+				
+				foreach($this->editted_fields as $key => $value)
+				{
+					$data_types .= $key;
+					$data[] = $this->$value;
+				}
+					
+				$statement->bind_param($data_types, ...$data);
+				$statement->execute();
+			}
 		}
 		
 		public function getRelated()
