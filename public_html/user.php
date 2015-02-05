@@ -70,6 +70,8 @@
 			
 			$query .= ' WHERE id=' . $this->id;
 			
+			echo " '$query' ";
+			
 			if($statement = self::$connection->query($query))
 			{
 				$data_types = '';
@@ -84,6 +86,7 @@
 				$statement->bind_param($data_types, ...$data);
 				$statement->execute();
 			}
+			echo self::$connection->error;
 		}
 		
 		public function getRelated()
@@ -275,7 +278,6 @@
 				$statement->bind_param('is', $this->id, $message);
 				$statement->execute();
 			}
-			echo self::$connection->error;
 		}
 		
 		/**
