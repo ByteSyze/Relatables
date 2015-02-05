@@ -7,37 +7,23 @@
 		
 		private static $connection;
 		
-		private $id ;			//User ID
-		private $username; 		//User username
-		private $password;		//Encrypted password
-		private $cookie_login;	//Encrypted login key
-		private $joined;		//Date the user joined
-		private $last_login;	//Date the user last logged in
-		private $email;			//Current user email
-		private $pending_email;	//Current pending user email
-		private $country;		//User country
-		private $description;	//User's profile description
-		private $hide_location;	//Whether or not user is displaying location
-		private $hide_related;	//Whether or not user is displaying related with
-		private $mod_index;		//User's moderation index
+		private $id;
+		private $username;
+		private $password;
+		private $cookie_login;
+		private $joined;
+		private $last_login;
+		private $email;
+		private $pending_email;
+		private $country;
+		private $description;
+		private $mod_index;
 		
-		/**
-		*	Account flags for various metadata. Currently 8 bits.
-		*		  0			  1					2.....7
-		*	|-----------|-----------|-------------------------------|
-		*	|	Admin	|	Beta	|			  RSV				|
-		*	|-----------|-----------|-------------------------------|
-		*/
 		private $flags;
 		
-		private $post_count;	//Number of posts user has made
-		private $comment_count;	//Number of comments user has made
+		private $post_count;
+		private $comment_count;
 		
-		/**
-		*	Retrieve an existing user.
-		*
-		*	@param	$id			ID of the user to get
-		*/
 		function __construct($id)
 		{
 			if(self::$connection == null)
@@ -45,13 +31,13 @@
 				
 			$this->id = $id;
 			
-			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, hidelocation, hiderelated, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
+			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
 			{	
 				$statement->bind_param('i', $id);
 				
 				$statement->execute();
 				
-				$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->hide_location, $this->hide_related, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
+				$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
 				$statement->fetch();
 			}	
 		}
@@ -156,7 +142,6 @@
 		public function incModerationindex()
 		{
 			$this->mod_index+=1;
-			//mysqli_query($connection, "UPDATE accounts SET mod_index=mod_index+1 WHERE id=$id") or die(mysqli_error($connection));
 		}
 		
 		public function setDescription($description)
@@ -169,9 +154,51 @@
 			return $this->flags & 0x01;
 		}
 		
-		public function showLocation($show = true)
+		public function setAdmin($admin = true)
 		{
-			$this->show_location = $show;
+			if($admin)
+				$this->flags |= 0x01;
+			else
+				$this->flags &= 0xFE;
+		}
+		
+		public function isBetaTester()
+		{
+			return $this->flags >> 0x02 & 0x01;
+		}
+		
+		public function setBetaTester($tester = true)
+		{
+			if($tester)
+				$this->flags |= 0x02;
+			else
+				$this->flags &= 0xFD;
+		}
+		
+		public function getHideRelated()
+		{
+			return $this->flags >> 0x04 & 0x01;
+		}
+		
+		public function setHideRelated($hide = true)
+		{
+			if($hide)
+				$this->flags |= 0x04;
+			else
+				$this->flags &= 0xFB;
+		}
+		
+		public function getHideLocation()
+		{
+			return $this->flags >> 0x08 & 0x01;
+		}
+		
+		public function setHideLocation($hide = true)
+		{
+			if($hide)
+				$this->flags |= 0x08;
+			else
+				$this->flags &= 0xF7;
 		}
 		
 		/**
