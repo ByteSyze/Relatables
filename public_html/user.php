@@ -155,6 +155,7 @@
 		public function setPendingEmail($pending_email)
 		{	
 			$this->pending_email = $pending_email;
+			setEditted('pending_email');
 		}
 		
 		public function setPassword($password, $hashed = false)
@@ -163,16 +164,19 @@
 				$this->password = $password;
 			else
 				$this->password = pass_hash($password, PASSWORD_DEFAULT);
+				
+			setEditted('password');
 		}
 		
 		public function setCountry($country)
 		{
-			$this->country = $country;	
+			$this->country = $country; //TODO figure out wtf to do about this in update()
 		}
 		
 		public function setUsername($username)
 		{
 			$this->username = $username;	
+			setEditted('username');
 		}
 		
 		public function incModerationindex()
@@ -183,6 +187,7 @@
 		public function setDescription($description)
 		{
 			$this->description = $description;
+			setEditted('description');
 		}
 		
 		public function isAdmin()
@@ -196,6 +201,8 @@
 				$this->flags |= 0x01;
 			else
 				$this->flags &= 0xFE;
+				
+			setEditted('flags');
 		}
 		
 		public function isBetaTester()
@@ -209,6 +216,8 @@
 				$this->flags |= 0x02;
 			else
 				$this->flags &= 0xFD;
+				
+			setEditted('flags');
 		}
 		
 		public function getHideRelated()
@@ -222,6 +231,8 @@
 				$this->flags |= 0x04;
 			else
 				$this->flags &= 0xFB;
+				
+			setEditted('flags');
 		}
 		
 		public function getHideLocation()
@@ -235,6 +246,18 @@
 				$this->flags |= 0x08;
 			else
 				$this->flags &= 0xF7;
+				
+			setEditted('flags');
+		}
+		
+		public function getFlags()
+		{
+			return $this->flags;
+		}
+		
+		private function setEditted($field)
+		{
+			$this->editted_fields[$field] = $this->$field;
 		}
 		
 		/**
