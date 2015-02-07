@@ -166,6 +166,28 @@
 			return self::REGISTER_SUCCESS;
 		}
 		
+		public static function log($message, $uid = 0)
+		{
+			$connection = GlobalUtils::getConnection();
+			
+			if($uid)
+			{
+				if($statement = $connection->prepare('INSERT INTO logs (message, uid) VALUES ((?), (?))'))
+				{
+					$statement->bind_param('si', $message, $uid);
+					$statement->execute();
+				}
+			}
+			else
+			{
+				if($statement = $connection->prepare('INSERT INTO logs (message) VALUES ((?))'))
+				{
+					$statement->bind_param('s', $message);
+					$statement->execute();
+				}
+			}
+		}
+		
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
