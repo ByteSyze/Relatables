@@ -4,7 +4,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 07, 2015 at 02:34 AM
+-- Generation Time: Feb 07, 2015 at 04:11 AM
 -- Server version: 5.1.61
 -- PHP Version: 5.2.17
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `logs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ip` int(11) NOT NULL DEFAULT '0',
   `uid` bigint(20) unsigned NOT NULL DEFAULT '0',
   `message` varchar(512) COLLATE latin1_general_ci NOT NULL,
   `logged` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
