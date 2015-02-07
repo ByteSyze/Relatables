@@ -188,5 +188,5 @@
 	}
 	
 	if($_SESSION['username'] != null)
-		GlobalUtils::log($_SESSION['username'] . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']);
+		GlobalUtils::log($_SESSION['username'] . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
 ?>
