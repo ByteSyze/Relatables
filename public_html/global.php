@@ -175,6 +175,8 @@
 				$statement->bind_param('sii', $message, $uid, $ip);
 				$statement->execute();
 			}
+			else
+				die($connection->error);
 		}
 		
 		/**Returns a connection to the MySQL database. */
