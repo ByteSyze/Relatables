@@ -189,6 +189,6 @@
 		}
 	}
 	
-	if($_SESSION['user'] != null)
-		GlobalUtils::log($_SESSION['user']->getUsername() . ' accessed '. $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"], $_SESSION['user']->getID());
+	if($_SESSION['username'] != null)
+		GlobalUtils::log($_SESSION['username'] . ' accessed '. $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"], $_SESSION['id']);
 ?>
