@@ -175,8 +175,6 @@
 				$statement->bind_param('sii', $message, $uid, $ip);
 				$statement->execute();
 			}
-			else
-				die($connection->error);
 		}
 		
 		/**Returns a connection to the MySQL database. */
@@ -190,5 +188,5 @@
 	}
 	
 	if($_SESSION['username'] != null)
-		GlobalUtils::log($_SESSION['username'] . ' accessed '. $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"], $_SESSION['id']);
+		GlobalUtils::log($_SESSION['username'] . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']);
 ?>
