@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
 	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
 	$pid = $_GET['id'];
@@ -12,16 +11,7 @@
 	if($slashpos != false)
 		$pid = substr($pid,0,$slashpos);
 	
-	$connection = GlobalUtils::getConnection();
-	
-	if($statement = $connection->prepare("SELECT (SELECT username FROM accounts where id=uid), (SELECT admin FROM accounts WHERE id=submissions.uid), category, (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0) FROM submissions WHERE id=(?)"))
-	{
-		$statement->bind_param('ii', $pid, $pid);
-		$statement->execute();
-		
-		$statement->bind_result($submission['author'], $submission['admin'], $submission['category'], $submission['date_diff'], $submission['alone'], $submission['notalone'], $submission['pending'], $submission['submission'], $submission['anonymous'], $submission['total_comments']);
-		$statement->fetch();
-	}
+	$post = new Post($pid);
 ?>
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
@@ -42,9 +32,9 @@
 		<div class="grid wrap wider">
 			<div class="unit two-thirds">
 				<div class="boxes">
-					<?php GlobalUtils::parseSubmission($submission); ?>
+					<?php $post->format(); ?>
 					<div class="box">
-						<span class="box-title">Comments (<span id='comment-count'><?php echo $total_comments ?></span>)</span>
+						<span class="box-title">Comments (<span id='comment-count'><?php echo $post->total_comments; ?></span>)</span>
 						<div class="box-content" id="comments">
 
 						</div>
@@ -62,22 +52,7 @@
 				</div>
 			</div>
 		</div>
-
-		<div id='main'>
-			<div id='content'>
-				<?php
-					GlobalUtils::parseSubmission($submission);
-				?>
-				<div id='comments'>
-					<div id='comment-submit-wrapper'>
-						<form action='http://www.relatablez.com/comment.php' method='POST'>
-							<textarea id='comment-submit-text' name='c'></textarea>
-							<input id='comment-submit-button' type='submit' value='Post' />
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<script>var pid = <?php echo $pid; ?>;</script>
 		<?php GlobalUtils::getJS('vote', 'post/post'); ?>
 	</body>

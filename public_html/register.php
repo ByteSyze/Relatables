@@ -22,55 +22,12 @@
 	
 	$user 	= 	$_POST["username"];
 	$pass 	= 	$_POST["password"];
+	$email	= 	$_POST["email"];
 	
-	$email	= 	filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+	$isValidCredentials = GlobalUtils::validateRegistrationCredentials($user, $email);
 	
-	//TODO instead of dying, point the user to a page pointing out what data was wrong.
-	if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-	{
-		die("bad email"); // if email isn't valid, die for now.
-	}
-	if(!preg_match("/^[A-Za-z0-9_]+$/",$user)) // Check that username only contains alphanumerics and underscore at most
-	{
-		die("bad username"); // if username has wacky characters, die for now.
-	}
-	$uLen = strlen($user); // Get length of username
-	if(($uLen > 32) || ($uLen < 1))
-	{
-		die("username too long"); // if username is larger than max length or less than one, die for now.
-	}
-	
-	$connection = GlobalUtils::getConnection();
-	
-	if($statement = $connection->prepare("SELECT id FROM accounts WHERE username LIKE (?)"))
-	{
-		$statement->bind_param("s",$user);
-		
-		$statement->execute();
-		
-		$result = $statement->fetch();
-		
-		if(!empty($result))
-		{
-			die("username unavailable");
-		}
-	}
-	
-	if($statement = $connection->prepare("SELECT id FROM accounts WHERE email LIKE (?)"))
-	{
-		$statement->bind_param("s",$email);
-		
-		$statement->execute();
-		
-		$result = $statement->fetch();
-		
-		if(!empty($result))
-		{
-			die("email unavailable");
-		}
-	}
-	
-	// At this point, username and email is valid.
+	if($isValidCredentials !== GlobalUtils::REGISTER_SUCCESS)
+		die $isValidCredentials;
 	
 	$salt = mcrypt_create_iv(16); // Create a new salt for this user
 	

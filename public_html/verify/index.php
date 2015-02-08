@@ -1,9 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	
-	include($_SERVER['DOCUMENT_ROOT'].'/userinfo.php');
-	
-	session_start();
+	include $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	if(!isset($_GET["i"]))
 		die("No id specified");
@@ -29,9 +27,9 @@
 		
 		if($verification == $resultVerification)
 		{
-			if($statement = $connection->prepare("UPDATE accounts SET email = (?) WHERE id LIKE (?)"))
+			if($statement = $connection->prepare("UPDATE accounts SET email = pending_email WHERE id LIKE (?)"))
 			{
-				$statement->bind_param("si",$pending_email, $id);
+				$statement->bind_param("i", $id);
 				
 				$statement->execute();
 				

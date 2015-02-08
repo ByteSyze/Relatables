@@ -150,9 +150,9 @@ function validate_data(objData){
 
 $(document).ready(function()
 {
-	$.post('/getsubmissions.php', {o:1, c:0, n:0, s:subIndex, x:subCount}, function(data)
+	$.post('/getposts.php', {o:1, c:0, n:0, s:subIndex, x:subCount}, function(data)
 	{
-		$('#submission-wrapper').append(data);
+		$('#posts').append(data);
 	});
 });
  

@@ -3,9 +3,15 @@
 	
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/userinfo.php';
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
 	
 	class GlobalUtils
 	{
+		const REGISTER_INVALID_EMAIL 	= 1;
+		const REGISTER_INVALID_USER  	= 2;
+		const REGISTER_TAKEN_USER		= 3;
+		const REGISTER_TAKEN_EMAIL		= 4;
+		const REGISTER_SUCCESS			= 5;
 	
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
 		public static function getCSS()
@@ -43,12 +49,14 @@
 		
 		public static function getShareButton($url, $text)
 		{
-			echo "\r\n<div class='share-button' data-share-button=''>Share &raquo;</div>";
-			echo "\r\n<div class='share-wrapper'><div class='share-links'>";
-			echo "\r\n<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>";
-			echo "\r\n<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>";
-			echo "\r\n<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>";
-			echo "\r\n</div></div>";
+			echo "
+			<div class='share-button' data-share-button=''>Share &raquo;</div>
+				<div class='share-wrapper'><div class='share-links'>
+				<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>
+				<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>
+				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>
+				</div>
+			</div>";
 		}
 		
 		public static function parseSubmission($submission)
@@ -118,6 +126,66 @@
 			echo '</div>';
 		}
 		
+		public static function validateRegistrationCredentials($user, $email)
+		{
+			//TODO instead of dying, point the user to a page pointing out what data was wrong.
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+			{
+				return self::REGISTER_INVALID_EMAIL; // if email isn't valid, die for now.
+			}
+			if(!preg_match("/^[A-Za-z0-9_]+$/",$user)) // Check that username only contains alphanumerics and underscore at most
+			{
+				return self::REGISTER_INVALID_USER; // if username has wacky characters, die for now.
+			}
+			$uLen = strlen($user); // Get length of username
+			if(($uLen > 32) || ($uLen < 1))
+			{
+				return self::REGISTER_INVALID_USER; // if username is larger than max length or less than one, die for now.
+			}
+			
+			$connection = GlobalUtils::getConnection();
+			
+			if($statement = $connection->prepare("SELECT id FROM accounts WHERE username LIKE (?)"))
+			{
+				$statement->bind_param("s",$user);
+				
+				$statement->execute();
+				
+				$result = $statement->fetch();
+				
+				if(!empty($result))
+				{
+					return self::REGISTER_TAKEN_USER;
+				}
+			}
+			
+			if($statement = $connection->prepare("SELECT id FROM accounts WHERE email LIKE (?)"))
+			{
+				$statement->bind_param("s",$email);
+				
+				$statement->execute();
+				
+				$result = $statement->fetch();
+				
+				if(!empty($result))
+				{
+					return self::REGISTER_TAKEN_EMAIL;
+				}
+			}
+			return self::REGISTER_SUCCESS;
+		}
+		
+		public static function log($message, $uid = 0, $ip = 0)
+		{
+			$connection = GlobalUtils::getConnection();
+			
+			if($statement = $connection->prepare('INSERT INTO logs (message, uid, ip) VALUES ((?), (?), (?))'))
+			{
+				$statement->bind_param('sii', $message, $uid, $ip);
+				$statement->execute();
+			}
+		}
+		
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
@@ -127,4 +195,7 @@
 				return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 		}
 	}
+	
+	if($_SESSION['username'] != null)
+		GlobalUtils::log($_SESSION['username'] . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
 ?>
