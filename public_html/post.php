@@ -347,7 +347,10 @@
 				$statement->bind_result($p_data['uid'],$p_data['verification'],$p_data['category'],$p_data['fdate'],$p_data['date_diff'],$p_data['alone'],$p_data['notalone'],$p_data['pending'],$p_data['submission'],$p_data['anonymous'],$p_data['comment_count'],$p_data['user_vote']);
 				
 				while($statement->fetch())
+				{
+					$p_data['author'] = new User($p_data['uid']);
 					array_push($posts, new Post($p_data));
+				}
 			}
 			else
 				echo self::$connection->error;
