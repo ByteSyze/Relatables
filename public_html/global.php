@@ -6,7 +6,7 @@
 	
 	session_start();
 	
-	if($_SESSION['id'] === null)
+	if($_SESSION['id'] == null)
 		$_SESSION['id'] = 0;
 		
 	$user = new User($_SESSION['id']);
