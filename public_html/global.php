@@ -1,8 +1,8 @@
 <?php
 	/*Copyright (C) Tyler Hacket 2015*/
 	
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
 	session_start();
 	
