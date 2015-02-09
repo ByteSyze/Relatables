@@ -9,7 +9,6 @@
 		$_SESSION['id'] = 0;
 		
 	$user = new User($_SESSION['id']);
-	$GLOBALS['user'] = $user;
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
@@ -20,6 +19,8 @@
 		const REGISTER_TAKEN_USER		= 3;
 		const REGISTER_TAKEN_EMAIL		= 4;
 		const REGISTER_SUCCESS			= 5;
+		
+		public static $user;
 	
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
 		public static function getCSS()
@@ -141,6 +142,8 @@
 				return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
 		}
 	}
+	
+	GlobalUtils::$user = $user;
 	
 	if($_SESSION['id'] != 0)
 		GlobalUtils::log($user->getUsername() . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
