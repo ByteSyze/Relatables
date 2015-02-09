@@ -9,6 +9,7 @@
 		$_SESSION['id'] = 0;
 		
 	$user = new User($_SESSION['id']);
+	$GLOBALS['user'] = $user;
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
@@ -141,6 +142,6 @@
 		}
 	}
 	
-	if($_SESSION['username'] != null)
-		GlobalUtils::log($_SESSION['username'] . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
+	if($_SESSION['id'] != 0)
+		GlobalUtils::log($user->getUsername() . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
 ?>
