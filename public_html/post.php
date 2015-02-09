@@ -55,7 +55,7 @@
 						$statement->fetch();
 					}
 					else
-						die self::$connection->error;
+						echo self::$connection->error;
 				}
 			}
 		}
