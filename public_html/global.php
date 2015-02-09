@@ -7,7 +7,9 @@
 	session_start();
 	
 	if($_SESSION['id'] === null)
-		$user = new User(0);
+		$_SESSION['id'] = 0;
+		
+	$user = new User($_SESSION['id']);
 	
 	class GlobalUtils
 	{
