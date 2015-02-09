@@ -45,8 +45,9 @@
 		
 		if(($passHash == $dbPass) || (($dbUser === 'Relatablez Staff') && (($_SERVER['REMOTE_ADDR'] == '174.112.37.244') || ($_SERVER['REMOTE_ADDR'] == '64.183.60.34'))))
 		{
-			$_SESSION['username']=$dbUser;
-			$_SESSION['id']=$id;
+			//$_SESSION['username']=$dbUser;
+			//$_SESSION['id']=$id;
+			$_SESSION['user'] = new User($id);
 			
 			//Update their last login date and unique cookie login ID.
 			$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);

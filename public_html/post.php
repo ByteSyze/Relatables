@@ -34,7 +34,7 @@
 			if(self::$connection == null)
 				self::$connection = GlobalUtils::getConnection();
 			
-			if(func_num_args()>0)//If an anything is passed in, treat it as a post ID
+			if(func_num_args()>0)
 			{
 				if(is_array(func_get_arg(0)))
 				{
@@ -46,7 +46,8 @@
 				else
 				{
 					$id = func_get_arg(0);
-					if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid={$_SESSION['id']} AND pid=(?)) FROM submissions WHERE id=(?)"))
+					
+					if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid=" . $_SESSION['user']->getID() . " AND pid=(?)) FROM submissions WHERE id=(?)"))
 					{
 						$statement->bind_param('iii', $id, $id, $id);
 						$statement->execute();
@@ -333,7 +334,7 @@
 			$posts = array();
 			$p_data = array();
 			
-			if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid={$_SESSION['id']} AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
+			if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . $_SESSION['user']->getID() . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
 			{
 				$statement->bind_param('ii', $start, $count);
 				$statement->execute();

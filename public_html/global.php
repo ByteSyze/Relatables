@@ -2,8 +2,11 @@
 	session_start();
 	
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/userinfo.php';
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
+	
+	if($_SESSION['user'] === null)
+		$_SESSION['user'] = new User(0);
 	
 	class GlobalUtils
 	{

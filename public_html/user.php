@@ -38,6 +38,8 @@
 			$this->id = $id;
 			$this->editted_fields = array();
 			
+			if($id == 0) return; //0 is for users that aren't logged in.
+			
 			if($statement = self::$connection->prepare('SELECT username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
 			{	
 				$statement->bind_param('i', $id);
