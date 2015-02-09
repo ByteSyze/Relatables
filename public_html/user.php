@@ -53,6 +53,7 @@
 			else
 			{
 				//Treat $data as ID
+				$id = $data;
 				
 				$this->id = $id;
 				
