@@ -1,9 +1,9 @@
 <?php
-	session_start();
-	
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/userinfo.php';
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
+	
+	session_start();
 	
 	if($_SESSION['user'] === null)
 		$_SESSION['user'] = new User(0);
