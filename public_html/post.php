@@ -217,7 +217,7 @@
 		
 		/**Prints a formatted AITOO post.*/
 		public function format()
-		{	
+		{
 			
 			$format_date_diff = $this->calculateDateDifference();
 			$format_user = $this->anonymous ? 'Anonymous' : $this->username;
