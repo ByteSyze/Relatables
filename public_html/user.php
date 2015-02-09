@@ -21,7 +21,7 @@
 		private $pending_email;
 		private $country;
 		private $description;
-		private $mod_index;
+		private $mod_index = 0;
 		
 		private $flags;
 		
