@@ -47,8 +47,8 @@ table {
 }
 
 body {
-	background-color: #F0F1F7;
-	color: #3F414D;
+  background-color: #F0F1F7;
+  color: #3F414D;
   text-shadow: 0px 1px #fff;
   font-family: 'Open Sans', sans-serif;
 }
@@ -280,8 +280,8 @@ ul.navigation-items li a img {
 	box-sizing: border-box;
 	border: solid 1px #DDDFEB;
 	-webkit-border-radius: 3px;
+  border-radius: 3px;
 	-moz-border-radius: 3px;
-	border-radius: 3px;
 	background: #fff;
 }
 
@@ -427,4 +427,34 @@ a.user {
 
 a.user.admin {
 	color: #D84A4A;
+}
+
+.input-submit {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #F5F6FC;
+  border: solid 1px #DDDFEB;
+  color: #7B7E8F;
+  text-shadow: 0px 1px #fff;
+  outline: none;
+  padding: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-submit:focus {
+  background-color: #fff;
+  color: inherit;
+}
+
+textarea.input-submit {
+  resize: none;
 }

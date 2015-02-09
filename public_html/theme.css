@@ -1,0 +1,30 @@
+.filters {
+  padding: 0px 20px;
+}
+
+.filters .filter {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+.filter label {
+  font-weight: bold;
+}
+
+.filter select {
+	background: transparent;
+  outline: none;
+	border: solid 1px transparent;
+	color: #777A8F;
+  font-size: 100%;
+  padding: 3px 5px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.filter select:hover, .filter select:active {
+  background-color: #E9EAF2;
+  border-color: #DDDFEB;
+}
