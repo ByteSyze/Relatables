@@ -10,6 +10,8 @@
 		
 	$user = new User($_SESSION['id']);
 	
+	echo "UID: " . $user->getID();
+	
 	class GlobalUtils
 	{
 		const REGISTER_INVALID_EMAIL 	= 1;
