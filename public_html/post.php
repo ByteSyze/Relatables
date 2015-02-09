@@ -54,6 +54,8 @@
 						$statement->bind_result($this->username,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->admin,$this->comment_count,$this->user_vote);
 						$statement->fetch();
 					}
+					else
+						die self::$connection->error;
 				}
 			}
 		}
@@ -342,7 +344,7 @@
 					array_push($posts, new Post($p_data));
 			}
 			else
-				echo $connection->error;
+				echo self::$connection->error;
 			
 			return $posts;
 		}
