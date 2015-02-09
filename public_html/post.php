@@ -9,7 +9,6 @@
 		
 		private $id;			/**ID of this post. Only valid if it exists in database.*/
 		private $uid; 			/**ID of the user that submitted this post.*/
-		private $username; 		/**Username of the user that submitted this post.*/
 		private $verification;	/**4-byte verification code associated with this post.*/
 		private $category; 		/**numerical representation of this post's category.*/
 		private $fdate; 		/**Formatted date this post was submitted on.*/
@@ -20,9 +19,10 @@
 		private $submission;	/**Question submitted by user.*/
 		private $anonymous;		/**Whether or not to display the user as anonymous.*/
 		private $nsfw;			/**Whether or not this post is not safe for work.*/
-		private $admin;			/**Whether or not the author is an admin.*/
 		private $comment_count; /**Number of comments on this post*/
 		private $user_vote;		/**The vote of the current session's user on this post.*/
+		
+		private $author;		/**The User that made this post.*/
 		
 		/**
 		 * Creates a new Post.
@@ -50,13 +50,15 @@
 				{
 					$id = func_get_arg(0);
 					
-					if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid=" . $_SESSION['user']->getID() . " AND pid=(?)) FROM submissions WHERE id=(?)"))
+					if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid=" . $_SESSION['user']->getID() . " AND pid=(?)) FROM submissions WHERE id=(?)"))
 					{
-						$statement->bind_param('iii', $id, $id, $id);
+						$statement->bind_param('ii', $id, $id);
 						$statement->execute();
 						
-						$statement->bind_result($this->username,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->admin,$this->comment_count,$this->user_vote);
+						$statement->bind_result($this->uid,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->comment_count,$this->user_vote);
 						$statement->fetch();
+						
+						$this->author = new User($this->uid);
 					}
 					else
 						echo self::$connection->error;
@@ -226,7 +228,7 @@
 		{
 			
 			$format_date_diff = $this->calculateDateDifference();
-			$format_user = $this->anonymous ? 'Anonymous' : $this->username;
+			$format_user = $this->anonymous ? 'Anonymous' : $this->author->getUsername();
 			
 			echo '<div class="box">';
 				echo '<div class="box-content">';
@@ -264,7 +266,7 @@
 							} else {
 								echo '<a class="user ';
 
-								if($this->admin)
+								if($this->author->isAdmin())
 									echo 'admin';
 
 								echo '" href="/user/' . $format_user . '">' . $format_user . '</a>';
@@ -337,12 +339,12 @@
 			$posts = array();
 			$p_data = array();
 			
-			if($statement = self::$connection->prepare("SELECT (SELECT username FROM accounts where id=uid), verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT admin FROM accounts WHERE id=submissions.uid), (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
+			if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
 			{
 				$statement->bind_param('ii', $start, $count);
 				$statement->execute();
 				
-				$statement->bind_result($p_data['username'],$p_data['verification'],$p_data['category'],$p_data['fdate'],$p_data['date_diff'],$p_data['alone'],$p_data['notalone'],$p_data['pending'],$p_data['submission'],$p_data['anonymous'],$p_data['admin'],$p_data['comment_count'],$p_data['user_vote']);
+				$statement->bind_result($p_data['uid'],$p_data['verification'],$p_data['category'],$p_data['fdate'],$p_data['date_diff'],$p_data['alone'],$p_data['notalone'],$p_data['pending'],$p_data['submission'],$p_data['anonymous'],$p_data['comment_count'],$p_data['user_vote']);
 				
 				while($statement->fetch())
 					array_push($posts, new Post($p_data));
