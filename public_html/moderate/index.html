@@ -10,7 +10,7 @@
 		echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
 	}	
 	
-	$index = $_SESSION['user']->getModerationIndex();
+	$index = $user->getModerationIndex();
 	
 	if($_POST['v'] !== null)
 	{
@@ -75,7 +75,7 @@
 		<?php GlobalUtils::getCSS(); ?>
 	</head>
 	<body>
-		<?php require("../navigation.php"); ?>
+		<?php require "../navigation.php"; ?>
 		
 		<div class="moderate-jumbo">
 			<h1>Does this post obey the rules & guidelines?</h1>

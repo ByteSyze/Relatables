@@ -3,7 +3,7 @@
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
-	if($_SESSION['user']->getID() == 0)
+	if($user->getID() == 0)
 	{
 		if(isset($_COOKIE["rrm"]))
 		{
@@ -14,7 +14,7 @@
 	}
 	
 	//Recheck, to give cookielogin.php a chance.
-	if($_SESSION['user']->getID() != 0)
+	if($user->getID() != 0)
 	{
 		$connection = GlobalUtils::getConnection();
 		
@@ -32,8 +32,8 @@
 		$notifications->data_seek(0);
 	}
 	
-	if($_SESSION['user'] != null)
-		GlobalUtils::log($_SESSION['user']->getUsername() . ' accessed '. $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"], $_SESSION['user']->getID());
+	if($user != null)
+		GlobalUtils::log($user->getUsername() . ' accessed '. $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"], $user->getID());
 ?>
 
 <?php
