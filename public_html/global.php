@@ -61,69 +61,7 @@
 		
 		public static function parseSubmission($submission)
 		{
-			$date_diff = $submission['date_diff'];
-			
-			if($date_diff/60/24/365 >= 1)
-				$date_diff = '(' . floor($date_diff/60/24/365) . ' years ago)'; 
-			else if($date_diff/60/24 >= 1)
-				$date_diff = '(' . floor($date_diff/60/24) . ' days ago)'; 
-			else if($date_diff/60 >= 1)
-				$date_diff = '(' . floor($date_diff/60) . ' hours ago)'; 
-			else
-				$date_diff = '(' . floor($date_diff) . ' minutes ago)'; 
-				
-			if($submission['anonymous'])
-				$user='Anonymous';
-			else
-				$user = $submission['author'];
-			
-			echo '<div class="box">';
-				echo '<div class="box-content">';
-					echo $submission['submission'];
-					echo '<div class="post-actions">';
-						echo '<div class="buttons">';
-
-							$button_yes_classes = "green-hover";
-							$button_yes_meta = "";
-							$button_no_classes = "red-hover";
-							$button_no_meta = "";
-
-							if($_SESSION["username"] != null) {
-									$button_yes_meta = $button_no_meta = 'id="bna' . $submission['id'] . '" data-vid="' . $submission['id'] . '" ';
-									if($submission['user_vote'] === '0') {
-										$button_yes_classes = "green";
-										$button_yes_meta .= "disabled";
-									} else if($submission['user_vote'] === '1') {
-										$button_no_classes = "red";
-										$button_no_meta .= "disabled";
-									}
-							} else {
-								$button_no_meta = "data-signup-header='Please sign up to vote'";
-								$button_yes_meta = "data-signup-header='Please sign up to vote'";
-							}
-
-							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . '>No, me too!</button>';
-							echo '<button class="button small ' . $button_no_classes . '" ' . $button_no_meta . '>No, me too!</button>';
-							echo '<a href="/post/' . $submission[id] . '" class="button small">' . $submission['total_comments'] . '</a>';
-
-						echo '</div>';
-						echo '<div class="submission-info">';
-							if($submission['anonymous']) {
-								echo '<span>' . $user . '</span>';
-							} else {
-								echo '<a class="user ';
-
-								if($submission['admin'])
-									echo 'admin';
-
-								echo '" href="/user/' . $user . '">' . $user . '</a>';
-							}
-
-							echo '<span class="datediff">' . $date_diff . '</span>';
-						echo '</div>';
-					echo '</div>';
-				echo '</div>';
-			echo '</div>';
+			$submission->format();
 		}
 		
 		public static function validateRegistrationCredentials($user, $email)
