@@ -36,49 +36,12 @@
 		GlobalUtils::log($_SESSION['user']->getUsername() . ' accessed '. $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"], $_SESSION['user']->getID());
 ?>
 
-<div id='toolbar'>
-	<div id='toolbaralignment'>
-		<div style='float:left;padding:0px;height:100%'>
-				<a href='http://www.relatablez.com/'><img height='35' src='/images/icons/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a>
-				<span class='toolbar-item' id='aitoo-dropdown'>Am I The Only One?</span>
-				<button class='toolbar-item' id='about-button'>About</button>
-				<table class='dropdown-list hidden' id='about-dropdown'>
-					<tr><td><a class='profile' href='http://www.relatablez.com/blog/'>Blog</a></td></tr>
-					<tr><td><a class='profile' href='http://www.relatablez.com/FAQ/'>FAQ</a></td></tr>
-					<tr><td><a class='profile' href='http://www.relatablez.com/privacy/'>Privacy</a></td></tr>
-					<tr><td><a class='profile' href='http://www.relatablez.com/terms/'>Terms</a></td></tr>
-					<tr><td><a class='profile' href='http://www.relatablez.com/contact/'>Contact</a></td></tr>
-				</table>
-		</div>		
-		<div  class='account-buttons'>
-			<?php
-				if($_SESSION["username"] != null)
-				{
-					if($unreadNotifications)
-						echo "<button class='toolbar unread hover-icon' id='notification-button'></button>";
-					else
-						echo "<button class='toolbar hover-icon' id='notification-button'></button>";
-						
-					echo "<button class='toolbar hover-icon' id='profile-button'></button>\r\n";	
-					include($_SERVER['DOCUMENT_ROOT'].'/user-popups.php');
-					getPopup($notifications, $connection);
-				}
-				else
-				{
-					echo "<button class='toolbar margleft margright showlogin'>Log In</button>\r\n";
-					echo "<button class='toolbar margleft margright' data-signup-header='Sign Up'>Sign Up</button>\r\n";	
-				}
-			?>
-		</div>
-	</div>
-</div>
-<div id='toolbar-spacer'></div>
-
 <?php
 
 if($_SESSION['username'] == null)
 echo
 "
+<div class='popup-shade'></div>
 <div class='popup' id='registerpopup'>
 	<button class='closebutton' data-register-hide=''></button><br>
 	<h1 id='registerheader' class='popup-header'>Sign Up</h1>			
@@ -153,6 +116,19 @@ echo
 </div>
 ";
 ?>
+
+<div class="navigation-bar">
+	<div class="grid wrap wider no-gutters">
+		<div class="unit half">
+			<ul class="navigation-items">
+				<li><a href="/" class="logo"><img src='/images/icons/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a></li>
+				<li><a href="/moderate">Moderate</a></li>
+				<li><a href="/about">About &#9662;</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="navigation-spacer"></div>
 
 <!-- <div class='infobarwrapper'>
 	<div class='infobar'>

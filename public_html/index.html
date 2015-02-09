@@ -12,112 +12,73 @@
 <html>
 	<head>
 		<title>Relatablez</title>
-		
-		<?php 
+
+		<?php
 			GlobalUtils::getMeta();
-			GlobalUtils::getCSS('submissiontheme'); 
+			GlobalUtils::getCSS('submissiontheme');
 		?>
 		<link rel='canonical' href='http://www.relatablez.com/'>
 	</head>
-	<body>		
-		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
-		
-		<div id='main'>
-			<div id='content' style='float:left;width:700px;'>
-				
-					<span style='vertical-align:bottom;'>NSFW</span><input type='checkbox' id='nsfw' style='vertical-align:bottom;'>
-					<span style='vertical-align:bottom;'>Sort by</span>
-					<select id='sort' style='vertical-align:bottom;'>
-						<option value='0'>New-To-Old</option>
-						<option value='1'>Old-To-New</option>
-						<option value='2'>Highest Rated</option>
-						<option value='3'>Lowest Rated</option>
-					</select>
-					<span style='vertical-align:bottom;'>Category</span>
-					<select id='category' style='vertical-align:bottom;'>
-						<option value='0'>All Categories</option>
-						<option value='1'>Health</option>
-						<option value='2'>Internet</option>
-						<option value='3'>Funny</option>
-						<option value='4'>People</option>
-						<option value='5'>Family</option>
-						<option value='6'>Food</option>
-						<option value='7'>Personal</option>
-						<option value='8'>Odd</option>
-						<option value='9'>Other</option>
-					</select>
-					<span style='vertical-align:bottom;'>Display</span>
-					<select id='display' style='vertical-align:bottom;'>
-						<option value='0'>Continuously</option>
-						<option value='1'>20 a page</option>
-						<option value='2'>50 a page</option>
-					</select>
-				<div id='submission-wrapper' class='dialogue submission downpadding' style='margin-top:13px;height:71px;'>
-					<?php 
-						if($_SESSION['username'] !== null)
-						{
-							echo "<form action='http://www.relatablez.com/submit.php' method='POST' >\r\n"; 
-							echo "<textarea name='s' id='submission' class='dialogue showguides'>Am I the only one who</textarea>\r\n";
-						}
-						else
-						{
-							echo "	<textarea name='s' id='submission' class='dialogue' data-signup-header='Please sign up to submit'>Am I the only one who</textarea>\r\n";
-						}
-					?>
-						<div style='float:right'>
-							<select name='c' id='submit_category'>
-								<option value='0'>Select a Category</option>
-								<option value='1'>Health</option>
-								<option value='2'>Internet</option>
-								<option value='3'>Funny</option>
-								<option value='4'>People</option>
-								<option value='5'>Family</option>
-								<option value='6'>Food</option>
-								<option value='7'>Personal</option>
-								<option value='8'>Odd</option>
-								<option value='9'>Other</option>
-							</select>
-							<span> Anonymous</span><input type='checkbox' name='a' value='true' id='anonymous' />
-							<span id='post-counter'> 300 </span>
-							<?php
-								if($_SESSION['username'] !== null)
-									echo "<button id='submit_form' class='submit-button' type='submit' ><b>Submit</b></button>";
-								else
-									echo "\r\n<button class='submit-button' data-header='Please sign up to submit' onclick='showRegister(this)'>Submit</button>";
-							?>
+	<body>
+		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
+		<div class="grid wrap wider">
+			<div class="unit two-thirds">
+				<div class="boxes">
+					<div class="box">
+						<div class="box-content">
+							<form>
+								<textarea>Am I the only one who</textarea>
+							</form>
 						</div>
-						<br>
-					<?php if($_SESSION['username'] !== null) echo '</form>'; ?>
-					<br><hr>
-					<span class='guideline-title'><b>Guidelines:</b></span>
-					<ul>
-						<li>Your post must be well written and original.</li>
-						<li>Your post must start with "Am I the only one" and end with a question mark.</li>
-					</ul>
-					<span class='guideline-title'><b>Rules:</b></span>
-					<ul>
-						<li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will NOT be tolerated.</li>
-					</ul>
-					<b class='warning'><i>Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</i></b>
-				</div>
-			</div>	
-			<div style='float:right;'>
-				<div id='qotw'>
-					<h4 id='qotw-header'>QOTW</h4>
-					<div style='padding:10px;'>
-						<span>Select a test option.</span>
-						<form action='http://www.relatablez.com/qotw.php' method='POST'>
-							<div id='qotw-wrapper'>
-								<input type='radio' name='v' value='0' />Option A.<br>
-								<input type='radio' name='v' value='1' />Option B.
-								<input type='submit' value='vote' id='qotw-submit' />
-							</div>
-						</form>
+					</div>
+					
+					<div class="filters">
+					</div>
+					<div id="posts">
 					</div>
 				</div>
-			</div>	
-		</div>
-		
+				<div class="bottom-navigation">
+					<div class="buttons">
+						<a href="#" class="button">previous</a>
+						<a href="#" class="button blue">1</a>
+						<a href="#" class="button blue-hover">2</a>
+						<a href="#" class="button blue-hover">3</a>
+						<a href="#" class="button blue-hover">4</a>
+						<a href="#" class="button blue-hover">5</a>
+						<a href="#" class="button blue-hover">6</a>
+						<a href="#" class="button blue-hover">7</a>
+						<a href="#" class="button blue-hover">8</a>
+						<a href="#" class="button blue-hover">next</a>
+					</div>
+				</div>
+			</div>
+			<div class="unit one-third">
+				<div class="boxes">
+					<div class="box">
+						<span class="box-title">Quote of the Week</span>
+						<div class="box-content">
+							<span>Select a test option.</span>
+							<form action='http://www.relatablez.com/qotw.php' method='POST'>
+								<div id='qotw-wrapper'>
+									<input type='radio' name='v' value='0' />Option A.<br>
+									<input type='radio' name='v' value='1' />Option B.<br><br>
+									<div class="buttons">
+										<button class="button blue-hover" type='submit' id='qotw-submit'>Vote</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="box">
+						<span class="box-title">Advertisement</span>
+						<div class="box-content thin">
+							<img src="http://www.pinkham.com/cassel-news-parade/sites/all/themes/openpublish/images/placeholder_ad_rectangle.gif">
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>		
+
 		<script>
 			var page 		= <?php echo $page; ?>;
 			var order 		= <?php echo $order_by; ?>;

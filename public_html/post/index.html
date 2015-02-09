@@ -20,31 +20,39 @@
 		<title>Relatablez</title>
 		
 		<meta charset="UTF-8">
-		<meta name="keywords" content="Am I The Only One, Relatablez, <?php echo $submission; ?>">
+		<meta name="keywords" content="Am I The Only One, Relatablez, <?php echo $submission['submission']; ?>">
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
 		<?php GlobalUtils::getCSS('submissiontheme'); ?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
-		<?php require($_SERVER["DOCUMENT_ROOT"] . "/toolbar.php"); ?>
+		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
 		
-		<div id='main'>
-			<div id='content'>
-				<?php
-					$post->format();
-				?>
-				<span>Comments (<span id='comment-count'><?php echo $post->total_comments; ?></span>)</span>
-				<div id='comments'>
-					<div id='comment-submit-wrapper'>
-						<form action='http://www.relatablez.com/comment.php' method='POST'>
-							<textarea id='comment-submit-text' name='c'></textarea>
-							<input id='comment-submit-button' type='submit' value='Post' />
-						</form>
+		<div class="grid wrap wider">
+			<div class="unit two-thirds">
+				<div class="boxes">
+					<?php $post->format(); ?>
+					<div class="box">
+						<span class="box-title">Comments (<span id='comment-count'><?php echo $post->total_comments; ?></span>)</span>
+						<div class="box-content" id="comments">
+
+						</div>
+					</div>
+					<div class="box">
+						<div class="box-content">
+							<div id='comment-submit-wrapper'>
+								<form action='http://www.relatablez.com/comment.php' method='POST'>
+									<textarea id='comment-submit-text' name='c'></textarea>
+									<input id='comment-submit-button' type='submit' value='Post' />
+								</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<script>var pid = <?php echo $pid; ?>;</script>
 		<?php GlobalUtils::getJS('vote', 'post/post'); ?>
 	</body>

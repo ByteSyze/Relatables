@@ -1,114 +1,44 @@
-/*Copyright (C) Tyler Hackett 2014*/
-#infobanner
-{
-	margin-top:55px;
-	height:200px;
-	background-color:#f4f4f4;	
-	border-top:1px solid #808080;
-	border-bottom:1px solid #808080;
+.user-jumbo {
+	margin-top: -10px; /* puts it at top */
+	padding: 80px 100px;
+	background: #1D2238;
+	color: #A0A4B8;
+	text-shadow: 0px 1px #161A2B;
+	font-weight: bold;
 }
-#infolayout
-{
-	position:relative;
-	margin:auto;
-	width:1100px;
+
+.user-jumbo hr {
+	background-color: #151929;
+	box-shadow: 0px 1px #313857;
+	border: none;
+	height: 1px;
+	margin: 20px 0px;
 }
-#info
-{
-	margin-left:0px;
-	width:50%;
-	height:150px;
-	margin-top:40px;
+
+.user-jumbo .username {
+	font-size: 200%;
+	color: #DFE3F7;
 }
-#stats
-{
-	background:#FFF;
-	border:1px solid #BFBFBF;
-	border-radius:4px;
-	padding:15px;
+
+.user-jumbo .admin {
+	padding-left: 10px;
+	color: #D84A4A;
 }
-#username
-{
-	color:#2654a8;
-	font: 25px arial;
-	font-weight:bold;
+
+.user-jumbo .user-description {
+	font-size: 120%;
 }
-#location, #date
-{
-	color:#9f9f9f;
-	font: 15px arial;
-	font-weight:bold;
+
+.user-jumbo .user-info {
+	display: block;
+	margin-top: 15px;
 }
-#user-description
-{	
-	margin-top:6px;
-	color:#666666;
-	font: 15px arial;
-	height:98px;
-	overflow-y:auto;
+
+.user-stats span {
+	display: block;
+	margin-bottom: 10px;
 }
-#message-button
-{
-	float:right;
-	background:#0067B1;
-	border-radius:4px;
-	border:none;
-	color:white;
-	height:30px;
-	font-weight:bold;
-	cursor:pointer;
-}
-#message-contents
-{
-	height:200px;
-	box-sizing:border-box;
-}
-#message-popup
-{
-	position:fixed;
-	left:calc(50% - 250px);
-	z-index:2;
-	width:500px;
-	border:1px solid #BFBFBF;
-	border-radius:7px;
-	background:white;
-	padding:10px;
-}
-#message-subject
-{
-	height:25px;
-}
-#moduleslayout
-{
-	margin-top:50px;
-	margin:auto;
-	width:1100px;
-}
-#relatedmodule
-{
-	float:left;
-	width:700px;
-}
-#related-wrapper
-{
-	height:376px;
-	overflow-y:auto;
-}
-#statsmodule
-{
-	float:right;
-	width:300px;
-}
-.message
-{
-	font:15px arial;
-	border:1px solid #BFBFBF;
-	border-radius: 4px;
-	width:100%;
-	box-sizing:border-box;
-	resize:none;
-}
-.right-spacer
-{
-	margin-right:30px;
+
+.user-stats span:last-child, .user-stats span:only-child {
+	margin-bottom: 0px;
 }

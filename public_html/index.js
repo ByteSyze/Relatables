@@ -152,7 +152,7 @@ $(document).ready(function()
 {
 	$.post('/getposts.php', {o:1, c:0, n:0, s:subIndex, x:subCount}, function(data)
 	{
-		$('#content').append(data);
+		$('#posts').append(data);
 	});
 });
  

@@ -11,10 +11,15 @@
 	</head>
 	<body>
 		<?php
-			require($_SERVER["DOCUMENT_ROOT"] . '/toolbar.php');
+			require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php');
 		?>
-		<div style='position:relative;margin:auto;width:900px;top:50px'>
-			<h1>404 - You're not the only one who can't find this page</h1>
+		<div class="fourofour">
+			<h1>Oops! We couldn't find that page!</h1>
+			<h3>But don't worry; you're not the only one</h3>
+			<div class="buttons">
+				<a href="/" class="button blue large">Return to the homepage</a>
+				<a href="/contact" class="button blue large">Contact us</a>
+			</div>
 		</div>
 	
 		<?php GlobalUtils::getJS('verify', 'popups'); ?>
