@@ -1,6 +1,8 @@
 <?php
 	/*Copyright (C) Tyler Hacket 2015*/
 	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
+	
 	session_start();
 	
 	if($_SESSION['id'] == null)
@@ -8,7 +10,6 @@
 		
 	$user = new User($_SESSION['id']);
 	
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
 	class GlobalUtils
