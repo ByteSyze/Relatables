@@ -3,7 +3,7 @@
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
-	if($_SESSION["username"] == null)
+	if($_SESSION['user']->getID() == 0)
 	{
 		if(isset($_COOKIE["rrm"]))
 		{
@@ -14,7 +14,7 @@
 	}
 	
 	//Recheck, to give cookielogin.php a chance.
-	if($_SESSION['username'] != null)
+	if($_SESSION['user']->getID() != 0)
 	{
 		$connection = GlobalUtils::getConnection();
 		
