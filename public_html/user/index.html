@@ -2,18 +2,17 @@
 <!-- Copyright (C) Tyler Hackett 2014 -->
 <html>
 	<?php 
-		require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+		require $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 		
-		$user = $_GET['username'];
+		$username = $_GET['username'];
 		
 		//If username ends in a /, remove it.
-		$slashpos = strpos($user,'/');
+		$slashpos = strpos($username,'/');
 		
 		if($slashpos != false)
-			$user = substr($user,0,$slashpos);
+			$user = substr($username,0,$slashpos);
 		
-		$connection = GlobalUtils::getConnection();
-		$data = getProfileData($connection, $user);
+		$user = new User($username);
 	?>
 	<head>
 		<title id='title'><?php echo $data['username']; ?></title>
