@@ -68,6 +68,8 @@
 					$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
 					$statement->fetch();
 				}	
+				else
+					echo self::$connection->error;
 			}
 		}
 		
