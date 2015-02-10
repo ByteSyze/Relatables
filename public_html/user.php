@@ -229,6 +229,11 @@
 			$this->mod_index+=1;
 		}
 		
+		public function getDescription()
+		{
+			return $this->description;
+		}
+		
 		public function setDescription($description)
 		{
 			$this->description = $description;

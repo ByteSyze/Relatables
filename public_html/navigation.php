@@ -31,9 +31,6 @@
 		}
 		$notifications->data_seek(0);
 	}
-	
-	if(GlobalUtils::$user != null)
-		GlobalUtils::log(GlobalUtils::$user->getUsername() . ' accessed '. $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"], GlobalUtils::$user->getID());
 ?>
 
 <?php
