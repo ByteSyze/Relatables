@@ -139,5 +139,5 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
 	if($_SESSION['id'] != 0)
-		GlobalUtils::log(GlobalUtils::$user->getUsername() . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
+		GlobalUtils::log(GlobalUtils::$user->getUsername() . ' accessed '. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
 ?>
