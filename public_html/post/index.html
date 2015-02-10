@@ -41,10 +41,12 @@
 					</div>
 					<div class="box">
 						<div class="box-content">
-							<div id='comment-submit-wrapper'>
-								<form action='http://www.relatablez.com/comment.php' method='POST'>
-									<textarea id='comment-submit-text' name='c'></textarea>
-									<input id='comment-submit-button' type='submit' value='Post' />
+							<div id='comment-submit'>
+								<form action='/comment.php' method='POST'>
+									<textarea class="input-submit" placeholder="Join the discussion!" id='comment-submit-text' name='c'></textarea>
+									<div class="buttons">
+										<button class="button blue-hover" id='comment-submit-button' type='submit'>Post</button>
+									</div>
 								</form>
 							</div>
 						</div>

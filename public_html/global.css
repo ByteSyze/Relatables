@@ -455,6 +455,19 @@ a.user.admin {
   color: inherit;
 }
 
+.input-submit::-webkit-input-placeholder {
+  color: #7B7E8F;
+} 
+.input-submit:-moz-placeholder {
+  color: #7B7E8F;
+}
+.input-submit::-moz-placeholder {
+  color: #7B7E8F;
+}
+.input-submit:-ms-input-placeholder {
+  color: #7B7E8F;
+}
+
 textarea.input-submit {
   resize: none;
 }
