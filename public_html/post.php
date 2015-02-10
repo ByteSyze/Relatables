@@ -355,7 +355,6 @@
 				while($statement->fetch())
 				{
 					$p_data['author'] = new User($p_data['uid']);
-					echo 'Username: ' . $p_data['author']->getUsername();
 					array_push($posts, new Post($p_data));
 				}
 			}
