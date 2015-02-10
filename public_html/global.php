@@ -119,7 +119,7 @@
 			
 			if($statement = $connection->prepare('INSERT INTO logs (message, uid, ip) VALUES ((?), (?), INET_ATON(?))'))
 			{
-				$statement->bind_param('sii', $message, $uid, $ip);
+				$statement->bind_param('sis', $message, $uid, $ip);
 				$statement->execute();
 			}
 		}
