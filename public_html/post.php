@@ -346,12 +346,12 @@
 			$posts = array();
 			$p_data = array();
 			
-			if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
+			if($statement = self::$connection->prepare("SELECT id, uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
 			{
 				$statement->bind_param('ii', $start, $count);
 				$statement->execute();
 				
-				$statement->bind_result($p_data['uid'],$p_data['verification'],$p_data['category'],$p_data['fdate'],$p_data['date_diff'],$p_data['alone'],$p_data['notalone'],$p_data['pending'],$p_data['submission'],$p_data['anonymous'],$p_data['comment_count'],$p_data['user_vote']);
+				$statement->bind_result($p_data['id'], $p_data['uid'],$p_data['verification'],$p_data['category'],$p_data['fdate'],$p_data['date_diff'],$p_data['alone'],$p_data['notalone'],$p_data['pending'],$p_data['submission'],$p_data['anonymous'],$p_data['comment_count'],$p_data['user_vote']);
 				
 				while($statement->fetch())
 				{
