@@ -77,7 +77,7 @@
 		
 		public function update()
 		{
-			$query = 'UPDATE accounts SET ';
+			/*$query = 'UPDATE accounts SET ';
 			$field_count = count($this->editted_fields);
 			$i = 0;
 			
@@ -105,6 +105,14 @@
 					
 				$statement->bind_param($data_types, ...$data);
 				$statement->execute();
+			}*/
+			
+			foreach($this->editted_fields as $editted_field => $data_type)
+			{
+				if($statement = self::$connection->prepare("UPDATE accounts SET $editted_field = (?) WHERE id=".$this->id))
+				{
+					$statement->bind_param($data_type, $this->$editted_field);
+				}
 			}
 			
 			$this->editted_fields = array();
