@@ -45,7 +45,7 @@
 		{
 			$_SESSION['id']=$id;
 			
-			GlobalUtils::log("$dbUser logged in", $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
+			GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 			
 			//Update their last login date and unique cookie login ID.
 			$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
@@ -60,7 +60,7 @@
 			die('0');
 		}
 		else
-			GlobalUtils::log("Someone failed to logged into '$dbUser'", $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
+			GlobalUtils::log("Someone failed to logged into '$dbUser'", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 			
 	}
 	else

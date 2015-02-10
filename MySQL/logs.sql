@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `logs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ip` int(11) NOT NULL DEFAULT '0',
+  `ip` varchar(45) COLLATE latin1_general_ci NOT NULL DEFAULT '',
   `uid` bigint(20) unsigned NOT NULL DEFAULT '0',
   `message` varchar(512) COLLATE latin1_general_ci NOT NULL,
   `logged` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
