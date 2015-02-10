@@ -51,10 +51,10 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`username`, `password`, `cookie_login`, `salt`, `id`, `joined`, `last_login`, `email`, `pending_email`, `country_id`, `description`, `mod_index`, `flags`) VALUES
-('Adam', '3ef5e37d06172b4871766d42ca3e719e', '$2y$10$tRa5V44hR3KRuori32gf/usOSfE629UKMMDgDKnivCOvmPwFie7d.', '<+\\Î^"çö©æ‚Á}`¿', 7, '2014-05-29 22:00:46', '2015-01-08 21:46:01', 'adamlupka17@gmail.com', '', 40, 'I am the founder of Relatablez.', 13, 1),
-('Insomniac10102', '670e7657d16133872f87163576168751', '$2y$10$wqwy3nhlX/nlVFZK96OwmOKvB9HBI1hwF/NtSzn/Wvntn/olZmCFq', 'êÔÝîZGørÁWÑ(G\0Éê', 1, '2014-01-21 10:21:44', '2015-01-12 05:05:00', 'tyhckt@yahoo.com', 'ins10102@gmail.com', 236, 'I am the lead developer of Relatablez. Welcome to my profile.', 8, 1),
-('Relatablez Staff', '', '', '', 0, '2014-01-19 05:00:00', '2014-08-08 03:37:40', 'Contact@Relatablez.com', '', -1, '', 0, 0);
+INSERT INTO `accounts` (`username`, `password`, `cookie_login`, `id`, `joined`, `last_login`, `email`, `pending_email`, `country_id`, `description`, `mod_index`, `flags`) VALUES
+('Adam', '3ef5e37d06172b4871766d42ca3e719e', '$2y$10$tRa5V44hR3KRuori32gf/usOSfE629UKMMDgDKnivCOvmPwFie7d.', 7, '2014-05-29 22:00:46', '2015-01-08 21:46:01', 'adamlupka17@gmail.com', '', 40, 'I am the founder of Relatablez.', 13, 1),
+('Insomniac10102', '670e7657d16133872f87163576168751', '$2y$10$wqwy3nhlX/nlVFZK96OwmOKvB9HBI1hwF/NtSzn/Wvntn/olZmCFq', 1, '2014-01-21 10:21:44', '2015-01-12 05:05:00', 'tyhckt@yahoo.com', 'ins10102@gmail.com', 236, 'I am the lead developer of Relatablez. Welcome to my profile.', 8, 1),
+('Relatablez Staff', '', '', 2, '2014-01-19 05:00:00', '2014-08-08 03:37:40', 'Contact@Relatablez.com', '', -1, '', 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
