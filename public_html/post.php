@@ -51,7 +51,7 @@
 					$id = func_get_arg(0);
 					$this->id = $id;
 					
-					if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid=" . $_SESSION['user']->getID() . " AND pid=(?)) FROM submissions WHERE id=(?)"))
+					if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=(?) AND rid=0), (SELECT alone FROM related WHERE uid=" . GlobalUtils::$user->getID() . " AND pid=(?)) FROM submissions WHERE id=(?)"))
 					{
 						$statement->bind_param('ii', $id, $id);
 						$statement->execute();
