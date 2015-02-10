@@ -34,7 +34,7 @@
 				<div class="boxes">
 					<?php $post->format(); ?>
 					<div class="box">
-						<span class="box-title">Comments (<span id='comment-count'><?php echo $post->total_comments; ?></span>)</span>
+						<span class="box-title">Comments (<span id='comment-count'><?php echo $post->getCommentCount(); ?></span>)</span>
 						<div class="box-content" id="comments">
 
 						</div>
