@@ -113,11 +113,11 @@
 			return self::REGISTER_SUCCESS;
 		}
 		
-		public static function log($message, $uid = 0, $ip = 0)
+		public static function log($message, $uid = 0, $ip = '127.0.0.1')
 		{
 			$connection = GlobalUtils::getConnection();
 			
-			if($statement = $connection->prepare('INSERT INTO logs (message, uid, ip) VALUES ((?), (?), (?))'))
+			if($statement = $connection->prepare('INSERT INTO logs (message, uid, ip) VALUES ((?), (?), INET_ATON(?))'))
 			{
 				$statement->bind_param('sii', $message, $uid, $ip);
 				$statement->execute();
