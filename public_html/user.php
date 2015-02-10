@@ -23,7 +23,7 @@
 		private $description;
 		private $mod_index = 0;
 		
-		private $flags;
+		private $flags = 0;
 		
 		private $post_count;
 		private $comment_count;
@@ -53,15 +53,14 @@
 			else
 			{
 				//Treat $data as ID
-				$id = $data;
 				
-				$this->id = $id;
+				$this->id = $data;
 				
-				if($id == 0) return; //0 is for users that aren't logged in.
+				if($data == 0) return; //0 is for users that aren't logged in.
 				
 				if($statement = self::$connection->prepare('SELECT username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
 				{	
-					$statement->bind_param('i', $id);
+					$statement->bind_param('i', $data);
 					
 					$statement->execute();
 					

@@ -209,6 +209,11 @@
 			return $this->user_vote;
 		}
 		
+		public function getAuthor()
+		{
+			return $this->author;
+		}
+		
 		private function calculateDateDifference()
 		{
 			if($this->date_diff/60/24/365 >= 1)
@@ -226,9 +231,10 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{
+			$author = $this->author;
 			
 			$format_date_diff = $this->calculateDateDifference();
-			$format_user = $this->anonymous ? 'Anonymous' : $this->author->getUsername();
+			$format_user = $this->anonymous ? 'Anonymous' : $author->getUsername();
 			
 			echo '<div class="box">';
 				echo '<div class="box-content">';
@@ -266,7 +272,7 @@
 							} else {
 								echo '<a class="user ';
 
-								if($this->author->isAdmin())
+								if($author->isAdmin())
 									echo 'admin';
 
 								echo '" href="/user/' . $format_user . '">' . $format_user . '</a>';
