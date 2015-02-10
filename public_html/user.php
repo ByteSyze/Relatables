@@ -11,7 +11,7 @@
 		private static $connection;
 		
 		private $id;
-		private $username;
+		private $username = 'Offline User';
 		private $password;
 		private $cookie_login;
 		private $verification;
