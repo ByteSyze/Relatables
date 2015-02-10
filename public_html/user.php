@@ -167,6 +167,11 @@
 			return $this->id;
 		}
 		
+		public function getJoined()
+		{
+			return $this->joined;
+		}
+		
 		public static function getIDFromUsername($username)
 		{	
 			if($statement = self::$connection->prepare('SELECT id FROM accounts WHERE username LIKE (?)'))

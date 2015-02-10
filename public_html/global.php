@@ -7,8 +7,6 @@
 	
 	if($_SESSION['id'] == null)
 		$_SESSION['id'] = 0;
-		
-	$user = new User($_SESSION['id']);
 	
 	class GlobalUtils
 	{
@@ -64,11 +62,6 @@
 				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>
 				</div>
 			</div>";
-		}
-		
-		public static function parseSubmission($submission)
-		{
-			$submission->format();
 		}
 		
 		public static function validateRegistrationCredentials($user, $email)
@@ -141,10 +134,10 @@
 		}
 	}
 	
-	GlobalUtils::$user = $user;
+	GlobalUtils::$user = new User($_SESSION['id']);
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
 	if($_SESSION['id'] != 0)
-		GlobalUtils::log($user->getUsername() . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
+		GlobalUtils::log(GlobalUtils::$user->getUsername() . ' accessed /'. $_SERVER["REQUEST_URI"], $_SESSION['id'], ip2long($_SERVER['REMOTE_ADDR']));
 ?>
