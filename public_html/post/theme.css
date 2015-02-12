@@ -26,6 +26,10 @@
   text-shadow: none;
 }
 
+.comment .comment-actions span:hover {
+  color: #525463;
+}
+
 .comment .muted {
   font-style: italic;
 }
