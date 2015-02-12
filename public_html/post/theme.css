@@ -19,6 +19,13 @@
   padding: 10px 0px;
 }
 
+.comment .comment-actions span {
+  display: inline-block;
+  margin-right: 10px;
+  color: #818496;
+  text-shadow: none;
+}
+
 .comment .muted {
   font-style: italic;
 }
@@ -51,4 +58,22 @@
 
 a.at.user {
   color: #354AA1;
+}
+
+.comment .vote {
+  width: 10px;
+  height: 10px;
+  background-position: 0 center; /* correct the sprite images */
+}
+
+.comment .vote:hover {
+  background-position: center center; /* correct the sprite images */
+}
+
+.comment .vote.upvote {
+  background: url("/images/icons/upvote.png");
+}
+
+.comment .vote.downvote {
+  background: url("/images/icons/downvote.png");
 }

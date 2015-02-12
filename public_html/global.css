@@ -419,6 +419,13 @@ ul.navigation-items li a img {
 
 .button.yellow-hover:hover {
 	background-color: #DFE620;
+  color: ;
+}
+
+.button.transparent {
+  background-color: transparent;
+  color: #818496;
+  text-shadow: none;
 }
 
 a.button {
