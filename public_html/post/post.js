@@ -34,7 +34,7 @@ $(document).ready(function()
 });
 $(document).on("click", "span[data-reply]", function()
 {
-	$(this).parent().after("<div class='reply'><textarea class='reply input-submit small'></textarea><button data-reply='"+$(this).attr("data-reply")+"' data-user='"+$(this).attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
+	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><button data-reply='"+$(this).attr("data-reply")+"' data-user='"+$(this).attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
 	$(this).removeAttr('data-reply');
 });
 $(document).on("click", "button[data-reply]", function()

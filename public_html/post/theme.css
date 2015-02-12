@@ -31,16 +31,24 @@
   color: #D84A4A;
 }
 
-.reply {
-  margin-left: 10px;
-  margin-top: 10px;
+.comment.reply {
+  margin-left: 15px;
 }
 
-.reply .input-submit {
+.comment .reply-input {
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.comment .reply-input .input-submit {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
-.reply .input-submit, .reply .button {
+.comment .reply-input .input-submit, .reply .button {
   vertical-align: bottom;
+}
+
+a.at.user {
+  color: #354AA1;
 }

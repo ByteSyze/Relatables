@@ -75,7 +75,7 @@
 				$rUserPos = strpos($comment, ' ');
 				$rUser = substr($comment, 0, $rUserPos);
 				$comment = substr($comment, $rUserPos, strlen($comment));
-				echo "<p><a href='http://www.relatablez.com/user/$rUser'>@$rUser</a> $comment</p>";
+				echo "<p><a class='at user' href='/user/$rUser'>@$rUser</a> $comment</p>";
 			}
 			else
 				echo "$comment";
@@ -97,6 +97,6 @@
 	if($remaining)
 	{
 		$show_index = $num_rows+$index;
-		echo "<div class='show'><span data-show='$show_index'>Show More</span></div>";
+		echo "<div class='show'><span data-show='$show_index'>Show More...</span></div>";
 	}
 	
