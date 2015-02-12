@@ -32,17 +32,17 @@
 }
 
 .comment.reply {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .comment .reply-input {
-  margin-left: 15px;
+  margin-left: 20px;
   margin-top: 15px;
 }
 
 .comment .reply-input .input-submit {
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 .comment .reply-input .input-submit, .reply .button {
