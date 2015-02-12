@@ -359,6 +359,11 @@ ul.navigation-items li a img {
 	font-size: 14px;
 }
 
+.button.smaller {
+  font-size: 13px;
+  padding: 6px 8px;
+}
+
 .button.large {
 	font-size: 18px;
 	padding: 12px 14px;
@@ -453,6 +458,11 @@ a.user.admin {
 .input-submit:focus {
   background-color: #fff;
   color: inherit;
+}
+
+.input-submit.small {
+  padding: 10px;
+  width: auto;
 }
 
 .input-submit::-webkit-input-placeholder {
