@@ -276,6 +276,11 @@ ul.navigation-items > li a img {
 	transition: background-color 0.2s ease-in-out;
 }
 
+span.padded {
+  display: block;
+  padding-bottom: 20px;
+}
+
 .box {
 	box-sizing: border-box;
 	border: solid 1px #DDDFEB;
@@ -441,6 +446,42 @@ a.user.admin {
 	color: #D84A4A;
 }
 
+form.vertical input, form.vertical button, form.vertical textarea {
+  display: block;
+  margin-bottom: 20px;
+}
+
+form input {
+  padding: 10px 20px;
+}
+
+form textarea {
+  padding: 20px;
+}
+
+form input[type="text"], form textarea {
+  border: solid 1px #DDDFEB;
+  outline: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width: 200px;
+
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+form input:focus, form textarea:focus {
+  border: solid 1px #CACCD9;
+}
+
+form input:last-child, form button:last-child, form textarea:last-child {
+  margin-bottom: 0px;
+}
+
 .input-submit {
   display: block;
   width: 100%;
@@ -469,7 +510,7 @@ a.user.admin {
 
 .input-submit.small {
   padding: 10px;
-  width: auto;
+  width: inherit;
 }
 
 .input-submit::-webkit-input-placeholder {
