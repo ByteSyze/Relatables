@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- Copyright (C) Tyler Hackett 2014 -->
+<?php
+  require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+?>
+<html>
+  <head>
+    <title>About Relatablez</title>
+      
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
+    <?php GlobalUtils::getCSS(); ?>
+  </head>
+  <body>
+    <?php 
+      include($_SERVER['DOCUMENT_ROOT'] . '/navigation.php');
+      include("aboutnav.php");
+    ?>
+    <?php GlobalUtils::getJS(); ?>  
+  </body>
+</html>
