@@ -213,12 +213,12 @@ ul.navigation-items:after {
   clear: both;
 }
 
-ul.navigation-items li {
+ul.navigation-items > li {
 	display: inline;
 	font-size: 16px;
 }
 
-ul.navigation-items li a {
+ul.navigation-items > li a {
 	display: inline-block;
 	height: 60px;
 	line-height: 60px;
@@ -236,11 +236,11 @@ ul.navigation-items li a {
 	transition: background-color 0.2s ease-in-out;
 }
 
-ul.navigation-items li a:hover {
+ul.navigation-items > li a:hover {
 	background: #3049B0;
 }
 
-ul.navigation-items li a img {
+ul.navigation-items > li a img {
 	height: 30px;
 	vertical-align: middle;
 }
