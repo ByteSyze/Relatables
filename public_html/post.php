@@ -322,6 +322,15 @@
 				return 'AND nsfw=0';
 		}
 		
+		//Convert a numerical code to MYSQL syntax for including reported posts.
+		public static function report2mysql($reported)
+		{
+			if($reported)
+				return '';
+			else
+				return 'AND reported < 1';
+		}
+		
 		/**
 		*	Returns an array of Posts.
 		*	The default parameters will grab the latest 20 non-NSFW posts from any category.
@@ -332,7 +341,7 @@
 		*	@param		$category	the specified category to filter posts by. The value will be passed to Post::cat2mysql()
 		*	@param		$nsfw		whether or not to include NSFW posts. This does not exclusively grab NSFW posts.
 		* */
-		public static function getPosts($index = 0, $count = 20, $order = 1, $category = 0, $nsfw = 0)
+		public static function getPosts($index = 0, $count = 20, $order = 1, $category = 0, $nsfw = 0, $reported = 0)
 		{
 			if(self::$connection == null)
 				self::$connection = GlobalUtils::getConnection();
@@ -342,11 +351,12 @@
 			$order 		= self::order2mysql($order);
 			$category 	= self::cat2mysql($category);
 			$nsfw 		= self::nsfw2mysql($nsfw);
+			$reported	= self::report2mysql($reported);
 			
 			$posts = array();
 			$p_data = array();
 			
-			if($statement = self::$connection->prepare("SELECT id, uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $order LIMIT ?, ?"))
+			if($statement = self::$connection->prepare("SELECT id, uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $reported $order LIMIT ?, ?"))
 			{
 				$statement->bind_param('ii', $start, $count);
 				$statement->execute();
