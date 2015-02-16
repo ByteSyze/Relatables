@@ -116,12 +116,25 @@ echo
 
 <div class="navigation-bar">
 	<div class="grid wrap wider no-gutters">
-		<div class="unit half">
+		<div class="pull-left">
 			<ul class="navigation-items">
 				<li><a href="/" class="logo"><img src='/images/icons/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a></li>
 				<li><a href="/moderate">Moderate</a></li>
 				<li><a id="about-button" href="">About &#9662;</a></li>
 			</ul>
+		</div>
+		<div class="pull-right">
+		<?php
+			echo '<ul class="navigation-items">';
+				if($_SESSION['username'] !== null) {
+					echo '<li><a class="showlogin">Log in</a></li>';
+					echo '<li><a class="showlogin">Log in</a></li>';
+				} else {
+					echo '<li><a class="showlogin">Log in</a></li>';
+					echo '<li><a data-signup-header="Sign Up">Sign up</a></li>';
+				}
+			echo '</ul>';
+		?>
 		</div>
 	</div>
 </div>
