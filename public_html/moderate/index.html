@@ -10,7 +10,7 @@
 		echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
 	}	
 	
-	$index = $user->getModerationIndex();
+	$index = GlobalUtils::$user->getModerationIndex();
 	
 	if($_POST['v'] !== null)
 	{
