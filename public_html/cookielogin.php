@@ -15,7 +15,6 @@
 
             $not_pending = 1;
 			
-			$statement->store_result();
 			$statement->bind_result($id, $dbUser, $dbPass, $not_pending);
 			$result = $statement->fetch();
 			
@@ -34,7 +33,5 @@
 			else
 				die('not_pending');
 		}
-		else
-			die($connection->error);
 	}
 ?>
