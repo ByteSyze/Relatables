@@ -18,11 +18,14 @@
 			
 			$statement->bind_result($verification, $uid);
 			
+			echo $verification . ' - ' . $uid;
+			
 			if($uid) //Assure the user exists
 			{
 				$user = new User($uid);
 				
 				$body = "Hey " . $user->getUsername() . ",\n\nYou are receiving this email because a request for password recovery has been made.\n\nPlease goto the link below to reset your password.\nhttp://www.relatablez.com/recover.php?v=$verification \n\nIf you didn't request password recovery, ignore this message.\n\nThanks,\nThe Relatablez Team";
+				$user->email('Password Recovery', $body);
 			}
 		}
 	}
