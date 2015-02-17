@@ -37,7 +37,7 @@
 			
 			if(!$uid)
 			{
-				$_SESSION['popup_msg'] = 'Invalid verification.'; //TODO do something with this
+				$_SESSION['error_msg'] = 'Invalid verification.'; //TODO do something with this
 				header('Location: http://www.relatablez.com/');
 			}
 			else
