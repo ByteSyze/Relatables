@@ -112,6 +112,7 @@
 				if($statement = self::$connection->prepare("UPDATE accounts SET $editted_field = (?) WHERE id=".$this->id))
 				{
 					$statement->bind_param($data_type, $this->$editted_field);
+					$statement->execute();
 				}
 			}
 			
@@ -208,7 +209,7 @@
 			if($hashed)
 				$this->password = $password;
 			else
-				$this->password = pass_hash($password, PASSWORD_DEFAULT);
+				$this->password = password_hash($password, PASSWORD_DEFAULT);
 				
 			$this->setEditted('password', self::TYPE_STRING);
 		}
@@ -315,6 +316,16 @@
 			$this->verification = $verification;
 			
 			$this->setEditted('verification', self::TYPE_STRING);
+		}
+		
+		public function getPostCount()
+		{
+			return $this->post_count;
+		}
+		
+		public function getCommentCount()
+		{
+			return $this->comment_count;
 		}
 		
 		function notify($message)

@@ -1,0 +1,33 @@
+<?php
+	
+	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+	
+	$uid = $_SESSION['recover_id'];
+	
+	if(!$uid)
+	{
+		$_SESSION['error_msg'] = 'You have not requested recovery.';
+		header('Location: http://www.relatablez.com/');
+		
+		die();
+	}
+	
+?>
+<!DOCTYPE html>
+<!-- Copyright (C) Tyler Hackett 2015-->
+<html>
+	<head>
+		<title>Recover Password</title>
+		
+		<?php 
+			GlobalUtils::getMeta();
+			GlobalUtils::getCSS();
+		?>
+		
+		<link rel="canonical" href="http://www.relatablez.com/">
+	</head>
+	<body>
+		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
+	</body>
+	<?php GlobalUtils::getJS(); ?>
+</html>
