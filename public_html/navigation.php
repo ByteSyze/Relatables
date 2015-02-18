@@ -40,12 +40,12 @@ echo
 "
 <div class='popup-shade'></div>
 <div class='popup' id='registerpopup'>
-	<button class='closebutton' data-register-hide=''></button><br>
+	<button class='button blue-hover smaller' data-register-hide=''>Close</button><br>
 	<h1 id='registerheader' class='popup-header'>Sign Up</h1>			
 	<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a href='javascript:hideRegister();showLogin();'>Log In</a></h6>
 	<div style='text-align:center;margin:auto;width:100%;'>
 		<div>
-			<form method='post' action='javascript:register();'>
+			<form method='post' action='javascript:register();' class='vertical'>
 				<table style='width:100%;'>
 					<tr>
 						<td><img src='/images/icons/question.png' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></td>
@@ -84,33 +84,21 @@ echo
 	</div>
 </div>
 
-<div class='popup' id='loginpopup'>
-	<button class='closebutton hidelogin'></button><br>
-	<h1 id='loginheader' class='popup-header'>Log In</h1>
-	<div style='text-align:center'>
-		<form method='POST' action='javascript:login();'>	
-			<table style='width:100%;'>
-				<tr>
-					<td><input id='login_user_input' class='textbox' type='text' name='u' placeholder='Username'><br><span id='login_user_log'></span></td>
-				</tr>
-				
-				<tr class='spacer'></tr>
-				
-				<tr>
-					<td><input id='login_pass_input' class='textbox' type='password' name='p' placeholder='Password'><br><span id='login_pass_log'></span></td>
-				</tr>
-				
-				<tr class='spacer'></tr>
-				
-				<tr>
-					<td><div><label style='bottom:0px;'>Remember me</label><input style='width:auto;height:auto;bottom:0px;' id='remember_input' type='checkbox' name='r' value='1' /></div></td>
-				</tr>
-			</table>
-			<input id='loginbutton' class='bigbluebutton' type='submit' value='Login'>
+	<div class='popup' id='loginpopup'>
+		<div class='buttons'>
+			<button class='closebutton hidelogin button blue-hover smaller'>Close</button>
+		</div>
+		<h1 class='popup-title'>Log in</h1>
+		<form class='vertical' method='post' action='javascript:login();'>
+			<input id='login_user_input' type='text' name='u' placeholder='Username'>
+			<input id='login_pass_input' type='text' name='p' placeholder='Password'>
+			<label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'>
+			<div calss='buttons'>
+				<button class='button blue-hover' type='submit'>Log in</button>
+			</div>
 		</form>
-	<label style='font-size:10px'>To recover password, click <a href='#passwordrecovery'>here</a></label>
+		<a href='#passwordrecovery'>Forgot password?</a>
 	</div>
-</div>
 ";
 ?>
 
