@@ -13,6 +13,7 @@
 	{
 		if($statement = $connection->prepare('SELECT verification, id FROM accounts WHERE email LIKE (?)'))
 		{
+			$email = '"'.$email.'"';
 			$statement->bind_param('s', $email);
 			$statement->execute();
 			
