@@ -318,6 +318,16 @@
 			$this->setEditted('verification', self::TYPE_STRING);
 		}
 		
+		public function getPostCount()
+		{
+			return $this->post_count;
+		}
+		
+		public function getCommentCount()
+		{
+			return $this->comment_count;
+		}
+		
 		function notify($message)
 		{
 			if($statement = self::$connection->prepare("INSERT INTO notifications (uid, message) VALUES (?,?)"))
