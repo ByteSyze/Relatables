@@ -1,7 +1,5 @@
 <?php
 	session_start();
-	
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
 	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
 	$bid = $_GET['id'];
@@ -27,31 +25,45 @@
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
 		<?php GlobalUtils::getCSS(); ?>
+		<link rel="stylesheet" type="text/css" href="../../theme.css">
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
-		<div id='main'>
-			<h1 class='header' id='article-title'><?php echo $title; ?></h1>
-			
-			<div id='article' class='content'>
-				<?php if($image != null) echo "<img id='article-image' src='$image' />"; ?>
-				<div id='article-content' >
-					<?php 	
-						$author = getUsername($connection, $uid);
-						
-						if(isAdmin($connection, $_SESSION['id'])) 
-							echo "<div style='float:right'><a href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='http://www.relatablez.com/blog/deleteblog.php?i=$bid'></a></div>"; 
-						
-						echo $content;
-					?>
-					<div id='footer'>
-						<span id='created'><?php echo $fCreated; ?></span>
-						<span id='author'>Written by <a href='http://www.relatablez.com/user/<?php echo $author; ?>/'><?php echo $author; ?></a></span>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="page-jumbo about-jumbo">
+      <div class="grid wrap">
+        <div class="unit whole">
+          <h1 class="page-title"><?php echo $title; ?></h1>
+          <?php
+						//$author = getUsername($connection, $uid);
+          ?>
+          <h2 class="page-description">by <a class="name" href="/user/username">username</a> on <?php echo $fCreated; ?></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid wrap">
+      <div class="unit whole">
+        <div class="boxes">
+        	<div class="box">
+        		<div class="box-content">
+								<div id='article' class='content'>
+									<?php if($image != null) echo "<img id='article-image' src='$image' />"; ?>
+									<div id='article-content' >
+										<?php 	
+											
+											if(isAdmin($connection, $_SESSION['id'])) 
+												echo "<div style='float:right'><a href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='http://www.relatablez.com/blog/deleteblog.php?i=$bid'></a></div>"; 
+											
+											echo $content;
+										?>
+									</div>
+								</div>
+							</div>
+	      		</div>
+	      	</div>
+	      </div>
+	    </div>
 		
 		<?php GlobalUtils::getJS(); ?>
 	</body>
