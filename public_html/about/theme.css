@@ -1,22 +1,3 @@
 .about-jumbo {
   margin-bottom: 20px;
 }
-
-.about-nav {
-
-}
-
-.about-nav a {
-  display: block;
-  margin-bottom: 10px;
-  padding: 15px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-.about-nav a:hover {
-  background: #F7F8FC;
-}
-.about-nav a:last-child {
-  margin-bottom: 0px;
-}

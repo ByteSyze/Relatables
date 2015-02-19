@@ -33,23 +33,22 @@
     </div>
 
     <div class="grid wrap wider">
-      <?php include "../aboutnav.php" ?>
-      <div class="unit three-fourths">
+      <div class="unit whole">
         <div class="boxes">
-              <?php
-  						$admin = false; // this needs to be fixed
-  						
-  						while($article = mysqli_fetch_array($articles))
-  						{
-                echo '<div class="box">';
-                echo '<div class="box-content">';
-  							if($admin)
-  								echo "<a class='edit-article' href='http://www.relatablez.com/blog/editblog.php?id={$article['id']}'>Edit</a>";
-  						  	echo "<div class='article'><h3>{$article['title']}</h3><span>{$article['fCreated']}</span><p>{$article['content']}</p></div><div class='footer-wrapper'><a href='/about/blog/article/{$article['id']}'>Read More</a></div>";
-                echo '</div>';
-                echo '</div>';
-  						}
-  					?>
+          <?php
+					$admin = false; // this needs to be fixed
+					
+					while($article = mysqli_fetch_array($articles))
+					{
+            echo '<div class="box">';
+            echo '<div class="box-content">';
+						if($admin)
+							echo "<a class='edit-article' href='http://www.relatablez.com/blog/editblog.php?id={$article['id']}'>Edit</a>";
+					  	echo "<div class='article'><h3>{$article['title']}</h3><span>{$article['fCreated']}</span><p>{$article['content']}</p></div><div class='footer-wrapper'><a href='/about/blog/article/{$article['id']}'>Read More</a></div>";
+            echo '</div>';
+            echo '</div>';
+					}
+				?>
         </div>
       </div>
     </div>    
