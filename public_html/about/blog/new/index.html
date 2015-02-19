@@ -1,7 +1,5 @@
 <?php
-	session_start();
-	
-	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+	require $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$connection = GlobalUtils::getConnection();
 		
@@ -15,7 +13,7 @@
 			$image_path = "/images/{$date['year']}/{$date['mon']}/{$date['mday']}";
 			$full_image_path = $_SERVER['DOCUMENT_ROOT'].$image_path;
 			
-			if(!is_dir($full_image_path))
+			if(!is_dir($full_image_path)) //Create the directory if it doesn't exist yet.
 				mkdir($full_image_path, 0777, true);
 			
 			$image_path .= '/'.$_FILES['image']['name'];
