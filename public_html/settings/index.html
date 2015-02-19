@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
 <?php
-	session_start();
+	require $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
-	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
-	
-	$data = getProfileSettings(GlobalUtils::getConnection(), $_SESSION['id']);
-	
-	if($data['description'] == null)
-		$data['description'] = "You have not set a description.";
+	if(GlobalUtils::$user->getDescription() == null)
+		$description = "You have not set a description.";
+	else
+		$description = htmlspecialchars(GlobalUtils::$user->getDescription());
 		
 	$page = $_GET['s'];
 	$pos = strpos($page,'/');
@@ -52,7 +49,6 @@
 				
 				if($settings == 1)
 				{
-					$description = htmlspecialchars($data['description']);
 					echo
 					"
 					<h3>Profile Settings</h3>
@@ -61,7 +57,7 @@
 						<table id='general-settings-table' class='settings-module'>
 							<tr>
 								<th class='settings-header'>Location</th>
-								<td><span id='location'>".$data['country']."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
+								<td><span id='location'>".GlobalUtils::$user->getCountry()."</span>"; include('locationdropdown.php'); getLocationDropdown($data['country_id']); echo "</td>
 								<td class='edit-button-wrapper'><a id='location-button' href='javascript:edit(\"location\");'>Edit</a></td>
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 							<tr>
@@ -74,10 +70,10 @@
 						<table id='showhide-settings-table' class='settings-module'>
 							<tr>
 								<th class='settings-header'>Related With</th>
-								<td class='show-hide-selector'><a "; if($data['hiderelated'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a "; if($data['hiderelated'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
+								<td class='show-hide-selector'><a "; if(GlobalUtils::$user->getHideRelated() == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a "; if(GlobalUtils::$user->getHideRelated() == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
 							<tr>
 								<th class='settings-header'>Location</th>
-								<td class='show-hide-selector'><a "; if($data['hidelocation'] == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a "; if($data['hidelocation'] == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
+								<td class='show-hide-selector'><a "; if(GlobalUtils::$user->getHideLocation() == 0) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a "; if(GlobalUtils::$user->getHideLocation() == 1) echo "class='selected'"; echo" href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
 						</table> 
 					</form>
 					";
@@ -91,7 +87,7 @@
 						<table id='general-settings-table' class='settings-module'>
 							<tr>
 								<th class='settings-header'>Username</th>
-								<td><span id='username'>".$_SESSION['username']."</span><input data-type='username' id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='".$_SESSION['username']."' style='display:none;'></input></td>
+								<td><span id='username'>".GlobalUtils::$user->getUsername()."</span><input data-type='username' id='username-input' name='username' onkeypress='keyPressed(this, event)' placeholder='".GlobalUtils::$user->getUsername()."' style='display:none;'></input></td>
 								<td class='edit-button-wrapper'><a id='username-button' href='javascript:edit(\"username\");'>Edit</a></td>
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /></td>
 							<tr>
@@ -111,7 +107,7 @@
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='renew_pass_verify_img' /></td>
 							<tr>
 								<th class='settings-header'>Email</th>
-								<td><span id='email'>".$data['email']."</span><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='".$data['email']."' style='display:none;'></input></td>
+								<td><span id='email'>".GlobalUtils::$user->getEmail()."</span><input data-type='email' id='email-input' name='email' onkeypress='keyPressed(this, event)' placeholder='".GlobalUtils::$user->getEmail()."' style='display:none;'></input></td>
 								<td class='edit-button-wrapper'><a id='email-button' href='javascript:edit(\"email\");'>Edit</a></td>
 								<td style='width:12px;'><img class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /></td>
 						</table> 
