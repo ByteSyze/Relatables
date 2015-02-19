@@ -35,7 +35,7 @@
 
 <?php
 
-if($_SESSION['username'] == null)
+if($_SESSION['id'] == null)
 echo
 "
 <div class='popup-shade'></div>
@@ -114,7 +114,7 @@ echo
 		<div class="pull-right">
 		<?php
 			echo '<ul class="navigation-items">';
-				if($_SESSION['username'] !== null) {
+				if($_SESSION['id'] !== null) {
 					echo '<li><a class="showlogin">Log in</a></li>';
 					echo '<li><a class="showlogin">Log in</a></li>';
 				} else {

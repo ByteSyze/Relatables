@@ -28,7 +28,6 @@
 		
 		$statement->execute();
 		
-		$statement->store_result();
 		$statement->bind_result($id, $dbUser, $dbPass, $email);
 		$result = $statement->fetch();
 		
