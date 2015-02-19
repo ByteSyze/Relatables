@@ -1,6 +1,5 @@
 <?php
-	session_start();
-	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+	require $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$bid = $_GET['id'];
 	$connection = GlobalUtils::getConnection();
@@ -13,6 +12,8 @@
 		$statement->bind_result($id, $uid, $title, $content, $image, $created, $deleted, $fCreated);
 		$statement->fetch();
 	}
+	
+	$author = new User($uid);
 ?>
 <!-- Copyright (C) Tyler Hackett 2014 -->
 <!DOCTYPE html>
@@ -34,10 +35,7 @@
       <div class="grid wrap">
         <div class="unit whole">
           <h1 class="page-title"><?php echo $title; ?></h1>
-          <?php
-						//$author = getUsername($connection, $uid);
-          ?>
-          <h2 class="page-description">by <a class="name" href="/user/username">username</a> on <?php echo $fCreated; ?></h2>
+          <h2 class="page-description">by <a class="name" href="/user/<?php echo $author->getUsername(); ?>"><?php echo $author->getUsername(); ?></a> on <?php echo $fCreated; ?></h2>
         </div>
       </div>
     </div>
@@ -52,7 +50,7 @@
 									<div id='article-content' >
 										<?php 	
 											
-											if(isAdmin($connection, $_SESSION['id'])) 
+											if(GlobalUtils::$user->isAdmin()) 
 												echo "<div style='float:right'><a href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='http://www.relatablez.com/blog/deleteblog.php?i=$bid'></a></div>"; 
 											
 											echo $content;
