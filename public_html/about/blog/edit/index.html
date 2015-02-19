@@ -1,12 +1,11 @@
 <?php
 	session_start();
 	
-	require($_SERVER['DOCUMENT_ROOT'] . '/userinfo.php');
-	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
+	require $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$connection = GlobalUtils::getConnection();
 	
-	if(!isAdmin($connection, $_SESSION['id']) || $_SESSION['username'] == null)
+	if(!GlobalUtils::$user->isAdmin() || $_SESSION['id'] == null)
 		header('Location: http://www.relatablez.com/404/');
 	else
 	{
