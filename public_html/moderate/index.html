@@ -4,11 +4,6 @@
 	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
 	$connection = GlobalUtils::getConnection();
-
-	if (mysqli_connect_errno())
-	{
-		echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
-	}	
 	
 	$index = GlobalUtils::$user->getModerationIndex();
 	
@@ -124,7 +119,7 @@
 		<script type='text/javascript'>
 			$('#help-open').click(function()
 			{
-				$('#help-popup').toggleClass('hidden');
+				$('#help-popup').toggle();
 			});	
 			$('#help-close').click(function()
 			{
