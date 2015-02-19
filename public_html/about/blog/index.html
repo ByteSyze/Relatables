@@ -18,35 +18,41 @@
 		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
 		<link rel="shortcut icon" href="../favicon.ico">
 		<?php GlobalUtils::getCSS(); ?>
+    <link rel="stylesheet" type="text/css" href="../theme.css">
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
-		<div id='main'>
-			<nav id='navigation'>
-				<a href='http://www.relatablez.com/blog/' class='selected'>Blog</a>
-				<a href='http://www.relatablez.com/FAQ/'>FAQ</a>
-				<a href='http://www.relatablez.com/privacy/'>Privacy</a>
-				<a href='http://www.relatablez.com/terms/'>Terms</a>
-			</nav>
+    <div class="page-jumbo about-jumbo">
+      <div class="grid wrap">
+        <div class="unit whole">
+          <h1 class="page-title">Relatablog</h1>
+          <h2 class="page-description">Stay up-to-date with Relatablez development</h2>
+        </div>
+      </div>
+    </div>
 
-			<div id='blog'>
-				<h1>Blog</h1>
-				<div id='content-wrapper'>
-					<?php
-						$admin = isAdmin($connection, $_SESSION['id']);
-						
-						while($article = mysqli_fetch_array($articles))
-						{
-							if($admin)
-								echo "<a class='edit-article' href='http://www.relatablez.com/blog/editblog.php?id={$article['id']}'>Edit</a>";
-							echo "<div class='article'><h3 style='color:#808080;'>{$article['title']}</h3><span>{$article['fCreated']}</span><p class='article-summary'>{$article['content']}</p></div><div class='footer-wrapper'><a href='http://www.relatablez.com/blog/article/{$article['id']}'>Read More</a></div><hr>\r\n";
-						}
-					?>
-				</div>
-			</div>
-		</div>
-		
+    <div class="grid wrap wider">
+      <?php include "../aboutnav.php" ?>
+      <div class="unit three-fourths">
+        <div class="boxes">
+              <?php
+  						$admin = false; // this needs to be fixed
+  						
+  						while($article = mysqli_fetch_array($articles))
+  						{
+                echo '<div class="box">';
+                echo '<div class="box-content">';
+  							if($admin)
+  								echo "<a class='edit-article' href='http://www.relatablez.com/blog/editblog.php?id={$article['id']}'>Edit</a>";
+  						  	echo "<div class='article'><h3>{$article['title']}</h3><span>{$article['fCreated']}</span><p>{$article['content']}</p></div><div class='footer-wrapper'><a href='/about/blog/article/{$article['id']}'>Read More</a></div>";
+                echo '</div>';
+                echo '</div>';
+  						}
+  					?>
+        </div>
+      </div>
+    </div>    
 		<?php GlobalUtils::getJS(); ?>
 	</body>
 </html>

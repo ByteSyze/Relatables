@@ -1,7 +1,15 @@
-
-      <nav id='navigation'>
-        <a href='http://www.relatablez.com/blog/'>Blog</a>
-        <a href='http://www.relatablez.com/FAQ/'>FAQ</a>
-        <a href='http://www.relatablez.com/privacy/' class='selected'>Privacy</a>
-        <a href='http://www.relatablez.com/terms/'>Terms</a>
-      </nav>
+<div class="unit one-fourth">
+  <div class="boxes">
+    <div class="box">
+      <div class="box-content">
+        <div class="about-nav">
+          <a href='/about/blog'>Blog</a>
+          <a href='/about/faq'>FAQ</a>
+          <a href='/about/privacy' class='selected'>Privacy</a>
+          <a href='/about/terms'>Terms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      

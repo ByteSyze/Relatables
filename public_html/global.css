@@ -289,6 +289,25 @@ span.padded {
   padding-bottom: 20px;
 }
 
+.page-jumbo {
+  margin-top: -10px; /* puts it at top */
+  padding: 80px 100px;
+  background: #1D2238;
+  color: #DFE3F7;
+  text-shadow: 0px 1px #161A2B;
+}
+
+.page-jumbo h1.page-title {
+  margin: 0;
+}
+
+.page-jumbo h2.page-description {
+  font-size: 120%;
+  margin: 0;
+  margin-top: 20px;
+  color: #8F95B3; 
+}
+
 .box {
 	box-sizing: border-box;
 	border: solid 1px #DDDFEB;

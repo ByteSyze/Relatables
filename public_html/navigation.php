@@ -108,7 +108,7 @@ echo
 			<ul class="navigation-items">
 				<li><a href="/" class="logo"><img src='/images/icons/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a></li>
 				<li><a href="/moderate">Moderate</a></li>
-				<li><a id="about-button" href="">About &#9662;</a></li>
+				<li><a href="/about">About</a></li>
 			</ul>
 		</div>
 		<div class="pull-right">

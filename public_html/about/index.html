@@ -14,17 +14,23 @@
   <body>
     <?php 
       include($_SERVER['DOCUMENT_ROOT'] . '/navigation.php');
-      // include("aboutnav.php");
     ?>
+    <div class="page-jumbo about-jumbo">
+      <div class="grid wrap">
+        <div class="unit whole">
+          <h1 class="page-title">About Relatablez</h1>
+        </div>
+      </div>
+    </div>
 
     <div class="grid wrap wider">
-      <div class="unit full">
-        <div class="about-content">
-          <div class="about-header">
-            <h1>About Relatablez</h1>
-          </div>
-          <div class="about-body">
-            Relatablez is...
+      <?php include "aboutnav.php" ?>
+      <div class="unit three-fourths">
+        <div class="boxes">
+          <div class="box">
+            <div class="box-content">
+              Relatablez is...
+            </div>
           </div>
         </div>
      </div>

@@ -1,15 +1,7 @@
-.moderate-jumbo {
-	margin-top: -10px; /* puts it at top */
-	padding: 80px 100px;
-	background: #1D2238;
-	color: #DFE3F7;
-	text-shadow: 0px 1px #161A2B;
-}
-
 .moderate-jumbo h1 {
-	text-align: center;
-	margin: 0;
-	margin-bottom: 40px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 40px;
 }
 
 .moderate-post {
