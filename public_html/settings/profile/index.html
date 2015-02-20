@@ -26,36 +26,42 @@
 	</head>
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
-		
-		<div id='settings-wrapper'>
-			<div id='left-panel'>
-				<a href='http://www.relatablez.com/settings/profile' class='selected'>Profile</a>
-				<br>
-				<a href='http://www.relatablez.com/settings/account'>Account</a>
-			</div>			
-			<div id='general-settings'>
-				<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
-					<input type='hidden' name='t' value='profile' />
-					<table id='general-settings-table' class='settings-module'>
-						<tr>
-							<th class='settings-header'>Location</th>
-							<td><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
-							<td class='marker'></td>
-						<tr>
-							<th class='settings-header'>Description<br><span id='desc_char_counter'>(<?php echo (130-strlen($fDescription)); ?> characters left)</span></th>
-							<td><textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);' <?php if($fDescription == null) echo 'placeholder=\'You have not set a description.\''; ?> ><?php if($fDescription != null) echo $fDescription; ?></textarea></td>
-							<td class='marker'></td>
-					</table> 
-					<table id='showhide-settings-table' class='settings-module'>
-						<tr>
-							<th class='settings-header'>Related With</th>
-							<td class='show-hide-selector'><a <?php if(GlobalUtils::$user->getHideRelated() == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a <?php if(GlobalUtils::$user->getHideRelated() == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
-						<tr>
-							<th class='settings-header'>Location</th>
-							<td class='show-hide-selector'><a <?php if(GlobalUtils::$user->getHideLocation() == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if(GlobalUtils::$user->getHideLocation() == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
-					</table>
-					<input id='save-button' type='submit' value='Save Settings' />
-				</form>
+    <div class="page-jumbo">
+      <div class="grid wrap">
+        <div class="unit whole">
+          <h1 class="page-title">Profile Settings</h1>
+        </div>
+      </div>
+    </div>
+		<div class="grid wrap wider">
+			<?php include "../settingsnav.php" ?>
+			<div class="unit three-fourths">
+				<div class="box">
+					<div class="box-content">
+						<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php'>
+							<input type='hidden' name='t' value='profile' />
+							<table id='general-settings-table' class='settings-module'>
+								<tr>
+									<th class='settings-header'>Location</th>
+									<td><?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?></td>
+									<td class='marker'></td>
+								<tr>
+									<th class='settings-header'>Description<br><span id='desc_char_counter'>(<?php echo (130-strlen($fDescription)); ?> characters left)</span></th>
+									<td><textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);' <?php if($fDescription == null) echo 'placeholder=\'You have not set a description.\''; ?> ><?php if($fDescription != null) echo $fDescription; ?></textarea></td>
+									<td class='marker'></td>
+							</table> 
+							<table id='showhide-settings-table' class='settings-module'>
+								<tr>
+									<th class='settings-header'>Related With</th>
+									<td class='show-hide-selector'><a <?php if(GlobalUtils::$user->getHideRelated() == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=related'>Show</a> <a <?php if(GlobalUtils::$user->getHideRelated() == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=related'>Hide</a></td>
+								<tr>
+									<th class='settings-header'>Location</th>
+									<td class='show-hide-selector'><a <?php if(GlobalUtils::$user->getHideLocation() == 0) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if(GlobalUtils::$user->getHideLocation() == 1) echo "class='selected'"; ?> href='http://www.relatablez.com/showhide.php?t=hide&amp;d=location'>Hide</a></td>
+							</table>
+							<input id='save-button' type='submit' value='Save Settings' />
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		

@@ -1,135 +1,14 @@
-#settings-wrapper
-{
-	position:relative;
-	top:70px;
-	margin:auto;
-	width:1100px;
-	margin-top:40px;
+.settings-nav a {
+  display: block;
+  margin-bottom: 10px;
+  padding: 15px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
-#left-panel
-{
-	float:left;
+.settings-nav a:hover {
+  background: #F7F8FC;
 }
-#general-settings
-{
-	position:relative;
-	margin:auto;
-	width:700px;
-}
-#location-form select
-{
-	width:100%;
-}
-#description-form textarea
-{
-	width:100%;
-	background-color:#F7F7F7;
-	border:none;
-	resize:none;
-	font:15px arial;
-}
-#verification
-{
-	position:relative;
-	margin:auto;
-	width:400px;
-	display:none;
-}
-#delete-account-popup
-{
-	display:none;
-	width:220px;
-	height:100px;
-	background-color:white;
-	text-align:center;
-	z-index:2;
-	padding:15px;
-	border-radius:5px;
-	border:1px solid #BFBFBF;
-	position:fixed;
-	left:calc(50% - 135px); /*Subtract half of width + padding.*/
-	top:calc(50% - 75px); /*Subtract half of height + padding.*/
-}
-#save-button
-{
-	float:right;
-	width:100px;
-	margin-top:10px;
-	color:white;
-	background-color:#0067B1;
-	border:none;
-	cursor:pointer;
-}
-#delete-button
-{
-	position:relative;
-	top:10px;
-}
-.dialoguebutton
-{
-	padding-top:3px;
-	padding-bottom:3px;
-	margin-top:4px;
-	border:1px solid gray;
-	background-color:#bfbfbf;
-	border:none;
-	border-radius:4px;
-	width:105px;
-	height:30px;
-	font-size:15px;
-	color:white;
-	cursor:pointer;
-}
-.dialoguebutton:hover
-{
-	color:#3c5a98;
-}
-a.selected
-{
-	color:#2654a8;
-}
-th.settings-header
-{
-	text-align:left;
-	width:180px;
-	color:#808080;
-}
-td.show-hide-selector
-{
-	text-align:right;
-}
-td.marker
-{
-	width:15px;
-}
-table.settings-module
-{
-	background-color:white;
-	border-radius:5px;
-	border:1px solid #BFBFBF;
-	padding:15px;
-	width:100%;
-	margin-top:30px;
-}
-td
-{
-	height:29px;
-}
-input
-{
-	width:100%;
-	height:25px;
-	border-radius:4px;
-	border:1px solid #bfbfbf;
-}
-select
-{
-	width:100%;
-}
-textarea
-{
-	width:100%;
-	border:none;
-	resize:none;
-	font:15px arial;
+.settings-nav a:last-child {
+  margin-bottom: 0px;
 }

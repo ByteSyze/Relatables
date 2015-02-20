@@ -25,47 +25,55 @@
 	<body>
 	
 		<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
-		
-		<div id='settings-wrapper'>
-			<div id='left-panel'>					
-				<a href='http://www.relatablez.com/settings/profile'>Profile</a><br><a href='http://www.relatablez.com/settings/account' class='selected'>Account</a>
-			</div>			
-			<div id='general-settings'>
-				<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php' >
-					<table id='general-settings-table' class='settings-module'>
-						<input type='hidden' name='t' value='account' />
-						<tr>
-							<th class='settings-header'>Username</th>
-							<td><input id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>'></input></td>
-							<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></td> 
-						<tr>
-							<th class='settings-header' style='text-align:right;'>Current Password</th>
-							<td><input id='currentpass_input' type='password' name='oldpassword' autocomplete='off' /></td>
-							<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='currentpass_verify_img' /><div class='popup-offset'><div class='error-popup' id='current-password-popup'></div></div></td>
-						<tr id='newpassword'>
-							<th class='settings-header' style='text-align:right;'>New Password</th>
-							<td><input id='pass_input' type='password' name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' /></td>
-							<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='pass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></td>
-						<tr id='renewpassword'>
-							<th class='settings-header' style='text-align:right;'>Retype New Password</th>
-							<td><input id='repass_input' type='password' name='renewpassword' onkeyup='verifyRePassword()'  autocomplete='off' /></td>
-							<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></td>
-						<tr>
-							<th class='settings-header'>Email</th>
-							<td><input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>'></input></td>
-							<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></td>
-					</table> 
-				</form>		
-				<a id='delete-button' href='javascript:showDeletePopup()'>Delete Account</a>
-				<button id='save-button' type='button' onclick='saveSettings(document.getElementById("settings-form"));'>Save Settings</button>
-				
-				<div id='delete-account-popup'>
-					<h2>Delete account?</h2>
-					<form method='POST' action='http://www.relatablez.com/update.php'>
-						<input type='hidden' name='t' value='delete'>
-						<input class='dialoguebutton' style='float:left' type='submit' value='Confirm'>
-						<input class='dialoguebutton' style='float:right' type='button' value='Cancel' onclick='hideDeletePopup()'>
-					</form>
+    <div class="page-jumbo">
+      <div class="grid wrap">
+        <div class="unit whole">
+          <h1 class="page-title">Profile Settings</h1>
+        </div>
+      </div>
+    </div>
+		<div class="grid wrap wider">
+			<?php include "../settingsnav.php" ?>
+			<div class="unit three-fourths">
+				<div class="box">
+					<div class="box-content">
+						<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php' >
+							<table id='general-settings-table' class='settings-module'>
+								<input type='hidden' name='t' value='account' />
+								<tr>
+									<th class='settings-header'>Username</th>
+									<td><input id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>'></input></td>
+									<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></td> 
+								<tr>
+									<th class='settings-header' style='text-align:right;'>Current Password</th>
+									<td><input id='currentpass_input' type='password' name='oldpassword' autocomplete='off' /></td>
+									<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='currentpass_verify_img' /><div class='popup-offset'><div class='error-popup' id='current-password-popup'></div></div></td>
+								<tr id='newpassword'>
+									<th class='settings-header' style='text-align:right;'>New Password</th>
+									<td><input id='pass_input' type='password' name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' /></td>
+									<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='pass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></td>
+								<tr id='renewpassword'>
+									<th class='settings-header' style='text-align:right;'>Retype New Password</th>
+									<td><input id='repass_input' type='password' name='renewpassword' onkeyup='verifyRePassword()'  autocomplete='off' /></td>
+									<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></td>
+								<tr>
+									<th class='settings-header'>Email</th>
+									<td><input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>'></input></td>
+									<td class='marker'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></td>
+							</table> 
+						</form>		
+						<a id='delete-button' href='javascript:showDeletePopup()'>Delete Account</a>
+						<button id='save-button' type='button' onclick='saveSettings(document.getElementById("settings-form"));'>Save Settings</button>
+						
+						<div id='delete-account-popup'>
+							<h2>Delete account?</h2>
+							<form method='POST' action='http://www.relatablez.com/update.php'>
+								<input type='hidden' name='t' value='delete'>
+								<input class='dialoguebutton' style='float:left' type='submit' value='Confirm'>
+								<input class='dialoguebutton' style='float:right' type='button' value='Cancel' onclick='hideDeletePopup()'>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
