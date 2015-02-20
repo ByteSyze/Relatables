@@ -11,31 +11,3 @@
 .filter label {
   font-weight: bold;
 }
-
-.filter select {
-	background: transparent;
-  outline: none;
-	border: solid 1px transparent;
-	color: #777A8F;
-  font-size: 100%;
-  padding: 3px 5px;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-
-.filter select:hover, .filter select:active {
-  background-color: #E9EAF2;
-  border-color: #DDDFEB;
-}

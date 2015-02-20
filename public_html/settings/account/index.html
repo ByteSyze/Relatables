@@ -35,7 +35,7 @@
 			<div class="unit three-fourths">
 				<div class="box">
 					<div class="box-content">
-						<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php' class="vertical">
+						<form id='settings-form' method='POST' action='/update.php' class="vertical">
 							<input type='hidden' name='t' value='account' />
 							<label for="">Username <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='http://www.relatablez.com/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></label>
 							<input type="text" id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>'></input>
