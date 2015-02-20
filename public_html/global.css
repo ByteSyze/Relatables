@@ -496,6 +496,12 @@ form.vertical input, form.vertical button, form.vertical textarea {
   margin-bottom: 20px;
 }
 
+form.vertical label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 form input {
   padding: 10px 20px;
 }
@@ -504,7 +510,7 @@ form textarea {
   padding: 20px;
 }
 
-form input[type="text"], form textarea {
+form input[type="text"], form input[type="password"], form textarea {
   border: solid 1px #DDDFEB;
   outline: none;
   -webkit-border-radius: 3px;
