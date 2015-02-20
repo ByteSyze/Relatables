@@ -250,6 +250,12 @@ ul.navigation-items > li a img {
 	vertical-align: middle;
 }
 
+ul.navigation-items img.notifications-icon {
+}
+
+ul.navigation-items img.profile-icon {
+}
+
 .popup {
 	background-color: #fff;
 	position: fixed;

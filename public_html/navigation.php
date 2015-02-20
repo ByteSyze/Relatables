@@ -115,8 +115,8 @@ echo
 		<?php
 			echo '<ul class="navigation-items">';
 				if($_SESSION['id'] !== null) {
-					echo '<li><a class="showlogin">Log in</a></li>';
-					echo '<li><a class="showlogin">Log in</a></li>';
+					echo '<li><a href="#"><img src="/images/icons/notification_icon.png" class="notifications-icon"></a></li>';
+					echo '<li><a href="#"><img src="/images/icons/profile_icon.png" class="profile-icon"></a></li>';
 				} else {
 					echo '<li><a class="showlogin">Log in</a></li>';
 					echo '<li><a data-signup-header="Sign Up">Sign up</a></li>';
