@@ -328,6 +328,18 @@
 			return $this->comment_count;
 		}
 		
+		public function getEmail()
+		{
+			return $this->email;
+		}
+		
+		public function setEmail($email)
+		{
+			$this->email = $email;
+			
+			$this->setEditted('email', self::TYPE_STRING);
+		}
+		
 		function notify($message)
 		{
 			if($statement = self::$connection->prepare("INSERT INTO notifications (uid, message) VALUES (?,?)"))
