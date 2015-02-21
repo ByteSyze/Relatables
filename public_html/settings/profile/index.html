@@ -5,7 +5,7 @@
 	
 	require($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 	
-	if($_SESSION['id'] === null)
+	if($_SESSION['id'] == null)
 	{
 		header('Location: http://www.relatablez.com/');
 		exit;

@@ -114,7 +114,7 @@ echo
 		<div class="pull-right">
 		<?php
 			echo '<ul class="navigation-items">';
-				if($_SESSION['id'] !== null) {
+				if($_SESSION['id'] != null) {
 					echo '<li><a href="#"><div class="icon notifications-icon"></div></a></li>';
 					echo '<li><a href="#"><div class="icon profile-icon"></div></a></li>';
 				} else {
