@@ -334,6 +334,10 @@ span.padded {
 	-moz-border-radius: 3px;
 	background: #fff;
 }
+.box.transparent {
+  border: none;
+  background: transparent;
+}
 
 .box-title {
 	display: block;
