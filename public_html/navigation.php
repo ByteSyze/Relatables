@@ -88,16 +88,17 @@ echo
 		<div class='buttons'>
 			<button class='closebutton hidelogin button blue-hover smaller'>Close</button>
 		</div>
-		<h1 class='popup-title'>Log in</h1>
+		<h1 class='popup-title blue'>Log in</h1>
+		<span class='popup-small'>If you don't have an account, <a>Sign up</a></span>
 		<form class='vertical' method='post' action='javascript:login();'>
 			<input id='login_user_input' type='text' name='u' placeholder='Username'>
 			<input id='login_pass_input' type='text' name='p' placeholder='Password'>
 			<label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'>
-			<div calss='buttons'>
-				<button class='button blue-hover' type='submit'>Log in</button>
+			<div class='buttons padded align-center'>
+				<button class='button blue-hover block' type='submit'>Log in</button>
 			</div>
 		</form>
-		<a href='#passwordrecovery'>Forgot password?</a>
+		<a class='forgot-password' href='#passwordrecovery'>Forgot password?</a>
 	</div>
 ";
 ?>

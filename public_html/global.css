@@ -58,6 +58,11 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.block {
+  display: block;
+  width: 100%;
+}
+
 /*
  * Gridism
  * A simple, responsive, and handy CSS grid by @cobyism
@@ -286,6 +291,17 @@ ul.navigation-items div.profile-icon {
   text-align: center;
 }
 
+.popup h1.popup-title.blue {
+  color: #4a66d8;
+}
+
+.popup span.popup-small {
+  display: block;
+  text-align: center;
+  font-size: 85%;
+  margin-bottom: 20px;
+}
+
 .popup-shade {
 	z-index: 100;
 	position: fixed;
@@ -299,6 +315,12 @@ ul.navigation-items div.profile-icon {
 	-ms-transition: background-color 0.2s ease-in-out;
 	-o-transition: background-color 0.2s ease-in-out;
 	transition: background-color 0.2s ease-in-out;
+}
+
+a.forgot-password {
+  display: block;
+  text-align: center;
+  padding-top: 20px;
 }
 
 span.padded {
@@ -499,13 +521,15 @@ a.user.admin {
 	color: #D84A4A;
 }
 
-form.vertical input, form.vertical button, form.vertical textarea, form.vertical select {
+form.vertical input[type="text"],
+form.vertical input[type="password"],
+form.vertical button, form.vertical textarea,
+form.vertical select {
   display: block;
   margin-bottom: 20px;
 }
 
 form.vertical label {
-  display: block;
   font-weight: bold;
   margin-bottom: 10px;
 }
