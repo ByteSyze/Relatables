@@ -263,7 +263,7 @@
 							}
 
 							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . '>No, me too!</button>';
-							echo '<button class="button small ' . $button_no_classes . '" ' . $button_no_meta . '>No, me too!</button>';
+							echo '<button class="button small ' . $button_no_classes . '" ' . $button_no_meta . '>You\'re alone</button>';
 							echo '<a href="/post/' . $this->id . '" class="button small">' . $this->comment_count . '</a>';
 
 						echo '</div>';
