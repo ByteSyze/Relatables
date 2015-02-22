@@ -380,6 +380,10 @@ span.padded {
 	font-size: 0px;
 }
 
+.buttons.padded {
+  padding-top: 20px;
+}
+
 .buttons .button {
 	margin-right: 10px;
 }
