@@ -3,7 +3,7 @@
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
-	if($_SESSION['username'] == null)
+	if($_SESSION['id'] == null)
 		die('1');
 	
 	$pid 	 = $_POST['p'];

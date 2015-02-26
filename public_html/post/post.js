@@ -6,7 +6,7 @@ $('#comment-submit-button').click(function()
 	
 	if((comment.length <= 140) && (comment.length > 0))
 	{
-		$.post('http://www.relatablez.com/comment.php', {p: pid, c: comment, r: 0}, function(result)
+		$.post('/comment.php', {p: pid, c: comment, r: 0}, function(result)
 		{
 			if(result != 0)
 			{
