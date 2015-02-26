@@ -24,6 +24,7 @@
   margin-right: 10px;
   color: #818496;
   text-shadow: none;
+  cursor:pointer;
 }
 
 .comment .comment-actions span:hover {

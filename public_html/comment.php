@@ -26,8 +26,6 @@
 		$statement->bind_param('isii',$pid, $comment, $_SESSION['id'], $rid);
 		$statement->execute();
 		
-		$comment = htmlspecialchars($comment);
-		
 		if($rid != 0)
 		{
 			notify($connection, 0, getId($connection, $rUser), "Reply from ".$_SESSION['username'], "<a href='http://www.relatablez.com/post/$pid'>Reply from $_SESSION[username]</a>.");
