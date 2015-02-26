@@ -65,19 +65,19 @@ a.at.user {
 }
 
 .comment .vote {
-  width: 10px;
-  height: 10px;
-  background-position: 0 center; /* correct the sprite images */
+  width: 13px;
+  height: 9px;
+  background-position: top;
 }
 
 .comment .vote:hover {
-  background-position: center center; /* correct the sprite images */
+  background-position: bottom;
 }
 
 .comment .vote.upvote {
-  background: url("/images/icons/upvote.png");
+  background-image: url("/images/icons/upvote.png");
 }
 
 .comment .vote.downvote {
-  background: url("/images/icons/downvote.png");
+  background-image: url("/images/icons/downvote.png");
 }
