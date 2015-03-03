@@ -483,6 +483,7 @@ $('body').on('click', function(event)
 });
 
 $('.showlogin').click(function(){showLogin();});
-$('.hidelogin').click(function(){hideLogin();});
 $('[data-signup-header]').click(function(){showRegister($(this)[0]);});
+
 $('[data-signup-hide]').click(function(){hideRegister();});
+$('.popup .buttons > button').click(function(){$(this).parent().parent().hide();});
