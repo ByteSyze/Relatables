@@ -40,7 +40,9 @@ echo
 "
 <div class='popup-shade'></div>
 <div class='popup' id='registerpopup'>
-	<button class='button blue-hover smaller' data-register-hide=''>Close</button><br>
+	<div class='buttons'>
+		<button class='button blue-hover smaller' >Close</button>
+	</div>
 	<h1 id='registerheader' class='popup-header'>Sign Up</h1>			
 	<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a href='javascript:hideRegister();showLogin();'>Log In</a></h6>
 	<div style='text-align:center;margin:auto;width:100%;'>
@@ -86,7 +88,7 @@ echo
 
 <div class='popup' id='loginpopup'>
 	<div class='buttons'>
-		<button class='closebutton hidelogin button blue-hover smaller'>Close</button>
+		<button class='button blue-hover smaller'>Close</button>
 	</div>
 	<h1 class='popup-title blue'>Log in</h1>
 	<span class='popup-small'>If you don't have an account, <a>Sign up</a></span>
@@ -103,13 +105,13 @@ echo
 
 <div class='popup' id='pwrecoverypopup'>
 	<div class='buttons'>
-		<button class='closebutton hidelogin button blue-hover smaller'>Close</button>
+		<button class='button blue-hover smaller'>Close</button>
 	</div>
 	<h1 class='popup-title blue'>Recover Password</h1>
 	<form class='vertical' method='post' action='/recover.php'>
 		<input type='text' name='e' placeholder='Email'>
 		<div class='buttons padded align-center'>
-			<button class='button blue-hover block' type='submit'>Send Email</button>
+			<button class='button blue-hover block' type='submit'>Send Recovery Email</button>
 		</div>
 	</form>
 </div>
