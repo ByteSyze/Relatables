@@ -484,5 +484,5 @@ $('body').on('click', function(event)
 
 $('.showlogin').click(function(){showLogin();});
 $('.hidelogin').click(function(){hideLogin();});
-$('[data-register-header]').click(function(){showRegister($(this)[0]);});
-$('[data-register-hide]').click(function(){hideRegister();});
+$('[data-signup-header]').click(function(){showRegister($(this)[0]);});
+$('[data-signup-hide]').click(function(){hideRegister();});
