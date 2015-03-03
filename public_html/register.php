@@ -12,6 +12,7 @@
 	// stupid and gonna get what they deserve. End of.
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
 	if(!isset($_POST["password"]))
 		echo "password not set";
@@ -29,17 +30,15 @@
 	if($isValidCredentials !== GlobalUtils::REGISTER_SUCCESS)
 		die $isValidCredentials;
 	
-	$salt = mcrypt_create_iv(16); // Create a new salt for this user
+	$pass_hash = password_hash($pass, PASSWORD_DEFAULT); // Create password hash using MD5
 	
-	$pass_hash = md5($pass . $salt); // Create password hash using MD5
-	
-	if($statement = $connection->prepare("INSERT INTO accounts (username, password, salt, last_login, pending_email) VALUES (?,?,?,NOW(),?)"))
+	if($statement = $connection->prepare("INSERT INTO accounts (username, password, last_login, pending_email) VALUES (?,?,?,NOW(),?)"))
 	{
 		$statement->bind_param("ssss",$user, $pass_hash, $salt, $email);
 		
 		if($statement->execute())
 		{
-			$uid = getId($user);
+			$uid = $connection->insert_id;
 		
 			$from = "From: Relatablez <noreply@relatablez.com>";
 			$to = $email;
@@ -51,7 +50,4 @@
 			die("success");
 		}
 	}
-	else
-		echo mysqli_error($connection);
-
 ?>
