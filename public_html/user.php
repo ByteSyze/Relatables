@@ -19,6 +19,7 @@
 		private $last_login;
 		private $email;
 		private $pending_email;
+		private $country_id;
 		private $country;
 		private $description;
 		private $mod_index = 0;
@@ -40,13 +41,13 @@
 			if(is_string($data))
 			{
 				//Treat $data as username
-				if($statement = self::$connection->prepare('SELECT id, username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE username LIKE (?)'))
+				if($statement = self::$connection->prepare('SELECT id, username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, country_id, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE username LIKE (?)'))
 				{	
 					$statement->bind_param('s', $data);
 					
 					$statement->execute();
 					
-					$statement->bind_result($this->id, $this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
+					$statement->bind_result($this->id, $this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country_id, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
 					$statement->fetch();
 				}	
 			}
@@ -146,12 +147,22 @@
 				$statement->execute();
 			}	
 		}
+		
+		public function getCountryId()
+		{
+			return $this->country_id;
+		}
+		
+		public function setCountryId($cid)
+		{
+			$this->country_id = $cid;
+			$this->setEditted('country_id', self::TYPE_INT);
+		}
 			
 		public function getCountry()
 		{
 			return $this->country;
 		}	
-		
 		
 		public function getPassword()
 		{

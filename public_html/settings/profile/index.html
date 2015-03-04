@@ -41,7 +41,7 @@
 						<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php' class="vertical">
 							<input type='hidden' name='t' value='profile' />
 							<label>Location</label>
-							<?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown($data['country_id']); ?>
+							<?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown(GlobalUtils::$user->getCountryId()); ?>
 
 							<label for="">Description <span id='desc_char_counter'>(<?php echo (130-strlen($fDescription)); ?> characters left)</span></label>
 							<textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);' <?php if($fDescription == null) echo 'placeholder=\'You have not set a description.\''; ?> ><?php if($fDescription != null) echo $fDescription; ?></textarea>
