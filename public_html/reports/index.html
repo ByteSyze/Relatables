@@ -40,7 +40,7 @@
 						<?php
 							while($comment = $reported_comments->fetch_array())
 							{
-								echo "<tr><td><a href='http://www.relatablez.com/post/{$comment['pid']}#{$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
+								echo "<tr><td><a href='/post/{$comment['pid']}#{$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
 							}
 						?>
 					</table>
@@ -53,7 +53,7 @@
 						<?php
 							while($post = $reported_posts->fetch_array())
 							{
-								echo "<tr><td><a href='http://www.relatablez.com/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}<td class='but' data-sreport='{$post['id']}'>Delete<td class='but' data-skeep='{$post['id']}'>Keep";
+								echo "<tr><td><a href='/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}<td class='but' data-sreport='{$post['id']}'>Delete<td class='but' data-skeep='{$post['id']}'>Keep";
 							}
 						?>
 					</table>
