@@ -49,7 +49,7 @@
 				echo ", $keyword";
 			echo "'>";
 			echo "\r\n<meta name='description' content='$description'>";
-			echo "\r\n<link rel='shortcut icon' href='images/icons/favicon.ico'>";
+			echo "\r\n<link rel='shortcut icon' href='/images/icons/favicon.ico'>";
 		}
 		
 		public static function getShareButton($url, $text)

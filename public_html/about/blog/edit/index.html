@@ -61,11 +61,12 @@
 	<head>
 		<title>Relatablez - New Article</title>
 		
-		<meta charset="UTF-8">
-		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
-		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
-		<link rel="shortcut icon" href="../favicon.ico">
-		<?php GlobalUtils::getCSS(); ?>
+		
+		<?php
+			GlobalUtils::getMeta();
+			GlobalUtils::getCSS();
+		?>
+		
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
