@@ -30,7 +30,7 @@
 		if($rid != 0)
 			echo "<div class='comment reply' id='c$cid' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$rid'>";
 		else
-			echo "<div class='comment' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
+			echo "<div class='comment' id='c$cid' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
 			
 		if($user == $_SESSION['username'] && !$deleted)
 			echo "<button data-delete class='delete'></button>";
