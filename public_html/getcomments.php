@@ -28,7 +28,7 @@
 	while($statement->fetch())
 	{
 		if($rid != 0)
-			echo "<div class='comment reply' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$rid'>";
+			echo "<div class='comment reply' id='c$cid' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$rid'>";
 		else
 			echo "<div class='comment' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
 			
