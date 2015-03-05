@@ -239,6 +239,7 @@
 		public function incModerationindex()
 		{
 			$this->mod_index+=1;
+			$this->setEditted('mod_index', self::TYPE_INT);
 		}
 		
 		public function getDescription()

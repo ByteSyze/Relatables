@@ -43,12 +43,14 @@
 						$nsfw_mysql_code = ',nsfw=nsfw+1';
 						
 					mysqli_query($connection, "UPDATE submissions SET notalone=notalone+1 $nsfw_mysql_code WHERE id=" . $submission['id']);
-					incModerationIndex($connection, $_SESSION['id']);
+					GlobalUtils::$user->incModerationIndex();
+					GlobalUtils::$user->update();
 				}
 				else if($_POST['v'] === 'No')
 				{
 					mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
-					incModerationIndex($connection, $_SESSION['id']);
+					GlobalUtils::$user->incModerationIndex();
+					GlobalUtils::$user->update();
 				}
 			}
 		}
