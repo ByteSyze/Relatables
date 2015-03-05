@@ -55,7 +55,7 @@
 									<?php
 										while($comment = $reported_comments->fetch_array())
 										{
-											echo "<tr><td><a href='http://www.relatablez.com/post/{$comment['pid']}#c{$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
+											echo "<tr><td><a href='/post/{$comment['pid']}#c{$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
 										}
 									?>
 								</table>
