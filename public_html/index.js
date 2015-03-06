@@ -155,7 +155,7 @@ $(document).ready(function()
 		$('#posts').append(data);
 	});
 	
-	var start_page = 4 * Math.floor(page/4);
+	var start_page = 8 * Math.floor(page/8);
 
 	for(var i = start_page; i < start_page+8; i++)
 	{
