@@ -414,6 +414,10 @@ span.padded {
 	margin-right: 20px;
 }
 
+.page-buttons {
+	display:inline;
+}
+
 .button {
 	display: inline-block;
 	background: #CCCED9;
