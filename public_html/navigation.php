@@ -7,8 +7,7 @@
 	{
 		if(isset($_COOKIE["rrm"]))
 		{
-			include($_SERVER['DOCUMENT_ROOT']."/cookielogin.php");
-			
+			include $_SERVER['DOCUMENT_ROOT'] . '/cookielogin.php';
 			login($_COOKIE['rrm']);
 		}
 	}
@@ -143,11 +142,3 @@ echo
 	</div>
 </div>
 <div class="navigation-spacer"></div>
-
-<!-- <div class='infobarwrapper'>
-	<div class='infobar'>
-		<div id='infobar'>
-			<a href='http://www.relatablez.com/FAQ'>FAQ</a> <a href='http://www.relatablez.com/privacy'>Privacy</a> <a href='mailto:contact@relatablez.com' title='Contact@Relatablez.com'>Contact</a> Relatablez &copy; 2014
-		</div>
-	</div>
-</div>-->

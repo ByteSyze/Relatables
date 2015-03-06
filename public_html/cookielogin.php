@@ -20,7 +20,6 @@
 			
 			if($statement->num_rows && $not_pending)
 			{
-				$_SESSION['username']=$dbUser;
 				$_SESSION['id']=$id;
 					
 				//Update their last login date and unique cookie login ID.
