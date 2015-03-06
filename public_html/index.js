@@ -160,9 +160,9 @@ $(document).ready(function()
 	for(var i = start_page; i < start_page+8; i++)
 	{
 		if(i === page)
-			$('.page-buttons').append("<span class='button blue'>" + i+1 + "</span>");
+			$('.page-buttons').append("<span class='button blue'>" + (i+1) + "</span>");
 		else
-			$('.page-buttons').append("<span class='button blue-hover'>" + i+1 + "</span>");
+			$('.page-buttons').append("<span class='button blue-hover'>" + (i+1) + "</span>");
 	}
 });
  
