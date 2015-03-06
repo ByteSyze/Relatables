@@ -155,14 +155,14 @@ $(document).ready(function()
 		$('#posts').append(data);
 	});
 	
-	var start_page = 4 * Math.floor(page/4) + 1;
+	var start_page = 4 * Math.floor(page/4);
 
 	for(var i = start_page; i < start_page+8; i++)
 	{
 		if(i === page)
-			$('.page-buttons').append("<span class='button blue'>" + i + "</span>");
+			$('.page-buttons').append("<span class='button blue'>" + i+1 + "</span>");
 		else
-			$('.page-buttons').append("<span class='button blue-hover'>" + i + "</span>");
+			$('.page-buttons').append("<span class='button blue-hover'>" + i+1 + "</span>");
 	}
 });
  
