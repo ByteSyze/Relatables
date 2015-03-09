@@ -64,7 +64,7 @@ $('body').on('click', '[data-p]', function()
 
 $('#prev').click(function()
 {
-	if(page > 1)
+	if(page > 0)
 	{
 		page -= 1;
 		paginate();
