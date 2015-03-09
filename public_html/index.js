@@ -41,6 +41,26 @@ $('body').on('click','[data-share-button]',function()
 		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
+$('#sort, #display, #category, #nsfw').change(function(){
+ var nsfw;
+ if($('#nsfw').val() === 'on'){
+  nsfw = 1;
+ }
+ else{
+  nsfw = 0;
+ }
+
+$.post('/getposts.php', {s:0, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
+
+ 
+ $('#posts').empty();
+ $('#posts').append(data);
+
+});
+ 
+});
+	
+
 function vote(id, vote, v)
 {
 	var notAloneEl  = document.getElementById('na'+id);
