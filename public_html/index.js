@@ -202,7 +202,7 @@ function paginate()
 	
 	for(var i = page_start-1; i < page_start+7; i++)
 	{
-		if(i > 0)
+		if(i >= 0)
 		{
 			if(i === page)
 				$('.page-buttons').append("<span data-p='" + i + "' class='button blue'>" + (i+1) + "</span>");
