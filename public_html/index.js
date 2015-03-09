@@ -41,25 +41,41 @@ $('body').on('click','[data-share-button]',function()
 		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
-$('#sort, #display, #category, #nsfw').change(function(){
- var nsfw;
- if($('#nsfw').val() === 'on'){
-  nsfw = 1;
- }
- else{
-  nsfw = 0;
- }
+$('#sort, #display, #category, #nsfw').change(function()
+{
+	var nsfw;
 
-$.post('/getposts.php', {s:0, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
+	if($('#nsfw').val() === 'on')
+		nsfw = 1;
+	else
+		nsfw = 0;
 
- 
- $('#posts').empty();
- $('#posts').append(data);
-
+	$.post('/getposts.php', {s:0, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
+		$('#posts').empty();
+		$('#posts').append(data);
+	});
 });
- 
+
+$('body').on('click', '[data-p]', function()
+{
+	page = parseInt($(this).attr('data-p')); 
+	paginate();
 });
-	
+
+$('#prev').click(function()
+{
+	if(page > 1)
+	{
+		page -= 1;
+		paginate();
+	}
+});
+
+$('#next').click(function()
+{
+	page += 1;
+	paginate();
+});
 
 function vote(id, vote, v)
 {
@@ -175,14 +191,24 @@ $(document).ready(function()
 		$('#posts').append(data);
 	});
 	
-	var start_page = 8 * Math.floor(page/8);
-
-	for(var i = start_page; i < start_page+8; i++)
-	{
-		if(i === page)
-			$('.page-buttons').append("<span class='button blue'>" + (i+1) + "</span>");
-		else
-			$('.page-buttons').append("<span class='button blue-hover'>" + (i+1) + "</span>");
-	}
+	paginate();
 });
+
+function paginate()
+{
+	var page_start = 6 * Math.floor(page/6);
+	
+	$('.page-buttons').empty();
+	
+	for(var i = page_start-1; i < page_start+7; i++)
+	{
+		if(i > 0)
+		{
+			if(i === page)
+				$('.page-buttons').append("<span data-p='" + i + "' class='button blue'>" + (i+1) + "</span>");
+			else
+				$('.page-buttons').append("<span data-p='" + i + "' class='button blue-hover'>" + (i+1) + "</span>");
+		}
+	}
+}
  
