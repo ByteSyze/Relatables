@@ -9,7 +9,7 @@
 	$category 	= $_POST['c'];
 	$nsfw		= $_POST['n'];
 	
-	$posts = Post::getPosts($start, $count, $order, $category, $nsfw);
+	$posts = Post::getPosts($start*$count, $count, $order, $category, $nsfw);
 	
 	foreach($posts as $post)
 		$post->format();

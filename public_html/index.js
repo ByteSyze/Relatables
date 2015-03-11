@@ -50,7 +50,7 @@ $('#sort, #display, #category, #nsfw').change(function()
 	else
 		nsfw = 0;
 
-	$.post('/getposts.php', {s:0, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
+	$.post('/getposts.php', {s:page, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
 		$('#posts').empty();
 		$('#posts').append(data);
 	});
