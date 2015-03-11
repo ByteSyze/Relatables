@@ -43,17 +43,6 @@ $('body').on('click','[data-share-button]',function()
 
 $('#sort, #display, #category, #nsfw').change(function()
 {
-	var nsfw;
-
-	if($('#nsfw').val() === 'on')
-		nsfw = 1;
-	else
-		nsfw = 0;
-
-	$.post('/getposts.php', {s:page, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
-		$('#posts').empty();
-		$('#posts').append(data);
-	});
 });
 
 $('body').on('click', '[data-p]', function()
@@ -74,6 +63,39 @@ $('#prev').click(function()
 $('#next').click(function()
 {
 	page += 1;
+	paginate();
+});
+
+$( "body" ).on( "click", "#submit_form", function() {
+
+	submission = $("#submission").val();
+	$( "#submission-wrapper" ).append("");
+	category = $("#submit_category").val();
+	$a = $('#anonymous');
+	chk = $a[0].checked;
+	if(chk === true){
+		anonymous = 1;
+	}
+	else{
+		anonymous = 0;
+	}
+	objData = {s: submission, c: category, a: anonymous };
+	objData = validate_data(objData);
+	if(objData){
+		$.post( "/submit.php",objData,function( res ) {
+			if(res == '0')
+		 		$( "#submission-wrapper" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-wrapper" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");});
+			else if(res ==	'1')
+				$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
+			else if(res == '2')
+				$("submit_category").css("box-shadow", "0px 0px 5px #DD0000");
+		});
+	}
+    return false;
+});
+
+$(document).ready(function()
+{
 	paginate();
 });
 
@@ -136,34 +158,6 @@ function showSubmissionGuidelines()
 	$('#submission-wrapper').animate({height: "260px"}, 1000);
 }
 
-$( "body" ).on( "click", "#submit_form", function() {
-
-	submission = $("#submission").val();
-	$( "#submission-wrapper" ).append("");
-	category = $("#submit_category").val();
-	$a = $('#anonymous');
-	chk = $a[0].checked;
-	if(chk === true){
-		anonymous = 1;
-	}
-	else{
-		anonymous = 0;
-	}
-	objData = {s: submission, c: category, a: anonymous };
-	objData = validate_data(objData);
-	if(objData){
-		$.post( "/submit.php",objData,function( res ) {
-			if(res == '0')
-		 		$( "#submission-wrapper" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-wrapper" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");});
-			else if(res ==	'1')
-				$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
-			else if(res == '2')
-				$("submit_category").css("box-shadow", "0px 0px 5px #DD0000");
-		});
-	}
-    return false;
-});
-
 function validate_data(objData){
 	s = objData.s;
 	c = objData.c;
@@ -184,16 +178,6 @@ function validate_data(objData){
 	return objData;
 }
 
-$(document).ready(function()
-{
-	$.post('/getposts.php', {o:1, c:0, n:0, s:subIndex, x:subCount}, function(data)
-	{
-		$('#posts').append(data);
-	});
-	
-	paginate();
-});
-
 function paginate()
 {
 	var page_start = 6 * Math.floor(page/6);
@@ -210,5 +194,22 @@ function paginate()
 				$('.page-buttons').append("<span data-p='" + i + "' class='button blue-hover'>" + (i+1) + "</span>");
 		}
 	}
+	
+	updatePosts();
+}
+
+function updatePosts()
+{
+	var nsfw;
+
+	if($('#nsfw').val() === 'on')
+		nsfw = 1;
+	else
+		nsfw = 0;
+
+	$.post('/getposts.php', {s:page, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
+		$('#posts').empty();
+		$('#posts').append(data);
+	});
 }
  
