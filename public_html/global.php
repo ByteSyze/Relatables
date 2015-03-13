@@ -55,7 +55,7 @@
 		public static function getShareButton($url, $text)
 		{
 			echo "
-			<div class='share-button' data-share-button=''>Share &raquo;</div>
+			<button class='button small blue-hover' data-share-button=''>Share</button>
 				<div class='share-wrapper'><div class='share-links'>
 				<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>
 				<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>
