@@ -202,7 +202,7 @@ function updatePosts()
 {
 	var nsfw;
 
-	if($('#nsfw').val() === 'on')
+	if($('#nsfw').prop('checked'))
 		nsfw = 1;
 	else
 		nsfw = 0;
