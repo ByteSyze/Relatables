@@ -99,7 +99,7 @@
 			
 			if($statement = $connection->prepare("SELECT id FROM accounts WHERE email LIKE (?)"))
 			{
-				$statement->bind_param("s",$email);
+				$statement->bind_param("s", str_replace("@", "&#64;", $email));
 				
 				$statement->execute();
 				

@@ -13,8 +13,7 @@
 	{
 		if($statement = $connection->prepare('SELECT verification, id FROM accounts WHERE email LIKE (?)'))
 		{
-			$email = '"'.$email.'"';
-			$statement->bind_param('s', $email);
+			$statement->bind_param('s', str_replace("@", "&#64;", $email));
 			$statement->execute();
 			
 			$statement->bind_result($verification, $uid);

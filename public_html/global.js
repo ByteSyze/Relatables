@@ -10,8 +10,6 @@ var currentPass 		 = document.getElementById('currentpass_input');
 var currentPassVerifyImg = document.getElementById('currentpass_verify_img');
 var email 				 = document.getElementById('email_input');
 var emailVerifyImg 		 = document.getElementById('email_verify_img');
-var reEmail 			 = document.getElementById('reemail_input');
-var reEmailVerifyImg 	 = document.getElementById('reemail_verify_img');
 
 var rememberEl 			 = document.getElementById('remember_input');
 
@@ -459,26 +457,21 @@ $('body').on('click', function(event)
 	if(event.target === $('#notification-button')[0] || event.target.parentNode === $('#notification-button')[0])
 	{
 		$('#notification-dropdown').toggle();
-		$('#profile-dropdown').hide();
-		$('#about-dropdown').hide();
+		$('#profile-dropdown, #about-dropdown').hide();
 	}
 	else if(event.target === $('#profile-button')[0] || event.target.parentNode === $('#profile-button')[0])
 	{
 		$('#profile-dropdown').toggle();
-		$('#notification-dropdown').hide();
-		$('#about-dropdown').hide();
+		$('#notification-dropdown, #about-dropdown').hide();
 	}
 	else if(event.target === $('#about-button')[0] || event.target.parentNode === $('#about-button')[0])
 	{
 		$('#about-dropdown').toggle();
-		$('#profile-dropdown').hide();
-		$('#notification-dropdown').hide();
+		$('#profile-dropdown, #notification-dropdown').hide();
 	}
 	else
 	{
-		$('#notification-dropdown').hide();
-		$('#profile-dropdown').hide();
-		$('#about-dropdown').hide();
+		$('#notification-dropdown, #profile-dropdown,#about-dropdown').hide();
 	}
 });
 

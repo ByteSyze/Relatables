@@ -34,7 +34,7 @@
 	
 	if($statement = $connection->prepare("INSERT INTO accounts (username, password, last_login, pending_email) VALUES (?,?,NOW(),?)"))
 	{
-		$statement->bind_param("sss", $user, $pass_hash, $email);
+		$statement->bind_param("sss", $user, $pass_hash, str_replace("@", "&#64;", $email));
 		
 		if($statement->execute())
 		{
