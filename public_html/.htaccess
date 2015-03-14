@@ -1,18 +1,9 @@
-
 # DO NOT REMOVE THIS LINE AND THE LINES BELOW PWPROTECTID:ubymuNaTuz
 AuthType Basic
 AuthName "Restricted Access"
 AuthUserFile /home/u683362690/public_html//.htpasswd
-Require user reltest
+#Require user reltest
 # DO NOT REMOVE THIS LINE AND THE LINES ABOVE ubymuNaTuz:PWPROTECTID
-
-
-# DO NOT REMOVE THIS LINE AND THE LINES BELOW PWPROTECTID:uBeXujyDas
-AuthType Basic
-AuthName "Restricted Access"
-AuthUserFile /home/u683362690/public_html//.htpasswd
-Require user relteam
-# DO NOT REMOVE THIS LINE AND THE LINES ABOVE uBeXujyDas:PWPROTECTID
 
 RewriteEngine On
 
@@ -26,7 +17,7 @@ RewriteRule ^user/(.*)$ user/index.html?username=$1 [QSA]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
-RewriteRule ^blog/article/(.*)$ blog/article/index.html?id=$1 [QSA]
+RewriteRule ^about/blog/article/(.*)$ blog/article/index.html?id=$1 [QSA]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
