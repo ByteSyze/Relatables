@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `joined` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_login` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `email` varchar(256) NOT NULL,
-  `pending_email` varchar(32) NOT NULL,
+  `pending_email` varchar(256) NOT NULL,
   `country_id` int(5) NOT NULL DEFAULT '-1',
   `description` varchar(130) NOT NULL,
   `mod_index` int(10) unsigned NOT NULL DEFAULT '0',

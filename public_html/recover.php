@@ -4,7 +4,6 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$email 	= $_GET['e']; //TODO change back to POST once testing is over.
-	echo $email;
 	
 	$verification = $_GET['v'];
 	
@@ -14,14 +13,11 @@
 	{
 		if($statement = $connection->prepare('SELECT verification, id FROM accounts WHERE email LIKE (?)'))
 		{
-			$email = str_replace("@", "&#64;", $email);
 			$statement->bind_param('s', $email);
 			$statement->execute();
 			
 			$statement->bind_result($verification, $uid);
 			$statement->fetch();
-			
-			echo $verification . ' - ' . $uid;
 			
 			if($uid) //Assure the user exists
 			{

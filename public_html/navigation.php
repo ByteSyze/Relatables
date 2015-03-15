@@ -115,6 +115,20 @@ echo
 	</form>
 </div>
 ";
+
+if($_SESSION['error_msg'])
+{
+	$error = $_SESSION['error_msg'];
+	unset($_SESSION['error_msg']);
+	
+	echo "
+<div class='popup' id='errorpopup'>
+	<div class='buttons'>
+		<button class='button blue-hover smaller'>Close</button>
+	</div>
+	<h1 class='popup-title blue'>Oops!<br><br>$error</h1>
+</div>";
+}
 ?>
 
 <div class="navigation-bar">
