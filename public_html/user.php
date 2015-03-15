@@ -342,12 +342,12 @@
 		
 		public function getEmail()
 		{
-			return str_replace("&#64;", "@", $this->email);
+			return $this->email;
 		}
 		
 		public function setEmail($email)
 		{
-			$this->email = str_replace("@", "&#64;", $email);
+			$this->email = $email;
 			
 			$this->setEditted('email', self::TYPE_STRING);
 		}

@@ -4,6 +4,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$email 	= $_GET['e']; //TODO change back to POST once testing is over.
+	echo $email;
 	
 	$verification = $_GET['v'];
 	
@@ -18,6 +19,7 @@
 			$statement->execute();
 			
 			$statement->bind_result($verification, $uid);
+			$statement->fetch();
 			
 			echo $verification . ' - ' . $uid;
 			
