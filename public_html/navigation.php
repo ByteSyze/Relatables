@@ -116,13 +116,14 @@ echo
 </div>
 ";
 
+//Display any error message.
 if($_SESSION['error_msg'])
 {
 	$error = $_SESSION['error_msg'];
 	unset($_SESSION['error_msg']);
 	
 	echo "
-<div class='popup' id='errorpopup'>
+<div class='popup' style='display:block;' id='errorpopup'>
 	<div class='buttons'>
 		<button class='button blue-hover smaller'>Close</button>
 	</div>

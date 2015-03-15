@@ -40,13 +40,18 @@
 			if(!$uid)
 			{
 				$_SESSION['error_msg'] = 'Invalid verification.'; //TODO do something with this
-				header('Location: http://www.relatablez.com/');
+				header('Location: /');
 			}
 			else
 			{
 				$_SESSION['recover_uid'] = $uid;
-				header('Location: http://www.relatablez.com/recover/');
+				header('Location: /recover/');
 			}
 		}
+	}
+	else
+	{
+		$_SESSION['error_msg'] = "Something went wrong.";
+		header('Location: /');
 	}
 	
