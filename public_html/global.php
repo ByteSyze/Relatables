@@ -16,6 +16,11 @@
 		const REGISTER_TAKEN_EMAIL		= 4;
 		const REGISTER_SUCCESS			= 5;
 		
+		const DATATYPE_STRNUM			= "";			//Strings or numbers
+		const DATATYPE_STRING			= "string";		//Just Strings
+		const DATATYPE_NUMBER			= "number";		//Just numbers
+		const DATATYPE_ALLDATA			= "everything"; //Any data whatsoever
+		
 		public static $user;
 	
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
@@ -111,6 +116,13 @@
 				}
 			}
 			return self::REGISTER_SUCCESS;
+		}
+		
+		public static function filter($data, $datatype = "everything")
+		{
+			$data = AntiXSS::setEncoding($data, "UTF-8");
+			
+			return AntiXSS::whitelistFilter($data, $datatype);
 		}
 		
 		public static function log($message, $uid = 0, $ip = '127.0.0.1')
