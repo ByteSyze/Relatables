@@ -46,6 +46,7 @@
 			$statement->execute();
 			
 			$statement->bind_result($verification_hash);
+			$statement->fetch();
 			
 			if(!password_verify($verifcation, $verification_hash))
 			{
