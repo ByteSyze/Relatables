@@ -6,7 +6,9 @@
 	
 	$email 	= $_GET['e']; //TODO change back to POST once testing is over.
 	
-	$verification = $_GET['v'];
+	/**UID and Verification for email linky clicky thingy*/
+	$uid			= $_GET['i'];
+	$verification 	= $_GET['v'];
 	
 	$connection = GlobalUtils::getConnection();
 	
@@ -24,10 +26,10 @@
 			{
 				$user = new User($uid);
 				
-				$verification 		= md5(openssl_random_pseudo_bytes(256, $crypto_strong));
+				$verification 		= md5(openssl_random_pseudo_bytes(128, $crypto_strong));
 				$verification_hash 	= password_hash($verification, PASSWORD_DEFAULT);
 				
-				$body = "Hey " . $user->getUsername() . ",\n\nYou are receiving this email because a request for password recovery has been made.\n\nPlease goto the link below to reset your password.\nhttp://www.relatablez.com/recover.php?v=$verification \n\nIf you didn't request password recovery, ignore this message.\n\nThanks,\nThe Relatablez Team";
+				$body = "Hey " . $user->getUsername() . ",\n\nYou are receiving this email because a request for password recovery has been made.\n\nPlease goto the link below to reset your password.\nhttp://www.relatablez.com/recover.php?v=$verification&i=$uid \n\nIf you didn't request password recovery, ignore this message.\n\nThanks,\nThe Relatablez Team";
 				
 				$user->setVerification($verification_hash);
 				$user->update();
@@ -36,22 +38,23 @@
 			}
 		}
 	}
-	else if($verification) //If verification is provided, attempt to verify the password recovery and send user to the password reset page.
+	else if($verification && $uid) //If verification and uid is provided, attempt to verify the password recovery and send user to the password reset page.
 	{
-		if($statement = $connection->prepare('SELECT id FROM accounts WHERE verification=(?)'))
+		if($statement = $connection->prepare('SELECT verification FROM accounts WHERE id=(?)'))
 		{
-			$statement->bind_param('s', $verification);
+			$statement->bind_param('i', $uid);
 			$statement->execute();
 			
-			$statement->bind_result($uid);
+			$statement->bind_result($verification_hash);
 			
-			if(!$uid)
+			if(!password_verify($verifcation, $verification_hash))
 			{
-				$_SESSION['error_msg'] = 'Invalid verification.'; //TODO do something with this
+				$_SESSION['error_msg'] = 'Invalid verification.';
 				header('Location: /');
 			}
 			else
-			{
+			{ 
+				//Recover UID temporarily stores the verified user ID until a password new password is chosen on /recover/
 				$_SESSION['recover_uid'] = $uid;
 				header('Location: /recover/');
 			}
