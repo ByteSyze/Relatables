@@ -450,6 +450,17 @@ function hideAllDropdowns()
 	$('#about-dropdown').hide();
 }
 
+function createPopup(message)
+{
+	$(document).append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div><h1 class='popup-title blue'>" + message + "</h1></div>");
+}
+
+$('#pwrecoveryform').submit(function()
+{
+	$.post('/recover.php', {e: $(this).first().val()}, function(){ createPopup('An email has been sent to your email address.'); });
+	return false;
+});
+
 $(document).ready(function(){hideAllDropdowns();});
 
 $('body').on('click', function(event)

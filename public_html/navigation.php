@@ -107,7 +107,7 @@ echo
 		<button class='button blue-hover smaller'>Close</button>
 	</div>
 	<h1 class='popup-title blue'>Recover Password</h1>
-	<form class='vertical' method='post' action='/recover.php'>
+	<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
 		<input type='text' name='e' placeholder='Email'>
 		<div class='buttons padded align-center'>
 			<button class='button blue-hover block' type='submit'>Send Recovery Email</button>
@@ -137,7 +137,7 @@ if($_SESSION['popup_msg'])
 	unset($_SESSION['popup_msg']);
 	
 	echo "
-<div class='popup' style='display:block;' id='errorpopup'>
+<div class='popup' style='display:block;'>
 	<div class='buttons'>
 		<button class='button blue-hover smaller'>Close</button>
 	</div>
