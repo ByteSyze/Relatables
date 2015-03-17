@@ -29,7 +29,7 @@
 				$verification 		= md5(openssl_random_pseudo_bytes(128, $crypto_strong));
 				$verification_hash 	= password_hash($verification, PASSWORD_DEFAULT);
 				
-				$body = "Hey " . $user->getUsername() . ",\n\nYou are receiving this email because a request for password recovery has been made.\n\nPlease goto the link below to reset your password.\nhttp://www.relatablez.com/recover.php?v=$verification&i=$uid \n\nIf you didn't request password recovery, ignore this message.\n\nThanks,\nThe Relatablez Team";
+				$body = "Hey " . $user->getUsername() . ",\n\nYou are receiving this email because you have requested to reset your password.\n\nPlease click the link below to reset your password.\nhttp://www.relatablez.com/recover.php?v=$verification&i=$uid \n\nIf you didn’t request this change, please ignore this message.\n\nThanks,\nThe Relatablez Team";
 				
 				$user->setVerification($verification_hash);
 				$user->update();
