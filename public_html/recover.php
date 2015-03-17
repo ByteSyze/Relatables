@@ -40,24 +40,33 @@
 	}
 	else if($verification && $uid) //If verification and uid is provided, attempt to verify the password recovery and send user to the password reset page.
 	{
-		if($statement = $connection->prepare('SELECT verification FROM accounts WHERE id=(?)'))
+		if($uid == $_SESSION['recover_uid'])
+		{ 
+			//Recover UID temporarily stores the verified user ID until a password new password is chosen on /recover/
+			$_SESSION['recover_uid'] = $uid;
+			header('Location: /recover/');
+		}
+		else
 		{
-			$statement->bind_param('i', $uid);
-			$statement->execute();
-			
-			$statement->bind_result($verification_hash);
-			$statement->fetch();
-			
-			if(!password_verify($verification, $verification_hash))
+			if($statement = $connection->prepare('SELECT verification FROM accounts WHERE id=(?)'))
 			{
-				$_SESSION['error_msg'] = 'Invalid verification.';
-				header('Location: /');
-			}
-			else
-			{ 
-				//Recover UID temporarily stores the verified user ID until a password new password is chosen on /recover/
-				$_SESSION['recover_uid'] = $uid;
-				header('Location: /recover/');
+				$statement->bind_param('i', $uid);
+				$statement->execute();
+				
+				$statement->bind_result($verification_hash);
+				$statement->fetch();
+				
+				if(!password_verify($verification, $verification_hash))
+				{
+					$_SESSION['error_msg'] = 'Invalid verification.';
+					header('Location: /');
+				}
+				else
+				{ 
+					//Recover UID temporarily stores the verified user ID until a password new password is chosen on /recover/
+					$_SESSION['recover_uid'] = $uid;
+					header('Location: /recover/');
+				}
 			}
 		}
 	}
