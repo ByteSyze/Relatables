@@ -220,7 +220,10 @@
 			if($hashed)
 				$this->password = $password;
 			else
+			{
+				require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 				$this->password = password_hash($password, PASSWORD_DEFAULT);
+			}
 				
 			$this->setEditted('password', self::TYPE_STRING);
 		}
