@@ -130,6 +130,20 @@ if($_SESSION['error_msg'])
 	<h1 class='popup-title blue'>Oops!<br><br>$error</h1>
 </div>";
 }
+//Display any popup message.
+if($_SESSION['popup_msg'])
+{
+	$popup = $_SESSION['popup_msg'];
+	unset($_SESSION['popup_msg']);
+	
+	echo "
+<div class='popup' style='display:block;' id='errorpopup'>
+	<div class='buttons'>
+		<button class='button blue-hover smaller'>Close</button>
+	</div>
+	<h1 class='popup-title blue'>Oops!<br><br>$popup</h1>
+</div>";
+}
 ?>
 
 <div class="navigation-bar">
