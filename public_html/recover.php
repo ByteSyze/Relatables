@@ -48,7 +48,7 @@
 			$statement->bind_result($verification_hash);
 			$statement->fetch();
 			
-			if(!password_verify($verifcation, $verification_hash))
+			if(!password_verify($verification, $verification_hash))
 			{
 				$_SESSION['error_msg'] = 'Invalid verification.';
 				header('Location: /');
