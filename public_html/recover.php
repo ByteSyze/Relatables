@@ -22,7 +22,7 @@
 			$statement->bind_result($uid);
 			$statement->fetch();
 			
-			if($uid) //Assure the user exists
+			if($uid) //Ensure the user exists
 			{
 				$user = new User($uid);
 				
