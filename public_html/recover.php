@@ -7,7 +7,7 @@
 	$email 	= $_POST['e'];
 	
 	/**UID and Verification for email linky clicky thingy*/
-	$uid			= $_GET['i'];
+	$uid			= intval($_GET['i']);
 	$verification 	= $_GET['v'];
 	
 	$connection = GlobalUtils::getConnection();
