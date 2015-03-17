@@ -34,12 +34,13 @@
 		$user = new User($uid);
 		
 		$user->setPassword($password);
+		$user->setVerification('n/a');
 		$user->update();
 		
 		$_SESSION['id'] = $uid; //Automatically login the user.
 		unset($_SESSION['recover_uid']);
 		
-		$_SESSION['popup_msg'] = 'Password successfully reset.';
+		$_SESSION['popup_msg'] = 'Password reset successfully.';
 		header('Location: /');
 	}
 	
