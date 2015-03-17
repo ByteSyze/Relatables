@@ -99,7 +99,7 @@ echo
 			<button class='button blue-hover block' type='submit'>Log in</button>
 		</div>
 	</form>
-	<a class='forgot-password' href='#passwordrecovery'>Forgot password?</a>
+	<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>
 </div>
 
 <div class='popup' id='pwrecoverypopup'>
