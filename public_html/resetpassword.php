@@ -22,7 +22,7 @@
 		
 		header('Location: /recover/');
 	}
-	if($password !== $password_verification)
+	else if($password !== $password_verification)
 	{
 		$_SESSION['error_msg'] = 'Password verification doesn\'t match.';
 		
