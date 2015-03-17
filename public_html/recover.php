@@ -4,7 +4,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
-	$email 	= $_GET['e']; //TODO change back to POST once testing is over.
+	$email 	= $_POST['e'];
 	
 	/**UID and Verification for email linky clicky thingy*/
 	$uid			= $_GET['i'];
@@ -42,8 +42,6 @@
 	{
 		if($uid == $_SESSION['recover_uid'])
 		{ 
-			//Recover UID temporarily stores the verified user ID until a password new password is chosen on /recover/
-			$_SESSION['recover_uid'] = $uid;
 			header('Location: /recover/');
 		}
 		else

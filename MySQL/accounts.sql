@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `username` varchar(16) NOT NULL,
   `password` varchar(255) NOT NULL,
   `cookie_login` varchar(255) NOT NULL,
-  `verification` varchar(32) NOT NULL,
+  `verification` varchar(255) NOT NULL,
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `joined` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_login` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
