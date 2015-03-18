@@ -50,7 +50,8 @@
 				
 				$user->email('Password Recovery', $body);
 				
-				die('An email has been sent to your email address.');
+				if($javascript)
+					die('An email has been sent to your email address.');
 			}
 		}
 	}
