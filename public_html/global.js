@@ -457,7 +457,8 @@ function createPopup(message)
 
 $('#pwrecoveryform').submit(function()
 {
-	$.post('/recover.php', {e: $(this).children().first().val()}, function(){ createPopup('An email has been sent to your email address.'); });
+	$.post('/recover.php', {e: $(this).children().first().val(), s: 1}, function(data){ createPopup(data); });
+	$(this).parent().hide();
 	return false;
 });
 

@@ -5,6 +5,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
 	$email 	= $_POST['e'];
+	$javascript = $_POST['s'];
 	
 	/**UID and Verification for email linky clicky thingy*/
 	$uid			= intval($_GET['i']);
@@ -13,7 +14,20 @@
 	$connection = GlobalUtils::getConnection();
 	
 	if($email)   //If an email is provided, send a verification link to it.
-	{
+	{	if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+		{
+			if($javascript)
+			{
+				die('Invalid email.');
+			}
+			else
+			{
+				$_SESSION['error_msg'] = "Invalid email.";
+				header('Location: /');
+				return;
+			}
+		}
+		
 		if($statement = $connection->prepare('SELECT id FROM accounts WHERE email LIKE (?)'))
 		{
 			$statement->bind_param('s', $email);
@@ -35,6 +49,8 @@
 				$user->update();
 				
 				$user->email('Password Recovery', $body);
+				
+				die('An email has been sent to your email address.');
 			}
 		}
 	}
