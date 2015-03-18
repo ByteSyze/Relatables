@@ -110,7 +110,7 @@ echo
 	<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
 		<input type='text' name='e' placeholder='Email'>
 		<div class='buttons padded align-center'>
-			<button class='button blue-hover block' type='submit'>Send Recovery Email</button>
+			<button class='button blue-hover block' type='submit'>Submit</button>
 		</div>
 	</form>
 </div>
