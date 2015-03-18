@@ -486,11 +486,12 @@ $('body').on('click', function(event)
 	}
 });
 
-$('.showlogin').click(function(){showLogin();});
-$('[data-signup-header]').click(function(){showRegister($(this)[0]);});
+$('body').on('click', '.popup .buttons > button', function(){$(this).parent().parent().hide();});
 
+$('.showlogin').click(function(){showLogin();});
+
+$('[data-signup-header]').click(function(){showRegister($(this)[0]);});
 $('[data-signup-hide]').click(function(){hideRegister();});
-$('.popup .buttons > button').click(function(){$(this).parent().parent().hide();});
 
 $('[data-show]').click(function(){ $($(this).attr('data-show')).show(); });
 $('[data-hide]').click(function(){ $($(this).attr('data-hide')).hide(); });
