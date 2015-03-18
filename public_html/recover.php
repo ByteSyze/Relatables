@@ -86,7 +86,14 @@
 	}
 	else
 	{
-		$_SESSION['error_msg'] = "Something went wrong.";
-		header('Location: /');
+		if($javascript)
+		{
+			die('No email provided.');
+		}
+		else
+		{
+			$_SESSION['error_msg'] = "No email provided.";
+			header('Location: /');
+		}
 	}
 	
