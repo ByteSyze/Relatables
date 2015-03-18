@@ -452,7 +452,7 @@ function hideAllDropdowns()
 
 function createPopup(message)
 {
-	$('body').append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div>" + message + "</div>");
+	$('body').append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div><span class='popup-small'>" + message + "</span></div>");
 }
 
 $('#pwrecoveryform').submit(function()

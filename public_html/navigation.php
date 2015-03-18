@@ -127,7 +127,8 @@ if($_SESSION['error_msg'])
 	<div class='buttons'>
 		<button class='button blue-hover smaller'>Close</button>
 	</div>
-	<h1 class='popup-title blue'>Oops!</h1><br>$error
+	<h1 class='popup-title blue'>Oops!</h1>
+	<span class='popup-small'>$error</span>
 </div>";
 }
 //Display any popup message.
@@ -141,7 +142,7 @@ if($_SESSION['popup_msg'])
 	<div class='buttons'>
 		<button class='button blue-hover smaller'>Close</button>
 	</div>
-	$popup
+	<span class='popup-small'>$popup</span>
 </div>";
 }
 ?>
