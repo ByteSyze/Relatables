@@ -43,6 +43,7 @@ $('body').on('click','[data-share-button]',function()
 
 $('#sort, #display, #category, #nsfw').change(function()
 {
+	paginate();
 });
 
 $('body').on('click', '[data-p]', function()
