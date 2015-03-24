@@ -2,6 +2,7 @@
 	/*Copyright (C) Tyler Hackett 2014*/
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
 	$type = $_POST['t'];
 	
@@ -32,8 +33,7 @@
 							
 							if(empty($result))
 							{		
-								setUsername($user,$_SESSION['id']);
-								$_SESSION['username'] = $user;
+								GlobalUtils::$user->setUsername($user);
 							}
 						}
 					}
@@ -54,13 +54,9 @@
 			{
 				if($new_pass === $re_new_pass)
 				{		
-					$data = getPasswordAndSalt($_SESSION['id']);
-					
-					$passHash = md5($old_pass.$data['salt']);
-					
-					if($passHash == $data['hash'])
+					if(password_verify($old_pass, GlobalUtils::$user->getPassword()))
 					{
-						setPassword($new_pass,$_SESSION['id']);			
+						GlobalUtils::$user->setPassword($new_pass);			
 					}
 				}
 			}
@@ -85,20 +81,20 @@
 					
 					if(empty($result))
 					{
-						setPendingEmail($email,$_SESSION['id']);
+						GlobalUtils::$user->setPendingEmail($email,$_SESSION['id']);
 				
-						$data = getPasswordAndSalt($_SESSION['id']);
+						$data = getPasswordAndSalt($_SESSION['id']); //TODO generation a verification code.
 						
-						$from = 'From: Relatablez <noreply@relatablez.com>';
-						$to = $email;
 						$subject = 'Email Verification';
 						$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\nhttp://www.relatablez.com/verify?i=". $_SESSION['id'] .'&v=' . md5($_SESSION['id'] . $data['hash'] . $email) . "\n\nIf you didn't request this change, please ignore this message.";
 						 
-						mail($to,$subject,$body,$from);
+						GlobalUtils::$user->email($subject,$body);
 					}
 				}	
 			}
-		}	
+		}
+		
+		GlobalUtils::$user->update();
 		header('Location: http://www.relatablez.com/settings/account');
 	}	
 	else if($type == 'profile')
@@ -111,18 +107,19 @@
 		if($length > 130)
 			header('Location: http://www.relatablez.com/settings/profile?e=0&i=0');
 		
-		setDescription($description, $_SESSION['id']);
+		GlobalUtils::$user->setDescription($description, $_SESSION['id']);
 			
-		$country_id = $_POST['location'];
+		$country_id = intval($_POST['location']);
 	
-		if(is_numeric($country_id) && ($country_id >= 1) && ($country_id <= 250))
-			setCountry($country_id, $_SESSION['id']);
+		if($country_id >= 1 && $country_id <= 250)
+			GlobalUtils::$user->setCountryId($country_id);
 			
+		GlobalUtils::$user->update();
 		header('Location: http://www.relatablez.com/settings/profile');
 	}
 	else if($type == 'delete')
 	{
-		deleteAccount($_SESSION['id']);
+		GlobalUtils::$user->delete();  //TODO make sure the user wasn't somehow tricked into coming here.
 		
 		session_unset();
 		
