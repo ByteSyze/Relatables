@@ -7,7 +7,7 @@
 	
 	if($_SESSION['id'] == null)
 	{
-		header('Location: http://www.relatablez.com/');
+		header('Location: /');
 		exit;
 	}
 		
@@ -22,7 +22,7 @@
 			GlobalUtils::getCSS('settings/theme');
 		?>
 		
-		<link rel="canonical" href="http://www.relatablez.com/">
+		<link rel="canonical" href="/">
 	</head>
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
@@ -38,7 +38,7 @@
 			<div class="unit three-fourths">
 				<div class="box">
 					<div class="box-content">
-						<form id='settings-form' method='POST' action='http://www.relatablez.com/update.php' class="vertical">
+						<form id='settings-form' method='POST' action='/update.php' class="vertical">
 							<input type='hidden' name='t' value='profile' />
 							<label>Location</label>
 							<?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown(GlobalUtils::$user->getCountryId()); ?>

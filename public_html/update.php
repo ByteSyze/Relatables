@@ -86,7 +86,7 @@
 						$data = getPasswordAndSalt($_SESSION['id']); //TODO generation a verification code.
 						
 						$subject = 'Email Verification';
-						$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\nhttp://www.relatablez.com/verify?i=". $_SESSION['id'] .'&v=' . md5($_SESSION['id'] . $data['hash'] . $email) . "\n\nIf you didn't request this change, please ignore this message.";
+						$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\n/verify?i=". $_SESSION['id'] .'&v=' . md5($_SESSION['id'] . $data['hash'] . $email) . "\n\nIf you didn't request this change, please ignore this message.";
 						 
 						GlobalUtils::$user->email($subject,$body);
 					}
@@ -95,7 +95,7 @@
 		}
 		
 		GlobalUtils::$user->update();
-		header('Location: http://www.relatablez.com/settings/account');
+		header('Location: /settings/account');
 	}	
 	else if($type == 'profile')
 	{
@@ -105,7 +105,7 @@
 		$length = strlen($description);
 		
 		if($length > 130)
-			header('Location: http://www.relatablez.com/settings/profile?e=0&i=0');
+			header('Location: /settings/profile?e=0&i=0');
 		
 		GlobalUtils::$user->setDescription($description, $_SESSION['id']);
 			
@@ -115,7 +115,7 @@
 			GlobalUtils::$user->setCountryId($country_id);
 			
 		GlobalUtils::$user->update();
-		header('Location: http://www.relatablez.com/settings/profile');
+		header('Location: /settings/profile');
 	}
 	else if($type == 'delete')
 	{
@@ -128,6 +128,6 @@
 		setcookie("rrmp",0,$expire);
 		setcookie("rrmi",0,$expire);
 		
-		header('Location: http://www.relatablez.com/');
+		header('Location: /');
 	}
 	
