@@ -15,7 +15,7 @@
 		
 		while($row = mysqli_fetch_array($countries))
 		{
-			echo $row['country_id'] . '::' . ($row['country_id'] == $id);
+			echo $row['country_id'] . '::' . $id . ':: ' . ($row['country_id'] == $id);
 			if($row['country_id'] == $id)
 				echo '<option value=\''.$row['country_id'].'\' selected>'.$row['short_name'].'</option>';
 			else
