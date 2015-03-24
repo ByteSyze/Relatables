@@ -83,10 +83,11 @@
 					{
 						GlobalUtils::$user->setPendingEmail($email,$_SESSION['id']);
 				
-						$data = getPasswordAndSalt($_SESSION['id']); //TODO generation a verification code.
+						$verification = GlobalUtils::$user->generateVerification();
+						GlobalUtils::$user->update();
 						
 						$subject = 'Email Verification';
-						$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\n/verify?i=". $_SESSION['id'] .'&v=' . md5($_SESSION['id'] . $data['hash'] . $email) . "\n\nIf you didn't request this change, please ignore this message.";
+						$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\n/verify?i=". $_SESSION['id'] .'&v=' . $verification . "\n\nIf you didn't request this change, please ignore this message.";
 						 
 						GlobalUtils::$user->email($subject,$body);
 					}

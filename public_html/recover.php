@@ -40,10 +40,11 @@
 			{
 				$user = new User($uid);
 				
+				$verification = $user->generateVerification();
+				$user->update();
+				
 				$body = "Hey " . $user->getUsername() . ",\n\nYou are receiving this email because you have requested to reset your password.\n\nPlease click the link below to reset your password.\nhttp://www.relatablez.com/recover.php?v=$verification&i=$uid \n\nIf you didn’t request this change, please ignore this message.\n\nThanks,\nThe Relatablez Team";
 				
-				$user->generateVerification();
-				$user->update();
 				
 				$user->email('Password Recovery', $body);
 				
