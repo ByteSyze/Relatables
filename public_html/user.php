@@ -41,7 +41,7 @@
 			if(is_string($data))
 			{
 				//Treat $data as username
-				if($statement = self::$connection->prepare('SELECT id, username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, country_id, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE username LIKE (?)'))
+				if($statement = self::$connection->prepare('SELECT id, username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, country_id, (SELECT short_name FROM countries WHERE country_id = accounts.country_id) AS country, description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE username LIKE (?)'))
 				{	
 					$statement->bind_param('s', $data);
 					
