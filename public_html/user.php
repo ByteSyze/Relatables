@@ -333,6 +333,14 @@
 			$this->setEditted('verification', self::TYPE_STRING);
 		}
 		
+		public function generateVerification()
+		{
+			$verification = md5(openssl_random_pseudo_bytes(128, $crypto_strong));
+			$this->setVerification(password_hash($verification, PASSWORD_DEFAULT));
+			
+			return $verification;
+		}
+		
 		public function getPostCount()
 		{
 			return $this->post_count;
