@@ -274,7 +274,15 @@ ul.navigation-items div.profile-icon {
 }
 
 .unread-notifications {
-	background-position: center;
+	background-position: center !important;
+}
+
+.indicator {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	background-color: green;
 }
 
 .dropdown {
