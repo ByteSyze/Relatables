@@ -443,13 +443,6 @@ function deleteMessage(id)
 	});
 }
 
-function hideAllDropdowns()
-{
-	$('#notification-dropdown').hide();
-	$('#profile-dropdown').hide();
-	$('#about-dropdown').hide();
-}
-
 function createPopup(message)
 {
 	$('body').append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div><span class='popup-small'>" + message + "</span></div>");
@@ -462,7 +455,10 @@ $('#pwrecoveryform').submit(function()
 	return false;
 });
 
-$(document).ready(function(){hideAllDropdowns();});
+$(document).ready(function()
+{
+	$('.dropdown').hide();
+});
 
 $('body').on('click', function(event)
 {
