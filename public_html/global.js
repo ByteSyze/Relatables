@@ -494,5 +494,5 @@ $('.showlogin').click(function(){showLogin();});
 $('[data-signup-header]').click(function(){showRegister($(this)[0]);});
 $('[data-signup-hide]').click(function(){hideRegister();});
 
-$('[data-show]').click(function(){ $($(this).attr('data-show')).show(); });
-$('[data-hide]').click(function(){ $($(this).attr('data-hide')).hide(); });
+$('[data-show]').click(function(){ $($(this).attr('data-show')).show(); return false; });
+$('[data-hide]').click(function(){ $($(this).attr('data-hide')).hide(); return false; });
