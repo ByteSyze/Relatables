@@ -276,8 +276,9 @@ ul.navigation-items div.profile-icon {
 .dropdown {
 	background-color: #fff;
 	position: absolute;
-	width:100%;
-	left:0;
+	width: 100%;
+	left: 0;
+	display: none;
 }
 
 .dropdown a{
