@@ -208,9 +208,16 @@ body {
 }
 
 .dropdown {
+	background-color: #4A66D8;
 	position: absolute;
 	width:100%;
 	left:0;
+}
+
+.dropdown a{
+	width: 100%;
+	text-align: center;
+	padding: 0px;
 }
 
 ul.navigation-items {
