@@ -207,19 +207,6 @@ body {
 	height: 70px;
 }
 
-.dropdown {
-	background-color: #4A66D8;
-	position: absolute;
-	width:100%;
-	left:0;
-}
-
-.dropdown a{
-	width: 100%;
-	text-align: center;
-	padding: 0px;
-}
-
 ul.navigation-items {
 	font-size: 0px; /* for spacing issue */
 }
@@ -284,6 +271,20 @@ ul.navigation-items div.notifications-icon {
 ul.navigation-items div.profile-icon {
 	height:30px;
 	background-image:url('/images/icons/profile_icon.png');
+}
+
+.dropdown {
+	background-color: #fff;
+	position: absolute;
+	width:100%;
+	left:0;
+}
+
+.dropdown a{
+	width: 100%;
+	text-align: center;
+	padding: 0px;
+	border-bottom: 1px solid #bfbfbf;
 }
 
 .popup {
