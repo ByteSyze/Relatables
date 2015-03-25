@@ -174,7 +174,7 @@ if($_SESSION['popup_msg'])
 					
 					while($notification = mysqli_fetch_array($notifications))
 					{
-						echo '<li><div class="indicator"></div><a>' . $notification['message'] . '<span>' . $notification['fdate'] . '</span></a></li>';
+						echo '<li><a><div class="indicator"></div>' . $notification['message'] . '<span>' . $notification['fdate'] . '</span></a></li>';
 					}
 					
 					echo '</ul></a>';
