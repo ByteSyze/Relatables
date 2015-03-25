@@ -167,7 +167,15 @@ if($_SESSION['popup_msg'])
 		<?php
 			echo '<ul class="navigation-items">';
 				if($_SESSION['id'] != null) {
-					echo '<li><a href="#" data-togg="#notif-drop"><div class="icon notifications-icon"></div><ul id="notif-drop" class="dropdown"><!-- Notifications --></ul></a>';
+					echo '<li><a href="#" data-togg="#notif-drop"><div class="icon notifications-icon"></div><ul id="notif-drop" class="dropdown">'; 
+					
+					
+					while($notification = mysqli_fetch_array($notifications))
+					{
+						echo '<li><div class="indicator"></div><a>' . $notification['message'] . '<span>' . $notification['fdate'] . '</span></a></li>';
+					}
+					
+					echo '</ul></a>';
 					echo '<li><a href="#" data-togg="#prof-drop"><div class="icon profile-icon"></div></a><ul id="prof-drop" class="dropdown"><li><a href="">Profile</a></li><li><a href="">Settings</a></li><li><a href="">Signout</a></li></ul></li>';
 				} else {
 					echo '<li><a class="showlogin">Log in</a></li>';
