@@ -28,11 +28,9 @@ var emailPopup 			 = document.getElementById('email-popup');
 var userRegex 			 = /^[A-Za-z0-9_]+$/;
 
 var loginPopup 			 = document.getElementById("loginpopup");
-var loginOpen 			 = false;
 
 var registerPopup 		 = document.getElementById("registerpopup");
 var registerHeader 		 = document.getElementById("registerheader");
-var registerOpen 		 = false;
 
 function register()
 {
@@ -319,51 +317,25 @@ function checkLimit(event, element, limit, substr)
 
 function hideAll()
 {
-	if(loginOpen)
-		hideLogin();
-	if(registerOpen)
-		hideRegister();
-}
-
-function toggleProfileDropdown()
-{
-	$('#profile-dropdown').toggleClass('hidden');
-}
-
-function toggleNotificationDropdown()
-{
-	
-	$('#notification-dropdown').toggleClass('hidden');
-}
-
-function toggleAboutDropdown()
-{
-	$('#about-dropdown').toggleClass('hidden');
+	$('.popup').hide();
+	hideRegister();
 }
 
 function showLogin()
 {
 	hideAll();
-	loginOpen = true;
-	loginPopup.style.display = "block";
-}
-function hideLogin()
-{
-	loginOpen = false;
-	loginPopup.style.display = "none";
+	$('#loginpopup').show();
 }
 
 function showRegister(element)
 {
 	hideAll();
-	registerOpen = true;
-	registerHeader.innerHTML = element.getAttribute("data-header");
-	registerPopup.style.display = "block";
+	$('#registerheader').HTML(element.getAttribute("data-header"));
+	$('#registerpopup').show();
 }
 
 function hideRegister()
 {
-	registerOpen = false;
 	registerPopup.style.display = "none";
 	
 	for(input in registerPopup.getElementsByTagName('input'))
@@ -397,16 +369,6 @@ function checkHideErrors(element, errorPopup)
 {
 	if(element.value == '')
 		errorPopup.style.display = 'none';
-}
-
-function showSendMessagePopup()
-{
-	document.getElementById('send-message-popup').style.display='block';
-}
-
-function hideSendMessagePopup()
-{
-	document.getElementById('send-message-popup').style.display='none';	
 }
 
 function updateMessageStatus(id)
