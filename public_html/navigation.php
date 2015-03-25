@@ -153,9 +153,9 @@ if($_SESSION['popup_msg'])
 			<ul class="navigation-items">
 				<li><a href="/" class="logo"><img src='/images/icons/logotextwhite.png' alt='Relatablez / Am I The Only One?' title='Relatablez / Am I The Only One?'></a></li>
 				<li><a href="/moderate">Moderate</a></li>
-				<li class='dropdown'>
+				<li>
 					<a href="/about">About</a>
-					<ul>
+					<ul class='dropdown'>
 						<li><a href="/about/faq">FAQ</a></li>
 						<li><a href="/about/privacy">Privacy</a></li>
 						<li><a href="/about/blog">Blog</a></li>
@@ -167,8 +167,8 @@ if($_SESSION['popup_msg'])
 		<?php
 			echo '<ul class="navigation-items">';
 				if($_SESSION['id'] != null) {
-					echo '<li><a href="#"><div class="icon notifications-icon"></div><ul><!-- Notifications --></ul></a>';
-					echo '<li><a href="#"><div class="icon profile-icon"></div></a><ul><li><a href="">Profile</a></li><li><a href="">Settings</a></li><li><a href="">Signout</a></li></ul></li>';
+					echo '<li><a href="#"><div class="icon notifications-icon"></div><ul class="dropdown"><!-- Notifications --></ul></a>';
+					echo '<li><a href="#"><div class="icon profile-icon"></div></a><ul class="dropdown"><li><a href="">Profile</a></li><li><a href="">Settings</a></li><li><a href="">Signout</a></li></ul></li>';
 				} else {
 					echo '<li><a class="showlogin">Log in</a></li>';
 					echo '<li><a data-signup-header="Sign Up">Sign up</a></li>';

@@ -207,6 +207,12 @@ body {
 	height: 70px;
 }
 
+.dropdown {
+	position: absolute;
+	width:100%;
+	left:0;
+}
+
 ul.navigation-items {
 	font-size: 0px; /* for spacing issue */
 }
@@ -226,6 +232,7 @@ ul.navigation-items:after {
 ul.navigation-items > li {
 	display: inline;
 	font-size: 16px;
+	position: relative;
 }
 
 ul.navigation-items > li a {
