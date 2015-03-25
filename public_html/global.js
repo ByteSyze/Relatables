@@ -464,6 +464,7 @@ $('body').on('click', function(event)
 {
 	$('[data-togg]').each(function()
 	{ 
+		if(event.target != $(this)[0])
 			$($(this).attr('data-togg')).hide();
 	});
 });
