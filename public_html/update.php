@@ -84,12 +84,13 @@
 						GlobalUtils::$user->setPendingEmail($email,$_SESSION['id']);
 				
 						$verification = GlobalUtils::$user->generateVerification();
-						GlobalUtils::$user->update();
 						
 						$subject = 'Email Verification';
 						$body = 'Hey ' . $_SESSION['username'] . ",\n\nYou are receiving this email because you have requested an email change.\n\nPlease click the link below to verify your new email.\n/verify?i=". $_SESSION['id'] .'&v=' . $verification . "\n\nIf you didn't request this change, please ignore this message.";
 						 
-						GlobalUtils::$user->email($subject,$body);
+						GlobalUtils::$user->email($subject, $body, true);
+						
+						$_SESSION['popup_msg'] = 'We\'ve sent an email to ' . $user->getEmail() . ' with a verification link.';
 					}
 				}	
 			}

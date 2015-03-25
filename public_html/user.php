@@ -372,9 +372,12 @@
 			}
 		}
 		
-		function email($subject, $message)
+		function email($subject, $message, $use_pending = false)
 		{
-			mail($this->getEmail(), $subject, $message, self::MAIL_FROM);
+			if($use_pending)
+				mail($this->getPendingEmail(), $subject, $message, self::MAIL_FROM);
+			else
+				mail($this->getEmail(), $subject, $message, self::MAIL_FROM);
 		}
 	
 	}

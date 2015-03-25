@@ -49,7 +49,7 @@
 				$user->email('Password Recovery', $body);
 				
 				if($javascript)
-					die('An email has been sent to your email address.');
+					die('We\'ve sent an email to ' . $user->getEmail() . ' with a verification link.');
 			}
 		}
 	}
