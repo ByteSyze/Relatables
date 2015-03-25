@@ -492,3 +492,4 @@ $('[data-signup-hide]').click(function(){hideRegister();});
 
 $('[data-show]').click(function(){ $($(this).attr('data-show')).show(); return false; });
 $('[data-hide]').click(function(){ $($(this).attr('data-hide')).hide(); return false; });
+$('[data-show]').click(function(){ $($(this).attr('data-togg')).toggle(); return false; });
