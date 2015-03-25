@@ -422,7 +422,7 @@ $(document).ready(function()
 	$('.dropdown').hide();
 });
 
-$('body').on('click', function(event)
+$(document).on('click', function(event)
 {
 	$('[data-togg]').each(function()
 	{ 
