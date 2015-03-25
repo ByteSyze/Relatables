@@ -462,25 +462,10 @@ $(document).ready(function()
 
 $('body').on('click', function(event)
 {
-	if(event.target === $('#notification-button')[0] || event.target.parentNode === $('#notification-button')[0])
-	{
-		$('#notification-dropdown').toggle();
-		$('#profile-dropdown, #about-dropdown').hide();
-	}
-	else if(event.target === $('#profile-button')[0] || event.target.parentNode === $('#profile-button')[0])
-	{
-		$('#profile-dropdown').toggle();
-		$('#notification-dropdown, #about-dropdown').hide();
-	}
-	else if(event.target === $('#about-button')[0] || event.target.parentNode === $('#about-button')[0])
-	{
-		$('#about-dropdown').toggle();
-		$('#profile-dropdown, #notification-dropdown').hide();
-	}
-	else
-	{
-		$('#notification-dropdown, #profile-dropdown,#about-dropdown').hide();
-	}
+	$('[data-togg]').each(function()
+	{ 
+			$($(this).attr('data-togg')).hide();
+	});
 });
 
 $('body').on('click', '.popup .buttons > button', function(){$(this).parent().parent().hide();});
