@@ -291,7 +291,7 @@
 			if($hide)
 				$this->flags |= 0x03;
 			else
-				$this->flags &= ~0x03);
+				$this->flags &= ~0x03;
 				
 			$this->setEditted('flags', self::TYPE_INT);
 		}
