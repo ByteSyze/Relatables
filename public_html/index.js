@@ -6,8 +6,8 @@ var closedShareText = 'Share »';
 var subIndex = 0;
 var subCount = 20;
 
-$("[data-vid]").click(function(){ vote = $(this).html() == 'No, me too!' ? 0 : 1; vote($(this).attr('data-vid'), vote, $(this).attr('data-v')); });
-$(".showguides").click(function(){ showSubmissionGuidelines(); });
+$("[data-vid]").click(function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).attr('data-v')); });
+$(".showguides").click(function(){ $('#submission-wrapper').animate({height: "260px"}, 1000); });
 $("#submission").on('change keypress paste', function(event)
 {
 	var count = checkLimit(event, this, 300, true);
@@ -151,11 +151,6 @@ function vote(id, vote, v)
 			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 	});
-}
-
-function showSubmissionGuidelines()
-{
-	$('#submission-wrapper').animate({height: "260px"}, 1000);
 }
 
 function validate_data(objData){

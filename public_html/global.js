@@ -380,26 +380,6 @@ function updateMessageStatus(id)
 	document.getElementById('ntfmsg'+id).removeAttribute('onmouseover');
 }
 
-function deleteMessage(id)
-{
-	$.post("/deletemessage.php", {id: id}, function(data)
-	{
-			if(data == '1')
-			{
-				$('[data-nid="'+id+'"]').remove();
-				
-				var notificationsTable = document.getElementById('notification-tbody');
-				
-				if(notificationsTable.children.length == 0)
-				{
-					var noMessages = document.createElement('tr');
-					noMessages.innerHTML = '<td class=\'no-messages\'><b>You have no messages</b></td>';
-					notificationsTable.appendChild(noMessages);
-				}
-			}
-	});
-}
-
 function createPopup(message)
 {
 	$('body').append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div><span class='popup-small'>" + message + "</span></div>");
