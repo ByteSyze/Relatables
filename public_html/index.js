@@ -208,8 +208,15 @@ function updatePosts()
 		nsfw = 1;
 	else
 		nsfw = 0;
+		
+	var x;
+	
+	if($('#display').val() < 2)
+		x = 20;
+	else
+		x = 50;
 
-	$.post('/getposts.php', {s:page, x:$('#display').val(),  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
+	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
 		$('#posts').empty();
 		$('#posts').append(data);
 	});
