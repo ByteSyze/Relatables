@@ -268,7 +268,7 @@
 		
 		public function isBetaTester()
 		{
-			return $this->flags >> 0x02 & 0x01;
+			return $this->flags >> 0x01 & 0x01;
 		}
 		
 		public function setBetaTester($tester = true)
@@ -276,37 +276,37 @@
 			if($tester)
 				$this->flags |= 0x02;
 			else
-				$this->flags &= 0xFD;
+				$this->flags &= ~0x02;
 				
 			$this->setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getHideRelated()
 		{
-			return $this->flags >> 0x04 & 0x01;
+			return $this->flags >> 0x02 & 0x01;
 		}
 		
 		public function setHideRelated($hide = true)
 		{
 			if($hide)
-				$this->flags |= 0x04;
+				$this->flags |= 0x03;
 			else
-				$this->flags &= 0xFB;
+				$this->flags &= ~0x03);
 				
 			$this->setEditted('flags', self::TYPE_INT);
 		}
 		
 		public function getHideLocation()
 		{
-			return $this->flags >> 0x08 & 0x01;
+			return $this->flags >> 0x03 & 0x01;
 		}
 		
 		public function setHideLocation($hide = true)
 		{
 			if($hide)
-				$this->flags |= 0x08;
+				$this->flags |= 0x04;
 			else
-				$this->flags &= 0xF7;
+				$this->flags &= ~0x04;
 				
 			$this->setEditted('flags', self::TYPE_INT);
 		}
