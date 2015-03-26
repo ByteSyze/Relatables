@@ -178,8 +178,7 @@ function verifyPassword()
 	}
 	
 	passVerifyImg.style.display = "block";
-	verifyRePassword();
-	return valid;
+	return verifyRePassword();
 }
 
 function verifyRePassword()
@@ -191,12 +190,7 @@ function verifyRePassword()
 	
 	renewPasswordPopup.innerHTML = '';
 	
-	if(rePassVal.length < 6)
-	{
-		rePassVerifyImg.src = "/x_mark.png";
-		renewPasswordPopup.innerHTML = renewPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
-	}
-	else if(passVal !== rePassVal)
+	if(passVal !== rePassVal)
 	{
 		rePassVerifyImg.src = "/x_mark.png";
 		renewPasswordPopup.innerHTML = renewPasswordPopup.innerHTML.concat(' Password verification doesn\'t match original password. ');
