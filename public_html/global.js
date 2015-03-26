@@ -307,7 +307,7 @@ function checkLimit(event, element, limit, substr)
 function hideAll()
 {
 	$('.popup').hide();
-	hideRegister();
+	resetRegister();
 }
 
 function showLogin()
@@ -323,10 +323,8 @@ function showRegister(element)
 	$('#registerpopup').show();
 }
 
-function hideRegister()
+function resetRegister()
 {
-	registerPopup.style.display = "none";
-	
 	for(input in registerPopup.getElementsByTagName('input'))
 		input.value = '';
 }
@@ -405,7 +403,7 @@ $('body').on('click', '.popup .buttons > button', function(){$(this).parent().pa
 $('.showlogin').click(function(){showLogin();});
 
 $('[data-signup-header]').click(function(){showRegister($(this)[0]);});
-$('[data-signup-hide]').click(function(){hideRegister();});
+$('[data-signup-hide]').click(function(){ $('registerpopup').hide(); resetRegister();});
 
 $('[data-show]').click(function(){ $($(this).attr('data-show')).show(); return false; });
 $('[data-hide]').click(function(){ $($(this).attr('data-hide')).hide(); return false; });
