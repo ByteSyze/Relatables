@@ -6,8 +6,7 @@ var closedShareText = 'Share »';
 var subIndex = 0;
 var subCount = 20;
 
-$("[id^='bna']").click(function(){ vote($(this).attr('data-vid'), 0, $(this).attr('data-v')); });
-$("[id^='ba']").click(function(){ vote($(this).attr('data-vid'), 1, $(this).attr('data-v')); });
+$("[data-vid]").click(function(){ vote = $(this).html() == 'No, me too!' ? 0 : 1; vote($(this).attr('data-vid'), vote, $(this).attr('data-v')); });
 $(".showguides").click(function(){ showSubmissionGuidelines(); });
 $("#submission").on('change keypress paste', function(event)
 {

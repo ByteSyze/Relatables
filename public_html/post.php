@@ -244,12 +244,11 @@
 						echo '<div class="buttons">';
 
 							$button_yes_classes = "green-hover";
-							$button_yes_meta = "";
 							$button_no_classes = "red-hover";
-							$button_no_meta = "";
 
 							if($_SESSION["id"] != null) {
-									$button_yes_meta = $button_no_meta = 'id="bna' . $this->id . '" data-vid="' . $this->id . '" ';
+									$button_yes_meta = $button_no_meta = ' data-vid="' . $this->id . '" ';
+									
 									if($this->user_vote === '0') {
 										$button_yes_classes = "green";
 										$button_yes_meta .= "disabled";
@@ -258,8 +257,7 @@
 										$button_no_meta .= "disabled";
 									}
 							} else {
-								$button_no_meta = "data-signup-header='Please sign up to vote'";
-								$button_yes_meta = "data-signup-header='Please sign up to vote'";
+								$button_yes_meta = $button_no_meta = "data-signup-header='Please sign up to vote'";
 							}
 
 							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . '>No, me too!</button>';
