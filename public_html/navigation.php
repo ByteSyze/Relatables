@@ -178,7 +178,7 @@ if($_SESSION['popup_msg'])
 					}
 					
 					echo '</ul></a>';
-					echo '<li><a href="#" data-togg="#prof-drop"><div class="icon profile-icon"></div></a><ul id="prof-drop" class="dropdown"><li><a href="">Profile</a></li><li><a href="">Settings</a></li><li><a href="">Signout</a></li></ul></li>';
+					echo '<li><a href="#" data-togg="#prof-drop"><div class="icon profile-icon"></div></a><ul id="prof-drop" class="dropdown"><li><a href="/user/' . GlobalUtils::$user->getUsername() . '">Profile</a></li><li><a href="/settings/account">Settings</a></li><li><a href="/signout.php">Signout</a></li></ul></li>';
 				} else {
 					echo '<li><a class="showlogin">Log in</a></li>';
 					echo '<li><a data-signup-header="Sign Up">Sign up</a></li>';

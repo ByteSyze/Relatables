@@ -228,11 +228,6 @@
 			$this->setEditted('password', self::TYPE_STRING);
 		}
 		
-		public function setCountry($country)
-		{
-			$this->country = $country; //TODO figure out wtf to do about this in update()
-		}
-		
 		public function setUsername($username)
 		{
 			$this->username = $username;	

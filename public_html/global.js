@@ -27,11 +27,6 @@ var emailPopup 			 = document.getElementById('email-popup');
 
 var userRegex 			 = /^[A-Za-z0-9_]+$/;
 
-var loginPopup 			 = document.getElementById("loginpopup");
-
-var registerPopup 		 = document.getElementById("registerpopup");
-var registerHeader 		 = document.getElementById("registerheader");
-
 function register()
 {
 	var userVal	 	= user.value;
