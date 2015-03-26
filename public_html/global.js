@@ -325,8 +325,7 @@ function showRegister(element)
 
 function resetRegister()
 {
-	for(input in registerPopup.getElementsByTagName('input'))
-		input.value = '';
+	$('#registerpopup :input').val('');
 }
 
 function showGuidelines(element)
