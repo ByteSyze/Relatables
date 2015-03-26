@@ -248,7 +248,7 @@
 							$button_no_classes = "red-hover";
 							$button_no_meta = "";
 
-							if($_SESSION["username"] != null) {
+							if($_SESSION["id"] != null) {
 									$button_yes_meta = $button_no_meta = 'id="bna' . $this->id . '" data-vid="' . $this->id . '" ';
 									if($this->user_vote === '0') {
 										$button_yes_classes = "green";
