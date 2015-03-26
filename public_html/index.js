@@ -96,6 +96,13 @@ $( "body" ).on( "click", "#submit_form", function() {
 
 $(document).ready(function()
 {
+	if(nsfw)
+		$('#nsfw').prop('checked', true);
+	
+	$('#category').val(category);
+	$('#display').val(display);
+	$('#sort').val(order);
+	
 	paginate();
 });
 

@@ -136,6 +136,16 @@
 			}
 		}
 		
+		public function generateVerification()
+		{
+			require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
+			
+			$verification = md5(openssl_random_pseudo_bytes(128, $crypto_strong));
+			$hash = password_hash($verification, PASSWORD_DEFAULT);
+			
+			return array('verification' => $verification, 'hash' => $hash);
+		}
+		
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
