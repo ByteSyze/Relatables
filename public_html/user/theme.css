@@ -20,6 +20,11 @@
 	color: #D84A4A;
 }
 
+.user-jumbo .beta {
+	padding-left: 10px;
+	color: #DDCF1E;
+}
+
 .user-jumbo .user-description {
 	font-size: 120%;
 }

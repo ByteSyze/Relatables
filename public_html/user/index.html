@@ -31,7 +31,8 @@
 			<div class="grid wrap">
 				<div class="unit whole">
 					<span class="username"><?php echo $user->getUsername(); ?></span>
-					<?php if($user->isAdmin()) { echo '<span class="admin">(Admin)</span>';} ?>
+					<?php if($user->isAdmin()) { echo '<span class="admin">Admin</span>';} ?>
+					<?php if($user->isBetaTester()) { echo '<span class="beta">Beta Tester</span>';} ?>
 					<span class="user-info user-description"><?php echo htmlspecialchars($user->getDescription()); ?></span>
 					<hr>
 					<span class="user-info">From  <?php echo $user->getCountry(); ?></span>
