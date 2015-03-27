@@ -376,6 +376,60 @@ function createPopup(message)
 	$('body').append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div><span class='popup-small'>" + message + "</span></div>");
 }
 
+function vote(id, vote, v)
+{
+	var notAloneEl  = document.getElementById('na'+id);
+	var aloneEl 	= document.getElementById('a'+id);
+	
+	// Take out all formatting
+	var notAlone = notAloneEl.innerHTML.replace("(","").replace(")","").replace(",",""); 
+	var alone = aloneEl.innerHTML.replace("(","").replace(")","").replace(",","");
+	
+	$.ajax({
+		type: "POST",
+		url: "/vote.php",
+		data: {q: id, vtn: vote, v : v}
+	})
+	.done(function(data) {
+		console.log(data);
+		
+		if(data == '00')
+		{
+			alone++;
+			notAlone--;
+			
+			document.getElementById('bna'+id).disabled = false;
+			document.getElementById('ba'+id).disabled = true;
+			
+			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+		else if(data == '01')
+		{	
+			notAlone++;
+			alone--;
+			
+			document.getElementById('bna'+id).disabled = true;
+			document.getElementById('ba'+id).disabled = false;
+			
+			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+		else if(data == '10')
+		{
+			alone++;
+			document.getElementById('ba'+id).disabled = true;
+			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+		else if(data == '11')
+		{
+			notAlone++;
+			document.getElementById('bna'+id).disabled = true;
+			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+		}
+	});
+}
+
 $('#pwrecoveryform').submit(function()
 {
 	$.post('/recover.php', {e: $(this).children().first().val(), s: 1}, function(data){ createPopup(data); });

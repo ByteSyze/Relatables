@@ -50,7 +50,7 @@ $(document).on("click", "button[data-reply]", function()
 	
 	if(comment.length <= 140)
 	{
-		$.post('http://www.relatablez.com/comment.php', {p: pid, c: comment, r: rid, u: user}, function(result)
+		$.post('/comment.php', {p: pid, c: comment, r: rid, u: user}, function(result)
 		{
 			if(result != 0)
 			{
@@ -80,7 +80,7 @@ $(document).on("click", "button[data-v]", function()
 		cid = $(this).parent().parent().parent().attr('data-c');
 		vote = $(this).attr('data-v');
 	
-		$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)
+		$.post('/ratecomment.php', {c: cid, v: vote}, function(result)
 		{
 		
 			points = parseInt($('#points-'+cid).html());
@@ -135,7 +135,7 @@ $(document).on("click", "button[data-delete]", function()
 	button = $(this);
 	cid = $(this).parent().attr('data-c');
 	
-	$.post('http://www.relatablez.com/deletecomment.php', {c: cid}, function(result)
+	$.post('/deletecomment.php', {c: cid}, function(result)
 	{
 		button.nextAll().eq(3).html('<i>Comment removed.</i>');
 		button.remove();
