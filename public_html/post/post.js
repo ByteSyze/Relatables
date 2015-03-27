@@ -34,7 +34,9 @@ $(document).ready(function()
 });
 $(document).on("click", "span[data-reply]", function()
 {
-	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><button data-reply='"+$(this).attr("data-reply")+"' data-user='"+$(this).attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
+	$c = $(this).parent().parent().parent();
+	
+	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><button data-reply='"+$c.attr("data-reply")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
 	$(this).removeAttr('data-reply');
 });
 $(document).on("click", "button[data-reply]", function()
@@ -75,7 +77,7 @@ $(document).on("click", "button[data-v]", function()
 	
 	if(!button.data('disabled'))
 	{
-		cid = $(this).parent().attr('data-c');
+		cid = $(this).parent().parent().parent().attr('data-c');
 		vote = $(this).attr('data-v');
 	
 		$.post('http://www.relatablez.com/ratecomment.php', {c: cid, v: vote}, function(result)

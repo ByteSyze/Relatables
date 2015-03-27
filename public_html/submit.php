@@ -14,7 +14,7 @@
 	else if($category < 1 || $category > 20)
 		die('2');
 	
-	if(($_SESSION['username'] !== null) && (strlen($submission) <= 300) && ($category != null))
+	if(($_SESSION['id'] !== null))
 	{	
 		$connection = GlobalUtils::getConnection();
 		
