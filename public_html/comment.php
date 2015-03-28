@@ -27,11 +27,12 @@
 		$statement->execute();
 		
 		$cid = $connection->insert_id;
+		$user = GlobalUtils::$user->getUsername();
 		
 		if($rid != 0)
 		{
 			$rUser = new User($rUsername);
-			$rUser->notify("<a href='http://www.relatablez.com/post/$pid#c$cid'>Reply from " . GlobalUtils::$user->getUsername() . "</a>.");
+			$rUser->notify("<a href='http://www.relatablez.com/post/$pid#c$cid'>Reply from $user</a>");
 			echo "<div class='comment reply' id='c$cid' data-uid='$_SESSION[id]' data-user='$user' data-c='$cid' data-r='$rid'>";
 		}
 		else
