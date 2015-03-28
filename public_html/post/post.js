@@ -11,7 +11,7 @@ $('#comment-submit-button').click(function()
 			if(result != 0)
 			{
 				var comment = $.parseHTML(result);
-				$('#comment-submit-wrapper').after(comment);
+				$('#comments').children().first().before(comment);
 				
 				button.prev().css('border', '');
 			}
