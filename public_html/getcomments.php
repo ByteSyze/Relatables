@@ -33,7 +33,7 @@
 			echo "<div class='comment' id='c$cid' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
 			
 		if($user == GlobalUtils::$user->getUsername() && !$deleted)
-			echo "<button data-delete class='delete'></button>";
+			echo "<button class='delete'></button>";
 		
 		echo "<div class='comment-info'>";
 			echo "<span><a class='user' href='/user/$user'>$user</a></span>";
@@ -83,8 +83,8 @@
 		
 		echo "<div class='comment-actions'>";
 			echo "<span data-reply>Reply</span>";
-			echo "<span data-v='up' class='vote downvote'></span>";
-			echo "<span data-v='down' class='vote upvote'></span>";
+			echo "<span data-v='up' class='vote upvote'></span>";
+			echo "<span data-v='down' class='vote downvote'></span>";
 			echo "<span data-report>Report</span>";
 		echo "</div>";
 
