@@ -32,7 +32,7 @@
 		else
 			echo "<div class='comment' id='c$cid' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
 			
-		if($user == $_SESSION['username'] && !$deleted)
+		if($user == GlobalUtils::$user->getUsername() && !$deleted)
 			echo "<button data-delete class='delete'></button>";
 		
 		echo "<div class='comment-info'>";
@@ -78,7 +78,7 @@
 				echo "<p><a class='at user' href='/user/$rUser'>@$rUser</a> $comment</p>";
 			}
 			else
-				echo "$comment";
+				echo $comment;
 		echo "</div>";
 		
 		echo "<div class='comment-actions'>";

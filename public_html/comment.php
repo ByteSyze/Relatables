@@ -6,9 +6,9 @@
 	if($_SESSION['id'] == null)
 		die('1');
 	
-	$pid 	 = $_POST['p'];
-	$rid	 = $_POST['r'];
-	$rUser	 = $_POST['u'];
+	$pid 	 	= $_POST['p'];
+	$rid	 	= $_POST['r'];
+	$rUsername	= $_POST['u'];
 	
 	$comment = $_POST['c'];
 	$clen = strlen($comment);
@@ -19,36 +19,51 @@
 	$connection = GlobalUtils::getConnection();
 	
 	if($rid != 0)
-		$comment = "$rUser $comment";
+		$comment = "$rUsername $comment";
 	
 	if($statement = $connection->prepare("INSERT INTO comments (pid, comment, uid, rid) VALUES (?,?,?,?)"))
 	{
 		$statement->bind_param('isii',$pid, $comment, $_SESSION['id'], $rid);
 		$statement->execute();
 		
+		$cid = $connection->insert_id;
+		
 		if($rid != 0)
 		{
-			notify($connection, 0, getId($connection, $rUser), "Reply from ".$_SESSION['username'], "<a href='http://www.relatablez.com/post/$pid'>Reply from $_SESSION[username]</a>.");
-			echo "<div class='comment reply'>";
+			$rUser = new User($rUsername);
+			$rUser->notify("<a href='http://www.relatablez.com/post/$pid#c$cid'>Reply from " . GlobalUtils::$user->getUsername() . "</a>.");
+			echo "<div class='comment reply' id='c$cid' data-uid='$_SESSION[id]' data-user='$user' data-c='$cid' data-r='$rid'>";
 		}
 		else
-			echo "<div class='comment'>";
+			echo "<div class='comment' id='c$cid' data-uid='$_SESSION[id]' data-user='$user' data-c='$cid' data-r='$cid'>";
 		
-		echo "<a href='http://www.relatablez.com/user/{$_SESSION['username']}'>{$_SESSION['username']}</a><span class='points'>0</span><span>0 seconds ago</span>";	
+		echo "<div class='comment-info'>";
+		echo "<span><a class='user' href='/user/$user'>$user</a></span>";
+		echo "<span id='points-$cid' class='points'>0</span><span>Just Now</span>";
+		echo "</div>";
+		
+		echo "<div class='comment-body'>";
 
 		if($rid != 0)
 		{
-			$rUserPos = strpos($comment, ' ');
-			$rUser = substr($comment, 0, $rUserPos);
-			$comment = substr($comment, $rUserPos, strlen($comment));
-			echo "<p><a href='http://www.relatablez.com/user/$rUser'>@$rUser</a> $comment</p>";
+			$rUsernamePos = strpos($comment, ' ');
+			$rUsername = substr($comment, 0, $rUsernamePos);
+			$comment = substr($comment, $rUsernamePos, strlen($comment));
+			echo "<p><a href='http://www.relatablez.com/user/$rUsername'>@$rUsername</a> $comment</p>";
 		}
 		else
-			echo "<p>$comment</p>";
+			echo $comment;
 			
-		echo "<span data-reply>Reply</span><button data-v='up' class='up vote'></button><button data-v='down' class='down vote'></button><span data-report>Report</span>";
-			
-		echo "</div>\r\n";
+		echo "</div>";
+		
+		echo "<div class='comment-actions'>";
+			echo "<span data-reply>Reply</span>";
+			echo "<span data-v='up' class='vote upvote'></span>";
+			echo "<span data-v='down' class='vote downvote'></span>";
+			echo "<span data-report>Report</span>";
+		echo "</div>";
+
+		echo "</div>";
 		return;
 	}
 	
