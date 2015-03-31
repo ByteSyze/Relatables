@@ -21,6 +21,8 @@
 		const DATATYPE_NUMBER			= "number";		//Just numbers
 		const DATATYPE_ALLDATA			= "everything"; //Any data whatsoever
 		
+		const ENABLE_LOG				= false;
+		
 		public static $user;
 	
 		/**Prints default CSS style tags, as well as any extras that are passed in. */
@@ -127,12 +129,15 @@
 		
 		public static function log($message, $uid = 0, $ip = '127.0.0.1')
 		{
-			$connection = GlobalUtils::getConnection();
-			
-			if($statement = $connection->prepare('INSERT INTO logs (message, uid, ip) VALUES ((?), (?), INET_ATON(?))'))
+			if(self::ENABLE_LOG)
 			{
-				$statement->bind_param('sis', $message, $uid, $ip);
-				$statement->execute();
+				$connection = GlobalUtils::getConnection();
+				
+				if($statement = $connection->prepare('INSERT INTO logs (message, uid, ip) VALUES ((?), (?), INET_ATON(?))'))
+				{
+					$statement->bind_param('sis', $message, $uid, $ip);
+					$statement->execute();
+				}
 			}
 		}
 		
