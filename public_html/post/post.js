@@ -82,8 +82,8 @@ $(document).on("click", "span[data-v]", function()
 	
 		$.post('/ratecomment.php', {c: cid, v: vote}, function(result)
 		{
-		
-			points = parseInt($('#points-'+cid).html());
+			$p = $('#points-'+cid);
+			points = parseInt($p.html());
 			
 			if(vote == 'up')
 			{
@@ -91,16 +91,16 @@ $(document).on("click", "span[data-v]", function()
 				
 				if(points > 0)
 				{
-					$('#points-'+cid).addClass('positive');
-					$('#points-'+cid).removeClass('negative');
+					$p.addClass('positive');
+					$p.removeClass('negative');
 				}
 				else
 				{
-					$('#points-'+cid).addClass('negative');
-					$('#points-'+cid).removeClass('positive');
+					$p.addClass('negative');
+					$p.removeClass('positive');
 				}
 				
-				$('#points-'+cid).html(points);
+				$p.html(points);
 			}
 			else
 			{
@@ -108,16 +108,16 @@ $(document).on("click", "span[data-v]", function()
 				
 				if(points < 0)
 				{
-					$('#points-'+cid).addClass('negative');
-					$('#points-'+cid).removeClass('positive');
+					$p.addClass('negative');
+					$p.removeClass('positive');
 				}
 				else
 				{
-					$('#points-'+cid).addClass('positive');
-					$('#points-'+cid).removeClass('negative');
+					$p.addClass('positive');
+					$p.removeClass('negative');
 				}
 					
-				$('#points-'+cid).html(points);
+				$p.html(points);
 			}
 			
 			button.data('disabled', true);

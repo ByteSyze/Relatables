@@ -3,7 +3,7 @@
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
-	if($_SESSION['username'] == null) die('Not logged in.');
+	if($_SESSION['id'] == null) die('Not logged in.');
 	
 	$vote 	= $_POST['v'];
 	$cid	= $_POST['c'];
