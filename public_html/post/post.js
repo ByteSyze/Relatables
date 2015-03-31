@@ -55,7 +55,7 @@ $(document).on("click", "button[data-r]", function()
 			if(result != 0)
 			{
 				var commentEl = $.parseHTML(result);
-				var lastReply = button.parent();
+				var lastReply = button.parent().parent();
 				
 				while(lastReply.next().hasClass('reply')) lastReply = lastReply.next();
 				
