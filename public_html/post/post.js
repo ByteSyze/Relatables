@@ -39,7 +39,7 @@ $(document).on("click", "span[data-reply]", function()
 	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><button data-r='"+$c.attr("data-r")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
 	$(this).removeAttr('data-reply');
 });
-$(document).on("click", "button[data-reply]", function()
+$(document).on("click", "button[data-r]", function()
 {
 	//Grab value from the textarea behind the reply button.
 	comment = $(this).prev().val();
