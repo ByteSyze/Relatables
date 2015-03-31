@@ -71,7 +71,7 @@ $(document).on("click", "button[data-r]", function()
 	
 	return false;
 });
-$(document).on("click", "button[data-v]", function()
+$(document).on("click", "span[data-v]", function()
 {
 	button = $(this);
 	

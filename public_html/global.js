@@ -451,7 +451,18 @@ $(document).on('click', function(event)
 	});
 });
 
+$('body').on('click','[data-share-button]',function()
+{
+	var button = $(this);
+	if(button.text() == openedShareText)
+		button.next().animate({width: '0px'},500,function(){button.html(closedShareText);});
+	else
+		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
+});
+
 $('body').on('click', '.popup .buttons > button', function(){$(this).parent().parent().hide();});
+
+$("[data-vid]").click(function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).attr('data-v')); });
 
 $('.showlogin').click(function(){showLogin();});
 

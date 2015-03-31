@@ -50,7 +50,7 @@
 			$rUsernamePos = strpos($comment, ' ');
 			$rUsername = substr($comment, 0, $rUsernamePos);
 			$comment = substr($comment, $rUsernamePos, strlen($comment));
-			echo "<p><a href='http://www.relatablez.com/user/$rUsername'>@$rUsername</a> $comment</p>";
+			echo "<p><a href='/user/$rUsername'>@$rUsername</a> $comment</p>";
 		}
 		else
 			echo $comment;
