@@ -34,9 +34,9 @@ $(document).ready(function()
 });
 $(document).on("click", "span[data-reply]", function()
 {
-	$c = $(this).parent().parent().parent();
+	$c = $(this).parent().parent();
 	
-	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><button data-reply='"+$c.attr("data-reply")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
+	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><button data-r='"+$c.attr("data-r")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
 	$(this).removeAttr('data-reply');
 });
 $(document).on("click", "button[data-reply]", function()
@@ -45,8 +45,8 @@ $(document).on("click", "button[data-reply]", function()
 	comment = $(this).prev().val();
 	button = $(this);
 	
-	rid = $(this).parent().prev().attr('data-r');
-	user = $(this).parent().prev().attr('data-user');
+	rid = $(this).attr('data-r');
+	user = $(this).attr('data-user');
 	
 	if(comment.length <= 140)
 	{
