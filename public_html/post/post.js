@@ -77,7 +77,7 @@ $(document).on("click", "span[data-v]", function()
 	
 	if(!button.data('disabled'))
 	{
-		cid = $(this).parent().parent().parent().attr('data-c');
+		cid = $(this).parent().parent().attr('data-c');
 		vote = $(this).attr('data-v');
 	
 		$.post('/ratecomment.php', {c: cid, v: vote}, function(result)
