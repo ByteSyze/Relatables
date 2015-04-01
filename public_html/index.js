@@ -106,6 +106,7 @@ $(document).ready(function()
 	paginate();
 });
 
+
 function validate_data(objData){
 	s = objData.s;
 	c = objData.c;
@@ -172,7 +173,7 @@ function updateurl()
 	
 	var stateObj = {index: "index"};
     
-	window.history.pushState(stateObj,'',newurl);	
+	window.history.replaceState(stateObj,'',newurl);	
 
 }
 
