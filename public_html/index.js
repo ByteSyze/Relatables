@@ -6,6 +6,7 @@ var closedShareText = 'Share »';
 var subIndex = 0;
 var subCount = 20;
 
+$("[data-vid]").click(function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).attr('data-v')); });
 $(".showguides").click(function(){ $('#submission-wrapper').animate({height: "260px"}, 1000); });
 $("#submission").on('change keypress paste', function(event)
 {
@@ -19,7 +20,6 @@ $("#submission").on('change keypress paste', function(event)
 	else
 		counter.css('color', '#BFBFBF');
 });
-
 $('body').on('click', '#qotw-submit', function() {
 	var val = $('input:radio[name=v]:checked').val();
 	
@@ -30,6 +30,14 @@ $('body').on('click', '#qotw-submit', function() {
 		});
 	}
 	return false;
+});
+$('body').on('click','[data-share-button]',function()
+{
+	var button = $(this);
+	if(button.text() == openedShareText)
+		button.next().animate({width: '0px'},500,function(){button.html(closedShareText);});
+	else
+		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
 $('#sort, #display, #category, #nsfw').change(function()
@@ -136,6 +144,36 @@ function paginate()
 	}
 	
 	updatePosts();
+	updateurl();
+		
+
+}
+
+function updateurl()
+{
+
+	var newurl = "?";
+	
+	if($('#nsfw').prop('checked')){
+	newurl = newurl+"&n=1";
+	}
+	
+	if($('#category').val() != 0){
+	newurl = newurl+"&c="+($('#category').val()).toString();
+	}
+	
+	if($('#sort').val() != 0){
+	newurl = newurl+"&o="+($('#sort').val()).toString();
+	}
+	
+	if($('#display').val() != 0){
+	newurl = newurl+"&d="+($('#display').val()).toString();
+	}
+	
+	var stateObj = {index: "index"};
+    
+	window.history.pushState(stateObj,'',newurl);	
+
 }
 
 function updatePosts()
