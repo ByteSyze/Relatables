@@ -292,9 +292,9 @@
 			switch($order)
 			{
 				case '0':
-					return 'ORDER BY submissions.date ASC';
-				case '1':
 					return 'ORDER BY submissions.date DESC';
+				case '1':
+					return 'ORDER BY submissions.date ASC';
 				case '2':
 					return 'ORDER BY submissions.notalone DESC';
 				case '3':
