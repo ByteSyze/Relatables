@@ -82,9 +82,18 @@
 		echo "</div>";
 		
 		echo "<div class='comment-actions'>";
-			echo "<span data-reply>Reply</span>";
-			echo "<span data-v='up' class='vote upvote'></span>";
-			echo "<span data-v='down' class='vote downvote'></span>";
+			if($_SESSION['id'])
+			{
+				echo "<span data-reply>Reply</span>";
+				echo "<span data-v='up' class='vote upvote'></span>";
+				echo "<span data-v='down' class='vote downvote'></span>";
+			}
+			else
+			{
+				echo "<span data-show='#registerpopup'>Reply</span>";
+				echo "<span data-show='#registerpopup' class='vote upvote'></span>";
+				echo "<span data-show='#registerpopup' class='vote downvote'></span>";
+			}
 			echo "<span data-report>Report</span>";
 		echo "</div>";
 
