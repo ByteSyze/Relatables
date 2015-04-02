@@ -97,6 +97,6 @@
 	if($remaining)
 	{
 		$show_index = $num_rows+$index;
-		echo "<div class='show'><span data-show='$show_index'>Show More...</span></div>";
+		echo "<div class='show'><span data-showmore='$show_index'>Show More...</span></div>";
 	}
 	

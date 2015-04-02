@@ -141,7 +141,7 @@ $(document).on("click", "button[data-delete]", function()
 		button.remove();
 	});
 });
-$(document).on("click", "span[data-show]", function()
+$(document).on("click", "span[data-showmore]", function()
 {
 	show = $(this);
 
