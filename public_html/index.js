@@ -171,6 +171,10 @@ function updateurl()
 	newurl = newurl+"&d="+($('#display').val()).toString();
 	}
 	
+	if(page != 0){
+	newurl = newurl+"&p="+page.toString();
+	}
+	
 	var stateObj = {index: "index"};
     
 	window.history.replaceState(stateObj,'',newurl);	
