@@ -469,6 +469,6 @@ $('.showlogin').click(function(){showLogin();});
 $('[data-signup-header]').click(function(){showRegister($(this)[0]);});
 $('[data-signup-hide]').click(function(){ $('registerpopup').hide(); resetRegister();});
 
-$('[data-show]').click(function(){ $($(this).attr('data-show')).show(); return false; });
-$('[data-hide]').click(function(){ $($(this).attr('data-hide')).hide(); return false; });
-$('[data-togg]').click(function(){ $($(this).attr('data-togg')).toggle(); return false; });
+$('body').on('click', '[data-show]',function(){ $($(this).attr('data-show')).show(); return false; });
+$('body').on('click', '[data-hide]',function(){ $($(this).attr('data-hide')).hide(); return false; });
+$('body').on('click', '[data-togg]',function(){ $($(this).attr('data-togg')).toggle(); return false; });
