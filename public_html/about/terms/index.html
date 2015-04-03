@@ -7,8 +7,10 @@
   <head>
     <title>Terms and Conditions</title>
   
-    <link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
-    <?php GlobalUtils::getCSS(); ?>
+		<?php
+			GlobalUtils::getMeta(); 
+			GlobalUtils::getCSS(); 
+		?>
   </head>
   <body>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/navigation.php"); ?>
