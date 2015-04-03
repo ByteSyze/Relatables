@@ -9,7 +9,7 @@
 	
 	if($_POST['v'] !== null)
 	{
-		if($_SESSION['id'] !== null)
+		if($_SESSION['id'])
 		{
 			$end = $index+2;
 			
@@ -21,7 +21,7 @@
 			
 			if($alone + $notalone >= 100)
 			{
-				//If there are atleast 1000 votes, decide the fate of the submission.
+				//If there are atleast 100 votes, decide the fate of the submission.
 				if($notalone/$alone >= 3)
 				{
 					//If the yes-to-no vote ratio is atleast 3:1,
@@ -68,8 +68,11 @@
 <html>
 	<head>
 		<title>Moderate</title>
-		<link rel='shortcut icon' href='favicon.ico'/>
-		<?php GlobalUtils::getCSS(); ?>
+		
+		<?php 
+			GlobalUtils::getMeta(); 
+			GlobalUtils::getCSS(); 
+		?>
 	</head>
 	<body>
 		<?php require "../navigation.php"; ?>
@@ -83,11 +86,14 @@
 			</div>
 			<form id='moderation-form' method='POST'>
 				<div class="buttons moderate-buttons more-space">
-	        <button class="button green large" type='submit' name='v' value='Yes'>Yes</button>
-	        <button class="button yellow large" type='submit' name='v' value='NSFW'>Yes, but NSFW</button>
-	        <button class="button red large" type='submit' name='v' value='No'>No</button>
-      	</div>
-      </form>
+					<?php
+					if($_SESSION['id'])
+						echo "<button class='button green large' type='submit' name='v' value='Yes'>Yes</button><button class='button yellow large' type='submit' name='v' value='NSFW'>Yes, but NSFW</button><button class='button red large' type='submit' name='v' value='No'>No</button>";
+					else
+						echo "<button class='button green large' type='submit' data-show='#registerpopup'>Yes</button><button class='button yellow large' type='submit' data-show='#registerpopup'>Yes, but NSFW</button><button class='button red large' type='submit' data-show='#registerpopup'>No</button>";
+					?>
+				</div>
+			</form>
 		</div>
 		<div class="moderation-info">
 			<h3>Guidelines</h3>
