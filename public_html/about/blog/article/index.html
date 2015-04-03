@@ -21,46 +21,46 @@
 	<head>
 		<title><?php echo $title; ?></title>
 		
-		<meta charset="UTF-8">
-		<meta name="keywords" content="Am I The Only One, Relatablez, Am I The Only One That">
-		<meta name="description" content="Relatablez – Is it Just You? Relatablez is website that connects people using the things we do in our life to see if others feel or do the same.">
-		<link rel="shortcut icon" href="../favicon.ico">
-		<?php GlobalUtils::getCSS(); ?>
+		<?php 
+			GlobalUtils::getMeta();
+			GlobalUtils::getCSS(); 
+		?>
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
-    <div class="page-jumbo about-jumbo">
-      <div class="grid wrap">
-        <div class="unit whole">
-          <h1 class="page-title"><?php echo $title; ?></h1>
-          <h2 class="page-description">by <a class="name" href="/user/<?php echo $author->getUsername(); ?>"><?php echo $author->getUsername(); ?></a> on <?php echo $fCreated; ?></h2>
-        </div>
-      </div>
-    </div>
+		
+		<div class="page-jumbo about-jumbo">
+		  <div class="grid wrap">
+			<div class="unit whole">
+			  <h1 class="page-title"><?php echo $title; ?></h1>
+			  <h2 class="page-description">by <a class="name" href="/user/<?php echo $author->getUsername(); ?>"><?php echo $author->getUsername(); ?></a> on <?php echo $fCreated; ?></h2>
+			</div>
+		  </div>
+		</div>
 
-    <div class="grid wrap">
-      <div class="unit whole">
-        <div class="boxes">
-        	<div class="box">
-        		<div class="box-content">
-								<div id='article' class='content'>
-									<?php if($image != null) echo "<img id='article-image' src='$image' />"; ?>
-									<div id='article-content' >
-										<?php 	
-											
-											if(GlobalUtils::$user->isAdmin()) 
-												echo "<div style='float:right'><a href='http://www.relatablez.com/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='http://www.relatablez.com/blog/deleteblog.php?i=$bid'></a></div>"; 
-											
-											echo $content;
-										?>
-									</div>
-								</div>
+		<div class="grid wrap">
+		  <div class="unit whole">
+			<div class="boxes">
+				<div class="box">
+					<div class="box-content">
+						<div id='article' class='content'>
+							<?php if($image != null) echo "<img id='article-image' src='$image' />"; ?>
+							<div id='article-content' >
+								<?php 	
+									
+									if(GlobalUtils::$user->isAdmin()) 
+										echo "<div style='float:right'><a href='/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='/blog/deleteblog.php?i=$bid'></a></div>"; 
+									
+									echo $content;
+								?>
 							</div>
-	      		</div>
-	      	</div>
-	      </div>
-	    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>
 		
 		<?php GlobalUtils::getJS(); ?>
 	</body>
