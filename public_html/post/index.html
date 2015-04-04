@@ -45,7 +45,13 @@
 						</div>
 					</div>
 					<div class="box">
-						<span class="box-title">Comments (<span id='comment-count'><?php echo $post->getCommentCount(); ?></span>)</span>
+						<span class="box-title">
+							Comments (<span id='comment-count'><?php echo $post->getCommentCount(); ?></span>)
+							<select id='comment-sort'>
+								<option value='0'>Newest Comments</option>
+								<option value='1'>Top Comments</option>
+							</select>
+						</span>
 						<div class="box-content" id="comments">
 						</div>
 					</div>

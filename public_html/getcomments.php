@@ -1,16 +1,25 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	
+	function sort2mysql($sort)
+	{
+		if($sort) //If sort == 1, sort by highest-to-lowest rated comment
+			return 'points';
+		else
+			return 'cid';
+	}
+	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 
 	$pid 	= intval($_POST['i']);
 	$index 	= $_POST['x'];
 	$count 	= $_POST['c'] > 50 ? 50 + $index : $_POST['c'] + $index;
+	$sort	= sort2mysql(($_POST['s']));
 	
 	$connection = GlobalUtils::getConnection();
 	
 	//Long ass MYSQL query ftw
-	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, cid, rid) DESC, rid!=0, cid LIMIT ?,?"))
+	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, $sort, rid) DESC, rid!=0, cid LIMIT ?,?"))
 	{
 		$statement->bind_param('iii',$pid,$index,$count);
 		$statement->execute();
