@@ -412,8 +412,8 @@ function vote(id, vote, v)
 			$('button.green-hover[data-vid="'+id+'"]').prop('disabled', true);;
 			$('button.red-hover[data-vid="'+id+'"]').prop('disabled', false);;
 			
-			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
-			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 		else if(data == '10')
 		{
