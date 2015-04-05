@@ -461,8 +461,7 @@ $('body').on('click','[data-share-button]',function()
 });
 
 $('body').on('click', '.popup .buttons > button', function(){$(this).parent().parent().hide();});
-
-$("[data-vid]").click(function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).attr('data-v')); });
+$('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v')); });
 
 $('.showlogin').click(function(){showLogin();});
 
