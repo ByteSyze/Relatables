@@ -398,8 +398,8 @@ function vote(id, vote, v)
 			//alone++;
 			//notAlone--;
 			
-			$('button.green-hover[data-vid="'+id+'"]').disabled = false;
-			$('button.red-hover[data-vid="'+id+'"]').disabled = true;
+			$('button.green-hover[data-vid="'+id+'"]').prop('disabled', false);;
+			$('button.red-hover[data-vid="'+id+'"]').prop('disabled', true);;
 			
 			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -409,8 +409,8 @@ function vote(id, vote, v)
 			//notAlone++;
 			//alone--;
 			
-			$('button.green-hover[data-vid="'+id+'"]').disabled = true;
-			$('button.red-hover[data-vid="'+id+'"]').disabled = false;
+			$('button.green-hover[data-vid="'+id+'"]').prop('disabled', true);;
+			$('button.red-hover[data-vid="'+id+'"]').prop('disabled', false);;
 			
 			notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -418,13 +418,13 @@ function vote(id, vote, v)
 		else if(data == '10')
 		{
 			//alone++;
-			$('button.red-hover[data-vid="'+id+'"]').disabled = true;
+			$('button.red-hover[data-vid="'+id+'"]').prop('disabled', true);;
 			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 		else if(data == '11')
 		{
 			//notAlone++;
-			$('button.green-hover[data-vid="'+id+'"]').disabled = true;
+			$('button.green-hover[data-vid="'+id+'"]').prop('disabled', true);;
 			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 	});
