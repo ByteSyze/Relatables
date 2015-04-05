@@ -247,7 +247,7 @@
 							$button_no_classes = "red-hover";
 
 							if($_SESSION['id']) {
-									$button_yes_meta = $button_no_meta = ' data-v="' . $this->verification . '"';
+									$button_yes_meta = $button_no_meta = ' data-vid="' . $this->id . '"';
 									
 									if($this->user_vote === '0') {
 										$button_yes_classes = "green";
@@ -260,8 +260,8 @@
 								$button_yes_meta = $button_no_meta = "data-signup-header='Please sign up to vote'";
 							}
 
-							echo '<button class="button small  data-vid="' . $this->id . '" ' . $button_yes_classes . '" ' . $button_yes_meta . '>No, me too!</button>';
-							echo '<button class="button small  data-vid="' . $this->id . '" ' . $button_no_classes . '" ' . $button_no_meta . '>You\'re alone</button>';
+							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . '>No, me too!</button>';
+							echo '<button class="button small ' . $button_no_classes . '" ' . $button_no_meta . '>You\'re alone</button>';
 							echo '<a href="/post/' . $this->id . '" class="button small">' . $this->comment_count . '</a>';
 							echo GlobalUtils::getShareButton(/**Don't remove this absolute path*/'http://www.relatablez.com/post/' . $this->id, '"'.$this->submission.'"');
 
