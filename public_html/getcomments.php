@@ -19,7 +19,7 @@
 	$connection = GlobalUtils::getConnection();
 	
 	//Long ass MYSQL query ftw
-	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, $sort, rid) DESC, rid!=0, cid LIMIT ?,?"))
+	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, $sort, rid) DESC, rid!=0 LIMIT ?,?"))
 	{
 		$statement->bind_param('iii',$pid,$index,$count);
 		$statement->execute();
