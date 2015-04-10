@@ -32,8 +32,6 @@
 	
 	$now = new DateTime();
 	
-	echo $connection->error;
-	
 	while($statement->fetch())
 	{
 		if($rid != 0)
