@@ -162,3 +162,13 @@ $(document).on("click", "span[data-report]", function()
 		button.html('<i>Reported</i>');
 	});
 });
+
+
+$('#select').change(function()
+{
+	$('#comments').empty();
+	$.post('/getcomments.php', {i: pid, x: 0, c: 10, s:$('#select').val()}, function(result)
+	{
+		$('#comments').append(result);
+	});
+});
