@@ -69,12 +69,12 @@
 							</select>
 						</span>
 						<div>
-							<span>Linked comment</span>
 							<?php
 								$now = new DateTime();
 								
 								if($statement)
 								{
+									echo "<span>Linked comment</span>";
 									while($statement->fetch())
 									{
 										if($rid != 0)
@@ -149,9 +149,10 @@
 
 										echo "</div>";
 									}
+									
+									echo "<hr>";
 								}
 							?>
-							<hr>
 						</div>
 						<div class="box-content" id="comments">
 						</div>
