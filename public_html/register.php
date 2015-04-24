@@ -28,7 +28,7 @@
 	$isValidCredentials = GlobalUtils::validateRegistrationCredentials($user, $email);
 	
 	if($isValidCredentials !== GlobalUtils::REGISTER_SUCCESS)
-		die $isValidCredentials;
+		die($isValidCredentials);
 	
 	$pass_hash = password_hash($pass, PASSWORD_DEFAULT); // Create password hash using MD5
 	
