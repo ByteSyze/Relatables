@@ -31,6 +31,7 @@
 		die($isValidCredentials);
 	
 	$pass_hash = password_hash($pass, PASSWORD_DEFAULT); // Create password hash using MD5
+	$connection = GlobalUtils::getConnection();
 	
 	if($statement = $connection->prepare("INSERT INTO accounts (username, password, last_login, pending_email) VALUES (?,?,NOW(),?)"))
 	{
