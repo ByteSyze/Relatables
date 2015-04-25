@@ -1,7 +1,7 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2014*/
 	
-	include $_SERVER['DOCUMENT_ROOT'] . '/global.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
 	if(!isset($_GET["i"]))
@@ -9,7 +9,7 @@
 	else if(!isset($_GET["v"]))
 		die("No authentication set");
 		
-	$id = $_GET["i"];
+	$id = intval($_GET["i"]);
 	$verification = $_GET["v"];
 	
 	$connection = GlobalUtils::getConnection();
@@ -36,13 +36,10 @@
 				
 				mysqli_query($connection, "UPDATE accounts SET pending_email=NULL WHERE id=".$id);
 				
-				header("Location: /");
 			}
 		}
-		else
-		{
-			header("Location: /");
-		}
+		
+		header("Location: /");
 	}
 
 ?>
