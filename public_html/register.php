@@ -40,11 +40,16 @@
 		if($statement->execute())
 		{
 			$uid = $connection->insert_id;
+			
+			$new_user = new User($uid);							////
+																//  TODO optimize this maybe.
+			$verification = $new_user->generateVerification();	//
+			$new_user->update();								////
 		
 			$from = "From: Relatablez <noreply@relatablez.com>";
 			$to = $email;
 			$subject = "Account Verification";
-			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?i=". $uid ."&v=" . md5($uid . $pass_hash . $email);
+			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?i=". $uid ."&v=" . $verification;
 			 
 			mail($to,$subject,$body,$from);
 			
