@@ -12,7 +12,7 @@
 	$id = $_GET["i"];
 	$verification = $_GET["v"];
 	
-	$connection = mysqli_connect("mysql.a78.org","u683362690_insom","10102S33K3R17","u683362690_rtblz");
+	$connection = GlobalUtils::getConnection();
 	
 	if($statement = $connection->prepare("SELECT verification FROM accounts WHERE id = (?)"))
 	{
@@ -33,7 +33,6 @@
 				$statement->execute();
 				
 				$_SESSION['id'] = $id;
-				$_SESSION['username'] = getUsername($id);
 				
 				mysqli_query($connection, "UPDATE accounts SET pending_email=NULL WHERE id=".$id);
 				
