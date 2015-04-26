@@ -246,7 +246,7 @@ function verifyCurrentPassword()
 
 function verifyEmail()
 {
-	var emailVal = email.value;
+	var emailVal = $('#email_input').val();
 	var valid = false;
 	
 	emailPopup.innerHTML = '';
@@ -268,15 +268,15 @@ function verifyEmail()
 	{
 		$.post("/verifyEmail.php", {e: emailVal}, function(data)
 		{
-			if(data === "1")
-			{
-				emailVerifyImg.src = "/x_mark.png";
-				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
-			}
-			else
+			if(data === '0')
 			{
 				emailVerifyImg.src = "/check_mark.png";
 				valid = true;
+			}
+			else
+			{
+				emailVerifyImg.src = "/x_mark.png";
+				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
 			}
 		});	
 	}
