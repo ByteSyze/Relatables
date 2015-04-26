@@ -278,10 +278,11 @@ function verifyEmail()
 				emailVerifyImg.src = "/x_mark.png";
 				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
 			}
+			
+			emailVerifyImg.style.display = "block";
+			return valid;
 		});	
 	}
-	emailVerifyImg.style.display = "block";
-	return valid;
 }
 
 function checkLimit(event, element, limit, substr)
