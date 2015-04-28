@@ -34,7 +34,7 @@
 				
 				$_SESSION['id'] = $id;
 				
-				mysqli_query($connection, "UPDATE accounts SET pending_email=NULL WHERE id=".$id);
+				mysqli_query($connection, "UPDATE accounts SET pending_email=NULL, verification=NULL WHERE id=".$id);
 				
 			}
 		}
