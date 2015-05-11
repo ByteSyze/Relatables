@@ -27,15 +27,13 @@ var emailPopup 			 = document.getElementById('email-popup');
 
 var userRegex 			 = /^[A-Za-z0-9_]+$/;
 
-var validReg 			 = false;
-
 function register()
 {
 	var userVal	 	= user.value;
 	var passVal		= pass.value;
 	var emailVal	= email.value;
 	
-	if(verifyRegister())
+	verifyUser(function()
 	{
 		console.log('Verified');
 		$.post("/register.php", { username: userVal, password: passVal, email: emailVal }, function(data)
@@ -45,7 +43,7 @@ function register()
 				document.getElementById("registerbutton").setAttribute("value","Thank you");
 			}
 		});
-	}
+	});
 }
 
 function login()
@@ -95,15 +93,6 @@ function login()
 			passLog.style.display = 'block';
 		
 	});
-}
-
-function verifyRegister()
-{
-	validReg = false;
-	
-	verifyUser(function(){ validReg = true; });
-	
-	return validReg;
 }
 
 function saveSettings(form)
