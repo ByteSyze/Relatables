@@ -25,6 +25,7 @@
 			
 			$user->update();
 			
+			$_SESSION['popup_msg'] = 'Verification successful!<br>Welcome, ' . $user->getUsername(); // Take advantage of the fact that we loaded in the entire user.
 		}
 		else
 		{
