@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `country_id` int(5) NOT NULL DEFAULT '-1',
   `description` varchar(130) NOT NULL,
   `mod_index` int(10) unsigned NOT NULL DEFAULT '0',
-  `flags` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `flags` tinyint(3) unsigned NOT NULL DEFAULT '16',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
