@@ -29,15 +29,13 @@ var userRegex 			 = /^[A-Za-z0-9_]+$/;
 
 function register()
 {
-	var userVal	 	= user.value;
-	var passVal		= pass.value;
-	var emailVal	= email.value;
 	
 	verifyUser(function()
 	{
 		console.log('Verified');
-		$.post("/register.php", { username: userVal, password: passVal, email: emailVal }, function(data)
+		$.post("/register.php", { username: $('#user_input').val(), password: $('#pass_input').val(), email: $('#email_input').val() }, function(data)
 		{
+			console.log(data);
 			if(data.indexOf("success") != -1)
 			{
 				document.getElementById("registerbutton").setAttribute("value","Thank you");

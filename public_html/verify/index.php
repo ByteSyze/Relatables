@@ -26,7 +26,7 @@
 		
 		if(password_verify($verification, $db_verification))
 		{
-			if($statement = $connection->prepare("UPDATE accounts SET email = pending_email WHERE id LIKE (?)"))
+			if($statement = $connection->prepare("UPDATE accounts SET pending_email = NULL WHERE id = (?)"))
 			{
 				$statement->bind_param("i", $id);
 				

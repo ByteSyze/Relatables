@@ -14,6 +14,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
+	
 	if(!isset($_POST["password"]))
 		echo "password not set";
 	if(!isset($_POST["username"]))
@@ -30,12 +31,12 @@
 	if($isValidCredentials !== GlobalUtils::REGISTER_SUCCESS)
 		die($isValidCredentials);
 	
-	$pass_hash = password_hash($pass, PASSWORD_DEFAULT); // Create password hash using MD5
+	$pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 	$connection = GlobalUtils::getConnection();
 	
-	if($statement = $connection->prepare("INSERT INTO accounts (username, password, last_login, pending_email) VALUES (?,?,NOW(),?)"))
+	if($statement = $connection->prepare("INSERT INTO accounts (username, password, last_login, email, pending_email) VALUES (?,?,NOW(),?,?)"))
 	{
-		$statement->bind_param("sss", $user, $pass_hash, $email);
+		$statement->bind_param('ssss', $user, $pass_hash, $email, $email);
 		
 		if($statement->execute())
 		{
@@ -55,5 +56,7 @@
 			
 			die("success");
 		}
+		else
+			echo $statement->error;
 	}
 ?>

@@ -311,6 +311,19 @@
 			$this->setEditted('flags', self::TYPE_INT);
 		}
 		
+		public function getPending()
+		{
+			return $this->flags >> 0x09 & 0x01;
+		}
+		
+		public function setPending($pending = true)
+		{
+			if($pending)
+				$this->flags |= 0x10;
+			else
+				$this->flags &= ~0x10
+		}
+		
 		public function getFlags()
 		{
 			return $this->flags;
