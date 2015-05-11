@@ -34,7 +34,7 @@
 	$pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 	$connection = GlobalUtils::getConnection();
 	
-	if($statement = $connection->prepare("INSERT INTO accounts (username, password, last_login, email) VALUES (?,NOW(),?,?)"))
+	if($statement = $connection->prepare("INSERT INTO accounts (username, password, last_login, email) VALUES (?,?,NOW(),?)"))
 	{
 		$statement->bind_param('sss', $user, $pass_hash, $email);
 		
@@ -47,12 +47,10 @@
 			$verification = $new_user->generateVerification();	//
 			$new_user->update();								////
 		
-			$from = "From: Relatablez <noreply@relatablez.com>";
-			$to = $email;
 			$subject = "Account Verification";
 			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?i=". $uid ."&v=" . $verification;
 			 
-			mail($to,$subject,$body,$from);
+			$new_user->email($subject,$body);
 			
 			die("success");
 		}
