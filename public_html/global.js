@@ -103,7 +103,7 @@ function verifyRegister()
 	
 	verifyUser(function(){ validReg = true; });
 	
-	return valid;
+	return validReg;
 }
 
 function saveSettings(form)
