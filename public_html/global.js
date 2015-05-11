@@ -27,6 +27,8 @@ var emailPopup 			 = document.getElementById('email-popup');
 
 var userRegex 			 = /^[A-Za-z0-9_]+$/;
 
+var validReg 			 = false;
+
 function register()
 {
 	var userVal	 	= user.value;
@@ -97,9 +99,9 @@ function login()
 
 function verifyRegister()
 {
-	var valid = false;
+	validReg = false;
 	
-	verifyUser(function(){ valid = true; });
+	verifyUser(function(){ validReg = true; });
 	
 	return valid;
 }
