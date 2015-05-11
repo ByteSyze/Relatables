@@ -272,7 +272,9 @@ function verifyEmail(successCallback)
 			else
 			{
 				emailVerifyImg.src = "/check_mark.png";
-				successCallback();
+				
+				if(successCallback)
+					successCallback();
 			}
 			
 			emailVerifyImg.style.display = "block";
