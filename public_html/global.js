@@ -177,7 +177,7 @@ function verifyPassword(successCallback)
 	}
 	
 	passVerifyImg.style.display = "block";
-	verifyRePassword(succcessCallback);
+	verifyRePassword(successCallback);
 }
 
 function verifyRePassword(successCallback)
