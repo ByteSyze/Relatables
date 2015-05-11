@@ -97,10 +97,11 @@ function login()
 
 function verifyRegister()
 {
-	if(verifyUser() && verifyPassword() && verifyRePassword() && verifyEmail())
-		return true;
-		
-	return false;
+	var valid = false;
+	
+	verifyUser(function(){ valid = true; });
+	
+	return valid;
 }
 
 function saveSettings(form)
@@ -116,24 +117,15 @@ function saveSettings(form)
 	}
 }
 
-function verifyUser()
+function verifyUser(successCallback)
 {
 	var userVal = user.value;
-	var valid = false;
 	
 	usernamePopup.innerHTML = '';
 	
 	if(userVal == '')
-		return true;
+		verifyPassword(successCallback);
 	
-	$.post("/verifyUser.php", {username: userVal}, function(data)
-	{
-			if(data === "user unavailable")
-			{	
-				userVerifyImg.src = "/x_mark.png";
-				usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username is already in use.');
-			}
-	});
 	if(userVal.length < 3)
 	{
 		userVerifyImg.src = "/x_mark.png";
@@ -149,20 +141,27 @@ function verifyUser()
 		userVerifyImg.src = "/x_mark.png";
 		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username can only contain characters a-z and 0-9.');
 	}
-	else
-	{		
-		userVerifyImg.src = "/check_mark.png";
-		valid = true;
-	}
-	
-	userVerifyImg.style.display = 'block';
-	return valid;
+	$.post("/verifyUser.php", {username: userVal}, function(data)
+	{
+			if(data === "user unavailable")
+			{	
+				userVerifyImg.src = "/x_mark.png";
+				usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username is already in use.');
+				
+				userVerifyImg.style.display = 'block';
+				return valid;
+			}
+			else
+			{
+				userVerifyImg.src = "/check_mark.png";
+				verifyPassword(successCallback);
+			}
+	});
 }
 
-function verifyPassword()
+function verifyPassword(successCallback)
 {
 	var passVal = pass.value;	
-	var valid = false;
 	
 	newPasswordPopup.innerHTML = '';
 	
@@ -174,19 +173,17 @@ function verifyPassword()
 	else
 	{
 		passVerifyImg.src = "/check_mark.png";
-		valid = true;
+		verifyRePassword(successCallback);
 	}
 	
 	passVerifyImg.style.display = "block";
-	return verifyRePassword();
+	verifyRePassword(succcessCallback);
 }
 
-function verifyRePassword()
+function verifyRePassword(successCallback)
 {
 	var passVal 		= pass.value;
 	var rePassVal 		= rePass.value;
-	
-	var valid = false;
 	
 	renewPasswordPopup.innerHTML = '';
 	
@@ -198,10 +195,9 @@ function verifyRePassword()
 	else
 	{
 		rePassVerifyImg.src = "/check_mark.png";
-		valid = true;
+		verifyEmail(successCallback);
 	}
 	rePassVerifyImg.style.display = "block";
-	return valid;
 }
 
 function verifyCurrentPassword()
@@ -244,7 +240,7 @@ function verifyCurrentPassword()
 	return valid;
 }
 
-function verifyEmail()
+function verifyEmail(successCallback)
 {
 	var emailVal = $('#email_input').val();
 	var valid = false;
@@ -268,19 +264,18 @@ function verifyEmail()
 	{
 		$.post("/verifyEmail.php", {e: emailVal}, function(data)
 		{
-			if(data === '0')
-			{
-				emailVerifyImg.src = "/check_mark.png";
-				valid = true;
-			}
-			else
+			if(data !== '0')
 			{
 				emailVerifyImg.src = "/x_mark.png";
 				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
 			}
+			else
+			{
+				emailVerifyImg.src = "/check_mark.png";
+				successCallback();
+			}
 			
 			emailVerifyImg.style.display = "block";
-			return valid;
 		});	
 	}
 }
