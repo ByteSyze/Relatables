@@ -313,7 +313,7 @@
 		
 		public function getPending()
 		{
-			return $this->flags >> 0x09 & 0x01;
+			return $this->flags >> 0x04 & 0x01;
 		}
 		
 		public function setPending($pending = true)
