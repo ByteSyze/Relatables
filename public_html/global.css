@@ -303,6 +303,7 @@ ul.navigation-items div.profile-icon {
 	background-image: url('/images/icons/check_mark.png');
 }
 
+.xmark {
 	background-image: url('/images/icons/x_mark.png');
 	background-color: transparent;
 	width: 12px;
