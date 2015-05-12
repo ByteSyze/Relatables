@@ -120,33 +120,23 @@ function verifyUser(successCallback, verifyAll = false)
 	}
 	
 	if(userVal.length < 3)
-	{
-		userVerifyImg.src = "/x_mark.png";
-		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username must be atleast 3 characters long.');
-	}
+		setMarker($('#user_verify_img'), $('username-popup'), 'Username must be atleast 3 characters long.');
 	else if(userVal.length > 16)
-	{
-		userVerifyImg.src = "/x_mark.png";
-		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username must be under 16 characters long.');
-	}
+		setMarker($('#user_verify_img'), $('username-popup'), ' Username must be under 16 characters long.');
 	else if(!userRegex.test(userVal))
-	{	
-		userVerifyImg.src = "/x_mark.png";
-		usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username can only contain characters a-z and 0-9.');
-	}
+		setMarker($('#user_verify_img'), $('username-popup'), ' Username can only contain characters a-z and 0-9.');
 	$.post("/verifyUser.php", {username: userVal}, function(data)
 	{
 			if(data === "user unavailable")
 			{	
-				userVerifyImg.src = "/x_mark.png";
-				usernamePopup.innerHTML = usernamePopup.innerHTML.concat(' Username is already in use.');
+				setMarker($('#user_verify_img'), $('username-popup'), ' Username is already in use.');
 				
 				userVerifyImg.style.display = 'block';
 				return valid;
 			}
 			else
 			{
-				userVerifyImg.src = "/check_mark.png";
+				setMarker($('#user_verify_img'), 0, 0, true);
 				
 				if(verifyAll)
 					verifyPassword(successCallback, verifyAll);
@@ -163,13 +153,10 @@ function verifyPassword(successCallback, verifyAll = false)
 	newPasswordPopup.innerHTML = '';
 	
 	if(passVal.length < 6)
-	{
-		passVerifyImg.src = "/x_mark.png";
-		newPasswordPopup.innerHTML = newPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
-	}
+		setMarker($('#pass_verify_img'), $('new-password-popup'), 'Password must be atleast 6 characters long.');
 	else
 	{
-		passVerifyImg.src = "/check_mark.png";
+		setMarker($('#pass_verify_img'), 0, 0, true);
 		verifyRePassword(successCallback);
 	}
 	
@@ -189,17 +176,15 @@ function verifyRePassword(successCallback, verifyAll = false)
 	renewPasswordPopup.innerHTML = '';
 	
 	if(passVal !== rePassVal)
-	{
-		rePassVerifyImg.src = "/x_mark.png";
-		renewPasswordPopup.innerHTML = renewPasswordPopup.innerHTML.concat(' Password verification doesn\'t match original password. ');
-	}
+		setMarker($('#repass_verify_img'), $('renew-password-popup'), 'Password verification doesn\'t match original password.');
 	else
 	{
-		rePassVerifyImg.src = "/check_mark.png";
+		setMarker($('#repass_verify_img'), 0, 0, true);
 		
 		if(verifyAll)
 			verifyEmail(successCallback, verifyAll);
-		else return true;
+		else 
+			return true;
 	}
 	rePassVerifyImg.style.display = "block";
 }
@@ -219,8 +204,7 @@ function verifyCurrentPassword()
 	
 	if(passVal.length < 6)
 	{
-		currentPassVerifyImg.src = "/x_mark.png";
-		currentPasswordPopup.innerHTML = currentPasswordPopup.innerHTML.concat(' Password must be atleast 6 characters long. ');
+		setMarker($('#currentpass_verify_img'), $('current-password-popup'), 'Password must be atleast 6 characters long.');
 	}
 	else
 	{		
@@ -228,15 +212,11 @@ function verifyCurrentPassword()
 		{
 				if(data == "0")
 				{
-					currentPassVerifyImg.src = "/check_mark.png";	
-					currentPasswordPopup.innerHTML = '';
+					setMarker($('#currentpass_verify_img'), 0, 0, true);
 					valid = true;
 				}
 				else
-				{
-					currentPassVerifyImg.src = "/x_mark.png";
-					currentPasswordPopup.innerHTML = ' Password is incorrect. ';
-				}
+					setMarker($('#currentpass_verify_img'), $('current-password-popup'), ' Password is incorrect.');
 		});
 	}
 	
@@ -254,27 +234,20 @@ function verifyEmail(successCallback, verifyAll = false)
 		return true;
 	
 	if(emailVal.length < 4)
-	{
-		emailVerifyImg.src = "/x_mark.png";
-		emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email must be atleast 4 characters long. ');
-	}
+		setMarker($('#email_verify_img'), $('email-popup'), 'Email must be atleast 4 characters long.');
 	else if((emailVal.indexOf("@") == -1) || (emailVal.indexOf(".") == -1))
-	{
-		emailVerifyImg.src = "/x_mark.png";
-		emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is invalid. ');
-	}
+		setMarker($('#email_verify_img'), $('email-popup'), ' Email is invalid.');
 	else
 	{
 		$.post("/verifyEmail.php", {e: emailVal}, function(data)
 		{
 			if(data !== '0')
 			{
-				emailVerifyImg.src = "/x_mark.png";
-				emailPopup.innerHTML = emailPopup.innerHTML.concat(' Email is already in use. ');
+				setMarker($('#email_verify_img'), $('email-popup'), ' Email is already in use.');
 			}
 			else
 			{
-				emailVerifyImg.src = "/check_mark.png";
+				setMarker($('#email_verify_img'), 0, 0, true);
 				
 				if(successCallback)
 					successCallback();
@@ -306,6 +279,17 @@ function checkLimit(event, element, limit, substr)
 	}
 	
 	return remaining;
+}
+
+function setMarker($img, $msg, msg, checkmark = false)
+{
+	if(checkmark)
+		$img.addClass('checkmark');
+	else
+		$img.removeClass('checkmark');
+		
+	if(msg)
+		$msg.html($msg.html()+msg);
 }
 
 function hideAll()
