@@ -299,6 +299,16 @@ ul.navigation-items div.profile-icon {
 	border-bottom: 1px solid #bfbfbf;
 }
 
+.checkmark {
+	background-image: url('/images/icons/check_mark.png');
+}
+
+	background-image: url('/images/icons/x_mark.png');
+	background-color: transparent;
+	width: 12px;
+	height: 12px;
+}
+
 .popup {
 	background-color: #fff;
 	position: fixed;

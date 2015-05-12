@@ -47,37 +47,24 @@ echo
 	<div style='text-align:center;margin:auto;width:100%;'>
 		<div>
 			<form method='post' class='vertical'>
-				<table style='width:100%;'>
-					<tr>
-						<td><img src='/images/icons/question.png' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></td>
-						<td><input id='user_input' class='textbox' type='text' name='username'  onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='Username'><label id='user_log'></label></td>
-						<td style='width:15px;'><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></td>
-					</tr>
-					<tr class='spacer'><td colspan='3'></td></tr>
-					<tr>
-						<td><img src='/images/icons/question.png' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div></td>
-						<td><input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' name='password' placeholder='Password'><label id='pass_log'></label></td>
-						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='pass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></td>
-					</tr>
-					<tr class='spacer'><td colspan='3'></td></tr>
-					<tr>
-						<td></td>
-						<td><input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><label id='repass_log'></label></td>
-						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></td>
-					</tr>
-					<tr class='spacer'><td colspan='3'></td></tr>
-					<tr>
-						<td></td>
-						<td><input id='email_input' class='textbox' type='text' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='Email'><label id='email_log'></label></td>
-						<td><img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/images/icons/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></td>
-					</tr>
-					<tr class='spacer'><td colspan='3'></td></tr>
-					<tr>
-						<td></td>
-						<td><input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'></td>
-						<td></td>
-					</tr>
-				</table><br>
+				<img src='/images/icons/question.png' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
+				<input id='user_input' class='textbox' type='text' name='username'  onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='Username'><label id='user_log'></label>
+				<div onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify xmark' id='user_verify_img' ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
+			
+				<img src='/images/icons/question.png' id='password-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='password-guidelines-popup' class='questionpopup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
+				<input id='pass_input' class='textbox' type='password' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' name='password' placeholder='Password'><label id='pass_log'></label>
+				<div onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify xmark' id='pass_verify_img' ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
+		
+				
+				<input id='repass_input' class='textbox' type='password' name='repassword' onkeyup='verifyRePassword()' placeholder='Confirm Password'><label id='repass_log'></label>
+				<div onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify xmark' id='repass_verify_img' ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
+			
+				
+				<input id='email_input' class='textbox' type='text' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='Email'><label id='email_log'></label>
+				<div onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify xmark' id='email_verify_img' ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
+		
+				
+				<input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'>
 				
 			</form>
 		</div>
