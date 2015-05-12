@@ -43,10 +43,10 @@ echo
 		<button class='button blue-hover smaller' >Close</button>
 	</div>
 	<h1 id='registerheader' class='popup-header'>Sign Up</h1>			
-	<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a href='javascript:hideRegister();showLogin();'>Log In</a></h6>
+	<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a class='showlogin'>Log In</a></h6>
 	<div style='text-align:center;margin:auto;width:100%;'>
 		<div>
-			<form method='post' action='javascript:register();' class='vertical'>
+			<form method='post' class='vertical'>
 				<table style='width:100%;'>
 					<tr>
 						<td><img src='/images/icons/question.png' id='username-guidelines-button' onmouseover='showGuidelines(this)' onmouseout='hideGuidelines(this)'><div id='username-guidelines-popup' class='questionpopup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div></td>

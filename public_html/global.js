@@ -35,7 +35,6 @@ function register()
 		console.log('Verified');
 		$.post("/register.php", { username: $('#user_input').val(), password: $('#pass_input').val(), email: $('#email_input').val() }, function(data)
 		{
-			console.log(data);
 			if(data.indexOf("success") != -1)
 			{
 				document.getElementById("registerbutton").setAttribute("value","Thank you");
@@ -451,6 +450,8 @@ $('body').on('click', '.popup .buttons > button', function(){$(this).parent().pa
 $('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v')); });
 
 $('.showlogin').click(function(){showLogin();});
+
+$('#registerpopup form').submit(function(){ register(); });
 
 $('[data-signup-header]').click(function(){showRegister($(this)[0]);});
 $('[data-signup-hide]').click(function(){ $('registerpopup').hide(); resetRegister();});
