@@ -451,7 +451,7 @@ $('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $
 
 $('.showlogin').click(function(){showLogin();});
 
-$('#registerpopup form').submit(function(){ register(); });
+$('#registerpopup form').submit(function(){ register(); return false;  });
 
 $('[data-signup-header]').click(function(){showRegister($(this)[0]);});
 $('[data-signup-hide]').click(function(){ $('registerpopup').hide(); resetRegister();});
