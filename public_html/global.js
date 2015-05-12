@@ -40,7 +40,7 @@ function register()
 				document.getElementById("registerbutton").setAttribute("value","Thank you");
 			}
 		});
-	});
+	}, true);
 }
 
 function login()
@@ -105,14 +105,19 @@ function saveSettings(form)
 	}
 }
 
-function verifyUser(successCallback)
+function verifyUser(successCallback, verifyAll = false)
 {
 	var userVal = user.value;
 	
 	usernamePopup.innerHTML = '';
 	
 	if(userVal == '')
-		verifyPassword(successCallback);
+	{
+		if{verifyAll)
+			verifyPassword(successCallback);
+		else
+			return true;
+	}
 	
 	if(userVal.length < 3)
 	{
@@ -142,12 +147,16 @@ function verifyUser(successCallback)
 			else
 			{
 				userVerifyImg.src = "/check_mark.png";
-				verifyPassword(successCallback);
+				
+				if(verifyAll)
+					verifyPassword(successCallback, verifyAll);
+				else
+					return true;
 			}
 	});
 }
 
-function verifyPassword(successCallback)
+function verifyPassword(successCallback, verifyAll = false)
 {
 	var passVal = pass.value;	
 	
@@ -165,10 +174,14 @@ function verifyPassword(successCallback)
 	}
 	
 	passVerifyImg.style.display = "block";
-	verifyRePassword(successCallback);
+	
+	if(verifyAll)
+		verifyRePassword(successCallback, verifyAll);
+	else 
+		return true;
 }
 
-function verifyRePassword(successCallback)
+function verifyRePassword(successCallback, verifyAll = false)
 {
 	var passVal 		= pass.value;
 	var rePassVal 		= rePass.value;
@@ -183,7 +196,10 @@ function verifyRePassword(successCallback)
 	else
 	{
 		rePassVerifyImg.src = "/check_mark.png";
-		verifyEmail(successCallback);
+		
+		if(verifyAll)
+			verifyEmail(successCallback, verifyAll);
+		else return true;
 	}
 	rePassVerifyImg.style.display = "block";
 }
@@ -228,10 +244,9 @@ function verifyCurrentPassword()
 	return valid;
 }
 
-function verifyEmail(successCallback)
+function verifyEmail(successCallback, verifyAll = false)
 {
 	var emailVal = $('#email_input').val();
-	var valid = false;
 	
 	emailPopup.innerHTML = '';
 	
@@ -263,6 +278,9 @@ function verifyEmail(successCallback)
 				
 				if(successCallback)
 					successCallback();
+					
+				if(!verifyAll)
+					return true;
 			}
 			
 			emailVerifyImg.style.display = "block";
