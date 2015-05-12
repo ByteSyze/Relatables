@@ -113,7 +113,7 @@ function verifyUser(successCallback, verifyAll = false)
 	
 	if(userVal == '')
 	{
-		if{verifyAll)
+		if(verifyAll)
 			verifyPassword(successCallback);
 		else
 			return true;
