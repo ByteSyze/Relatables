@@ -268,7 +268,7 @@
 		
 		public function isBetaTester()
 		{
-			return $this->flags >> 0x01 & 0x01;
+			return ($this->flags >> 0x01) & 0x01;
 		}
 		
 		public function setBetaTester($tester = true)
@@ -283,7 +283,7 @@
 		
 		public function getHideRelated()
 		{
-			return $this->flags >> 0x02 & 0x01;
+			return ($this->flags >> 0x02) & 0x01;
 		}
 		
 		public function setHideRelated($hide = true)
@@ -298,7 +298,7 @@
 		
 		public function getHideLocation()
 		{
-			return $this->flags >> 0x03 & 0x01;
+			return ($this->flags >> 0x03) & 0x01;
 		}
 		
 		public function setHideLocation($hide = true)
@@ -313,7 +313,7 @@
 		
 		public function getPending()
 		{
-			return $this->flags >> 0x04 & 0x01;
+			return ($this->flags >> 0x04) & 0x01;
 		}
 		
 		public function setPending($pending = true)
