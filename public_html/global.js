@@ -128,25 +128,28 @@ function verifyUser(successCallback, verifyAll)
 		setMarker($img, $pop, ' Username must be under 16 characters long.');
 	else if(!userRegex.test(userVal))
 		setMarker($img, $pop, ' Username can only contain characters a-z and 0-9.');
-	$.post("/verifyUser.php", {username: userVal}, function(data)
+	else
 	{
-			if(data === "user unavailable")
-			{	
-				setMarker($img, $pop, ' Username is already in use.');
-				
-				$img.show();
-				return valid;
-			}
-			else
-			{
-				setMarker($img, 0, 0, true);
-				
-				if(verifyAll)
-					verifyPassword(successCallback, verifyAll);
+		$.post("/verifyUser.php", {username: userVal}, function(data)
+		{
+				if(data === "user unavailable")
+				{	
+					setMarker($img, $pop, ' Username is already in use.');
+					
+					$img.show();
+					return valid;
+				}
 				else
-					return true;
-			}
-	});
+				{
+					setMarker($img, 0, 0, true);
+					
+					if(verifyAll)
+						verifyPassword(successCallback, verifyAll);
+					else
+						return true;
+				}
+		});
+	}
 }
 
 function verifyPassword(successCallback, verifyAll)
