@@ -319,7 +319,7 @@ function resetRegister()
 function checkHideErrors($el)
 {
 	if($el.val() == '')
-		$el.next().next().hide();
+		$el.next().hide();
 }
 
 function updateMessageStatus(id)
