@@ -425,7 +425,7 @@ $('body').on('click','[data-share-button]',function()
 		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
-$('#user_input').keydown(function(){ checkLimit(event, $(this)[0], 32, false); });
+$('#user_input').keydown(function(event){ checkLimit(event, $(this)[0], 32, false); });
 
 $('#user_input').keyup(function(){ verifyUser(0, false); checkHideErrors($(this)); });
 $('#pass_input').keyup(function(){ verifyPassword(0, false); checkHideErrors($(this)); });
