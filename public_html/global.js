@@ -330,7 +330,7 @@ function checkErrPopups($el)
 	if($el.val() == '')
 		$el.next().hide();
 	else
-		$el.next.().show();
+		$el.next().show();
 }
 
 function updateMessageStatus(id)
