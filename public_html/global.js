@@ -119,24 +119,27 @@ function verifyUser(successCallback, verifyAll)
 			return true;
 	}
 	
+	$img = $('#user_input').next();
+	$pop = $('username-popup');
+	
 	if(userVal.length < 3)
-		setMarker($('#user_verify_img'), $('username-popup'), 'Username must be atleast 3 characters long.');
+		setMarker($img, $pop, 'Username must be atleast 3 characters long.');
 	else if(userVal.length > 16)
-		setMarker($('#user_verify_img'), $('username-popup'), ' Username must be under 16 characters long.');
+		setMarker($img, $pop, ' Username must be under 16 characters long.');
 	else if(!userRegex.test(userVal))
-		setMarker($('#user_verify_img'), $('username-popup'), ' Username can only contain characters a-z and 0-9.');
+		setMarker($img, $pop, ' Username can only contain characters a-z and 0-9.');
 	$.post("/verifyUser.php", {username: userVal}, function(data)
 	{
 			if(data === "user unavailable")
 			{	
-				setMarker($('#user_verify_img'), $('username-popup'), ' Username is already in use.');
+				setMarker($img, $pop, ' Username is already in use.');
 				
-				userVerifyImg.style.display = 'block';
+				$img.show();
 				return valid;
 			}
 			else
 			{
-				setMarker($('#user_verify_img'), 0, 0, true);
+				setMarker($img, 0, 0, true);
 				
 				if(verifyAll)
 					verifyPassword(successCallback, verifyAll);
@@ -152,15 +155,18 @@ function verifyPassword(successCallback, verifyAll)
 	
 	newPasswordPopup.innerHTML = '';
 	
+	$img = $('#pass_input').next();
+	$pop = $('#password-popup');
+	
 	if(passVal.length < 6)
-		setMarker($('#pass_verify_img'), $('new-password-popup'), 'Password must be atleast 6 characters long.');
+		setMarker($img, $pop, 'Password must be atleast 6 characters long.');
 	else
 	{
-		setMarker($('#pass_verify_img'), 0, 0, true);
+		setMarker($img, 0, 0, true);
 		verifyRePassword(successCallback);
 	}
 	
-	passVerifyImg.style.display = "block";
+	$img.show();
 	
 	if(verifyAll)
 		verifyRePassword(successCallback, verifyAll);
@@ -175,18 +181,22 @@ function verifyRePassword(successCallback, verifyAll)
 	
 	renewPasswordPopup.innerHTML = '';
 	
+	$img = $('#repass_input').next();
+	$pop = $('#renew-password-popup');
+	
 	if(passVal !== rePassVal)
-		setMarker($('#repass_verify_img'), $('renew-password-popup'), 'Password verification doesn\'t match original password.');
+		setMarker($img, $pop, 'Password verification doesn\'t match original password.');
 	else
 	{
-		setMarker($('#repass_verify_img'), 0, 0, true);
+		setMarker($img, 0, 0, true);
 		
 		if(verifyAll)
 			verifyEmail(successCallback, verifyAll);
 		else 
 			return true;
 	}
-	rePassVerifyImg.style.display = "block";
+	
+	$img.show();
 }
 
 function verifyCurrentPassword()
@@ -196,31 +206,32 @@ function verifyCurrentPassword()
 	
 	currentPasswordPopup.innerHTML = '';
 	
+	$img = $('#currentpass_input').next();
+	$pop = $('#currentpass-popup');
+	
 	if((passVal == '') && (pass.value == '') && (rePass.value == ''))
 	{
-		currentPassVerifyImg.style.display = 'none';
+		$img.hide();
 		return true;
 	}
 	
 	if(passVal.length < 6)
-	{
-		setMarker($('#currentpass_verify_img'), $('current-password-popup'), 'Password must be atleast 6 characters long.');
-	}
+		setMarker($img, $pop, 'Password must be atleast 6 characters long.');
 	else
 	{		
 		$.post("/verifyPassword.php", {p: passVal}, function(data)
 		{
 				if(data == "0")
 				{
-					setMarker($('#currentpass_verify_img'), 0, 0, true);
+					setMarker($img, 0, 0, true);
 					valid = true;
 				}
 				else
-					setMarker($('#currentpass_verify_img'), $('current-password-popup'), ' Password is incorrect.');
+					setMarker($img, $pop, ' Password is incorrect.');
 		});
 	}
 	
-	currentPassVerifyImg.style.display = 'block';
+	$img.show();
 	return valid;
 }
 
@@ -230,24 +241,27 @@ function verifyEmail(successCallback, verifyAll)
 	
 	emailPopup.innerHTML = '';
 	
+	$img = $('#email_input').next();
+	$pop = $('#email-popup');
+	
 	if(emailVal == '')
 		return true;
 	
 	if(emailVal.length < 4)
-		setMarker($('#email_verify_img'), $('email-popup'), 'Email must be atleast 4 characters long.');
+		setMarker($img, $pop, 'Email must be atleast 4 characters long.');
 	else if((emailVal.indexOf("@") == -1) || (emailVal.indexOf(".") == -1))
-		setMarker($('#email_verify_img'), $('email-popup'), ' Email is invalid.');
+		setMarker($img, $pop, ' Email is invalid.');
 	else
 	{
 		$.post("/verifyEmail.php", {e: emailVal}, function(data)
 		{
 			if(data !== '0')
 			{
-				setMarker($('#email_verify_img'), $('email-popup'), ' Email is already in use.');
+				setMarker($img, $pop, ' Email is already in use.');
 			}
 			else
 			{
-				setMarker($('#email_verify_img'), 0, 0, true);
+				setMarker($img, 0, 0, true);
 				
 				if(successCallback)
 					successCallback();
@@ -256,7 +270,7 @@ function verifyEmail(successCallback, verifyAll)
 					return true;
 			}
 			
-			emailVerifyImg.style.display = "block";
+			$img.show();
 		});	
 	}
 }
