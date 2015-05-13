@@ -105,7 +105,7 @@ function saveSettings(form)
 	}
 }
 
-function verifyUser(successCallback, verifyAll = false)
+function verifyUser(successCallback, verifyAll)
 {
 	var userVal = user.value;
 	
@@ -114,7 +114,7 @@ function verifyUser(successCallback, verifyAll = false)
 	if(userVal == '')
 	{
 		if(verifyAll)
-			verifyPassword(successCallback);
+			verifyPassword(successCallback, verifyAll);
 		else
 			return true;
 	}
@@ -146,7 +146,7 @@ function verifyUser(successCallback, verifyAll = false)
 	});
 }
 
-function verifyPassword(successCallback, verifyAll = false)
+function verifyPassword(successCallback, verifyAll)
 {
 	var passVal = pass.value;	
 	
@@ -168,7 +168,7 @@ function verifyPassword(successCallback, verifyAll = false)
 		return true;
 }
 
-function verifyRePassword(successCallback, verifyAll = false)
+function verifyRePassword(successCallback, verifyAll)
 {
 	var passVal 		= pass.value;
 	var rePassVal 		= rePass.value;
@@ -224,7 +224,7 @@ function verifyCurrentPassword()
 	return valid;
 }
 
-function verifyEmail(successCallback, verifyAll = false)
+function verifyEmail(successCallback, verifyAll)
 {
 	var emailVal = $('#email_input').val();
 	
@@ -316,33 +316,10 @@ function resetRegister()
 	$('#registerpopup :input').val('');
 }
 
-function showGuidelines(element)
+function checkHideErrors($el)
 {
-	element.firstChild.style.display="block";
-}
-
-function hideGuidelines(element)
-{
-	element.firstChild.style.display="none";
-}
-
-function showErrors(element)
-{
-	var popup = element.nextSibling.children[0];
-	
-	if(popup.innerHTML)
-		popup.style.display = 'block';
-}
-
-function hideErrors(element)
-{
-	element.nextSibling.children[0].style.display = 'none';
-}
-
-function checkHideErrors(element, errorPopup)
-{
-	if(element.value == '')
-		errorPopup.style.display = 'none';
+	if($el.val() == '')
+		$el.next().next().hide();
 }
 
 function updateMessageStatus(id)
@@ -447,6 +424,16 @@ $('body').on('click','[data-share-button]',function()
 	else
 		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
+
+$('#user_input').keydown(function(){ checkLimit(event, $(this)[0], 32, false); });
+
+$('#user_input').keyup(function(){ verifyUser(0, false); checkHideErrors($(this)); });
+$('#pass_input').keyup(function(){ verifyPassword(0, false); checkHideErrors($(this)); });
+$('#repass_input').keyup(function(){ verifyRePassword(0, false); checkHideErrors($(this)); });
+$('#email_input').keyup(function(){ verifyEmail(0, false); checkHideErrors($(this)); });
+
+$('data-err-popup').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
+$('data-err-popup').mouseout(function(){ $(this).next().first().hide(); });
 
 $('body').on('click', '.popup .buttons > button', function(){$(this).parent().parent().hide();});
 $('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v')); });
