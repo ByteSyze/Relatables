@@ -446,8 +446,8 @@ $('#pass_input').keyup(function(){ verifyPassword(0, false); checkHideErrors($(t
 $('#repass_input').keyup(function(){ verifyRePassword(0, false); checkHideErrors($(this)); });
 $('#email_input').keyup(function(){ verifyEmail(0, false); checkHideErrors($(this)); });
 
-$('data-err-popup').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
-$('data-err-popup').mouseout(function(){ $(this).next().first().hide(); });
+$('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
+$('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
 
 $('body').on('click', '.popup .buttons > button', function(){$(this).parent().parent().hide();});
 $('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v')); });
