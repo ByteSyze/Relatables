@@ -136,7 +136,6 @@ function verifyUser(successCallback, verifyAll)
 				{	
 					setMarker($img, $pop, ' Username is already in use.');
 					
-					$img.show();
 					return valid;
 				}
 				else
@@ -169,8 +168,6 @@ function verifyPassword(successCallback, verifyAll)
 		verifyRePassword(successCallback);
 	}
 	
-	$img.show();
-	
 	if(verifyAll)
 		verifyRePassword(successCallback, verifyAll);
 	else 
@@ -198,8 +195,6 @@ function verifyRePassword(successCallback, verifyAll)
 		else 
 			return true;
 	}
-	
-	$img.show();
 }
 
 function verifyCurrentPassword()
@@ -234,7 +229,6 @@ function verifyCurrentPassword()
 		});
 	}
 	
-	$img.show();
 	return valid;
 }
 
@@ -272,8 +266,6 @@ function verifyEmail(successCallback, verifyAll)
 				if(!verifyAll)
 					return true;
 			}
-			
-			$img.show();
 		});	
 	}
 }
@@ -333,10 +325,12 @@ function resetRegister()
 	$('#registerpopup :input').val('');
 }
 
-function checkHideErrors($el)
+function checkErrPopups($el)
 {
 	if($el.val() == '')
 		$el.next().hide();
+	else
+		$el.next.().show();
 }
 
 function updateMessageStatus(id)
@@ -444,10 +438,10 @@ $('body').on('click','[data-share-button]',function()
 
 $('#user_input').keydown(function(event){ checkLimit(event, $(this)[0], 32, false); });
 
-$('#user_input').keyup(function(){ verifyUser(0, false); checkHideErrors($(this)); });
-$('#pass_input').keyup(function(){ verifyPassword(0, false); checkHideErrors($(this)); });
-$('#repass_input').keyup(function(){ verifyRePassword(0, false); checkHideErrors($(this)); });
-$('#email_input').keyup(function(){ verifyEmail(0, false); checkHideErrors($(this)); });
+$('#user_input').keyup(function(){ verifyUser(0, false); checkErrPopups($(this)); });
+$('#pass_input').keyup(function(){ verifyPassword(0, false); checkErrPopups($(this)); });
+$('#repass_input').keyup(function(){ verifyRePassword(0, false); checkErrPopups($(this)); });
+$('#email_input').keyup(function(){ verifyEmail(0, false); checkErrPopups($(this)); });
 
 $('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
 $('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
