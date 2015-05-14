@@ -123,18 +123,18 @@ function verifyUser(successCallback, verifyAll)
 	$pop = $('username-popup');
 	
 	if(userVal.length < 3)
-		setMarker($img, $pop, 'Username must be atleast 3 characters long.');
+		setMarker($img, $pop, 'Username must be atleast 3 characters long.', false);
 	else if(userVal.length > 16)
-		setMarker($img, $pop, ' Username must be under 16 characters long.');
+		setMarker($img, $pop, ' Username must be under 16 characters long.', false);
 	else if(!userRegex.test(userVal))
-		setMarker($img, $pop, ' Username can only contain characters a-z and 0-9.');
+		setMarker($img, $pop, ' Username can only contain characters a-z and 0-9.', false);
 	else
 	{
 		$.post("/verifyUser.php", {username: userVal}, function(data)
 		{
 				if(data === "user unavailable")
 				{	
-					setMarker($img, $pop, ' Username is already in use.');
+					setMarker($img, $pop, ' Username is already in use.', false);
 					
 					return valid;
 				}
@@ -161,7 +161,7 @@ function verifyPassword(successCallback, verifyAll)
 	$pop = $('#password-popup');
 	
 	if(passVal.length < 6)
-		setMarker($img, $pop, 'Password must be atleast 6 characters long.');
+		setMarker($img, $pop, 'Password must be atleast 6 characters long.', false);
 	else
 	{
 		setMarker($img, 0, 0, true);
@@ -185,7 +185,7 @@ function verifyRePassword(successCallback, verifyAll)
 	$pop = $('#renew-password-popup');
 	
 	if(passVal !== rePassVal)
-		setMarker($img, $pop, 'Password verification doesn\'t match original password.');
+		setMarker($img, $pop, 'Password verification doesn\'t match original password.', false);
 	else
 	{
 		setMarker($img, 0, 0, true);
@@ -214,7 +214,7 @@ function verifyCurrentPassword()
 	}
 	
 	if(passVal.length < 6)
-		setMarker($img, $pop, 'Password must be atleast 6 characters long.');
+		setMarker($img, $pop, 'Password must be atleast 6 characters long.', false);
 	else
 	{		
 		$.post("/verifyPassword.php", {p: passVal}, function(data)
@@ -225,7 +225,7 @@ function verifyCurrentPassword()
 					valid = true;
 				}
 				else
-					setMarker($img, $pop, ' Password is incorrect.');
+					setMarker($img, $pop, ' Password is incorrect.', false);
 		});
 	}
 	
@@ -245,16 +245,16 @@ function verifyEmail(successCallback, verifyAll)
 		return true;
 	
 	if(emailVal.length < 4)
-		setMarker($img, $pop, 'Email must be atleast 4 characters long.');
+		setMarker($img, $pop, 'Email must be atleast 4 characters long.', false);
 	else if((emailVal.indexOf("@") == -1) || (emailVal.indexOf(".") == -1))
-		setMarker($img, $pop, ' Email is invalid.');
+		setMarker($img, $pop, ' Email is invalid.', false);
 	else
 	{
 		$.post("/verifyEmail.php", {e: emailVal}, function(data)
 		{
 			if(data !== '0')
 			{
-				setMarker($img, $pop, ' Email is already in use.');
+				setMarker($img, $pop, ' Email is already in use.', false);
 			}
 			else
 			{
@@ -290,7 +290,7 @@ function checkLimit(event, element, limit, substr)
 	return remaining;
 }
 
-function setMarker($img, $msg, msg, checkmark = false)
+function setMarker($img, $msg, msg, checkmark)
 {
 	if(checkmark)
 		$img.addClass('checkmark');
