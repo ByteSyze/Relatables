@@ -38,7 +38,25 @@
 				
 			$this->editted_fields = array();
 			
-			if(is_string($data))
+			if(is_int($data))
+			{
+				//Treat $data as ID
+				
+				$this->id = $data;
+				
+				if($data == 0) return; //0 is for users that aren't logged in.
+				
+				if($statement = self::$connection->prepare('SELECT username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, country_id, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
+				{	
+					$statement->bind_param('i', $data);
+					
+					$statement->execute();
+					
+					$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country_id,  $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
+					$statement->fetch();
+				}
+			}
+			else
 			{
 				//Treat $data as username
 				if($statement = self::$connection->prepare('SELECT id, username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, country_id, (SELECT short_name FROM countries WHERE country_id = accounts.country_id) AS country, description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE username LIKE (?)'))
@@ -50,24 +68,6 @@
 					$statement->bind_result($this->id, $this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country_id, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
 					$statement->fetch();
 				}	
-			}
-			else
-			{
-				//Treat $data as ID
-				
-				$this->id = $data;
-				
-				if($data == 0) return; //0 is for users that aren't logged in.
-				
-				if($statement = self::$connection->prepare('SELECT username, password, cookie_login, verification, DATE_FORMAT(joined,\'%M %d, %Y\'), DATE_FORMAT(last_login,\'%M %d, %Y\'), email, pending_email, (SELECT short_name FROM countries WHERE country_id = accounts.country_id), description, mod_index, flags, (SELECT COUNT(uid) FROM submissions WHERE uid=accounts.id) AS posts, (Select COUNT(uid) FROM comments WHERE uid=accounts.id) AS comments FROM accounts WHERE id=(?)'))
-				{	
-					$statement->bind_param('i', $data);
-					
-					$statement->execute();
-					
-					$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
-					$statement->fetch();
-				}
 			}
 		}
 		
