@@ -33,9 +33,12 @@
 	?>
 	<head>
 		<title>Contact</title>
-		<meta charset="UTF-8">
-		<link rel="shortcut icon" href="http://www.relatablez.com/favicon.ico">
-		<?php GlobalUtils::getCSS(); ?>
+		
+		<?php 
+			GlobalUtils::getMeta(); 
+			GlobalUtils::getCSS(); 
+		?>
+		
 	</head>
 	<body>
 		<?php require("../navigation.php"); ?>
