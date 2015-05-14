@@ -13,17 +13,22 @@
 			$message	= $_POST['m'];
 			
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-				die("bad email"); // if email isn't valid, die for now.
-			if(strlen($name) < 1)
-				die("This may seem rude, but the guys running this show do not accept input from nameless people. Friggin' name elitists...");
-			if(strlen($message) < 1)
-				die("I'm assuming your lack of input is a good thing? Carry on, then.");
+				$_SESSION['error_msg'] = 'Email is invalid.'; // if email isn't valid, die for now.
+			else if(strlen($name) < 1)
+				$_SESSION['error_msg'] = "This may seem rude, but the guys running this show do not accept input from nameless people. Friggin' name elitists...";
+			else if(strlen($message) < 1)
+				$_SESSION['error_msg'] = "I'm assuming your lack of input is a good thing? Carry on, then.";
+			else
+			{
+				$from		= "From: Relatablez <noreply@relatablez.com>";
+				$subject	= "$name Has Submitted a Contact Form.";
+				$body		= "Greetings! We hast hath taken feedback from a valorous chap by the name of $name. He hath submitted the following:\r\n\r\n\"$message\"\r\n\r\nYou may reacheth this lad/madam via their electronic-mail address:\r\n$email";
+				 
+				mail('contact@relatablez.com, ins10102@gmail.com',$subject,$body,$from);
 				
-			$from		= "From: Relatablez <noreply@relatablez.com>";
-			$subject	= "$name Has Submitted a Contact Form.";
-			$body		= "Greetings! We hast hath taken feedback from a valorous chap by the name of $name. He hath submitted the following:\r\n\r\n\"$message\"\r\n\r\nYou may reacheth this lad/madam via their electronic-mail address:\r\n$email";
-			 
-			mail('contact@relatablez.com, ins10102@gmail.com',$subject,$body,$from);
+				$email = $name = $message = '';
+				$_SESSION['popup_msg'] = '<h3>Your message is now on its way to our client inquiry reception (a.k.a the trash bin). Congratulations!</h3>';
+			}
 		}
 	?>
 	<head>
@@ -42,9 +47,9 @@
 						<h1>Contact Us</h1>
 						<span class="padded">Send us your comments, questions, suggestions, or concerns by filling out the form to the right. We will try our best to respond as quickly as possible.</span>
 						<form method='POST' class="vertical">
-							<input type='text' name='n' placeholder='First Name' />
-							<input type='text' name='e' placeholder='Email' />
-							<textarea name='m' placeholder='Message'></textarea>
+							<input type='text' name='n' placeholder='First Name' value='<?php echo $name; ?>' />
+							<input type='text' name='e' placeholder='Email'  value='<?php echo $email; ?>'/>
+							<textarea name='m' placeholder='Message'><?php echo $message; ?></textarea>
 								<button type='submit' class="button blue-hover">Submit</button>
 						</form>
 					</div>
