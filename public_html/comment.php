@@ -32,7 +32,7 @@
 		if($rid != 0)
 		{
 			$rUser = new User($rUsername);
-			$rUser->notify("<a href='http://www.relatablez.com/post/$pid&lc=$cid'>Reply from $user</a>");
+			$rUser->notify("<a href='/post/$pid&lc=$cid'>Reply from $user</a>");
 			echo "<div class='comment reply' id='c$cid' data-uid='$_SESSION[id]' data-user='$user' data-c='$cid' data-r='$rid'>";
 		}
 		else

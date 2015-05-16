@@ -3,8 +3,6 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
-	usleep(100000);
-	
 	if(!isset($_POST['u']))
 	{
 		die('no username');

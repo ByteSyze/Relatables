@@ -29,8 +29,6 @@
 				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
 				setcookie("rrm",$cookie_login,$expire,'/');
 			}
-			else
-				die('not_pending');
 		}
 	}
 ?>
