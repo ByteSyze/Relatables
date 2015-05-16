@@ -161,10 +161,10 @@ if($_SESSION['popup_msg'])
 					
 					while($notification = mysqli_fetch_array($notifications))
 					{
-						echo '<li><a><div class="indicator"></div>' . $notification['message'] . '<span>' . $notification['fdate'] . '</span></a></li>';
+						echo '<li><div class="indicator"></div><a href="/readmessage.php?id='. $notification['id'] . '&redirect=' . htmlspecialchars($notification['href']) .'">' . $notification['message'] . '</a><span>' . $notification['fdate'] . '</span></li>';
 					}
 					
-					echo '</ul></a>';
+					echo '</ul></a></li>';
 					echo '<li><a href="#" data-togg="#prof-drop"><div class="icon profile-icon"></div></a><ul id="prof-drop" class="dropdown"><li><a href="/user/' . GlobalUtils::$user->getUsername() . '">Profile</a></li><li><a href="/settings/account">Settings</a></li><li><a href="/signout.php">Signout</a></li></ul></li>';
 				} else {
 					echo '<li><a class="showlogin">Log in</a></li>';
