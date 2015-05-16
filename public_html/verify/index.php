@@ -26,7 +26,7 @@
 			$user->update();
 			
 			$_SESSION['id'] = $user->getID();
-			$_SESSION['popup_msg'] = '<h1>Verification successful!</h1><br>Welcome, ' . $user->getUsername(); // Take advantage of the fact that we loaded in the entire user.
+			$_SESSION['popup_msg'] = '<h2>Verification successful!</h2><br>Welcome, ' . $user->getUsername(); // Take advantage of the fact that we loaded in the entire user.
 		}
 		else
 		{

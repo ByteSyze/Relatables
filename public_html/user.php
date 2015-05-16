@@ -373,11 +373,11 @@
 			$this->setEditted('email', self::TYPE_STRING);
 		}
 		
-		function notify($message)
+		function notify($message, $href = '')
 		{
-			if($statement = self::$connection->prepare("INSERT INTO notifications (uid, message) VALUES (?,?)"))
+			if($statement = self::$connection->prepare("INSERT INTO notifications (uid, message, href) VALUES (?,?,?)"))
 			{
-				$statement->bind_param('is', $this->id, $message);
+				$statement->bind_param('iss', $this->id, $message, $href);
 				$statement->execute();
 			}
 		}
