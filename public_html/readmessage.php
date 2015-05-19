@@ -4,7 +4,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
 	$id = $_GET['id'];
-	$redirect = $_GET['dir'];
+	$redirect = $_GET['redirect'];
 	
 	if($_SESSION['id'] == null || $id == null)
 		die();

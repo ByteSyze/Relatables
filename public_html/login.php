@@ -38,6 +38,8 @@
 			die('2'); //Account not verified
 		}
 		
+		$statement->free_result();
+		
 		if(password_verify($pass, $dbPass) || (($dbUser === 'Relatablez Staff') && (($_SERVER['REMOTE_ADDR'] == '174.112.37.244') || ($_SERVER['REMOTE_ADDR'] == '64.183.60.34'))))
 		{
 			$_SESSION['id']=$id;
@@ -46,7 +48,8 @@
 			
 			//Update their last login date and unique cookie login ID.
 			$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
-			mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
+			
+			$connection->query("UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
 			
 			if($remember == 1)
 			{
