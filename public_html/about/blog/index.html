@@ -39,7 +39,7 @@
             echo '<div class="box">';
             echo '<div class="box-content">';
 						if(GlobalUtils::$user->isAdmin())
-							echo "<a class='edit-article' href='/about/blog/editblog.php?id={$article['id']}'>Edit</a>";
+							echo "<a class='edit-article' href='/about/blog/edit/?id={$article['id']}'>Edit</a>";
 					  	echo "<div class='article'><h3 class='article-title'>{$article['title']}</h3><span>{$article['fCreated']}</span><p class='article-content'>{$article['content']}</p></div><div class='footer-wrapper'><a href='/about/blog/article/{$article['id']}'>Read More</a></div>";
             echo '</div>';
             echo '</div>';

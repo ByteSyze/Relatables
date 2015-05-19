@@ -50,7 +50,7 @@
 								<?php 	
 									
 									if(GlobalUtils::$user->isAdmin()) 
-										echo "<div style='float:right'><a href='/about/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='/about/blog/deleteblog.php?i=$bid'></a></div>"; 
+										echo "<div style='float:right'><a href='/about/blog/edit/?id=$bid'>Edit</a><a id='article-delete' href='/about/blog/deleteblog.php?i=$bid'></a></div>"; 
 									
 									echo $content;
 								?>
