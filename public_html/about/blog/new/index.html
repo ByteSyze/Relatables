@@ -16,8 +16,8 @@
 			if(!is_dir($full_image_path)) //Create the directory if it doesn't exist yet.
 				mkdir($full_image_path, 0777, true);
 			
-			$image_path .= '/'.$_FILES['image']['name'];
-			move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path);
+			$image_path .= '/' . $_FILES['image']['name'];
+			move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path . '/' . $_FILES['image']['name']);
 			
 			if($statement = $connection->prepare("INSERT INTO blog_articles (uid, title, content, image) VALUES (?,?,?,?)"))
 			{

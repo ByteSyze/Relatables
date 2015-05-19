@@ -4,12 +4,12 @@
 	$connection = GlobalUtils::getConnection();
 	
 	if(!GlobalUtils::$user->isAdmin() || $_SESSION['id'] == null)
-		header('Location: http://www.relatablez.com/404/');
+		header('Location: /404/');
 	else
 	{
 		if($_POST['submit'] === 'Update' && $_POST['title'] && $_POST['contents'])
 		{
-			if(isset($_POST['editimage']) && $_POST['editimage'])
+			if($_POST['editimage'])
 			{	
 				$image_path = "";
 				if($_FILES['image']['error'] == 0)
@@ -21,8 +21,8 @@
 					if(!is_dir($full_image_path))
 						mkdir($full_image_path, 0777, true);
 					
-					$image_path .= '/'.$_FILES['image']['name'];
-					move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path);
+					$image_path .= '/' . $_FILES['image']['name'];
+					move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path . '/' . $_FILES['image']['name']);
 				}
 				
 				if($statement = $connection->prepare("UPDATE blog_articles SET title=(?), content=(?), image=(?) WHERE id=(?)"))
