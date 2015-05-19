@@ -26,6 +26,7 @@
 				$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
 				$expire = time()+(60*60*24*365*5);
 				
+				$statement->free_result();
 				mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
 				setcookie("rrm",$cookie_login,$expire,'/');
 			}

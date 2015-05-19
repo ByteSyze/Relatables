@@ -30,13 +30,9 @@
 		$result = $statement->fetch();
 		
 		if(empty($result))
-		{
 			die('1'); //Account doesn't exist
-		}
 		if($email == null)
-		{
 			die('2'); //Account not verified
-		}
 		
 		$statement->free_result();
 		
