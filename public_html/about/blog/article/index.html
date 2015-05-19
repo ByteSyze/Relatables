@@ -25,7 +25,7 @@
 			GlobalUtils::getMeta();
 			GlobalUtils::getCSS(); 
 		?>
-		<link rel="canonical" href="http://www.relatablez.com/">
+		
 	</head>
 	<body>
 		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
@@ -50,7 +50,7 @@
 								<?php 	
 									
 									if(GlobalUtils::$user->isAdmin()) 
-										echo "<div style='float:right'><a href='/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='/blog/deleteblog.php?i=$bid'></a></div>"; 
+										echo "<div style='float:right'><a href='/about/blog/editblog.php?id=$bid'>Edit</a><a id='article-delete' href='/about/blog/deleteblog.php?i=$bid'></a></div>"; 
 									
 									echo $content;
 								?>
