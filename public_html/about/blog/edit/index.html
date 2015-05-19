@@ -39,7 +39,7 @@
 					$statement->execute();	
 				}
 			}
-			header('Location: http://www.relatablez.com/blog/article/' . $_POST['id']);
+			header('Location: /about/blog/article/' . $_POST['id']);
 		}
 	}
 	
@@ -109,7 +109,7 @@
 			</div>
 			
 			<div id='article-creation' class='content'>
-				<form id='article-form' action='http://www.relatablez.com/blog/editblog.php' method='POST' enctype='multipart/form-data'>
+				<form id='article-form' action='/about/blog/edit/' method='POST' enctype='multipart/form-data'>
 					<input type='hidden' name='id' value='<?php echo $bid; ?>' />
 				
 					<h3>Title:</h3>
