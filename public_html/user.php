@@ -120,11 +120,13 @@
 			$this->editted_fields = array();
 		}
 		
-		public function getRelated()
+		public function getRelated($index = 0, $count = 5)
 		{
-			if($statement = self::$connection->prepare("SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0"))
+			$index *= $count;
+			
+			if($statement = self::$connection->prepare("SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0 LIMIT ?,?"))
 			{
-				$statement->bind_param('i',$this->id);
+				$statement->bind_param('iii',$this->id, $index, $index+$count);
 				$statement->execute();
 				
 				$posts = array();

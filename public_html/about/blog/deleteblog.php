@@ -13,5 +13,5 @@
 		$statement->execute();
 	}
 	
-	header('Location: http://www.relatablez.com/blog/');
+	header('Location: /blog/');
 	
