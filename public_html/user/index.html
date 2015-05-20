@@ -44,14 +44,7 @@
 		<div class="grid wrap wider">
 			<div class="unit two-thirds">
 				<h3>Related With</h3>
-				<div class="boxes">
-					<?php
-						if(!$user->getHideRelated())
-						{
-							foreach($user->getRelated() as $related)
-								$related->format();
-						}
-					?>	
+				<div id='posts' class="boxes">
 				</div>
 			</div>
 			<div class="unit one-third">

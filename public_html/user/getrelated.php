@@ -14,5 +14,5 @@
 	}
 	
 	if($related[5]) //If a 6th post exists, that means there's atleast one more post to load.
-		echo '<span data-getrel="' . $index+1 . '">Load More</span>';
+		echo '<span class="button" data-getrel="' . $index+1 . '">Load More</span>';
 		
