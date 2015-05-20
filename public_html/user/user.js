@@ -5,7 +5,7 @@ $(document).ready(function(){ $.post('getrelated.php', {i: 0, u: u}, function(da
 $('body').on('click', '[data-getrel]', function()
 {
 	$loader = $(this);
-	$.post('getrelated.php', {i: $loader.attr('getrel'), u: u }, function(data)
+	$.post('getrelated.php', {i: $loader.attr('data-getrel'), u: u }, function(data)
 	{
 		$loader.remove();
 		$('#posts').append(data);

@@ -6,14 +6,14 @@
 	$index  = $_POST['i']; 
 	$uid	= $_POST['u'];
 	
-	$related = Post::getRelated($uid, $index, 5);
+	$related = Post::getRelated($uid, $index, 3);
 	
-	for($i = 0; $i < 5; $i++)
+	for($i = 0; $i < 3; $i++)
 	{	
 		if($related[$i])
 			echo $related[$i]->format();
 	}
 	
-	if($related[5]) //If a 6th post exists, that means there's atleast one more post to load.
-		echo '<span class="button" data-getrel="' . $index+1 . '">Load More</span>';
+	if($related[3]) //If a 6th post exists, that means there's atleast one more post to load.
+		echo '<span class="button" data-getrel="' . ($index+1) . '">Load More</span>';
 		
