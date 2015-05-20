@@ -373,5 +373,35 @@
 			
 			return $posts;
 		}
+		
+		
+		
+		public static function getRelated($uid, $index = 0, $count = 5)
+		{
+			if(self::$connection == null)
+				self::$connection = GlobalUtils::getConnection();
+				
+			$index *= $count;
+			$count += $index + 1; //Grab one extra, to determine whether more posts exist.
+			
+			if($statement = self::$connection->prepare("SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0 LIMIT ?,?"))
+			{	
+				$statement->bind_param('iii', $uid, $index, $count);
+				$statement->execute();
+				
+				$posts = array();
+				
+				$statement->store_result();
+				$statement->bind_result($id);
+				
+				while($statement->fetch())
+					array_push($posts, new Post($id));
+					
+				$statement->free_result();
+				
+				return $posts;
+			}
+		}
+		
 	}
 ?>

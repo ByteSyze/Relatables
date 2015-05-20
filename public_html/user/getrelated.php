@@ -3,14 +3,15 @@
 	
 	require $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
-	$index = $_POST['i']; 
+	$index  = $_POST['i']; 
+	$uid	= $_POST['u'];
 	
-	$related = GlobalUtils::$user->getRelated($index, 6);
+	$related = Post::getRelated($uid, $index, 5);
 	
 	for($i = 0; $i < 5; $i++)
 	{	
-		if($post[$i])
-			echo $post[$i]->format();
+		if($related[$i])
+			echo $related[$i]->format();
 	}
 	
 	if($related[5]) //If a 6th post exists, that means there's atleast one more post to load.

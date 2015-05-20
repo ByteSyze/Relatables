@@ -60,7 +60,7 @@
 				</div>
 			</div>
 		</div>
-
-		<?php GlobalUtils::getJS('user/user.js'); ?>
+		<script>var u = <?php echo $user->getID(); ?>;</script>
+		<?php GlobalUtils::getJS('user/user'); ?>
 	</body>
 </html>

@@ -120,27 +120,6 @@
 			$this->editted_fields = array();
 		}
 		
-		public function getRelated($index = 0, $count = 5)
-		{
-			$index *= $count;
-			
-			if($statement = self::$connection->prepare("SELECT pid FROM related WHERE related.uid=(?) AND related.alone=0 LIMIT ?,?"))
-			{
-				$statement->bind_param('iii',$this->id, $index, $index+$count);
-				$statement->execute();
-				
-				$posts = array();
-				
-				$statement->store_result();
-				$statement->bind_result($id);
-				
-				while($statement->fetch())
-					array_push($posts, new Post($id));
-				
-				return $posts;
-			}
-		}
-		
 		public function delete()
 		{
 			if($statement = self::$connection->prepare('DELETE FROM accounts WHERE id=(?)'))

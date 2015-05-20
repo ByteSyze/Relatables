@@ -2,6 +2,7 @@
 	/*Copyright (C) Tyler Hacket 2015*/
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
 	session_start();
 	
@@ -162,8 +163,6 @@
 	}
 	
 	GlobalUtils::$user = new User($_SESSION['id']);
-	
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
 	GlobalUtils::log(GlobalUtils::$user->getUsername() . ' accessed '. $_SERVER["REQUEST_URI"], $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 ?>
