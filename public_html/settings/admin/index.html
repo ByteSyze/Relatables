@@ -14,6 +14,7 @@
 	{
 		$reported_comments  = $connection->query("SELECT pid, cid, comment, (SELECT username FROM accounts WHERE id=comments.uid) AS author, (SELECT COUNT(id) FROM comment_reports WHERE comment_reports.id=comments.cid) AS reports FROM comments WHERE reported = 0 AND deleted = 0 ORDER BY reports DESC");
 		$reported_posts		= $connection->query("SELECT id, submission, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT COUNT(submission_reports.id) FROM submission_reports WHERE submission_reports.id=submissions.id) AS reports FROM submissions WHERE reported = 0 AND pending = 0 ORDER BY reports DESC");
+		$recent_users		= $connection->query("SELECT username, last_login FROM accounts WHERE last_login > NOW() - INTERVAL 1 HOUR");
 	}
 ?>
 <html>
@@ -45,11 +46,10 @@
 						<form id='settings-form' method='POST' action='/update.php' class="vertical">
 							
 						</form><br>
-						<h1 id='title'>Reported Content</h1>
 						<div id='reported-content'>
 						
-							<h3>Reported Comments:</h3>
-							<div class='reported'>
+							<h1>Reported Comments</h1>
+							<div class='table-wrapper'>
 								<table>
 									<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
 									<?php
@@ -61,14 +61,27 @@
 								</table>
 							</div>
 							
-							<h3>Reported Posts:</h3>
-							<div class='reported'>
+							<h1>Reported Posts</h1>
+							<div class='table-wrapper'>
 								<table>
 									<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
 									<?php
 										while($post = $reported_posts->fetch_array())
 										{
 											echo "<tr><td><a href='http://www.relatablez.com/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}<td class='but' data-sreport='{$post['id']}'>Delete<td class='but' data-skeep='{$post['id']}'>Keep";
+										}
+									?>
+								</table>
+							</div>
+							
+							<h1>Recently Online Users</h1>
+							<div class='table-wrapper'>
+								<table>
+									<tr><th>Username</th><th>Last Login</th>
+									<?php
+										while($user = $recent_users->fetch_array())
+										{
+											echo '<tr><td>' . $user['username'] . '</td><td>' . $user['last_login'] . '</td>';
 										}
 									?>
 								</table>

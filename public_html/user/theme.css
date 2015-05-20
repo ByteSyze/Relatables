@@ -42,3 +42,8 @@
 .user-stats span:last-child, .user-stats span:only-child {
 	margin-bottom: 0px;
 }
+
+#posts {
+	max-height: 520px;
+	overflow-y:auto;
+}
