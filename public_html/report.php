@@ -22,7 +22,7 @@
 	
 	$connection = GlobalUtils::getConnection();
 	
-	if(isAdmin($connection, $_SESSION['id']))
+	if(GlobalUtils::$user->isAdmin())
 	{
 		if($statement = $connection->prepare("UPDATE {$type}s SET reported=1 WHERE $id_name = (?)"))
 		{
