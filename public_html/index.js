@@ -216,8 +216,14 @@ function updatePosts()
 	else
 		x = 50;
 
-	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data){
-		$('#posts').empty();
+	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data)
+	{
+		
+		if($('#display').val() > 0)
+		{
+			$('#posts').empty();
+		}
+			
 		$('#posts').append(data);
 	});
 }
