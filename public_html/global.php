@@ -17,10 +17,10 @@
 		const REGISTER_TAKEN_EMAIL		= 4;
 		const REGISTER_SUCCESS			= 5;
 		
-		const DATATYPE_STRNUM			= "";			//Strings or numbers
-		const DATATYPE_STRING			= "string";		//Just Strings
-		const DATATYPE_NUMBER			= "number";		//Just numbers
-		const DATATYPE_ALLDATA			= "everything"; //Any data whatsoever
+		const DATATYPE_STRNUM			= "";
+		const DATATYPE_STRING			= "string";
+		const DATATYPE_NUMBER			= "number";
+		const DATATYPE_ALLDATA			= "everything";
 		
 		const ENABLE_LOG				= false;
 		

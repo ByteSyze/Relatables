@@ -39,14 +39,26 @@ $('body').on('click','[data-share-button]',function()
 		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
-$('#sort, #display, #category, #nsfw').change(function()
-{
-	paginate();
-});
-
 $('body').on('click', '[data-p]', function()
 {
 	page = parseInt($(this).attr('data-p')); 
+	paginate();
+});
+
+$(window).scroll(function()
+{
+	if($('#display').val() == 0)
+	{
+		if($(window).scrollTop() + $(window).height() == $(document).height())
+		{
+			page++;
+			paginate();
+		}
+	}
+});
+
+$('#sort, #display, #category, #nsfw').change(function()
+{
 	paginate();
 });
 
@@ -128,28 +140,36 @@ function validate_data(objData){
 
 function paginate()
 {
-	var page_start = 6 * Math.floor(page/6);
 	
-	$('.page-buttons').empty();
-	
-	for(var i = page_start-1; i < page_start+7; i++)
+	if($('#display').val() > 0)
 	{
-		if(i >= 0)
+		var page_start = 6 * Math.floor(page/6);
+	
+		$('.bottom-navigation').show();
+		$('.page-buttons').empty();
+		
+		for(var i = page_start-1; i < page_start+7; i++)
 		{
-			if(i === page)
-				$('.page-buttons').append("<span data-p='" + i + "' class='button blue'>" + (i+1) + "</span>");
-			else
-				$('.page-buttons').append("<span data-p='" + i + "' class='button blue-hover'>" + (i+1) + "</span>");
+			if(i >= 0)
+			{
+				if(i === page)
+					$('.page-buttons').append("<span data-p='" + i + "' class='button blue'>" + (i+1) + "</span>");
+				else
+					$('.page-buttons').append("<span data-p='" + i + "' class='button blue-hover'>" + (i+1) + "</span>");
+			}
 		}
+	}
+	else
+	{
+		$('.bottom-navigation').hide();
 	}
 	
 	updatePosts();
-	updateurl();
-		
+	updateUrl();
 
 }
 
-function updateurl()
+function updateUrl()
 {
 
 	var newurl = "?";
