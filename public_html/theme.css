@@ -11,3 +11,25 @@
 .filter label {
   font-weight: bold;
 }
+
+div.sidebar-extra {
+	background-color: #8492B3;
+	text-align: center;
+}
+
+div.sidebar-extra > a {
+	display: block;
+	padding: 10px;
+	color: white;
+}
+
+div.stupid-side-header {
+	background-color: transparent;
+	border: none;
+	text-align: center;
+	padding: 15px;
+}
+
+div.social img {
+	padding: 0px 5px 10px 5px;
+}
