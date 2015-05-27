@@ -172,11 +172,11 @@ function paginate()
 function updateUrl()
 {
 
-	var newurl = "?";
+	var newurl = "?n=1";
 	
-	if($('#nsfw').prop('checked')){
+	//if($('#nsfw').prop('checked')){
 	newurl = newurl+"&n=1";
-	}
+	//}
 	
 	if($('#category').val() != 0){
 	newurl = newurl+"&c="+($('#category').val()).toString();
@@ -204,10 +204,10 @@ function updatePosts()
 {
 	var nsfw;
 
-	if($('#nsfw').prop('checked'))
+	//if($('#nsfw').prop('checked'))
 		nsfw = 1;
-	else
-		nsfw = 0;
+	//else
+	//	nsfw = 0;
 		
 	var x;
 	
