@@ -23,6 +23,12 @@ div.sidebar-extra > a {
 	color: white;
 }
 
+div.sidebar-extra > span {
+	display: block;
+	padding: 10px;
+	color: white;
+}
+
 div.stupid-side-header {
 	background-color: transparent;
 	border: none;
