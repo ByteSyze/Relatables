@@ -174,10 +174,6 @@ function updateUrl()
 
 	var newurl = "?n=1";
 	
-	//if($('#nsfw').prop('checked')){
-	newurl = newurl+"&n=1";
-	//}
-	
 	if($('#category').val() != 0){
 	newurl = newurl+"&c="+($('#category').val()).toString();
 	}
@@ -202,13 +198,6 @@ function updateUrl()
 
 function updatePosts()
 {
-	var nsfw;
-
-	//if($('#nsfw').prop('checked'))
-		nsfw = 1;
-	//else
-	//	nsfw = 0;
-		
 	var x;
 	
 	if($('#display').val() < 2)
@@ -216,7 +205,7 @@ function updatePosts()
 	else
 		x = 50;
 
-	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(),  n:nsfw}, function(data)
+	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(),  n:1}, function(data)
 	{
 		
 		if($('#display').val() > 0)
