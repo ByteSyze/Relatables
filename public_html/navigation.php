@@ -144,8 +144,10 @@ if($_SESSION['popup_msg'])
 					<a href="/about" data-togg="#about-drop">About</a>
 					<ul id="about-drop" class='dropdown'>
 						<li><a href="/about/faq">FAQ</a></li>
-						<li><a href="/about/privacy">Privacy</a></li>
 						<li><a href="/about/blog">Blog</a></li>
+						<li><a href="/about/privacy">Privacy</a></li>
+						<li><a href="/about/terms">Terms</a></li>
+						<li><a href="/contact">Contact</a></li>
 					</ul>
 				</li>
 			</ul>

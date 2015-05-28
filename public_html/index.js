@@ -107,9 +107,6 @@ $( "body" ).on( "click", "#submit_form", function() {
 
 $(document).ready(function()
 {
-	if(nsfw)
-		$('#nsfw').prop('checked', true);
-	
 	$('#category').val(category);
 	$('#display').val(display);
 	$('#sort').val(order);
@@ -141,7 +138,7 @@ function validate_data(objData){
 function paginate()
 {
 	
-	if($('#display').val() > 0)
+	if($('#display').val() < 2)
 	{
 		var page_start = 6 * Math.floor(page/6);
 	
@@ -182,7 +179,7 @@ function updateUrl()
 	newurl = newurl+"&o="+($('#sort').val()).toString();
 	}
 	
-	if($('#display').val() != 0){
+	if($('#display').val() != 2){
 	newurl = newurl+"&d="+($('#display').val()).toString();
 	}
 	
@@ -200,7 +197,7 @@ function updatePosts()
 {
 	var x;
 	
-	if($('#display').val() < 2)
+	if($('#display').val() != 1)
 		x = 20;
 	else
 		x = 50;
