@@ -178,3 +178,11 @@ if($_SESSION['popup_msg'])
 	</div>
 </div>
 <div class="navigation-spacer"></div>
+<div class='footer'>
+	<div class='right'>
+		<span>Copyright &copy; Relatablez 2015</span>
+		<a href="/about/privacy">Privacy</a>
+		<a href="/about/terms">Terms</a>
+		<a href="/contact">Contact</a>
+	</div>
+</div>
