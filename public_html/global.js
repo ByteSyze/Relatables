@@ -415,6 +415,9 @@ $('#pwrecoveryform').submit(function()
 
 $(document).ready(function()
 {
+	$('.footer').appendTo('body');
+	$('.footer').show();
+	
 	$('.dropdown').hide();
 });
 

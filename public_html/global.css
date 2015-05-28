@@ -556,14 +556,25 @@ span.padded {
   background-color:#F3F3F3;
   border-top: 1px solid #808080;
   width: 100%;
-  position: fixed;
   bottom: 0px;
-  padding-top:40px;
-  padding-bottom:40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #808080;
+  display: none;
+}
+
+.footer a {
+  color: #808080;
 }
 
 .right {
   float: right;
+  padding-right: 40px;
+}
+
+.left {
+  float: left;
+  padding-left: 40px;
 }
 
 a.button {
