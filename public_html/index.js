@@ -47,7 +47,7 @@ $('body').on('click', '[data-p]', function()
 
 $(window).scroll(function()
 {
-	if($('#display').val() == 0)
+	if($('#display').val() == 2)
 	{
 		if($(window).scrollTop() + $(window).height() == $(document).height())
 		{
@@ -205,7 +205,7 @@ function updatePosts()
 	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(),  n:1}, function(data)
 	{
 		
-		if($('#display').val() > 0)
+		if($('#display').val() < 2)
 		{
 			$('#posts').empty();
 		}
