@@ -20,115 +20,120 @@
 		<link rel='canonical' href='http://www.relatablez.com/'>
 	</head>
 	<body>
-		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
-		<div class="grid wrap wider">
-			<div class="unit two-thirds">
-				<div class="boxes">
-					<div class="box">
-						<div class="box-content">
-							<?php
-								if($_SESSION['id'] != null) {
-									echo '<form action="/submit.php" method="POST">';
-										echo '<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>';
-										echo '<div class="buttons padded align-right">';
-											echo '<button class="button blue-hover" type="submit">Submit</button>';
-										echo '</div>';
-									echo '</form>';
-								} else {
-									echo '<textarea disabled class="input-submit" data-signup-header="Please sign up to submit">Am I the only one who</textarea>';
-									echo '<div class="buttons padded align-right"><div class="button blue-hover">Submit</div></div>';
-								}
-							?>
-						</div>
-					</div>
-					
-					<div class="filters">
-						<div class="filter">
-							<label for="sort">Sort by</label>
-							<select id='sort'>
-								<option value='0'>Newest</option>
-								<option value='1'>Oldest</option>
-								<option value='2'>Most Relatable</option>
-								<option value='3'>Least Relatable</option>
-							</select>
-						</div>
-						<div class="filter">
-							<label for="display">Display</label>
-							<select id='display'>
-								<option value='0'>20 per page</option>
-								<option value='1'>50 per page</option>
-								<option value='2'>Continuous</option>
-							</select>
-						</div>
-						<div class="filter">
-							<label for="category">Category</label>
-							<select id='category'>
-								<option value='0'>All Categories</option>
-								<option value='1'>Health</option>
-								<option value='2'>Internet</option>
-								<option value='3'>Funny</option>
-								<option value='4'>People</option>
-								<option value='5'>Family</option>
-								<option value='6'>Food</option>
-								<option value='7'>Personal</option>
-								<option value='8'>Odd</option>
-								<option value='9'>Other</option>
-							</select>
-						</div>
-					</div>
-					<div id="posts"></div>
-				</div>
-				<div class="bottom-navigation">
-					<div class="buttons">
-						<span class="button" id="prev">previous</span>
-						<div  class="page-buttons"></div>
-						<span class="button blue-hover" id="next">next</span>
-					</div>
-				</div>
-			</div>
-			<div class="unit one-third">
-				<div class="boxes">
-					<div class='stupid-side-header'>We're brand new! Here's how you can help:</div>
-					<div class="box sidebar-extra">
-						<a href='#'>Letter from the Founders</a>
-					</div>
-					<div class="box sidebar-extra">
-						<a href='/contact'>Send Feedback and Suggestions</a>
-					</div>
-					<div class="box sidebar-extra">
-						<span>Like and Share us on Social Media</span>
-						<div class='social'>
-							<a href='https://www.facebook.com/pages/Relatablez/1388055181455491'><img src="/images/icons/fb_ico.png" /></a>
-							<a href='https://twitter.com/Relatablezcom'><img src="/images/icons/tw_ico.png" /></a>
-							<a href='https://plus.google.com/share?url=http://www.relatablez.com/'><img src="/images/icons/gp_ico.png" /></a>
-							<a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"><img src="/images/icons/rd_ico.png" /></a>
-						</div>
-					</div>
-					<!--<div class="box">
-						<span class="box-title">Weekly Question</span>
-						<div class="box-content">
-							<span>Select a test option.</span>
-							<form action='http://www.relatablez.com/qotw.php' method='POST'>
-								<div id='qotw-wrapper'>
-									<input type='radio' name='v' value='0' />Option A.<br>
-									<input type='radio' name='v' value='1' />Option B.<br><br>
-									<button class="button blue-hover" type='submit' id='qotw-submit'>Vote</button>
+		<div class="content-wrapper">
+			<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
+			<div class="content">
+				<div class="grid wrap wider">
+					<div class="unit two-thirds">
+						<div class="boxes">
+							<div class="box">
+								<div class="box-content">
+									<?php
+										if($_SESSION['id'] != null) {
+											echo '<form action="/submit.php" method="POST">';
+												echo '<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>';
+												echo '<div class="buttons padded align-right">';
+													echo '<button class="button blue-hover" type="submit">Submit</button>';
+												echo '</div>';
+											echo '</form>';
+										} else {
+											echo '<textarea disabled class="input-submit" data-signup-header="Please sign up to submit">Am I the only one who</textarea>';
+											echo '<div class="buttons padded align-right"><div class="button blue-hover">Submit</div></div>';
+										}
+									?>
 								</div>
-							</form>
+							</div>
+							
+							<div class="filters">
+								<div class="filter">
+									<label for="sort">Sort by</label>
+									<select id='sort'>
+										<option value='0'>Newest</option>
+										<option value='1'>Oldest</option>
+										<option value='2'>Most Relatable</option>
+										<option value='3'>Least Relatable</option>
+									</select>
+								</div>
+								<div class="filter">
+									<label for="display">Display</label>
+									<select id='display'>
+										<option value='0'>20 per page</option>
+										<option value='1'>50 per page</option>
+										<option value='2'>Continuous</option>
+									</select>
+								</div>
+								<div class="filter">
+									<label for="category">Category</label>
+									<select id='category'>
+										<option value='0'>All Categories</option>
+										<option value='1'>Health</option>
+										<option value='2'>Internet</option>
+										<option value='3'>Funny</option>
+										<option value='4'>People</option>
+										<option value='5'>Family</option>
+										<option value='6'>Food</option>
+										<option value='7'>Personal</option>
+										<option value='8'>Odd</option>
+										<option value='9'>Other</option>
+									</select>
+								</div>
+							</div>
+							<div id="posts"></div>
 						</div>
-					</div>-->
-					<div class="box transparent">
-							<img src="http://www.pinkham.com/cassel-news-parade/sites/all/themes/openpublish/images/placeholder_ad_rectangle.gif">
+						<div class="bottom-navigation">
+							<div class="buttons">
+								<span class="button" id="prev">previous</span>
+								<div  class="page-buttons"></div>
+								<span class="button blue-hover" id="next">next</span>
+							</div>
+						</div>
 					</div>
-					<div class="box transparent">
-						<div class="box-content thin">
-							<span>Copyright &copy; Relatablez 2015</span>
+					<div class="unit one-third">
+						<div class="boxes">
+							<div class='stupid-side-header'>We're brand new! Here's how you can help:</div>
+							<div class="box sidebar-extra">
+								<a href='#'>Letter from the Founders</a>
+							</div>
+							<div class="box sidebar-extra">
+								<a href='/contact'>Send Feedback and Suggestions</a>
+							</div>
+							<div class="box sidebar-extra">
+								<span>Like and Share us on Social Media</span>
+								<div class='social'>
+									<a href='https://www.facebook.com/pages/Relatablez/1388055181455491'><img src="/images/icons/fb_ico.png" /></a>
+									<a href='https://twitter.com/Relatablezcom'><img src="/images/icons/tw_ico.png" /></a>
+									<a href='https://plus.google.com/share?url=http://www.relatablez.com/'><img src="/images/icons/gp_ico.png" /></a>
+									<a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"><img src="/images/icons/rd_ico.png" /></a>
+								</div>
+							</div>
+							<!--<div class="box">
+								<span class="box-title">Weekly Question</span>
+								<div class="box-content">
+									<span>Select a test option.</span>
+									<form action='http://www.relatablez.com/qotw.php' method='POST'>
+										<div id='qotw-wrapper'>
+											<input type='radio' name='v' value='0' />Option A.<br>
+											<input type='radio' name='v' value='1' />Option B.<br><br>
+											<button class="button blue-hover" type='submit' id='qotw-submit'>Vote</button>
+										</div>
+									</form>
+								</div>
+							</div>-->
+							<div class="box transparent">
+									<img src="http://www.pinkham.com/cassel-news-parade/sites/all/themes/openpublish/images/placeholder_ad_rectangle.gif">
+							</div>
+							<div class="box transparent">
+								<div class="box-content thin">
+									<span>Copyright &copy; Relatablez 2015</span>
+								</div>
+							</div>	
 						</div>
-					</div>	
-				</div>
+					</div>
+				</div>		
 			</div>
-		</div>		
-
+			<?php GlobalUtils::getFooter(); ?>
+			
+		</div>
 		<script>
 			var page 		= <?php echo $page; ?>;
 			var order 		= <?php echo $order_by; ?>;

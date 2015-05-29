@@ -72,6 +72,11 @@
 			</div>";
 		}
 		
+		public static function getFooter()
+		{
+			echo "<div class='footer'><div class='right'><span>&copy; Relatablez 2015</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div>";
+		}
+		
 		public static function validateRegistrationCredentials($user, $email)
 		{
 			//TODO instead of dying, point the user to a page pointing out what data was wrong.
