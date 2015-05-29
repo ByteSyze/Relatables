@@ -10,18 +10,23 @@
 		<?php GlobalUtils::getCSS(); ?>
 	</head>
 	<body>
-		<?php
-			require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php');
-		?>
-		<div class="fourofour">
-			<h1>Oops! We couldn't find that page!</h1>
-			<h3>But don't worry; you're not the only one</h3>
-			<div class="buttons">
-				<a href="/" class="button blue large">Return to the homepage</a>
-				<a href="/contact" class="button blue large">Contact us</a>
+		<div class="content-wrapper">
+			<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
+			<div class="content">
+				<div class="fourofour">
+					<h1>Oops! We couldn't find that page!</h1>
+					<h3>But don't worry; you're not the only one</h3>
+					<div class="buttons">
+						<a href="/" class="button blue large">Return to the homepage</a>
+						<a href="/contact" class="button blue large">Contact us</a>
+					</div>
+				</div>	
 			</div>
+			<?php GlobalUtils::getFooter(); ?>
+			
 		</div>
 	
 		<?php GlobalUtils::getJS('verify', 'popups'); ?>
+		
 	</body>
 </html>

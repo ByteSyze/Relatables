@@ -29,69 +29,74 @@
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body>
-	
-		<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
-    <div class="page-jumbo">
-      <div class="grid wrap">
-        <div class="unit whole">
-          <h1 class="page-title">Admin Control Panel</h1>
-        </div>
-      </div>
-    </div>
-		<div class="grid wrap wider">
-			<?php include "../settingsnav.php" ?>
-			<div class="unit three-fourths">
-				<div class="box">
-					<div class="box-content">
-						<form id='settings-form' method='POST' action='/update.php' class="vertical">
-							
-						</form><br>
-						<div id='reported-content'>
-						
-							<h1>Reported Comments</h1>
-							<div class='table-wrapper'>
-								<table>
-									<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
-									<?php
-										while($comment = $reported_comments->fetch_array())
-										{
-											echo "<tr><td><a target='_blank' href='/post/{$comment['pid']}#c{$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
-										}
-									?>
-								</table>
+		<div class="content-wrapper">
+			<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
+			<div class="content">
+				<div class="page-jumbo">
+				  <div class="grid wrap">
+					<div class="unit whole">
+					  <h1 class="page-title">Admin Control Panel</h1>
+					</div>
+				  </div>
+				</div>
+				<div class="grid wrap wider">
+					<?php include "../settingsnav.php" ?>
+					<div class="unit three-fourths">
+						<div class="box">
+							<div class="box-content">
+								<form id='settings-form' method='POST' action='/update.php' class="vertical">
+									
+								</form><br>
+								<div id='reported-content'>
+								
+									<h1>Reported Comments</h1>
+									<div class='table-wrapper'>
+										<table>
+											<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
+											<?php
+												while($comment = $reported_comments->fetch_array())
+												{
+													echo "<tr><td><a target='_blank' href='/post/{$comment['pid']}#c{$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
+												}
+											?>
+										</table>
+									</div>
+									
+									<h1>Reported Posts</h1>
+									<div class='table-wrapper'>
+										<table>
+											<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
+											<?php
+												while($post = $reported_posts->fetch_array())
+												{
+													echo "<tr><td><a href='http://www.relatablez.com/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}<td class='but' data-sreport='{$post['id']}'>Delete<td class='but' data-skeep='{$post['id']}'>Keep";
+												}
+											?>
+										</table>
+									</div>
+									
+									<h1>Recently Online Users</h1>
+									<div class='table-wrapper'>
+										<table>
+											<tr><th>Username</th><th>Last Login</th>
+											<?php
+												while($user = $recent_users->fetch_array())
+												{
+													echo '<tr><td>' . $user['username'] . '</td><td>' . $user['last_login'] . '</td>';
+												}
+											?>
+										</table>
+									</div>
+								</div>
+								<div class="buttons">
+								</div>
 							</div>
-							
-							<h1>Reported Posts</h1>
-							<div class='table-wrapper'>
-								<table>
-									<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
-									<?php
-										while($post = $reported_posts->fetch_array())
-										{
-											echo "<tr><td><a href='http://www.relatablez.com/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}<td class='but' data-sreport='{$post['id']}'>Delete<td class='but' data-skeep='{$post['id']}'>Keep";
-										}
-									?>
-								</table>
-							</div>
-							
-							<h1>Recently Online Users</h1>
-							<div class='table-wrapper'>
-								<table>
-									<tr><th>Username</th><th>Last Login</th>
-									<?php
-										while($user = $recent_users->fetch_array())
-										{
-											echo '<tr><td>' . $user['username'] . '</td><td>' . $user['last_login'] . '</td>';
-										}
-									?>
-								</table>
-							</div>
-						</div>
-						<div class="buttons">
 						</div>
 					</div>
-				</div>
+				</div>	
 			</div>
+			<?php GlobalUtils::getFooter(); ?>
+			
 		</div>
 		
 		<?php GlobalUtils::getJS('settings/settings'); ?>

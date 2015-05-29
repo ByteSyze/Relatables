@@ -13,25 +13,33 @@
 		?>
   </head>
   <body>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . "/navigation.php"); ?>
-    <div class="page-jumbo about-jumbo">
-      <div class="grid wrap">
-        <div class="unit whole">
-          <h1 class="page-title">Terms and Conditions</h1>
-        </div>
-      </div>
-    </div>
+	<div class="content-wrapper">
+		<?php include($_SERVER['DOCUMENT_ROOT'] . "/navigation.php"); ?>
+		<div class="content">
+			<div class="page-jumbo about-jumbo">
+			  <div class="grid wrap">
+				<div class="unit whole">
+				  <h1 class="page-title">Terms and Conditions</h1>
+				</div>
+			  </div>
+			</div>
 
-    <div class="grid wrap">
-      <div class="unit whole">
-        <div class="boxes">
-          <div class="box">
-            <div class="box-content">
-              ...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+			<div class="grid wrap">
+			  <div class="unit whole">
+				<div class="boxes">
+				  <div class="box">
+					<div class="box-content">
+					  ...
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<?php GlobalUtils::getFooter(); ?>
+			
+	</div>
+	<?php GlobalUtils::getJS(); ?>
+		
   </body>
 </html>

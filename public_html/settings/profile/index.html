@@ -22,41 +22,47 @@
 		
 	</head>
 	<body>
-		<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
-		<div class="page-jumbo">
-		  <div class="grid wrap">
-			<div class="unit whole">
-			  <h1 class="page-title">Profile Settings</h1>
-			</div>
-		  </div>
-		</div>
-		<div class="grid wrap wider">
-			<?php include "../settingsnav.php" ?>
-			<div class="unit three-fourths">
-				<div class="box">
-					<div class="box-content">
-						<form id='settings-form' method='POST' action='/update.php' class="vertical">
-							<input type='hidden' name='t' value='profile' />
-							<label>Location</label>
-							<?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown(GlobalUtils::$user->getCountryId()); ?>
-
-							<label for="">Description <span id='desc_char_counter'>(<?php echo (75-strlen($fDescription)); ?> characters left)</span></label>
-							<textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);' <?php if($fDescription == null) echo 'placeholder=\'You have not set a description.\''; ?> ><?php if($fDescription != null) echo $fDescription; ?></textarea>
-
-							<label for="">Related With</label>
-							<a <?php if(GlobalUtils::$user->getHideRelated() == 0) echo "class='selected'"; ?> href='/showhide.php?t=show&amp;d=related'>Show</a> <a <?php if(GlobalUtils::$user->getHideRelated() == 1) echo "class='selected'"; ?> href='/showhide.php?t=hide&amp;d=related'>Hide</a>
-
-							<label for="">Location</label>
-							<a <?php if(GlobalUtils::$user->getHideLocation() == 0) echo "class='selected'"; ?> href='/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if(GlobalUtils::$user->getHideLocation() == 1) echo "class='selected'"; ?> href='/showhide.php?t=hide&amp;d=location'>Hide</a>
-
-							<br><br>
-							<div class="buttons">
-								<button class="button blue-hover" id='save-button' type='submit'>Save Settings</button>
-							</div>
-						</form>
+		<div class="content-wrapper">
+			<?php require($_SERVER["DOCUMENT_ROOT"] . '/navigation.php'); ?>
+			<div class="content">
+				<div class="page-jumbo">
+				  <div class="grid wrap">
+					<div class="unit whole">
+					  <h1 class="page-title">Profile Settings</h1>
 					</div>
+				  </div>
 				</div>
+				<div class="grid wrap wider">
+					<?php include "../settingsnav.php" ?>
+					<div class="unit three-fourths">
+						<div class="box">
+							<div class="box-content">
+								<form id='settings-form' method='POST' action='/update.php' class="vertical">
+									<input type='hidden' name='t' value='profile' />
+									<label>Location</label>
+									<?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown(GlobalUtils::$user->getCountryId()); ?>
+
+									<label for="">Description <span id='desc_char_counter'>(<?php echo (75-strlen($fDescription)); ?> characters left)</span></label>
+									<textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);' <?php if($fDescription == null) echo 'placeholder=\'You have not set a description.\''; ?> ><?php if($fDescription != null) echo $fDescription; ?></textarea>
+
+									<label for="">Related With</label>
+									<a <?php if(GlobalUtils::$user->getHideRelated() == 0) echo "class='selected'"; ?> href='/showhide.php?t=show&amp;d=related'>Show</a> <a <?php if(GlobalUtils::$user->getHideRelated() == 1) echo "class='selected'"; ?> href='/showhide.php?t=hide&amp;d=related'>Hide</a>
+
+									<label for="">Location</label>
+									<a <?php if(GlobalUtils::$user->getHideLocation() == 0) echo "class='selected'"; ?> href='/showhide.php?t=show&amp;d=location'>Show</a> <a <?php if(GlobalUtils::$user->getHideLocation() == 1) echo "class='selected'"; ?> href='/showhide.php?t=hide&amp;d=location'>Hide</a>
+
+									<br><br>
+									<div class="buttons">
+										<button class="button blue-hover" id='save-button' type='submit'>Save Settings</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>	
 			</div>
+			<?php GlobalUtils::getFooter(); ?>
+			
 		</div>
 		
 		<?php GlobalUtils::getJS('settings/settings'); ?>

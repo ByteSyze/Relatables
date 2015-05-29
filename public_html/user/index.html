@@ -25,42 +25,48 @@
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body style='margin:0px;'>
-		<?php require($_SERVER['DOCUMENT_ROOT']."/navigation.php"); ?>
-	
-		<div class="page-jumbo user-jumbo">
-			<div class="grid wrap">
-				<div class="unit whole">
-					<span class="username"><?php echo $user->getUsername(); ?></span>
-					<?php if($user->isAdmin()) { echo '<span class="admin">Admin</span>';} ?>
-					<?php if($user->isBetaTester()) { echo '<span class="beta">Beta Tester</span>';} ?>
-					<span class="user-info user-description"><?php echo htmlspecialchars($user->getDescription()); ?></span>
-					<hr>
-					<span class="user-info">From  <?php echo $user->getCountry(); ?></span>
-					<span class="user-info">Joined on <?php echo $user->getJoined(); ?></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="grid wrap wider">
-			<div class="unit two-thirds">
-				<h3>Related With</h3>
-				<div id='posts' class="boxes">
-				</div>
-			</div>
-			<div class="unit one-third">
-				<h3>Stats</h3>
-				<div class="boxes">
-					<div class="box user-stats">
-						<div class="box-content">
-							<span><b>Posts:</b> <?php echo $user->getPostCount(); ?></span>
-							<span><b>Comments:</b> <?php echo $user->getCommentCount(); ?></span>
-							<span><b>Moderated:</b> <?php echo $user->getModerationIndex(); ?></span>
+		<div class="content-wrapper">
+			<?php require($_SERVER['DOCUMENT_ROOT']."/navigation.php"); ?>
+			<div class="content">
+				<div class="page-jumbo user-jumbo">
+					<div class="grid wrap">
+						<div class="unit whole">
+							<span class="username"><?php echo $user->getUsername(); ?></span>
+							<?php if($user->isAdmin()) { echo '<span class="admin">Admin</span>';} ?>
+							<?php if($user->isBetaTester()) { echo '<span class="beta">Beta Tester</span>';} ?>
+							<span class="user-info user-description"><?php echo htmlspecialchars($user->getDescription()); ?></span>
+							<hr>
+							<span class="user-info">From  <?php echo $user->getCountry(); ?></span>
+							<span class="user-info">Joined on <?php echo $user->getJoined(); ?></span>
 						</div>
 					</div>
 				</div>
+				
+				<div class="grid wrap wider">
+					<div class="unit two-thirds">
+						<h3>Related With</h3>
+						<div id='posts' class="boxes">
+						</div>
+					</div>
+					<div class="unit one-third">
+						<h3>Stats</h3>
+						<div class="boxes">
+							<div class="box user-stats">
+								<div class="box-content">
+									<span><b>Posts:</b> <?php echo $user->getPostCount(); ?></span>
+									<span><b>Comments:</b> <?php echo $user->getCommentCount(); ?></span>
+									<span><b>Moderated:</b> <?php echo $user->getModerationIndex(); ?></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
 			</div>
+			<?php GlobalUtils::getFooter(); ?>
+			
 		</div>
 		<script>var u = <?php echo $user->getID(); ?>;</script>
 		<?php GlobalUtils::getJS('user/user'); ?>
+		
 	</body>
 </html>

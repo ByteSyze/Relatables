@@ -145,9 +145,6 @@ if($_SESSION['popup_msg'])
 					<ul id="about-drop" class='dropdown'>
 						<li><a href="/about/faq">FAQ</a></li>
 						<li><a href="/about/blog">Blog</a></li>
-						<li><a href="/about/privacy">Privacy</a></li>
-						<li><a href="/about/terms">Terms</a></li>
-						<li><a href="/contact">Contact</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -178,11 +175,3 @@ if($_SESSION['popup_msg'])
 	</div>
 </div>
 <div class="navigation-spacer"></div>
-<div class='footer'>
-	<div class='right'>
-		<span>&copy; Relatablez 2015</span>
-		<a href="/about/privacy">Privacy</a>
-		<a href="/about/terms">Terms</a>
-		<a href="/contact">Contact</a>
-	</div>
-</div>

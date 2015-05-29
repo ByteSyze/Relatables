@@ -19,35 +19,41 @@
 		?>
 	</head>
 	<body>
-		<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
-    <div class="page-jumbo about-jumbo">
-      <div class="grid wrap">
-        <div class="unit whole">
-          <h1 class="page-title">Blog</h1>
-        </div>
-      </div>
-    </div>
+		<div class="content-wrapper">
+			<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
+			<div class="content">
+				<div class="page-jumbo about-jumbo">
+				  <div class="grid wrap">
+					<div class="unit whole">
+					  <h1 class="page-title">Blog</h1>
+					</div>
+				  </div>
+				</div>
 
-    <div class="grid wrap">
-      <div class="unit whole">
-        <div class="boxes">
-          <?php
-					$admin = false; // this needs to be fixed
-					
-					while($article = mysqli_fetch_array($articles))
-					{
-            echo '<div class="box">';
-            echo '<div class="box-content">';
-						if(GlobalUtils::$user->isAdmin())
-							echo "<a class='edit-article' href='/about/blog/edit/?id={$article['id']}'>Edit</a>";
-					  	echo "<div class='article'><h3 class='article-title'>{$article['title']}</h3><span>{$article['fCreated']}</span><p class='article-content'>{$article['content']}</p></div><div class='footer-wrapper'><a href='/about/blog/article/{$article['id']}'>Read More</a></div>";
-            echo '</div>';
-            echo '</div>';
-					}
-				?>
-        </div>
-      </div>
-    </div>    
+				<div class="grid wrap">
+				  <div class="unit whole">
+					<div class="boxes">
+					  <?php
+								$admin = false; // this needs to be fixed
+								
+								while($article = mysqli_fetch_array($articles))
+								{
+						echo '<div class="box">';
+						echo '<div class="box-content">';
+									if(GlobalUtils::$user->isAdmin())
+										echo "<a class='edit-article' href='/about/blog/edit/?id={$article['id']}'>Edit</a>";
+									echo "<div class='article'><h3 class='article-title'>{$article['title']}</h3><span>{$article['fCreated']}</span><p class='article-content'>{$article['content']}</p></div><div class='footer-wrapper'><a href='/about/blog/article/{$article['id']}'>Read More</a></div>";
+						echo '</div>';
+						echo '</div>';
+								}
+							?>
+					</div>
+				  </div>
+				</div>    
+			</div>
+			<?php GlobalUtils::getFooter(); ?>
+			
+		</div>
 		<?php GlobalUtils::getJS(); ?>
 	</body>
 </html>
