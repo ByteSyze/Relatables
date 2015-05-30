@@ -102,7 +102,10 @@ function verifyUser(successCallback, verifyAll)
 	{
 		if(verifyAll)
 		{
-			verifyPassword(successCallback, verifyAll);
+			if(currentPass)
+				verifyCurrentPassword(successCallback, verifyAll);
+			else
+				verifyPassword(successCallback, verifyAll);
 			return true;
 		}
 		else
@@ -190,7 +193,7 @@ function verifyRePassword(successCallback, verifyAll)
 	}
 }
 
-function verifyCurrentPassword()
+function verifyCurrentPassword(successCallback, verifyAll)
 {
 	var passVal = currentPass.value;
 	var valid = false;
@@ -203,7 +206,11 @@ function verifyCurrentPassword()
 	if((passVal == '') && (pass.value == '') && (rePass.value == ''))
 	{
 		$img.hide();
-		return true;
+		
+		if(verifyAll)
+			verifyPassword(successCallback, verifyAll);
+		else 
+			return true;
 	}
 	
 	if(passVal.length < 6)
@@ -216,6 +223,9 @@ function verifyCurrentPassword()
 				{
 					setMarker($img, 0, 0, true);
 					valid = true;
+					
+					if(verifyAll)
+						verifyPassword(successCallback, verifyAll);
 				}
 				else
 					setMarker($img, $pop, ' Password is incorrect.', false);
@@ -437,7 +447,7 @@ $('body').on('click','[data-share-button]',function()
 		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
 
-$('#settings-form').submit(function(){ verifyUser(function(){ form.submit(); } ,true); return false; });
+$('#save-button').click(function(){ verifyUser(function(){ $('#settings-form').submit(); } ,true); return false; });
 
 $('#user_input').keydown(function(event){ checkLimit(event, $(this)[0], 32, false); });
 
