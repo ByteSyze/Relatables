@@ -44,7 +44,7 @@
 									<label for="currentpass_input">Current Password <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='currentpass_verify_img' /><div class='popup-offset'><div class='error-popup' id='current-password-popup'></div></div></label>
 									<input type="password" id='currentpass_input' type='password' name='oldpassword' autocomplete='off' />
 
-									<label for="">New Password <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></label>
+									<label for="">New Password <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></label>
 									<input id='pass_input' type="password" name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' />
 									
 									<label for="">Retype New Password <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></label>
@@ -52,10 +52,10 @@
 
 									<label for="">Email <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></label>
 									<input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>'></input>
+									<input class="button blue-hover" id='save-button' type='submit' value='Save Settings' />
 								</form><br>
 								<div class="buttons">
 									<a class="button red-hover" id='delete-button' data-togg='#delete-account-popup'>Delete Account</a>
-									<button class="button blue-hover" id='save-button' type='button' onclick='saveSettings(document.getElementById("settings-form"));'>Save Settings</button>
 								</div>
 								
 								<div id='delete-account-popup' class='popup'>

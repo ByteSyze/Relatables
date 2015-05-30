@@ -92,19 +92,6 @@ function login()
 	});
 }
 
-function saveSettings(form)
-{
-	//Store all results so that all are checked, regardless of whether any are wrong.
-	var validUser = verifyUser();
-	var validPass = verifyCurrentPassword();
-	var validEmail = verifyEmail();
-	
-	if(validUser && validPass && validEmail)
-	{
-		form.submit();
-	}
-}
-
 function verifyUser(successCallback, verifyAll)
 {
 	var userVal = user.value;
@@ -114,7 +101,10 @@ function verifyUser(successCallback, verifyAll)
 	if(userVal == '')
 	{
 		if(verifyAll)
+		{
 			verifyPassword(successCallback, verifyAll);
+			return true;
+		}
 		else
 			return true;
 	}
@@ -169,7 +159,10 @@ function verifyPassword(successCallback, verifyAll)
 	}
 	
 	if(verifyAll)
+	{
 		verifyRePassword(successCallback, verifyAll);
+		return true;
+	}
 	else 
 		return true;
 }
@@ -242,7 +235,15 @@ function verifyEmail(successCallback, verifyAll)
 	$pop = $('#email-popup');
 	
 	if(emailVal == '')
-		return true;
+	{
+		if(verifyAll)
+		{
+			successCallback();
+			return;
+		}
+		else
+			return true;
+	}
 	
 	if(emailVal.length < 4)
 		setMarker($img, $pop, 'Email must be atleast 4 characters long.', false);
@@ -435,6 +436,8 @@ $('body').on('click','[data-share-button]',function()
 	else
 		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
 });
+
+$('#settings-form').submit(function(){ verifyUser(function(){ form.submit(); } ,true); return false; });
 
 $('#user_input').keydown(function(event){ checkLimit(event, $(this)[0], 32, false); });
 
