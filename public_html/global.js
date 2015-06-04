@@ -281,6 +281,25 @@ function verifyEmail(successCallback, verifyAll)
 	}
 }
 
+function verifyRecoveryEmail()
+{
+	$img = $('#recovery-email').next();
+	$pop = $('#recovery-email-popup');
+	
+	$pop.html('');
+	
+	if($('#recovery-email').val())
+	{
+		$.post("/verifyEmail.php", {e: $('#recovery-email').val()}, function(data)
+		{
+			if(data !== '0')
+				setMarker($img, 0, 0, true);
+			else
+				setMarker($img, $pop, 'There is no account linked to that email.', false);
+		});	
+	}
+}
+
 function checkLimit(event, element, limit, substr)
 {
 	var remaining = limit - element.value.length;
@@ -455,6 +474,7 @@ $('#user_input').keyup(function(){ verifyUser(0, false); checkErrPopups($(this))
 $('#pass_input').keyup(function(){ verifyPassword(0, false); checkErrPopups($(this)); });
 $('#repass_input').keyup(function(){ verifyRePassword(0, false); checkErrPopups($(this)); });
 $('#email_input').keyup(function(){ verifyEmail(0, false); checkErrPopups($(this)); });
+$('#recovery-email').keyup(function(){ verifyRecoveryEmail(); checkErrPopups($(this)); });
 
 $('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
 $('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });

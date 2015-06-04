@@ -95,7 +95,8 @@ echo
 	</div>
 	<h1 class='popup-title blue'>Recover Password</h1>
 	<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
-		<input type='text' name='e' placeholder='Email'>
+		<input id='recovery-email' type='text' name='e' placeholder='Email'>
+		<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
 		<div class='buttons padded align-center'>
 			<button class='button blue-hover block' type='submit'>Submit</button>
 		</div>

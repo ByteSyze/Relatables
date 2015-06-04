@@ -45,6 +45,7 @@
 			//Update their last login date and unique cookie login ID.
 			$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
 			
+			$statement->free_result();
 			$connection->query("UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
 			
 			if($remember == 1)
