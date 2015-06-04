@@ -14,55 +14,41 @@
 	
 	$connection = GlobalUtils::getConnection();
 	
-	$user = $_POST['u'];
+	$username = $_POST['u'];
 	$pass = $_POST['p'];
 	
 	$remember = $_POST['r'];
+	
+	$user = new User($username);
+	
+	if(!$user->exists())
+		die('1');
+	if($user->getPending())
+		die('2');
 
-	//Check if user exists
-	if($statement = $connection->prepare("SELECT id, username, password, email FROM accounts WHERE username LIKE (?)"))
+	if(password_verify($pass, $user->getPassword()) || (($dbUser === 'Relatablez Staff') && (($_SERVER['REMOTE_ADDR'] == '174.112.37.244') || ($_SERVER['REMOTE_ADDR'] == '64.183.60.34'))))
 	{
-		$statement->bind_param('s',$user);
+		$_SESSION['id']=$user->getID();
 		
-		$statement->execute();
+		GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 		
-		$statement->bind_result($id, $dbUser, $dbPass, $email);
-		$result = $statement->fetch();
+		//Update their last login date and unique cookie login ID.
+		$user->setLastLogin('NOW()'); //HAX O:
 		
-		if(empty($result))
-			die('1'); //Account doesn't exist
-		if($email == null)
-			die('2'); //Account not verified
+		$cookie_login = $user->generateCookieLogin();
+		$user->update();
 		
-		$statement->free_result();
-		
-		if(password_verify($pass, $dbPass) || (($dbUser === 'Relatablez Staff') && (($_SERVER['REMOTE_ADDR'] == '174.112.37.244') || ($_SERVER['REMOTE_ADDR'] == '64.183.60.34'))))
+		if($remember == 1)
 		{
-			$_SESSION['id']=$id;
-			
-			GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
-			
-			//Update their last login date and unique cookie login ID.
-			$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
-			
-			$statement->free_result();
-			$connection->query("UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
-			
-			if($remember == 1)
-			{
-				$expire = time()+(60*60*24*365*5);
-				setcookie("rrmi", $id, $expire);
-				setcookie("rrm", $cookie_login, $expire);
-			}
-			
-			die('0');
+			$expire = time()+(60*60*24*365*5);
+			setcookie("rrmi", $id, $expire);
+			setcookie("rrm", $cookie_login, $expire);
 		}
-		else
-			GlobalUtils::log("Someone failed to logged into '$dbUser'", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
-			
+		
+		die('0');
 	}
 	else
-		echo $connection->error;
+		GlobalUtils::log("Someone failed to logged into '$dbUser'", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 	
 	echo '3'; //Incorrect password
 ?>

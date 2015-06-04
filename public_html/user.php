@@ -166,6 +166,17 @@
 			return $this->joined;
 		}
 		
+		public function getLastLogin()
+		{
+			return $this->last_login;
+		}
+		
+		public function setLastLogin($date)
+		{
+			$this->last_login = $date;
+			$this->setEditted('last_login', self::TYPE_STRING);
+		}
+		
 		public static function getIDFromUsername($username)
 		{	
 			if($statement = self::$connection->prepare('SELECT id FROM accounts WHERE username LIKE (?)'))
