@@ -6,7 +6,7 @@
 	
 	if(GlobalUtils::$user->getID() == 0)
 	{
-		if(isset($_COOKIE["rrm"]) $$ isset($_COOKIE["rrmi"]))
+		if(isset($_COOKIE["rrm"]) && isset($_COOKIE["rrmi"]))
 		{	
 			$connection = GlobalUtils::getConnection();
 
