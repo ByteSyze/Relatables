@@ -23,6 +23,7 @@
 		private $country;
 		private $description;
 		private $mod_index = 0;
+		private $exists;
 		
 		private $flags = 0;
 		
@@ -53,7 +54,7 @@
 					$statement->execute();
 					
 					$statement->bind_result($this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country_id,  $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
-					$statement->fetch();
+					$this->exists = $statement->fetch();
 				}
 			}
 			else
@@ -66,7 +67,7 @@
 					$statement->execute();
 					
 					$statement->bind_result($this->id, $this->username, $this->password, $this->cookie_login, $this->verification, $this->joined, $this->last_login, $this->email, $this->pending_email, $this->country_id, $this->country, $this->description, $this->mod_index, $this->flags, $this->post_count, $this->comment_count);
-					$statement->fetch();
+					$this->exists = $statement->fetch();
 				}	
 			}
 		}
@@ -332,6 +333,26 @@
 			return $verification;
 		}
 		
+		public function getCookieLogin()
+		{
+			return $this->cookie_login;
+		}
+		
+		public function setCookieLogin($cookie)
+		{
+			$this->cookie_login = $verification;
+			
+			$this->setEditted('cookie_login', self::TYPE_STRING);
+		}
+		
+		public function generateCookieLogin()
+		{
+			$cookie = md5(openssl_random_pseudo_bytes(128, $crypto_strong));
+			$this->setCookieLogin(password_hash($cookie, PASSWORD_DEFAULT));
+			
+			return $cookie;
+		}
+		
 		public function getPostCount()
 		{
 			return $this->post_count;
@@ -352,6 +373,11 @@
 			$this->email = $email;
 			
 			$this->setEditted('email', self::TYPE_STRING);
+		}
+		
+		public function exists()
+		{
+			return $this->exists;
 		}
 		
 		function notify($message, $href = '')

@@ -51,7 +51,8 @@
 			if($remember == 1)
 			{
 				$expire = time()+(60*60*24*365*5);
-				setcookie("rrm",$cookie_login,$expire);
+				setcookie("rrmi", $id, $expire);
+				setcookie("rrm", $cookie_login, $expire);
 			}
 			
 			die('0');
