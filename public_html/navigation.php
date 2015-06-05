@@ -8,9 +8,10 @@
 	{
 		if(isset($_COOKIE["rrm"]) && isset($_COOKIE["rrmi"]))
 		{
-			$user = new User(intval($_COOKIE["rmmi"]));
+			echo $_COOKIE["rrmi"];
+			$user = new User($_COOKIE["rrmi"], 'i');
 			
-			echo $user->getUsername();
+			echo "user: " . $user->getUsername();
 
 			if(password_verify($_COOKIE["rrm"], $user->getCookieLogin()))
 			{

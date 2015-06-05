@@ -12,7 +12,7 @@
 		if($slashpos != false)
 			$username = substr($username,0,$slashpos);
 		
-		$user = new User($username);
+		$user = new User($username, User::TYPE_STRING);
 	?>
 	<head>
 		<title id='title'><?php echo $user->getUsername(); ?></title>

@@ -17,7 +17,7 @@
 	
 	$remember = $_POST['r'];
 	
-	$user = new User($username);
+	$user = new User($username, User::TYPE_STRING);
 	
 	if(!$user->exists())
 		die('1');

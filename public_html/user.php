@@ -32,14 +32,14 @@
 		
 		private $editted_fields;
 		
-		function __construct($data, type = self::TYPE_INT)
+		function __construct($data, $type = self::TYPE_INT)
 		{
 			if(self::$connection == null)
 				self::$connection = GlobalUtils::getConnection();
 				
 			$this->editted_fields = array();
 			
-			if(type == self::TYPE_INT)
+			if($type == self::TYPE_INT)
 			{
 				//Treat $data as ID
 				
@@ -171,8 +171,11 @@
 			return $this->last_login;
 		}
 		
-		public function setLastLogin($date = date('Y-m-d H:i:s'))
+		public function setLastLogin($date = 'NOW')
 		{
+			if($date == 'NOW')
+				$date = date('Y-m-d H:i:s');
+				
 			$this->last_login = $date;
 			$this->setEditted('last_login', self::TYPE_STRING);
 		}
