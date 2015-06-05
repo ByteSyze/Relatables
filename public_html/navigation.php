@@ -7,33 +7,26 @@
 	if(GlobalUtils::$user->getID() == 0)
 	{
 		if(isset($_COOKIE["rrm"]) && isset($_COOKIE["rrmi"]))
-		{	
-			$connection = GlobalUtils::getConnection();
-
-			if($statement = $connection->prepare("SELECT id, username, password, IFNULL(email,0) FROM accounts WHERE cookie_login = (?)"))
-			{
+		{
+			$user = new User(intval($_COOKIE["rmmi"]));
 			
-				$statement->bind_param("s",$cookie_login);
-				
-				$statement->execute();
+			echo $user->getUsername();
 
-				$not_pending = 1;
+			if(password_verify($_COOKIE["rrm"], $user->getCookieLogin()))
+			{
+				$_SESSION['id']=$user->getID();
 				
-				$statement->bind_result($id, $dbUser, $dbPass, $not_pending);
-				$result = $statement->fetch();
+				GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 				
-				if($statement->num_rows && $not_pending)
-				{
-					$_SESSION['id']=$id;
-						
-					//Update their last login date and unique cookie login ID.
-					$cookie_login = password_hash(date('isdHYm').$dbPass, PASSWORD_DEFAULT);
-					$expire = time()+(60*60*24*365*5);
-					
-					$statement->free_result();
-					mysqli_query($connection, "UPDATE accounts SET last_login=NOW(), cookie_login='$cookie_login' WHERE id=$id");
-					setcookie("rrm",$cookie_login,$expire,'/');
-				}
+				//Update their last login date and unique cookie login ID.
+				$user->setLastLogin();
+				
+				$cookie_login = $user->generateCookieLogin();
+				$user->update();
+				
+				$expire = time()+(60*60*24*365*5);
+				setcookie("rrmi", $user->getID(), $expire, '/');
+				setcookie("rrm", $cookie_login, $expire, '/');
 			}
 		}
 	}

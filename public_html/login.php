@@ -12,8 +12,6 @@
 		die('no password');
 	}
 	
-	$connection = GlobalUtils::getConnection();
-	
 	$username = $_POST['u'];
 	$pass = $_POST['p'];
 	
@@ -33,7 +31,7 @@
 		GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 		
 		//Update their last login date and unique cookie login ID.
-		$user->setLastLogin('NOW()'); //HAX O:
+		$user->setLastLogin();
 		
 		$cookie_login = $user->generateCookieLogin();
 		$user->update();
@@ -41,8 +39,8 @@
 		if($remember == 1)
 		{
 			$expire = time()+(60*60*24*365*5);
-			setcookie("rrmi", $id, $expire);
-			setcookie("rrm", $cookie_login, $expire);
+			setcookie("rrmi", $user->getID(), $expire, '/');
+			setcookie("rrm", $cookie_login, $expire, '/');
 		}
 		
 		die('0');
