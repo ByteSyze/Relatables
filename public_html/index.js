@@ -77,7 +77,7 @@ $('#next').click(function()
 	paginate();
 });
 
-$( "body" ).on( "click", "#submit_form", function() {
+$( "#submission-form" ).submit(function() {
 
 	submission = $("#submission").val();
 	$( "#submission-wrapper" ).append("");

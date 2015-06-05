@@ -30,7 +30,7 @@
 								<div class="box-content">
 									<?php
 										if($_SESSION['id'] != null) {
-											echo '<form action="/submit.php" method="POST">';
+											echo '<form id="submission-form" action="/submit.php" method="POST">';
 												echo '<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>';
 												echo '<div class="buttons padded align-right">';
 													echo '<button class="button blue-hover" type="submit">Submit</button>';
