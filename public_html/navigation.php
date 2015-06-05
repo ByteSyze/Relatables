@@ -8,14 +8,12 @@
 	{
 		if(isset($_COOKIE["rrm"]) && isset($_COOKIE["rrmi"]))
 		{
-			echo $_COOKIE["rrmi"];
-			$user = new User($_COOKIE["rrmi"], 'i');
-			
-			echo "user: " . $user->getUsername();
+			$user = new User($_COOKIE["rrmi"], User::TYPE_INT);
 
 			if(password_verify($_COOKIE["rrm"], $user->getCookieLogin()))
 			{
 				$_SESSION['id']=$user->getID();
+				GlobalUtils::$user = $user;
 				
 				GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 				
