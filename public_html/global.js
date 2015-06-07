@@ -328,7 +328,7 @@ function setMarker($img, $msg, msg, checkmark)
 		$img.removeClass('checkmark');
 		
 	if(msg)
-		$msg.html($msg.html()+msg);
+		$msg.html(msg);
 }
 
 function hideAll()

@@ -39,19 +39,24 @@
 								<form id='settings-form' method='POST' action='/update.php' class="vertical">
 									<input type='hidden' name='t' value='account' />
 									<label for="">Username <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='user_verify_img' /><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div></label>
-									<input type="text" id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>'></input>
+									<input type="text" id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>' />
+									<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='user-popup'></div></div>
 
 									<label for="currentpass_input">Current Password <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='currentpass_verify_img' /><div class='popup-offset'><div class='error-popup' id='current-password-popup'></div></div></label>
 									<input type="password" id='currentpass_input' type='password' name='oldpassword' autocomplete='off' />
+									<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='currentpass-popup'></div></div>
 
 									<label for="">New Password <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div></label>
 									<input id='pass_input' type="password" name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' />
+									<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
 									
 									<label for="">Retype New Password <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='repass_verify_img' /><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div></label>
 									<input id='repass_input' type='password' name='renewpassword' onkeyup='verifyRePassword()'  autocomplete='off' />
+									<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
 
 									<label for="">Email <img onmouseover='showErrors(this)' onmouseout='hideErrors(this)' class='verify' src='/check_mark.png' id='email_verify_img' /><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></label>
 									<input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>'></input>
+									<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 								</form><br>
 								<div class="buttons">
 									<a class="button red-hover" id='delete-button' data-togg='#delete-account-popup'>Delete Account</a>

@@ -14,3 +14,5 @@ function checkEntered(element, event)
 	if(keyCode == 13)
 		event.preventDefault();
 }
+
+$('#currentpass_input').keyup(function(){ verifyCurrentPassword(0, false); checkErrPopups($(this)); });
