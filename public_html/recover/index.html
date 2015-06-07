@@ -45,20 +45,22 @@
 					  <div class="box">
 						<div class="box-content">
 							<form class='vertical' method='POST' action='/resetpassword.php'>
-								<input type='password' name='p'  placeholder='Enter New Password'/>
-								<input type='password' name='rp' placeholder='Re-enter New Password'/>
-								<input type='submit' value='Submit' class="button blue-hover"  />
+								<input id='rec_pass_input' type='password' name='p'  placeholder='Enter New Password'/>
+								<div class='verify xmark' data-err-popup='' ></div><div class='popup-offset'><div class='error-popup' id='rec-new-password-popup'></div></div>
+								<input id='rec_repass_input' type='password' name='rp' placeholder='Re-enter New Password'/>
+								<div class='verify xmark' data-err-popup='' ></div><div class='popup-offset'><div class='error-popup' id='rec-renew-password-popup'></div></div>
+								<input id='rec_submit' type='submit' value='Submit' class="button blue-hover"  />
 							</form>
 						</div>
 					  </div>
 					</div>
 				  </div>
-				</div>		
+				</div>
 			</div>
 			<?php GlobalUtils::getFooter(); ?>
 			
 		</div>	
-		<?php GlobalUtils::getJS(); ?>	
+		<?php GlobalUtils::getJS('recover/recover'); ?>	
 		
 	</body>
 </html>

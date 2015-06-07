@@ -151,7 +151,7 @@ function verifyPassword(successCallback, verifyAll)
 	newPasswordPopup.innerHTML = '';
 	
 	$img = $('#pass_input').next();
-	$pop = $('#password-popup');
+	$pop = $('#new-password-popup');
 	
 	if(passVal.length < 6)
 		setMarker($img, $pop, 'Password must be atleast 6 characters long.', false);
