@@ -18,4 +18,8 @@ function checkEntered(element, event)
 $(document).ready(function(){  $('#pass_input').parent().hide(); });
 
 $('#currentpass_input').keyup(function(){ verifyCurrentPassword(0, false); checkErrPopups($(this)); });
-$('#currentpass_input').click(function(){ $('#pass_input').parent().show(); });
+$('#currentpass_input').parent().click(function()
+{ 
+	$('#pass_input').parent().show(); 
+	$(this).animate({'padding-left':'50px'});
+});
