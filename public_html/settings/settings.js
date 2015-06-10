@@ -15,4 +15,7 @@ function checkEntered(element, event)
 		event.preventDefault();
 }
 
+$(document).ready(function(){  $('#pass_input').parent().hide(); });
+
 $('#currentpass_input').keyup(function(){ verifyCurrentPassword(0, false); checkErrPopups($(this)); });
+$('#currentpass_input').click(function(){ $('#pass_input').parent().show(); });
