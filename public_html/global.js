@@ -404,11 +404,13 @@ function vote(id, vote, v)
 			//alone++;
 			//notAlone--;
 			
-			$('button.green-hover[data-vid="'+id+'"]').prop('disabled', false);
-			$('button.green[data-vid="'+id+'"]').removeClass('green').addClass('green-hover');
+			$nae = $('button.green[data-vid="'+id+'"]');
+			$nae.removeClass('green').addClass('green-hover');
+			$nae.prop('disabled', false);
 			
-			$('button.red-hover[data-vid="'+id+'"]').prop('disabled', true);
-			$('button.red-hover[data-vid="'+id+'"]').addClass('red');
+			$ae = $('button.red-hover[data-vid="'+id+'"]');
+			$ae.prop('disabled', true);
+			$ae.addClass('red');
 			
 			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -418,11 +420,13 @@ function vote(id, vote, v)
 			//notAlone++;
 			//alone--;
 			
-			$('button.green-hover[data-vid="'+id+'"]').prop('disabled', true);
-			$('button.green-hover[data-vid="'+id+'"]').addClass('green');
+			$nae = $('button.green-hover[data-vid="'+id+'"]');
+			$nae.prop('disabled', true);
+			$nae.addClass('green');
 			
-			$('button.red-hover[data-vid="'+id+'"]').prop('disabled', false);
-			$('button.red[data-vid="'+id+'"]').removeClass('red').addClass('red-hover');
+			$ae = $('button.red[data-vid="'+id+'"]');
+			$ae.removeClass('red').addClass('red-hover');
+			$ae.prop('disabled', false);
 			
 			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -430,15 +434,17 @@ function vote(id, vote, v)
 		else if(data == '1' && vote == 1)
 		{
 			//alone++;
-			$('button.red-hover[data-vid="'+id+'"]').prop('disabled', true);
-			$('button.red-hover[data-vid="'+id+'"]').addClass('red');
+			$ae = $('button.red-hover[data-vid="'+id+'"]');
+			$ae.prop('disabled', true);
+			$ae.addClass('red');
 			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 		else if(data == '1' && vote == 0)
 		{
 			//notAlone++;
-			$('button.green-hover[data-vid="'+id+'"]').prop('disabled', true);;
-			$('button.green-hover[data-vid="'+id+'"]').addClass('green');
+			$nae = $('button.green-hover[data-vid="'+id+'"]');
+			$nae.prop('disabled', true);;
+			$nae.addClass('green');
 			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 		}
 	});
