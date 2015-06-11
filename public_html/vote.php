@@ -23,12 +23,14 @@
 			die('No matching submission');
 		else
 		{
+			$statement->free_result();
 			if($statement = $connection->prepare("INSERT INTO related (pid, uid, alone) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE alone=(?)"))
 			{
+				
 				$statement->bind_param('iiii', $id, $_SESSION['id'], $voteTypeNum, $voteTypeNum);
 				$statement->execute();
 				
-				die($statement->affected_rows);
+				echo $statement->affected_rows;
 			}
 		}
 	}
