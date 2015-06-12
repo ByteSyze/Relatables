@@ -721,3 +721,7 @@ select:hover, select:active {
 textarea.input-submit {
   resize: none;
 }
+
+#notif-drop {
+	width:300px;
+}
