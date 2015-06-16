@@ -35,7 +35,7 @@
 	{
 		$connection = GlobalUtils::getConnection();
 		
-		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(created,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0 ORDER BY notifications.created DESC');
+		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(created,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0');
 		
 		while($notification = mysqli_fetch_array($notifications))
 		{

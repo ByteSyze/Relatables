@@ -382,7 +382,7 @@ function createPopup(message)
 	$('body').append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div><span class='popup-small'>" + message + "</span></div>");
 }
 
-function vote(id, vote, v)
+function vote(id, vote, v, unvote)
 {
 	//var notAloneEl  = document.getElementById('na'+id);
 	//var aloneEl 	= document.getElementById('a'+id);
@@ -394,58 +394,69 @@ function vote(id, vote, v)
 	$.ajax({
 		type: "POST",
 		url: "/vote.php",
-		data: {q: id, vtn: vote, v : v}
+		data: {q: id, vtn: vote, v: v, u: unvote}
 	})
 	.done(function(data) {
 		console.log(data);
-		
-		if(data == '2' && vote == 1)
+		if(unvote)
 		{
-			//alone++;
-			//notAlone--;
-			
-			$nae = $('button.green[data-vid="'+id+'"]');
-			$nae.removeClass('green').addClass('green-hover');
-			$nae.prop('disabled', false);
-			
-			$ae = $('button.red-hover[data-vid="'+id+'"]');
-			$ae.prop('disabled', true);
-			$ae.addClass('red');
-			
-			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
-			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			if(data == '1')
+			{
+					$vb = $('button.green[data-vid="'+id+'"], button.red-hover[data-vid="'+id+'"]');
+					$vb.removeClass('green red');
+					$vb.prop('disabled', false);
+			}
 		}
-		else if(data == '2' && vote == 0)
-		{	
-			//notAlone++;
-			//alone--;
-			
-			$nae = $('button.green-hover[data-vid="'+id+'"]');
-			$nae.prop('disabled', true);
-			$nae.addClass('green');
-			
-			$ae = $('button.red[data-vid="'+id+'"]');
-			$ae.removeClass('red').addClass('red-hover');
-			$ae.prop('disabled', false);
-			
-			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
-			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
-		}
-		else if(data == '1' && vote == 1)
+		else
 		{
-			//alone++;
-			$ae = $('button.red-hover[data-vid="'+id+'"]');
-			$ae.prop('disabled', true);
-			$ae.addClass('red');
-			//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
-		}
-		else if(data == '1' && vote == 0)
-		{
-			//notAlone++;
-			$nae = $('button.green-hover[data-vid="'+id+'"]');
-			$nae.prop('disabled', true);;
-			$nae.addClass('green');
-			//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			if(data == '2' && vote == 1)
+			{
+				//alone++;
+				//notAlone--;
+				
+				$nae = $('button.green[data-vid="'+id+'"]');
+				$nae.removeClass('green').addClass('green-hover');
+				$nae.prop('disabled', false);
+				
+				$ae = $('button.red-hover[data-vid="'+id+'"]');
+				$ae.prop('disabled', true);
+				$ae.addClass('red');
+				
+				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			}
+			else if(data == '2' && vote == 0)
+			{	
+				//notAlone++;
+				//alone--;
+				
+				$nae = $('button.green-hover[data-vid="'+id+'"]');
+				$nae.prop('disabled', true);
+				$nae.addClass('green');
+				
+				$ae = $('button.red[data-vid="'+id+'"]');
+				$ae.removeClass('red').addClass('red-hover');
+				$ae.prop('disabled', false);
+				
+				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			}
+			else if(data == '1' && vote == 1)
+			{
+				//alone++;
+				$ae = $('button.red-hover[data-vid="'+id+'"]');
+				$ae.prop('disabled', true);
+				$ae.addClass('red');
+				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			}
+			else if(data == '1' && vote == 0)
+			{
+				//notAlone++;
+				$nae = $('button.green-hover[data-vid="'+id+'"]');
+				$nae.prop('disabled', true);;
+				$nae.addClass('green');
+				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
+			}
 		}
 	});
 }
@@ -494,7 +505,7 @@ $('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(
 $('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
 
 $('body').on('click', '.popup > .buttons > button', function(){ $(this).parent().parent().hide(); });
-$('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v')); });
+$('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v'), $(this).hasClass('green red')); });
 
 $('.showlogin').click(function(){showLogin();});
 
