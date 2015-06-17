@@ -433,6 +433,7 @@ function vote(id, vote, v, unvote)
 				$nae.addClass('green');
 				
 				$ae = $('button.red[data-vid="'+id+'"]');
+				$ae.removeClass('red').addClass('red-hover');
 				
 				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
