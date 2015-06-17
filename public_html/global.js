@@ -402,7 +402,7 @@ function vote(id, vote, v, unvote)
 		{
 			if(data == '1')
 			{
-				if(vote == 1)
+				if(vote == 0)
 					$('button.green[data-vid="'+id+'"]').removeClass('green').addClass('green-hover');
 				else
 					$('button.red[data-vid="'+id+'"]').removeClass('red').addClass('red-hover');
