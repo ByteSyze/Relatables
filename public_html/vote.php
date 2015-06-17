@@ -6,11 +6,11 @@
 	$id 			= $_POST['q'];	//Submission ID.
 	$voteTypeNum 	= $_POST['vtn'];//Numerical representation of voting option.
 	$verification 	= $_POST['v'];	//Submission's verification ID.
-	$unvote			= $_POST['u'];  //True if user is actually rescinding their vote.
+	$rescind		= $_POST['u'];  //True if user is actually rescinding their vote.
 	
 	$connection = GlobalUtils::getConnection();
 	
-	if($unvote)
+	if($rescind == "true")
 	{
 		if($statement = $connection->prepare('DELETE FROM related WHERE pid=(?) AND uid=(?)'))
 		{

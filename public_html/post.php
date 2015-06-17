@@ -249,13 +249,11 @@
 							if($_SESSION['id']) {
 									$button_yes_meta = $button_no_meta = ' data-vid="' . $this->id . '"';
 									
-									if($this->user_vote == 0) {
+									if($this->user_vote == 0)
 										$button_yes_classes = "green";
-										$button_yes_meta .= "disabled";
-									} else if($this->user_vote == 1) {
+									else if($this->user_vote == 1)
 										$button_no_classes = "red";
-										$button_no_meta .= "disabled";
-									}
+										
 							} else {
 								$button_yes_meta = $button_no_meta = "data-signup-header='Please sign up to vote'";
 							}

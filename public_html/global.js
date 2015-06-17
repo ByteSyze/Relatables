@@ -402,9 +402,10 @@ function vote(id, vote, v, unvote)
 		{
 			if(data == '1')
 			{
-					$vb = $('button.green[data-vid="'+id+'"], button.red-hover[data-vid="'+id+'"]');
-					$vb.removeClass('green red');
-					$vb.prop('disabled', false);
+				if(vote == 1)
+					$('button.green[data-vid="'+id+'"]').removeClass('green').addClass('green-hover');
+				else
+					$('button.red[data-vid="'+id+'"]').removeClass('red').addClass('red-hover');
 			}
 		}
 		else
@@ -416,10 +417,8 @@ function vote(id, vote, v, unvote)
 				
 				$nae = $('button.green[data-vid="'+id+'"]');
 				$nae.removeClass('green').addClass('green-hover');
-				$nae.prop('disabled', false);
 				
 				$ae = $('button.red-hover[data-vid="'+id+'"]');
-				$ae.prop('disabled', true);
 				$ae.addClass('red');
 				
 				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -431,12 +430,9 @@ function vote(id, vote, v, unvote)
 				//alone--;
 				
 				$nae = $('button.green-hover[data-vid="'+id+'"]');
-				$nae.prop('disabled', true);
 				$nae.addClass('green');
 				
 				$ae = $('button.red[data-vid="'+id+'"]');
-				$ae.removeClass('red').addClass('red-hover');
-				$ae.prop('disabled', false);
 				
 				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
@@ -445,7 +441,6 @@ function vote(id, vote, v, unvote)
 			{
 				//alone++;
 				$ae = $('button.red-hover[data-vid="'+id+'"]');
-				$ae.prop('disabled', true);
 				$ae.addClass('red');
 				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			}
@@ -453,7 +448,6 @@ function vote(id, vote, v, unvote)
 			{
 				//notAlone++;
 				$nae = $('button.green-hover[data-vid="'+id+'"]');
-				$nae.prop('disabled', true);;
 				$nae.addClass('green');
 				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			}
@@ -505,7 +499,7 @@ $('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(
 $('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
 
 $('body').on('click', '.popup > .buttons > button', function(){ $(this).parent().parent().hide(); });
-$('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v'), $(this).hasClass('green red')); });
+$('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v'), ($(this).hasClass('red') || $(this).hasClass('green'))); });
 
 $('.showlogin').click(function(){showLogin();});
 
