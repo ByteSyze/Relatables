@@ -16,11 +16,14 @@
 		const REGISTER_TAKEN_USER		= 3;
 		const REGISTER_TAKEN_EMAIL		= 4;
 		const REGISTER_SUCCESS			= 5;
+		const REGISTER_BLACKLISTED		= 6;
 		
 		const DATATYPE_STRNUM			= "";
 		const DATATYPE_STRING			= "string";
 		const DATATYPE_NUMBER			= "number";
 		const DATATYPE_ALLDATA			= "everything";
+		
+		private static final $BLACKLISTED_EMAIL_HOSTS = null;
 		
 		const ENABLE_LOG				= false;
 		
@@ -91,7 +94,20 @@
 			$uLen = strlen($user); // Get length of username
 			if(($uLen > 32) || ($uLen < 1))
 			{
-				return self::REGISTER_INVALID_USER; // if username is larger than max length or less than one, die for now.
+				return self::REGISTER_INVALID_USER; // if username is larger than max length or less than one.
+			}
+			
+			if(self::$BLACKLISTED_EMAIL_HOSTS)
+			{
+				$start = strpos($email, '@');
+				$length = strrpos($email, '.') - $start;
+				$webhost = substr($email, $start, $length);
+				
+				foreach($blacklisted as self::$BLACKLISTED_EMAIL_HOSTS)
+				{
+					if(strcasecmp($webhost, $blacklisted) !== 0) // check if the provided email comes from a blacklisted host.
+						return self::REGISTER_BLACKLISTED;
+				}
 			}
 			
 			$connection = GlobalUtils::getConnection();
