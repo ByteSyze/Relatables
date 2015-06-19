@@ -168,8 +168,7 @@ function paginate()
 
 function updateUrl()
 {
-
-	var newurl = "?n=1";
+	var newurl = "?";
 	
 	if($('#category').val() != 0){
 	newurl = newurl+"&c="+($('#category').val()).toString();
@@ -179,7 +178,7 @@ function updateUrl()
 	newurl = newurl+"&o="+($('#sort').val()).toString();
 	}
 	
-	if($('#display').val() != 2){
+	if($('#display').val() != 0){
 	newurl = newurl+"&d="+($('#display').val()).toString();
 	}
 	
@@ -202,7 +201,7 @@ function updatePosts()
 	else
 		x = 50;
 
-	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val() n:1}, function(data)
+	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(), n:1}, function(data)
 	{
 		
 		if($('#display').val() < 2)
