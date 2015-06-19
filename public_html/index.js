@@ -202,7 +202,7 @@ function updatePosts()
 	else
 		x = 50;
 
-	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(),  n:1}, function(data)
+	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val() n:1}, function(data)
 	{
 		
 		if($('#display').val() < 2)
