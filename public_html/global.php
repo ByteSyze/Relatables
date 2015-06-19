@@ -23,7 +23,7 @@
 		const DATATYPE_NUMBER			= "number";
 		const DATATYPE_ALLDATA			= "everything";
 		
-		private static final $BLACKLISTED_EMAIL_HOSTS = null;
+		private static $BLACKLISTED_EMAIL_HOSTS = null;
 		
 		const ENABLE_LOG				= false;
 		

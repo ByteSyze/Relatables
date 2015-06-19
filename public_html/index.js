@@ -171,19 +171,19 @@ function updateUrl()
 	var newurl = "?";
 	
 	if($('#category').val() != 0){
-	newurl = newurl+"&c="+($('#category').val()).toString();
+		newurl = newurl+"&c="+($('#category').val()).toString();
 	}
 	
 	if($('#sort').val() != 0){
-	newurl = newurl+"&o="+($('#sort').val()).toString();
+		newurl = newurl+"&o="+($('#sort').val()).toString();
 	}
 	
 	if($('#display').val() != 0){
-	newurl = newurl+"&d="+($('#display').val()).toString();
+		newurl = newurl+"&d="+($('#display').val()).toString();
 	}
 	
 	if(page != 0){
-	newurl = newurl+"&p="+page.toString();
+		newurl = newurl+"&p="+page.toString();
 	}
 	
 	var stateObj = {index: "index"};
