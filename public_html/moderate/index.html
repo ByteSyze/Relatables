@@ -99,13 +99,13 @@
 				<div class="moderation-info">
 					<h3>Guidelines</h3>
 					<ul>
-					  <li>Posts must be well written and original.</li>
-					  <li>Posts must start with "Am I the only one" and end with a question mark.</li>
+					  <li>Posts should be well-written and original.</li>
+					  <li>Posts must start with "Am I the only one" and end with a question mark if necessary.</li>
 					</ul>
 					<h3>Rules</h3>
 					<ul>
 					  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
-					  <li>Posts should be suitable and appropriate for Relatablez users.</li>
+					  <li>Posts should be suitable and appropriate for users.</li>
 					</ul>
 				</div>
 
@@ -127,16 +127,6 @@
 		  <?php GlobalUtils::getFooter(); ?>
 	  </div>
 
-		<?php GlobalUtils::getJS(); ?>
-		<script type='text/javascript'>
-			$('#help-open').click(function()
-			{
-				$('#help-popup').toggle();
-			});	
-			$('#help-close').click(function()
-			{
-				$('#help-popup').addClass('hidden');
-			});
-		</script>
+	  <?php GlobalUtils::getJS(); ?>
 	</body>
 </html>
