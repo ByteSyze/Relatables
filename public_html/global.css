@@ -388,6 +388,10 @@ span.padded {
   color: #8F95B3; 
 }
 
+.boxes {
+	width:100%;
+}
+
 .box {
 	box-sizing: border-box;
 	border: solid 1px #DDDFEB;
@@ -395,6 +399,7 @@ span.padded {
   border-radius: 3px;
 	-moz-border-radius: 3px;
 	background: #fff;
+	width:100%;
 }
 .box.transparent {
   border: none;

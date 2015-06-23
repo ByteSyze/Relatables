@@ -39,3 +39,7 @@ div.stupid-side-header {
 div.social img {
 	padding: 0px 5px 10px 5px;
 }
+
+#posts {
+	width:100%;
+}
