@@ -18,19 +18,29 @@
 	
 	$connection = GlobalUtils::getConnection();
 	
-	//Long ass MYSQL query ftw
-	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE pid=(?) ORDER BY IF(rid = 0, $sort, rid) DESC, rid!=0 LIMIT ?,?"))
+	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE pid=(?) AND rid=0 LIMIT ?,?"))
 	{
 		$statement->bind_param('iii',$pid,$index,$count);
 		$statement->execute();
 		
-		$statement->bind_result($uid, $cid, $comment, $user, $submitted, $rid, $points, $reported, $deleted);
+		$statement->bind_result($uid, $cid, $comment, $user, $submitted, $points, $reported, $deleted);
 		$statement->store_result();
 		
 		$comment = htmlspecialchars($comment);
 	}
 	
+	$cid_array = array();
+	
+	while($statement->fetch())
+		array_push($cid_array, $cid);
+		
+	$cid_array_str = implode(',', $cid_array);
+		
+	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE rid IN ($cid_array_str) GROUP BY rid");
+	
 	$now = new DateTime();
+	
+	$statement->data_seek(0); //Return to start of results.
 	
 	while($statement->fetch())
 	{
@@ -108,7 +118,7 @@
 	}
 	
 	$num_rows = $statement->num_rows;
-	$remaining = $connection->query("SELECT COUNT(cid) FROM comments WHERE pid=$pid")->fetch_array()[0] - ($index+$num_rows);
+	$remaining = $connection->query("SELECT COUNT(cid) FROM comments WHERE rid=0 AND pid=$pid")->fetch_array()[0] - ($index+$num_rows);
 	
 	if($remaining)
 	{
