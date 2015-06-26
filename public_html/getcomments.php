@@ -1,5 +1,5 @@
 <?php
-	/*Copyright (C) Tyler Hackett 2014*/
+	/*Copyright (C) Tyler Hackett 2015*/
 	
 	function sort2mysql($sort)
 	{
@@ -9,93 +9,58 @@
 			return 'cid';
 	}
 	
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
-
-	$pid 	= intval($_POST['i']);
-	$index 	= $_POST['x'];
-	$count 	= $_POST['c'] > 50 ? 50 + $index : $_POST['c'] + $index;
-	$sort	= sort2mysql(($_POST['s']));
 	
-	$connection = GlobalUtils::getConnection();
-	
-	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE pid=(?) AND rid=0 LIMIT ?,?"))
+	function format_comment($comment, $reply = null)
 	{
-		$statement->bind_param('iii',$pid,$index,$count);
-		$statement->execute();
+	
+		$now = new DateTime();
+		$comment['comment'] = htmlspecialchars($comment['comment']);
 		
-		$statement->bind_result($uid, $cid, $comment, $user, $submitted, $points, $reported, $deleted);
-		$statement->store_result();
-		
-		$comment = htmlspecialchars($comment);
-	}
-	
-	$cid_array = array();
-	
-	while($statement->fetch())
-		array_push($cid_array, $cid);
-		
-	$cid_array_str = implode(',', $cid_array);
-		
-	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE rid IN ($cid_array_str) GROUP BY rid");
-	
-	$now = new DateTime();
-	
-	$statement->data_seek(0); //Return to start of results.
-	
-	while($statement->fetch())
-	{
-		if($rid != 0)
-			echo "<div class='comment reply' id='c$cid' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$rid'>";
+		if($comment['rid'] != 0)
+			echo "<div class='comment reply' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[rid]}'>";
 		else
-			echo "<div class='comment' id='c$cid' data-uid='$uid' data-user='$user' data-c='$cid' data-r='$cid'>";
+			echo "<div class='comment' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[cid]}'>";
 			
-		if($user == GlobalUtils::$user->getUsername() && !$deleted)
+		if($comment['user'] == GlobalUtils::$user->getUsername() && !$comment['deleted'])
 			echo "<button class='delete'></button>";
 		
 		echo "<div class='comment-info'>";
-			echo "<span><a class='user' href='/user/$user'>$user</a></span>";
+			echo "<span><a class='user' href='/user/{$comment[user]}'>{$comment[user]}</a></span>";
 			
 			$points_class = "";
-			if($points < 0) $points_class = "negative";
-			else if($points > 0) $points_class = "positive";
+			if($comment['points'] < 0) $points_class = "negative";
+			else if($comment['points'] > 0) $points_class = "positive";
 
-			echo "<span id='points-$cid' class='points $points_class'>$points</span>";
+			echo "<span id='points-{$comment[cid]}' class='points $points_class'>{$comment[points]}</span>";
 				
-			$submitted = DateTime::createFromFormat("m d Y H i", $submitted);
-			$time_diff = $submitted->diff($now);
+			$comment['submitted'] = DateTime::createFromFormat("m d Y H i", $comment['submitted']);
+			$time_diff = $comment['submitted']->diff($now);
 			
 			if($time_diff->y)
-				$time_diff = $time_diff->y . ' years ago';
+				$time_diff = $time_diff->y . ' yr ago';
 			else if($time_diff->m)
-				$time_diff = $time_diff->m . ' months ago';
+				$time_diff = $time_diff->m . ' mt ago';
 			else if($time_diff->d)
-				$time_diff = $time_diff->d . ' days ago';
+				$time_diff = $time_diff->d . ' dy ago';
 			else if($time_diff->h)
-				$time_diff = $time_diff->h . ' hours ago';
+				$time_diff = $time_diff->h . ' hr ago';
 			else
-				$time_diff = $time_diff->i . ' minutes ago';
+				$time_diff = $time_diff->i . ' mn ago';
 			
 			echo "<span>$time_diff</span>";
 		echo "</div>";
 		
 		echo "<div class='comment-body'>";
-			if($deleted)
+			if($comment['deleted'] === 1)
 			{
 				echo "<span class='muted'>Comment removed by author.</span>";
 			}
-			else if($reported > 0)
+			else if($comment['reported'] > 0)
 			{
 				echo "<span class='muted'>Comment removed by an administrator.</span>";
 			}
-			else if($rid != 0)
-			{
-				$rUserPos = strpos($comment, ' ');
-				$rUser = substr($comment, 0, $rUserPos);
-				$comment = substr($comment, $rUserPos, strlen($comment));
-				echo "<p><a class='at user' href='/user/$rUser'>@$rUser</a> $comment</p>";
-			}
-			else
-				echo $comment;
+			
+			echo $comment['comment'];			
 		echo "</div>";
 		
 		echo "<div class='comment-actions'>";
@@ -113,8 +78,58 @@
 			}
 			echo "<span data-report>Report</span>";
 		echo "</div>";
+		
+		if($reply)
+			format_comment($reply);
 
 		echo "</div>";
+	}
+	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
+
+	$pid 	= intval($_POST['i']);
+	$index 	= $_POST['x'];
+	$count 	= $_POST['c'] > 50 ? 50 + $index : $_POST['c'] + $index;
+	$sort	= sort2mysql($_POST['s']);
+	
+	$comment = array();
+	
+	$connection = GlobalUtils::getConnection();
+	
+	if($statement = $connection->prepare("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS f_submitted, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE rid=0 AND pid=(?) ORDER BY $sort DESC LIMIT ?,?"))
+	{
+		$statement->bind_param('iii',$pid,$index,$count);
+		$statement->execute();
+		
+		//$statement->bind_result($uid, $cid, $comment, $user, $submitted, $points, $reported, $deleted);
+		$statement->bind_result($comment['uid'], $comment['cid'], $comment['comment'], $comment['user'], $comment['submitted'], $comment['points'], $comment['reported'], $comment['deleted']);
+		$statement->store_result();
+	}
+	
+	$cid_array = array();
+	
+	while($statement->fetch())
+		array_push($cid_array, $comment['cid']);
+		
+	$cid_array_str = implode(',', $cid_array);
+		
+	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE rid IN ($cid_array_str) GROUP BY rid ORDER BY FIELD(rid, $cid_array_str)");
+	
+	$reply = $replies->fetch_assoc(); //Get first reply
+	
+	$statement->data_seek(0); //Return to start of results.
+	
+	while($statement->fetch())
+	{
+		if($reply['rid'] == $comment['cid']) //If the current reply is a reply to this comment, pass it in.
+		{
+			format_comment($comment, $reply);
+			$reply = $replies->fetch_assoc();
+		}
+		else
+		{
+			format_comment($comment);
+		}
 	}
 	
 	$num_rows = $statement->num_rows;
