@@ -59,8 +59,16 @@
 			{
 				echo "<span class='muted'>Comment removed by an administrator.</span>";
 			}
-			
-			echo $comment['comment'];			
+			else if($comment['rid'] != 0)
+			{
+				$rUserPos = strpos($comment['comment'], ' ');
+				$rUser = substr($comment['comment'], 0, $rUserPos);
+				$r_comment = substr($comment['comment'], $rUserPos, strlen($comment['comment']));
+				echo "<p><a class='at user' href='/user/$rUser'>@$rUser</a> $r_comment</p>";
+			}
+			else
+				echo $comment['comment'];	
+				
 		echo "</div>";
 		
 		echo "<div class='comment-actions'>";
@@ -80,7 +88,14 @@
 		echo "</div>";
 		
 		if($reply)
+		{
 			format_comment($reply);
+		}
+		else if($comment['rid'] != 0)
+		{
+			if($comment['total_replies'] > 1)
+				echo "<span data-showmore='{$comment[rid]}'>Show More</span>";
+		}
 
 		echo "</div>";
 	}
@@ -113,7 +128,7 @@
 		
 	$cid_array_str = implode(',', $cid_array);
 		
-	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted FROM comments WHERE rid IN ($cid_array_str) GROUP BY rid ORDER BY FIELD(rid, $cid_array_str)");
+	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted, SUM(1) AS total_replies FROM comments WHERE rid IN ($cid_array_str) GROUP BY rid ORDER BY FIELD(rid, $cid_array_str)");
 	
 	$reply = $replies->fetch_assoc(); //Get first reply
 	
