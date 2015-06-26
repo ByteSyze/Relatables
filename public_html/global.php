@@ -80,6 +80,96 @@
 			echo "<div class='footer'><div class='right'><span>&copy; Relatablez 2015</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div>";
 		}
 		
+		public static function formatComment($comment, $reply = null)
+		{
+			$now = new DateTime();
+			
+			$comment['comment'] = htmlspecialchars($comment['comment']);
+			
+			if($comment['rid'] != 0)
+				echo "<div class='comment reply' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[rid]}'>";
+			else
+				echo "<div class='comment' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[cid]}'>";
+				
+			if($comment['user'] == GlobalUtils::$user->getUsername() && !$comment['deleted'])
+				echo "<button class='delete'></button>";
+			
+			echo "<div class='comment-info'>";
+				echo "<span><a class='user' href='/user/{$comment[user]}'>{$comment[user]}</a></span>";
+				
+				$points_class = "";
+				if($comment['points'] < 0) $points_class = "negative";
+				else if($comment['points'] > 0) $points_class = "positive";
+
+				echo "<span id='points-{$comment[cid]}' class='points $points_class'>{$comment[points]}</span>";
+					
+				$comment['submitted'] = DateTime::createFromFormat("m d Y H i", $comment['submitted']);
+				$time_diff = $comment['submitted']->diff($now);
+				
+				if($time_diff->y)
+					$time_diff = $time_diff->y . ' yr ago';
+				else if($time_diff->m)
+					$time_diff = $time_diff->m . ' mt ago';
+				else if($time_diff->d)
+					$time_diff = $time_diff->d . ' dy ago';
+				else if($time_diff->h)
+					$time_diff = $time_diff->h . ' hr ago';
+				else
+					$time_diff = $time_diff->i . ' mn ago';
+				
+				echo "<span>$time_diff</span>";
+			echo "</div>";
+			
+			echo "<div class='comment-body'>";
+				if($comment['deleted'] === 1)
+				{
+					echo "<span class='muted'>Comment removed by author.</span>";
+				}
+				else if($comment['reported'] > 0)
+				{
+					echo "<span class='muted'>Comment removed by an administrator.</span>";
+				}
+				else if($comment['rid'] != 0)
+				{
+					$rUserPos = strpos($comment['comment'], ' ');
+					$rUser = substr($comment['comment'], 0, $rUserPos);
+					$r_comment = substr($comment['comment'], $rUserPos, strlen($comment['comment']));
+					echo "<p><a class='at user' href='/user/$rUser'>@$rUser</a> $r_comment</p>";
+				}
+				else
+					echo $comment['comment'];	
+					
+			echo "</div>";
+			
+			echo "<div class='comment-actions'>";
+				if($_SESSION['id'])
+				{
+					echo "<span data-reply>Reply</span>";
+					echo "<span data-v='up' class='vote upvote'></span>";
+					echo "<span data-v='down' class='vote downvote'></span>";
+				}
+				else
+				{
+					echo "<span data-show='#registerpopup'>Reply</span>";
+					echo "<span data-show='#registerpopup' class='vote upvote'></span>";
+					echo "<span data-show='#registerpopup' class='vote downvote'></span>";
+				}
+				echo "<span data-report>Report</span>";
+			echo "</div>";
+			
+			if($reply)
+			{
+				self::formatComment($reply);
+			}
+			else if($comment['rid'] != 0)
+			{
+				if($comment['total_replies'] > 1)
+					echo "<span data-r-showmore='1'>Show More</span>";
+			}
+
+			echo "</div>";
+		}
+		
 		public static function validateRegistrationCredentials($user, $email)
 		{
 			//TODO instead of dying, point the user to a page pointing out what data was wrong.

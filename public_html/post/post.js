@@ -151,6 +151,16 @@ $(document).on("click", "span[data-showmore]", function()
 		show.remove();
 	});
 });
+$(document).on("click", "span[data-r-showmore]", function()
+{
+	show = $(this);
+
+	$.post('/getreplies.php', {i: show.parent().attr('data-r'), x: show.attr('data-r-showmore')}, function(result)
+	{
+		show.parent().parent().append(result);
+		show.remove();
+	});
+});
 $(document).on("click", "span[data-report]", function()
 {
 	cid = $(this).parent().attr('data-c');
