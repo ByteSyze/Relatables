@@ -15,7 +15,7 @@
 		$post->format();
 		
 	echo '
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div style="width:85%;" ><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- BannerUnit1 -->
 <ins class="adsbygoogle"
 	 style="display:block"
@@ -24,4 +24,4 @@
 	 data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
-</script>';
+</script></div>';
