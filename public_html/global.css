@@ -1,13 +1,13 @@
 html, body, div, span, applet, object, iframe,
 p, blockquote, pre, a, abbr, acronym, address,
-big, cite, code, del, dfn, em, img, ins, kbd, 
-q, s, samp, small, strike, strong, sub, sup, 
+big, cite, code, del, dfn, em, img, ins, kbd,
+q, s, samp, small, strike, strong, sub, sup,
 tt, var, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -18,7 +18,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -164,7 +164,7 @@ body {
 
 /* Responsive Stuff */
 @media screen and (max-width: 568px) {
-  /* Stack anything that isn’t full-width on smaller screens 
+  /* Stack anything that isn’t full-width on smaller screens
      and doesn't provide the no-stacking-on-mobiles class */
   .grid:not(.no-stacking-on-mobiles) > .unit {
     width: 100% !important;
@@ -291,14 +291,23 @@ ul.navigation-items div.profile-icon {
 	background-color: #fff;
 	position: absolute;
 	width: 100%;
+	margin-top: 1px;
 	left: 0;
 }
 
-.dropdown a{
+.dropdown a {
 	width: 100%;
 	text-align: center;
-	padding: 0px;
-	border-bottom: 1px solid #bfbfbf;
+	background-color: #405AC7;
+	height: auto !important;
+	line-height: normal !important;
+	padding: 10px !important;
+	border-bottom: solid 1px #2F45A1;
+	box-shadow: inset 0px 1px #4D67D1;
+}
+
+.dropdown li:last-child a {
+	border-bottom: none;
 }
 
 .checkmark {
@@ -386,7 +395,7 @@ span.padded {
   font-size: 120%;
   margin: 0;
   margin-top: 20px;
-  color: #8F95B3; 
+  color: #8F95B3;
 }
 
 .boxes {
@@ -506,7 +515,7 @@ span.padded {
 
 .button.blue {
 	background-color: #4a66d8;
-} 
+}
 
 .button.red {
 	background-color: #D84A4A;
@@ -713,7 +722,7 @@ select:hover, select:active {
 
 .input-submit::-webkit-input-placeholder {
   color: #7B7E8F;
-} 
+}
 .input-submit:-moz-placeholder {
   color: #7B7E8F;
 }
