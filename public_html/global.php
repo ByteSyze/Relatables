@@ -8,7 +8,10 @@
 	
 	if($_SERVER['SERVER_NAME'] != 'www.relatablez.com' && $_SERVER['SERVER_NAME'] != 'relatablez.com' && $_SESSION['test_acc'])
 		$_SESSION['id'] = 2; //If running from localhost, set account to Relatablez Staff account.
-	else if($_SESSION['id'] == null)
+	else if($_SESSION['test_acc'] === false)
+		$_SESSION['id'] = 0;
+		
+	if($_SESSION['id'] == null)
 		$_SESSION['id'] = 0;
 	
 	class GlobalUtils
