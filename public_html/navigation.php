@@ -87,7 +87,7 @@ createPopup('loginpopup', 'Log In', "
 		<span class='popup-small'>If you don't have an account, <a>Sign up</a></span>
 		<form class='vertical' method='post' action='javascript:login();'>
 			<input id='login_user_input' type='text' name='u' placeholder='Username'>
-			<input id='login_pass_input' type='text' name='p' placeholder='Password'>
+			<input id='login_pass_input' type='password' name='p' placeholder='Password'>
 			<label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'>
 			<div class='buttons padded align-center'>
 				<button class='button blue-hover block' type='submit'>Log in</button>
@@ -119,7 +119,7 @@ if($_SESSION['popup_msg'])
 {
 	$popup = $_SESSION['popup_msg'];
 	unset($_SESSION['popup_msg']);
-	
+
 	createPopupVisible("errorpopup", "Oops!", "
 	<span class='popup-small'>$popup</span>
 </div>");
