@@ -43,3 +43,19 @@ div.social img {
 #posts {
 	width:100%;
 }
+
+.post-guidelines h4 {
+  margin: 10px 0px;
+}
+
+.post-guidelines ul {
+  margin-bottom: 20px;
+}
+
+.post-guidelines ul:last-child {
+  margin-bottom: 0px;
+}
+
+.post-guidelines li {
+  margin: 10px 0px;
+}

@@ -32,8 +32,21 @@
 										if($_SESSION['id'] != null) {
 											echo '<form id="submission-form" action="/submit.php" method="POST">';
 												echo '<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>';
-												echo '<div class="buttons padded align-right">';
-													echo '<button class="button blue-hover" type="submit">Submit</button>';
+												echo '<div id="post-collapse">';
+													echo '<div class="buttons padded align-right">';
+														echo '<button class="button blue-hover" type="submit">Submit</button>';
+													echo '</div>';
+													echo '<div class="post-guidelines">
+													<h4>Guidelines</h4>
+													<ul>
+													  <li>Posts should be well-written and original.</li>
+													  <li>Posts must start with "Am I the only one" and end with a question mark if necessary.</li>
+													</ul>
+													<h4>Rules</h4>
+													<ul>
+													  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
+													  <li>Posts should be suitable and appropriate for users.</li>
+													</ul></div>';
 												echo '</div>';
 											echo '</form>';
 										} else {
