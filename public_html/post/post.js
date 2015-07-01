@@ -145,7 +145,7 @@ $(document).on("click", "span[data-showmore]", function()
 {
 	show = $(this);
 
-	$.post('/getcomments.php', {i: pid, x: show.attr('data-show'), c: 10}, function(result)
+	$.post('/getcomments.php', {i: pid, x: show.attr('data-showmore'), c: 10}, function(result)
 	{
 		$('#comments').append(result);
 		show.remove();
@@ -174,11 +174,11 @@ $(document).on("click", "span[data-report]", function()
 });
 
 
-$('#select').change(function()
+$('#comment-sort').change(function()
 {
-	$('#comments').empty();
-	$.post('/getcomments.php', {i: pid, x: 0, c: 10, s:$('#select').val()}, function(result)
+	$.post('/getcomments.php', {i: pid, x: 0, c: 10, s:$('#comment-sort').val()}, function(result)
 	{
+		$('#comments').empty();
 		$('#comments').append(result);
 	});
 });
