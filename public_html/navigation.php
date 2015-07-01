@@ -147,7 +147,7 @@ if($_SESSION['popup_msg'])
 				if($_SESSION['id'] != null) {
 					echo '<li><a href="#" data-togg="#notif-drop"><div class="icon notifications-icon ';
 					if($unreadNotifications) echo 'unread-notifications';
-					echo '"></div><div id="notif-drop" class="dropdown">';
+					echo '"></div><div id="notif-drop" class="dropdown notifications-dropdown">';
 
 
 					while($notification = mysqli_fetch_array($notifications))

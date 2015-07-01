@@ -275,16 +275,13 @@ ul.navigation-items div.profile-icon {
 	background-image:url('/images/icons/profile_icon.png');
 }
 
-.unread-notifications {
-	background-position: center !important;
-}
-
 .indicator {
 	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border-radius: 20px;
-	background-color: green;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #45CC87;
+	margin-right: 10px;
 }
 
 .dropdown {
@@ -739,4 +736,37 @@ textarea.input-submit {
 
 #notif-drop {
 	width:300px;
+}
+
+.unread-notifications {
+	background-position: center !important;
+}
+
+.notifications-dropdown {
+	border: solid 1px #DDDFEB;
+}
+
+.notifications-dropdown a {
+	background: #fff !important;
+	font-weight: normal !important;
+	font-size: 90% !important;
+	color: #27356E !important;
+	text-shadow: none !important;
+	padding: 10px !important;
+	text-align: left !important;
+	border-bottom-color: #DDDFEB !important;
+	box-shadow: none !important;
+	box-sizing: border-box;
+}
+
+.notifications-dropdown a:hover {
+	background: #F5F6FC !important;
+}
+
+.notifications-dropdown a span {
+	float: right;
+}
+
+.notifications-dropdown a:last-child {
+	border-bottom: none;
 }
