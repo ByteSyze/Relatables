@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
-<?php  
+<?php
 	require_once 'global.php';
-	
+
 	$page 		= intval($_GET['p']);
 	$order_by 	= intval($_GET['o']);
 	$category 	= intval($_GET['c']);
@@ -38,12 +38,11 @@
 											echo '</form>';
 										} else {
 											echo '<textarea disabled class="input-submit" data-signup-header="Please sign up to submit">Am I the only one who</textarea>';
-											echo '<div class="buttons padded align-right"><div class="button blue-hover">Submit</div></div>';
 										}
 									?>
 								</div>
 							</div>
-							
+
 							<div class="filters">
 								<div class="filter">
 									<label for="sort">Sort by</label>
@@ -126,14 +125,14 @@
 									 data-ad-format="auto"></ins>
 								<script>
 								(adsbygoogle = window.adsbygoogle || []).push({});
-								</script>	
+								</script>
 							</div>
 						</div>
 					</div>
-				</div>		
+				</div>
 			</div>
 			<?php GlobalUtils::getFooter(); ?>
-			
+
 		</div>
 		<script>
 			var page 		= <?php echo $page; ?>;
