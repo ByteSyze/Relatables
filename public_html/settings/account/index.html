@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
-<?php 
+<?php
 	require $_SERVER['DOCUMENT_ROOT'] . '/global.php';
-	
+
 	if($_SESSION['id'] == null)
 	{
 		header('Location: /');
@@ -11,13 +11,13 @@
 ?>
 <html>
 	<head>
-		<title>Account Settings</title>	
-	
+		<title>Account Settings</title>
+
 		<?php
 			GlobalUtils::getMeta();
 			GlobalUtils::getCSS('settings/theme');
 		?>
-		
+
 		<link rel="canonical" href="/">
 	</head>
 	<body>
@@ -41,7 +41,7 @@
 									<label for="">Username</label>
 									<input type="text" id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>' />
 									<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='user-popup'></div></div>
-									
+
 									<div>
 										<label for="currentpass_input">Current Password</label>
 										<input type="password" id='currentpass_input' type='password' name='oldpassword' autocomplete='off' />
@@ -50,20 +50,20 @@
 											<label for="">New Password</label>
 											<input id='pass_input' type="password" name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' />
 											<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
-											
+
 											<label for="">Retype New Password</label>
 											<input id='repass_input' type='password' name='renewpassword' onkeyup='verifyRePassword()'  autocomplete='off' />
 											<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
 										</div>
 									</div>
-									
+
 									<label for="">Email <div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></label>
 									<input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>'></input>
 									<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 								</form><br>
 								<div class="buttons">
 									<a class="button red-hover" id='delete-button' data-togg='#delete-account-popup'>Delete Account</a>
-									<input class="button blue-hover" id='save-button' type='submit' value='Save Settings' />
+									<input class="button blue-hover" id='save-button' type='submit' value='Save Changes' />
 								</div>
 								
 								<div id='delete-account-popup' class='popup'>
@@ -77,12 +77,12 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 			<?php GlobalUtils::getFooter(); ?>
-			
+
 		</div>
-		
+
 		<?php GlobalUtils::getJS('settings/settings'); ?>
 	</body>
 </html>

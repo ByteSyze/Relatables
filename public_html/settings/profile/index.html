@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <!-- Copyright (C) Tyler Hackett 2014-->
-<?php 
+<?php
 	require_once($_SERVER['DOCUMENT_ROOT'] . '/global.php');
-	
+
 	if($_SESSION['id'] == null)
 	{
 		header('Location: /');
 		die();
 	}
-		
+
 	$fDescription = htmlspecialchars(GlobalUtils::$user->getDescription()); // Formatted Description
 ?>
 <html>
 	<head>
 		<title>Profile Settings</title>
-		
+
 		<?php
 			GlobalUtils::getMeta();
 			GlobalUtils::getCSS('settings/theme');
 		?>
-		
+
 	</head>
 	<body>
 		<div class="content-wrapper">
@@ -53,18 +53,18 @@
 
 									<br><br>
 									<div class="buttons">
-										<button class="button blue-hover" id='save-button' type='submit'>Save Settings</button>
+										<button class="button blue-hover" id='save-button' type='submit'>Save Changes</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 			<?php GlobalUtils::getFooter(); ?>
-			
+
 		</div>
-		
+
 		<?php GlobalUtils::getJS('settings/settings'); ?>
 	</body>
 </html>
