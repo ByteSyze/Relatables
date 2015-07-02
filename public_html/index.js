@@ -6,6 +6,8 @@ var closedShareText = 'Share »';
 var subIndex = 0;
 var subCount = 20;
 
+var guidelineHeight;
+
 $(".showguides").click(function(){ $('#submission-wrapper').animate({height: "260px"}, 1000); });
 $("#submission").on('change keypress paste', function(event)
 {
@@ -107,12 +109,12 @@ $( "#submission-form" ).submit(function() {
 
 $('#submission').focus(function()
 {
-	$('.post-guidelines').animate({'height':'200px'},1000);
+	$('.post-guidelines').animate({'height': guidelineHeight+'px'},1000);
 });
 
 $('#submission').blur(function()
 {
-	$('.post-guidelines').animate({'height':'0px'},1000);
+	$('.post-guidelines').animate({'height': '0px'},1000);
 });
 
 $(document).ready(function()
@@ -122,6 +124,9 @@ $(document).ready(function()
 	$('#sort').val(order);
 	
 	paginate();
+	
+	guidelineHeight = $('.post-guidelines').height();
+	$('.post-guidelines').height('0px');
 });
 
 

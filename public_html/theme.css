@@ -44,6 +44,10 @@ div.social img {
 	width:100%;
 }
 
+.post-guidelines {
+  overflow: hidden;
+}
+
 .post-guidelines h4 {
   margin: 10px 0px;
 }
