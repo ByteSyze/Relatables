@@ -112,15 +112,15 @@
 				$time_diff = $comment['submitted']->diff($now);
 				
 				if($time_diff->y)
-					$time_diff = $time_diff->y . ' yr ago';
+					$time_diff = $time_diff->y . ' yr. ago';
 				else if($time_diff->m)
-					$time_diff = $time_diff->m . ' mt ago';
+					$time_diff = $time_diff->m . ' mo. ago';
 				else if($time_diff->d)
-					$time_diff = $time_diff->d . ' dy ago';
+					$time_diff = $time_diff->d . ' dy. ago';
 				else if($time_diff->h)
-					$time_diff = $time_diff->h . ' hr ago';
+					$time_diff = $time_diff->h . ' hr. ago';
 				else
-					$time_diff = $time_diff->i . ' mn ago';
+					$time_diff = $time_diff->i . ' mn. ago';
 				
 				echo "<span>$time_diff</span>";
 			echo "</div>";

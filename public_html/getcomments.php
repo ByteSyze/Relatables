@@ -13,7 +13,7 @@
 
 	$pid 	= intval($_POST['i']);
 	$index 	= $_POST['x'];
-	$count 	= $_POST['c'] > 50 ? 50 + $index : $_POST['c'] + $index;
+	$count 	= $index+10;
 	$sort	= sort2mysql($_POST['s']);
 	
 	$comment = array();
@@ -36,7 +36,7 @@
 		
 	$cid_array_str = implode(',', $cid_array);
 		
-	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted, SUM(1) AS total_replies FROM comments WHERE rid IN ($cid_array_str) GROUP BY rid ORDER BY FIELD(rid, $cid_array_str), cid DESC");
+	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted AS total_replies FROM comments WHERE cid in (SELECT MAX(cid) FROM comments WHERE pid=$pid GROUP BY rid) AND rid IN ($cid_array_str) ORDER BY rid DESC");
 	
 	$reply = $replies->fetch_assoc(); //Get first reply
 	
