@@ -38,7 +38,8 @@
 		
 	$replies = $connection->query("SELECT uid, cid, comment, (SELECT username FROM accounts WHERE accounts.id=uid) AS user, DATE_FORMAT(submitted,'%m %d %Y %H %i') AS submitted, rid, (SELECT IFNULL(SUM(vote), 0) FROM comment_ratings WHERE comment_ratings.cid = comments.cid) AS points, reported, deleted AS total_replies FROM comments WHERE cid in (SELECT MAX(cid) FROM comments WHERE pid=$pid GROUP BY rid) AND rid IN ($cid_array_str) ORDER BY rid DESC");
 	
-	$reply = $replies->fetch_assoc(); //Get first reply
+	if($replies)
+		$reply = $replies->fetch_assoc(); //Get first reply
 	
 	$statement->data_seek(0); //Return to start of comment results.
 	
