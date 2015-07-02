@@ -105,6 +105,16 @@ $( "#submission-form" ).submit(function() {
     return false;
 });
 
+$('#submission').focus(function()
+{
+	$('.post-guidelines').animate({'height':'200px'},1000);
+});
+
+$('#submission').blur(function()
+{
+	$('.post-guidelines').animate({'height':'0px'},1000);
+});
+
 $(document).ready(function()
 {
 	$('#category').val(category);
