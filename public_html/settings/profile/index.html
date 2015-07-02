@@ -50,6 +50,8 @@
 										<a class="button <?php if(GlobalUtils::$user->getHideRelated() == 0) echo " blue"; ?>" href='/showhide.php?t=show&amp;d=related'>Show</a> <a class="button <?php if(GlobalUtils::$user->getHideRelated() == 1) echo "blue"; ?>" href='/showhide.php?t=hide&amp;d=related'>Hide</a>
 									</div>
 
+									<br>
+
 									<label for="">Location</label>
 									<div class="buttons">
 										<a class="button <?php if(GlobalUtils::$user->getHideLocation() == 0) echo "blue"; ?>" href='/showhide.php?t=show&amp;d=location'>Show</a> <a class="button<?php if(GlobalUtils::$user->getHideLocation() == 1) echo "blue"; ?>" href='/showhide.php?t=hide&amp;d=location'>Hide</a>
