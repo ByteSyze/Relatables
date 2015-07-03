@@ -277,13 +277,32 @@ ul.navigation-items div.profile-icon {
 
 .share-wrapper {
 	display: inline;
-	height: 0px;
+	height: 30px;
 	width: 0px;
 	position: absolute;
+	overflow:hidden;
 }
 
 .share-wrapper > div {
 	display: inline;
+}
+
+.share-wrapper .share-icon {
+	min-width: 30px;
+	min-height: 30px;
+	display: inline-block;
+}
+
+.share-wrapper .share-icon.fb {
+	background-image: url('/images/icons/fb_ico.png');
+}
+
+.share-wrapper .share-icon.gp {
+	background-image: url('/images/icons/gp_ico.png');
+}
+
+.share-wrapper .share-icon.tw {
+	background-image: url('/images/icons/tw_ico.png');
 }
 
 .indicator {

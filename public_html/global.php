@@ -73,9 +73,9 @@
 			echo "
 			<button class='button small blue-hover' data-share-button=''>Share »</button>
 				<div class='share-wrapper'><div>
-				<a href='http://www.facebook.com/sharer.php?u=$url'><img src='/images/icons/fb_ico.png' /></a>
-				<a href='https://plus.google.com/share?url=$url'><img src='/images/icons/gp_ico.png' /></a>
-				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><img src='/images/icons/tw_ico.png' /></a>
+				<a href='http://www.facebook.com/sharer.php?u=$url'><div class='share-icon fb'></div></a>
+				<a href='https://plus.google.com/share?url=$url'><div class='share-icon gp'></div></a>
+				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><div class='share-icon tw'></div></a>
 				</div>
 			</div>";
 		}
