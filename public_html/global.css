@@ -275,6 +275,17 @@ ul.navigation-items div.profile-icon {
 	background-image:url('/images/icons/profile_icon.png');
 }
 
+.share-wrapper {
+	display: inline;
+	height: 0px;
+	width: 0px;
+	position: absolute;
+}
+
+.share-wrapper > div {
+	display: inline;
+}
+
 .indicator {
 	display: inline-block;
 	width: 10px;

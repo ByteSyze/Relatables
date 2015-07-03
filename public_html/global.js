@@ -27,6 +27,9 @@ var emailPopup 			 = document.getElementById('email-popup');
 
 var userRegex 			 = /^[A-Za-z0-9_]+$/;
 
+var openedShareText = 'Share «';
+var closedShareText = 'Share »';
+
 function register()
 {
 	
@@ -492,7 +495,7 @@ $('body').on('click','[data-share-button]',function()
 	if(button.text() == openedShareText)
 		button.next().animate({width: '0px'},500,function(){button.html(closedShareText);});
 	else
-		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
+		button.next().animate({width: '90px'},500,function(){button.html(openedShareText);});
 });
 
 $('#save-button').click(function(){ verifyUser(function(){ $('#settings-form').submit(); } ,true); return false; });

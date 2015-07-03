@@ -1,8 +1,5 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
-var openedShareText = 'Share «';
-var closedShareText = 'Share »';
-
 var subIndex = 0;
 var subCount = 20;
 
