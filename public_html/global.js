@@ -349,7 +349,7 @@ function showLogin()
 function showRegister(element)
 {
 	hideAll();
-	$('#registerheader').html(element.getAttribute("data-header"));
+	$('#registerheader').html(element.getAttribute("data-signup-header"));
 	$('#registerpopup').show();
 }
 

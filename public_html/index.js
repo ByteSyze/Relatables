@@ -29,14 +29,6 @@ $('body').on('click', '#qotw-submit', function() {
 	}
 	return false;
 });
-$('body').on('click','[data-share-button]',function()
-{
-	var button = $(this);
-	if(button.text() == openedShareText)
-		button.next().animate({width: '0px'},500,function(){button.html(closedShareText);});
-	else
-		button.next().animate({width: '115px'},500,function(){button.html(openedShareText);});
-});
 
 $('body').on('click', '[data-p]', function()
 {
