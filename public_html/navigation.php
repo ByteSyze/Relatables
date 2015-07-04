@@ -3,7 +3,6 @@
 
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/popup.php';
 
 	if(GlobalUtils::$user->getID() == 0)
 	{
@@ -54,7 +53,7 @@
 <?php
 
 if($_SESSION['id'] == null) {
-createPopup('registerpopup', 'Sign Up', "
+GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 		<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a class='showlogin'>Log In</a></h6>
 		<div style='text-align:center;margin:auto;width:100%;'>
 			<div>
@@ -83,7 +82,7 @@ createPopup('registerpopup', 'Sign Up', "
 			<label style='font-size:10px'>By clicking Sign Up, you agree to our <a href='javascript:hideRegister();showLogin();'>Terms & Conditions</a>.</label>
 		</div>");
 
-createPopup('loginpopup', 'Log In', "
+GlobalUtils::createPopup('loginpopup', 'Log In', "
 		<span class='popup-small'>If you don't have an account, <a>Sign up</a></span>
 		<form class='vertical' method='post' action='javascript:login();'>
 			<input id='login_user_input' type='text' name='u' placeholder='Username'>
@@ -95,7 +94,7 @@ createPopup('loginpopup', 'Log In', "
 		</form>
 		<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>");
 
-createPopup('pwrecoverypopup', 'Recover Password', "
+GlobalUtils::createPopup('pwrecoverypopup', 'Recover Password', "
 		<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
 			<input id='recovery-email' type='text' name='e' placeholder='Email'>
 			<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
@@ -110,7 +109,8 @@ if($_SESSION['error_msg'])
 {
 	$error = $_SESSION['error_msg'];
 	unset($_SESSION['error_msg']);
-	createPopupVisible("errorpopup", "Oops!", "
+	
+	GlobalUtils::createPopupVisible("errorpopup", "Oops!", "
 	<span class='popup-small'>$error</span>
 </div>");
 }
@@ -120,7 +120,7 @@ if($_SESSION['popup_msg'])
 	$popup = $_SESSION['popup_msg'];
 	unset($_SESSION['popup_msg']);
 
-	createPopupVisible("errorpopup", "", "
+	GlobalUtils::createPopupVisible("errorpopup", "", "
 	<span class='popup-small'>$popup</span>
 </div>");
 }
