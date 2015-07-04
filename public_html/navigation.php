@@ -120,7 +120,7 @@ if($_SESSION['popup_msg'])
 	$popup = $_SESSION['popup_msg'];
 	unset($_SESSION['popup_msg']);
 
-	createPopupVisible("errorpopup", "Oops!", "
+	createPopupVisible("errorpopup", "", "
 	<span class='popup-small'>$popup</span>
 </div>");
 }
