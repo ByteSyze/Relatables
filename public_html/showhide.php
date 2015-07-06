@@ -5,29 +5,33 @@
 	
 	$data = $_GET['d'];
 	$type = $_GET['t'];
+	$js	  = $_GET['j']; // Script called from javascript
 	
 	$connection = GlobalUtils::getConnection();
 	
 	if($type == 'show')
 	{
 		if($data == 'location')
-			showLocation($connection, $_SESSION['id']);
+			GlobalUtils::$user->setShowLocation();
 		else if($data == 'related')
-			showRelated($connection, $_SESSION['id']);
+			GlobalUtils::$user->setShowRelated();
 		else
 			die('invalid data.');
 	}
 	else if($type == 'hide')
 	{
 		if($data == 'location')
-			hideLocation($connection, $_SESSION['id']);
+			GlobalUtils::$user->setShowLocation(false);
 		else if($data == 'related')
-			hideRelated($connection, $_SESSION['id']);
+			GlobalUtils::$user->setShowRelated(false);
 		else
 			die('invalid data.');
 	}
 	else
 		die('invalid type.');
 		
-	//header('Location: http://www.relatablez.com/settings/profile');
+	GlobalUtils::$user->update();
+	
+	if(!$js)
+		header('Location: http://www.relatablez.com/settings/profile');
 	
