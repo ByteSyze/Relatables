@@ -300,9 +300,9 @@
 		public function setHideLocation($hide = true)
 		{
 			if($hide)
-				$this->flags |= 0x06;
+				$this->flags |= 0x08;
 			else
-				$this->flags &= ~0x06;
+				$this->flags &= ~0x08;
 				
 			$this->setEditted('flags', self::TYPE_INT);
 		}
