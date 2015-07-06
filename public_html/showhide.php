@@ -12,18 +12,18 @@
 	if($type == 'show')
 	{
 		if($data == 'location')
-			GlobalUtils::$user->setShowLocation();
+			GlobalUtils::$user->setHideLocation(false);
 		else if($data == 'related')
-			GlobalUtils::$user->setShowRelated();
+			GlobalUtils::$user->setHideRelated(false);
 		else
 			die('invalid data.');
 	}
 	else if($type == 'hide')
 	{
 		if($data == 'location')
-			GlobalUtils::$user->setShowLocation(false);
+			GlobalUtils::$user->setHideLocation();
 		else if($data == 'related')
-			GlobalUtils::$user->setShowRelated(false);
+			GlobalUtils::$user->setHideRelated();
 		else
 			die('invalid data.');
 	}
