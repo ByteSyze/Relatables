@@ -47,6 +47,7 @@
 	{
 		if($reply['rid'] == $comment['cid']) //If the current reply is a reply to this comment, pass it in.
 		{
+			$reply['total_replies'] = 2; // Force "show more" on all replies.
 			GlobalUtils::formatComment($comment, $reply);
 			$reply = $replies->fetch_assoc(); //Grab next reply
 		}
