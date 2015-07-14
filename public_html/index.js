@@ -98,7 +98,7 @@ $( "#submission-form" ).submit(function() {
 
 $('#submission').focus(function()
 {
-	$('.post-guidelines').animate({'height': guidelineHeight+'px'},1000);
+	$('.post-guidelines').animate({'height': guidelineHeight+'px'},500);
 });
 
 $('#submission').blur(function()
