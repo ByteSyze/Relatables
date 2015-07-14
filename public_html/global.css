@@ -606,7 +606,7 @@ span.padded {
   color: #808080;
 }
 
-.footer span a {
+.footer span, .footer a {
   padding-left: 10px;
 }
 
