@@ -98,12 +98,12 @@ $( "#submission-form" ).submit(function() {
 
 $('#submission').focus(function()
 {
-	$('.post-guidelines').animate({'height': guidelineHeight+'px'},500);
+	$('.post-guidelines').animate({'height': guidelineHeight+'px'},200);
 });
 
 $('#submission').blur(function()
 {
-	$('.post-guidelines').animate({'height': '0px'},1000);
+	$('.post-guidelines').animate({'height': '0px'},200);
 });
 
 $(document).ready(function()

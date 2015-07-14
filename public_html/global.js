@@ -493,9 +493,9 @@ $('body').on('click','[data-share-button]',function()
 {
 	var button = $(this);
 	if(button.text() == openedShareText)
-		button.next().animate({width: '0px'},250,function(){button.html(closedShareText);});
+		button.next().animate({width: '0px'},100,function(){button.html(closedShareText);});
 	else
-		button.next().animate({width: '90px'},250,function(){button.html(openedShareText);});
+		button.next().animate({width: '90px'},100,function(){button.html(openedShareText);});
 });
 
 $('#save-button').click(function(){ verifyUser(function(){ $('#settings-form').submit(); } ,true); return false; });
