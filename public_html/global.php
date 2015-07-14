@@ -82,7 +82,7 @@
 		
 		public static function getFooter()
 		{
-			echo "<div class='footer'><div class='right'><span>&copy; Relatablez 2015</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div>";
+			echo "<div class='footer'><div class='grid wrap wider no-gutters'><div><span>&copy; Relatablez 2015</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div></div>";
 		}
 		
 		public static function formatComment($comment, $reply = null)
