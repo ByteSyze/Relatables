@@ -18,7 +18,7 @@
 		if($i++ % 10 == 0)
 		{
 			echo '
-				<div style="width:85%;" ><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<div class="ad-container" ><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<!-- BannerUnit1 -->
 				<ins class="adsbygoogle"
 					 style="display:block"

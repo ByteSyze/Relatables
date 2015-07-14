@@ -606,6 +606,12 @@ span.padded {
   color: #808080;
 }
 
+.ad-container {
+  width:85%;
+  text-align:center;
+  margin:auto;
+}
+
 .footer span, .footer a {
   padding-left: 10px;
 }
