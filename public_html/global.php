@@ -111,16 +111,26 @@
 				$comment['submitted'] = DateTime::createFromFormat("m d Y H i", $comment['submitted']);
 				$time_diff = $comment['submitted']->diff($now);
 				
-				if($time_diff->y)
-					$time_diff = $time_diff->y . ' yr. ago';
+				if($time_diff->y == 1)
+					$time_diff = $time_diff->y . ' year ago';
+				else if($time_diff->y)
+					$time_diff = $time_diff->y . ' years ago';
+				else if($time_diff-> == 1)
+					$time_diff = $time_diff->m . ' month ago';
 				else if($time_diff->m)
-					$time_diff = $time_diff->m . ' mo. ago';
+					$time_diff = $time_diff->m . ' months ago';
+				else if($time_diff->d == 1)
+					$time_diff = $time_diff->d . ' day ago';
 				else if($time_diff->d)
-					$time_diff = $time_diff->d . ' dy. ago';
+					$time_diff = $time_diff->d . ' days ago';
+				else if($time_diff->h == 1)
+					$time_diff = $time_diff->h . ' hour ago';
 				else if($time_diff->h)
-					$time_diff = $time_diff->h . ' hr. ago';
+					$time_diff = $time_diff->h . ' hours ago';
+				else if($time_diff->m == 1)
+					$time_diff = $time_diff->i . ' minute ago';
 				else
-					$time_diff = $time_diff->i . ' mn. ago';
+					$time_diff = $time_diff->i . ' minutes ago';
 				
 				echo "<span>$time_diff</span>";
 			echo "</div>";

@@ -217,14 +217,22 @@
 		
 		private function calculateDateDifference()
 		{
-			if($this->date_diff/60/24/365 >= 1)
-				$date_diff = '(' . floor($this->date_diff/60/24/365) . ' yr. ago)'; 
-			else if($this->date_diff/60/24 >= 1)
-				$date_diff = '(' . floor($this->date_diff/60/24) . ' dy. ago)'; 
-			else if($this->date_diff/60 >= 1)
-				$date_diff = '(' . floor($this->date_diff/60) . ' hr. ago)'; 
+			if($this->date_diff/60/24/365 == 1)
+				$date_diff = '(' . floor($this->date_diff/60/24/365) . ' year ago)';
+			else if($this->date_diff/60/24/365 > 1)
+				$date_diff = '(' . floor($this->date_diff/60/24/365) . ' years ago)'; 
+			else if($this->date_diff/60/24 == 1)
+				$date_diff = '(' . floor($this->date_diff/60/24) . ' day ago)'; 
+			else if($this->date_diff/60/24 > 1)
+				$date_diff = '(' . floor($this->date_diff/60/24) . ' days ago)'; 
+			else if($this->date_diff/60 == 1)
+				$date_diff = '(' . floor($this->date_diff/60) . ' hour ago)'; 
+			else if($this->date_diff/60 > 1)
+				$date_diff = '(' . floor($this->date_diff/60) . ' hours ago)'; 
+			else if($this->date_diff == 1)
+				$date_diff = '(' . floor($this->date_diff) . ' minute ago)';
 			else
-				$date_diff = '(' . floor($this->date_diff) . ' mn. ago)';
+				$date_diff = '(' . floor($this->date_diff) . ' minutes ago)';
 				
 			return $date_diff;
 		}

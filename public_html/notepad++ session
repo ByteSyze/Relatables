@@ -1,0 +1,11 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="3">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1323" startPos="0" endPos="0" selMode="0" lang="HTML" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\index.html" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1143" startPos="0" endPos="0" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\global.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1350" startPos="0" endPos="0" selMode="0" lang="Javascript" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\global.js" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1539" startPos="0" endPos="0" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\navigation.php" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>
