@@ -5,20 +5,34 @@
 	
 	if(!$_SESSION['id']) die('Not logged in.');
 	
-	$vote 	= $_POST['v'];
-	$cid	= $_POST['c'];
+	$vote 	 = $_POST['v'];
+	$cid	 = $_POST['c'];
+	$rescind = $_POST['u'];
 	
-	if($vote == 'up')
-		$vote = 1;
-	else
-		$vote = -1;
-	
-	$connection = GlobalUtils::getConnection();
-	
-	if($statement = $connection->prepare("INSERT INTO comment_ratings SET uid={$_SESSION['id']}, cid=(?), vote=(?) ON DUPLICATE KEY UPDATE vote=(?)"))
+	if($rescind)
 	{
-		$statement->bind_param('iii', $cid, $vote, $vote);
-		$statement->execute();
+		if($statement = $connection->prepare('DELETE FROM comment_ratings WHERE cid=(?) AND uid=(?)'))
+		{
+			$statement->bind_param('ii', $cid, $_SESSION['id']);
+			$statement->execute();
+			
+			echo $statement->affected_rows;
+		}
+	}
+	else
+	{
+		if($vote == 'up')
+			$vote = 1;
+		else
+			$vote = -1;
 		
-		echo $statement->affected_rows;
+		$connection = GlobalUtils::getConnection();
+		
+		if($statement = $connection->prepare("INSERT INTO comment_ratings SET uid={$_SESSION['id']}, cid=(?), vote=(?) ON DUPLICATE KEY UPDATE vote=(?)"))
+		{
+			$statement->bind_param('iii', $cid, $vote, $vote);
+			$statement->execute();
+			
+			echo $statement->affected_rows;
+		}
 	}
