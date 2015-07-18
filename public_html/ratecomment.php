@@ -7,7 +7,7 @@
 	
 	$vote 	 = $_POST['v'];
 	$cid	 = $_POST['c'];
-	$rescind = $_POST['u'];
+	$rescind = $_POST['r'];
 	
 	if($rescind)
 	{

@@ -80,53 +80,76 @@ $(document).on("click", "span[data-v]", function()
 		cid = $(this).parent().parent().attr('data-c');
 		vote = $(this).attr('data-v');
 	
-		$.post('/ratecomment.php', {c: cid, v: vote}, function(result)
+		$.post('/ratecomment.php', {c: cid, v: vote, r: (button.hasClass('positive') || button.hasClass('negative'))}, function(result)
 		{
 			$p = $('#points-'+cid);
 			points = parseInt($p.html());
 			
-			if(vote == 'up')
+			if(unvote)
 			{
-				points += parseInt(result);
-				
-				if(points > 0)
+				if(result == '1')
 				{
-					$p.addClass('positive');
-					$p.removeClass('negative');
-				}
-				else
-				{
-					$p.addClass('negative');
-					$p.removeClass('positive');
-				}
-				
-				$p.html(points);
-			}
-			else
-			{
-				points -= parseInt(result);
-				
-				if(points < 0)
-				{
-					$p.addClass('negative');
-					$p.removeClass('positive');
-				}
-				else
-				{
-					$p.addClass('positive');
-					$p.removeClass('negative');
-				}
+					$button.data('disabled', false);
+					points -= 1;
 					
-				$p.html(points);
+					if(points > 0)
+					{
+						$p.addClass('positive');
+						$p.removeClass('negative');
+					}
+					else
+					{
+						$p.addClass('negative');
+						$p.removeClass('positive');
+					}
+					
+					$p.html(points);
+				}
 			}
-			
-			button.data('disabled', true);
-			
-			if(vote == 'up')
-				button.next().data('disabled', false);
 			else
-				button.prev().data('disabled', false);
+			{
+				if(vote == 'up')
+				{
+					points += parseInt(result);
+					
+					if(points > 0)
+					{
+						$p.addClass('positive');
+						$p.removeClass('negative');
+					}
+					else
+					{
+						$p.addClass('negative');
+						$p.removeClass('positive');
+					}
+					
+					$p.html(points);
+				}
+				else
+				{
+					points -= parseInt(result);
+					
+					if(points < 0)
+					{
+						$p.addClass('negative');
+						$p.removeClass('positive');
+					}
+					else
+					{
+						$p.addClass('positive');
+						$p.removeClass('negative');
+					}
+						
+					$p.html(points);
+				}
 				
+				button.data('disabled', true);
+				
+				if(vote == 'up')
+					button.next().data('disabled', false);
+				else
+					button.prev().data('disabled', false);
+			}	
 		});
 	}
 });
