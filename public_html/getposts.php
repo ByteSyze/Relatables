@@ -15,7 +15,7 @@
 	
 	foreach($posts as $post)
 	{
-		if($i++ % 10 == 0)
+		/*if($i++ % 10 == 0)
 		{
 			echo '
 				<div class="ad-container" ><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -28,7 +28,7 @@
 				<script>
 				(adsbygoogle = window.adsbygoogle || []).push({});
 				</script></div>';
-		}
+		}*/
 		$post->format();
 	}	
 	
