@@ -74,84 +74,75 @@ $(document).on("click", "button[data-r]", function()
 $(document).on("click", "span[data-v]", function()
 {
 	button = $(this);
-	
-	if(!button.data('disabled'))
+
+	cid = $(this).parent().parent().attr('data-c');
+	vote = $(this).attr('data-v');
+	rescind = (button.hasClass('positive') || button.hasClass('negative'));
+
+	$.post('/ratecomment.php', {c: cid, v: vote, r: rescind}, function(result)
 	{
-		cid = $(this).parent().parent().attr('data-c');
-		vote = $(this).attr('data-v');
-	
-		$.post('/ratecomment.php', {c: cid, v: vote, r: (button.hasClass('positive') || button.hasClass('negative'))}, function(result)
+		$p = $('#points-'+cid);
+		points = parseInt($p.html());
+		
+		if(rescind)
 		{
-			$p = $('#points-'+cid);
-			points = parseInt($p.html());
-			
-			if(unvote)
+			if(result == '1')
 			{
-				if(result == '1')
+				points -= 1;
+				
+				if(points > 0)
 				{
-					$button.data('disabled', false);
-					points -= 1;
-					
-					if(points > 0)
-					{
-						$p.addClass('positive');
-						$p.removeClass('negative');
-					}
-					else
-					{
-						$p.addClass('negative');
-						$p.removeClass('positive');
-					}
-					
-					$p.html(points);
+					$p.addClass('positive');
+					$p.removeClass('negative');
 				}
+				else
+				{
+					$p.addClass('negative');
+					$p.removeClass('positive');
+				}
+				
+				console.log(points);
+				$p.html(points);
+			}
+		}
+		else
+		{
+			if(vote == 'up')
+			{
+				points += parseInt(result);
+				
+				if(points > 0)
+				{
+					$p.addClass('positive');
+					$p.removeClass('negative');
+				}
+				else
+				{
+					$p.addClass('negative');
+					$p.removeClass('positive');
+				}
+				
+				$p.html(points);
 			}
 			else
 			{
-				if(vote == 'up')
+				points -= parseInt(result);
+				
+				if(points < 0)
 				{
-					points += parseInt(result);
-					
-					if(points > 0)
-					{
-						$p.addClass('positive');
-						$p.removeClass('negative');
-					}
-					else
-					{
-						$p.addClass('negative');
-						$p.removeClass('positive');
-					}
-					
-					$p.html(points);
+					$p.addClass('negative');
+					$p.removeClass('positive');
 				}
 				else
 				{
-					points -= parseInt(result);
-					
-					if(points < 0)
-					{
-						$p.addClass('negative');
-						$p.removeClass('positive');
-					}
-					else
-					{
-						$p.addClass('positive');
-						$p.removeClass('negative');
-					}
-						
-					$p.html(points);
+					$p.addClass('positive');
+					$p.removeClass('negative');
 				}
 				
-				button.data('disabled', true);
-				
-				if(vote == 'up')
-					button.next().data('disabled', false);
-				else
-					button.prev().data('disabled', false);
-			}	
-		});
-	}
+				$p.html(points);
+			}
+		}	
+	});
 });
 $(document).on("click", "button[data-delete]", function()
 {
