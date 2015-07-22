@@ -5,7 +5,6 @@ var subCount = 20;
 
 var guidelineHeight;
 
-$(".showguides").click(function(){ $('#submission-wrapper').animate({height: "260px"}, 1000); });
 $("#submission").on('change keypress paste', function(event)
 {
 	var count = checkLimit(event, this, 300, true);
@@ -114,7 +113,7 @@ $(document).ready(function()
 	
 	paginate();
 	
-	guidelineHeight = $('.post-guidelines').height();
+	guidelineHeight = $('.post-guidelines').height() + 10;
 	$('.post-guidelines').height('0px');
 });
 

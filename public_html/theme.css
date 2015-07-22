@@ -48,6 +48,13 @@ div.social img {
   overflow: hidden;
 }
 
+.post-guidelines .warning {
+  font-style:italic;
+  font-size: 13px;
+  display: block;
+  text-align: center;
+}
+
 .post-guidelines h4 {
   margin: 10px 0px;
 }
