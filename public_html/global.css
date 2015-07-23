@@ -480,8 +480,16 @@ span.padded {
 	margin-bottom: 20px;
 }
 
+#post-collapse .buttons {
+  font-size: inherit;
+}
+
+#post-collapse .buttons * {
+  margin-left: 10px;
+}
+
 .buttons {
-	font-size: 0px;
+  font-size: 0px;
 }
 
 .buttons.padded {
