@@ -18,6 +18,8 @@
 
 .comment .comment-body {
   padding: 10px 0px;
+  word-break: normal;
+  word-wrap: break-word;
 }
 
 .comment .comment-actions span {

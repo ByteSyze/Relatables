@@ -387,12 +387,11 @@ function createPopup(message)
 
 function vote(id, vote, v, unvote)
 {
-	//var notAloneEl  = document.getElementById('na'+id);
-	//var aloneEl 	= document.getElementById('a'+id);
+	var notAloneEl = $('na'+id);
+	var aloneEl = $('a'+id);
 	
-	// Take out all formatting
-	//var notAlone = notAloneEl.innerHTML.replace("(","").replace(")","").replace(",",""); 
-	//var alone = aloneEl.innerHTML.replace("(","").replace(")","").replace(",","");
+	notAlone = notAloneEl.attr('data-vc');
+	alone = aloneEl.attr('data-vc');
 	
 	$.ajax({
 		type: "POST",
@@ -415,47 +414,44 @@ function vote(id, vote, v, unvote)
 		{
 			if(data == '2' && vote == 1)
 			{
-				//alone++;
-				//notAlone--;
+				alone++;
+				notAlone--;
 				
 				$nae = $('button.green[data-vid="'+id+'"]');
 				$nae.removeClass('green').addClass('green-hover');
 				
 				$ae = $('button.red-hover[data-vid="'+id+'"]');
 				$ae.addClass('red');
-				
-				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
-				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			}
 			else if(data == '2' && vote == 0)
 			{	
-				//notAlone++;
-				//alone--;
+				notAlone++;
+				alone--;
 				
 				$nae = $('button.green-hover[data-vid="'+id+'"]');
 				$nae.addClass('green');
 				
 				$ae = $('button.red[data-vid="'+id+'"]');
 				$ae.removeClass('red').addClass('red-hover');
-				
-				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
-				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			}
 			else if(data == '1' && vote == 1)
 			{
-				//alone++;
+				alone++;
+				
 				$ae = $('button.red-hover[data-vid="'+id+'"]');
 				$ae.addClass('red');
-				//aloneEl.innerHTML = '(' + alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			}
 			else if(data == '1' && vote == 0)
 			{
-				//notAlone++;
+				notAlone++;
+				
 				$nae = $('button.green-hover[data-vid="'+id+'"]');
 				$nae.addClass('green');
-				//notAloneEl.innerHTML = '(' + notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + ')';
 			}
 		}
+		
+		notAloneEl.html(notAlone);
+		aloneEl.html(alone);
 	});
 }
 
