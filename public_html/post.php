@@ -266,7 +266,7 @@
 								$button_yes_meta = $button_no_meta = "data-signup-header='Please sign up to vote'";
 							}
 
-							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . ' data-vc="' . $this->not_alone . '">No, me too! (' . number_format($this->not_alone) . ')</button>';
+							echo '<button class="button small ' . $button_yes_classes . '" ' . $button_yes_meta . ' data-vc="' . $this->notalone . '">No, me too! (' . number_format($this->notalone) . ')</button>';
 							echo '<button class="button small ' . $button_no_classes . '" ' . $button_no_meta . ' data-vc="' . $this->alone . '">You\'re alone (' . number_format($this->alone) . ')</button>';
 							echo '<a href="/post/' . $this->id . '" class="button small">' . $this->comment_count . '</a>';
 							echo GlobalUtils::getShareButton(/**Don't remove this absolute path*/'http://www.relatablez.com/post/' . $this->id, '"'.$this->submission.'"');
