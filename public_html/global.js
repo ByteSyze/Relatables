@@ -303,26 +303,6 @@ function verifyRecoveryEmail()
 	}
 }
 
-function checkLimit(event, element, limit, substr)
-{
-	var remaining = limit - element.value.length;
-	
-	if(event.which < 0x20)
-		return remaining;
-	
-	if(remaining < 1)
-	{
-		if(substr) //Use substring method for refusing further input
-			element.value = element.value.substring(0,limit);
-		else
-			event.preventDefault();
-		
-		return 0;
-	}
-	
-	return remaining;
-}
-
 function setMarker($img, $msg, msg, checkmark)
 {
 	if(checkmark)
@@ -474,6 +454,38 @@ $('#pwrecoveryform').submit(function()
 $(document).ready(function()
 {
 	$('.dropdown').hide();
+	
+	$('[data-limiter]').each(function()
+	{
+		var $limiter = $(this);
+		var limit = parseInt($limiter.attr('data-limit'));
+		
+		$($limiter.attr('data-limiter')).on('change keypress paste',function(event)
+		{
+			var charCount = $(this).val().length;
+			$limiter.html(limit-charCount);
+			
+			console.log(charCount);
+			console.log(charCount > (limit-1));
+			if(charCount > (limit-1))
+			{
+				if(event.key != "Backspace")
+				{
+					console.log("stap");
+					event.stopPropagation();
+					event.stopImmediatePropagation();
+					event.preventDefault();
+					
+					$limiter.html('0');
+					return false;
+				}
+				else
+				{
+					$limiter.html('1');
+				}
+			}
+		});
+	});
 });
 
 $(document).on('click', function(event)

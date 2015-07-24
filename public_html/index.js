@@ -5,18 +5,6 @@ var subCount = 20;
 
 var guidelineHeight;
 
-$("#submission").on('change keypress paste', function(event)
-{
-	var count = checkLimit(event, this, 300, true);
-	var counter = $("#post-counter");
-	
-	counter.html(count);
-	
-	if(count == 0)
-		counter.css('color', '#c82828');
-	else
-		counter.css('color', '#BFBFBF');
-});
 $('body').on('click', '#qotw-submit', function() {
 	var val = $('input:radio[name=v]:checked').val();
 	
