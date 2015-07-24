@@ -51,7 +51,7 @@
 					$id = func_get_arg(0);
 					$this->id = $id;
 					
-					if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . GlobalUtils::$user->getID() . " AND pid=submissions.id) FROM submissions WHERE id=(?)"))
+					if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, (SELECT count(CASE WHEN alone THEN 1 END) FROM related WHERE pid=submissions.id), (SELECT count(CASE WHEN NOT alone THEN 1 END) FROM related WHERE pid=submissions.id), pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . GlobalUtils::$user->getID() . " AND pid=submissions.id) FROM submissions WHERE id=(?)"))
 					{
 						$statement->bind_param('i', $id);
 						$statement->execute();
@@ -361,7 +361,7 @@
 			$posts = array();
 			$p_data = array();
 			
-			if($statement = self::$connection->prepare("SELECT id, uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, alone, notalone, pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $reported $order LIMIT ?, ?"))
+			if($statement = self::$connection->prepare("SELECT id, uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60,  (SELECT count(CASE WHEN alone THEN 1 END) FROM related WHERE pid=submissions.id), (SELECT count(CASE WHEN NOT alone THEN 1 END) FROM related WHERE pid=submissions.id), pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . intval(GlobalUtils::$user->getID()) . " AND pid=submissions.id) FROM submissions  WHERE pending = 0 $nsfw $category $reported $order LIMIT ?, ?"))
 			{
 				$statement->bind_param('ii', $start, $count);
 				$statement->execute();
