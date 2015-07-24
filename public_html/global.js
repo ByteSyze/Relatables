@@ -365,14 +365,29 @@ function createPopup(message)
 	$('body').append("<div class='popup' style='display:block;'><div class='buttons'><button class='button blue-hover smaller'>Close</button></div><span class='popup-small'>" + message + "</span></div>");
 }
 
-function vote(id, vote, v, unvote)
+function vote($button)
 {
-	var notAloneEl = $('na'+id);
-	var aloneEl = $('a'+id);
+	var id = $button.attr('data-vid');
+	var v = $button.parent().parent().attr('data-v');
+	var unvote = ($button.hasClass('red') || $button.hasClass('green'));
+	
+	var notAloneEl = $('[data-v="'+id+'"] .buttons > button').first();
+	var aloneEl = notAloneEl.next();
+	
+	var vote = $button.is(notAloneEl) ? 0 : 1;
+	
+	console.log(vote);
+	console.log(notAloneEl);
+	console.log($button);
 	
 	notAlone = notAloneEl.attr('data-vc');
 	alone = aloneEl.attr('data-vc');
 	
+	if(!notAlone) //If null, ensure they are 0
+		notAlone = 0;
+	if(!alone)
+		alone = 0;
+		
 	$.ajax({
 		type: "POST",
 		url: "/vote.php",
@@ -430,8 +445,11 @@ function vote(id, vote, v, unvote)
 			}
 		}
 		
-		notAloneEl.html(notAlone);
-		aloneEl.html(alone);
+		notAloneEl.attr('data-vc',notAlone);
+		notAloneEl.html("No, me too! ("+notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')+")");
+		
+		aloneEl.attr('data-vc',alone);
+		aloneEl.html("You're alone ("+alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')+")");
 	});
 }
 
@@ -520,7 +538,7 @@ $('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(
 $('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
 
 $('body').on('click', '.popup > .buttons > button', function(){ $(this).parent().parent().hide(); });
-$('body').on('click', '[data-vid]', function(){ vote($(this).attr('data-vid'), $(this).html() == 'No, me too!' ? 0 : 1, $(this).parent().parent().attr('data-v'), ($(this).hasClass('red') || $(this).hasClass('green'))); });
+$('body').on('click', '[data-vid]', function(){ vote($(this)); });
 
 $('.showlogin').click(function(){showLogin();});
 
