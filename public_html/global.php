@@ -71,7 +71,7 @@
 		public static function getShareButton($url, $text)
 		{
 			echo "
-			<button class='button small blue-hover' data-share-button=''>Share »</button>
+			<button class='button small' data-share-button=''>Share »</button>
 				<div class='share-wrapper'><div>
 				<a href='http://www.facebook.com/sharer.php?u=$url'><div class='share-icon fb'></div></a>
 				<a href='https://plus.google.com/share?url=$url'><div class='share-icon gp'></div></a>
@@ -115,7 +115,7 @@
 					$time_diff = $time_diff->y . ' year ago';
 				else if($time_diff->y)
 					$time_diff = $time_diff->y . ' years ago';
-				else if($time_diff-> == 1)
+				else if($time_diff->m == 1)
 					$time_diff = $time_diff->m . ' month ago';
 				else if($time_diff->m)
 					$time_diff = $time_diff->m . ' months ago';
@@ -127,7 +127,7 @@
 					$time_diff = $time_diff->h . ' hour ago';
 				else if($time_diff->h)
 					$time_diff = $time_diff->h . ' hours ago';
-				else if($time_diff->m == 1)
+				else if($time_diff->i == 1)
 					$time_diff = $time_diff->i . ' minute ago';
 				else
 					$time_diff = $time_diff->i . ' minutes ago';

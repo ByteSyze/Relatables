@@ -376,10 +376,6 @@ function vote($button)
 	
 	var vote = $button.is(notAloneEl) ? 0 : 1;
 	
-	console.log(vote);
-	console.log(notAloneEl);
-	console.log($button);
-	
 	notAlone = notAloneEl.attr('data-vc');
 	alone = aloneEl.attr('data-vc');
 	
@@ -393,8 +389,8 @@ function vote($button)
 		url: "/vote.php",
 		data: {q: id, vtn: vote, v: v, u: unvote}
 	})
-	.done(function(data) {
-		console.log(data);
+	.done(function(data)
+	{
 		if(unvote)
 		{
 			if(data == '1')
