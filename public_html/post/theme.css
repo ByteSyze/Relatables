@@ -3,6 +3,21 @@
   text-align: right;
 }
 
+.box-title {
+  line-height: 28px;
+}
+
+.box-title > select {
+  float: right;
+  color: white;
+}
+
+.box-title:after {
+	clear: both;
+	content: "";
+	display: block;
+}
+
 .comment {
   margin-bottom: 20px;
   word-break: break-all;
