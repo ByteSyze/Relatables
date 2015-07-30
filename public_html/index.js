@@ -83,14 +83,17 @@ $( "#submission-form" ).submit(function() {
     return false;
 });
 
-$('#submission').focus(function()
+$('#submission, #submit-category, #anonymous').focus(function()
 {
 	$('.post-guidelines').animate({'height': guidelineHeight+'px'},200);
 });
 
-$('#submission').blur(function()
+$('#submission, #submit-category, #anonymous').blur(function()
 {
-	$('.post-guidelines').animate({'height': '0px'},200);
+	$elements = $('#submission, #submit-category, #anonymous').not($(this)[0]);
+	
+	if($elements.is(":focus"))
+		$('.post-guidelines').animate({'height': '0px'},200);
 });
 
 $(document).ready(function()

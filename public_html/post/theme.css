@@ -61,6 +61,10 @@
   color: #D84A4A;
 }
 
+.comment a.user {
+  font-weight: bold;
+}
+
 .comment.reply {
   margin-left: 20px;
   margin-top: 20px;
