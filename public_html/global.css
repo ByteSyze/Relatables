@@ -355,6 +355,7 @@ ul.navigation-items div.profile-icon {
 	width: 30%;
 	top: 18%;
 	left: 30%;
+	min-width: 310px;
 	z-index: 100; /* safety net */
 	padding: 20px;
 	border: solid 1px #ddd;
@@ -362,6 +363,10 @@ ul.navigation-items div.profile-icon {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	display: none;
+}
+
+.popup div.qm {
+  padding-right: 20px;
 }
 
 .popup h1.popup-title {
@@ -663,7 +668,7 @@ form.vertical input[type="text"],
 form.vertical input[type="password"],
 form.vertical button, form.vertical textarea,
 form.vertical select {
-  display: block;
+  display: inline-block;
   margin-bottom: 20px;
 }
 

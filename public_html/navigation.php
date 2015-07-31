@@ -58,25 +58,27 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 		<div style='text-align:center;margin:auto;width:100%;'>
 			<div>
 				<form method='post' class='vertical'>
-					<img src='/images/icons/question.png' data-togg='#user-guide-pop'/><div id='user-guide-pop'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
-					<input id='user_input' class='textbox' type='text' name='username' placeholder='Username'>
-					<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
-
-					<img src='/images/icons/question.png' data-togg='#pass-guide-pop' /><div id='pass-guide-pop'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
-					<input id='pass_input' class='textbox' type='password' autocomplete='off' name='password' placeholder='Password'>
-					<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
-
-
-					<input id='repass_input' class='textbox' type='password' name='repassword' placeholder='Confirm Password'>
-					<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
-
-
-					<input id='email_input' class='textbox' type='text' name='email' placeholder='Email'>
-					<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
-
-
-					<input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'>
-
+					<div class='qm'>
+						<img src='/images/icons/question.png' data-togg='#user-guide-pop'/><div id='user-guide-pop'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
+						<input id='user_input' class='textbox' type='text' name='username' placeholder='Username'>
+						<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
+					</div>
+					<div class='qm'>
+						<img src='/images/icons/question.png' data-togg='#pass-guide-pop' /><div id='pass-guide-pop'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
+						<input id='pass_input' class='textbox' type='password' autocomplete='off' name='password' placeholder='Password'>
+						<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
+					</div>
+					<div>
+						<input id='repass_input' class='textbox' type='password' name='repassword' placeholder='Confirm Password'>
+						<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
+					</div>
+					<div>
+						<input id='email_input' class='textbox' type='text' name='email' placeholder='Email'>
+						<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
+					</div>
+					<div>
+						<input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'>
+					</div>
 				</form>
 			</div>
 			<label style='font-size:10px'>By clicking Sign Up, you agree to our <a href='javascript:hideRegister();showLogin();'>Terms & Conditions</a>.</label>
@@ -85,9 +87,9 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 GlobalUtils::createPopup('loginpopup', 'Log In', "
 		<span class='popup-small'>If you don't have an account, <a>Sign up</a></span>
 		<form class='vertical' method='post' action='javascript:login();'>
-			<input id='login_user_input' type='text' name='u' placeholder='Username'>
-			<input id='login_pass_input' type='password' name='p' placeholder='Password'>
-			<label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'>
+			<div><input id='login_user_input' type='text' name='u' placeholder='Username'></div>
+			<div><input id='login_pass_input' type='password' name='p' placeholder='Password'></div>
+			<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
 			<div class='buttons padded align-center'>
 				<button class='button blue-hover block' type='submit'>Log in</button>
 			</div>
