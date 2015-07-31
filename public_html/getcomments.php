@@ -25,7 +25,7 @@
 		$statement->bind_param('iii',$pid,$index,$count);
 		$statement->execute();
 		
-		$statement->bind_result($comment['uid'], $comment['cid'], $comment['comment'], $comment['user'], $comment['submitted'], $comment['points'], $comment['reported'], $comment['deleted']);
+		$statement->bind_result($comment['uid'], $comment['cid'], $comment['comment'], $comment['user'], $comment['submitted'], $comment['points'], $comment['reported'], $comment['deleted'], $comment['user_vote']);
 		$statement->store_result();
 	}
 	
@@ -69,6 +69,6 @@
 	if($remaining)
 	{
 		$show_index = $num_rows+$index;
-		echo "<div class='show'><span data-showmore='$show_index'>Show More...</span></div>";
+		echo "<div class='show'><span data-showmore='$show_index'>Show More</span></div>";
 	}
 	

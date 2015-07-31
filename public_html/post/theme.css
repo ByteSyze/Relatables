@@ -86,6 +86,7 @@
 
 a.at.user {
   color: #354AA1;
+  font-weight: normal;
 }
 
 .comment .vote {
@@ -104,4 +105,13 @@ a.at.user {
 
 .comment .vote.downvote {
   background-image: url("/images/icons/downvote.png");
+}
+
+.show {
+  text-align: center;
+  font-weight: bold;
+}
+
+.show > span {
+  cursor: pointer;
 }
