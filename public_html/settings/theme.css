@@ -12,3 +12,11 @@
 .settings-nav a:last-child {
   margin-bottom: 0px;
 }
+
+#delete-account-popup {
+  width: 200px;
+  text-align: center;
+  left: 50%;
+  margin-left: -146px;
+  padding: 30px 45px 40px 45px;
+}
