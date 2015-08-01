@@ -92,7 +92,7 @@ $('#submission, #submit-category, #anonymous').blur(function()
 {
 	$elements = $('#submission, #submit-category, #anonymous').not($(this)[0]);
 	
-	if($elements.is(":focus"))
+	if(!$elements.is(":focus"))
 		$('.post-guidelines').animate({'height': '0px'},200);
 });
 

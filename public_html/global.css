@@ -479,6 +479,10 @@ span.padded {
 	margin-bottom: 20px;
 }
 
+.boxes .box.sidebar-extra {
+	margin-bottom: 3px;
+}
+
 #post-collapse .buttons {
   font-size: inherit;
 }
