@@ -30,10 +30,15 @@
 	max-width: 600px;
 	padding: 20px 20px;
 	margin: 0 auto;
+	margin-bottom: 10px;
 }
 
 .moderation-info h3 {
-	color: #4a66d8;
+}
+
+.gh {
+	font-size: inherit;
+
 }
 
 .moderation-info ul {
@@ -43,4 +48,7 @@
 .moderation-info ul li {
 	margin-bottom: 10px;
 	list-style-type: none;
+	line-height: 1.5em;
+	padding-bottom: 0.2em;
+
 }
