@@ -1,3 +1,10 @@
 p , span {
 	padding:10px;
+	line-height: 1.5em;
+	padding-bottom: 1em;
+}
+
+#pmv {
+	font-weight:bold;
+	padding-bottom: 0em;
 }
