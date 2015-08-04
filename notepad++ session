@@ -1,15 +1,22 @@
 <NotepadPlus>
     <Session activeView="0">
-        <mainView activeIndex="7">
-            <File firstVisibleLine="94" xOffset="0" scrollWidth="2007" startPos="4827" endPos="4827" selMode="0" lang="HTML" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\index.html" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1143" startPos="0" endPos="0" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\global.php" />
-            <File firstVisibleLine="380" xOffset="0" scrollWidth="1998" startPos="9298" endPos="9551" selMode="0" lang="Javascript" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\global.js" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1539" startPos="0" endPos="0" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\navigation.php" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1305" startPos="449" endPos="673" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\vote.php" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1386" startPos="228" endPos="228" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\ratecomment.php" />
-            <File firstVisibleLine="174" xOffset="0" scrollWidth="4356" startPos="0" endPos="0" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\post.php" />
-            <File firstVisibleLine="64" xOffset="0" scrollWidth="2169" startPos="2218" endPos="2218" selMode="0" lang="Javascript" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\post\post.js" />
+        <mainView activeIndex="13">
+            <File firstVisibleLine="15" xOffset="0" scrollWidth="2142" startPos="1868" endPos="1868" selMode="0" lang="HTML" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\index.html" />
+            <File firstVisibleLine="84" xOffset="0" scrollWidth="2745" startPos="4560" endPos="4560" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\global.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="2014" startPos="9597" endPos="9597" selMode="0" lang="Javascript" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\global.js" />
+            <File firstVisibleLine="458" xOffset="0" scrollWidth="816" startPos="10130" endPos="10130" selMode="0" lang="CSS" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\global.css" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="2187" startPos="3728" endPos="3728" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\navigation.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1305" startPos="627" endPos="627" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\vote.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1386" startPos="253" endPos="253" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\ratecomment.php" />
+            <File firstVisibleLine="347" xOffset="0" scrollWidth="5724" startPos="11879" endPos="11879" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\post.php" />
+            <File firstVisibleLine="136" xOffset="0" scrollWidth="2169" startPos="2218" endPos="2218" selMode="0" lang="Javascript" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\post\post.js" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="1161" startPos="823" endPos="823" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\getposts.php" />
+            <File firstVisibleLine="6" xOffset="917" scrollWidth="4392" startPos="1233" endPos="1233" selMode="0" lang="PHP" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\getcomments.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="306" startPos="771" endPos="771" selMode="0" lang="CSS" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\theme.css" />
+            <File firstVisibleLine="162" xOffset="0" scrollWidth="2079" startPos="1953" endPos="1953" selMode="0" lang="Javascript" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\index.js" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="486" startPos="202" endPos="202" selMode="0" lang="CSS" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\post\theme.css" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="279" startPos="411" endPos="411" selMode="0" lang="CSS" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\settings\theme.css" />
+            <File firstVisibleLine="42" xOffset="0" scrollWidth="2340" startPos="3546" endPos="3546" selMode="0" lang="HTML" encoding="-1" filename="S:\Users\TyDesktop\Documents\GitHub\Relatablez\public_html\settings\account\index.html" />
         </mainView>
         <subView activeIndex="0" />
     </Session>

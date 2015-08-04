@@ -10,6 +10,7 @@
 .box-title > select {
   float: right;
   color: white;
+  background-color: inherit;
 }
 
 .box-title:after {
