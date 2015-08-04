@@ -15,11 +15,11 @@ function checkEntered(element, event)
 		event.preventDefault();
 }
 
-$(document).ready(function(){  $('#pass_input').parent().hide(); });
+$(document).ready(function(){  $('#pass_input').parent().parent().hide(); });
 
 $('#currentpass_input').keyup(function(){ verifyCurrentPassword(0, false); checkErrPopups($(this)); });
 $('#currentpass_input').parent().click(function()
 { 
-	$('#pass_input').parent().show(); 
-	$(this).animate({'padding-left':'50px'});
+	$('#pass_input').parent().parent().show(); 
+	$(this).parent().parent().animate({'padding-left':'50px'});
 });
