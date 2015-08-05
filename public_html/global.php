@@ -95,9 +95,6 @@
 				echo "<div class='comment reply' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[rid]}'>";
 			else
 				echo "<div class='comment' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[cid]}'>";
-				
-			if($comment['user'] == GlobalUtils::$user->getUsername() && !$comment['deleted'])
-				echo "<button class='delete'></button>";
 			
 			echo "<div class='comment-info'>";
 				echo "<span><a class='user' href='/user/{$comment[user]}'>{$comment[user]}</a></span>";
@@ -170,6 +167,10 @@
 					echo "<span data-show='#registerpopup' class='vote downvote'></span>";
 				}
 				echo "<span data-report>Report</span>";
+				
+				if($comment['user'] == GlobalUtils::$user->getUsername() && !$comment['deleted'])
+					echo "<span data-delete class='red-hover'>Delete</span>";
+					
 			echo "</div>";
 			
 			if($reply)

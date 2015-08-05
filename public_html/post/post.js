@@ -144,14 +144,14 @@ $(document).on("click", "span[data-v]", function()
 		}	
 	});
 });
-$(document).on("click", "button[data-delete]", function()
+$(document).on("click", "span[data-delete]", function()
 {
 	button = $(this);
-	cid = $(this).parent().attr('data-c');
+	cid = $(this).parent().parent().attr('data-c');
 	
 	$.post('/deletecomment.php', {c: cid}, function(result)
 	{
-		button.nextAll().eq(3).html('<i>Comment removed.</i>');
+		button.parent().prev().first().html('<i>Comment removed.</i>');
 		button.remove();
 	});
 });

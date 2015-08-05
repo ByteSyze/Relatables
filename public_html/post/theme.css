@@ -50,6 +50,10 @@
   color: #525463;
 }
 
+.comment .comment-actions span.red-hover:hover {
+  color: #D84A4A;
+}
+
 .comment .muted {
   font-style: italic;
 }
