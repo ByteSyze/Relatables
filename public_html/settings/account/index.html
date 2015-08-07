@@ -41,26 +41,26 @@
 									<label for="">Username</label>
 									<div>
 										<input type="text" id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>' />
-										<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='user-popup'></div></div>
+										<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='user-popup'></div></div>
 									</div>
 									<div>
 										<div>
 											<label for="currentpass_input">Current Password</label>
 											<div>
 												<input type="password" id='currentpass_input' type='password' name='oldpassword' autocomplete='off' />
-												<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='currentpass-popup'></div></div>
+												<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='currentpass-popup'></div></div>
 											</div>
 											</div>
 										<div>
 											<label for="pass_input">New Password</label>
 											<div>
 												<input id='pass_input' type="password" name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' />
-												<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
+												<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
 											</div>
 											<label for="repass_input">Retype New Password</label>
 											<div>
 												<input id='repass_input' type='password' name='renewpassword' onkeyup='verifyRePassword()'  autocomplete='off' />
-												<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
+												<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
 											</div>
 										</div>
 									</div>
@@ -68,7 +68,7 @@
 									<label for="">Email <div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></label>
 									<div>
 										<input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>'></input>
-										<div class='verify xmark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
+										<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 									</div>
 								</form><br>
 								<div class="buttons">

@@ -336,16 +336,23 @@ ul.navigation-items div.profile-icon {
 	border-bottom: none;
 }
 
-.checkmark {
-	background-image: url('/images/icons/check_mark.png') !important;
-}
-
-.xmark {
-	background-image: url('/images/icons/x_mark.png');
+.marker {
 	background-color: transparent;
 	width: 12px;
 	height: 12px;
 	display: inline-block;
+}
+
+.marker.xmark {
+	background-image: url('/images/icons/x_mark.png');
+}
+
+.marker.nomark {
+	background-image: none;
+}
+
+.marker.checkmark {
+	background-image: url('/images/icons/check_mark.png');
 }
 
 .popup {
