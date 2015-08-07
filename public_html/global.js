@@ -107,6 +107,7 @@ function verifyUser(successCallback, verifyAll)
 	
 	if(userVal == '')
 	{
+		setMarker($img, 0, 0, MARKER_NOMARK);
 		if(verifyAll)
 		{
 			if(currentPass)
@@ -122,9 +123,7 @@ function verifyUser(successCallback, verifyAll)
 	$img = $('#user_input').next();
 	$pop = $('username-popup');
 	
-	if(userVal.length == 0)
-		setMarker($img, 0, 0, MARKER_NOMARK);
-	else if(userVal.length < 3)
+	if(userVal.length < 3)
 		setMarker($img, $pop, 'Username must be atleast 3 characters long.', MARKER_XMARK);
 	else if(userVal.length > 16)
 		setMarker($img, $pop, ' Username must be under 16 characters long.', MARKER_XMARK);
@@ -164,7 +163,7 @@ function verifyPassword(successCallback, verifyAll)
 	
 	if(passVal.length == 0)
 		setMarker($img, 0, 0, MARKER_NOMARK);
-	if(passVal.length < 6)
+	else if(passVal.length < 6)
 		setMarker($img, $pop, 'Password must be atleast 6 characters long.', MARKER_XMARK);
 	else
 	{
@@ -192,8 +191,8 @@ function verifyRePassword(successCallback, verifyAll)
 	$pop = $('#renew-password-popup');
 	
 	if(passVal.length == 0 && rePassVal == 0)
-		setMarker($img, 0, 0, XMARK_NOMARK);
-	if(passVal !== rePassVal)
+		setMarker($img, 0, 0, MARKER_NOMARK);
+	else if(passVal !== rePassVal)
 		setMarker($img, $pop, 'Password verification doesn\'t match original password.', MARKER_XMARK);
 	else
 	{
@@ -350,14 +349,6 @@ function showRegister(element)
 function resetRegister()
 {
 	$('#registerpopup :input').val('');
-}
-
-function checkErrPopups($el)
-{
-	if($el.val() == '')
-		$el.next().hide();
-	else
-		$el.next().show();
 }
 
 function updateMessageStatus(id)
@@ -538,11 +529,11 @@ $('#save-button').click(function(){ verifyUser(function(){ $('#settings-form').s
 
 $('#user_input').keydown(function(event){ checkLimit(event, $(this)[0], 32, false); });
 
-$('#user_input').keyup(function(){ verifyUser(0, false); checkErrPopups($(this)); });
-$('#pass_input').keyup(function(){ verifyPassword(0, false); checkErrPopups($(this)); });
-$('#repass_input').keyup(function(){ verifyRePassword(0, false); checkErrPopups($(this)); });
-$('#email_input').keyup(function(){ verifyEmail(0, false); checkErrPopups($(this)); });
-$('#recovery-email').keyup(function(){ verifyRecoveryEmail(); checkErrPopups($(this)); });
+$('#user_input').keyup(function(){ verifyUser(0, false); });
+$('#pass_input').keyup(function(){ verifyPassword(0, false); });
+$('#repass_input').keyup(function(){ verifyRePassword(0, false); });
+$('#email_input').keyup(function(){ verifyEmail(0, false); });
+$('#recovery-email').keyup(function(){ verifyRecoveryEmail(); });
 
 $('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
 $('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
