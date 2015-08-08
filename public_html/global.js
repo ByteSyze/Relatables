@@ -36,7 +36,6 @@ var MARKER_CHECKMARK	= 2;
 
 function register()
 {
-	
 	verifyUser(function()
 	{
 		console.log('Verified');

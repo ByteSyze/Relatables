@@ -40,8 +40,8 @@
 									<input type='hidden' name='t' value='account' />
 									<label for="">Username</label>
 									<div>
-										<input type="text" id='user_input' name='username' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyUser();checkHideErrors(this, user_verify_img);' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>' />
-										<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='user-popup'></div></div>
+										<input type="text" id='user_input' name='username' placeholder='<?php echo GlobalUtils::$user->getUsername(); ?>' />
+										<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
 									</div>
 									<div>
 										<div>
@@ -54,20 +54,20 @@
 										<div>
 											<label for="pass_input">New Password</label>
 											<div>
-												<input id='pass_input' type="password" name='newpassword' onkeyup='verifyPassword();checkHideErrors(this, pass_verify_img);' autocomplete='off' />
+												<input id='pass_input' type="password" name='newpassword' autocomplete='off' />
 												<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
 											</div>
 											<label for="repass_input">Retype New Password</label>
 											<div>
-												<input id='repass_input' type='password' name='renewpassword' onkeyup='verifyRePassword()'  autocomplete='off' />
+												<input id='repass_input' type='password' name='renewpassword' autocomplete='off' />
 												<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
 											</div>
 										</div>
 									</div>
 
-									<label for="">Email <div class='popup-offset'><div class='error-popup' id='email-popup'></div></div></label>
+									<label for="">Email</label>
 									<div>
-										<input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' onkeyup='verifyEmail();checkHideErrors(this, email_verify_img);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>'></input>
+										<input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>' />
 										<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 									</div>
 								</form><br>
