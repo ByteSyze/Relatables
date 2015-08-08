@@ -83,17 +83,20 @@ $( "#submission-form" ).submit(function() {
     return false;
 });
 
-$('#submission, #submit-category, #anonymous').focus(function()
+$('#submission-form').focusin(function()
 {
 	$('.post-guidelines').animate({'height': guidelineHeight+'px'},200);
 });
 
-$('#submission, #submit-category, #anonymous').blur(function()
+$('#submission-form').focusout(function()
 {
-	$elements = $('#submission, #submit-category, #anonymous').not($(this)[0]);
-	
-	if(!$elements.is(":focus"))
-		$('.post-guidelines').animate({'height': '0px'},200);
+	setTimeout(function()
+	{
+		$focused = $('#submission-form').find(':focus');
+		
+		if($focused.length == 0)
+			$('.post-guidelines').animate({'height': '0px'},200);
+	}, 50);
 });
 
 $(document).ready(function()
