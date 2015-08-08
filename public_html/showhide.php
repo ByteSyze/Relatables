@@ -33,5 +33,5 @@
 	GlobalUtils::$user->update();
 	
 	if(!$js)
-		header('Location: http://www.relatablez.com/settings/profile');
+		header('Location: /settings/profile/');
 	

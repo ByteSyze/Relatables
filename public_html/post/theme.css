@@ -112,6 +112,14 @@ a.at.user {
   background-image: url("/images/icons/downvote.png");
 }
 
+.comments-warning {
+  display: block;
+  padding-bottom: 20px;
+  color: red;
+  font-style: italic;
+  text-align: center;
+}
+
 .show {
   text-align: center;
   font-weight: bold;
