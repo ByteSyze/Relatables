@@ -43,7 +43,7 @@ function register()
 		{
 			if(data.indexOf("success") != -1)
 			{
-				document.getElementById("registerbutton").setAttribute("value","Thank you");
+				$('#registerbutton').val("Thank you");
 			}
 		});
 	}, true);
@@ -338,16 +338,16 @@ function showLogin()
 	$('#loginpopup').show();
 }
 
-function showRegister(element)
+function showRegister(message)
 {
 	hideAll();
-	$('#registerheader').html(element.getAttribute("data-signup-header"));
+	$('#registerheader').html(message);
 	$('#registerpopup').show();
 }
 
 function resetRegister()
 {
-	$('#registerpopup :input').val('');
+	$('#registerpopup :input').not('[type="submit"]').val('');
 }
 
 function updateMessageStatus(id)
@@ -541,7 +541,7 @@ $('.showlogin').click(function(){showLogin();});
 
 $('#registerpopup form').submit(function(){ register(); return false;  });
 
-$('[data-signup-header]').click(function(){showRegister($(this)[0]);});
+$('[data-signup-header]').click(function(){showRegister($(this).attr('data-signup-header'));});
 $('[data-signup-hide]').click(function(){ $('registerpopup').hide(); resetRegister();});
 
 $('body').on('click', '[data-show]',function(){ $($(this).attr('data-show')).show(); return false; });

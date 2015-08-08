@@ -81,7 +81,7 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 					</div>
 				</form>
 			</div>
-			<label style='font-size:10px'>By clicking Sign Up, you agree to our <a href='javascript:hideRegister();showLogin();'>Terms & Conditions</a>.</label>
+			<label style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</label>
 		</div>");
 
 GlobalUtils::createPopup('loginpopup', 'Log In', "
