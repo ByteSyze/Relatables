@@ -31,7 +31,7 @@
 		
 		if($rid != 0)
 		{
-			$rUser = new User($rUsername);
+			$rUser = new User($rUsername, User::TYPE_STRING);
 			$rUser->notify("Reply from $user","/post/$pid&lc=$cid");
 			echo "<div class='comment reply' id='c$cid' data-uid='$_SESSION[id]' data-user='$user' data-c='$cid' data-r='$rid'>";
 		}
