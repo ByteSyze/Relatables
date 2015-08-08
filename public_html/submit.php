@@ -23,8 +23,6 @@
 			$temp_verif = 1234;
 			$statement->bind_param("iiisi",$_SESSION['id'], $temp_verif, $category, $submission, $anon);
 			
-			$statement->execute();
-			
-			echo '0';
+			echo ($statement->execute() ? 0 : -1);
 		}
 	}

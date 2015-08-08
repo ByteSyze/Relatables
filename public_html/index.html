@@ -34,7 +34,7 @@
 												echo '<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>';
 												echo '<div id="post-collapse">';
 													echo '<div class="buttons padded align-right">';
-														echo '<label for="submit-category">Category:</label><select id="submit-category">
+														echo '<label for="submit-category">Category:</label><select id="submit-category" name="c">
 																<option value="1">Health</option>
 																<option value="2">Internet</option>
 																<option value="3">Funny</option>
@@ -44,7 +44,7 @@
 																<option value="7">Personal</option>
 																<option value="8">Odd</option>
 																<option value="9">Other</option></select>';
-														echo '<label for="anonymous">Anonymous</label><input type="checkbox" id="anonymous" />';
+														echo '<label for="anonymous">Anonymous</label><input type="checkbox" id="anonymous" name="a" />';
 														echo '<span data-limiter="#submission" data-limit="300">279</span>';
 														echo '<button class="button blue-hover" type="submit">Submit</button>';
 													echo '</div>';
