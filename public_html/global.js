@@ -481,10 +481,7 @@ $(document).ready(function()
 		$($limiter.attr('data-limiter')).on('change keypress paste',function(event)
 		{
 			var charCount = $(this).val().length;
-			$limiter.html(limit-charCount);
 			
-			console.log(charCount);
-			console.log(charCount > (limit-1));
 			if(charCount > (limit-1))
 			{
 				if(event.key != "Backspace")
@@ -494,14 +491,14 @@ $(document).ready(function()
 					event.stopImmediatePropagation();
 					event.preventDefault();
 					
-					$limiter.html('0');
 					return false;
 				}
-				else
-				{
-					$limiter.html('1');
-				}
 			}
+		});
+		$($limiter.attr('data-limiter')).on('change keyup paste',function(event)
+		{
+			var charCount = $(this).val().length;
+			$limiter.html(limit-charCount);
 		});
 	});
 });

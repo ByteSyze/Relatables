@@ -42,7 +42,7 @@
 									<label>Location</label>
 									<?php include($_SERVER['DOCUMENT_ROOT'].'/locationdropdown.php'); getLocationDropdown(GlobalUtils::$user->getCountryId()); ?>
 
-									<label for="">Description <span id='desc_char_counter'>(<?php echo (75-strlen($fDescription)); ?> characters left)</span></label>
+									<label for="description-input">Description (<span data-limit='75' data-limiter='#description-input'><?php echo (75-strlen($fDescription)); ?></span> characters left)</label>
 									<textarea id='description-input' name='description' onkeypress='checkEntered(this, event)' oninput='checkLimit(event,this,130,true);charCount(this, desc_char_counter);' <?php if($fDescription == null) echo 'placeholder=\'You have not set a description.\''; ?> ><?php if($fDescription != null) echo $fDescription; ?></textarea>
 
 									<label for="">Related With</label>
