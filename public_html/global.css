@@ -360,7 +360,8 @@ ul.navigation-items div.profile-icon {
 	position: fixed;
 	width: 30%;
 	top: 18%;
-	left: 30%;
+	left: 50%;
+	margin-left: -15%;
 	min-width: 310px;
 	z-index: 100; /* safety net */
 	padding: 20px;
