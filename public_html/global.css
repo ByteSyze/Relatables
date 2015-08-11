@@ -375,8 +375,13 @@ ul.navigation-items div.profile-icon {
   padding-right:20px;
 }
 
-.popup h1.popup-title, .popup h6 {
+.popup h1.popup-title {
   text-align: left;
+}
+
+.popup h6 {
+  text-align: left;
+  margin-top: 5px;
 }
 
 .popup h1.popup-title.blue {
@@ -389,8 +394,20 @@ ul.navigation-items div.profile-icon {
   font-size: 85%;
   margin-bottom: 20px;
 }
-.popup form.vertical input {
-  width: 300px;
+
+.popup button {
+  float: right;
+}
+
+#loginpopup form.vertical input[type="text"], 
+#loginpopup form.vertical input[type="password"] {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#registerpopup form.vertical input[type="text"], 
+#registerpopup form.vertical input[type="password"] {
+  width: 250px;
 }
 
 .popup-shade {

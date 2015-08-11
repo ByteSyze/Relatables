@@ -54,7 +54,7 @@
 
 if($_SESSION['id'] == null) {
 GlobalUtils::createPopup('registerpopup', 'Sign Up', "
-		<h6 style='text-align:center;margin-top:5px;'>If you already have an account, <a class='showlogin'>Log In</a></h6>
+		<h6>If you already have an account, <a class='showlogin'>Log In</a></h6>
 		<div style='text-align:center;margin:auto;width:100%;'>
 			<div>
 				<form method='post' class='vertical'>
@@ -77,7 +77,7 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 					</div>
 					<div>
-						<input id='registerbutton' class='bigbluebutton' type='submit' value='Sign Up'>
+						<input id='registerbutton' class='button blue-hover block' type='submit' value='Sign Up'>
 					</div>
 				</form>
 			</div>
@@ -85,13 +85,13 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 		</div>");
 
 GlobalUtils::createPopup('loginpopup', 'Log In', "
-		<span class='popup-small'>If you don't have an account, <a>Sign up</a></span>
+		<h6>If you don't have an account, <a class='showregister'>Sign up</a></h6>
 		<form class='vertical' method='post' action='javascript:login();'>
 			<div><input id='login_user_input' type='text' name='u' placeholder='Username'></div>
 			<div><input id='login_pass_input' type='password' name='p' placeholder='Password'></div>
 			<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
 			<div class='buttons padded align-center'>
-				<button class='button blue-hover block' type='submit'>Log in</button>
+				<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
 			</div>
 		</form>
 		<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>");
@@ -101,7 +101,7 @@ GlobalUtils::createPopup('pwrecoverypopup', 'Recover Password', "
 			<input id='recovery-email' type='text' name='e' placeholder='Email'>
 			<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
 			<div class='buttons padded align-center'>
-				<button class='button blue-hover block' type='submit'>Submit</button>
+				<input type='submit' value='Submit' class='button blue-hover block' type='submit' />
 			</div>
 		</form>");
 }
