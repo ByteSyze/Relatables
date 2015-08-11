@@ -399,6 +399,10 @@ ul.navigation-items div.profile-icon {
   float: right;
 }
 
+.popup input[type="submit"] {
+	width: 100px;
+}
+
 #loginpopup form.vertical input[type="text"], 
 #loginpopup form.vertical input[type="password"] {
   box-sizing: border-box;
@@ -532,11 +536,22 @@ span.padded {
 }
 
 .buttons .button {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 .buttons.more-space .button {
-	margin-right: 20px;
+  margin-right: 20px;
+}
+
+.buttons .login-extras {
+  float: left;
+  font-size: 14px;
+  width: 0px;
+  white-space: nowrap;
+}
+
+.buttons .login-extras a {
+  padding-top: 5px;
 }
 
 .page-buttons {

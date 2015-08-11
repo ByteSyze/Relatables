@@ -89,12 +89,14 @@ GlobalUtils::createPopup('loginpopup', 'Log In', "
 		<form class='vertical' method='post' action='javascript:login();'>
 			<div><input id='login_user_input' type='text' name='u' placeholder='Username'></div>
 			<div><input id='login_pass_input' type='password' name='p' placeholder='Password'></div>
-			<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
 			<div class='buttons padded align-center'>
+				<div class='login-extras'>
+					<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
+					<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>
+				</div>
 				<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
 			</div>
-		</form>
-		<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>");
+		</form>");
 
 GlobalUtils::createPopup('pwrecoverypopup', 'Recover Password', "
 		<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
