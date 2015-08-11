@@ -89,6 +89,7 @@ GlobalUtils::createPopup('loginpopup', 'Log In', "
 		<form class='vertical' method='post' action='javascript:login();'>
 			<div><input id='login_user_input' type='text' name='u' placeholder='Username'></div>
 			<div><input id='login_pass_input' type='password' name='p' placeholder='Password'></div>
+			<div id='login-errors'></div>
 			<div class='buttons padded align-center'>
 				<div class='login-extras'>
 					<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>

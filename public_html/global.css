@@ -881,3 +881,9 @@ textarea.input-submit {
 .notifications-dropdown a:last-child {
 	border-bottom: none;
 }
+
+#login-errors {
+  text-align: center;
+  color: red;
+  font-style: italic;
+}

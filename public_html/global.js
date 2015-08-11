@@ -14,7 +14,6 @@ var emailVerifyImg 		 = document.getElementById('email_verify_img');
 var rememberEl 			 = document.getElementById('remember_input');
 
 var loginUser			 = document.getElementById('login_user_input');
-var userLog				 = document.getElementById('login_user_log');
 
 var loginPass			 = document.getElementById('login_pass_input');
 var passLog				 = document.getElementById('login_pass_log');
@@ -42,9 +41,7 @@ function register()
 		$.post("/register.php", { username: $('#user_input').val(), password: $('#pass_input').val(), email: $('#email_input').val() }, function(data)
 		{
 			if(data.indexOf("success") != -1)
-			{
 				$('#registerbutton').val("Thank you");
-			}
 		});
 	}, true);
 }
@@ -62,39 +59,14 @@ function login()
 	$.post("/login.php", { u: userVal, p: passVal, r: remember }, function(data) {
 		console.log(data);
 		
-		var hideUserLog = true;
-		var hidePassLog = true;
-		
 		if(data == '0')
-		{
 			location.reload();
-		}
 		else if(data == '1')
-		{
-			userLog.innerHTML = 'Account does not exist.';
-			hideUserLog = false;
-		}
+			$('#login-errors').html('Account does not exist.');
 		else if(data == '2')
-		{
-			userLog.innerHTML = 'Account not verified.';
-			hideUserLog = false;
-		}
+			$('#login-errors').html('Please verify your account.');
 		else if(data == '3')
-		{
-			passLog.innerHTML = 'Password is incorrect.';
-			hidePassLog = false;
-		}
-		
-		if(hideUserLog)
-			userLog.style.display = 'none';
-		else
-			userLog.style.display = 'block';
-			
-		if(hidePassLog)
-			passLog.style.display = 'none';
-		else
-			passLog.style.display = 'block';
-		
+			$('#login-errors').html('Password is incorrect.');
 	});
 }
 
