@@ -92,7 +92,7 @@ function verifyUser(successCallback, verifyAll)
 	}
 	
 	$img = $('#user_input').next();
-	$pop = $('username-popup');
+	$pop = $('#username-popup');
 	
 	if(userVal.length < 3)
 		setMarker($img, $pop, 'Username must be atleast 3 characters long.', MARKER_XMARK);
