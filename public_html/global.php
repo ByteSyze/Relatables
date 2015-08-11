@@ -257,7 +257,7 @@
 			<div class='buttons'>
 				<button class='button blue-hover smaller'>X</button>
 			</div>
-			<h1 class='popup-title blue'>$title</h1>
+			<h1 class='popup-title'>$title</h1>
 			$content
 		  </div>";
 		}

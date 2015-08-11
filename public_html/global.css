@@ -358,11 +358,10 @@ ul.navigation-items div.profile-icon {
 .popup {
 	background-color: #fff;
 	position: fixed;
-	width: 30%;
+	width: 400px;
 	top: 18%;
 	left: 50%;
-	margin-left: -15%;
-	min-width: 310px;
+	margin-left: -200px;
 	z-index: 100; /* safety net */
 	padding: 20px;
 	border: solid 1px #ddd;
@@ -376,8 +375,8 @@ ul.navigation-items div.profile-icon {
   padding-right:20px;
 }
 
-.popup h1.popup-title {
-  text-align: center;
+.popup h1.popup-title, .popup h6 {
+  text-align: left;
 }
 
 .popup h1.popup-title.blue {
@@ -389,6 +388,9 @@ ul.navigation-items div.profile-icon {
   text-align: center;
   font-size: 85%;
   margin-bottom: 20px;
+}
+.popup form.vertical input {
+  width: 300px;
 }
 
 .popup-shade {
