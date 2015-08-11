@@ -503,8 +503,8 @@ $('#repass_input').keyup(function(){ verifyRePassword(0, false); });
 $('#email_input').keyup(function(){ verifyEmail(0, false); });
 $('#recovery-email').keyup(function(){ verifyRecoveryEmail(); });
 
-$('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
-$('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
+//$('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
+//$('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
 
 $('body').on('click', '.popup > .buttons > button', function(){ $(this).parent().parent().hide(); });
 $('body').on('click', '[data-vid]', function(){ vote($(this)); });

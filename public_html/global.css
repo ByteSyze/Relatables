@@ -429,7 +429,7 @@ ul.navigation-items div.profile-icon {
   transition: background-color 0.2s ease-in-out;
 }
 
-.popup-offset {
+/*.popup-offset {
   display: none;
 }
 
@@ -441,6 +441,12 @@ ul.navigation-items div.profile-icon {
   background-color: white;
   border: 1px solid #BFBFBF;
   border-radius: 5px;
+}*/
+
+.error-popup {
+  padding-bottom: 15px;
+  color: red;
+  font-style: italic;
 }
 
 a.forgot-password {
