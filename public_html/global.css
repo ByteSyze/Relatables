@@ -412,6 +412,7 @@ ul.navigation-items div.profile-icon {
 #registerpopup form.vertical input[type="text"], 
 #registerpopup form.vertical input[type="password"] {
   width: 250px;
+  margin-bottom: 10px;
 }
 
 .popup-shade {
@@ -444,7 +445,7 @@ ul.navigation-items div.profile-icon {
 }*/
 
 .error-popup {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   color: red;
   font-style: italic;
 }

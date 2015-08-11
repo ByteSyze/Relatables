@@ -76,12 +76,12 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 						<input id='email_input' class='textbox' type='text' name='email' placeholder='Email'>
 						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 					</div>
-					<div>
+					<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
+					<div style='padding-top:10px'>
 						<input id='registerbutton' class='button blue-hover block' type='submit' value='Sign Up'>
 					</div>
 				</form>
 			</div>
-			<label style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</label>
 		</div>");
 
 GlobalUtils::createPopup('loginpopup', 'Log In', "
