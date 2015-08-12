@@ -58,14 +58,16 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 		<div style='text-align:center;margin:auto;width:100%;'>
 			<div>
 				<form method='post' class='vertical'>
-					<div class='qm'>
-						<img src='/images/icons/question.png' data-togg='#user-guide-pop'/><div id='user-guide-pop'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
+					<div>
 						<input id='user_input' class='textbox' type='text' name='username' placeholder='Username'>
+						<div class='input-info-icon' data-togg='#user-guide-pop'></div>
+						<div id='user-guide-pop' class='info-popup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
 						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
 					</div>
-					<div class='qm'>
-						<img src='/images/icons/question.png' data-togg='#pass-guide-pop' /><div id='pass-guide-pop'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
+					<div>
 						<input id='pass_input' class='textbox' type='password' autocomplete='off' name='password' placeholder='Password'>
+						<div class='input-info-icon' data-togg='#pass-guide-pop'></div>
+						<div id='pass-guide-pop' class='info-popup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
 						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
 					</div>
 					<div>
