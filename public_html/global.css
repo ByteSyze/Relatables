@@ -440,6 +440,7 @@ ul.navigation-items div.profile-icon {
   padding-bottom: 10px;
   color: red;
   font-style: italic;
+  font-size: 13px;
 }
 
 a.forgot-password {
@@ -746,6 +747,7 @@ form.vertical button, form.vertical textarea,
 form.vertical select {
   display: inline-block;
   margin-bottom: 20px;
+  padding: 10px 30px 10px 10px;
 }
 
 form.vertical label {
