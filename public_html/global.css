@@ -732,6 +732,14 @@ a.user.admin {
 	color: #D84A4A;
 }
 
+form.vertical {
+  text-align: left;
+}
+
+form.vertical .buttons{
+  text-align: center;
+}
+
 form.vertical input[type="text"],
 form.vertical input[type="password"],
 form.vertical button, form.vertical textarea,

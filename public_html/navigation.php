@@ -79,7 +79,7 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 					</div>
 					<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
-					<div style='padding-top:10px'>
+					<div style='padding-top:10px' class='buttons'>
 						<input id='registerbutton' class='button blue-hover block' type='submit' value='Sign Up'>
 					</div>
 				</form>
@@ -87,7 +87,7 @@ GlobalUtils::createPopup('registerpopup', 'Sign Up', "
 		</div>");
 
 GlobalUtils::createPopup('loginpopup', 'Log In', "
-		<h6>If you don't have an account, <a class='showregister'>Sign up</a></h6>
+		<h6>If you don't have an account, <a data-signup-header='Sign Up'>Sign up</a></h6>
 		<form class='vertical' method='post' action='javascript:login();'>
 			<div><input id='login_user_input' type='text' name='u' placeholder='Username'></div>
 			<div><input id='login_pass_input' type='password' name='p' placeholder='Password'></div>
