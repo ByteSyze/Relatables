@@ -154,7 +154,7 @@ if($_SESSION['popup_msg'])
 				if($_SESSION['id'] != null) {
 					echo '<li><a href="#" data-togg="#notif-drop"><div class="icon notifications-icon ';
 					if($unreadNotifications) echo 'unread-notifications';
-					echo '"></div><div id="notif-drop" class="dropdown notifications-dropdown">';
+					echo '"></div></a><div id="notif-drop" class="dropdown notifications-dropdown">';
 
 
 					while($notification = mysqli_fetch_array($notifications))
@@ -162,7 +162,7 @@ if($_SESSION['popup_msg'])
 						echo '<a href="/readmessage.php?id='. $notification['id'] . '&redirect=' . htmlspecialchars($notification['href']) . '"><div class="indicator"></div>' . $notification['message'] . '<span>' . $notification['fdate'] . '</span></a>';
 					}
 
-					echo '</div></a></li>';
+					echo '</div></li>';
 
 					echo '<li><a href="#" data-togg="#prof-drop"><div class="icon profile-icon"></div></a><ul id="prof-drop" class="dropdown"><li><a href="/user/' . GlobalUtils::$user->getUsername() . '">Profile</a></li><li><a href="/settings/account">Settings</a></li><li><a href="/signout.php">Signout</a></li></ul></li>';
 				} else {

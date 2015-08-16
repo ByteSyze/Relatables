@@ -865,7 +865,12 @@ textarea.input-submit {
 }
 
 #notif-drop {
-	width:300px;
+	width: 300px;
+	left: -235px;
+}
+
+#prof-drop {
+	left: -20px;
 }
 
 .unread-notifications {
