@@ -128,3 +128,11 @@ a.at.user {
 .show > span {
   cursor: pointer;
 }
+
+span[data-r-showmore] {
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
