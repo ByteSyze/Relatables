@@ -15,9 +15,9 @@
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 				$_SESSION['error_msg'] = 'Email is invalid.'; // if email isn't valid, die for now.
 			else if(strlen($name) < 1)
-				$_SESSION['error_msg'] = "This may seem rude, but the guys running this show do not accept input from nameless people. Friggin' name elitists...";
+				$_SESSION['error_msg'] = "Please provide a name.";
 			else if(strlen($message) < 1)
-				$_SESSION['error_msg'] = "I'm assuming your lack of input is a good thing? Carry on, then.";
+				$_SESSION['error_msg'] = "Please write a message.";
 			else
 			{
 				$from		= "From: Relatablez <noreply@relatablez.com>";
@@ -27,7 +27,7 @@
 				mail('contact@relatablez.com, ins10102@gmail.com',$subject,$body,$from);
 				
 				$email = $name = $message = '';
-				$_SESSION['popup_msg'] = '<h3>Your message is now on its way to our client inquiry reception (a.k.a the trash bin). Congratulations!</h3>';
+				$_SESSION['popup_msg'] = '<h3>Your message has been received!</h3>';
 			}
 		}
 	?>
