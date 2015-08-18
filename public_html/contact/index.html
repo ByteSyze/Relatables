@@ -13,21 +13,21 @@
 			$message	= $_POST['m'];
 			
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-				$_SESSION['error_msg'] = 'Email is invalid.'; // if email isn't valid, die for now.
+				$_SESSION['error_msg'] = 'Email is invalid.';
 			else if(strlen($name) < 1)
-				$_SESSION['error_msg'] = "Please provide a name.";
+				$_SESSION['error_msg'] = "Please enter your first name.";
 			else if(strlen($message) < 1)
-				$_SESSION['error_msg'] = "Please write a message.";
+				$_SESSION['error_msg'] = "Please enter a message.";
 			else
 			{
-				$from		= "From: Relatablez <noreply@relatablez.com>";
-				$subject	= "$name Has Submitted a Contact Form.";
-				$body		= "Greetings! We hast hath taken feedback from a valorous chap by the name of $name. He hath submitted the following:\r\n\r\n\"$message\"\r\n\r\nYou may reacheth this lad/madam via their electronic-mail address:\r\n$email";
+				$from		= "From: Contact Form <noreply@relatablez.com>";
+				$subject	= "$name Has submitted a contact form.";
+				$body		= "$name has submitted the following message:\r\n\r\n\"$message\"\r\n\r\n $name Email:\r\n$email";
 				 
-				mail('contact@relatablez.com, ins10102@gmail.com',$subject,$body,$from);
+				mail('contact@relatablez.com',$subject,$body,$from);
 				
 				$email = $name = $message = '';
-				$_SESSION['popup_msg'] = '<h3>Your message has been received!</h3>';
+				$_SESSION['popup_msg'] = '<h3>Thanks for contacting us, we will get back to you shortly.</h3>';
 			}
 		}
 	?>
