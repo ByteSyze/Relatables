@@ -35,7 +35,7 @@
 	{
 		$connection = GlobalUtils::getConnection();
 
-		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(created,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0');
+		$notifications = mysqli_query($connection, 'SELECT *, DATE_FORMAT(created,\'%M %d, %Y\') AS fdate FROM notifications WHERE uid='.$_SESSION['id'].' AND deleted=0 ORDER BY created DESC');
 
 		while($notification = mysqli_fetch_array($notifications))
 		{
@@ -155,7 +155,10 @@ if($_SESSION['popup_msg'])
 
 					while($notification = mysqli_fetch_array($notifications))
 					{
-						echo '<a href="/readmessage.php?id='. $notification['id'] . '&redirect=' . htmlspecialchars($notification['href']) . '"><div class="indicator"></div>' . $notification['message'] . '<span>' . $notification['fdate'] . '</span></a>';
+						echo '<a href="/readmessage.php?id='. $notification['id'] . '&redirect=' . htmlspecialchars($notification['href']) . '">';
+						if(!$notification['seen'])
+							echo '<div class="indicator"></div>';
+						echo $notification['message'] . '<span>' . $notification['fdate'] . '</span></a>';
 					}
 
 					echo '</div></li>';
