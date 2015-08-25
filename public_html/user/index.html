@@ -25,6 +25,23 @@
 		<link rel="canonical" href="http://www.relatablez.com/">
 	</head>
 	<body style='margin:0px;'>
+		<script>
+		  window.fbAsyncInit = function() {
+			FB.init({
+			  appId      : '350943211696398',
+			  xfbml      : true,
+			  version    : 'v2.4'
+			});
+		  };
+
+		  (function(d, s, id){
+			 var js, fjs = d.getElementsByTagName(s)[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement(s); js.id = id;
+			 js.src = "//connect.facebook.net/en_US/sdk.js";
+			 fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
 		<div class="content-wrapper">
 			<?php require($_SERVER['DOCUMENT_ROOT']."/navigation.php"); ?>
 			<div class="content">
