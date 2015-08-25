@@ -347,7 +347,7 @@ function vote($button)
 	var v = $button.parent().parent().attr('data-v');
 	var unvote = ($button.hasClass('red') || $button.hasClass('green'));
 	
-	var notAloneEl = $('[data-v="'+id+'"] .buttons > button').first();
+	var notAloneEl = $('[data-vid="'+id+'"]').first();
 	var aloneEl = notAloneEl.next();
 	
 	var vote = $button.is(notAloneEl) ? 0 : 1;
