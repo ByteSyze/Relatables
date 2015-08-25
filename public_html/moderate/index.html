@@ -39,18 +39,32 @@
 			{
 				if($_POST['v'] === 'Yes' || $_POST['v'] === 'NSFW')
 				{
-					if($_POST['v'] === 'NSFW')
-						$nsfw_mysql_code = ',nsfw=nsfw+1';
+					if(GlobalUtils::$user->isAdmin())
+					{
+						mysqli_query($connection, 'UPDATE submissions SET pending=0, alone=0, notalone=0 WHERE id='.$submission['id']);
+					}
+					else
+					{
+						if($_POST['v'] === 'NSFW')
+							$nsfw_mysql_code = ',nsfw=nsfw+1';
 						
-					mysqli_query($connection, "UPDATE submissions SET notalone=notalone+1 $nsfw_mysql_code WHERE id=" . $submission['id']);
-					GlobalUtils::$user->incModerationIndex();
-					GlobalUtils::$user->update();
+						mysqli_query($connection, "UPDATE submissions SET notalone=notalone+1 $nsfw_mysql_code WHERE id=" . $submission['id']);
+						GlobalUtils::$user->incModerationIndex();
+						GlobalUtils::$user->update();
+					}
 				}
 				else if($_POST['v'] === 'No')
 				{
-					mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
-					GlobalUtils::$user->incModerationIndex();
-					GlobalUtils::$user->update();
+					if(GlobalUtils::$user->isAdmin())
+					{
+						mysqli_query($connection, 'DELETE FROM submissions WHERE id='.$submission['id']);
+					}
+					else
+					{
+						mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
+						GlobalUtils::$user->incModerationIndex();
+						GlobalUtils::$user->update();
+					}
 				}
 			}
 		}
