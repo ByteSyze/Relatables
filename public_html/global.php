@@ -68,12 +68,12 @@
 			echo "\r\n<meta name='description' content='$fdesc'>";
 			echo "\r\n<link rel='shortcut icon' href='/images/icons/favicon.ico'>";
 			
-			echo "\r\n<meta property='fb:app_id'         content='350943211696398' />";
-			echo "\r\n<meta property='og:url'            content='http://www.relatablez.com/' />";
-			echo "\r\n<meta property='og:type'           content='".$share_type."' />";
-			echo "\r\n<meta property='og:title'          content='Am I the Only One?' />";
-			echo "\r\n<meta property='og:description'    content='$fdesc' />";
-			echo "\r\n<meta property='og:image'          content='http://www.relatablez.com/images/media/logo-large.png' />";
+			echo "\r\n<meta property=\"fb:app_id\"         content=\"350943211696398\" />";
+			echo "\r\n<meta property=\"og:url\"            content=\"http://www.relatablez.com" . $_SERVER['REQUEST_URI'] . "\" />";
+			echo "\r\n<meta property=\"og:type\"           content=\"$share_type\" />";
+			echo "\r\n<meta property=\"og:title\"          content=\"Am I the Only One?\" />";
+			echo "\r\n<meta property=\"og:description\"    content=\"$fdesc\" />";
+			echo "\r\n<meta property=\"og:image\"          content=\"http://www.relatablez.com/images/media/logo-large.png\" />";
 		}
 		
 		public static function getShareButton($url, $text)

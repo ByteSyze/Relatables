@@ -59,7 +59,6 @@
 						$statement->bind_result($this->uid,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->comment_count,$this->user_vote);
 						$statement->fetch();
 						
-						$this->submission = htmlspecialchars($this->submission);
 						
 						$this->author = new User($this->uid);
 					}
@@ -67,6 +66,7 @@
 						echo self::$connection->error;
 				}
 			}
+			$this->submission = htmlspecialchars($this->submission);
 		}
 		
 		/**
