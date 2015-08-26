@@ -35,18 +35,12 @@
 		<title>Relatablez</title>
 		
 		<?php 
-			GlobalUtils::getMeta();
+			GlobalUtils::getMeta(array(), $post->getSubmission(), "article");
 			GlobalUtils::getCSS('submissiontheme');
 		?>
 		
 		<link rel="canonical" href="http://www.relatablez.com/">
 		<link rel='canonical' href='http://www.relatablez.com/'>
-		<meta property="fb:app_id"			   content="350943211696398" />
-		<meta property="og:url"                content="http://www.relatablez.com/post/<?php echo $pid; ?>/" />
-		<meta property="og:type"               content="article" />
-		<meta property="og:title"              content="Am I the only one?" />
-		<meta property="og:description"        content="<?php echo $post->getSubmission(); ?>" />
-		<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
 	</head>
 	<body>
 		<script>
