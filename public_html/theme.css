@@ -1,3 +1,9 @@
+#success_msg {
+  text-align: center;
+  color: #36C47B;
+  font-weight: bold;
+}
+
 .filters {
   padding: 0px 20px;
   margin-bottom: 20px;
