@@ -27,12 +27,14 @@
 					//If the yes-to-no vote ratio is atleast 3:1,
 					//Send it to the front page.
 					mysqli_query($connection, 'UPDATE submissions SET pending=0, alone=0, notalone=0 WHERE id='.$submission['id']);
+					mysqli_query($connection, 'UPDATE accounts SET mod_index=mod_index-1 WHERE mod_index > 0');
 				}
 				else
 				{
 					//If the vast majority didn't say yes, play it safe
 					//and discard it instead of posting it.
 					mysqli_query($connection, 'DELETE FROM submissions WHERE id='.$submission['id']);
+					mysqli_query($connection, 'UPDATE accounts SET mod_index=mod_index-1 WHERE mod_index > 0');
 				}
 			}
 			else
@@ -42,6 +44,7 @@
 					if(GlobalUtils::$user->isAdmin())
 					{
 						mysqli_query($connection, 'UPDATE submissions SET pending=0, alone=0, notalone=0 WHERE id='.$submission['id']);
+						mysqli_query($connection, 'UPDATE accounts SET mod_index=mod_index-1 WHERE mod_index > 0');
 					}
 					else
 					{
@@ -58,6 +61,7 @@
 					if(GlobalUtils::$user->isAdmin())
 					{
 						mysqli_query($connection, 'DELETE FROM submissions WHERE id='.$submission['id']);
+						mysqli_query($connection, 'UPDATE accounts SET mod_index=mod_index-1 WHERE mod_index > 0');
 					}
 					else
 					{
