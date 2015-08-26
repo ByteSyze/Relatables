@@ -59,20 +59,21 @@
 
 		public static function getMeta($keywords = array(), $description = 'Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.', $share_type = 'website')
 		{
+			$fdesc = htmlspecialchars($description, ENT_QUOTES);
 			echo "\r\n<meta charset='UTF-8'>";
 			echo "\r\n<meta name='keywords' content='Am I The Only One, Relatablez, Am I The Only One That";
 			foreach($keywords as $keyword)
 				echo ", $keyword";
 			echo "'>";
-			echo "\r\n<meta name='description' content='$description'>";
+			echo "\r\n<meta name='description' content='$fdesc'>";
 			echo "\r\n<link rel='shortcut icon' href='/images/icons/favicon.ico'>";
 			
-			echo '<meta property="fb:app_id" content="350943211696398" />';
-			echo '<meta property="og:url" content="http://www.relatablez.com/" />';
-			echo '<meta property="og:type" content="'.$share_type.'" />';
-			echo '<meta property="og:title" content="Am I the Only One?" />';
-			echo '<meta property="og:description" content=\''.$description.'\' />';
-			echo '<meta property="og:image" content="http://www.relatablez.com/images/media/logo-large.png" />';
+			echo "\r\n<meta property='fb:app_id'         content='350943211696398' />";
+			echo "\r\n<meta property='og:url'            content='http://www.relatablez.com/' />";
+			echo "\r\n<meta property='og:type'           content='".$share_type."' />";
+			echo "\r\n<meta property='og:title'          content='Am I the Only One?' />";
+			echo "\r\n<meta property='og:description'    content='$fdesc' />";
+			echo "\r\n<meta property='og:image'          content='http://www.relatablez.com/images/media/logo-large.png' />";
 		}
 		
 		public static function getShareButton($url, $text)

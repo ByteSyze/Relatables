@@ -13,7 +13,7 @@
 		{
 			$end = $index+2;
 			
-			$submissions = mysqli_query($connection, "SELECT submission, alone, notalone, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
+			$submissions = mysqli_query($connection, "SELECT submission, alone, notalone, id, uid FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
 			$submission = mysqli_fetch_array($submissions); // The submission that was voted on.
 			
 			$alone	  = $submission['alone'];
@@ -28,6 +28,9 @@
 					//Send it to the front page.
 					mysqli_query($connection, 'UPDATE submissions SET pending=0, alone=0, notalone=0 WHERE id='.$submission['id']);
 					mysqli_query($connection, 'UPDATE accounts SET mod_index=mod_index-1 WHERE mod_index > 0');
+					
+					$author = new User($submission['uid']);
+					$author->notify('Your post has been approved and is now live! View it here','/post/'.$submission['id']);
 				}
 				else
 				{
@@ -45,6 +48,9 @@
 					{
 						mysqli_query($connection, 'UPDATE submissions SET pending=0, alone=0, notalone=0 WHERE id='.$submission['id']);
 						mysqli_query($connection, 'UPDATE accounts SET mod_index=mod_index-1 WHERE mod_index > 0');
+						
+					$author = new User($submission['uid']);
+						$author->notify('Your post has been approved and is now live! View it here','/post/'.$submission['id']);
 					}
 					else
 					{
