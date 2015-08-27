@@ -10,5 +10,5 @@
 	
 	setcookie("rrm","",$deadcookie,'/');
 	
-	header("Location: http://www.relatablez.com$_GET[dir]"); //dir is the directory to send the user to.
+	header("Location: http://www.relatables.com$_GET[dir]"); //dir is the directory to send the user to.
 ?>

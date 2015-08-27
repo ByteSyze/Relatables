@@ -48,7 +48,7 @@
 			$new_user->update();								////
 		
 			$subject = "Account Verification";
-			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatablez.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatablez.com/verify?i=". $uid ."&v=" . $verification;
+			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatables.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatables.com/verify?i=". $uid ."&v=" . $verification;
 			 
 			$new_user->email($subject,$body);
 			

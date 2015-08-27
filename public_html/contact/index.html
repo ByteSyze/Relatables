@@ -20,11 +20,11 @@
 				$_SESSION['error_msg'] = "Please enter a message.";
 			else
 			{
-				$from		= "From: Contact Form <noreply@relatablez.com>";
+				$from		= "From: Contact Form <noreply@relatables.com>";
 				$subject	= "$name Has submitted a contact form.";
 				$body		= "$name has submitted the following message:\r\n\r\n\"$message\"\r\n\r\n $name Email:\r\n$email";
 				 
-				mail('contact@relatablez.com',$subject,$body,$from);
+				mail('contact@relatables.com',$subject,$body,$from);
 				
 				$email = $name = $message = '';
 				$_SESSION['popup_msg'] = '<h3>Thanks for contacting us, we will get back to you shortly.</h3>';

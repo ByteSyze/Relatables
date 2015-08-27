@@ -3,7 +3,7 @@
 	
 	class User
 	{
-		const MAIL_FROM = "From: Relatablez <noreply@relatablez.com>";
+		const MAIL_FROM = "From: Relatables <noreply@relatables.com>";
 		
 		const TYPE_STRING 	= 's';
 		const TYPE_INT		= 'i';

@@ -6,8 +6,8 @@
 	
 	session_start();
 	
-	if($_SERVER['SERVER_NAME'] != 'www.relatablez.com' && $_SERVER['SERVER_NAME'] != 'relatablez.com' && $_SESSION['test_acc'])
-		$_SESSION['id'] = 2; //If running from localhost, set account to Relatablez Staff account.
+	if($_SERVER['SERVER_NAME'] != 'www.relatables.com' && $_SERVER['SERVER_NAME'] != 'relatables.com' && $_SESSION['test_acc'])
+		$_SESSION['id'] = 2; //If running from localhost, set account to Relatables Staff account.
 	else if($_SESSION['test_acc'] === false)
 		$_SESSION['id'] = 0;
 		
@@ -57,11 +57,11 @@
 			echo "\r\n";
 		}
 
-		public static function getMeta($keywords = array(), $description = 'Relatablez is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.', $share_type = 'website')
+		public static function getMeta($keywords = array(), $description = 'Relatables is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.', $share_type = 'website')
 		{
 			$fdesc = htmlspecialchars($description, ENT_QUOTES);
 			echo "\r\n<meta charset='UTF-8'>";
-			echo "\r\n<meta name='keywords' content='Am I The Only One, Relatablez, Am I The Only One That";
+			echo "\r\n<meta name='keywords' content='Am I The Only One, Relatables, Am I The Only One That";
 			foreach($keywords as $keyword)
 				echo ", $keyword";
 			echo "'>";
@@ -69,11 +69,11 @@
 			echo "\r\n<link rel='shortcut icon' href='/images/icons/favicon.ico'>";
 			
 			echo "\r\n<meta property=\"fb:app_id\"         content=\"350943211696398\" />";
-			echo "\r\n<meta property=\"og:url\"            content=\"http://www.relatablez.com" . $_SERVER['REQUEST_URI'] . "\" />";
+			echo "\r\n<meta property=\"og:url\"            content=\"http://www.relatables.com" . $_SERVER['REQUEST_URI'] . "\" />";
 			echo "\r\n<meta property=\"og:type\"           content=\"$share_type\" />";
 			echo "\r\n<meta property=\"og:title\"          content=\"Am I the Only One?\" />";
 			echo "\r\n<meta property=\"og:description\"    content=\"$fdesc\" />";
-			echo "\r\n<meta property=\"og:image\"          content=\"http://www.relatablez.com/images/media/logo-large.png\" />";
+			echo "\r\n<meta property=\"og:image\"          content=\"http://www.relatables.com/images/media/logo-large.png\" />";
 		}
 		
 		public static function getShareButton($url, $text)
@@ -83,14 +83,14 @@
 				<div class='share-wrapper'><div>
 				<a href='http://www.facebook.com/sharer.php?u=$url'><div class='share-icon fb'></div></a>
 				<a href='https://plus.google.com/share?url=$url'><div class='share-icon gp'></div></a>
-				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatablez'><div class='share-icon tw'></div></a>
+				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatables'><div class='share-icon tw'></div></a>
 				</div>
 			</div>";
 		}
 		
 		public static function getFooter()
 		{
-			echo "<div class='footer'><div class='grid wrap wider no-gutters'><div class='right'><span>&copy; Relatablez 2015</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div></div>";
+			echo "<div class='footer'><div class='grid wrap wider no-gutters'><div class='right'><span>&copy; Relatables 2015</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div></div>";
 		}
 		
 		public static function formatComment($comment, $reply = null)
@@ -312,10 +312,10 @@
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
-			if($_SERVER['SERVER_NAME'] != 'www.relatablez.com' && $_SERVER['SERVER_NAME'] != 'relatablez.com')
+			if($_SERVER['SERVER_NAME'] != 'www.relatables.com' && $_SERVER['SERVER_NAME'] != 'relatables.com')
 				return mysqli_connect('localhost','root','','u683362690_rtblz');
 			else
-				return mysqli_connect('mysql.a78.org','u683362690_insom','10102S33K3R17','u683362690_rtblz');
+				return mysqli_connect('mysql.a78.org','Relatables','10102S33k3r17','u683362690_rtblz');
 		}
 	}
 	

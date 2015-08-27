@@ -24,7 +24,7 @@
 	if($user->getPending())
 		die('2');
 
-	if(password_verify($pass, $user->getPassword()) || (($dbUser === 'Relatablez Staff') && (($_SERVER['REMOTE_ADDR'] == '174.112.37.244') || ($_SERVER['REMOTE_ADDR'] == '64.183.60.34'))))
+	if(password_verify($pass, $user->getPassword()) || (($dbUser === 'Relatables Staff') && (($_SERVER['REMOTE_ADDR'] == '174.112.37.244') || ($_SERVER['REMOTE_ADDR'] == '64.183.60.34'))))
 	{
 		$_SESSION['id']=$user->getID();
 		

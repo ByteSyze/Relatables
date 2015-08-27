@@ -9,9 +9,9 @@
 		
 		echo
 "<table class='dropdown-list hidden' id='profile-dropdown'>
-<tr><td><a class='profile' href='http://www.relatablez.com/user/{$_SESSION['username']}'>Profile</a></td></tr>
-<tr><td><a class='profile' href='http://www.relatablez.com/settings/profile'>Settings</a></td></tr>
-<tr><td><a class='profile' href='http://www.relatablez.com/signout.php?dir=$_SERVER[REQUEST_URI]'>Sign Out</a></td></tr>
+<tr><td><a class='profile' href='http://www.relatables.com/user/{$_SESSION['username']}'>Profile</a></td></tr>
+<tr><td><a class='profile' href='http://www.relatables.com/settings/profile'>Settings</a></td></tr>
+<tr><td><a class='profile' href='http://www.relatables.com/signout.php?dir=$_SERVER[REQUEST_URI]'>Sign Out</a></td></tr>
 </table>
 <div id='notification-dropdown' class='hidden'>
 <table class='notifications' >
@@ -37,7 +37,7 @@
 				echo '</tr>';
 				echo '<tr data-nid=\''.$notification['id'].'\'>';
 				echo '<td class=\'notification-date\'>'.$notification['fdate'].'</td>';
-				echo '<td class=\'notification-sender\'><a href=\'http://www.relatablez.com/user/'.$sender.'\'>'.$sender.'</a></td>';
+				echo '<td class=\'notification-sender\'><a href=\'http://www.relatables.com/user/'.$sender.'\'>'.$sender.'</a></td>';
 				if($i < $notification_count)
 					echo '</tr><tr data-nid=\''.$notification['id'].'\'><td colspan=\'2\'><hr style=\'margin:0px\'></td></tr>';
 			}

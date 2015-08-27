@@ -12,4 +12,4 @@
 	
 	setDescription($description, $_SESSION['id']);
 	
-	header('Location: http://www.relatablez.com/settings/profile');
+	header('Location: http://www.relatables.com/settings/profile');
