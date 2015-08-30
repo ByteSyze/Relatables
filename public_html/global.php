@@ -312,10 +312,7 @@
 		/**Returns a connection to the MySQL database. */
 		public static function getConnection()
 		{
-			if($_SERVER['SERVER_NAME'] != 'www.relatables.com' && $_SERVER['SERVER_NAME'] != 'relatables.com')
-				return mysqli_connect('localhost','root','','u683362690_rtblz');
-			else
-				return mysqli_connect('mysql.a78.org','Relatables','10102S33k3r17','u683362690_rtblz');
+			return mysqli_connect('localhost','Relatables','10102S33k3r17','u683362690_rtblz');
 		}
 	}
 	
