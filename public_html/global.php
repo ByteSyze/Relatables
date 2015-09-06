@@ -165,8 +165,15 @@
 				if($_SESSION['id'])
 				{
 					echo "<span data-reply>Reply</span>";
-					echo "<span data-v='up' class='vote upvote'></span>";
-					echo "<span data-v='down' class='vote downvote'></span>";
+					if($comment['user_vote'] === 1)
+						echo "<span data-v='up' class='vote upvote positive'></span>";
+					else
+						echo "<span data-v='up' class='vote upvote'></span>";
+					
+					if($comment['user_vote'] === -1)
+						echo "<span data-v='down' class='vote downvote negative'></span>";
+					else
+						echo "<span data-v='down' class='vote downvote'></span>";
 				}
 				else
 				{
