@@ -8,8 +8,10 @@
 	$vote 	 = $_POST['v'];
 	$cid	 = $_POST['c'];
 	$rescind = $_POST['r'];
+		
+	$connection = GlobalUtils::getConnection();
 	
-	if($rescind)
+	if($rescind == "true")
 	{
 		if($statement = $connection->prepare('DELETE FROM comment_ratings WHERE cid=(?) AND uid=(?)'))
 		{
@@ -25,8 +27,6 @@
 			$vote = 1;
 		else
 			$vote = -1;
-		
-		$connection = GlobalUtils::getConnection();
 		
 		if($statement = $connection->prepare("INSERT INTO comment_ratings SET uid={$_SESSION['id']}, cid=(?), vote=(?) ON DUPLICATE KEY UPDATE vote=(?)"))
 		{

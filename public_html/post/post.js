@@ -75,8 +75,8 @@ $(document).on("click", "span[data-v]", function()
 {
 	button = $(this);
 
-	cid = $(this).parent().parent().attr('data-c');
-	vote = $(this).attr('data-v');
+	cid 	= button.parent().parent().attr('data-c');
+	vote 	= button.attr('data-v');
 	rescind = (button.hasClass('positive') || button.hasClass('negative'));
 
 	$.post('/ratecomment.php', {c: cid, v: vote, r: rescind}, function(result)
