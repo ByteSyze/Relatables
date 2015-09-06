@@ -177,7 +177,7 @@ $(document).on("click", "span[data-r-showmore]", function()
 });
 $(document).on("click", "span[data-report]", function()
 {
-	cid = $(this).parent().attr('data-c');
+	cid = $(this).parent().parent().attr('data-c');
 	button = $(this);
 
 	$.post('/report.php', {c: cid}, function(result)
