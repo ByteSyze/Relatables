@@ -73,7 +73,7 @@ $( "#submission-form" ).submit(function() {
 	if(objData){
 		$.post( "/submit.php",objData,function( res ) {
 			if(res == '0')
-		 		$( "#submission-form" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-form" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.</div>");});
+		 		$( "#submission-form" ).empty().animate({height: "17px"}, 400, function(){$( "#submission-form" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated. You will receive a notification if your post gets approved.</div>");});
 			else if(res ==	'1')
 				$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
 			else if(res == '2')

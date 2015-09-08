@@ -11,7 +11,11 @@ $('#comment-submit-button').click(function()
 			if(result != 0)
 			{
 				var comment = $.parseHTML(result);
-				$('#comments').children().first().before(comment);
+				
+				if($('#comments').children().length == 0)
+					$('#comments').append(comment);
+				else
+					$('#comments').children().first().before(comment);
 				
 				button.prev().css('border', '');
 			}

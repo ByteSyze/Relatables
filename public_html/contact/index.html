@@ -24,7 +24,7 @@
 				$subject	= "$name Has submitted a contact form.";
 				$body		= "$name has submitted the following message:\r\n\r\n\"$message\"\r\n\r\n $name Email:\r\n$email";
 				 
-				mail('contact@relatables.com',$subject,$body,$from);
+				mail('relatablezweb@gmail.com',$subject,$body,$from);
 				
 				$email = $name = $message = '';
 				$_SESSION['popup_msg'] = '<h3>Thanks for contacting us, we will get back to you shortly.</h3>';
