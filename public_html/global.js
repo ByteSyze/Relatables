@@ -458,7 +458,6 @@ $(document).ready(function()
 			{
 				if(event.key != "Backspace")
 				{
-					console.log("stap");
 					event.stopPropagation();
 					event.stopImmediatePropagation();
 					event.preventDefault();

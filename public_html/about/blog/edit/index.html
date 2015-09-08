@@ -4,7 +4,10 @@
 	$connection = GlobalUtils::getConnection();
 	
 	if(!GlobalUtils::$user->isAdmin() || $_SESSION['id'] == null)
-		header('Location: /404/');
+	{
+		header('HTTP/1.0 404 Not Found', true, 404);
+		die();
+	}
 	else
 	{
 		if($_POST['submit'] === 'Update' && $_POST['title'] && $_POST['contents'])

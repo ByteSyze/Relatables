@@ -40,8 +40,33 @@ $(document).on("click", "span[data-reply]", function()
 {
 	$c = $(this).parent().parent();
 	
-	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><button data-r='"+$c.attr("data-r")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
+	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><span data-limiter='#c"+$c.attr('data-c')+" textarea' data-limit='800'>800</span><button data-r='"+$c.attr("data-r")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
 	$(this).removeAttr('data-reply');
+	
+	var $limiter = $("span[data-limiter='#c"+$c.attr('data-c')+" textarea']");
+	var limit = 800;
+	
+	$($limiter.attr('data-limiter')).on('change keypress paste',function(event)
+	{
+		var charCount = $(this).val().length;
+		
+		if(charCount > (limit-1))
+		{
+			if(event.key != "Backspace")
+			{
+				event.stopPropagation();
+				event.stopImmediatePropagation();
+				event.preventDefault();
+				
+				return false;
+			}
+		}
+	});
+	$($limiter.attr('data-limiter')).on('change keyup paste',function(event)
+	{
+		var charCount = $(this).val().length;
+		$limiter.html(limit-charCount);
+	});
 });
 $(document).on("click", "button[data-r]", function()
 {
