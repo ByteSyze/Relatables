@@ -7,8 +7,8 @@
 
 RewriteEngine On
 
-#RewriteCond %{HTTP_HOST} ^relatables.com
-#RewriteRule (.*) http://www.relatables.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^relatables.com
+RewriteRule (.*) http://www.relatables.com/$1 [L,R=301]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

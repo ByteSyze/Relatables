@@ -32,7 +32,7 @@
 <!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
-		<title>Relatables</title>
+		<title>Post #<?php echo $pid; ?></title>
 		
 		<?php 
 			GlobalUtils::getMeta(array(), $post->getSubmission(), "article");
@@ -72,7 +72,7 @@
 										<form action='/comment.php' method='POST'>
 											<textarea class="input-submit" placeholder="Join the discussion!" id='comment-submit-text' name='c'></textarea>
 											<div class="buttons">
-												<button class="button blue-hover" id='comment-submit-button' type='submit'>Post</button>
+												<span style='font-size:16px;padding-right:15px;' data-limit='800' data-limiter='#comment-submit-text'>800</span><button class="button blue-hover" id='comment-submit-button' type='submit'>Post</button>
 											</div>
 										</form>
 									</div>

@@ -209,6 +209,7 @@ function updatePosts()
 		$('#posts').append(data);
 	});
 	
-	window.scrollTo(0,0);
+	if($('#display').val() != 2)
+		window.scrollTo(0,0);
 }
  
