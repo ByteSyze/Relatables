@@ -12,8 +12,8 @@
 	}
 	else
 	{
-		$reported_comments  = $connection->query("SELECT pid, cid, comment, (SELECT username FROM accounts WHERE id=comments.uid) AS author, (SELECT COUNT(id) FROM comment_reports WHERE comment_reports.id=comments.cid) AS reports FROM comments WHERE reported = 0 AND deleted = 0 ORDER BY reports DESC");
-		$reported_posts		= $connection->query("SELECT id, submission, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT COUNT(submission_reports.id) FROM submission_reports WHERE submission_reports.id=submissions.id) AS reports FROM submissions WHERE reported = 0 AND pending = 0 ORDER BY reports DESC");
+		$reported_comments  = $connection->query("SELECT pid, cid, comment, (SELECT username FROM accounts WHERE id=comments.uid) AS author, (SELECT COUNT(*) FROM comment_reports WHERE comment_reports.id=comments.cid) AS reports FROM comments WHERE reported = 0 AND deleted = 0 AND (SELECT COUNT(*) FROM comment_reports WHERE comment_reports.id=comments.cid) > 0 ORDER BY reports DESC");
+		//$reported_posts		= $connection->query("SELECT id, submission, (SELECT username FROM accounts WHERE id=submissions.uid) AS author, (SELECT COUNT(submission_reports.id) FROM submission_reports WHERE submission_reports.id=submissions.id) AS reports FROM submissions WHERE reported = 0 AND pending = 0 ORDER BY reports DESC");
 		$recent_users		= $connection->query("SELECT username, last_login FROM accounts WHERE last_login > NOW() - INTERVAL 1 HOUR");
 	}
 ?>
@@ -54,26 +54,29 @@
 										<table>
 											<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
 											<?php
-												while($comment = $reported_comments->fetch_array())
+												if($reported_comments)
 												{
-													echo "<tr><td><a target='_blank' href='/post/{$comment['pid']}&lc={$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
+													while($comment = $reported_comments->fetch_array())
+													{
+														echo "<tr><td><a target='_blank' href='/post/{$comment['pid']}&lc={$comment['cid']}'>{$comment['cid']}</a><td>{$comment['author']}<td>{$comment['comment']}<td>{$comment['reports']}<td class='but' data-creport='{$comment['cid']}'>Delete<td class='but' data-ckeep='{$comment['cid']}'>Keep";
+													}
 												}
 											?>
 										</table>
 									</div>
 									
-									<h1>Reported Posts</h1>
+									<!--<h1>Reported Posts</h1>
 									<div class='table-wrapper'>
 										<table>
 											<tr><th>Link</th><th>Author</th><th>Comment</th><th>Reports</th>
 											<?php
-												while($post = $reported_posts->fetch_array())
-												{
-													echo "<tr><td><a href='http://www.relatables.com/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}<td class='but' data-sreport='{$post['id']}'>Delete<td class='but' data-skeep='{$post['id']}'>Keep";
-												}
+												//while($post = $reported_posts->fetch_array())
+												//{
+												//	echo "<tr><td><a href='http://www.relatables.com/post/{$post['id']}'>{$post['id']}</a><td>{$post['author']}<td>{$post['submission']}<td>{$post['reports']}<td class='but' data-sreport='{$post['id']}'>Delete<td class='but' data-skeep='{$post['id']}'>Keep";
+												//}
 											?>
 										</table>
-									</div>
+									</div>-->
 									
 									<h1>Recently Online Users</h1>
 									<div class='table-wrapper'>
