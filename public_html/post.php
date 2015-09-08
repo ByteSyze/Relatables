@@ -303,9 +303,9 @@
 				case '1':
 					return 'ORDER BY submissions.date ASC';
 				case '2':
-					return 'ORDER BY submissions.notalone DESC';
+					return 'ORDER BY (SELECT COUNT(*) FROM related WHERE pid=submissions.id AND alone=0) DESC';
 				case '3':
-					return 'ORDER BY submissions.alone DESC';
+					return 'ORDER BY (SELECT COUNT(*) FROM related WHERE pid=submissions.id AND alone=1) DESC';
 				default:
 					return 'ORDER BY submissions.date DESC';
 			}

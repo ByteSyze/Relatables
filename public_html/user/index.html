@@ -53,7 +53,7 @@
 							<?php if($user->isBetaTester()) { echo '<span class="beta">Beta Tester</span>';} ?>
 							<span class="user-info user-description"><?php echo htmlspecialchars($user->getDescription()); ?></span>
 							<hr>
-							<span class="user-info"><?php if(!$user->getHideLocation()) echo "From " . $user->getCountry(); ?></span>
+							<span class="user-info"><?php if(!$user->getHideLocation() && $user->getCountryId() !== -1) echo "From " . $user->getCountry(); ?></span>
 							<span class="user-info">Joined on <?php echo $user->getJoined(); ?></span>
 						</div>
 					</div>
