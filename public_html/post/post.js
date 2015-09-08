@@ -40,7 +40,7 @@ $(document).on("click", "span[data-reply]", function()
 {
 	$c = $(this).parent().parent();
 	
-	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><span data-limiter='#c"+$c.attr('data-c')+" textarea' data-limit='800'>800</span><button data-r='"+$c.attr("data-r")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
+	$(this).parent().after("<div class='reply-input'><textarea class='reply input-submit small'></textarea><span style='margin-right:10px;line-height:30px;' data-limiter='#c"+$c.attr('data-c')+" textarea' data-limit='800'>800</span><button data-r='"+$c.attr("data-r")+"' data-user='"+$c.attr("data-user")+"' class='button blue-hover smaller'>Submit</button></div>");
 	$(this).removeAttr('data-reply');
 	
 	var $limiter = $("span[data-limiter='#c"+$c.attr('data-c')+" textarea']");
