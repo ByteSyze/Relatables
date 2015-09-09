@@ -27,6 +27,3 @@ AddHandler fcgid-script .html
  FCGIWrapper /usr/local/cpanel/cgi-sys/php5 .html
 
 ErrorDocument 404 /notfound/
-
-#php_flag  display_errors        on
-#php_value error_reporting       2039

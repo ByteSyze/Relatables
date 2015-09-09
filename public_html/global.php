@@ -7,11 +7,6 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
 	session_start();
-	
-	if($_SERVER['SERVER_NAME'] != 'www.relatables.com' && $_SERVER['SERVER_NAME'] != 'relatables.com' && $_SESSION['test_acc'])
-		$_SESSION['id'] = 2; //If running from localhost, set account to Relatables Staff account.
-	else if($_SESSION['test_acc'] === false)
-		$_SESSION['id'] = 0;
 		
 	if($_SESSION['id'] == null)
 		$_SESSION['id'] = 0;
@@ -215,7 +210,7 @@
 				return self::REGISTER_INVALID_USER; // if username has wacky characters, die for now.
 			}
 			$uLen = strlen($user); // Get length of username
-			if(($uLen > 32) || ($uLen < 1))
+			if(($uLen > 16) || ($uLen < 1))
 			{
 				return self::REGISTER_INVALID_USER; // if username is larger than max length or less than one.
 			}
