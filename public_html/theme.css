@@ -54,6 +54,46 @@ div.social img {
 	width:100%;
 }
 
+.page-jumbo {
+  padding: 20px 0px;
+}
+
+.page-jumbo .grid.wrap {
+	padding: 0px 20px;
+}
+
+.page-jumbo .wrap h2 {
+  color: #4AD88F;
+}
+
+.page-jumbo .wrap .unit > a, 
+.page-jumbo .wrap .unit > span {
+  display: block;
+  font-size: 20px;
+  margin-top: 7px;
+  color: white;
+}
+
+.page-jumbo .wrap .unit > a {
+  text-decoration: underline;
+}
+
+.page-jumbo .wrap .unit > span {
+  float: left;
+}
+
+.page-jumbo .wrap .social {
+  display: inline-block;
+  margin: 0px;
+  min-height: 0px;
+}
+
+.page-jumbo .wrap p {
+  max-width: 450px;
+  font-size: 17px;
+  line-height: 19px;
+}
+
 .post-guidelines {
   overflow: hidden;
 }
