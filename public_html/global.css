@@ -484,6 +484,56 @@ span.padded {
   color: #8F95B3;
 }
 
+.page-jumbo .wrapper {
+  max-width: 978px;
+  margin: auto;
+}
+
+.page-jumbo .wrapper div {
+  min-height: 110px;
+  margin-top: -81px;
+}
+
+.page-jumbo .wrapper h2 {
+  color: #4AD88F;
+}
+
+.page-jumbo .wrapper .left {
+  float: left;
+}
+
+.page-jumbo .wrapper .right {
+  float: right;
+}
+
+.page-jumbo .wrapper .right > a, 
+.page-jumbo .wrapper .right > span {
+  display: block;
+  font-size: 20px;
+  margin-top: 7px;
+  color: white;
+}
+
+.page-jumbo .wrapper .right > a {
+  text-decoration: underline;
+}
+
+.page-jumbo .wrapper .right > span {
+  float: left;
+}
+
+.page-jumbo .wrapper .social {
+  display: inline-block;
+  margin: 0px;
+  min-height: 0px;
+}
+
+.page-jumbo .wrapper p {
+  max-width: 450px;
+  font-size: 17px;
+  line-height: 19px;
+}
+
 .boxes {
 	width:100%;
 }

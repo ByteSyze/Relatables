@@ -1,2 +1,5 @@
 User-agent: *
-Allow: /
+Disallow: /lib/
+Disallow: /verify/
+Disallow: /recover/
+Disallow: /notfound/

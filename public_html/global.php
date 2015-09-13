@@ -80,7 +80,7 @@
 				<div class='share-wrapper'><div>
 				<a href='http://www.facebook.com/sharer.php?u=$url'><div class='share-icon fb'></div></a>
 				<a href='https://plus.google.com/share?url=$url'><div class='share-icon gp'></div></a>
-				<a href='http://twitter.com/share?text=$text&url=$url&hashtags=Relatables'><div class='share-icon tw'></div></a>
+				<a href='http://twitter.com/share?text=Am I the only one?&url=$url&hashtags=Relatables'><div class='share-icon tw'></div></a>
 				</div>
 			</div>";
 		}

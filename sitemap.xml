@@ -13,19 +13,19 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://www.relatables.com/about/terms/</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
+  <loc>http://www.relatables.com/post/</loc>
+  <changefreq>always</changefreq>
+  <priority>0.99</priority>
 </url>
 <url>
   <loc>http://www.relatables.com/moderate/</loc>
   <changefreq>daily</changefreq>
-  <priority>0.80</priority>
+  <priority>0.90</priority>
 </url>
 <url>
-  <loc>http://www.relatables.com/about/</loc>
+  <loc>http://www.relatables.com/about/terms/</loc>
   <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
+  <priority>0.40</priority>
 </url>
 <url>
   <loc>http://www.relatables.com/about/faq/</loc>
@@ -35,26 +35,20 @@
 <url>
   <loc>http://www.relatables.com/about/blog/</loc>
   <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <priority>0.70</priority>
 </url>
 <url>
   <loc>http://www.relatables.com/about/blog/article/1</loc>
   <changefreq>never</changefreq>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.relatables.com/contact/</loc>
   <changefreq>never</changefreq>
-  <priority>0.80</priority>
+  <priority>0.60</priority>
 </url>
 <url>
   <loc>http://www.relatables.com/about/privacy/</loc>
   <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://www.relatables.com/user/Adam</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.64</priority>
+  <priority>0.40</priority>
 </url>
 </urlset>
