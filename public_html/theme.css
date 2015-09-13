@@ -92,6 +92,17 @@ div.social img {
   max-width: 450px;
   font-size: 17px;
   line-height: 19px;
+  color: white;
+}
+
+.grid .unit.one-third {
+  margin-left: -110px;
+}
+
+@media screen and (max-width: 1080px) {
+  .grid .unit.one-third {
+    margin-left: 0px;
+  }
 }
 
 .post-guidelines {
