@@ -41,7 +41,12 @@ function register()
 		$.post("/register.php", { username: $('#user_input').val(), password: $('#pass_input').val(), email: $('#email_input').val() }, function(data)
 		{
 			if(data.indexOf("success") != -1)
+			{
 				$('#registerbutton').val("Thank you");
+				$('#registerpopup').hide();
+				
+				createPopup("<h3>A verification email has been sent to " + $('#email_input').val() + ".</h3>");
+			}
 		});
 	}, true);
 }
