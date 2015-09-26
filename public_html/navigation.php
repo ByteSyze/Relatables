@@ -8,23 +8,23 @@
 	{
 		if(isset($_COOKIE["rrm"]) && isset($_COOKIE["rrmi"]))
 		{
-			$user = new User($_COOKIE["rrmi"], User::TYPE_INT);
+			$cUser = new User($_COOKIE["rrmi"], User::TYPE_INT);
 
-			if(password_verify($_COOKIE["rrm"], $user->getCookieLogin()))
+			if(password_verify($_COOKIE["rrm"], $cUser->getCookieLogin()))
 			{
-				$_SESSION['id']=$user->getID();
-				GlobalUtils::$user = $user;
+				$_SESSION['id']=$cUser->getID();
+				GlobalUtils::$cUser = $cUser;
 
 				GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 
 				//Update their last login date and unique cookie login ID.
-				$user->setLastLogin();
+				$cUser->setLastLogin();
 
-				$cookie_login = $user->generateCookieLogin();
-				$user->update();
+				$cookie_login = $cUser->generateCookieLogin();
+				$cUser->update();
 
 				$expire = time()+(60*60*24*365*5);
-				setcookie("rrmi", $user->getID(), $expire, '/');
+				setcookie("rrmi", $cUser->getID(), $expire, '/');
 				setcookie("rrm", $cookie_login, $expire, '/');
 			}
 		}

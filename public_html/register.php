@@ -48,7 +48,8 @@
 			$new_user->update();								////
 		
 			$subject = "Account Verification";
-			$body = "Hello " . $user . ",\n\nThank you for signing up on Relatables.com.\n\nTo activate your account, please goto the following link:\nhttp://www.relatables.com/verify?i=". $uid ."&v=" . $verification;
+			$body = "Hello " . $user . ",\n\nThanks for signing up! Please keep in mind that we're currently in beta, meaning some of our features are not yet complete. \n\nPlease click the link below to verify your account.\nhttp://www.relatables.com/verify?i=" . 
+					$uid . "&v=" . $verification . "\n\nIf you didn't sign up for Relatables, please ignore this message.\n\nThanks,\nThe Relatables Team";
 			 
 			$new_user->email($subject,$body);
 			

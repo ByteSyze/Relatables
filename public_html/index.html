@@ -65,46 +65,40 @@
 						<div class="boxes">
 							<div class="box">
 								<div class="box-content">
-									<?php
-										if($_SESSION['id'] != null) {
-											echo '<form id="submission-form" action="/submit.php" method="POST">';
-												echo '<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>';
-												echo '<div id="post-collapse">';
-													echo '<div class="buttons padded align-right">';
-														echo '<label for="submit-category">Category:</label><select id="submit-category" name="c">
-																<option value="0">Select Category</option>
-																<option value="1">Health</option>
-																<option value="2">Internet</option>
-																<option value="3">Funny</option>
-																<option value="4">People</option>
-																<option value="5">Family</option>
-																<option value="6">Food</option>
-																<option value="7">Personal</option>
-																<option value="8">Odd</option>
-																<option value="9">Other</option></select>';
-														echo '<label for="anonymous">Anonymous</label><input type="checkbox" id="anonymous" name="a" />';
-														echo '<span data-limiter="#submission" data-limit="300">279</span>';
-														echo '<button class="button blue-hover" type="submit">Submit</button>';
-													echo '</div>';
-													echo '<div class="post-guidelines">
-													<h4>Guidelines</h4>
-													<ul>
-													  <li>Posts should be well-written and original.</li>
-													  <li>Posts should start with "Am I the only one" and end with a question mark if necessary.</li>
-													</ul>
-													<h4>Rules</h4>
-													<ul>
-													  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
-													  <li>Posts should be suitable and appropriate for users.</li>
-													</ul>
-													<span class="warning">Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</span>
-													</div>';
-												echo '</div>';
-											echo '</form>';
-										} else {
-											echo '<textarea disabled class="input-submit" data-signup-header="Please sign up to submit">Am I the only one who</textarea>';
-										}
-									?>
+									<form id="submission-form" action="/submit.php" method="POST">
+										<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>
+										<div id="post-collapse">
+											<div class="buttons padded align-right">
+												<label for="submit-category">Category:</label><select id="submit-category" name="c">
+														<option value="0">Select Category</option>
+														<option value="1">Health</option>
+														<option value="2">Internet</option>
+														<option value="3">Funny</option>
+														<option value="4">People</option>
+														<option value="5">Family</option>
+														<option value="6">Food</option>
+														<option value="7">Personal</option>
+														<option value="8">Odd</option>
+														<option value="9">Other</option></select>
+												<label for="anonymous">Anonymous</label><input type="checkbox" id="anonymous" name="a" />
+												<span data-limiter="#submission" data-limit="300">279</span>
+												<button class="button blue-hover" type="submit">Submit</button>
+											</div>
+											<div class="post-guidelines">
+											<h4>Guidelines</h4>
+											<ul>
+											  <li>Posts should be well-written and original.</li>
+											  <li>Posts should start with "Am I the only one" and end with a question mark if necessary.</li>
+											</ul>
+											<h4>Rules</h4>
+											<ul>
+											  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
+											  <li>Posts should be suitable and appropriate for users.</li>
+											</ul>
+											<span class="warning">Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</span>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 
@@ -152,7 +146,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="unit one-third">
+					<div class="unit one-third"> 
 					</div>
 				</div>
 			</div>

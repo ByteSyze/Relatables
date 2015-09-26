@@ -71,7 +71,7 @@ $(document).on("click", "span[data-reply]", function()
 $(document).on("click", "button[data-r]", function()
 {
 	//Grab value from the textarea behind the reply button.
-	comment = $(this).prev().val();
+	comment = $(this).prev().prev().val();
 	button = $(this);
 	
 	rid = $(this).attr('data-r');

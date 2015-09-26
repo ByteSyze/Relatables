@@ -14,15 +14,18 @@
 	else if($category < 1 || $category > 20)
 		die('2');
 	
-	if(($_SESSION['id'] !== null))
+	if(($_SESSION['id'] == null))
 	{	
-		$connection = GlobalUtils::getConnection();
+		$_SESSION['id'] = 0;
+		$anon = 1;
+	}
+	
+	$connection = GlobalUtils::getConnection();
+	
+	if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, anonymous) VALUES (?,?,?,?,?)"))
+	{	
+		$temp_verif = 1234;
+		$statement->bind_param("iiisi",$_SESSION['id'], $temp_verif, $category, $submission, $anon);
 		
-		if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, anonymous) VALUES (?,?,?,?,?)"))
-		{	
-			$temp_verif = 1234;
-			$statement->bind_param("iiisi",$_SESSION['id'], $temp_verif, $category, $submission, $anon);
-			
-			echo ($statement->execute() ? 0 : -1);
-		}
+		echo ($statement->execute() ? 0 : -1);
 	}
