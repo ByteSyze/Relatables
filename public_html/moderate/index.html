@@ -59,6 +59,7 @@
 						
 						mysqli_query($connection, "UPDATE submissions SET notalone=notalone+1 $nsfw_mysql_code WHERE id=" . $submission['id']);
 						GlobalUtils::$user->incModerationIndex();
+						GlobalUtils::$user->incModerationCount();
 						GlobalUtils::$user->update();
 					}
 				}
@@ -73,6 +74,7 @@
 					{
 						mysqli_query($connection, 'UPDATE submissions SET alone=alone+1 WHERE id=' . $submission['id']);
 						GlobalUtils::$user->incModerationIndex();
+						GlobalUtils::$user->incModerationCount();
 						GlobalUtils::$user->update();
 					}
 				}
