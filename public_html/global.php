@@ -25,6 +25,12 @@
 		const DATATYPE_NUMBER			= "number";
 		const DATATYPE_ALLDATA			= "everything";
 		
+		const GLOBAL_CSS_VER			= "1";
+		const OTHER_CSS_VER				= "1";
+		
+		const GLOBAL_JS_VER				= "1";
+		const OTHER_JS_VER				= "1";
+		
 		private static $BLACKLISTED_EMAIL_HOSTS = null;
 		
 		const ENABLE_LOG				= false;
@@ -35,8 +41,8 @@
 		public static function getCSS()
 		{
 			$cwd = substr(getcwd(), strlen($_SERVER['DOCUMENT_ROOT']));
-			echo "\r\n<link rel='stylesheet' type='text/css' href='/global.css'>";
-			echo "\r\n<link rel='stylesheet' type='text/css' href='$cwd/theme.css'>";
+			echo "\r\n<link rel='stylesheet' type='text/css' href='/global.css?v=" . self::GLOBAL_CSS_VER . "'>";
+			echo "\r\n<link rel='stylesheet' type='text/css' href='$cwd/theme.css?v=" . self::OTHER_CSS_VER . "'>";
 			
 			foreach(func_get_args() as $extra)
 				echo "\r\n<link rel='stylesheet' type='text/css' href='/$extra.css'>";	
@@ -47,10 +53,10 @@
 		public static function getJS()
 		{
 			echo "\r\n<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
-			echo "\r\n<script type='text/javascript' src='/global.js'></script>";
+			echo "\r\n<script type='text/javascript' src='/global.js?v=" . self::GLOBAL_JS_VER . "'></script>";
 			
 			foreach(func_get_args() as $extra)
-				echo "\r\n<script type='text/javascript' src='/$extra.js'></script>";	
+				echo "\r\n<script type='text/javascript' src='/$extra.js?v=" . self::OTHER_JS_VER . "'></script>";	
 			echo "\r\n";
 		}
 

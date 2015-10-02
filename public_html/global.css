@@ -484,18 +484,32 @@ span.padded {
   color: #8F95B3;
 }
 
+.comment.tail {
+  display: inline-block;
+  position: absolute;
+  background-image: url('/images/icons/comment.png');
+  width: 23px;
+  height: 15px;
+  margin-top: 20px;
+  margin-left: -15px;
+}
+
+.comment.tail:hover {
+  background-image: url('/images/icons/comment-hover.png');
+}
+
 .boxes {
-	width:100%;
+  width:100%;
 }
 
 .box {
-	box-sizing: border-box;
-	border: solid 1px #DDDFEB;
-	-webkit-border-radius: 3px;
+  box-sizing: border-box;
+  border: solid 1px #DDDFEB;
+  -webkit-border-radius: 3px;
   border-radius: 3px;
-	-moz-border-radius: 3px;
-	background: #fff;
-	width:100%;
+  -moz-border-radius: 3px;
+  background: #fff;
+  width:100%;
 }
 .box.transparent {
   border: none;
@@ -614,8 +628,13 @@ span.padded {
 }
 
 .button.large {
-	font-size: 18px;
-	padding: 12px 14px;
+  font-size: 18px;
+  padding: 12px 14px;
+}
+
+.button.comment {
+  min-width: 18px;
+  text-align: center;
 }
 
 .button.green {
