@@ -25,10 +25,10 @@
 		const DATATYPE_NUMBER			= "number";
 		const DATATYPE_ALLDATA			= "everything";
 		
-		const GLOBAL_CSS_VER			= "1";
+		const GLOBAL_CSS_VER			= "2";
 		const OTHER_CSS_VER				= "1";
 		
-		const GLOBAL_JS_VER				= "1";
+		const GLOBAL_JS_VER				= "2";
 		const OTHER_JS_VER				= "1";
 		
 		private static $BLACKLISTED_EMAIL_HOSTS = null;

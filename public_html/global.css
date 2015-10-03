@@ -411,6 +411,11 @@ ul.navigation-items div.profile-icon {
   margin-bottom: 10px;
 }
 
+#user-guide-pop + .marker,
+#pass-guide-pop + .marker {
+  margin-left: 6px;
+}
+
 .popup-shade {
   z-index: 100;
   position: fixed;

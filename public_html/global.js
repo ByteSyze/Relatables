@@ -96,7 +96,7 @@ function verifyUser(successCallback, verifyAll)
 			return true;
 	}
 	
-	$img = $('#user_input').next();
+	$img = $('#user_input').next().next().next();
 	$pop = $('#username-popup');
 	
 	if(userVal.length < 3)
@@ -134,7 +134,7 @@ function verifyPassword(successCallback, verifyAll)
 	
 	newPasswordPopup.innerHTML = '';
 	
-	$img = $('#pass_input').next();
+	$img = $('#pass_input').next().next().next();
 	$pop = $('#new-password-popup');
 	
 	if(passVal.length == 0)
