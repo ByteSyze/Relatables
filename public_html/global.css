@@ -616,11 +616,11 @@ span.padded {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 
-	-webkit-transition: background-color 0.2s ease-in-out;
-	-moz-transition: background-color 0.2s ease-in-out;
-	-ms-transition: background-color 0.2s ease-in-out;
-	-o-transition: background-color 0.2s ease-in-out;
-	transition: background-color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in-out;
+	-moz-transition: color 0.2s ease-in-out;
+	-ms-transition: color 0.2s ease-in-out;
+	-o-transition: color 0.2s ease-in-out;
+	transition: color 0.2s ease-in-out;
 }
 
 .button.small {
@@ -692,7 +692,6 @@ span.padded {
 
 .button.yellow-hover:hover {
 	background-color: #DFE620;
-  color: ;
 }
 
 .button.transparent {
@@ -817,6 +816,8 @@ select {
   color: #777A8F;
   font-size: 100%;
   padding: 3px 5px;
+  
+  min-width: 135px;
 
   -webkit-appearance: none;
   -moz-appearance: none;

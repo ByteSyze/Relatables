@@ -423,7 +423,7 @@ function vote($button)
 		}
 		
 		notAloneEl.attr('data-vc',notAlone);
-		notAloneEl.html("No, me too! ("+notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')+")");
+		notAloneEl.html("You're not alone ("+notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')+")");
 		
 		aloneEl.attr('data-vc',alone);
 		aloneEl.html("You're alone ("+alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')+")");
