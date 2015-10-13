@@ -7,10 +7,7 @@
 .filters {
   padding: 0px 20px;
   margin-bottom: 20px;
-}
-.filters {
-  padding: 0px 20px;
-  margin-bottom: 20px;
+  text-align: center;
 }
 
 .filters .filter {
