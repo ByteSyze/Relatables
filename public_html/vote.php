@@ -47,4 +47,6 @@
 			}
 		}
 	}
+	
+	$connection->close();
 ?>

@@ -13,7 +13,7 @@
 			if(password_verify($_COOKIE["rrm"], $cUser->getCookieLogin()))
 			{
 				$_SESSION['id']=$cUser->getID();
-				GlobalUtils::$cUser = $cUser;
+				GlobalUtils::$user = $cUser;
 
 				GlobalUtils::log("$dbUser logged in", $_SESSION['id'], $_SERVER['REMOTE_ADDR']);
 

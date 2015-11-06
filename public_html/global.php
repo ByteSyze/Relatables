@@ -60,7 +60,7 @@
 			echo "\r\n";
 		}
 
-		public static function getMeta($keywords = array(), $description = 'Relatables is a compilation of user-submitted posts starting with the phrase "Am I the only one". We offer users the opportunity to share their thoughts, secrets, fears; you name it, only to discover how connected we truly are.', $share_type = 'website')
+		public static function getMeta($keywords = array(), $description = "Relatables provides a safe place for you to ask questions and share thoughts you wouldn't normally feel comfortable sharing. From your most secretive thoughts to your daily habits, you can share it all and see how many others relate.", $share_type = 'website')
 		{
 			$fdesc = htmlspecialchars($description, ENT_QUOTES);
 			echo "\r\n<meta charset='UTF-8'>";
