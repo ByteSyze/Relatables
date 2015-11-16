@@ -133,7 +133,7 @@ if($_SESSION['popup_msg'])
 	<div class="grid wrap wider no-gutters">
 		<div class="pull-left">
 			<ul class="navigation-items">
-				<li><a href="/" class="logo"><img src='/images/icons/logotextwhite.png' alt='Relatables / Am I The Only One?' title='Relatables / Am I The Only One?'></a></li>
+				<li><a href="/" class="logo"><img src='/images/icons/logotextwhite.png' alt='Relatables - Am I The Only One?' title='Relatables - Am I The Only One?'></a></li>
 				<li><a href="/moderate">Moderate</a></li>
 				<li>
 					<a href="/about" data-togg="#about-drop">About</a>
