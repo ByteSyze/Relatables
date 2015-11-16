@@ -32,7 +32,7 @@
 <!-- Copyright (C) Tyler Hackett 2014-->
 <html>
 	<head>
-		<title>Post #<?php echo $pid; ?></title>
+		<title>Relatables - <?php echo $post->getSubmission(); ?></title>
 		
 		<?php 
 			GlobalUtils::getMeta(array(), $post->getSubmission(), "article");
