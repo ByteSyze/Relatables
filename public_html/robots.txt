@@ -1,10 +1,10 @@
 User-agent: *
 
-Disallow: /lib/
-Disallow: /verify/
-Disallow: /recover/
-Disallow: /notfound/
-Disallow: /about/blog/new/
-Disallow: /about/blog/edit/
+Disallow: /lib
+Disallow: /verify
+Disallow: /recover
+Disallow: /notfound
+Disallow: /about/blog/new
+Disallow: /about/blog/edit
 
-sitemap:www.relatables.com/sitemap.xml
+Sitemap: http://www.relatables.com/sitemap.xml
