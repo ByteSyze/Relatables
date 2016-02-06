@@ -4,7 +4,7 @@
 	require_once 'global.php';
 
 	$page 		= intval($_GET['p']);
-	$order_by 	= intval($_GET['o']);
+	$order_by 	= $_GET['o'] ? intval($_GET['o']) : 2;
 	$category 	= intval($_GET['c']);
 	$nsfw		= intval($_GET['n']);
 	$display	= intval($_GET['d']);
@@ -12,7 +12,7 @@
 <html>
 	<head>
 		<title>Relatables - Am I the Only One? | Relatable Posts</title>
-
+		<meta name="msvalidate.01" content="6DC41857D2D3B59F2913194EAD906CDD" />
 		<?php
 			GlobalUtils::getMeta();
 			GlobalUtils::getCSS('submissiontheme');

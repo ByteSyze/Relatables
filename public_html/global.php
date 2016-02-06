@@ -29,7 +29,7 @@
 		const OTHER_CSS_VER				= "3";
 		
 		const GLOBAL_JS_VER				= "3";
-		const OTHER_JS_VER				= "1";
+		const OTHER_JS_VER				= "2";
 		
 		private static $BLACKLISTED_EMAIL_HOSTS = null;
 		
@@ -93,7 +93,7 @@
 		
 		public static function getFooter()
 		{
-			echo "<div class='footer'><div class='grid wrap wider no-gutters'><div class='right'><span>&copy; Relatables 2015</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div></div>";
+			echo "<div class='footer'><div class='grid wrap wider no-gutters'><div class='right'><span>&copy; Relatables 2016</span><a href='/about/privacy'>Privacy</a><a href='/about/terms'>Terms</a><a href='/contact'>Contact</a></div></div></div>";
 		}
 		
 		public static function formatComment($comment, $reply = null)
