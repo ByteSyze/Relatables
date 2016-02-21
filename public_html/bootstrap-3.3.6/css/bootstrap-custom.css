@@ -1,0 +1,24 @@
+/*Copyright (C) Tyler Hackett 2016*/
+/*Custom bootstrap styling.*/
+
+body { 
+  padding-top: 70px; 
+}
+.navbar-default {
+  background-color: #4A66D8; 
+}
+.navbar-default .navbar-nav > li > a {
+  color: #FFF; 
+}
+.navbar-brand { 
+  padding: 9px; 
+}
+.navbar-toggle {
+  border: none;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: #3049B0;
+}
