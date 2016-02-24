@@ -4,11 +4,30 @@
 body { 
   padding-top: 70px; 
 }
-.navbar-default {
+.dropdown-menu, .navbar-nav .open .dropdown-menu {
+  background-color: #3049B0;
+  border: none;
+}
+.dropdown-menu > li > a {
+  color: white;
+}
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+  background-color: inherit;
+}
+.navbar-default, .navbar-default .navbar-toggle:hover {
   background-color: #4A66D8; 
 }
 .navbar-default .navbar-nav > li > a {
   color: #FFF; 
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+  color: #FFF;
+  background-color: #3049B0;
 }
 .navbar-brand { 
   padding: 9px; 
@@ -19,6 +38,10 @@ body {
 .navbar-default .navbar-toggle .icon-bar {
   background-color: white;
 }
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+.navbar-default .navbar-toggle:focus {
+  background-color: #3049B0;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+  color: white;
   background-color: #3049B0;
 }
