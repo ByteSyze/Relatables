@@ -171,7 +171,7 @@ function updateUrl()
 		newurl = newurl+"&c="+($('#category').val()).toString();
 	}
 	
-	if($('#sort').val() != 2){
+	if($('#sort').val() != 0){
 		newurl = newurl+"&o="+($('#sort').val()).toString();
 	}
 	

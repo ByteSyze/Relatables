@@ -4,7 +4,7 @@
 	require_once 'global.php';
 
 	$page 		= intval($_GET['p']);
-	$order_by 	= $_GET['o'] ? intval($_GET['o']) : 2;
+	$order_by 	= $_GET['o'] ? intval($_GET['o']);
 	$category 	= intval($_GET['c']);
 	$nsfw		= intval($_GET['n']);
 	$display	= intval($_GET['d']);
