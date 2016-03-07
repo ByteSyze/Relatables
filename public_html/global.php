@@ -3,6 +3,8 @@
 	
 	ini_set("include_path", '/home/relatables/php:' . ini_get("include_path") );
 	
+	public $ROOTDIR = $_SERVER['DOCUMENT_ROOT'];
+	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/post.php';
 	
