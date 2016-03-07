@@ -29,6 +29,9 @@ body {
   color: #FFF;
   background-color: #3049B0;
 }
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #FFF;
+}
 .navbar-brand { 
   padding: 9px; 
 }

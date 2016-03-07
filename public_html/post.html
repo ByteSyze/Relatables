@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<?php $this->submission; ?>
+		<div class="post-actions" data-v="<?php $this->verification ?>">
+			<div class="buttons">
+				<?php
+				$button_yes_classes = "green-hover";
+				$button_no_classes = "red-hover";
+
+				if($_SESSION[id]) {
+						$button_yes_meta = $button_no_meta =  data-vid=" . $this->id . ";
+						
+						if($this->user_vote === 0)
+							$button_yes_classes = "green";
+						else if($this->user_vote === 1)
+							$button_no_classes = "red";
+							
+				} else {
+					$button_yes_meta = $button_no_meta = "data-signup-header=Please sign up to vote";
+				}
+				?>
+				<button class="button small <?php $button_yes_classes ?>"<?php $button_yes_meta ?>  data-vc="<?php $this->notalone ?>">You're not alone ( <?php number_format($this->notalone) ?> )</button>
+				<button class="button small <?php $button_no_classes ?>"<?php $button_no_meta ?> data-vc="<?php $this->alone ?>">You're alone ( <?php number_format($this->alone) ?> )</button>
+				<a href="/post/<?php $this->id ?>" class="button comment small"><!--<div class="comment tail"></div>-->Comments ( <?php $this->comment_count ?> )</a>
+				<?php GlobalUtils::getShareButton(/**Dont remove this absolute path*/"http://www.relatables.com/post/" . $this->id, ".$this->submission.") ?>
+
+			</div>
+			<div class="submission-info">
+				<?php
+				if($this->anonymous) {
+					echo "<span>$format_user</span>";
+				} else {
+					echo '<a class="user'; 
+
+					if($author->isAdmin())
+						echo ' admin';
+
+					echo  ' href="/user/' . $format_user . '">' . $format_user . '</a>';
+				}
+				?>
+				<span class="datediff"><?php $format_date_diff ?></span>
+			</div>
+		</div>
+	</div>
+</div>
