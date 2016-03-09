@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- Copyright (C) Tyler Hackett 2014-->
+<!-- Copyright (C) Tyler Hackett 2014 - 2016 -->
 <?php
-	require_once 'global.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/global.php';
 
 	$page 		= intval($_GET['p']);
 	$order_by 	= intval($_GET['o']);
@@ -9,17 +9,82 @@
 	$nsfw		= intval($_GET['n']);
 	$display	= intval($_GET['d']);
 ?>
-<html>
+<html lang="en">
 	<head>
 		<title>Relatables - Am I the Only One? | Relatable Posts</title>
 		<meta name="msvalidate.01" content="6DC41857D2D3B59F2913194EAD906CDD" />
 		<?php
 			GlobalUtils::getMeta();
-			GlobalUtils::getCSS('submissiontheme');
+			GlobalUtils::getCSS('submissiontheme', 'css/bootstrap.min', 'css/bootstrap-custom');
 		?>
+		
+		<!--<link href="/css/bootstrap.min.css" rel="stylesheet">-->
+		<!--<link href="/css/bootstrap-custom.css" rel="stylesheet">-->
 		<link rel='canonical' href='http://www.relatables.com/'>
 	</head>
 	<body>
+		<div class='container-fluid'>
+			<div class='row'>
+			
+				<div class='col-lg-3 col-sm-1'></div>
+				
+				<div class='col-lg-6 col-sm-10'>
+				
+					<div class='container-fluid main-content'>
+					
+						<h2>Have you ever wanted to ask others if they do or feel the same as you?</h2>
+						<h3>Ask that question below -- no sign up required!</h3>
+						
+						<div class='input-group'>
+							
+							<input type='text' class='form-control' id='submission-input'>
+							
+							<button class="btn" type="button">Ask!</button>
+							
+						</div>
+						
+						<div class='row posts'>
+						
+							<div class='col-md-12'>
+								<div class='panel panel-default'>
+									<div class='panel-body'>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+									</div>
+									<div class="panel-footer clearfix">
+									  <a href="#">You're not alone <span class="badge">1,456</span></a>
+									  <a href="#">You're alone <span class="badge">447</span></a>
+									  <a href="#">Comments <span class="badge">1.1k</span></a>
+									  <a href="#" role="button" data-toggle="popover"  data-placement="top" data-trigger="focus" data-content="And here's some amazing content. It's very engaging. Right?">Share</a>
+									  <span class='pull-right'><a href="#">Adam</a> (1yr ago)</span>
+									</div>
+								</div>
+							</div>
+							<div class='col-md-12'>
+								<div class='panel panel-default'>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+								</div>
+							</div>
+							<div class='col-md-12'>
+								<div class='panel panel-default'>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+								</div>
+							</div>
+							<div class='col-md-12'>
+								<div class='panel panel-default'>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class='col-lg-3 col-sm-1'></div>
+				
+			</div>
+		</div>
 		<script>
 		  window.fbAsyncInit = function() {
 			FB.init({
@@ -37,128 +102,13 @@
 			 fjs.parentNode.insertBefore(js, fjs);
 		   }(document, 'script', 'facebook-jssdk'));
 		</script>
-		<div class="content-wrapper">
-			<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
-			<div class="content">
-				<div class='page-jumbo about-jumbo'>
-					<div class='grid wrap wider no-gutters'>
-						<div class='unit two-thirds'>
-							<h2>Who we are.</h2>
-							<p>We provide a safe place for you to ask the world questions and share thoughts you wouldn't normally feel comfortable sharing. From your most secretive thoughts to your daily habits, you can share it all and see how many others relate.</p>
-						</div>
-						<div class='unit one-third'>
-							<h2>We're new, here's how to help.</h2>
-							<a href='/about/blog/article/1'>Letter from the creators</a>
-							<a href='/contact/'>Send feedback</a>
-							<span>Spread the word</span>
-							<div class='social'>
-								<a href='https://www.facebook.com/pages/Relatables/1388055181455491'><img src="/images/icons/fb_ico.png" alt="Relatables Facebook Page" /></a>
-								<a href='https://twitter.com/Relatablescom'><img src="/images/icons/tw_ico.png" alt="Relatables Twitter Page" /></a>
-								<a href='https://plus.google.com/share?url=http://www.relatables.com/'><img src="/images/icons/gp_ico.png"  alt="Relatables Google+ Page" /></a>
-								<a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"><img src="/images/icons/rd_ico.png" alt="Relatables Reddit Page" /></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="grid wrap wider">
-					<div class="unit two-thirds">
-						<div class="boxes">
-							<div class="box">
-								<div class="box-content">
-									<form id="submission-form" action="/submit.php" method="POST">
-										<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>
-										<div id="post-collapse">
-											<div class="buttons padded align-right">
-												<label for="submit-category">Category:</label><select id="submit-category" name="c">
-														<option value="0">Select Category</option>
-														<option value="1">Health</option>
-														<option value="2">Internet</option>
-														<option value="3">Funny</option>
-														<option value="4">People</option>
-														<option value="5">Family</option>
-														<option value="6">Food</option>
-														<option value="7">Personal</option>
-														<option value="8">Odd</option>
-														<option value="9">Other</option></select>
-												<label for="anonymous">Anonymous</label><input type="checkbox" id="anonymous" name="a" />
-												<span data-limiter="#submission" data-limit="300">279</span>
-												<button class="button blue-hover" type="submit">Submit</button>
-											</div>
-											<div class="post-guidelines">
-											<h4>Guidelines</h4>
-											<ul>
-											  <li>Posts should be well-written and original.</li>
-											  <li>Posts should start with "Am I the only one" and end with a question mark if necessary.</li>
-											</ul>
-											<h4>Rules</h4>
-											<ul>
-											  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
-											  <li>Posts should be suitable and appropriate for users.</li>
-											</ul>
-											<span class="warning">Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</span>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-
-							<div class="filters">
-								<div class="filter">
-									<label for="display">Display</label>
-									<select id='display'>
-										<option value='0'>20 per page</option>
-										<option value='1'>50 per page</option>
-										<option value='2'>Continuous</option>
-									</select>
-								</div>
-								<div class="filter">
-									<label for="category">Category</label>
-									<select id='category'>
-										<option value='0'>All Categories</option>
-										<option value='1'>Health</option>
-										<option value='2'>Internet</option>
-										<option value='3'>Funny</option>
-										<option value='4'>People</option>
-										<option value='5'>Family</option>
-										<option value='6'>Food</option>
-										<option value='7'>Personal</option>
-										<option value='8'>Odd</option>
-										<option value='9'>Other</option>
-									</select>
-								</div>
-								<div class="filter">
-									<label for="sort">Sort by</label>
-									<select id='sort'>
-										<option value='0'>Newest</option>
-										<option value='1'>Oldest</option>
-										<option value='2'>Most Relatable</option>
-										<option value='3'>Least Relatable</option>
-									</select>
-								</div>
-							</div>
-							<div id="posts"></div>
-						</div>
-						<div class="bottom-navigation">
-							<div class="buttons">
-								<span class="button" id="prev">previous</span>
-								<div  class="page-buttons"></div>
-								<span class="button blue-hover" id="next">next</span>
-							</div>
-						</div>
-					</div>
-					<div class="unit one-third"> 
-					</div>
-				</div>
-			</div>
-			<?php GlobalUtils::getFooter(); ?>
-
-		</div>
+		
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/js/bootstrap.min.js"></script>
+		
 		<script>
-			var page 		= <?php echo $page; ?>;
-			var order 		= <?php echo $order_by; ?>;
-			var category 	= <?php echo $category; ?>;
-			var display 	= <?php echo $display; ?>;
+		$(function () { $('[data-toggle="popover"]').popover(); });
 		</script>
-		<?php GlobalUtils::getJS('index'); ?>
 	</body>
 </html>
