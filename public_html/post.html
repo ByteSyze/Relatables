@@ -7,7 +7,8 @@
 				$button_yes_classes = "green-hover";
 				$button_no_classes = "red-hover";
 
-				if($_SESSION[id]) {
+				if($_SESSION[id]) 
+				{
 						$button_yes_meta = $button_no_meta =  data-vid=" . $this->id . ";
 						
 						if($this->user_vote === 0)
@@ -15,7 +16,8 @@
 						else if($this->user_vote === 1)
 							$button_no_classes = "red";
 							
-				} else {
+				} else 
+				{
 					$button_yes_meta = $button_no_meta = "data-signup-header=Please sign up to vote";
 				}
 				?>
@@ -27,9 +29,11 @@
 			</div>
 			<div class="submission-info">
 				<?php
-				if($this->anonymous) {
+				if($this->anonymous) 
+				{
 					echo "<span>$format_user</span>";
-				} else {
+				} else 
+				{
 					echo '<a class="user'; 
 
 					if($author->isAdmin())
