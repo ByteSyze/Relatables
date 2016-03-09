@@ -1,8 +1,10 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<?php $this->submission; ?>
+<div class='col-md-12'>
+	<div class='panel panel-default'>
+		<div class='panel-body'>
+			<?php $this->submission; ?>
+		</div>
 		<div class="post-actions" data-v="<?php $this->verification ?>">
-			<div class="buttons">
+			<div class="panel-footer clearfix">
 				<?php
 				$button_yes_classes = "green-hover";
 				$button_no_classes = "red-hover";
@@ -21,28 +23,27 @@
 					$button_yes_meta = $button_no_meta = "data-signup-header=Please sign up to vote";
 				}
 				?>
-				<button class="button small <?php $button_yes_classes ?>"<?php $button_yes_meta ?>  data-vc="<?php $this->notalone ?>">You're not alone ( <?php number_format($this->notalone) ?> )</button>
-				<button class="button small <?php $button_no_classes ?>"<?php $button_no_meta ?> data-vc="<?php $this->alone ?>">You're alone ( <?php number_format($this->alone) ?> )</button>
-				<a href="/post/<?php $this->id ?>" class="button comment small"><!--<div class="comment tail"></div>-->Comments ( <?php $this->comment_count ?> )</a>
+				<a class="button small <?php $button_yes_classes ?>"<?php $button_yes_meta ?>  data-vc="<?php $this->notalone ?>">You're not alone <span class="badge"> <?php number_format($this->notalone) ?> </span></a>
+				<a class="button small <?php $button_no_classes ?>"<?php $button_no_meta ?> data-vc="<?php $this->alone ?>">You're alone <span class="badge"> <?php number_format($this->alone) ?> </span></a>
+				<a href="/post/<?php $this->id ?>" class="button comment small"><!--<div class="comment tail"></div>-->Comments <span class="badge"> <?php $this->comment_count ?> </span></a>
 				<?php GlobalUtils::getShareButton(/**Dont remove this absolute path*/"http://www.relatables.com/post/" . $this->id, ".$this->submission.") ?>
+				<span class='pull-right'>
+					<?php
+					if($this->anonymous) 
+					{
+						echo "<span>$format_user</span>";
+					} else 
+					{
+						echo '<a class="user'; 
 
-			</div>
-			<div class="submission-info">
-				<?php
-				if($this->anonymous) 
-				{
-					echo "<span>$format_user</span>";
-				} else 
-				{
-					echo '<a class="user'; 
+						if($author->isAdmin())
+							echo ' admin';
 
-					if($author->isAdmin())
-						echo ' admin';
-
-					echo  ' href="/user/' . $format_user . '">' . $format_user . '</a>';
-				}
-				?>
-				<span class="datediff"><?php $format_date_diff ?></span>
+						echo  ' href="/user/' . $format_user . '">' . $format_user . '</a>';
+					}
+					?>
+					<span class="datediff"><?php $format_date_diff ?></span>
+				</span>
 			</div>
 		</div>
 	</div>
