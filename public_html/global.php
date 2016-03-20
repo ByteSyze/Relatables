@@ -47,7 +47,7 @@
 			echo "\r\n<link rel='stylesheet' type='text/css' href='$cwd/theme.css?v=" . self::OTHER_CSS_VER . "'>";
 			
 			foreach(func_get_args() as $extra)
-				echo "\r\n<link rel='stylesheet' type='text/css' href='/$extra.css'>";	
+				echo "\r\n<link rel='stylesheet' type='text/css' href='$extra.css'>";	
 			echo "\r\n";
 		}
 		
@@ -58,7 +58,7 @@
 			echo "\r\n<script type='text/javascript' src='/global.js?v=" . self::GLOBAL_JS_VER . "'></script>";
 			
 			foreach(func_get_args() as $extra)
-				echo "\r\n<script type='text/javascript' src='/$extra.js?v=" . self::OTHER_JS_VER . "'></script>";	
+				echo "\r\n<script type='text/javascript' src='$extra.js?v=" . self::OTHER_JS_VER . "'></script>";	
 			echo "\r\n";
 		}
 
