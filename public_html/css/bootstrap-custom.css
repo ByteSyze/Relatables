@@ -63,6 +63,9 @@ body {
   color: white;
   background-color: #3049B0;
 }
+.options .dropdown {
+  display: inline-block;
+}
 .panel-footer a {
   display: inline-block;
 }
