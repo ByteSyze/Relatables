@@ -168,19 +168,19 @@ function updateUrl()
 	var newurl = "?";
 	
 	if($('#category').val() != 0){
-		newurl = newurl+"&c="+($('#category').val()).toString();
+		newurl = newurl+"&category="+($('#category').val()).toString();
 	}
 	
 	if($('#sort').val() != 0){
-		newurl = newurl+"&o="+($('#sort').val()).toString();
+		newurl = newurl+"&order="+($('#sort').val()).toString();
 	}
 	
 	if($('#display').val() != 0){
-		newurl = newurl+"&d="+($('#display').val()).toString();
+		newurl = newurl+"&display="+($('#display').val()).toString();
 	}
 	
 	if(page != 0){
-		newurl = newurl+"&p="+page.toString();
+		newurl = newurl+"&page="+page.toString();
 	}
 	
 	var stateObj = {index: "index"};
