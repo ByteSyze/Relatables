@@ -16,7 +16,11 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
 RewriteRule ^post/(.*)$ post/index.html?id=$1 [QSA]
 
-AddHandler fcgid-script .html
- FCGIWrapper /usr/local/cpanel/cgi-sys/php5 .html
-
+<If "%{HTTP_HOST} == 'relatables.com'">
+	AddHandler fcgid-script .html
+	  #FCGIWrapper /usr/local/cpanel/cgi-sys/php5 .html
+</If>
+<Else>
+	AddHandler application/x-httpd-php .html
+</Else>
 ErrorDocument 404 /notfound/
