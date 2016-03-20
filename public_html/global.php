@@ -10,7 +10,7 @@
 	
 	session_start();
 		
-	if($_SESSION['id'] == null)
+	if(!isset($_SESSION['id']))
 		$_SESSION['id'] = 0;
 	
 	class GlobalUtils
