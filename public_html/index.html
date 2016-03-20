@@ -3,11 +3,11 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'].'/global.php';
 
-	$page 		= $_GET['page'] ? intval($_GET['page']) : 0;
-	$order_by 	= $_GET['order'] ? intval($_GET['order']) : 0;
-	$category 	= $_GET['category'] ? intval($_GET['category']) : 0;
-	$nsfw		= $_GET['nsfw'] ? intval($_GET['nsfw']) : 0;
-	$display	= $_GET['display'] ? intval($_GET['display']) : 0;
+	$page 		= isset($_GET['page']) ? intval($_GET['page']) : 0;
+	$order_by 	= isset($_GET['order']) ? intval($_GET['order']) : 0;
+	$category 	= isset($_GET['category']) ? intval($_GET['category']) : 0;
+	$nsfw		= isset($_GET['nsfw']) ? intval($_GET['nsfw']) : 0;
+	$display	= isset($_GET['display']) ? intval($_GET['display']) : 0;
 ?>
 <html lang="en">
 	<head>
