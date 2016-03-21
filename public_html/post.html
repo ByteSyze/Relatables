@@ -9,7 +9,7 @@
 				$button_yes_classes = "green-hover";
 				$button_no_classes = "red-hover";
 
-				if($_SESSION[id]) 
+				if(isset($_SESSION['id'])) 
 				{
 						$button_yes_meta = $button_no_meta =  "data-vid=" . $this->id;
 						
