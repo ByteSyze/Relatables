@@ -167,6 +167,11 @@
 		<?php GlobalUtils::getJS('/index', '/js/bootstrap.min'); ?>
 		
 		<script>
+			var page 		= <?php echo $page; ?>;
+			var order 		= <?php echo $order_by; ?>;
+			var category 	= <?php echo $category; ?>;
+			var display 	= <?php echo $display; ?>;
+			
 			$(function () { $('[data-toggle="popover"]').popover(); });
 		</script>
 	</body>
