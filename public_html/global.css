@@ -313,7 +313,7 @@ ul.navigation-items div.profile-icon {
 	margin-right: 10px;
 }
 
-.dropdown {
+.navigation-bar .dropdown {
 	background-color: #fff;
 	position: absolute;
 	width: 100%;
@@ -321,7 +321,7 @@ ul.navigation-items div.profile-icon {
 	left: 0;
 }
 
-.dropdown a {
+.navigation-bar .dropdown a {
 	width: 100%;
 	text-align: center;
 	background-color: #405AC7;
@@ -332,7 +332,7 @@ ul.navigation-items div.profile-icon {
 	box-shadow: inset 0px 1px #4D67D1;
 }
 
-.dropdown li:last-child a {
+.navigation-bar .dropdown li:last-child a {
 	border-bottom: none;
 }
 
