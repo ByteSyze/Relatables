@@ -26,10 +26,10 @@ body {
   padding: 2px 10px;
   margin: 4px 0px 0px -54px;
 }
-.hero, .main-content {
+.hero .container-fluid.hero, .main-content {
   max-width: 700px;
 }
-.hero .row {
+.hero.row {
   background-image: url('/images/media/hero.jpg');
   background-position: center;
   height: 400px;
