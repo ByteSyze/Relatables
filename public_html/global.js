@@ -495,7 +495,7 @@ $('body').on('click','[data-share-button]',function()
 		button.next().animate({width: '90px'},100,function(){button.html(openedShareText);});
 });
 
-$('.dropdown-menu a').click(function(){ $('#' + $(this).parent().parent().attr('data-dropdown')).html($(this).html())});
+$('.dropdown-menu a').click(function(){ $('#' + $(this).parent().parent().attr('data-dropdown')).html($(this).html()); $(this).parent().parent().trigger("change"); });
 
 $('#save-button').click(function(){ verifyUser(function(){ $('#settings-form').submit(); } ,true); return false; });
 
