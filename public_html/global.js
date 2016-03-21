@@ -495,6 +495,8 @@ $('body').on('click','[data-share-button]',function()
 		button.next().animate({width: '90px'},100,function(){button.html(openedShareText);});
 });
 
+$('.dropdown-menu a').click(function(){ $('#' + $(this).parent().parent().attr('data-dropdown')).html($(this).html())});
+
 $('#save-button').click(function(){ verifyUser(function(){ $('#settings-form').submit(); } ,true); return false; });
 
 $('#user_input').keydown(function(event){ checkLimit(event, $(this)[0], 32, false); });
