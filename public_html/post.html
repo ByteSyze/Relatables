@@ -1,14 +1,10 @@
 <?php
+	/*Copyright (C) Tyler Hacket 2016*/
+	
+	$author = $post->author;
 
-	function setPost($p)
-	{
-		$post = $p;
-		
-		$author = $post->author;
-		
-		$format_date_diff = $post->calculateDateDifference();
-		$format_user = $post->anonymous ? 'Anonymous' : $author->getUsername();
-	}
+	$format_date_diff = $post->calculateDateDifference();
+	$format_user = $post->anonymous ? 'Anonymous' : $author->getUsername();
 	
 ?>
 <div class='col-md-12'>

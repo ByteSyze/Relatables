@@ -242,10 +242,8 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{
-			
+			$post = $this;
 			include $_SERVER['DOCUMENT_ROOT']."/post.html";
-			
-			setPost($this);
 		}
 		
 		//Convert a numerical code to MYSQL syntax for ordering a query.
