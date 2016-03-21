@@ -25,7 +25,7 @@ $('body').on('click', '[data-p]', function()
 
 $(window).scroll(function()
 {
-	if($('#display').val() == 2)
+	if($('#display').html() == 'Continuous')
 	{
 		if($(window).scrollTop() + $(window).height() == $(document).height())
 		{
