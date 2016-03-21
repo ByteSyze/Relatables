@@ -72,7 +72,7 @@ body {
 .main-content .options  .dropdown button {
   border: none;
 }
-.main-content .options  .label {
+.main-content .options  .option-label {
   display: block;
   padding: 6px 0px;
   font-weight: bold;
