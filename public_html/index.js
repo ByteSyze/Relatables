@@ -135,7 +135,7 @@ function validate_data(objData){
 function paginate()
 {
 	
-	if($('#display').val() < 2)
+	if($('#display').html() != 'Continuous')
 	{
 		var page_start = 6 * Math.floor(page/6);
 	
