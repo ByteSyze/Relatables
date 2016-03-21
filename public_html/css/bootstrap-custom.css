@@ -63,8 +63,20 @@ body {
   color: white;
   background-color: #3049B0;
 }
-.options .dropdown {
+.main-content .options {
+	width: 81%;
+}
+.main-content .options  .dropdown {
   display: inline-block;
+}
+.main-content .options  .dropdown button {
+  border: none;
+}
+.main-content .options  .label {
+  display: block;
+  padding: 6px 0px;
+  font-weight: bold;
+  color: #0099F4;
 }
 .panel-footer a {
   display: inline-block;
