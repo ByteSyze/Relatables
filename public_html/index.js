@@ -35,7 +35,7 @@ $(window).scroll(function()
 	}
 });
 
-$('#sort, #display, #category, #nsfw').change(function()
+$('#sort, #display, #category, #nsfw').on('change', function()
 {
 	paginate();
 });
