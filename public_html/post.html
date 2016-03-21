@@ -1,3 +1,16 @@
+<?php
+
+	function setPost($post)
+	{
+		$this = $post;
+		
+		$author = $this->author;
+		
+		$format_date_diff = $this->calculateDateDifference();
+		$format_user = $this->anonymous ? 'Anonymous' : $author->getUsername();
+	}
+	
+?>
 <div class='col-md-12'>
 	<div class='panel panel-default'>
 		<div class='panel-body'>
@@ -29,7 +42,7 @@
 				<?php GlobalUtils::getShareButton(/**Dont remove this absolute path*/"http://www.relatables.com/post/" . $this->id, ".$this->submission.") ?>
 				<span class='pull-right'>
 					<?php
-					if($this->anonymous) 
+					if($this->anonymous)
 					{
 						echo "<span>$format_user</span>";
 					} else 

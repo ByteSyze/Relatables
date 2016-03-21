@@ -242,12 +242,10 @@
 		/**Prints a formatted AITOO post.*/
 		public function format()
 		{
-			$author = $this->author;
-			
-			$format_date_diff = $this->calculateDateDifference();
-			$format_user = $this->anonymous ? 'Anonymous' : $author->getUsername();
 			
 			include $_SERVER['DOCUMENT_ROOT']."/post.html";
+			
+			setPost($this);
 		}
 		
 		//Convert a numerical code to MYSQL syntax for ordering a query.
