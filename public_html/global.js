@@ -448,8 +448,6 @@ $('#pwrecoveryform').submit(function()
 
 $(document).ready(function()
 {
-	$('.dropdown').hide();
-	
 	$('[data-limiter]').each(function()
 	{
 		var $limiter = $(this);

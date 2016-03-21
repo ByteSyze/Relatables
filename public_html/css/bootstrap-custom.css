@@ -40,7 +40,7 @@ body {
   height: 400px;
 }
 .main-content .options {
-	width: 81%;
+	width: 86%;
 	padding: 20px 0px;
 }
 .main-content .options  .dropdown {
@@ -48,6 +48,7 @@ body {
 }
 .main-content .options  .dropdown button {
   border: none;
+  padding: 6px 6px;
 }
 .main-content .options  .option-label {
   display: block;
