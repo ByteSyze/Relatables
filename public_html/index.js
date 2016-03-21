@@ -101,9 +101,9 @@ $('#submission-form').focusout(function()
 
 $(document).ready(function()
 {
-	$('#category').val(category);
-	$('#display').val(display);
-	$('#sort').val(order);
+	$('#category').html(category);
+	$('#display').html(display);
+	$('#sort').html(order);
 	
 	paginate();
 	
@@ -167,16 +167,16 @@ function updateUrl()
 {
 	var newurl = "?";
 	
-	if($('#category').val() != 0){
-		newurl = newurl+"&category="+($('#category').val()).toString();
+	if($('#category').html() != 'All Categories'){
+		newurl = newurl+"&category="+$('#category').html();
 	}
 	
-	if($('#sort').val() != 0){
-		newurl = newurl+"&order="+($('#sort').val()).toString();
+	if($('#sort').html() != 'Newest'){
+		newurl = newurl+"&order="+$('#sort').html();
 	}
 	
-	if($('#display').val() != 0){
-		newurl = newurl+"&display="+($('#display').val()).toString();
+	if($('#display').html() != '20 per page'){
+		newurl = newurl+"&display="+$('#display').html();
 	}
 	
 	if(page != 0){
@@ -193,15 +193,15 @@ function updatePosts()
 {
 	var x;
 	
-	if($('#display').val() != 1)
+	if($('#display').html() == '20 per page')
 		x = 20;
 	else
 		x = 50;
 
-	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(), n:1}, function(data)
+	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').html(),  c:$('#category').html(), n:1}, function(data)
 	{
 		
-		if($('#display').val() < 2)
+		if($('#display').html() != 'Continuous')
 		{
 			$('#posts').empty();
 		}
@@ -209,7 +209,7 @@ function updatePosts()
 		$('#posts').append(data);
 	});
 	
-	if($('#display').val() != 2)
+	if($('#display').html() != 'continuous')
 		window.scrollTo(0,0);
 }
  
