@@ -11,7 +11,7 @@
 
 				if($_SESSION[id]) 
 				{
-						$button_yes_meta = $button_no_meta =  data-vid=" . $this->id . ";
+						$button_yes_meta = $button_no_meta =  "data-vid=" . $this->id;
 						
 						if($this->user_vote === 0)
 							$button_yes_classes = "green";

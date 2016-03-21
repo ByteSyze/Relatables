@@ -247,7 +247,7 @@
 			$format_date_diff = $this->calculateDateDifference();
 			$format_user = $this->anonymous ? 'Anonymous' : $author->getUsername();
 			
-			include "$ROOTDIR/post.html";
+			include $_SERVER['DOCUMENT_ROOT']."/post.html";
 		}
 		
 		//Convert a numerical code to MYSQL syntax for ordering a query.
