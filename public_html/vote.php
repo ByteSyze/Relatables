@@ -3,7 +3,7 @@
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 	
-	if($_SESSION['id'] == 0)
+	if($_SESSION['id'] != 0)
 	{
 			
 		$id 			= $_POST['q'];	//Submission ID.
