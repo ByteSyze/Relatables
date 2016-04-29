@@ -4,10 +4,10 @@
 	require_once $_SERVER['DOCUMENT_ROOT'].'/global.php';
 
 	$page 		= isset($_GET['page']) ? intval($_GET['page']) : 0;
-	$order_by 	= isset($_GET['order']) ? intval($_GET['order']) : 0;
-	$category 	= isset($_GET['category']) ? intval($_GET['category']) : 0;
+	$order_by 	= isset($_GET['order']) ? intval($_GET['order']) : "Newest";
+	$category 	= isset($_GET['category']) ? intval($_GET['category']) : "All-Categories";
 	$nsfw		= isset($_GET['nsfw']) ? intval($_GET['nsfw']) : 0;
-	$display	= isset($_GET['display']) ? intval($_GET['display']) : 0;
+	$display	= isset($_GET['display']) ? intval($_GET['display']) : "20-per-page";
 ?>
 <html lang="en">
 	<head>
@@ -51,9 +51,9 @@
 			</div>
 			<div class='row'>
 			
-				<div class='col-lg-3 col-sm-1'></div>
+				<div class='col-lg-3 col-sm-0'></div>
 				
-				<div class='col-lg-6 col-sm-10'>
+				<div class='col-lg-6 col-sm-12'>
 				
 					<div class='container-fluid main-content'>
 						
@@ -62,42 +62,39 @@
 								<div class='col-md-4 col-sm-12 clearfix'>
 									<span class='option-label pull-left'>Show</span>
 									<div class="dropdown pull-right">
-										<button class="btn btn-default dropdown-toggle" type="button" id="display" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">20 per page</button>
-										<ul class="dropdown-menu" aria-labelledby="display" data-dropdown='display'>
-											<li><a href="#">20 per page</a></li>
-											<li><a href="#">50 per page</a></li>
-											<li><a href="#">Continuous</a></li>
-										</ul>
+										<select aria-labelledby="display" data-dropdown='display'>
+											<option value='20'>20 per page</option>
+											<option value='50'>50 per page</option>
+											<option value='Continuous'>Continuous</option>
+										</select>
 									</div>
 								</div>
 								<div class='col-md-4 col-sm-12 clearfix'>
 									<span class='option-label pull-left'>Type</span>
 									<div class="dropdown pull-right">
-										<button class="btn btn-default dropdown-toggle" type="button" id="category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">All Categories</button>
-										<ul class="dropdown-menu" aria-labelledby="display" data-dropdown='category'>
-											<li><a href="#">All Categories</a></li>
-											<li><a href="#">Health</a></li>
-											<li><a href="#">Internet</a></li>
-											<li><a href="#">Funny</a></li>
-											<li><a href="#">People</a></li>
-											<li><a href="#">Family</a></li>
-											<li><a href="#">Food</a></li>
-											<li><a href="#">Personal</a></li>
-											<li><a href="#">Odd</a></li>
-											<li><a href="#">Other</a></li>
-										</ul>
+										<select aria-labelledby="display" data-dropdown='category'>
+											<option value='All'>All Categories</option>
+											<option value='Health'>Health</option>
+											<option value='Internet'>Internet</option>
+											<option value='Funny'>Funny</option>
+											<option value='People'>People</option>
+											<option value='Family'>Family</option>
+											<option value='Food'>Food</option>
+											<option value='Personal'>Personal</option>
+											<option value='Odd'>Odd</option>
+											<option value='Other'>Other</option>
+										</select>
 									</div>
 								</div>
 								<div class='col-md-4 col-sm-12 clearfix'>
 									<span class='option-label pull-left'>Sort by</span>
 									<div class="dropdown pull-right">
-										<button class="btn btn-default dropdown-toggle" type="button" id="sort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Newest</button>
-										<ul class="dropdown-menu" aria-labelledby="display" data-dropdown='sort'>
-											<li><a href="#">Newest</a></li>
-											<li><a href="#">Oldest</a></li>
-											<li><a href="#">Most Relatable</a></li>
-											<li><a href="#">Least Relatable</a></li>
-										</ul>
+										<select aria-labelledby="display" data-dropdown='sort'>
+											<option value='Newest'>Newest</option>
+											<option value='Oldest'>Oldest</option>
+											<option value='Relatable'>Most Relatable</option>
+											<option value='Unrelatable'>Least Relatable</option>
+										</select>
 									</div>
 								</div>
 							</div>
@@ -141,7 +138,7 @@
 					
 				</div>
 				
-				<div class='col-lg-3 col-sm-1'></div>
+				<div class='col-lg-3 col-sm-0'></div>
 				
 			</div>
 		</div>
@@ -169,9 +166,9 @@
 		
 		<script>
 			var page 		= <?php echo $page; ?>;
-			var order 		= <?php echo $order_by; ?>;
-			var category 	= <?php echo $category; ?>;
-			var display 	= <?php echo $display; ?>;
+			var order 		= "<?php echo str_replace("-", " ", $order_by); ?>";
+			var category 	= "<?php echo str_replace("-", " ", $category); ?>";
+			var display 	= "<?php echo str_replace("-", " ", $display); ?>";
 			
 			$(function () { $('[data-toggle="popover"]').popover(); });
 		</script>

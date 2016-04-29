@@ -135,7 +135,7 @@ function validate_data(objData){
 function paginate()
 {
 	
-	if($('#display').html() != 'Continuous')
+	if($('#display').val() != 'Continuous')
 	{
 		var page_start = 6 * Math.floor(page/6);
 	
@@ -167,16 +167,16 @@ function updateUrl()
 {
 	var newurl = "?";
 	
-	if($('#category').html() != 'All Categories'){
-		newurl = newurl+"&category="+$('#category').html();
+	if($('#category').val() != 'All'){
+		newurl = newurl+"&category="+$('#category').val();
 	}
 	
-	if($('#sort').html() != 'Newest'){
-		newurl = newurl+"&order="+$('#sort').html();
+	if($('#sort').val() != 'Newest'){
+		newurl = newurl+"&order="+$('#sort').val();
 	}
 	
-	if($('#display').html() != '20 per page'){
-		newurl = newurl+"&display="+$('#display').html();
+	if($('#display').val() != '20'){
+		newurl = newurl+"&display="+$('#display').val();
 	}
 	
 	if(page != 0){
@@ -193,7 +193,7 @@ function updatePosts()
 {
 	var x;
 	
-	if($('#display').html() == '20 per page')
+	if($('#display').val() == '20')
 		x = 20;
 	else
 		x = 50;
@@ -201,7 +201,7 @@ function updatePosts()
 	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').html(),  c:$('#category').html(), n:1}, function(data)
 	{
 		
-		if($('#display').html() != 'Continuous')
+		if($('#display').val() != 'Continuous')
 		{
 			$('#posts').empty();
 		}
@@ -209,7 +209,7 @@ function updatePosts()
 		$('#posts').append(data);
 	});
 	
-	if($('#display').html() != 'continuous')
+	if($('#display').val() != 'Continuous')
 		window.scrollTo(0,0);
 }
  
