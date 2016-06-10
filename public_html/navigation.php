@@ -112,7 +112,7 @@ GlobalUtils::createPopup('pwrecoverypopup', 'Recover Password', "
 }
 
 //Display any error message.
-if($_SESSION['error_msg'])
+if(!empty($_SESSION['error_msg']))
 {
 	$error = $_SESSION['error_msg'];
 	unset($_SESSION['error_msg']);
@@ -120,7 +120,7 @@ if($_SESSION['error_msg'])
 	GlobalUtils::createPopupVisible("errorpopup", "Oops!", "<span class='popup-small'>$error</span>");
 }
 //Display any popup message.
-if($_SESSION['popup_msg'])
+if(!empty($_SESSION['popup_msg']))
 {
 	$popup = $_SESSION['popup_msg'];
 	unset($_SESSION['popup_msg']);

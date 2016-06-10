@@ -100,11 +100,7 @@ $('#submission-form').focusout(function()
 });
 
 $(document).ready(function()
-{
-	$('#category').html(category);
-	$('#display').html(display);
-	$('#sort').html(order);
-	
+{	
 	paginate();
 	
 	guidelineHeight = $('.post-guidelines').height() + 10;
