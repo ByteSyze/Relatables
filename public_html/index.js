@@ -25,7 +25,7 @@ $('body').on('click', '[data-p]', function()
 
 $(window).scroll(function()
 {
-	if($('#display').html() == 'Continuous')
+	if($('#display').val() == 'Continuous')
 	{
 		if($(window).scrollTop() + $(window).height() == $(document).height())
 		{
@@ -189,12 +189,12 @@ function updatePosts()
 {
 	var x;
 	
-	if($('#display').val() == '20')
-		x = 20;
-	else
+	if($('#display').val() == '50')
 		x = 50;
+	else
+		x = 20;
 
-	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').html(),  c:$('#category').html(), n:1}, function(data)
+	$.post('/getposts.php', {s:page, x:x,  o:$('#sort').val(),  c:$('#category').val(), n:1}, function(data)
 	{
 		
 		if($('#display').val() != 'Continuous')

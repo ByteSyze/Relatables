@@ -251,13 +251,13 @@
 		{
 			switch($order)
 			{
-				case '0':
+				case 'Newest':
 					return 'ORDER BY submissions.date DESC';
-				case '1':
+				case 'Oldest':
 					return 'ORDER BY submissions.date ASC';
-				case '2':
+				case 'Relatable':
 					return 'ORDER BY (SELECT COUNT(*) FROM related WHERE pid=submissions.id AND alone=0) DESC';
-				case '3':
+				case 'Unrelatable':
 					return 'ORDER BY (SELECT COUNT(*) FROM related WHERE pid=submissions.id AND alone=1) DESC';
 				default:
 					return 'ORDER BY submissions.date DESC';
@@ -267,10 +267,30 @@
 		//Convert a numerical code to MYSQL syntax for selecting a submission category.
 		public static function cat2mysql($cat)
 		{
-			if($cat >= 1 && $cat <= 100)
-				return 'AND category = '.$cat;
-			else
-				return '';
+			$sqlCon = " AND category = ";
+		    switch ($cat)
+		    {
+				case "Health":
+					return $sqlCon . "1 ";
+				case "Internet":
+					return $sqlCon . "2 ";
+				case "Funny":
+					return $sqlCon . "3 ";
+				case "People":
+					return $sqlCon . "4 ";
+				case "Family":
+					return $sqlCon . "5 ";
+				case "Food":
+					return $sqlCon . "6 ";
+				case "Personal":
+					return $sqlCon . "7 ";
+				case "Odd":
+					return $sqlCon . "8 ";
+				case "Other":
+					return $sqlCon . "9 ";
+				default :
+					return "";
+			}
 		}
 		
 		//Convert a numerical code to MYSQL syntax for including NSFW posts.
