@@ -55,8 +55,8 @@ $('#next').click(function()
 	paginate();
 });
 
-$( "#submission-form" ).submit(function() {
-
+$( "#submission-form" ).submit(function() 
+{
 	submission = $("#submission").val();
 	$( "#submission-wrapper" ).append("");
 	category = $("#submit-category").val();
@@ -108,7 +108,8 @@ $(document).ready(function()
 });
 
 
-function validate_data(objData){
+function validate_data(objData)
+{
 	s = objData.s;
 	c = objData.c;
 	if(!s.trim()) {
@@ -130,7 +131,6 @@ function validate_data(objData){
 
 function paginate()
 {
-	
 	if($('#display').val() != 'Continuous')
 	{
 		var page_start = 6 * Math.floor(page/6);
@@ -156,7 +156,6 @@ function paginate()
 	
 	updatePosts();
 	updateUrl();
-
 }
 
 function updateUrl()
@@ -164,7 +163,7 @@ function updateUrl()
 	var newurl = "?";
 	
 	if($('#category').val() != 'All'){
-		newurl = newurl+"&category="+$('#category').val();
+		newurl = newurl+"category="+$('#category').val();
 	}
 	
 	if($('#sort').val() != 'Newest'){
@@ -181,8 +180,7 @@ function updateUrl()
 	
 	var stateObj = {index: "index"};
     
-	window.history.replaceState(stateObj,'',newurl);	
-
+	window.history.replaceState(stateObj,'',newurl);
 }
 
 function updatePosts()
