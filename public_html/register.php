@@ -12,6 +12,7 @@
 	// stupid and gonna get what they deserve. End of.
 	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/password.php';
 	
 	

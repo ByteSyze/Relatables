@@ -3,7 +3,8 @@
 	
 	class User
 	{
-		const MAIL_FROM = "From: Relatables <noreply@relatables.com>";
+		const MAIL_FROM 	= "From: Relatables <noreply@relatables.com>";
+		const MAIL_FRETURN 	= "-freturn@relatables.com";
 		
 		const TYPE_STRING 	= 's';
 		const TYPE_INT		= 'i';
@@ -420,7 +421,7 @@
 			if($use_pending)
 				mail($this->getPendingEmail(), $subject, $message, self::MAIL_FROM);
 			else
-				mail($this->getEmail(), $subject, $message, self::MAIL_FROM);
+				mail($this->getEmail(), $subject, $message, self::MAIL_FROM, self::MAIL_FRETURN);
 		}
 	
 	}
