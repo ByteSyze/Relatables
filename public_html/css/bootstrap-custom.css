@@ -60,6 +60,9 @@ body {
   color: #0099F4;
   width: 49px;
 }
+.modal .modal-dialog {
+	max-width: 350px;
+}
 .navbar-default, .navbar-default .navbar-toggle:hover {
   background-color: #4A66D8; 
 }

@@ -79,23 +79,23 @@ if(!empty($_SESSION['popup_msg']))
 				<div style='text-align:center;margin:auto;width:100%;'>
 					<div>
 						<form method='post' class=''>
-							<div>
+							<div class='form-group'>
 								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username'>
 								<div class='input-info-icon' data-togg='#user-guide-pop'></div>
 								<div id='user-guide-pop' class='info-popup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
 								<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
 							</div>
-							<div>
+							<div class='form-group'>
 								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password'>
 								<div class='input-info-icon' data-togg='#pass-guide-pop'></div>
 								<div id='pass-guide-pop' class='info-popup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
 								<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
 							</div>
-							<div>
+							<div class='form-group'>
 								<input id='repass_input' class='form-control' type='password' name='repassword' placeholder='Confirm Password'>
 								<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
 							</div>
-							<div>
+							<div class='form-group'>
 								<input id='email_input' class='form-control' type='email' name='email' placeholder='Email'>
 								<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 							</div>
