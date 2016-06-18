@@ -35,7 +35,7 @@ body {
   padding-top: 5em;
 }
 .hero .container-fluid.hero, .main-content {
-  max-width: 700px;
+  max-width: 745px;
 }
 .hero.row {
   background-image: url('/images/media/hero.jpg');
