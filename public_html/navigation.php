@@ -69,64 +69,66 @@ if(!empty($_SESSION['popup_msg']))
 }
 ?>
 <?php if($_SESSION['id'] == null) : ?>
-<div class='modal fade' id='registerpopup' >
-	<div class='modal-content'>
-		<div class='buttons'>
-			<button class='button blue-hover smaller'>X</button>
-		</div>
-		<h1 class='popup-title'>Sign Up</h1>
-		<h6>If you already have an account, <a class='showlogin'>Log In</a></h6>
-		<div style='text-align:center;margin:auto;width:100%;'>
-			<div>
-				<form method='post' class='vertical'>
-					<div>
-						<input id='user_input' class='textbox' type='text' name='username' placeholder='Username'>
-						<div class='input-info-icon' data-togg='#user-guide-pop'></div>
-						<div id='user-guide-pop' class='info-popup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
-						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
-					</div>
-					<div>
-						<input id='pass_input' class='textbox' type='password' autocomplete='off' name='password' placeholder='Password'>
-						<div class='input-info-icon' data-togg='#pass-guide-pop'></div>
-						<div id='pass-guide-pop' class='info-popup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
-						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
-					</div>
-					<div>
-						<input id='repass_input' class='textbox' type='password' name='repassword' placeholder='Confirm Password'>
-						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
-					</div>
-					<div>
-						<input id='email_input' class='textbox' type='text' name='email' placeholder='Email'>
-						<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
-					</div>
-					<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
-					<div style='padding-top:10px' class='buttons'>
-						<input id='registerbutton' class='button blue-hover block' type='submit' value='Sign Up'>
-					</div>
-				</form>
+<div class='modal fade' role='dialog' id='registerpopup' >
+	<div class="modal-dialog">
+		<div class='modal-content'>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h1 class='popup-title'>Sign Up</h1>
+			<h6>If you already have an account, <a class='showlogin'>Log In</a></h6>
+			<div style='text-align:center;margin:auto;width:100%;'>
+				<div>
+					<form method='post' class='vertical'>
+						<div>
+							<input id='user_input' class='textbox' type='text' name='username' placeholder='Username'>
+							<div class='input-info-icon' data-togg='#user-guide-pop'></div>
+							<div id='user-guide-pop' class='info-popup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
+							<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
+						</div>
+						<div>
+							<input id='pass_input' class='textbox' type='password' autocomplete='off' name='password' placeholder='Password'>
+							<div class='input-info-icon' data-togg='#pass-guide-pop'></div>
+							<div id='pass-guide-pop' class='info-popup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
+							<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
+						</div>
+						<div>
+							<input id='repass_input' class='textbox' type='password' name='repassword' placeholder='Confirm Password'>
+							<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
+						</div>
+						<div>
+							<input id='email_input' class='textbox' type='text' name='email' placeholder='Email'>
+							<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
+						</div>
+						<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
+						<div style='padding-top:10px' class='buttons'>
+							<input id='registerbutton' class='button blue-hover block' type='submit' value='Sign Up'>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class='popup' id='loginpopup' >
-	<div class='buttons'>
-		<button class='button blue-hover smaller'>X</button>
-	</div>
-	<h1 class='popup-title'>Log In</h1>
-	<h6>If you don't have an account, <a data-signup-header='Sign Up'>Sign up</a></h6>
-	<form class='vertical' method='post' action='javascript:login();'>
-		<div><input id='login_user_input' type='text' name='u' placeholder='Username'></div>
-		<div><input id='login_pass_input' type='password' name='p' placeholder='Password'></div>
-		<div id='login-errors'></div>
-		<div class='buttons padded align-center'>
-			<div class='login-extras'>
-				<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
-				<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>
-			</div>
-			<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
+<div class='modal fade' role='dialog' id='loginpopup' >
+	<div class="modal-dialog">
+		<div class='modal-content'>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h1 class='popup-title'>Log In</h1>
+			<h6>If you don't have an account, <a data-signup-header='Sign Up'>Sign up</a></h6>
+			<form class='vertical' method='post' action='javascript:login();'>
+				<div><input id='login_user_input' type='text' name='u' placeholder='Username'></div>
+				<div><input id='login_pass_input' type='password' name='p' placeholder='Password'></div>
+				<div id='login-errors'></div>
+				<div class='buttons padded align-center'>
+					<div class='login-extras'>
+						<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
+						<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>
+					</div>
+					<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
+				</div>
+			</form>
 		</div>
-	</form>
+	</div>
 </div>
 
 <div class='popup' id='pwrecoverypopup' >
@@ -171,8 +173,8 @@ if(!empty($_SESSION['popup_msg']))
 		</li>
 	  </ul>
 	  <ul class="nav navbar-nav navbar-right">
-		<li><a href="#" data-toggle='modal' data-target='#myModal'>Log In</a></li>
-		<li><a href="#">Sign Up</a></li>
+		<li><a href="#" data-toggle='modal' data-target='#loginpopup'>Log In</a></li>
+		<li><a href="#" data-toggle='modal' data-target='#registerpopup'>Sign Up</a></li>
 	  </ul>
 	</div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
