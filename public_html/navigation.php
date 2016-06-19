@@ -80,16 +80,12 @@ if(!empty($_SESSION['popup_msg']))
 					<div>
 						<form method='post'>
 							<div class='form-group has-feedback'>
-								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username'>
+								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username' data-toggle="tooltip" data-placement="right" title='Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)'>
 								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-								<div class='input-info-icon' data-togg='#user-guide-pop'></div>
-								<div id='user-guide-pop' class='info-popup'><span>Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)</span></div>
 							</div>
 							<div class='form-group has-feedback'>
-								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password'>
+								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password' data-toggle="tooltip" data-placement="right" title='Password must be atleast 6 characters long. There are no limitations on which characters you can use.'>
 								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-								<div class='input-info-icon' data-togg='#pass-guide-pop'></div>
-								<div id='pass-guide-pop' class='info-popup'><span>Password must be atleast 6 characters long. There are no limitations on which characters you can/can't use.</span></div>
 							</div>
 							<div class='form-group has-feedback'>
 								<input id='repass_input' class='form-control' type='password' name='repassword' placeholder='Confirm Password'>
