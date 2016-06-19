@@ -475,6 +475,8 @@ $(document).ready(function()
 			$limiter.html(limit-charCount);
 		});
 	});
+	
+	$('[data-toggle="tooltip"]').tooltip();
 });
 
 $(document).on('click', function(event)
