@@ -78,7 +78,7 @@ if(!empty($_SESSION['popup_msg']))
 				<h6>If you already have an account, <a class='showlogin'>Log In</a></h6>
 				<div style='text-align:center;margin:auto;width:100%;'>
 					<div>
-						<form method='post' class=''>
+						<form method='post'>
 							<div class='form-group has-feedback'>
 								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username'>
 								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
@@ -118,17 +118,21 @@ if(!empty($_SESSION['popup_msg']))
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1 class='popup-title'>Log In</h1>
 				<h6>If you don't have an account, <a data-signup-header='Sign Up'>Sign up</a></h6>
-				<form class='' method='post' action='javascript:login();'>
-					<input id='login_user_input' type='text' class='form-control' name='u' placeholder='Username'>
-					<input id='login_pass_input' type='password' class='form-control' name='p' placeholder='Password'>
-					<div id='login-errors'></div>
-					<div class='buttons padded align-center'>
-						<div class='login-extras'>
-							<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
-							<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>
-						</div>
-						<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
+				<form method='post' action='javascript:login();'>
+					<div class='form-group has-feedback'>
+						<input id='login_user_input' type='text' class='form-control' name='u' placeholder='Username'>
+						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
 					</div>
+					<div class='form-group has-feedback'>
+						<input id='login_pass_input' type='password' class='form-control' name='p' placeholder='Password'>
+						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+					</div>
+					<div id='login-errors'></div>
+					<div class='login-extras'>
+						<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
+						<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>
+					</div>
+					<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
 				</form>
 			</div>
 		</div>
