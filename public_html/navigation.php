@@ -77,25 +77,25 @@ if(!empty($_SESSION['popup_msg']))
 			<div class='modal-body'>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1 class='popup-title'>Sign Up</h1>
-				<h6>If you already have an account, <a>Log In</a></h6>
+				<h6>If you already have an account, <a href='#' data-toggle='modal' data-target='#registerpopup, #loginpopup'>Log In</a></h6>
 				<div style='text-align:center;margin:auto;width:100%;'>
 					<div>
 						<form method='post'>
 							<div class='form-group has-feedback'>
 								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username' data-toggle="tooltip" data-placement="right" title='Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)'>
-								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<div class='form-group has-feedback'>
 								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password' data-toggle="tooltip" data-placement="right" title='Password must be atleast 6 characters long. There are no limitations on which characters you can use.'>
-								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<div class='form-group has-feedback'>
 								<input id='repass_input' class='form-control' type='password' name='repassword' placeholder='Confirm Password'>
-								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<div class='form-group has-feedback'>
 								<input id='email_input' class='form-control' type='email' name='email' placeholder='Email'>
-								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
 							<div style='padding-top:10px' class='buttons'>
@@ -115,7 +115,7 @@ if(!empty($_SESSION['popup_msg']))
 			<div class='modal-body'>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1 class='popup-title'>Log In</h1>
-				<h6>If you don't have an account, <a data-signup-header='Sign Up'>Sign up</a></h6>
+				<h6>If you don't have an account, <a  href='#' data-toggle='modal' data-target='#registerpopup, #loginpopup'>Sign up</a></h6>
 				<form method='post' action='javascript:login();'>
 					<div class='form-group has-feedback'>
 						<input id='login_user_input' type='text' class='form-control' name='u' placeholder='Username'>
@@ -163,7 +163,7 @@ if(!empty($_SESSION['popup_msg']))
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	  </button>
-	  <a class='navbar-brand' href='#'>
+	  <a class='navbar-brand' href='/'>
 	  <img alt="Relatables" src='/images/icons/logotextwhite.png'>
 	  </a>
 	</div>
