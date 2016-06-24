@@ -2,10 +2,10 @@
 /*Custom bootstrap styling.*/
 
 body { 
-  padding-top: 70px; 
+  padding-top: 50px; 
 }
 .dropdown-menu, .navbar-nav .open .dropdown-menu {
-  background-color: #3049B0;
+  background-color: #458caa;
   border: none;
 }
 .dropdown-menu > li > a {
@@ -67,7 +67,8 @@ body {
   min-width:300px;
 }
 .navbar-default, .navbar-default .navbar-toggle:hover {
-  background-color: #4A66D8; 
+  background-color: #badce8; 
+  border: none;
 }
 .navbar-default .navbar-nav > li > a {
   color: #FFF; 
@@ -79,7 +80,7 @@ body {
 }
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
   color: #FFF;
-  background-color: #3049B0;
+  background-color: #458caa;
 }
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
   color: #FFF;
@@ -98,7 +99,7 @@ body {
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
   color: white;
-  background-color: #3049B0;
+  background-color: #458caa;
 }
 .panel-footer a {
   display: inline-block;
