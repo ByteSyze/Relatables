@@ -61,7 +61,10 @@ body {
   width: 49px;
 }
 .modal .modal-dialog {
-	max-width: 350px;
+  max-width: 350px;
+}
+.modal .form-group .tooltip {
+  min-width:300px;
 }
 .navbar-default, .navbar-default .navbar-toggle:hover {
   background-color: #4A66D8; 
