@@ -211,7 +211,7 @@ function verifyEmail(successCallback, verifyAll)
 {
 	$pop = $('#email-popup');
 	$input = $('#email_input');
-	$glyph = input.next();
+	$glyph = $input.next();
 	
 	var emailVal = $input.val();
 	
