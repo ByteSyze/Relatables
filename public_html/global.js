@@ -1,33 +1,22 @@
 /*Copyright (C) Tyler Hackett 2014*/
 
-var user 				 = document.getElementById('user_input');
-var userGlyph 		 = document.getElementById('user-glyph');
-var pass 				 = document.getElementById('pass_input');
-var passGlyph 		 = document.getElementById('pass-glyph');
-var rePass 				 = document.getElementById('repass_input');
-var rePassGlyph 	 = document.getElementById('repass-glyph');
-var currentPass 		 = document.getElementById('currentpass_input');
-var currentPassGlyph = document.getElementById('currentpass-glyph');
-var email 				 = document.getElementById('email_input');
-var emailGlyph 		 = document.getElementById('email-glyph');
+var user 		 = document.getElementById('user_input');
+var pass 		 = document.getElementById('pass_input');
+var rePass 		 = document.getElementById('repass_input');
+var currentPass  = document.getElementById('currentpass_input');
+var email 		 = document.getElementById('email_input');
 
-var rememberEl 			 = document.getElementById('remember_input');
+var rememberEl 	 = document.getElementById('remember_input');
 
-var loginUser			 = document.getElementById('login_user_input');
+var loginUser	 = document.getElementById('login_user_input');
 
-var loginPass			 = document.getElementById('login_pass_input');
-var passLog				 = document.getElementById('login_pass_log');
+var loginPass	 = document.getElementById('login_pass_input');
+var passLog		 = document.getElementById('login_pass_log');
 
-var usernamePopup 		 = document.getElementById('username-popup');
-var currentPasswordPopup = document.getElementById('current-password-popup');
-var newPasswordPopup 	 = document.getElementById('new-password-popup');
-var renewPasswordPopup 	 = document.getElementById('renew-password-popup');
-var emailPopup 			 = document.getElementById('email-popup');
+var userRegex 	 = /^[A-Za-z0-9_]+$/;
 
-var userRegex 			 = /^[A-Za-z0-9_]+$/;
-
-var openedShareText = 'Share «';
-var closedShareText = 'Share »';
+var openedShareText 	= 'Share «';
+var closedShareText 	= 'Share »';
 
 var MARKER_NOMARK 		= 0;
 var MARKER_XMARK 		= 1;
@@ -96,7 +85,7 @@ function verifyUser(successCallback, verifyAll)
 			return true;
 	}
 	
-	$glyph = $('#user_input').next().next().next();
+	$glyph = $('#user_input').next();
 	$pop = $('#username-popup');
 	
 	if(userVal.length < 3)
@@ -132,9 +121,7 @@ function verifyPassword(successCallback, verifyAll)
 {
 	var passVal = pass.value;	
 	
-	newPasswordPopup.innerHTML = '';
-	
-	$glyph = $('#pass_input').next().next().next();
+	$glyph = $('#pass_input').next();
 	$pop = $('#new-password-popup');
 	
 	if(passVal.length == 0)
@@ -161,8 +148,6 @@ function verifyRePassword(successCallback, verifyAll)
 	var passVal 		= pass.value;
 	var rePassVal 		= rePass.value;
 	
-	renewPasswordPopup.innerHTML = '';
-	
 	$glyph = $('#repass_input').next();
 	$pop = $('#renew-password-popup');
 	
@@ -185,8 +170,6 @@ function verifyCurrentPassword(successCallback, verifyAll)
 {
 	var passVal = currentPass.value;
 	var valid = false;
-	
-	currentPasswordPopup.innerHTML = '';
 	
 	$glyph = $('#currentpass_input').next();
 	$pop = $('#currentpass-popup');
@@ -225,8 +208,6 @@ function verifyCurrentPassword(successCallback, verifyAll)
 function verifyEmail(successCallback, verifyAll)
 {
 	var emailVal = $('#email_input').val();
-	
-	emailPopup.innerHTML = '';
 	
 	$glyph = $('#email_input').next();
 	$pop = $('#email-popup');
@@ -301,30 +282,6 @@ function setGlyph($glyph, $msg, msg, marker)
 		
 	if(msg)
 		$msg.html(msg);
-}
-
-function hideAll()
-{
-	$('.popup').hide();
-	resetRegister();
-}
-
-function showLogin()
-{
-	hideAll();
-	$('#loginpopup').show();
-}
-
-function showRegister(message)
-{
-	hideAll();
-	$('#registerheader').html(message);
-	$('#registerpopup').show();
-}
-
-function resetRegister()
-{
-	$('#registerpopup :input').not('[type="submit"]').val('');
 }
 
 function updateMessageStatus(id)
@@ -501,26 +458,16 @@ $('.dropdown-menu a').click(function(){ $('#' + $(this).parent().parent().attr('
 
 $('#save-button').click(function(){ verifyUser(function(){ $('#settings-form').submit(); } ,true); return false; });
 
-$('#user_input').keydown(function(event){ checkLimit(event, $(this)[0], 32, false); });
-
 $('#user_input').keyup(function(){ verifyUser(0, false); });
 $('#pass_input').keyup(function(){ verifyPassword(0, false); });
 $('#repass_input').keyup(function(){ verifyRePassword(0, false); });
 $('#email_input').keyup(function(){ verifyEmail(0, false); });
 $('#recovery-email').keyup(function(){ verifyRecoveryEmail(); });
 
-//$('[data-err-popup]').mouseover(function(){ if($(this).next().first().html()) $(this).next().first().show(); });
-//$('[data-err-popup]').mouseout(function(){ $(this).next().first().hide(); });
-
 $('body').on('click', '.popup > .buttons > button', function(){ $(this).parent().parent().hide(); });
 $('body').on('click', '[data-vid]', function(){ vote($(this)); });
 
-$('.showlogin').click(function(){showLogin();});
-
 $('#registerpopup form').submit(function(){ register(); return false;  });
-
-$('[data-signup-header]').click(function(){showRegister($(this).attr('data-signup-header'));});
-$('[data-signup-hide]').click(function(){ $('registerpopup').hide(); resetRegister();});
 
 $('body').on('click', '[data-show]',function(){ $($(this).attr('data-show')).show(); return false; });
 $('body').on('click', '[data-hide]',function(){ $($(this).attr('data-hide')).hide(); return false; });

@@ -68,14 +68,16 @@ if(!empty($_SESSION['popup_msg']))
 	GlobalUtils::createPopupVisible("infopopup", "", "<span class='popup-small'>$popup</span>");
 }
 ?>
+
 <?php if($_SESSION['id'] == null) : ?>
+
 <div class='modal fade' role='dialog' id='registerpopup' >
 	<div class="modal-dialog">
 		<div class='modal-content'>
 			<div class='modal-body'>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1 class='popup-title'>Sign Up</h1>
-				<h6>If you already have an account, <a class='showlogin'>Log In</a></h6>
+				<h6>If you already have an account, <a>Log In</a></h6>
 				<div style='text-align:center;margin:auto;width:100%;'>
 					<div>
 						<form method='post'>
@@ -148,7 +150,9 @@ if(!empty($_SESSION['popup_msg']))
 		</div>
 	</form>
 </div>
+
 <?php endif; ?>
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
 	<!-- Brand and toggle get grouped for better mobile display -->
@@ -167,12 +171,12 @@ if(!empty($_SESSION['popup_msg']))
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	  <ul class="nav navbar-nav">
-		<li><a href="#">Moderate</a></li>
+		<li><a href="/moderate">Moderate</a></li>
 		<li class="dropdown">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
 		  <ul class="dropdown-menu">
-			<li><a href="#">FAQ</a></li>
-			<li><a href="#">Blog</a></li>
+			<li><a href="/about/faq">FAQ</a></li>
+			<li><a href="/about/blog">Blog</a></li>
 		  </ul>
 		</li>
 	  </ul>
