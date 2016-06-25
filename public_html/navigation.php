@@ -82,11 +82,11 @@ if(!empty($_SESSION['popup_msg']))
 					<div>
 						<form method='post'>
 							<div class='form-group has-feedback'>
-								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username' data-toggle="tooltip" data-placement="right" title='Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)'>
+								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username' data-toggle="tooltip" data-placement="bottom" title='Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)'>
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<div class='form-group has-feedback'>
-								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password' data-toggle="tooltip" data-placement="right" title='Password must be atleast 6 characters long. There are no limitations on which characters you can use.'>
+								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password' data-toggle="tooltip" data-placement="bottom" title='Password must be atleast 6 characters long. There are no limitations on which characters you can use.'>
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<div class='form-group has-feedback'>
