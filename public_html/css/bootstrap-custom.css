@@ -13,6 +13,7 @@ body {
 }
 .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
   background-color: inherit;
+  color: black !important;
 }
 .hero > h2, .hero > h3 {
   text-align: center;
