@@ -117,18 +117,16 @@ if(!empty($_SESSION['popup_msg']))
 				<h1 class='popup-title'>Log In</h1>
 				<h6>If you don't have an account, <a  href='#' data-toggle='modal' data-target='#registerpopup, #loginpopup'>Sign up</a></h6>
 				<form method='post' action='javascript:login();'>
-					<div class='form-group has-feedback'>
+					<div class='form-group'>
 						<input id='login_user_input' type='text' class='form-control' name='u' placeholder='Username'>
-						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
 					</div>
-					<div class='form-group has-feedback'>
+					<div class='form-group'>
 						<input id='login_pass_input' type='password' class='form-control' name='p' placeholder='Password'>
-						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
 					</div>
 					<div id='login-errors'></div>
 					<div class='login-extras'>
 						<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
-						<a class='forgot-password' data-show='#pwrecoverypopup' data-hide='#loginpopup'>Forgot password?</a>
+						<a class='forgot-password' data-toggle='modal' data-target='#pwrecoverypopup, #loginpopup'>Forgot password?</a>
 					</div>
 					<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
 				</form>
@@ -137,18 +135,22 @@ if(!empty($_SESSION['popup_msg']))
 	</div>
 </div>
 
-<div class='popup' id='pwrecoverypopup' >
-	<div class='buttons'>
-		<button class='button blue-hover smaller'>X</button>
-	</div>
-	<h1 class='popup-title'>Recover Password</h1>
-	<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
-		<input id='recovery-email' type='text' name='e' placeholder='Email'>
-		<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
-		<div class='buttons padded align-center'>
-			<input type='submit' value='Submit' class='button blue-hover block' type='submit' />
+<div class='modal fade' role='dialog' id='pwrecoverypopup' >
+	<div class="modal-dialog">
+		<div class='modal-content'>
+			<div class='modal-body'>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1 class='popup-title'>Recover Password</h1>
+				<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
+					<input id='recovery-email' type='text' name='e' placeholder='Email'>
+					<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
+					<div class='buttons padded align-center'>
+						<input type='submit' value='Submit' class='button blue-hover block' type='submit' />
+					</div>
+				</form>
+			</div>
 		</div>
-	</form>
+	</div>
 </div>
 
 <?php endif; ?>
