@@ -84,18 +84,22 @@ if(!empty($_SESSION['popup_msg']))
 							<div class='form-group has-feedback'>
 								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username' data-toggle="tooltip" data-placement="bottom" title='Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)'>
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								<div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
 							</div>
 							<div class='form-group has-feedback'>
 								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password' data-toggle="tooltip" data-placement="bottom" title='Password must be atleast 6 characters long. There are no limitations on which characters you can use.'>
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								<div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
 							</div>
 							<div class='form-group has-feedback'>
 								<input id='repass_input' class='form-control' type='password' name='repassword' placeholder='Confirm Password'>
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								<div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
 							</div>
 							<div class='form-group has-feedback'>
 								<input id='email_input' class='form-control' type='email' name='email' placeholder='Email'>
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								<div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 							</div>
 							<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
 							<div style='padding-top:10px' class='buttons'>
@@ -143,7 +147,7 @@ if(!empty($_SESSION['popup_msg']))
 				<h1 class='popup-title'>Recover Password</h1>
 				<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
 					<div class='form-group has-feedback'>
-						<input id='recovery-email' type='text' name='e' placeholder='Email'>
+						<input id='recovery-email' class='form-control' type='text' name='e' placeholder='Email'>
 						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 					</div>
 					<div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
