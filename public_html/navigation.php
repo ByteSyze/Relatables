@@ -142,8 +142,11 @@ if(!empty($_SESSION['popup_msg']))
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1 class='popup-title'>Recover Password</h1>
 				<form class='vertical' method='post' action='/recover.php' id='pwrecoveryform'>
-					<input id='recovery-email' type='text' name='e' placeholder='Email'>
-					<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
+					<div class='form-group has-feedback'>
+						<input id='recovery-email' type='text' name='e' placeholder='Email'>
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+					</div>
+					<div class='popup-offset'><div class='error-popup' id='recovery-email-popup'></div></div>
 					<div class='buttons padded align-center'>
 						<input type='submit' value='Submit' class='button blue-hover block' type='submit' />
 					</div>
