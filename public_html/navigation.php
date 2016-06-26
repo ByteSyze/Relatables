@@ -190,8 +190,24 @@ if(!empty($_SESSION['popup_msg']))
 		</li>
 	  </ul>
 	  <ul class="nav navbar-nav navbar-right">
+		<?php if($_SESSION['id'] == null) : ?>
 		<li><a href="#" data-toggle='modal' data-target='#loginpopup'>Log In</a></li>
 		<li><a href="#" data-toggle='modal' data-target='#registerpopup'>Sign Up</a></li>
+		<?php else : ?>
+		<li class='dropdown'>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="icon notifications-icon"></div></a>
+			<ul id="notif-drop"  class="dropdown-menu notifications-dropdown">
+				<!-- /////////////////// TODO -->
+			</ul>
+		</li>
+		<li class='dropdown'>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="icon profile-icon"></div></a>
+			<ul id="prof-drop"  class="dropdown-menu">
+				<li><a href="/user/<?php echo GlobalUtils::$user->getUsername()l ?>">Profile</a></li><li><a href="/settings/account">Settings</a></li>
+				<li><a href="/signout.php">Signout</a></li>
+			</ul>
+		</li>
+		<?php endif; ?>
 	  </ul>
 	</div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
