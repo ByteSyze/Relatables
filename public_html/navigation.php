@@ -203,7 +203,7 @@ if(!empty($_SESSION['popup_msg']))
 		<li class='dropdown'>
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="icon profile-icon"></div></a>
 			<ul id="prof-drop"  class="dropdown-menu">
-				<li><a href="/user/<?php echo GlobalUtils::$user->getUsername()l ?>">Profile</a></li><li><a href="/settings/account">Settings</a></li>
+				<li><a href="/user/<?php echo GlobalUtils::$user->getUsername(); ?>">Profile</a></li><li><a href="/settings/account">Settings</a></li>
 				<li><a href="/signout.php">Signout</a></li>
 			</ul>
 		</li>
