@@ -70,7 +70,7 @@ function verifyUser(successCallback, verifyAll)
 	
 	if(userVal == '')
 	{
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_NOMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_NOMARK);
 		if(verifyAll)
 		{
 			if(currentPass)
@@ -105,7 +105,7 @@ function verifyUser(successCallback, verifyAll)
 				}
 				else
 				{
-					setInputVerification($input.parent(), $glyph, 0, 0, MARKER_CHECKMARK);
+					setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_CHECKMARK);
 					
 					if(verifyAll)
 						verifyPassword(successCallback, verifyAll);
@@ -125,12 +125,12 @@ function verifyPassword(successCallback, verifyAll)
 	$glyph = $input.next().next();
 	
 	if(passVal.length == 0)
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_NOMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_NOMARK);
 	else if(passVal.length < 6)
 		setInputVerification($input.parent(), $glyph, $pop, 'Password must be atleast 6 characters long.', MARKER_XMARK);
 	else
 	{
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_CHECKMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_CHECKMARK);
 		verifyRePassword(successCallback);
 	}
 	
@@ -153,12 +153,12 @@ function verifyRePassword(successCallback, verifyAll)
 	$glyph = $input.next();
 	
 	if(passVal.length == 0 && rePassVal == 0)
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_NOMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_NOMARK);
 	else if(passVal !== rePassVal)
 		setInputVerification($input.parent(), $glyph, $pop, 'Password verification doesn\'t match original password.', MARKER_XMARK);
 	else
 	{
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_CHECKMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_CHECKMARK);
 		
 		if(verifyAll)
 			verifyEmail(successCallback, verifyAll);
@@ -178,7 +178,7 @@ function verifyCurrentPassword(successCallback, verifyAll)
 	
 	if((passVal == '') && (pass.value == '') && (rePass.value == ''))
 	{
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_NOMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_NOMARK);
 		
 		if(verifyAll)
 			verifyPassword(successCallback, verifyAll);
@@ -193,7 +193,7 @@ function verifyCurrentPassword(successCallback, verifyAll)
 		{
 				if(data == "0")
 				{
-					setInputVerification($input.parent(), $glyph, 0, 0, MARKER_CHECKMARK);
+					setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_CHECKMARK);
 					valid = true;
 					
 					if(verifyAll)
@@ -217,7 +217,7 @@ function verifyEmail(successCallback, verifyAll)
 	
 	if(emailVal == '')
 	{
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_NOMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_NOMARK);
 		if(verifyAll)
 		{
 			successCallback();
@@ -241,7 +241,7 @@ function verifyEmail(successCallback, verifyAll)
 			}
 			else
 			{
-				setInputVerification($input.parent(), $glyph, 0, 0, MARKER_CHECKMARK);
+				setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_CHECKMARK);
 				
 				if(successCallback)
 					successCallback();
@@ -266,13 +266,13 @@ function verifyRecoveryEmail()
 		$.post("/verifyEmail.php", {e: $('#recovery-email').val()}, function(data)
 		{
 			if(data !== '0')
-				setInputVerification($input.parent(), $glyph, 0, 0, MARKER_CHECKMARK);
+				setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_CHECKMARK);
 			else
 				setInputVerification($input.parent(), $glyph, $pop, 'There is no account linked to that email.', MARKER_XMARK);
 		});	
 	}
 	else
-		setInputVerification($input.parent(), $glyph, 0, 0, MARKER_NOMARK);
+		setInputVerification($input.parent(), $glyph, $pop, 0, MARKER_NOMARK);
 }
 
 function setInputVerification($inputGroup, $glyph, $msg, msg, marker)
@@ -295,6 +295,8 @@ function setInputVerification($inputGroup, $glyph, $msg, msg, marker)
 		
 	if(msg)
 		$msg.html(msg);
+	else
+		$msg.html('');
 }
 
 function updateMessageStatus(id)
