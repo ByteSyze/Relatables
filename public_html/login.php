@@ -18,6 +18,7 @@
 	$remember = $_POST['r'];
 	
 	$user = new User($username, User::TYPE_STRING);
+	$dbUser = $user->getUsername();
 	
 	if(!$user->exists())
 		die('1');
