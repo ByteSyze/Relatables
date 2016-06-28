@@ -130,7 +130,7 @@ if(!empty($_SESSION['popup_msg']))
 					<div id='login-errors'></div>
 					<div class='login-extras'>
 						<div><label for='r'>Remember me</label><input id='remember_input' type='checkbox' name='r' value='1'></div>
-						<a class='forgot-password' data-toggle='modal' data-target='#pwrecoverypopup, #loginpopup'>Forgot password?</a>
+						<a class='forgot-password' role='button' data-toggle='modal' data-target='#pwrecoverypopup, #loginpopup'>Forgot password?</a>
 					</div>
 					<input type='submit' value='Log In' class='button blue-hover block' type='submit' />
 				</form>
