@@ -34,10 +34,11 @@
 						
 						<div class='input-group'>
 							
-							<input type='text' class='form-control' id='submission-input'>
 							<?php if($_SESSION['id'] == 0) : ?>
+							<input type='text' class='form-control' id='submission-input' data-toggle="modal" data-target="#registerpopup">
 							<button class="btn" type="button" data-toggle="modal" data-target="#registerpopup">Ask!</button>
 							<?php else : ?>
+							<input type='text' class='form-control' id='submission-input'>
 							<button class="btn" type="button">Ask!</button>
 							<div class="post-guidelines">
 								<div class="guidelines-container">

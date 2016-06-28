@@ -105,12 +105,11 @@ div.social img {
   top: -10px;
   left: -10px;
   right: -10px;
-  height: 0px;
 }
 
 .post-guidelines .guidelines-container {
   background-color: white;
-  padding: 20px;
+  padding: 40px 20px 20px;
   border: 1px solid #DDD;
   border-radius: 5px;
 }
