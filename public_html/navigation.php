@@ -119,7 +119,7 @@ if(!empty($_SESSION['popup_msg']))
 			<div class='modal-body'>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1 class='popup-title'>Log In</h1>
-				<h6>If you don't have an account, <a  href='#' data-toggle='modal' data-target='#registerpopup, #loginpopup'>Sign up</a></h6>
+				<h6>If you don't have an account, <a  href='#' data-toggle='modal' data-target=' #loginpopup, #registerpopup'>Sign up</a></h6>
 				<form method='post' action='javascript:login();'>
 					<div class='form-group'>
 						<input id='login_user_input' type='text' class='form-control' name='u' placeholder='Username'>
