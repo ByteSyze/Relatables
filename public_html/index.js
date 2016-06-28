@@ -85,7 +85,10 @@ $( "#submission-form" ).submit(function()
 
 $('#submission-form').focusin(function()
 {
-	$('.post-guidelines').animate({'height': guidelineHeight+'px'},200);
+	$('.post-guidelines').css('height', 'auto');
+	guidelineHeight = $('.post-guidelines').height();
+	
+	$('.post-guidelines').animate({'height': guidelineHeight+'px'}, 200, "swing", function(){ $('.post-guidelines').css('height', 'auto'); });
 });
 
 $('#submission-form').focusout(function()
@@ -103,7 +106,6 @@ $(document).ready(function()
 {	
 	paginate();
 	
-	guidelineHeight = $('.post-guidelines').height() + 10;
 	$('.post-guidelines').height('0px');
 });
 
