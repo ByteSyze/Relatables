@@ -90,7 +90,7 @@
 									<?php
 										$now = new DateTime();
 										
-										if($statement)
+										if(isset($statement))
 										{
 											echo "<span>Linked comment</span>";
 											while($statement->fetch())
