@@ -87,6 +87,7 @@ $('#submission-form').focusin(function()
 {
 	$('.post-guidelines').css('height', 'auto');
 	guidelineHeight = $('.post-guidelines').height();
+	$('.post-guidelines').css('height', '0px');
 	
 	$('.post-guidelines').animate({'height': guidelineHeight+'px'}, 200, "swing", function(){ $('.post-guidelines').css('height', 'auto'); });
 });
