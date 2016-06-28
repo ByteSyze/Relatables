@@ -44,6 +44,8 @@
 		{
 			$cwd = substr(getcwd(), strlen($_SERVER['DOCUMENT_ROOT']));
 			echo "\r\n<link rel='stylesheet' type='text/css' href='/global.css?v=" . self::GLOBAL_CSS_VER . "'>";
+			echo "\r\n<link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css?v=" . self::GLOBAL_CSS_VER . "'>";
+			echo "\r\n<link rel='stylesheet' type='text/css' href='/css/bootstrap-custom.css?v=" . self::GLOBAL_CSS_VER . "'>";
 			echo "\r\n<link rel='stylesheet' type='text/css' href='$cwd/theme.css?v=" . self::OTHER_CSS_VER . "'>";
 			
 			foreach(func_get_args() as $extra)
