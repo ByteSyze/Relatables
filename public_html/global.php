@@ -58,6 +58,7 @@
 		{
 			echo "\r\n<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
 			echo "\r\n<script type='text/javascript' src='/global.js?v=" . self::GLOBAL_JS_VER . "'></script>";
+			echo "\r\n<script type='text/javascript' src='/js/bootstrap.min.js?v=" . self::GLOBAL_JS_VER . "'></script>";
 			
 			foreach(func_get_args() as $extra)
 				echo "\r\n<script type='text/javascript' src='$extra.js?v=" . self::OTHER_JS_VER . "'></script>";	
