@@ -39,10 +39,25 @@
 							<button class="btn" type="button" data-toggle="modal" data-target="#registerpopup">Ask!</button>
 							<?php else : ?>
 							<form id='submission-form'>
-								<input type='text' class='form-control' id='submission-input'>
+								<input type='text' class='form-control' id='submission-input' placeholder='Am I the only one who'>
 								<button class="btn" type="button">Ask!</button>
 								<div class="post-guidelines" tabindex="-1">
 									<div class="guidelines-container">
+										<div class="padded align-left">
+											<label for="submit-category">Category:</label><select id="submit-category" name="c">
+													<option value="0">Select Category</option>
+													<option value="1">Health</option>
+													<option value="2">Internet</option>
+													<option value="3">Funny</option>
+													<option value="4">People</option>
+													<option value="5">Family</option>
+													<option value="6">Food</option>
+													<option value="7">Personal</option>
+													<option value="8">Odd</option>
+													<option value="9">Other</option></select>
+											<label for="anonymous">Anonymous</label><input id="anonymous" name="a" type="checkbox">
+											<span data-limiter="#submission-input" data-limit="300">279</span>
+										</div>
 										<h4>Guidelines</h4>
 										<ul>
 											<li>Posts should be well-written and original.</li>
