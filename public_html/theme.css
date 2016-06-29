@@ -137,3 +137,11 @@ div.social img {
 .post-guidelines li {
   margin: 10px 0px;
 }
+
+.post-guidelines .nav-tabs li {
+  margin: 0px;
+}
+
+.post-guidelines .nav-tabs li > a {
+  padding: 3px;
+}
