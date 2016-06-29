@@ -85,11 +85,14 @@ $( "#submission-form" ).submit(function()
 
 $('#submission-form').focusin(function()
 {
-	$('.post-guidelines').css('height', 'auto');
-	guidelineHeight = $('.post-guidelines').height();
-	$('.post-guidelines').css('height', '0px');
-	
-	$('.post-guidelines').animate({'height': guidelineHeight+'px'}, 200, "swing", function(){ $('.post-guidelines').css('height', 'auto'); });
+	if(guidelineHeight == 0)
+	{
+		$('.post-guidelines').css('height', 'auto');
+		guidelineHeight = $('.post-guidelines').height();
+		$('.post-guidelines').css('height', '0px');
+		
+		$('.post-guidelines').animate({'height': guidelineHeight+'px'}, 200, "swing", function(){ $('.post-guidelines').css('height', 'auto'); });
+	}
 });
 
 $('#submission-form').focusout(function()
@@ -99,7 +102,10 @@ $('#submission-form').focusout(function()
 		$focused = $('#submission-form').find(':focus');
 		
 		if($focused.length == 0)
+		{
 			$('.post-guidelines').animate({'height': '0px'},200);
+			guidelineHeight = 0;
+		}
 	}, 50);
 });
 
