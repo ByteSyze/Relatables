@@ -114,6 +114,10 @@ $(document).ready(function()
 	paginate();
 	
 	$('.post-guidelines').height('0px');
+	$('#media-popover-btn').popover({
+        html : true, 
+		content: function(){ return $("#media-popover-content").html(); }
+	});
 });
 
 

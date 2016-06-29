@@ -56,7 +56,25 @@
 													<option value="8">Odd</option>
 													<option value="9">Other</option></select>
 											<label for="anonymous">Anonymous</label><input id="anonymous" name="a" type="checkbox">
-											<span class="glyphicon glyphicon-link glyphicon-btn"></span>
+											<span id='media-popover-btn' class="glyphicon glyphicon-link glyphicon-btn" data-toggle="popover" title="Attach Media"></span>
+											<div id="media-popover-content">
+												<ul class="nav nav-tabs" role="tablist">
+													<li role="presentation" class="active"><a href="#" aria-controls="smu-image-tab" role="tab" data-toggle="tab">Image</a></li>
+													<li role="presentation"><a href="#" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+													<li role="presentation"><a href="#" aria-controls="link" role="tab" data-toggle="tab">Link</a></li>
+												</ul>
+												<div class="tab-content">
+													<div role="tabpanel" class="tab-pane active" id="smu-image-tab">
+														<input type='file' name='image' />
+													</div>
+													<div role="tabpanel" class="tab-pane" id="smu-video-tab">
+														<input type='text' name='video' placeholder='Enter video link.' />
+													</div>
+													<div role="tabpanel" class="tab-pane" id="smu-link-tab">
+														<input type='text' name='link' placeholder='Enter website link' />
+													</div>
+												</div>
+											</div>
 											<span data-limiter="#submission-input" data-limit="300">300</span><span> Characters left</span>
 										</div>
 										<h4>Guidelines</h4>
