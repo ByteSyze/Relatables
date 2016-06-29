@@ -448,7 +448,7 @@ $(document).ready(function()
 		});
 	});
 	
-	$('[data-toggle="tooltip"]').tooltip();
+	$('[data-toggle="popover"]').popover();
 });
 
 $(document).on('click', function(event)

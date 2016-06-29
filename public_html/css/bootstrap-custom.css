@@ -15,6 +15,9 @@ body {
   background-color: inherit;
   color: black !important;
 }
+.glyphicon-btn {
+  cursor: pointer;
+}
 .hero > h2, .hero > h3 {
   text-align: center;
   color: white;
