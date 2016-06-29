@@ -3,7 +3,7 @@
 var subIndex = 0;
 var subCount = 20;
 
-var guidelineHeight;
+var guidelineHeight = 0;
 
 $('body').on('click', '#qotw-submit', function() {
 	var val = $('input:radio[name=v]:checked').val();
