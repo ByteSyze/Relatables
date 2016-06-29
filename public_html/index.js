@@ -116,7 +116,8 @@ $(document).ready(function()
 	$('.post-guidelines').height('0px');
 	$('#media-popover-btn').popover({
         html : true, 
-		content: function(){ return $("#media-popover-content").html(); }
+		content: function(){ return $("#media-popover-content").html(); },
+		title: function(){ return $("#media-popover-title").html(); }
 	});
 });
 
