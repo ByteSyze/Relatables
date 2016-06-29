@@ -99,14 +99,12 @@ $('#submission-form').focusout(function()
 {
 	setTimeout(function()
 	{
-		$focused = $('#submission-form').find(':focus');
-		
-		if($focused.length == 0)
+		if($(document.activeElement).parents('#submission-form').length == 0)
 		{
 			$('.post-guidelines').animate({'height': '0px'},200);
 			guidelineHeight = 0;
 		}
-	}, 50);
+	}, 100);
 });
 
 $(document).ready(function()
