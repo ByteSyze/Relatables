@@ -45,7 +45,7 @@ body {
   background-position: center;
   height: 400px;
 }
-.main-content .container-fluid {
+.main-content.container-fluid {
   padding-left: 2px;
   padding-right: 2px;
 }
