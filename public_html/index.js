@@ -26,13 +26,11 @@ $('body').on('click', '[data-p]', function()
 		if(page > 0)
 		{
 			page -= 1;
-			paginate();
 		}
 	}
 	else if(pageAttr = 'next')
 	{
 		page += 1;
-		paginate();
 	}
 	else
 		page = parseInt($(this).attr('data-p')); 
