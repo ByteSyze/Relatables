@@ -40,7 +40,7 @@ $('#sort, #display, #category, #nsfw').on('change', function()
 	paginate();
 });
 
-$('#prev').click(function()
+$('#prev > a').click(function()
 {
 	if(page > 0)
 	{
@@ -49,7 +49,7 @@ $('#prev').click(function()
 	}
 });
 
-$('#next').click(function()
+$('#next > a').click(function()
 {
 	page += 1;
 	paginate();
