@@ -156,9 +156,9 @@ function paginate()
 			if(i >= 0)
 			{
 				if(i === page)
-					$('#prev').after("<li><a href='#' role='button' data-p='" + i + "' class='blue'>" + (i+1) + "</a></li>");
+					$('#next').before("<li><a href='#' role='button' data-p='" + i + "' class='blue'>" + (i+1) + "</a></li>");
 				else
-					$('#prev').after("<li><a href='#' role='button' data-p='" + i + "'>" + (i+1) + "</a></li>");
+					$('#next').before("<li><a href='#' role='button' data-p='" + i + "'>" + (i+1) + "</a></li>");
 			}
 		}
 	}
