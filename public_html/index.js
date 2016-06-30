@@ -19,7 +19,23 @@ $('body').on('click', '#qotw-submit', function() {
 
 $('body').on('click', '[data-p]', function()
 {
-	page = parseInt($(this).attr('data-p')); 
+	pageAttr = $(this).attr('data-p');
+	
+	if(pageAttr == 'prev')
+	{
+		if(page > 0)
+		{
+			page -= 1;
+			paginate();
+		}
+	}
+	else if(pageAttr = 'next')
+	{
+		page += 1;
+		paginate();
+	}
+	else
+		page = parseInt($(this).attr('data-p')); 
 	paginate();
 });
 
@@ -37,21 +53,6 @@ $(window).scroll(function()
 
 $('#sort, #display, #category, #nsfw').on('change', function()
 {
-	paginate();
-});
-
-$('#prev > a').click(function()
-{
-	if(page > 0)
-	{
-		page -= 1;
-		paginate();
-	}
-});
-
-$('#next > a').click(function()
-{
-	page += 1;
 	paginate();
 });
 
@@ -144,12 +145,14 @@ function validate_data(objData)
 
 function paginate()
 {
+	$paginationNav = $('#pagination-nav');
+	
 	if($('#display').val() != 'Continuous')
 	{
 		var page_start = 4 * Math.floor(page/4);
 	
-		$('#pagination-nav').show();
-		$('#pagination-nav .pagination').children().not('#next, #prev').remove();
+		$paginationNav.show();
+		$paginationNav.children().not('[data-p="next"], [data-p="prev"]').remove();
 		
 		for(var i = page_start-1; i < page_start+5; i++)
 		{
@@ -164,7 +167,7 @@ function paginate()
 	}
 	else
 	{
-		$('#pagination-nav').hide();
+		$paginationNav.hide();
 	}
 	
 	updatePosts();
