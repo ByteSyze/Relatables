@@ -45,9 +45,13 @@ body {
   background-position: center;
   height: 400px;
 }
+.main-content .container-fluid {
+  padding-left: 2px;
+  padding-right: 2px;
+}
 .main-content .options {
-	width: 86%;
-	padding: 20px 0px;
+  width: 86%;
+  padding: 20px 0px;
 }
 .main-content .options  .dropdown {
   display: inline-block;

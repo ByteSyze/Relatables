@@ -144,4 +144,5 @@ div.social img {
 
 .post-guidelines .nav-tabs li > a {
   padding: 3px;
+  margin: -1px;
 }
