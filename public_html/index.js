@@ -156,9 +156,9 @@ function paginate()
 			if(i >= 0)
 			{
 				if(i === page)
-					$('#pagination-nav .pagination').after("<li><a href='#' role='button' data-p='" + i + "' class='blue'>" + (i+1) + "</a></li>");
+					$('#prev').after("<li><a href='#' role='button' data-p='" + i + "' class='blue'>" + (i+1) + "</a></li>");
 				else
-					$('#pagination-nav .pagination').after("<li><a href='#' role='button' data-p='" + i + "'" + (i+1) + "</a></li>");
+					$('#prev').after("<li><a href='#' role='button' data-p='" + i + "'" + (i+1) + "</a></li>");
 			}
 		}
 	}
