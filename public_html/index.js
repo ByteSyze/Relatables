@@ -146,12 +146,12 @@ function paginate()
 {
 	if($('#display').val() != 'Continuous')
 	{
-		var page_start = 6 * Math.floor(page/6);
+		var page_start = 4 * Math.floor(page/4);
 	
 		$('#pagination-nav').show();
 		$('#pagination-nav .pagination').children().not('#next, #prev').remove();
 		
-		for(var i = page_start-1; i < page_start+7; i++)
+		for(var i = page_start-1; i < page_start+5; i++)
 		{
 			if(i >= 0)
 			{
