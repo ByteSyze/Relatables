@@ -152,16 +152,16 @@ function paginate()
 		var page_start = 4 * Math.floor(page/4);
 	
 		$paginationNav.show();
-		$paginationNav.children().not('[data-p="next"], [data-p="prev"]').remove();
+		$paginationNav.children('.pagination').children().not('[data-p="next"], [data-p="prev"]').remove();
 		
 		for(var i = page_start-1; i < page_start+5; i++)
 		{
 			if(i >= 0)
 			{
 				if(i === page)
-					$('#next').before("<li><a href='#' role='button' data-p='" + i + "' class='blue'>" + (i+1) + "</a></li>");
+					$paginationNav.find('[data-p="next"]').before("<li><a href='#' role='button' data-p='" + i + "' class='blue'>" + (i+1) + "</a></li>");
 				else
-					$('#next').before("<li><a href='#' role='button' data-p='" + i + "'>" + (i+1) + "</a></li>");
+					$paginationNav.find('[data-p="next"]').before("<li><a href='#' role='button' data-p='" + i + "'>" + (i+1) + "</a></li>");
 			}
 		}
 	}
