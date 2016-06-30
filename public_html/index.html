@@ -56,8 +56,11 @@
 												<option value="9">Other</option>
 											</select>
 											<label for="anonymous">Anonymous</label><input id="anonymous" name="a" type="checkbox">
-											<span id='media-popover-btn' class="btn"><span class="glyphicon glyphicon-plus"></span> Add Media</span>
-											<button class="btn" type="button">Ask!</button>
+											<div class='align-right'>
+												<span data-limiter="#submission-input" data-limit="300">300</span>
+												<span id='media-popover-btn' class="btn"><span class="glyphicon glyphicon-plus"></span> Add Media</span>
+												<button class="btn" type="button">Ask!</button>
+											</div>
 											<div id="media-popover-title" class="hidden">Attach Media</div>
 											<div id="media-popover-content" class="hidden">
 												<ul class="nav nav-tabs" role="tablist">
@@ -77,7 +80,6 @@
 													</div>
 												</div>
 											</div>
-											<span data-limiter="#submission-input" data-limit="300">300</span><span> Characters left</span>
 										</div>
 										<h4>Guidelines</h4>
 										<ul>
