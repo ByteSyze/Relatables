@@ -148,23 +148,23 @@ function paginate()
 	{
 		var page_start = 6 * Math.floor(page/6);
 	
-		$('.bottom-navigation').show();
-		$('.page-buttons').empty();
+		$('#pagination-nav').show();
+		$('#pagination-nav .pagination').children().not('#next, #prev').remove();
 		
 		for(var i = page_start-1; i < page_start+7; i++)
 		{
 			if(i >= 0)
 			{
 				if(i === page)
-					$('.page-buttons').append("<span data-p='" + i + "' class='button blue'>" + (i+1) + "</span>");
+					$('#pagination-nav .pagination').after("<li><a href='#' role='button' data-p='" + i + "' class='button blue'>" + (i+1) + "</a></li>");
 				else
-					$('.page-buttons').append("<span data-p='" + i + "' class='button blue-hover'>" + (i+1) + "</span>");
+					$('#pagination-nav .pagination').after("<li><a href='#' role='button' data-p='" + i + "' class='button blue-hover'>" + (i+1) + "</a></li>");
 			}
 		}
 	}
 	else
 	{
-		$('.bottom-navigation').hide();
+		$('#pagination-nav').hide();
 	}
 	
 	updatePosts();

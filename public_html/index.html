@@ -35,10 +35,10 @@
 						<div class='input-group'>
 							
 							<?php if($_SESSION['id'] == 0) : ?>
-							<input type='text' class='form-control' id='submission-input' data-toggle="modal" data-target="#registerpopup">
+							<input type='text' class='form-control' id='submission-input' data-toggle="modal" data-target="#registerpopup" placeholder='Am I the only one who...'>
 							<?php else : ?>
 							<form id='submission-form'>
-								<input type='text' class='form-control' id='submission-input' placeholder='Am I the only one who'>
+								<input type='text' class='form-control' id='submission-input' placeholder='Am I the only one who...'>
 								<div class="post-guidelines" tabindex="-1">
 									<div class="guidelines-container">
 										<div class="padded clearfix">
@@ -157,7 +157,25 @@
 						</div>
 						
 						<div class='row posts' id='posts'></div>
-						
+						<nav id='pagination-nav' style='text-align:center;'>
+							<ul class="pagination">
+								<li>
+									<a id="prev" href="#" aria-label="Previous">
+										<span aria-hidden="true">Previous</span>
+									</a>
+								</li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+									<a id="next" href="#" aria-label="Next">
+										<span aria-hidden="true">Next</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
 					</div>
 					
 				</div>
