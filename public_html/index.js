@@ -28,12 +28,13 @@ $('body').on('click', '[data-p]', function()
 			page -= 1;
 		}
 	}
-	else if(pageAttr = 'next')
+	else if(pageAttr == 'next')
 	{
 		page += 1;
 	}
 	else
-		page = parseInt($(this).attr('data-p')); 
+		page = parseInt(pageAttr); 
+	
 	paginate();
 });
 
