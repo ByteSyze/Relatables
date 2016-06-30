@@ -45,7 +45,7 @@ body {
   background-position: center;
   height: 400px;
 }
-.main-content.container-fluid, .row.posts > .col-md-12 {
+.main-content.container-fluid, .hero.container-fluid, .row.posts > .col-md-12 {
   padding-left: 2px;
   padding-right: 2px;
 }
