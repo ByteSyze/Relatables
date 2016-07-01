@@ -115,6 +115,7 @@ $(document).ready(function()
 	$('#media-popover-btn').popover({
         html : true, 
 		placement: "bottom",
+		viewport: ".post-guidelines",
 		content: function(){ return $("#media-popover-content").html(); },
 		title: function(){ return $("#media-popover-title").html(); }
 	});
