@@ -73,7 +73,7 @@ $('#media-upload-controls input').on('change', function()
 	}
 });
 
-$('#media-upload-cancel').click(function()
+$('body').on('click', '#media-upload-cancel', function()
 {
 	$('#media-preview, #media-upload-controls').toggle(); 
 });
