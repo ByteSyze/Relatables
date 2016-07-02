@@ -50,7 +50,7 @@ $(window).scroll(function()
 	}
 });
 
-$('#media-upload-controls input').change(function()
+$('#media-upload-controls input').on('change', function()
 {
 	var name 		= $(this).attr('name');
 	$uploadControls = $('#media-upload-controls');
