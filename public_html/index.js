@@ -50,6 +50,29 @@ $(window).scroll(function()
 	}
 });
 
+$('#media-upload-controls input').change(function()
+{
+	var name 		= $(this).attr('name');
+	$uploadControls = $('#media-upload-controls');
+	$uploadPreview 	= $('#media-preview');
+	
+	$uploadControls.hide();
+	$uploadPreview.show();
+	
+	if(name == 'image')
+	{
+		$uploadPreview.html($(this).val());
+	}
+	else if(name == 'video')
+	{
+		$upladPreview.html("<iframe width='560' height='315' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe>");
+	}
+	else
+	{
+		//TODO
+	}
+});
+
 $('#sort, #display, #category, #nsfw').on('change', function()
 {
 	paginate();

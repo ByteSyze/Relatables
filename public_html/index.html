@@ -63,21 +63,27 @@
 											</div>
 											<div id="media-popover-title" class="hidden">Attach Media</div>
 											<div id="media-popover-content" class="hidden">
-												<ul class="nav nav-tabs" role="tablist">
-													<li role="presentation" class="active"><a href="#smu-image-tab" aria-controls="smu-image-tab" role="tab" data-toggle="tab">Image</a></li>
-													<li role="presentation"><a href="#smu-video-tab" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
-													<li role="presentation"><a href="#smu-link-tab" aria-controls="link" role="tab" data-toggle="tab">Link</a></li>
-												</ul>
-												<div class="tab-content">
-													<div role="tabpanel" class="tab-pane form-group has-feedback active" id="smu-image-tab">
-														<input type='file' name='image' accept="image/*" />
+												<div id='media-upload-controls'>
+													<ul class="nav nav-tabs" role="tablist">
+														<li role="presentation" class="active"><a href="#smu-image-tab" aria-controls="smu-image-tab" role="tab" data-toggle="tab">Image</a></li>
+														<li role="presentation"><a href="#smu-video-tab" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+														<li role="presentation"><a href="#smu-link-tab" aria-controls="link" role="tab" data-toggle="tab">Link</a></li>
+													</ul>
+													<div class="tab-content">
+														<div role="tabpanel" class="tab-pane form-group has-feedback active" id="smu-image-tab">
+															<input type='file' name='image' accept="image/*" />
+														</div>
+														<div role="tabpanel" class="tab-pane form-group" id="smu-video-tab">
+															<input class='form-control' type='text' name='video' placeholder='Enter video link.' />
+														</div>
+														<div role="tabpanel" class="tab-pane form-group" id="smu-link-tab">
+															<input class='form-control' type='text' name='link' placeholder='Enter website link' />
+														</div>
 													</div>
-													<div role="tabpanel" class="tab-pane form-group" id="smu-video-tab">
-														<input class='form-control' type='text' name='video' placeholder='Enter video link.' />
-													</div>
-													<div role="tabpanel" class="tab-pane form-group" id="smu-link-tab">
-														<input class='form-control' type='text' name='link' placeholder='Enter website link' />
-													</div>
+												</div>
+												<div id='media-upload-verification'>
+													<button type="button" class="close" data-togg="#media-upload-controls, #media-upload-verification" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<div id='media-preview'></div>
 												</div>
 											</div>
 										</div>
