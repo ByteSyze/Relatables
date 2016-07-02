@@ -134,14 +134,20 @@ $(document).ready(function()
 {	
 	paginate();
 	
+	$popoverContentTemplate = $("#media-popover-content");
+	$popoverTitleTemplate = $("#media-popover-title");
+	
 	$('.post-guidelines').height('0px');
 	$('#media-popover-btn').popover({
-        html : true, 
+        html: true, 
 		placement: "bottom",
 		viewport: ".post-guidelines",
-		content: function(){ return $("#media-popover-content").html(); },
-		title: function(){ return $("#media-popover-title").html(); }
+		content: function(){ return $popoverContentTemplate.html(); },
+		title: function(){ return $popoverTitleTemplate.html(); }
 	});
+	
+	$popoverContentTemplate.remove();
+	$popoverTitleTemplate.remove();
 });
 
 
