@@ -57,7 +57,7 @@ $('#media-upload-controls input').change(function()
 	$uploadPreview 	= $('#media-preview');
 	
 	$uploadControls.hide();
-	$uploadPreview.show();
+	$uploadPreview.parent().show();
 	
 	if(name == 'image')
 	{
