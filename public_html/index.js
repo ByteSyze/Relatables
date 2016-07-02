@@ -73,6 +73,11 @@ $('#media-upload-controls input').on('change', function()
 	}
 });
 
+$('#media-upload-cancel').click(function()
+{
+	$('#media-preview, #media-upload-controls').toggle(); 
+});
+
 $('#sort, #display, #category, #nsfw').on('change', function()
 {
 	paginate();
