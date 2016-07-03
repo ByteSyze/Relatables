@@ -75,7 +75,7 @@ $('#media-upload-controls input').on('change', function()
 
 $('body').on('click', '#media-upload-cancel', function()
 {
-	$('#media-preview, #media-upload-controls').toggle(); 
+	$('#media-upload-verification, #media-upload-controls').toggle(); 
 });
 
 $('#sort, #display, #category, #nsfw').on('change', function()
