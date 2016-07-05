@@ -257,19 +257,19 @@ ul.navigation-items > li a img {
 	vertical-align: middle;
 }
 
-ul.navigation-items  div.icon {
+ul.nav.navbar-nav  div.icon {
 	width:26px;
 	display:inline-block;
 	vertical-align:middle;
 	background-position:top;
 }
 
-ul.navigation-items div.notifications-icon {
+ul.nav.navbar-nav div.notifications-icon {
 	height:26px;
 	background-image:url('/images/icons/notification_icon.png');
 }
 
-ul.navigation-items div.profile-icon {
+ul.nav.navbar-nav div.profile-icon {
 	height:30px;
 	background-image:url('/images/icons/profile_icon.png');
 }
