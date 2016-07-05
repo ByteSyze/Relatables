@@ -257,6 +257,10 @@ ul.navigation-items > li a img {
 	vertical-align: middle;
 }
 
+ul.nav.navbar-nav.navbar-right a.dropdown-toggle {
+	padding: 10px;
+}
+
 ul.nav.navbar-nav  div.icon {
 	width:26px;
 	display:inline-block;
