@@ -41,7 +41,7 @@ body {
   max-width: 745px;
 }
 .hero.row {
-  background-image: url('/images/media/hero.jpg');
+  background-image: url('/images/media/hero.png');
   background-position: center;
   height: 400px;
 }
