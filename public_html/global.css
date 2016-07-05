@@ -270,11 +270,13 @@ ul.nav.navbar-nav  div.icon {
 
 ul.nav.navbar-nav div.notifications-icon {
 	height:26px;
+	margin: 2px;
 	background-image:url('/images/icons/notification_icon.png');
 }
 
 ul.nav.navbar-nav div.profile-icon {
 	height:30px;
+	margin: 0px 2px;
 	background-image:url('/images/icons/profile_icon.png');
 }
 
