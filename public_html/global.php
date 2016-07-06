@@ -109,7 +109,7 @@
 			
 			$comment['comment'] = htmlspecialchars($comment['comment']);
 			
-			if($comment['rid'] != 0)
+			if(isset($comment['rid']))
 				echo "<div class='comment reply' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[rid]}'>";
 			else
 				echo "<div class='comment' id='c{$comment[cid]}' data-uid='{$comment[uid]}' data-user='{$comment[user]}' data-c='{$comment[cid]}' data-r='{$comment[cid]}'>";
