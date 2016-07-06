@@ -6,9 +6,9 @@
 	if($_SESSION['id'] == null)
 		die('1');
 	
-	$pid 	 	= $_POST['p'];
-	$rid	 	= $_POST['r'];
-	$rUsername	= $_POST['u'];
+	$pid 	 	= isset($_POST['p']) ? $_POST['p'] : 0;
+	$rid	 	= isset($_POST['r']) ? $_POST['r'] : 0;
+	$rUsername	= isset($_POST['u']) ? $_POST['u'] : 0;
 	
 	$comment = $_POST['c'];
 	$clen = strlen($comment);
