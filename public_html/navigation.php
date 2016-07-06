@@ -201,20 +201,24 @@ if(!empty($_SESSION['popup_msg']))
 				<?php
 					while($notification = mysqli_fetch_array($notifications)) :
 				?>
+				
 				<li>
-					<a href="/readmessage.php?id=<?php echo $notification['id'] ?>&redirect= <?php echo htmlspecialchars($notification['href']) ?>">
+					<a href="/readmessage.php?id=<?php echo $notification['id'] ?>&redirect=<?php echo htmlspecialchars($notification['href']) ?>">
 						<?php if(!$notification['seen']) : ?>
+						
 						<div class="indicator"></div>
 						<?php 
 							endif;
 							echo $notification['message'];
 						?>
+						
 						<span><?php echo $notification['fdate'] ?></span>
 					</a>
 				</li>
 				<?php
 					endwhile;
 				?>
+				
 			</ul>
 		</li>
 		<li class='dropdown'>
@@ -229,48 +233,3 @@ if(!empty($_SESSION['popup_msg']))
 	</div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!--<div class="navigation-bar">
-	<div class="grid wrap wider no-gutters">
-		<div class="pull-left">
-			<ul class="navigation-items">
-				<li><a href="/" class="logo"><img src='/images/icons/logotextwhite.png' alt='Relatables - Am I The Only One?' title='Relatables - Am I The Only One?'></a></li>
-				<li><a href="/moderate">Moderate</a></li>
-				<li>
-					<a href="/about" data-togg="#about-drop">About</a>
-					<ul id="about-drop" class='dropdown'>
-						<li><a href="/about/faq">FAQ</a></li>
-						<li><a href="/about/blog">Blog</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		<div class="pull-right">
-		<?php
-			echo '<ul class="navigation-items">';
-				if($_SESSION['id'] != null) {
-					echo '<li><a href="#" data-togg="#notif-drop"><div class="icon notifications-icon ';
-					if($unreadNotifications) echo 'unread-notifications';
-					echo '"></div></a><div id="notif-drop" class="dropdown notifications-dropdown">';
-
-
-					while($notification = mysqli_fetch_array($notifications))
-					{
-						echo '<a href="/readmessage.php?id='. $notification['id'] . '&redirect=' . htmlspecialchars($notification['href']) . '">';
-						if(!$notification['seen'])
-							echo '<div class="indicator"></div>';
-						echo $notification['message'] . '<span>' . $notification['fdate'] . '</span></a>';
-					}
-
-					echo '</div></li>';
-
-					echo '<li><a href="#" data-togg="#prof-drop"><div class="icon profile-icon"></div></a><ul id="prof-drop" class="dropdown"><li><a href="/user/' . GlobalUtils::$user->getUsername() . '">Profile</a></li><li><a href="/settings/account">Settings</a></li><li><a href="/signout.php">Signout</a></li></ul></li>';
-				} else {
-					echo '<li><a class="showlogin">Log in</a></li>';
-					echo '<li><a data-signup-header="Sign Up">Sign up</a></li>';
-				}
-			echo '</ul>';
-		?>
-		</div>
-	</div>
-</div>
-<div class="navigation-spacer"></div>-->
