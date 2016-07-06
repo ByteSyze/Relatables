@@ -198,6 +198,23 @@ if(!empty($_SESSION['popup_msg']))
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="icon notifications-icon"></div></a>
 			<ul id="notif-drop"  class="dropdown-menu notifications-dropdown">
 				<!-- /////////////////// TODO -->
+				<?php
+					while($notification = mysqli_fetch_array($notifications)) :
+				?>
+				<li>
+					<a href="/readmessage.php?id=<?php echo $notification['id'] ?>&redirect= <?php echo htmlspecialchars($notification['href']) ?>">
+						<?php if(!$notification['seen']) : ?>
+						<div class="indicator"></div>
+						<?php 
+							endif;
+							echo $notification['message'];
+						?>
+						<span><?php echo $notification['fdate'] ?></span>
+					</a>
+				</li>
+				<?php
+					endwhile;
+				?>
 			</ul>
 		</li>
 		<li class='dropdown'>
