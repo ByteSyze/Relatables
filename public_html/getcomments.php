@@ -1,20 +1,12 @@
 <?php
 	/*Copyright (C) Tyler Hackett 2015*/
 	
-	function sort2mysql($sort)
-	{
-		if($sort) //If sort == 1, sort by highest-to-lowest rated comment
-			return 'points';
-		else
-			return 'cid';
-	}
-	
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/global.php';
 
 	$pid 	= intval($_POST['i']);
 	$index 	= $_POST['x'];
 	$count 	= $index+10;
-	$sort	= sort2mysql($_POST['s']);
+	$sort	= isset($_POST['s']) ? 'points' : 'cid';
 	
 	$comment = array();
 	
