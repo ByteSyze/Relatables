@@ -15,13 +15,13 @@
 		<meta name="msvalidate.01" content="6DC41857D2D3B59F2913194EAD906CDD" />
 		<?php
 			GlobalUtils::getMeta();
-			GlobalUtils::getCSS('submissiontheme');
+			GlobalUtils::getCSS();
 		?>
 		<link rel='canonical' href='http://www.relatables.com/'>
 	</head>
 	<body>
 		<?php include 'navigation.php'; ?>
-		<div class='container-fluid'>
+		<div class='container-fluid content-wrapper content'>
 			<div class='row hero'>
 			
 				<div class='col-lg-3 col-sm-1'></div>
@@ -108,6 +108,7 @@
 				</div>
 				
 				<div class='col-lg-3 col-sm-1'></div>
+				<?php GlobalUtils::getFooter(); ?>
 				
 			</div>
 			<div class='row'>
