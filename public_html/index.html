@@ -17,10 +17,12 @@
 			GlobalUtils::getMeta();
 			GlobalUtils::getCSS();
 		?>
+		
 		<link rel='canonical' href='http://www.relatables.com/'>
 	</head>
 	<body>
 		<?php include 'navigation.php'; ?>
+		
 		<div class='container-fluid content-wrapper content'>
 			<div class='row hero'>
 			
@@ -34,8 +36,10 @@
 						<div class='input-group'>
 							
 							<?php if($_SESSION['id'] == 0) : ?>
+							
 							<input type='text' class='form-control' id='submission-input' data-toggle="modal" data-target="#registerpopup" placeholder='Am I the only one who...'>
 							<?php else : ?>
+							
 							<form id='submission-form'>
 								<input type='text' class='form-control' id='submission-input' placeholder='Am I the only one who...'>
 								<div class="post-guidelines" tabindex="-1">
@@ -80,7 +84,7 @@
 														</div>
 													</div>
 												</div>
-												<div id='media-upload-verification' class='hidden'>
+												<div id='media-upload-verification' style='display:none'>
 													<button id="media-upload-cancel" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 													<div id='media-preview'></div>
 												</div>
