@@ -111,6 +111,10 @@ body {
   color: white;
   background-color: #0080d0;
 }
+.panel-footer {
+  background-color: white;
+  border-top: none;
+}
 .panel-footer a {
   display: inline-block;
 }
