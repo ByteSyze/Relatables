@@ -83,9 +83,9 @@ $('#sort, #display, #category, #nsfw').on('change', function()
 	paginate();
 });
 
-$( "#submission-form" ).submit(function() 
+$("#submission-form").submit(function() 
 {
-	submission = $("#submission").val();
+	submission = $("#submission-input").val();
 	$( "#submission-wrapper" ).append("");
 	category = $("#submit-category").val();
 	$a = $('#anonymous');
@@ -103,12 +103,18 @@ $( "#submission-form" ).submit(function()
 			if(res == '0')
 		 		$( "#submission-form" ).empty().animate({height: "33px"}, 400, function(){$( "#submission-form" ).append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.<br> You will receive a notification if your post gets approved.</div>");});
 			else if(res ==	'1')
-				$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
+				$("#submission-input").css("box-shadow", "0px 0px 5px #DD0000");
 			else if(res == '2')
 				$("submit-category").css("box-shadow", "0px 0px 5px #DD0000");
 		});
 	}
     return false;
+});
+
+$("#submission-form input[type='submit']").click(function()
+{
+	$("#submission-form").submit();
+	return false;
 });
 
 $('#submission-form').focusin(function()
@@ -161,11 +167,11 @@ function validate_data(objData)
 	s = objData.s;
 	c = objData.c;
 	if(!s.trim()) {
-		$("#submission").css("box-shadow", "0px 0px 5px #DD0000");
+		$("#submission-input").css("box-shadow", "0px 0px 5px #DD0000");
 		return false;
 	}
 	else
-		$("#submission").css("box-shadow", "");
+		$("#submission-input").css("box-shadow", "");
 		
 	if(!c.trim()) {
 		$("#submit_category").css("box-shadow", "0px 0px 5px #DD0000");
