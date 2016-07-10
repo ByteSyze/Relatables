@@ -19,7 +19,7 @@
 		
 		<?php 
 			GlobalUtils::getMeta();
-			GlobalUtils::getCSS('submissiontheme');
+			GlobalUtils::getCSS();
 		?>
 		
 		<link rel="canonical" href="http://www.relatables.com/">
@@ -83,7 +83,7 @@
 			
 		</div>
 		<script>var u = <?php echo $user->getID(); ?>;</script>
-		<?php GlobalUtils::getJS('user/user'); ?>
+		<?php GlobalUtils::getJS('user'); ?>
 		
 	</body>
 </html>

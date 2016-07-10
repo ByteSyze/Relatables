@@ -124,6 +124,7 @@ body {
 }
 .panel-footer a {
   display: inline-block;
+  color: #6c6c6c;
 }
 .post-guidelines .popover-content {
   width: 320px;
