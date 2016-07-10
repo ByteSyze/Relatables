@@ -61,33 +61,8 @@
 											<label for="anonymous">Anonymous</label><input id="anonymous" name="a" type="checkbox">
 											<div class='pull-right'>
 												<span data-limiter="#submission-input" data-limit="300">300</span>
-												<span id='media-popover-btn' class="btn"><span class="glyphicon glyphicon-plus"></span> Add Media</span>
+												<span id='media-popover-btn' class="btn" data-toggle="modal" data-target="#media-upload-modal"><span class="glyphicon glyphicon-plus"></span> Add Media</span>
 												<button class="btn" type="submit">Ask!</button>
-											</div>
-											<div id="media-popover-title" class="hidden">Attach Media</div>
-											<div id="media-popover-content" class="hidden">
-												<div id='media-upload-controls'>
-													<ul class="nav nav-tabs" role="tablist">
-														<li role="presentation" class="active"><a href="#smu-image-tab" aria-controls="smu-image-tab" role="tab" data-toggle="tab">Image</a></li>
-														<li role="presentation"><a href="#smu-video-tab" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
-														<li role="presentation"><a href="#smu-link-tab" aria-controls="link" role="tab" data-toggle="tab">Link</a></li>
-													</ul>
-													<div class="tab-content">
-														<div role="tabpanel" class="tab-pane form-group has-feedback active" id="smu-image-tab">
-															<input type='file' name='image' accept="image/*" />
-														</div>
-														<div role="tabpanel" class="tab-pane form-group" id="smu-video-tab">
-															<input class='form-control' type='text' name='video' placeholder='Enter video link.' />
-														</div>
-														<div role="tabpanel" class="tab-pane form-group" id="smu-link-tab">
-															<input class='form-control' type='text' name='link' placeholder='Enter website link' />
-														</div>
-													</div>
-												</div>
-												<div id='media-upload-verification' style='display:none'>
-													<button id="media-upload-cancel" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<div id='media-preview'></div>
-												</div>
 											</div>
 										</div>
 										<h4>Guidelines</h4>
@@ -206,6 +181,40 @@
 				
 				<div class='col-lg-3 col-sm-0'></div>
 				
+			</div>
+		</div>
+		<div class='modal fade' role='dialog' id='media-upload-modal'>
+			<div class="modal-dialog">
+				<div class='modal-content'>
+					<div class='modal-body'>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h1 class='popup-title'>Attach Media</h1>
+						<div id="media-popover-content" class="hidden">
+							<div id='media-upload-controls'>
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="active"><a href="#smu-image-tab" aria-controls="smu-image-tab" role="tab" data-toggle="tab">Image</a></li>
+									<li role="presentation"><a href="#smu-video-tab" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+									<li role="presentation"><a href="#smu-link-tab" aria-controls="link" role="tab" data-toggle="tab">Link</a></li>
+								</ul>
+								<div class="tab-content">
+									<div role="tabpanel" class="tab-pane form-group has-feedback active" id="smu-image-tab">
+										<input type='file' name='image' accept="image/*" />
+									</div>
+									<div role="tabpanel" class="tab-pane form-group" id="smu-video-tab">
+										<input class='form-control' type='text' name='video' placeholder='Enter video link.' />
+									</div>
+									<div role="tabpanel" class="tab-pane form-group" id="smu-link-tab">
+										<input class='form-control' type='text' name='link' placeholder='Enter website link' />
+									</div>
+								</div>
+							</div>
+							<div id='media-upload-verification' style='display:none'>
+								<button id="media-upload-cancel" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<div id='media-preview'></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<script>
