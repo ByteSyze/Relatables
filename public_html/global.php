@@ -88,7 +88,7 @@
 		
 		public static function getShareButton($url, $text)
 		{
-			echo "<a href='#' role='button' data-toggle='popover'  data-placement='right' data-trigger='focus' data-html='true' data-content='<div class=\"share-wrapper\"><a href=\"http://www.facebook.com/sharer.php?u=$url\"><div class=\"share-icon fb\"></div></a><a href=\"https://plus.google.com/share?url=$url\"><div class=\"share-icon gp\"></div></a><a href=\"http://twitter.com/share?text=Am I the only one?&url=$url&hashtags=Relatables\"><div class=\"share-icon tw\"></div></a></div>'>Share</a>";
+			echo "<a role='button' data-toggle='popover'  data-placement='auto right' data-html='true' data-content='<div class=\"share-wrapper\"><a href=\"http://www.facebook.com/sharer.php?u=$url\"><div class=\"share-icon fb\"></div></a><a href=\"https://plus.google.com/share?url=$url\"><div class=\"share-icon gp\"></div></a><a href=\"http://twitter.com/share?text=Am I the only one?&url=$url&hashtags=Relatables\"><div class=\"share-icon tw\"></div></a></div>'>Share</a>";
 		}
 		
 		public static function getFooter()
