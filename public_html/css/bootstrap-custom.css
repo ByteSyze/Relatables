@@ -76,6 +76,13 @@ body {
 .modal .form-group .tooltip {
   min-width:300px;
 }
+.modal-flex-container {
+  display: flex;
+  height: 100%;
+}
+.modal-flex-container .modal-dialog {
+  align-self: center;
+}
 .navbar-default, .navbar-default .navbar-toggle:hover {
   background-color: #0099ff; 
   border: none;

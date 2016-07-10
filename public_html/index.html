@@ -184,34 +184,36 @@
 			</div>
 		</div>
 		<div class='modal fade' role='dialog' id='media-upload-modal'>
-			<div class="modal-dialog">
-				<div class='modal-content'>
-					<div class='modal-body'>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h1 class='popup-title'>Attach Media</h1>
-						<div id="media-popover-content">
-							<div id='media-upload-controls'>
-								<ul class="nav nav-tabs" role="tablist">
-									<li role="presentation" class="active"><a href="#smu-image-tab" aria-controls="smu-image-tab" role="tab" data-toggle="tab">Image</a></li>
-									<li role="presentation"><a href="#smu-video-tab" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
-									<li role="presentation"><a href="#smu-link-tab" aria-controls="link" role="tab" data-toggle="tab">Link</a></li>
-								</ul>
-								<div class="tab-content">
-									<div role="tabpanel" class="tab-pane form-group has-feedback active" id="smu-image-tab">
-										<input type='file' name='image' accept="image/*" />
-									</div>
-									<div role="tabpanel" class="tab-pane form-group" id="smu-video-tab">
-										<input class='form-control' type='text' name='video' placeholder='Enter video link.' />
-									</div>
-									<div role="tabpanel" class="tab-pane form-group" id="smu-link-tab">
-										<input class='form-control' type='text' name='link' placeholder='Enter website link' />
+			<div class='modal-flex-container'>
+				<div class="modal-dialog">
+					<div class='modal-content'>
+						<div class='modal-body'>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h1 class='popup-title'>Attach Media</h1>
+							<div id="media-popover-content">
+								<div id='media-upload-controls'>
+									<ul class="nav nav-tabs" role="tablist">
+										<li role="presentation" class="active"><a href="#smu-image-tab" aria-controls="smu-image-tab" role="tab" data-toggle="tab">Image</a></li>
+										<li role="presentation"><a href="#smu-video-tab" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+										<li role="presentation"><a href="#smu-link-tab" aria-controls="link" role="tab" data-toggle="tab">Link</a></li>
+									</ul>
+									<div class="tab-content">
+										<div role="tabpanel" class="tab-pane form-group has-feedback active" id="smu-image-tab">
+											<input type='file' name='image' accept="image/*" />
+										</div>
+										<div role="tabpanel" class="tab-pane form-group" id="smu-video-tab">
+											<input class='form-control' type='text' name='video' placeholder='Enter video link.' />
+										</div>
+										<div role="tabpanel" class="tab-pane form-group" id="smu-link-tab">
+											<input class='form-control' type='text' name='link' placeholder='Enter website link' />
+										</div>
 									</div>
 								</div>
-							</div>
-							<div id='media-upload-verification' style='display:none'>
-								<div id='media-preview'></div>
-								<button id="media-upload-cancel" class='btn' type="button" aria-label="Close">Cancel</button>
-								<button id="media-upload-confirm" class='btn pull-right' type="button" aria-label="Close">Yup, looks good!</button>
+								<div id='media-upload-verification' style='display:none'>
+									<div id='media-preview'></div>
+									<button id="media-upload-cancel" class='btn' type="button" aria-label="Close">Cancel</button>
+									<button id="media-upload-confirm" class='btn pull-right' type="button" aria-label="Close">Yup, looks good!</button>
+								</div>
 							</div>
 						</div>
 					</div>
