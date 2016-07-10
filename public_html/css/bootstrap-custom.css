@@ -118,6 +118,9 @@ body {
 .panel-footer a {
   display: inline-block;
 }
+.post-guidelines .popover-content {
+  width: 320px;
+}
 .row .col-lg-6.col-sm-12 {
   padding-left: 0px;
   padding-right: 0px;
