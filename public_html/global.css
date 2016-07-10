@@ -280,14 +280,6 @@ ul.nav.navbar-nav div.profile-icon {
 	background-image:url('/images/icons/profile_icon.png');
 }
 
-.share-wrapper {
-	display: inline;
-	height: 30px;
-	width: 0px;
-	position: absolute;
-	overflow:hidden;
-}
-
 .share-wrapper > div {
 	display: inline;
 }
