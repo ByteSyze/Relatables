@@ -145,20 +145,7 @@ $(document).ready(function()
 {	
 	paginate();
 	
-	$popoverContentTemplate = $("#media-popover-content");
-	$popoverTitleTemplate = $("#media-popover-title");
-	
 	$('.post-guidelines').height('0px');
-	$('#media-popover-btn').popover({
-        html: true, 
-		placement: "bottom",
-		viewport: ".post-guidelines",
-		content: function(){ return $popoverContentTemplate.html(); },
-		title: function(){ return $popoverTitleTemplate.html(); }
-	});
-	
-	$popoverContentTemplate.remove();
-	$popoverTitleTemplate.remove();
 });
 
 
