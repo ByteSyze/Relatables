@@ -65,7 +65,7 @@ $('body').on('change', '#media-upload-controls input', function()
 	}
 	else if(name == 'video')
 	{
-		$upladPreview.html("<iframe width='560' height='315' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe>");
+		$uploadPreview.html("<iframe width='560' height='315' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe>");
 	}
 	else
 	{
