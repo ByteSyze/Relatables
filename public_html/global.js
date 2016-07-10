@@ -448,7 +448,7 @@ $(document).ready(function()
 		});
 	});
 	
-	$('[data-toggle="popover"]').popover();
+	$('body').popover({ selector: '[data-toggle="popover"]' });
 });
 
 $(document).on('click', function(event)
