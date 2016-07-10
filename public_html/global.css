@@ -280,8 +280,13 @@ ul.nav.navbar-nav div.profile-icon {
 	background-image:url('/images/icons/profile_icon.png');
 }
 
-.share-wrapper > div {
-	display: inline;
+.share-wrapper {
+	height: 30px;
+}
+
+.share-wrapper > a {
+	height: 30px;
+	margin: 0px 2px;
 }
 
 .share-wrapper .share-icon {
