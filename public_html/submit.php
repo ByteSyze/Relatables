@@ -13,7 +13,7 @@
 		if(getimagesize($_FILES['i']["tmp_name"]))
 		{	
 			$date = getdate();
-			$target_dir = "/images/{$date['year']}/{$date['mon']}/{$date['mday']}";
+			$target_dir = "/images/media/posts/{$date['year']}/{$date['mon']}/{$date['mday']}";
 			$full_image_path = $_SERVER['DOCUMENT_ROOT'].$target_dir;
 			
 			if(!is_dir($full_image_path)) //Create the directory if it doesn't exist yet.

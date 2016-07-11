@@ -112,10 +112,13 @@ $("#submission-form").submit(function()
 	fData.append('c', category);
 	fData.append('a', anonymous);
 	fData.append('m', mediaType);
-	fData.append('i', $('#smu-image-tab input')[0].files[0]);
+	
+	if(mediaType == 'image')
+		fData.append('i', $('#smu-image-tab input')[0].files[0]);
 	
 	if(fData){
-		$.ajax({ type: "POST", url: "/submit.php", data: fData, processData: false, contentType: false, success: function( res ) {
+		$.ajax({ type: "POST", url: "/submit.php", data: fData, processData: false, contentType: false, success: function( res )
+		{
 			if(res == '0')
 		 		$("#submission-form").empty().animate({height: "33px"}, 400, function(){$("#submission-form").append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.<br> You will receive a notification if your post gets approved.</div>");});
 			else if(res ==	'1')
