@@ -5,6 +5,8 @@ var subCount = 20;
 
 var guidelineHeight = 0;
 
+var mediaType = "none";
+
 $('body').on('click', '#qotw-submit', function() {
 	var val = $('input:radio[name=v]:checked').val();
 	
@@ -52,14 +54,14 @@ $(window).scroll(function()
 
 $('body').on('change', '#media-upload-controls input', function()
 {
-	var name 		= $(this).attr('name');
+	mediaType 		= $(this).attr('name');
 	$uploadControls = $('#media-upload-controls');
 	$uploadPreview 	= $('#media-preview');
 	
 	$uploadControls.hide();
 	$uploadPreview.parent().show();
 	
-	if(name == 'image')
+	if(mediaType == 'image')
 	{
 		$uploadPreview.html($(this).val());
 		
@@ -69,7 +71,7 @@ $('body').on('change', '#media-upload-controls input', function()
 		
 		$uploadPreview.prepend(imgPreview);
 	}
-	else if(name == 'video')
+	else if(mediaType == 'video')
 	{
 		$uploadPreview.html("<div class='video-container'><iframe width='320' height='240' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe></div>");
 	}
@@ -79,9 +81,10 @@ $('body').on('change', '#media-upload-controls input', function()
 	}
 });
 
-$('body').on('click', '#media-upload-cancel', function()
+$('#media-upload-cancel').click(function()
 {
 	$('#media-upload-verification, #media-upload-controls').toggle(); 
+	mediaType = "none";
 });
 
 $('#sort, #display, #category, #nsfw').on('change', function()
@@ -92,7 +95,7 @@ $('#sort, #display, #category, #nsfw').on('change', function()
 $("#submission-form").submit(function() 
 {
 	submission = $("#submission-input").val();
-	$( "#submission-wrapper" ).append("");
+	//$( "#submission-wrapper" ).append("");
 	category = $("#submit-category").val();
 	$a = $('#anonymous');
 	chk = $a[0].checked;
@@ -102,17 +105,24 @@ $("#submission-form").submit(function()
 	else{
 		anonymous = 0;
 	}
-	objData = {s: submission, c: category, a: anonymous };
-	objData = validate_data(objData);
-	if(objData){
-		$.post( "/submit.php",objData,function( res ) {
+	//objData = {s: submission, c: category, a: anonymous };
+	//objData = validate_data(objData);
+	var fData = new FormData();
+	fData.append('s', submission);
+	fData.append('c', category);
+	fData.append('a', anonymous);
+	fData.append('m', mediaType);
+	fData.append('i', $('#smu-image-tab input')[0].files[0]);
+	
+	if(fData){
+		$.ajax({ type: "POST", url: "/submit.php", data: fData, processData: false, contentType: false, success: function( res ) {
 			if(res == '0')
-		 		$( "#submission-form" ).empty().animate({height: "33px"}, 400, function(){$("#submission-form").append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.<br> You will receive a notification if your post gets approved.</div>");});
+		 		$("#submission-form").empty().animate({height: "33px"}, 400, function(){$("#submission-form").append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.<br> You will receive a notification if your post gets approved.</div>");});
 			else if(res ==	'1')
 				$("#submission-input").css("box-shadow", "0px 0px 5px #DD0000");
 			else if(res == '2')
 				$("submit-category").css("box-shadow", "0px 0px 5px #DD0000");
-		});
+		}});
 	}
     return false;
 });
