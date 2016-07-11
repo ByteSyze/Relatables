@@ -62,10 +62,16 @@ $('body').on('change', '#media-upload-controls input', function()
 	if(name == 'image')
 	{
 		$uploadPreview.html($(this).val());
+		
+		var imgPreview = document.createElement('img');
+		imgPreview.src = URL.createObjectURL($(this)[0].files[0]);
+		imgPreview.style.width = "100%";
+		
+		$uploadPreview.prepend(imgPreview);
 	}
 	else if(name == 'video')
 	{
-		$uploadPreview.html("<iframe width='320' height='240' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe>");
+		$uploadPreview.html("<div class='video-container'><iframe width='320' height='240' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe></div>");
 	}
 	else
 	{
