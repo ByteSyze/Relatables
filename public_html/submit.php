@@ -16,12 +16,14 @@
 		{	
 			$date = getdate();
 			$target_dir = "/images/media/posts/{$date['year']}/{$date['mon']}/{$date['mday']}";
+			$absolute_dir = $_SERVER['DOCUMENT_ROOT'] . $target_dir;
 			
-			if(!is_dir($target_dir)) //Create the directory if it doesn't exist yet.
-				mkdir($target_dir, 0777, true);
+			if(!is_dir($absolute_dir)) //Create the directory if it doesn't exist yet.
+				mkdir($absolute_dir, 0777, true);
 			
 			$imageFileType = pathinfo($_FILES['i']['name'], PATHINFO_EXTENSION);
 			$target_file = $target_dir . '/' . time() . '.' . $imageFileType;
+			$absolute_target_file = $_SERVER['DOCUMENT_ROOT'] . $target_file;
 		
 			if ($_FILES['i']["size"] > 2000000)
 			{
@@ -33,10 +35,10 @@
 				if($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg"
 				|| $imageFileType == "gif" ) 
 				{
-					while (file_exists($target_file))
-						$target_file = $target_dir . '/' . time() . '.' . $imageFileType;
+					while (file_exists($absolute_target_file))
+						$absolute_target_file = $target_dir . '/' . time() . '.' . $imageFileType;
 					
-					if(!move_uploaded_file($_FILES['i']["tmp_name"], $target_file))
+					if(!move_uploaded_file($_FILES['i']["tmp_name"], $absolute_target_file))
 					{
 						die('4');
 					}
