@@ -17,6 +17,8 @@
 		private $notalone; 		/**Number of "not alone" votes.*/
 		private $pending;		/**Whether or not this post is pending approval.*/
 		private $submission;	/**Question submitted by user.*/
+		private $media;			/**The URL to any attached media*/
+		private $mediaType;		/**The type of attached media (image|video|none)*/
 		private $anonymous;		/**Whether or not to display the user as anonymous.*/
 		private $nsfw;			/**Whether or not this post is not safe for work.*/
 		private $comment_count; /**Number of comments on this post*/
@@ -51,12 +53,12 @@
 					$id = func_get_arg(0);
 					$this->id = $id;
 					
-					if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, (SELECT count(CASE WHEN alone THEN 1 END) FROM related WHERE pid=submissions.id), (SELECT count(CASE WHEN NOT alone THEN 1 END) FROM related WHERE pid=submissions.id), pending, submission, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . GlobalUtils::$user->getID() . " AND pid=submissions.id) FROM submissions WHERE id=(?)"))
+					if($statement = self::$connection->prepare("SELECT uid, verification, category, DATE_FORMAT(date,'%M %d, %Y'), (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(date))/60, (SELECT count(CASE WHEN alone THEN 1 END) FROM related WHERE pid=submissions.id), (SELECT count(CASE WHEN NOT alone THEN 1 END) FROM related WHERE pid=submissions.id), pending, submission, media, mediatype, anonymous, (SELECT COUNT(cid) FROM comments WHERE pid=submissions.id AND rid=0), (SELECT alone FROM related WHERE uid=" . GlobalUtils::$user->getID() . " AND pid=submissions.id) FROM submissions WHERE id=(?)"))
 					{
 						$statement->bind_param('i', $id);
 						$statement->execute();
 						
-						$statement->bind_result($this->uid,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->anonymous,$this->comment_count,$this->user_vote);
+						$statement->bind_result($this->uid,$this->verification,$this->category,$this->fdate,$this->date_diff,$this->alone,$this->notalone,$this->pending,$this->submission,$this->media,$this->mediaType,$this->anonymous,$this->comment_count,$this->user_vote);
 						$statement->fetch();
 						
 						
@@ -170,6 +172,26 @@
 		public function setSubmission($submission)
 		{
 			$this->submission = $submission;
+		}
+		
+		public function getMedia()
+		{
+			return $this->media;
+		}
+		
+		public function setMedia($media)
+		{
+			$this->media = $media;
+		}
+		
+		public function getMediaType()
+		{
+			return $this->mediaType;
+		}
+		
+		public function setMediaType($mediaType)
+		{
+			$this->mediaType = $mediaType;
 		}
 		
 		public function getAnonymous()

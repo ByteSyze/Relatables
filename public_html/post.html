@@ -10,7 +10,19 @@
 <div class='col-md-12'>
 	<div class='panel panel-default'>
 		<div class='panel-body'>
-			<?php echo $post->getSubmission(); ?>
+			<?php 
+				echo $post->getSubmission(); 
+				
+				$mediaType = $post->getMediaType();
+				if($mediaType == 'image') :
+			?>
+			
+			<img src="<?php echo $post->getMedia(); ?>" />
+			<?php elseif($mediaType == 'video') : ?>
+			
+			<div class="video-container"><iframe width="640" height="480" src="<?php echo $post->getMedia(); ?>" frameborder="0" allowfullscreen></iframe></div>
+			<?php endif; ?>
+			
 		</div>
 		<div class="post-actions" data-v="<?php echo $post->getVerification(); ?>">
 			<div class="panel-footer clearfix">
