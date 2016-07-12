@@ -18,10 +18,7 @@
 			$target_dir = "/images/media/posts/{$date['year']}/{$date['mon']}/{$date['mday']}";
 			
 			if(!is_dir($target_dir)) //Create the directory if it doesn't exist yet.
-			{
-				echo 'creating directory: ' . $target_dir;
 				mkdir($target_dir, 0777, true);
-			}
 			
 			$imageFileType = pathinfo($_FILES['i']['name'], PATHINFO_EXTENSION);
 			$target_file = $target_dir . '/' . time() . '.' . $imageFileType;
