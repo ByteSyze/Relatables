@@ -73,7 +73,7 @@
 	if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, media, mediatype, anonymous) VALUES (?,?,?,?,?,?,?)"))
 	{	
 		$temp_verif = 1234;
-		$statement->bind_param("iiisssi",$_SESSION['id'], $temp_verif, $category, $submission, $media, $mediatype, $anon);
+		$statement->bind_param("iiisssi",$_SESSION['id'], $temp_verif, $category, $submission, $media, $mediaType, $anon);
 		
 		echo ($statement->execute() ? 0 : -1);
 	}
