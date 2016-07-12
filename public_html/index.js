@@ -115,6 +115,8 @@ $("#submission-form").submit(function()
 	
 	if(mediaType == 'image')
 		fData.append('i', $('#smu-image-tab input')[0].files[0]);
+	else if(mediaType == 'video')
+		fData.append('v', $('#smu-video-tab input').val());
 	
 	if(fData){
 		$.ajax({ type: "POST", url: "/submit.php", data: fData, processData: false, contentType: false, success: function( res )

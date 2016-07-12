@@ -664,6 +664,8 @@ CREATE TABLE IF NOT EXISTS `submissions` (
   `notalone` int(11) unsigned NOT NULL DEFAULT '0',
   `pending` tinyint(1) NOT NULL DEFAULT '1',
   `submission` text NOT NULL,
+  `media` varchar(128) DEFAULT NULL,
+  `mediatype` varchar(5) NOT NULL DEFAULT 'none',
   `anonymous` tinyint(1) NOT NULL DEFAULT '0',
   `nsfw` mediumint(9) NOT NULL DEFAULT '0',
   `reported` tinyint(1) NOT NULL DEFAULT '0',

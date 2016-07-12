@@ -8,6 +8,8 @@
 	$anon = $_POST['a'];
 	$mediaType = $_POST['m'];
 	
+	$media = '';
+	
 	if($mediaType == 'image')
 	{
 		if(getimagesize($_FILES['i']["tmp_name"]))
@@ -42,9 +44,15 @@
 					{
 						die('4');
 					}
+					
+					$media = $target_file;
 				}
 			}
 		}
+	}
+	else if($mediaType == 'video')
+	{
+		$media = $_POST['v'];
 	}
 	
 	$sublen = strlen($submission);
@@ -62,10 +70,10 @@
 	
 	$connection = GlobalUtils::getConnection();
 	
-	if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, anonymous) VALUES (?,?,?,?,?)"))
+	if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, media, mediatype, anonymous) VALUES (?,?,?,?,?)"))
 	{	
 		$temp_verif = 1234;
-		$statement->bind_param("iiisi",$_SESSION['id'], $temp_verif, $category, $submission, $anon);
+		$statement->bind_param("iiisi",$_SESSION['id'], $temp_verif, $category, $submission, $media, $mediatype, $anon);
 		
 		echo ($statement->execute() ? 0 : -1);
 	}
