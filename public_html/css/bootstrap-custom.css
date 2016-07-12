@@ -129,6 +129,11 @@ body {
 .post-guidelines .popover-content {
   width: 320px;
 }
+.post-img {
+  max-width:100%;
+  display: block;
+  margin: auto;
+}
 .row .col-lg-6.col-sm-12 {
   padding-left: 0px;
   padding-right: 0px;
