@@ -16,16 +16,15 @@
 		{	
 			$date = getdate();
 			$target_dir = "/images/media/posts/{$date['year']}/{$date['mon']}/{$date['mday']}";
-			$full_image_path = $_SERVER['DOCUMENT_ROOT'].$target_dir;
 			
-			if(!is_dir($full_image_path)) //Create the directory if it doesn't exist yet.
+			if(!is_dir($target_dir)) //Create the directory if it doesn't exist yet.
 			{
-				echo 'creating directory: ' . $full_image_path;
-				mkdir($full_image_path, 0777, true);
+				echo 'creating directory: ' . $target_dir;
+				mkdir($target_dir, 0777, true);
 			}
 			
 			$imageFileType = pathinfo($_FILES['i']['name'], PATHINFO_EXTENSION);
-			$target_file = $full_image_path . '/' . time() . '.' . $imageFileType;
+			$target_file = $target_dir . '/' . time() . '.' . $imageFileType;
 		
 			if ($_FILES['i']["size"] > 2000000)
 			{
@@ -38,7 +37,7 @@
 				|| $imageFileType == "gif" ) 
 				{
 					while (file_exists($target_file))
-						$target_file = $full_image_path . '/' . time() . '.' . $imageFileType;
+						$target_file = $target_dir . '/' . time() . '.' . $imageFileType;
 					
 					if(!move_uploaded_file($_FILES['i']["tmp_name"], $target_file))
 					{
