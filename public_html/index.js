@@ -63,17 +63,17 @@ $('body').on('change', '#media-upload-controls input', function()
 	
 	if(mediaType == 'image')
 	{
-		$uploadPreview.html($(this).val());
+		//$uploadPreview.html($(this).val());
 		
-		var imgPreview = document.createElement('img');
-		imgPreview.src = URL.createObjectURL($(this)[0].files[0]);
-		imgPreview.style.width = "100%";
+		$imgPreview = $('#media-preview img');
+		$imgPreview.attr('src', URL.createObjectURL($(this)[0].files[0]));
 		
-		$uploadPreview.prepend(imgPreview);
+		//$uploadPreview.prepend(imgPreview);
 	}
 	else if(mediaType == 'video')
 	{
-		$uploadPreview.html("<div class='video-container'><iframe width='320' height='240' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe></div>");
+		//$uploadPreview.html("<div class='video-container'><iframe width='320' height='240' src='"+ $(this).val() +"' frameborder='0' allowfullscreen></iframe></div>");
+		$('#media-preview iframe').attr('src', $(this).val());
 	}
 	else
 	{
@@ -84,6 +84,7 @@ $('body').on('change', '#media-upload-controls input', function()
 $('#media-upload-cancel').click(function()
 {
 	$('#media-upload-verification, #media-upload-controls').toggle(); 
+	$('#media-preview img, #media-preview iframe').attr('src', '');
 	mediaType = "none";
 });
 

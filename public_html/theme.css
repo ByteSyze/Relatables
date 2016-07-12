@@ -48,6 +48,11 @@ div.social img {
 	margin-left: 0px;
 }
 
+#media-preview [src='']
+{
+	display: none;
+}
+
 .page-jumbo {
   padding: 20px 0px;
 }
