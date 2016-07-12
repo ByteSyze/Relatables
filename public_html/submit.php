@@ -70,7 +70,7 @@
 	
 	$connection = GlobalUtils::getConnection();
 	
-	if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, media, mediatype, anonymous) VALUES (?,?,?,?,?)"))
+	if($statement = $connection->prepare("INSERT INTO submissions (uid, verification, category, submission, media, mediatype, anonymous) VALUES (?,?,?,?,?,?,?)"))
 	{	
 		$temp_verif = 1234;
 		$statement->bind_param("iiisi",$_SESSION['id'], $temp_verif, $category, $submission, $media, $mediatype, $anon);
