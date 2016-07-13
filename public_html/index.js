@@ -188,6 +188,10 @@ $(document).ready(function()
 	});
 	$imgPreview.on('load', function()
 	{
+		if($('#media-upload-controls input[type="file"]')[0].files[0].size > 2000000)
+		{
+			$('#media-upload-errors').html('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Oops! The maximum image size is 2MB. Please shrink your image.</div>');
+		}
 		$uploadControls.hide();
 		$uploadPreview.parent().show();
 	});

@@ -53,6 +53,10 @@ div.social img {
 	display: none;
 }
 
+#media-upload-controls input {
+  max-width:100%;
+}
+
 .page-jumbo {
   padding: 20px 0px;
 }
