@@ -21,7 +21,7 @@
 			if(!is_dir($absolute_dir)) //Create the directory if it doesn't exist yet.
 				mkdir($absolute_dir, 0777, true);
 			
-			$imageFileType = pathinfo($_FILES['i']['name'], PATHINFO_EXTENSION);
+			$imageFileType = strtolower(pathinfo($_FILES['i']['name'], PATHINFO_EXTENSION));
 			$target_file = $target_dir . '/' . time() . '.' . $imageFileType;
 			$absolute_target_file = $_SERVER['DOCUMENT_ROOT'] . $target_file;
 		
