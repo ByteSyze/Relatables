@@ -10,6 +10,8 @@ var mediaType = "none";
 var $imgPreview;
 var $vidPreview;
 
+var invalidImage = false;
+
 $('body').on('click', '#qotw-submit', function() {
 	var val = $('input:radio[name=v]:checked').val();
 	
@@ -61,9 +63,6 @@ $('body').on('change', '#media-upload-controls input', function()
 	$uploadControls = $('#media-upload-controls');
 	$uploadPreview 	= $('#media-preview');
 	
-	$uploadControls.hide();
-	$uploadPreview.parent().show();
-	
 	if(mediaType == 'image')
 	{
 		$imgPreview.attr('src', URL.createObjectURL($(this)[0].files[0]));
@@ -72,6 +71,9 @@ $('body').on('change', '#media-upload-controls input', function()
 	{
 		$vidPreview.attr('src', $(this).val());
 		$vidPreview.parent().show();
+		
+		$uploadControls.hide();
+		$uploadPreview.parent().show();
 	}
 	else
 	{
@@ -176,6 +178,16 @@ $(document).ready(function()
 	$vidPreview = $('#media-preview iframe');
 	
 	$vidPreview.parent().hide();
+	
+	$imgPreview.on('error', function()
+	{
+		$('#media-upload-controls').append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Corrupt or invalid image provided. Please try again.</div>');
+	});
+	$imgPreview.on('load', function()
+	{
+		$uploadControls.hide();
+		$uploadPreview.parent().show();
+	});
 });
 
 
