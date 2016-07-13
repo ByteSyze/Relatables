@@ -181,7 +181,7 @@ $(document).ready(function()
 	
 	$imgPreview.on('error', function()
 	{
-		$('#media-upload-controls').append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Corrupt or invalid image provided. Please try again.</div>');
+		$('#media-upload-controls').append('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Oops! The file you tried to use couldn\'t be loaded.</div>');
 	});
 	$imgPreview.on('load', function()
 	{
