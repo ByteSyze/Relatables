@@ -162,8 +162,11 @@ $('#submission-form').focusout(function()
 	{
 		if($(document.activeElement).parents('#submission-form').length == 0)
 		{
-			$('.post-guidelines').animate({'height': '0px'},200);
-			guidelineHeight = 0;
+			if(!$('#media-upload-modal').is(':visible'))
+			{
+				$('.post-guidelines').animate({'height': '0px'},200);
+				guidelineHeight = 0;
+			}
 		}
 	}, 100);
 });
@@ -181,7 +184,7 @@ $(document).ready(function()
 	
 	$imgPreview.on('error', function()
 	{
-		$('#media-upload-controls').append('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Oops! The file you tried to use couldn\'t be loaded.</div>');
+		$('#media-upload-errors').html('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Oops! The file you tried to use couldn\'t be loaded.</div>');
 	});
 	$imgPreview.on('load', function()
 	{
