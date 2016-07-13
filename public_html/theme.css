@@ -57,6 +57,10 @@ div.social img {
   max-width:100%;
 }
 
+#media-popover-btn .glyphicon-ok {
+  color: lightgreen;
+}
+
 .page-jumbo {
   padding: 20px 0px;
 }

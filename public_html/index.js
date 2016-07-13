@@ -94,6 +94,11 @@ $('#media-upload-cancel').click(function()
 	mediaType = "none";
 });
 
+$('#media-upload-confirm').click(function()
+{
+	$('#media-popover-btn .glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-ok');
+});
+
 $('#sort, #display, #category, #nsfw').on('change', function()
 {
 	paginate();
