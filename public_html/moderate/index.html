@@ -84,7 +84,7 @@
 	else
 	{
 		$end = $index+1;
-		$submissions = mysqli_query($connection, "SELECT submission, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
+		$submissions = mysqli_query($connection, "SELECT submission, media, mediatype, id FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
 	}
 	
 	$submission = mysqli_fetch_array($submissions);
@@ -107,11 +107,11 @@
 				<div class="container">
 					<h1>Does this post obey the rules & guidelines?</h1>
 					<div class="well">
-						<?php echo $submission['submission'] != null
-										 ? $submission['submission']
-										 : "There are no posts to moderate at this time"; ?>
 						<?php 
-							
+							echo $submission['submission'] != null
+										 ? $submission['submission']
+										 : "There are no posts to moderate at this time";
+										 
 							$mediaType = $submission['mediatype'];
 							if($mediaType == 'image') :
 						?>
