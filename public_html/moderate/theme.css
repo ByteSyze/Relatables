@@ -33,3 +33,9 @@
 	font-size: 15px;
 	font-weight: bold;
 }
+
+.buttons .button
+{
+	margin: 0px 10px;
+	min-width:100px;
+}
