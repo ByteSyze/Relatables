@@ -10,7 +10,7 @@ var mediaType = "none";
 var $imgPreview;
 var $vidPreview;
 
-var invalidImage = false;
+var imageLoaded  = false;
 
 $('body').on('click', '#qotw-submit', function() {
 	var val = $('input:radio[name=v]:checked').val();
@@ -65,6 +65,7 @@ $('body').on('change', '#media-upload-controls input', function()
 	
 	if(mediaType == 'image')
 	{
+		imageLoaded = false;
 		$imgPreview.attr('src', URL.createObjectURL($(this)[0].files[0]));
 	}
 	else if(mediaType == 'video')
@@ -184,10 +185,12 @@ $(document).ready(function()
 	
 	$imgPreview.on('error', function()
 	{
-		$('#media-upload-errors').html('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Oops! The file you tried to use couldn\'t be loaded.</div>');
+		if(!imageLoaded) /**Workaround for Chrome, IE, Opera, and basically everything that isn't Firefox. If the image has already loaded successfully, then this error event isn't relevant.*/
+			$('#media-upload-errors').html('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Oops! The file you tried to use couldn\'t be loaded.</div>');
 	});
 	$imgPreview.on('load', function()
 	{
+		imageLoaded = true;
 		if($('#media-upload-controls input[type="file"]')[0].files[0].size > 2000000)
 		{
 			$('#media-upload-errors').html('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span class="glyphicon glyphicon-warning-sign"></span> Oops! The maximum image size is 2MB. Please shrink your image.</div>');
