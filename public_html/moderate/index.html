@@ -13,7 +13,7 @@
 		{
 			$end = $index+2;
 			
-			$submissions = mysqli_query($connection, "SELECT submission, alone, notalone, id, uid FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
+			$submissions = mysqli_query($connection, "SELECT submission, media, mediatype, alone, notalone, id, uid FROM submissions WHERE pending=1 ORDER BY submissions.date LIMIT $index, $end");
 			$submission = mysqli_fetch_array($submissions); // The submission that was voted on.
 			
 			$alone	  = $submission['alone'];
@@ -104,12 +104,24 @@
 		<div class="content-wrapper">
 			<?php require "../navigation.php"; ?>
 			<div class="content">
-				<div class="page-jumbo moderate-jumbo">
+				<div class="container">
 					<h1>Does this post obey the rules & guidelines?</h1>
-					<div class="moderate-post">
+					<div class="well">
 						<?php echo $submission['submission'] != null
 										 ? $submission['submission']
 										 : "There are no posts to moderate at this time"; ?>
+						<?php 
+							
+							$mediaType = $submission['mediatype'];
+							if($mediaType == 'image') :
+						?>
+						
+						<img class="post-img" src="<?php echo $submission['media']; ?>" />
+						<?php elseif($mediaType == 'video') : ?>
+						
+						<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="640" height="480" src="<?php echo $submission['media']; ?>" frameborder="0" allowfullscreen></iframe></div>
+						<?php endif; ?>
+			
 					</div>
 					<form id='moderation-form' method='POST'>
 						<div class="buttons moderate-buttons more-space">
