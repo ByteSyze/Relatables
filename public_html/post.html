@@ -20,7 +20,7 @@
 			<img class="post-img" src="<?php echo $post->getMedia(); ?>" />
 			<?php elseif($mediaType == 'video') : ?>
 			
-			<div class="video-container"><iframe width="640" height="480" src="<?php echo $post->getMedia(); ?>" frameborder="0" allowfullscreen></iframe></div>
+			<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="640" height="480" src="<?php echo $post->getMedia(); ?>" frameborder="0" allowfullscreen></iframe></div>
 			<?php endif; ?>
 			
 		</div>
