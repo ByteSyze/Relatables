@@ -134,7 +134,7 @@ $("#submission-form").submit(function()
 		$.ajax({ type: "POST", url: "/submit.php", data: fData, processData: false, contentType: false, success: function( res )
 		{
 			if(res == '0')
-		 		$("#submission-form").empty().animate({height: "33px"}, 400, function(){$("#submission-form").append("<div id='success_msg'>Your post has been submitted successfully and is now being moderated.<br> You will receive a notification if your post gets approved.</div>");});
+		 		$("#submission-form").empty().animate({height: "33px"}, 400, function(){$("#submission-form").append("<div id='success_msg' class='panel'>Your post has been submitted successfully and is now being moderated.<br> You will receive a notification if your post gets approved.</div>");});
 			else if(res ==	'1')
 				$("#submission-input").css("box-shadow", "0px 0px 5px #DD0000");
 			else if(res == '2')
