@@ -141,13 +141,13 @@ body {
 .panel-footer .green > .badge {
   background-color: #4AD88F;
 }
-.panel-footer .green > .badge:hover {
+.panel-footer .green:hover > .badge {
   background-color: #36C47B;
 }
 .panel-footer .green-hover:hover {
   color: #4AD88F;
 }
-.panel-footer .green-hover > .badge:hover {
+.panel-footer .green-hover:hover > .badge {
   background-color: #4AD88F;
 }
 .panel-footer .red {
@@ -159,13 +159,13 @@ body {
 .panel-footer .red > .badge {
   background-color: #D84A4A;
 }
-.panel-footer .red > .badge:hover {
+.panel-footer .red:hover > .badge {
   background-color: #C43636;
 }
 .panel-footer .red-hover:hover {
   color: #D84A4A;
 }
-.panel-footer .red-hover > .badge:hover {
+.panel-footer .red-hover:hover > .badge {
   background-color: #D84A4A;
 }
 .post-guidelines .popover-content {
