@@ -197,7 +197,6 @@ if(!empty($_SESSION['popup_msg']))
 		<li class='dropdown'>
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="icon glyphicon glyphicon-bell"></div></a>
 			<ul id="notif-drop"  class="dropdown-menu notifications-dropdown">
-				<!-- /////////////////// TODO -->
 				<?php
 					while($notification = mysqli_fetch_array($notifications)) :
 				?>
@@ -222,7 +221,7 @@ if(!empty($_SESSION['popup_msg']))
 			</ul>
 		</li>
 		<li class='dropdown'>
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="icon glyphicon glyphicon-user"></div></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="icon glyphicon glyphicon-user <?php if($unreadNotifications) echo 'highlight'; ?> "></div></a>
 			<ul id="prof-drop"  class="dropdown-menu">
 				<li><a href="/user/<?php echo GlobalUtils::$user->getUsername(); ?>">Profile</a></li><li><a href="/settings/account">Settings</a></li>
 				<li><a href="/signout.php">Signout</a></li>
@@ -230,6 +229,6 @@ if(!empty($_SESSION['popup_msg']))
 		</li>
 		<?php endif; ?>
 	  </ul>
-	</div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+	</div>
+  </div>
 </nav>

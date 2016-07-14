@@ -269,6 +269,10 @@ ul.nav.navbar-nav  div.icon {
 	margin: 3px;
 }
 
+ul.nav.navbar-nav  div.icon.highlight {
+	color: orange;
+}
+
 .share-wrapper {
 	height: 30px;
 }
@@ -864,10 +868,6 @@ select:hover, select:active {
 
 textarea.input-submit {
   resize: none;
-}
-
-.unread-notifications {
-	background-position: center !important;
 }
 
 .notifications-dropdown {
