@@ -262,22 +262,12 @@ ul.nav.navbar-nav.navbar-right a.dropdown-toggle {
 }
 
 ul.nav.navbar-nav  div.icon {
-	width:26px;
+	width:30px;
+	height:30px;
 	display:inline-block;
 	vertical-align:middle;
 	background-position:top;
-}
-
-ul.nav.navbar-nav div.notifications-icon {
-	height:26px;
-	margin: 2px;
-	background-image:url('/images/icons/notification_icon.png');
-}
-
-ul.nav.navbar-nav div.profile-icon {
-	height:30px;
-	margin: 0px 2px;
-	background-image:url('/images/icons/profile_icon.png');
+	font-size: 30px;
 }
 
 .share-wrapper {
@@ -781,6 +771,7 @@ form input[type="text"], form input[type="password"], form textarea {
   -moz-border-radius: 3px;
   border-radius: 3px;
 
+  -webkit-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
