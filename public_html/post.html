@@ -44,7 +44,7 @@
 							
 				} else 
 				{
-					$button_yes_meta = $button_no_meta = "data-signup-header=Please sign up to vote";
+					$button_yes_meta = $button_no_meta = "data-toggle='modal' data-target='#registerpopup'";
 				}
 				?>
 				<a class="<?php $button_yes_classes ?>" <?php echo $button_yes_meta ?>  data-vc="<?php echo $post->getNotAlone() ?>">You're not alone <span class="badge"> <?php echo number_format($post->getNotAlone()) ?> </span></a>
