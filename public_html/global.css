@@ -695,13 +695,11 @@ span.padded {
 }
 
 .footer {
-  background-color: #F0F1F7;
   border-top: 1px solid #808080;
   width: 100%;
   bottom: 0px;
   position: absolute;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 20px 0px;
   color: #808080;
 }
 
@@ -725,7 +723,7 @@ span.padded {
 }
 
 .content {
-  padding-bottom: 97px;
+  padding-bottom: 75px;
 }
 
 .right {
