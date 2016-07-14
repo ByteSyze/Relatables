@@ -395,10 +395,10 @@ function vote($button)
 		}
 		
 		notAloneEl.attr('data-vc',notAlone);
-		notAloneEl.html("You're not alone ("+notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')+")");
+		notAloneEl.children('.badge').html(notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
 		
 		aloneEl.attr('data-vc',alone);
-		aloneEl.html("You're alone ("+alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')+")");
+		aloneEl.children('.badge').html(alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
 	});
 }
 
@@ -458,15 +458,6 @@ $(document).on('click', function(event)
 		if(event.target != $(this)[0])
 			$($(this).attr('data-togg')).hide();
 	});
-});
-
-$('body').on('click','[data-share-button]',function()
-{
-	var button = $(this);
-	if(button.text() == openedShareText)
-		button.next().animate({width: '0px'},100,function(){button.html(closedShareText);});
-	else
-		button.next().animate({width: '90px'},100,function(){button.html(openedShareText);});
 });
 
 $('.dropdown-menu a').click(function(){ $('#' + $(this).parent().parent().attr('data-dropdown')).html($(this).html()); $(this).parent().parent().trigger("change"); });

@@ -128,6 +128,46 @@ body {
 .panel-footer hr {
   margin-top: 0px;
 }
+.panel-footer button {
+  border: none;
+  background: none;
+}
+.panel-footer .green {
+  color: #4AD88F;
+}
+.panel-footer .green:hover {
+  color: #36C47B;
+}
+.panel-footer .green > .badge {
+  background-color: #4AD88F;
+}
+.panel-footer .green > .badge:hover {
+  background-color: #36C47B;
+}
+.panel-footer .green-hover:hover {
+  color: #4AD88F;
+}
+.panel-footer .green-hover > .badge:hover {
+  background-color: #4AD88F;
+}
+.panel-footer .red {
+  color: #D84A4A;
+}
+.panel-footer .red:hover {
+  color: #C43636;
+}
+.panel-footer .red > .badge {
+  background-color: #D84A4A;
+}
+.panel-footer .red > .badge:hover {
+  background-color: #C43636;
+}
+.panel-footer .red-hover:hover {
+  color: #D84A4A;
+}
+.panel-footer .red-hover > .badge:hover {
+  background-color: #D84A4A;
+}
 .post-guidelines .popover-content {
   width: 320px;
 }

@@ -262,12 +262,11 @@ ul.nav.navbar-nav.navbar-right a.dropdown-toggle {
 }
 
 ul.nav.navbar-nav  div.icon {
-	width:30px;
-	height:30px;
 	display:inline-block;
 	vertical-align:middle;
 	background-position:top;
-	font-size: 30px;
+	font-size: 24px;
+	margin: 3px;
 }
 
 .share-wrapper {
