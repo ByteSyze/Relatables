@@ -47,9 +47,9 @@
 					$button_yes_meta = $button_no_meta = "data-toggle='modal' data-target='#registerpopup'";
 				}
 				?>
-				<a class="<?php echo $button_yes_classes ?>" <?php echo $button_yes_meta ?>  data-vc="<?php echo $post->getNotAlone() ?>">You're not alone <span class="badge"> <?php echo number_format($post->getNotAlone()) ?> </span></a>
-				<a class="<?php echo $button_no_classes ?>" <?php echo $button_no_meta ?> data-vc="<?php echo $post->getAlone() ?>">You're alone <span class="badge"> <?php echo number_format($post->getAlone()) ?> </span></a>
-				<a href="/post/<?php echo $post->getID() ?>"><!--<div class="comment tail"></div>-->Comments <span class="badge"> <?php echo $post->getCommentCount() ?> </span></a>
+				<button class="<?php echo $button_yes_classes ?>" <?php echo $button_yes_meta ?>  data-vc="<?php echo $post->getNotAlone() ?>">You're not alone <span class="badge"> <?php echo number_format($post->getNotAlone()) ?> </span></button>
+				<button class="<?php echo $button_no_classes ?>" <?php echo $button_no_meta ?> data-vc="<?php echo $post->getAlone() ?>">You're alone <span class="badge"> <?php echo number_format($post->getAlone()) ?> </span></button>
+				<button href="/post/<?php echo $post->getID() ?>"><!--<div class="comment tail"></div>-->Comments <span class="badge"> <?php echo $post->getCommentCount() ?> </span></button>
 				<?php GlobalUtils::getShareButton(/**Dont remove this absolute path*/"http://www.relatables.com/post/" . $post->getID(), $post->getSubmission()) ?>
 				<span class='pull-right'>
 					<?php
