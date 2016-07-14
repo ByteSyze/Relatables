@@ -104,52 +104,66 @@
 		<div class="content-wrapper">
 			<?php require "../navigation.php"; ?>
 			<div class="content">
-				<div class=" moderate-jumbo container">
-					<h1>Does this post obey the rules & guidelines?</h1>
-					<div class="well">
-						<?php 
-							echo $submission['submission'] != null
-										 ? $submission['submission']
-										 : "There are no posts to moderate at this time";
-										 
-							$mediaType = $submission['mediatype'];
-							if($mediaType == 'image') :
-						?>
-						
-						<img class="post-img" src="<?php echo $submission['media']; ?>" />
-						<?php elseif($mediaType == 'video') : ?>
-						
-						<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="640" height="480" src="<?php echo $submission['media']; ?>" frameborder="0" allowfullscreen></iframe></div>
-						<?php endif; ?>
 			
-					</div>
-					<form id='moderation-form' method='POST'>
-						<div class="buttons moderate-buttons">
-							<?php
-							if($_SESSION['id'])
-								echo "<button class='button green large' type='submit' name='v' value='Yes'>Yes</button><button class='button red large' type='submit' name='v' value='No'>No</button>";
-							else
-								echo "<button class='button green large' type='submit' data-show='#registerpopup'>Yes</button><button class='button red large' type='submit' data-show='#registerpopup'>No</button>";
-							?>
+				<div class='row hero'>
+				
+					<div class='col-lg-3 col-sm-1'></div>
+					
+					<div class='col-lg-6 col-sm-10'>
+					
+						<div class=" moderate-jumbo container">
+							<h1>Does this post obey the rules & guidelines?</h1>
+							<div class="well">
+								<?php 
+									echo $submission['submission'] != null
+												 ? $submission['submission']
+												 : "There are no posts to moderate at this time";
+												 
+									$mediaType = $submission['mediatype'];
+									if($mediaType == 'image') :
+								?>
+								
+								<img class="post-img" src="<?php echo $submission['media']; ?>" />
+								<?php elseif($mediaType == 'video') : ?>
+								
+								<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="640" height="480" src="<?php echo $submission['media']; ?>" frameborder="0" allowfullscreen></iframe></div>
+								<?php endif; ?>
+					
+							</div>
+							<form id='moderation-form' method='POST'>
+								<div class="buttons moderate-buttons">
+									<?php
+									if($_SESSION['id'])
+										echo "<button class='button green large' type='submit' name='v' value='Yes'>Yes</button><button class='button red large' type='submit' name='v' value='No'>No</button>";
+									else
+										echo "<button class='button green large' type='submit' data-show='#registerpopup'>Yes</button><button class='button red large' type='submit' data-show='#registerpopup'>No</button>";
+									?>
+								</div>
+							</form>
 						</div>
-					</form>
+						<div class="moderation-info">
+							<h3>Guidelines</h3>
+							<ul>
+							  <li>Posts should be well-written and original.</li>
+							  <li>Posts must start with "Am I the only one" and end with a question mark if necessary.</li>
+							</ul>
+							<h3>Rules</h3>
+							<ul>
+							  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
+							  <li>Posts should be suitable and appropriate for users.</li>
+							</ul>
+						</div>
+						
+					</div>
+					
 				</div>
-				<div class="moderation-info">
-					<h3>Guidelines</h3>
-					<ul>
-					  <li>Posts should be well-written and original.</li>
-					  <li>Posts must start with "Am I the only one" and end with a question mark if necessary.</li>
-					</ul>
-					<h3>Rules</h3>
-					<ul>
-					  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
-					  <li>Posts should be suitable and appropriate for users.</li>
-					</ul>
-				</div>
-		  </div>
-		  <?php GlobalUtils::getFooter(); ?>
-	  </div>
+				
+			</div>
+			
+			<div class='col-lg-3 col-sm-1'></div>
+			<?php GlobalUtils::getFooter(); ?>
+		</div>
 
-	  <?php GlobalUtils::getJS(); ?>
+		<?php GlobalUtils::getJS(); ?>
 	</body>
 </html>
