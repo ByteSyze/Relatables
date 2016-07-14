@@ -125,6 +125,9 @@ body {
   display: inline-block;
   color: #6c6c6c;
 }
+.post-actions hr {
+  margin-top: 0px;
+}
 .post-guidelines .popover-content {
   width: 320px;
 }
