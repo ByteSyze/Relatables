@@ -104,6 +104,9 @@ $('#media-upload-confirm').click(function()
 
 $('#sort, #display, #category, #nsfw').on('change', function()
 {
+	if($(this).attr('id') == 'sort' || $(this).attr('id') == 'category')
+		page = 0;
+	
 	paginate();
 });
 
