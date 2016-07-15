@@ -85,6 +85,8 @@ $('body').on('change', '#media-upload-controls input', function()
 $('#media-upload-cancel').click(function()
 {
 	$('#media-upload-verification, #media-upload-controls').toggle(); 
+	$('#media-popover-btn .glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-plus');
+	$('#media-popover-btn').removeClass('green');
 	
 	$imgPreview.attr('src', '');
 	$vidPreview.attr('src', '');
@@ -97,6 +99,7 @@ $('#media-upload-cancel').click(function()
 $('#media-upload-confirm').click(function()
 {
 	$('#media-popover-btn .glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-ok');
+	$('#media-popover-btn').addClass('green');
 });
 
 $('#sort, #display, #category, #nsfw').on('change', function()

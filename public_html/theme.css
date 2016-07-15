@@ -57,6 +57,10 @@ div.social img {
   max-width:100%;
 }
 
+#media-popover-btn.btn.green {
+  background-color: #4AD88F;
+}
+
 #media-popover-btn .glyphicon-ok {
   color: lightgreen;
 }
