@@ -66,6 +66,7 @@
 				font-weight: bold;
 			}
 			.ok {
+				display: none;
 				color: green;
 				font-weight: bold;
 			}
@@ -104,7 +105,7 @@
 			$('form').submit(function()
 			{
 				$form = $(this);
-				$.post('/getnotified.php', { email: $(this).children('type["email"]').val() }, function(result)
+				$.post('/getnotified.php', { email: $(this).children('[type="email"]').val() }, function(result)
 				{
 					if(result)
 					{
@@ -113,6 +114,8 @@
 					else
 					{
 						$form.children('.errors').hide();
+						$form.hide();
+						
 						$form.children('.ok').show();
 					}
 				});
