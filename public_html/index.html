@@ -1,164 +1,91 @@
 <!DOCTYPE html>
-<!-- Copyright (C) Tyler Hackett 2014-->
-<?php
-	require_once 'global.php';
-
-	$page 		= intval($_GET['p']);
-	$order_by 	= intval($_GET['o']);
-	$category 	= intval($_GET['c']);
-	$nsfw		= intval($_GET['n']);
-	$display	= intval($_GET['d']);
-?>
 <html>
 	<head>
-		<title>Relatables - Am I the Only One? | Relatable Posts</title>
+		<title>Relatables - Am I the Only One?</title>
+		
 		<meta name="msvalidate.01" content="6DC41857D2D3B59F2913194EAD906CDD" />
-		<?php
-			GlobalUtils::getMeta();
-			GlobalUtils::getCSS('submissiontheme');
-		?>
+		<meta charset='UTF-8'>
+		<meta name='keywords' content='Am I The Only One, Relatables, Am I The Only One That'>
+		<meta name='description' content='Relatables provides a safe place for you to ask questions and share thoughts you wouldn&#039;t normally feel comfortable sharing. From your most secretive thoughts to your daily habits, you can share it all and see how many others relate.'>
+		<link rel='shortcut icon' href='/images/icons/favicon.ico'>
+		<meta property="fb:app_id"         content="350943211696398" />
+		<meta property="og:url"            content="http://www.relatables.com/?" />
+		<meta property="og:type"           content="website" />
+		<meta property="og:title"          content="Am I the Only One?" />
+		<meta property="og:description"    content="Relatables provides a safe place for you to ask questions and share thoughts you wouldn&#039;t normally feel comfortable sharing. From your most secretive thoughts to your daily habits, you can share it all and see how many others relate." />
+		<meta property="og:image"          content="http://www.relatables.com/images/media/logo-large.png" />
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		
+		<link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css?v=4'>
+		<link rel='stylesheet' type='text/css' href='/css/bootstrap-custom.css?v=4'>
+		
+		<style type='text/css'>
+			* {
+				padding-top: 15px;
+			}
+			html, body {
+				height: 100%;
+				color: white;
+				text-align: center;
+			}
+			body {
+				background-image: url('/images/media/hero.png');
+				display: flex;
+				align-items: center;
+				padding: 0px;
+			}
+			a > img {
+				width: 40px;
+				margin: 0px 5px;
+			}
+			h3
+			{
+				font-style: italic;
+				font-weight: bold;
+			}
+			img {
+				display: inline-block;
+				margin: auto;
+				width: 175px;
+			}
+			p
+			{
+				font-size: 18px;
+			}
+			.panel {
+				background-color: #1d2238;
+				max-width: 400px;
+				padding: 45px;
+			}
+			.sm {
+				padding: 0px;
+			}
+			[type='submit'] {
+				background-color: #0099f4;
+				color: white;
+				font-weight: bold;
+				border: none;
+			}
+		</style>
+		
 		<link rel='canonical' href='http://www.relatables.com/'>
 	</head>
 	<body>
-		<script>
-		  window.fbAsyncInit = function() {
-			FB.init({
-			  appId      : '350943211696398',
-			  xfbml      : true,
-			  version    : 'v2.4'
-			});
-		  };
-
-		  (function(d, s, id){
-			 var js, fjs = d.getElementsByTagName(s)[0];
-			 if (d.getElementById(id)) {return;}
-			 js = d.createElement(s); js.id = id;
-			 js.src = "//connect.facebook.net/en_US/sdk.js";
-			 fjs.parentNode.insertBefore(js, fjs);
-		   }(document, 'script', 'facebook-jssdk'));
-		</script>
-		<div class="content-wrapper">
-			<?php require($_SERVER["DOCUMENT_ROOT"] . "/navigation.php"); ?>
-			<div class="content">
-				<div class='page-jumbo about-jumbo'>
-					<div class='grid wrap wider no-gutters'>
-						<div class='unit two-thirds'>
-							<h2>Who we are.</h2>
-							<p>We provide a safe place for you to ask the world questions and share thoughts you wouldn't normally feel comfortable sharing. From your most secretive thoughts to your daily habits, you can share it all and see how many others relate.</p>
-						</div>
-						<div class='unit one-third'>
-							<h2>We're new, here's how to help.</h2>
-							<a href='/about/blog/article/1'>Letter from the creators</a>
-							<a href='/contact/'>Send feedback</a>
-							<span>Spread the word</span>
-							<div class='social'>
-								<a href='https://www.facebook.com/pages/Relatables/1388055181455491'><img src="/images/icons/fb_ico.png" alt="Relatables Facebook Page" /></a>
-								<a href='https://twitter.com/Relatablescom'><img src="/images/icons/tw_ico.png" alt="Relatables Twitter Page" /></a>
-								<a href='https://plus.google.com/share?url=http://www.relatables.com/'><img src="/images/icons/gp_ico.png"  alt="Relatables Google+ Page" /></a>
-								<a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"><img src="/images/icons/rd_ico.png" alt="Relatables Reddit Page" /></a>
-							</div>
-						</div>
-					</div>
+		<div class='container col-md-8 col-xs-12 panel'>
+			<img src='/images/icons/navbar-logo.svg' />
+			<p>Find others just like you. Anonymously share secrets and habits.</p>
+			<h3>Coming Soon!</h3>
+			<form>
+				<div>
+					<input type="email" class="form-control" id="newsletter-email" placeholder="Email">
+					<input type="submit" class="form-control" id="newsletter-submit" value="Notify Me">
 				</div>
-				<div class="grid wrap wider">
-					<div class="unit two-thirds">
-						<div class="boxes">
-							<div class="box">
-								<div class="box-content">
-									<form id="submission-form" action="/submit.php" method="POST">
-										<textarea name="s" id="submission" class="input-submit">Am I the only one who</textarea>
-										<div id="post-collapse">
-											<div class="buttons padded align-right">
-												<label for="submit-category">Category:</label><select id="submit-category" name="c">
-														<option value="0">Select Category</option>
-														<option value="1">Health</option>
-														<option value="2">Internet</option>
-														<option value="3">Funny</option>
-														<option value="4">People</option>
-														<option value="5">Family</option>
-														<option value="6">Food</option>
-														<option value="7">Personal</option>
-														<option value="8">Odd</option>
-														<option value="9">Other</option></select>
-												<label for="anonymous">Anonymous</label><input type="checkbox" id="anonymous" name="a" />
-												<span data-limiter="#submission" data-limit="300">279</span>
-												<button class="button blue-hover" type="submit">Submit</button>
-											</div>
-											<div class="post-guidelines">
-											<h4>Guidelines</h4>
-											<ul>
-											  <li>Posts should be well-written and original.</li>
-											  <li>Posts should start with "Am I the only one" and end with a question mark if necessary.</li>
-											</ul>
-											<h4>Rules</h4>
-											<ul>
-											  <li>Hate speech based on race, cultural origin, beliefs, disability or sexual orientation will <b>not</b> be tolerated.</li>
-											  <li>Posts should be suitable and appropriate for users.</li>
-											</ul>
-											<span class="warning">Not following the rules may result in a warning and/or your account being terminated. Please use common sense.</span>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-
-							<div class="filters">
-								<div class="filter">
-									<label for="display">Display</label>
-									<select id='display'>
-										<option value='0'>20 per page</option>
-										<option value='1'>50 per page</option>
-										<option value='2'>Continuous</option>
-									</select>
-								</div>
-								<div class="filter">
-									<label for="category">Category</label>
-									<select id='category'>
-										<option value='0'>All Categories</option>
-										<option value='1'>Health</option>
-										<option value='2'>Internet</option>
-										<option value='3'>Funny</option>
-										<option value='4'>People</option>
-										<option value='5'>Family</option>
-										<option value='6'>Food</option>
-										<option value='7'>Personal</option>
-										<option value='8'>Odd</option>
-										<option value='9'>Other</option>
-									</select>
-								</div>
-								<div class="filter">
-									<label for="sort">Sort by</label>
-									<select id='sort'>
-										<option value='0'>Newest</option>
-										<option value='1'>Oldest</option>
-										<option value='2'>Most Relatable</option>
-										<option value='3'>Least Relatable</option>
-									</select>
-								</div>
-							</div>
-							<div id="posts"></div>
-						</div>
-						<div class="bottom-navigation">
-							<div class="buttons">
-								<span class="button" id="prev">previous</span>
-								<div  class="page-buttons"></div>
-								<span class="button blue-hover" id="next">next</span>
-							</div>
-						</div>
-					</div>
-					<div class="unit one-third"> 
-					</div>
-				</div>
+			</form>
+			<p><small>We promise to never spam you.</small></p>
+			<div class='sm'>
+				<a href='https://www.facebook.com/pages/Relatables/1388055181455491'><img src='/images/icons/fb_landing_ico.svg' /></a>
+				<a href='https://twitter.com/Relatablescom'><img src='/images/icons/tw_landing_ico.svg' /></a>
 			</div>
-			<?php GlobalUtils::getFooter(); ?>
-
 		</div>
-		<script>
-			var page 		= <?php echo $page; ?>;
-			var order 		= <?php echo $order_by; ?>;
-			var category 	= <?php echo $category; ?>;
-			var display 	= <?php echo $display; ?>;
-		</script>
-		<?php GlobalUtils::getJS('index'); ?>
 	</body>
 </html>
