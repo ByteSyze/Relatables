@@ -60,6 +60,15 @@
 			.sm {
 				padding: 0px;
 			}
+			.errors {
+				color: red;
+				font-style: italic;
+				font-weight: bold;
+			}
+			.ok {
+				color: green;
+				font-weight: bold;
+			}
 			[type='submit'] {
 				background-color: #0099f4;
 				color: white;
@@ -75,11 +84,13 @@
 			<img src='/images/icons/navbar-logo.svg' />
 			<p>Find others just like you. Anonymously share secrets and habits.</p>
 			<h3>Coming Soon!</h3>
-			<form>
+			<form method="POST" action="newsletter.php">
 				<div>
-					<input type="email" class="form-control" id="newsletter-email" placeholder="Email">
+					<input type="email" name="email" class="form-control" id="newsletter-email" placeholder="Email">
 					<input type="submit" class="form-control" id="newsletter-submit" value="Notify Me">
 				</div>
+				<p class="errors"></p>
+				<p class="ok">Thanks! You will now be notified when Relatables is ready</p>
 			</form>
 			<p><small>We promise to never spam you.</small></p>
 			<div class='sm'>
@@ -87,5 +98,27 @@
 				<a href='https://twitter.com/Relatablescom'><img src='/images/icons/tw_landing_ico.svg' /></a>
 			</div>
 		</div>
+		
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
+		<script>
+			$('form').submit(function()
+			{
+				$form = $(this);
+				$.post('/getnotified.php', { email: $(this).children('type["email"]').val() }, function(result)
+				{
+					if(result)
+					{
+						$form.children('.errors').html(result);
+					}
+					else
+					{
+						$form.children('.errors').hide();
+						$form.children('.ok').show();
+					}
+				});
+				
+				return false;
+			});
+		</script>
 	</body>
 </html>
