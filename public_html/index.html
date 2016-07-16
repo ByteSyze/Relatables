@@ -1,4 +1,30 @@
 <!DOCTYPE html>
+<?php
+	if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST['message']))
+	{
+		$email		= $_POST['email'];
+		$name		= $_POST['name'];
+		$message	= $_POST['message'];
+		
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+			$contactMsg = 'Email is invalid.';
+		else if(strlen($name) < 1)
+			$contactMsg = "Please enter your first name.";
+		else if(strlen($message) < 1)
+			$contactMsg = "Please enter a message.";
+		else
+		{
+			$from		= "From: Contact Form";
+			$subject	= "$name Has submitted a contact form.";
+			$body		= "$name has submitted the following message:\r\n\r\n\"$message\"\r\n\r\n $name Email:\r\n$email";
+			 
+			mail('relatablezweb@gmail.com',$subject,$body,$from);
+			
+			$email = $name = $message = '';
+			$contactMsg = '<h3>Thanks for contacting us, we will get back to you shortly.</h3>';
+		}
+	}
+?>
 <html>
 	<head>
 		<title>Relatables - Am I the Only One?</title>
@@ -25,7 +51,6 @@
 			}
 			html, body {
 				height: 100%;
-				color: white;
 				text-align: center;
 			}
 			body {
@@ -60,10 +85,16 @@
 				left: 0px;
 				position: absolute;
 				padding: 10px;
+				color: white;
 			}
 			.footer > * {
 				color: white;
 				padding: 0px 10px;
+			}
+			.modal-center-helper {
+				display: flex;
+				height: 100%;
+				align-items: center;
 			}
 			.panel {
 				background-color: #1d2238;
@@ -71,9 +102,13 @@
 				max-height: 100%;
 				max-width: 400px;
 				padding: 45px;
+				color: white;
 			}
 			.sm {
 				padding: 0px;
+			}
+			textarea {
+				resize: vertical;
 			}
 			.errors {
 				color: red;
@@ -116,9 +151,36 @@
 		</div>
 		<div class='footer'>
 			<span>&copy; Relatables 2016</span>
-			<a href="#contact" id='contact-btn'>Contact</a>
+			<a href="#contact" data-toggle="modal" data-target="#contact-modal">Contact</a>
+		</div>
+		<div class="modal fade" role="dialog" id="contact-modal">
+			<div class="modal-center-helper">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+							<h1 class="popup-title">Contact Us</h1>
+							<form method="POST">
+								<div>
+									<input type="text" name="name" class="form-control" placeholder="Your Name" value="<?php echo $name; ?>">
+								</div>
+								<div>
+									<input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
+								</div>
+								<div>
+									<textarea name="message" class="form-control" placeholder="Message"><?php echo $message; ?></textarea>
+								</div>
+								<div>
+									<input type="submit" name="submit" class="form-control" value="Send">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<script>
 			$('form').submit(function()
 			{
