@@ -54,6 +54,8 @@
 			}
 			.panel {
 				background-color: #1d2238;
+				overflow-y: auto;
+				max-height: 100vh;
 				max-width: 400px;
 				padding: 45px;
 			}
@@ -105,7 +107,7 @@
 			$('form').submit(function()
 			{
 				$form = $(this);
-				$.post('/getnotified.php', { email: $(this).children('[type="email"]').val() }, function(result)
+				$.post('/getnotified.php', { email: $form.find('[type="email"]').val() }, function(result)
 				{
 					if(result)
 					{
@@ -113,9 +115,7 @@
 					}
 					else
 					{
-						$form.children('.errors').hide();
-						$form.hide();
-						
+						$form.children().hide();
 						$form.children('.ok').show();
 					}
 				});
