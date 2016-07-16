@@ -7,9 +7,9 @@
 		$message	= $_POST['message'];
 		
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-			$contactMsg = 'Email is invalid.';
+			$contactMsg = 'Please enter a valid email.';
 		else if(strlen($name) < 1)
-			$contactMsg = "Please enter your first name.";
+			$contactMsg = "Please enter your name.";
 		else if(strlen($message) < 1)
 			$contactMsg = "Please enter a message.";
 		else
@@ -179,9 +179,23 @@
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" role="dialog" id="contact-feedback-modal">
+			<div class="modal-center-helper">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+							<p><?php echo $contactMsg; ?></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<script>
+			var showFeedback = <?php if(isset($contactMsg)) echo 'true'; else echo 'false'; ?> ;
+			$(document).ready(function(){ if(showFeedback) $('#contact-feedback-modal').modal('show'); });
 			$('#notification-form').submit(function()
 			{
 				$form = $(this);
