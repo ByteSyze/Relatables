@@ -126,12 +126,19 @@ body {
   display: inline-block;
   color: #6c6c6c;
 }
+.panel-footer a:hover {
+  text-decoration: none;
+  color: #565656;
+}
 .panel-footer hr {
   margin-top: 0px;
 }
 .panel-footer button {
   border: none;
   background: none;
+}
+.panel-footer .count {
+  font-weight: bold;
 }
 .panel-footer .green {
   color: #4AD88F;
