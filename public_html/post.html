@@ -52,7 +52,7 @@
 				<a href="/post/<?php echo $post->getID() ?>"><!--<div class="comment tail"></div>--><span class="glyphicon glyphicon-comment"></span> <span class="count"> <?php echo $post->getCommentCount() ?> </span></a>
 				<?php GlobalUtils::getShareButton(/**Dont remove this absolute path*/"http://www.relatables.com/post/" . $post->getID(), $post->getSubmission()) ?>
 				<span class='pull-right'>
-					<span data-toggle="popover" data-html="true" data-content="<?php if($post->getAnonymous()){echo "<span>$format_user</span>";} else {echo '<a class="user'; if($author->isAdmin()) echo ' admin'; echo  '" href="/user/' . $format_user . '">' . $format_user . '</a>';} ?><span class='datediff'><?php echo $format_date_diff ?></span>" class="glyphicon glyphicon-user"></span>
+					<button data-toggle="popover" data-placement="left" data-html="true" data-content="<?php if($post->getAnonymous()){echo "<span>$format_user </span>";} else {echo "<a class='user"; if($author->isAdmin()) echo ' admin'; echo  "' href='/user/" . $format_user . "'>" . $format_user . '</a> ';} ?><span class='datediff'><?php echo $format_date_diff ?></span>"><span class="glyphicon glyphicon-user"></span></button>
 				</span>
 			</div>
 		</div>
