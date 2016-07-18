@@ -395,10 +395,10 @@ function vote($button)
 		}
 		
 		notAloneEl.attr('data-vc',notAlone);
-		notAloneEl.children('.badge').html(notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
+		notAloneEl.children('.count').html(notAlone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
 		
 		aloneEl.attr('data-vc',alone);
-		aloneEl.children('.badge').html(alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
+		aloneEl.children('.count').html(alone.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
 	});
 }
 
