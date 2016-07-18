@@ -70,11 +70,26 @@ $('body').on('change', '#media-upload-controls input', function()
 	}
 	else if(mediaType == 'video')
 	{
-		$vidPreview.attr('src', $(this).val());
-		$vidPreview.parent().show();
+		var link = $(this).val();
 		
-		$uploadControls.hide();
-		$uploadPreview.parent().show();
+		if(link.toLowerCase().includes('youtube.com') || link.toLowerCase().includes('youtu.be'))
+		{
+			var vidStart = link.indexOf("?v=") + 3;
+			
+			if(vidStart > 2)
+			{
+				var vidEnd = link.indexOf("&");
+				
+				if(vidEnd == -1) vidEnd = link.length;
+				
+				$(this).val('https://www.youtube.com/embed/'+link.substring(vidStart, vidEnd));
+				$vidPreview.attr('src', $(this).val());
+				$vidPreview.parent().show();
+				
+				$uploadControls.hide();
+				$uploadPreview.parent().show();
+			}
+		}
 	}
 	else
 	{
