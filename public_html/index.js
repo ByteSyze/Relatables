@@ -79,7 +79,7 @@ $('body').on('change', '#media-upload-controls input', function()
 		for(i = 0; i < urlProperties.length; i++)
 		{
 			var linkLower = link.toLowerCase();
-			if(linkLower.contains(urlProperties[i].domain))
+			if(linkLower.includes(urlProperties[i].domain))
 			{
 				converted = convertVideoURL(link, urlProperties[i]);
 			}
