@@ -47,3 +47,8 @@
 	max-height: 520px;
 	overflow-y:auto;
 }
+
+#posts span.button {
+	width: 100%;
+	text-align: center;
+}

@@ -466,7 +466,7 @@ span.padded {
 
 .page-jumbo {
   margin-top: -10px; /* puts it at top */
-  padding: 80px 100px;
+  padding: 80px 0px;
   background: #1D2238;
   color: #DFE3F7;
   text-shadow: 0px 1px #161A2B;

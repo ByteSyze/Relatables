@@ -30,7 +30,7 @@
 			}
 			
 			if($related[3]) //If a 4th post exists, that means there's atleast one more post to load.
-				echo '<span class="button" data-getrel="' . ($index+1) . '">Load More</span>';
+				echo '<div class="col-md-12"><span class="button" data-getrel="' . ($index+1) . '">Load More</span></div>';
 		}
 		else
 		{
