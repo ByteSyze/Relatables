@@ -12,6 +12,9 @@ var $vidPreview;
 
 var imageLoaded  = false;
 
+var urlProperties = [new VideoURLProperties('youtube.', '?v=', '&', 'https://www.youtube.com/embed/%id%'), 
+					new VideoURLProperties('youtu.be', '.be/', '?', 'https://www.youtube.com/embed/%id%')];
+
 $('body').on('click', '#qotw-submit', function() {
 	var val = $('input:radio[name=v]:checked').val();
 	
@@ -72,7 +75,7 @@ $('body').on('change', '#media-upload-controls input', function()
 	{
 		var link = $(this).val();
 		
-		if(link.toLowerCase().includes('youtube.com') || link.toLowerCase().includes('youtu.be'))
+		if(link.toLowerCase().includes('youtube.') || link.toLowerCase().includes('youtu.be'))
 		{
 			var vidStart = link.indexOf("?v=") + 3;
 			
@@ -329,5 +332,29 @@ function updatePosts()
 	
 	if($('#display').val() != 'Continuous')
 		window.scrollTo(0,0);
+}
+
+function convertVideoURL(url, urlProperties)
+{
+	var vidStart = url.indexOf(urlProperties.idStart) + urlProperties.idStart.length;
+	
+	if(vidStart > urlProperties.idStart.length-1)
+	{
+		var vidEnd = url.indexOf(urlProperties.idEnd);
+		
+		if(vidEnd == -1) vidEnd = url.length;
+		
+		return urlProperties.convertBase.replace('%id%', url.substring(vidStart, vidEnd));
+	}
+	
+	return '';
+}
+
+function VideoURLProperties(domain, idStart, idEnd, convertBase)
+{
+	this.domain = domain;
+	this.idStart = idStart;
+	this.idEnd 	= idEnd;
+	this.convertBase = convertBase;
 }
  
