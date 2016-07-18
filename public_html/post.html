@@ -47,26 +47,12 @@
 					$button_yes_meta = $button_no_meta = "data-toggle='modal' data-target='#registerpopup'";
 				}
 				?>
-				<button class="<?php echo $button_yes_classes ?>" <?php echo $button_yes_meta ?>  data-vc="<?php echo $post->getNotAlone() ?>">You're not alone <span class="badge"> <?php echo number_format($post->getNotAlone()) ?> </span></button>
-				<button class="<?php echo $button_no_classes ?>" <?php echo $button_no_meta ?> data-vc="<?php echo $post->getAlone() ?>">You're alone <span class="badge"> <?php echo number_format($post->getAlone()) ?> </span></button>
-				<a href="/post/<?php echo $post->getID() ?>"><!--<div class="comment tail"></div>-->Comments <span class="badge"> <?php echo $post->getCommentCount() ?> </span></a>
+				<button class="<?php echo $button_yes_classes ?>" <?php echo $button_yes_meta ?>  data-vc="<?php echo $post->getNotAlone() ?>" title="You're not alone"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="count"> <?php echo number_format($post->getNotAlone()) ?> </span></button>
+				<button class="<?php echo $button_no_classes ?>" <?php echo $button_no_meta ?> data-vc="<?php echo $post->getAlone() ?>" title="You're alone"><span class="glyphicon glyphicon-thumbs-down"></span> <span class="count"> <?php echo number_format($post->getAlone()) ?> </span></button>
+				<a href="/post/<?php echo $post->getID() ?>"><!--<div class="comment tail"></div>--><span class="glyphicon glyphicon-comment"></span> <span class="count"> <?php echo $post->getCommentCount() ?> </span></a>
 				<?php GlobalUtils::getShareButton(/**Dont remove this absolute path*/"http://www.relatables.com/post/" . $post->getID(), $post->getSubmission()) ?>
 				<span class='pull-right'>
-					<?php
-					if($post->getAnonymous())
-					{
-						echo "<span>$format_user</span>";
-					} else 
-					{
-						echo '<a class="user'; 
-
-						if($author->isAdmin())
-							echo ' admin';
-
-						echo  '" href="/user/' . $format_user . '">' . $format_user . '</a>';
-					}
-					?>
-					<span class="datediff"><?php echo $format_date_diff ?></span>
+					<span data-toggle="popover" data-html="true" data-content="<?php if($post->getAnonymous()){echo "<span>$format_user</span>";} else {echo '<a class="user'; if($author->isAdmin()) echo ' admin'; echo  '" href="/user/' . $format_user . '">' . $format_user . '</a>';} ?><span class='datediff'><?php echo $format_date_diff ?></span>" class="glyphicon glyphicon-user"></span>
 				</span>
 			</div>
 		</div>
