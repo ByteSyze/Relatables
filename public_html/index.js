@@ -74,24 +74,24 @@ $('body').on('change', '#media-upload-controls input', function()
 	else if(mediaType == 'video')
 	{
 		var link = $(this).val();
+		var converted = '';
 		
-		if(link.toLowerCase().includes('youtube.') || link.toLowerCase().includes('youtu.be'))
+		for(i = 0; i < urlProperties.length; i++)
 		{
-			var vidStart = link.indexOf("?v=") + 3;
-			
-			if(vidStart > 2)
+			var linkLower = link.toLowerCase();
+			if(linkLower.contains(urlProperties[i].domain))
 			{
-				var vidEnd = link.indexOf("&");
-				
-				if(vidEnd == -1) vidEnd = link.length;
-				
-				$(this).val('https://www.youtube.com/embed/'+link.substring(vidStart, vidEnd));
-				$vidPreview.attr('src', $(this).val());
-				$vidPreview.parent().show();
-				
-				$uploadControls.hide();
-				$uploadPreview.parent().show();
+				converted = convertVideoURL(link, urlProperties[i]);
 			}
+		}
+		
+		if(converted != '')
+		{
+			$vidPreview.attr('src', converted);
+			$vidPreview.parent().show();
+			
+			$uploadControls.hide();
+			$uploadPreview.parent().show();
 		}
 	}
 	else
