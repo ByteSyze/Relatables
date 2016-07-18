@@ -87,6 +87,7 @@ $('body').on('change', '#media-upload-controls input', function()
 		
 		if(converted != '')
 		{
+			$(this).val(converted);
 			$vidPreview.attr('src', converted);
 			$vidPreview.parent().show();
 			
