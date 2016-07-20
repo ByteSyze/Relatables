@@ -122,11 +122,11 @@ body {
   border-top: none;
   font-size: 15px;
 }
-.panel-footer a {
+.panel-footer a, .panel-footer button {
   display: inline-block;
   color: #6c6c6c;
 }
-.panel-footer a:hover {
+.panel-footer a:hover, .panel-footer button:hover {
   text-decoration: none;
   color: #565656;
 }

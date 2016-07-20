@@ -874,6 +874,11 @@ textarea.input-submit {
 	border: solid 1px #DDDFEB;
 }
 
+.notifications-dropdown h5 {
+	font-weight: bold;
+	text-align: center;
+}
+
 .notifications-dropdown a {
 	font-weight: normal !important;
 	font-size: 90% !important;

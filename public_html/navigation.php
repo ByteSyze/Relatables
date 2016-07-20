@@ -216,7 +216,12 @@ if(!empty($_SESSION['popup_msg']))
 				</li>
 				<?php
 					endwhile;
+					
+					if($notifications->num_rows == 0) :
 				?>
+				<li><h5>No Messages :(</h5></li>
+				
+				<?php endif; ?>
 				
 			</ul>
 		</li>
