@@ -904,3 +904,6 @@ textarea.input-submit {
   color: red;
   font-style: italic;
 }
+#media-upload-controls input {
+  margin-top: 30px;
+}

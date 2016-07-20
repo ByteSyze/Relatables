@@ -18,7 +18,10 @@
 	content: "";
 	display: block;
 }
-
+.comment-stuff span{
+  color: #007bf4;
+  font-weight: bold;
+}
 .comment {
   margin-bottom: 20px;
   word-break: break-all;

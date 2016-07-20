@@ -67,13 +67,6 @@
 							<?php $post->format(); ?>
 							<span class='comments-warning'>The comments section is a work in progress. If you find any issues, <a href='/contact'>please let us know.</a></span>
 							<div class="box">
-								<span class="box-title">
-									Comments (<span id='comment-count'><?php echo $post->getCommentCount(); ?></span>)
-									<select id='comment-sort'>
-										<option value='0'>Newest Comments</option>
-										<option value='1'>Top Comments</option>
-									</select>
-								</span>
 								<div>
 									<?php
 										$now = new DateTime();
@@ -160,7 +153,7 @@
 										}
 									?>
 								</div>
-								<div class="box-content" id="comments">
+								<div class="box-content">
 									<div id='comment-submit'>
 										<form action='/comment.php' method='POST'>
 											<textarea class="input-submit" placeholder="Join the discussion!" id='comment-submit-text' name='c'></textarea>
@@ -168,7 +161,16 @@
 												<span style='font-size:16px;padding-right:15px;' data-limit='800' data-limiter='#comment-submit-text'>800</span><button class="button blue-hover" id='comment-submit-button' type='submit'>Post</button>
 											</div>
 										</form>
+										<hr></hr>										
 									</div>
+									<div class="clearfix comment-stuff">
+										<span>Comments (<span id='comment-count'><?php echo $post->getCommentCount(); ?></span>)</span>
+										<select id='comment-sort' class='pull-right'>
+											<option value='0'>Newest Comments</option>
+											<option value='1'>Top Comments</option>
+										</select>
+									</div>
+									<div class="box-content" id="comments"></div>
 								</div>
 							</div>
 						</div>
