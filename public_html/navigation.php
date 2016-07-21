@@ -76,36 +76,38 @@ if(!empty($_SESSION['popup_msg']))
 		<div class='modal-content'>
 			<div class='modal-body'>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h1 class='popup-title'>Sign Up</h1>
-				<h6>If you already have an account, <a href='#' role='button' data-toggle='modal' data-target='#registerpopup, #loginpopup'>Log In</a></h6>
-				<div style='text-align:center;margin:auto;width:100%;'>
-					<div>
-						<form method='post'>
-							<div class='form-group has-feedback'>
-								<input id='user_input' class='form-control' type='text' name='username' placeholder='Username' data-toggle="popover" data-placement="bottom" data-content='Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)'>
-								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-								<div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
-							</div>
-							<div class='form-group has-feedback'>
-								<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password' data-toggle="popover" data-placement="bottom" data-content='Password must be atleast 6 characters long. There are no limitations on which characters you can use.'>
-								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-								<div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
-							</div>
-							<div class='form-group has-feedback'>
-								<input id='repass_input' class='form-control' type='password' name='repassword' placeholder='Confirm Password'>
-								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-								<div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
-							</div>
-							<div class='form-group has-feedback'>
-								<input id='email_input' class='form-control' type='email' name='email' placeholder='Email'>
-								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-								<div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
-							</div>
-							<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
-							<div style='padding-top:10px' class='buttons'>
-								<input id='registerbutton' class='button blue-hover block' type='submit' value='Sign Up'>
-							</div>
-						</form>
+				<div id="register-popup-content">
+					<h1 class='popup-title'>Sign Up</h1>
+					<h6>If you already have an account, <a href='#' role='button' data-toggle='modal' data-target='#registerpopup, #loginpopup'>Log In</a></h6>
+					<div style='text-align:center;margin:auto;width:100%;'>
+						<div>
+							<form method='post'>
+								<div class='form-group has-feedback'>
+									<input id='user_input' class='form-control' type='text' name='username' placeholder='Username' data-toggle="popover" data-placement="bottom" data-content='Usernames must be 3-16 characters long. They can only consist of alphanumerical characters (a-z, 0-9)'>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<div class='popup-offset'><div class='error-popup' id='username-popup'></div></div>
+								</div>
+								<div class='form-group has-feedback'>
+									<input id='pass_input' class='form-control' type='password' autocomplete='off' name='password' placeholder='Password' data-toggle="popover" data-placement="bottom" data-content='Password must be atleast 6 characters long. There are no limitations on which characters you can use.'>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<div class='popup-offset'><div class='error-popup' id='new-password-popup'></div></div>
+								</div>
+								<div class='form-group has-feedback'>
+									<input id='repass_input' class='form-control' type='password' name='repassword' placeholder='Confirm Password'>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<div class='popup-offset'><div class='error-popup' id='renew-password-popup'></div></div>
+								</div>
+								<div class='form-group has-feedback'>
+									<input id='email_input' class='form-control' type='email' name='email' placeholder='Email'>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
+								</div>
+								<span style='font-size:10px'>By clicking Sign Up, you agree to our <a href='/about/terms'>Terms & Conditions</a>.</span>
+								<div style='padding-top:10px' class='buttons'>
+									<input id='registerbutton' class='button blue-hover block' type='submit' value='Sign Up'>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

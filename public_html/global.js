@@ -32,9 +32,7 @@ function register()
 			if(data.indexOf("success") != -1)
 			{
 				$('#registerbutton').val("Thank you");
-				$('#registerpopup').hide();
-				
-				createPopup("<h3>A verification email has been sent to " + $('#email_input').val() + ".</h3>");
+				$('#register-popup-content').html("<h3>A verification email has been sent to " + $('#email_input').val() + ".</h3>");
 			}
 		});
 	}, true);
