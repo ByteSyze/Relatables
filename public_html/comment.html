@@ -1,0 +1,118 @@
+<?php
+	$now = new DateTime();
+
+	$comment['comment'] = htmlspecialchars($comment['comment']);
+	
+	if(isset($comment['rid'])):
+?>
+
+<div class='comment reply' id='c<?php echo $comment[cid]; ?>' data-uid='<?php echo $comment[uid]; ?>' data-user='<?php echo $comment[user]; ?>' data-c='<?php echo $comment[cid]; ?>' data-r='<?php echo $comment[rid]; ?>'>
+<?php else : ?>
+
+<div class='comment' id='c<?php echo $comment[cid]; ?>' data-uid='<?php echo $comment[uid]; ?>' data-user='<?php echo $comment[user]; ?>' data-c='<?php echo $comment[cid]; ?>' data-r='<?php echo $comment[cid]; ?>'>
+<?php endif; ?>
+
+<div class='comment-info'>
+	<span><a class='user' href='/user/<?php echo $comment[user]; ?>'><?php echo $comment[user]; ?></a></span>
+	<?php
+	$points_class = "";
+	if($comment['points'] < 0) $points_class = "negative";
+	else if($comment['points'] > 0) $points_class = "positive";
+
+	echo "<span id='points-{$comment[cid]}' class='points $points_class'>{$comment[points]}</span>";
+		
+	$comment['submitted'] = DateTime::createFromFormat("m d Y H i", $comment['submitted']);
+	$time_diff = $comment['submitted']->diff($now);
+	
+	if($time_diff->y == 1)
+		$time_diff = $time_diff->y . ' year ago';
+	else if($time_diff->y)
+		$time_diff = $time_diff->y . ' years ago';
+	else if($time_diff->m == 1)
+		$time_diff = $time_diff->m . ' month ago';
+	else if($time_diff->m)
+		$time_diff = $time_diff->m . ' months ago';
+	else if($time_diff->d == 1)
+		$time_diff = $time_diff->d . ' day ago';
+	else if($time_diff->d)
+		$time_diff = $time_diff->d . ' days ago';
+	else if($time_diff->h == 1)
+		$time_diff = $time_diff->h . ' hour ago';
+	else if($time_diff->h)
+		$time_diff = $time_diff->h . ' hours ago';
+	else if($time_diff->i == 1)
+		$time_diff = $time_diff->i . ' minute ago';
+	else
+		$time_diff = $time_diff->i . ' minutes ago';
+	
+	echo "<span>$time_diff</span>";
+echo "</div>";
+
+echo "<div class='comment-body'>";
+	if($comment['deleted'] === 1)
+	{
+		echo "<span class='muted'>Comment removed by author.</span>";
+	}
+	else if($comment['reported'] > 0)
+	{
+		echo "<span class='muted'>Comment removed by an administrator.</span>";
+	}
+	else if($comment['rid'] != 0)
+	{
+		$rUserPos = strpos($comment['comment'], ' ');
+		$rUser = substr($comment['comment'], 0, $rUserPos);
+		$r_comment = substr($comment['comment'], $rUserPos, strlen($comment['comment']));
+		echo "<p><a class='at user' href='/user/$rUser'>@$rUser</a> $r_comment</p>";
+	}
+	else
+		echo $comment['comment'];	
+	?>
+</div>
+<div class='comment-actions'>
+	<?php if($_SESSION['id']) : ?>
+	
+	<span data-reply>Reply</span>
+		<?php if($comment['user_vote'] === 1) : ?>
+		<span data-v='up' class='vote upvote positive'></span>
+			
+		<?php else : ?>
+		<span data-v='up' class='vote upvote'></span>
+			
+		<?php 
+			endif;
+			
+			if($comment['user_vote'] === -1) :
+		?>
+		
+		<span data-v='down' class='vote downvote negative'></span>
+		<?php else : ?>
+		
+		<span data-v='down' class='vote downvote'></span>
+		<?php endif; ?>
+	<?php else : ?>
+	
+	<span data-show='#registerpopup'>Reply</span>
+	<span data-show='#registerpopup' class='vote upvote'></span>
+	<span data-show='#registerpopup' class='vote downvote'></span>
+	<?php endif; ?>
+	
+	<span data-report>Report</span>
+	
+	<?php if($comment['user'] == GlobalUtils::$user->getUsername() && !$comment['deleted']) : ?>
+	
+	<span data-delete class='red-hover'>Delete</span>
+	<?php endif; ?>
+		
+</div>
+<?php 
+if($reply)
+{
+	GlobalUtils::formatComment($reply);
+}
+else if($comment['rid'] != 0)
+{
+	if($comment['total_replies'] > 1)
+		echo "<span data-r-showmore='1'>Show More</span>";
+}
+?>
+</div>

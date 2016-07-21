@@ -288,7 +288,7 @@ function paginate()
 
 function updateUrl()
 {
-	var newurl = "?";
+	var newurl = "";
 	
 	if($('#category').val() != 'All'){
 		newurl = newurl+"category="+$('#category').val();
@@ -305,6 +305,9 @@ function updateUrl()
 	if(page != 0){
 		newurl = newurl+"&page="+page.toString();
 	}
+	
+	if(newurl != "")
+		newurl = "?" + newurl;
 	
 	var stateObj = {index: "index"};
     
