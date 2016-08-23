@@ -15,20 +15,18 @@
 	
 	foreach($posts as $post)
 	{
-		/*if($i++ % 10 == 0)
-		{
-			echo '
-				<div class="ad-container" ><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- BannerUnit1 -->
-				<ins class="adsbygoogle"
-					 style="display:block"
-					 data-ad-client="ca-pub-6838532745872751"
-					 data-ad-slot="8158747827"
-					 data-ad-format="auto"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script></div>';
-		}*/
+		if($i++ % 10 == 0) {
+		/*echo "<script type='text/javascript'>
+  ( function() {
+    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+    var unit = {'calltype':'async[2]','publisher':'Relatables','width':728,'height':90,'sid':'Chitika Default'};
+    var placement_id = window.CHITIKA.units.length;
+    window.CHITIKA.units.push(unit);
+    document.write(\"<div id='chitikaAdBlock-\" + placement_id + \"'></div>\");
+}());
+</script>";*/
+		}
+		
 		$post->format();
 	}	
 	
