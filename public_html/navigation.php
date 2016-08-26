@@ -188,6 +188,9 @@ if(!empty($_SESSION['popup_msg']))
 		  <ul class="dropdown-menu">
 			<li><a href="/about/faq">FAQ</a></li>
 			<li><a href="/about/blog">Blog</a></li>
+			<li><a href="/about/privacy">Privacy</a></li>
+			<li><a href="/about/terms">Terms</a></li>
+			<li><a href="/contact">Contact</a></li>
 		  </ul>
 		</li>
 	  </ul>
