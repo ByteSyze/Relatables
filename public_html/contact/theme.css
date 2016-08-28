@@ -37,3 +37,13 @@ li span
 {
 	color:#666666;
 }
+input
+{
+	width: 100%;
+	max-width: 350px;
+}
+textarea
+{
+	width: 100%;
+	resize: vertical;
+}

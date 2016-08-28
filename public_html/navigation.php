@@ -29,6 +29,8 @@
 			}
 		}
 	}
+	
+	$unreadNotifications = false;
 
 	//Recheck, to give cookie login a chance.
 	if(GlobalUtils::$user->getID() != 0)

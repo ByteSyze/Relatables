@@ -62,13 +62,13 @@
 
 									<label for="">Email</label>
 									<div>
-										<input id='email_input' name='email' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>' />
+										<input id='email_input' name='email' type='text' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>' />
 										<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
 									</div>
 								</form><br>
 								<div class="buttons">
-									<a class="button red-hover" id='delete-button' data-togg='#delete-account-popup'>Delete Account</a>
-									<input class="button blue-hover" id='save-button' type='submit' value='Save Changes' />
+									<button class="button red-hover" id='delete-button' data-togg='#delete-account-popup'>Delete Account</button>
+									<input class="button blue-hover pull-right" id='save-button' type='submit' value='Save Changes' />
 								</div>
 								
 								<div id='delete-account-popup' class='popup'>
