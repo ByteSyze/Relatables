@@ -31,7 +31,8 @@
 				<div class='col-lg-6 col-sm-10'>
 				
 					<div class='container-fluid hero'>
-						<h2>Find others just like you. Anonymously share your secrets and habits. Ask the world and see who relates to you -- no signup required!</h2>
+						<h1>Find Others Just Like You</h1>
+						<h2>We provide a safe place for you to anonymously ask questions and share your thoughts. From deep secrets to daily habits, share them all and see how many others relate!</h2>
 						
 						<div class='input-group'>
 							
@@ -136,15 +137,6 @@
 						</div>
 						
 						<div class='row posts' id='posts'></div>
-						<script type='text/javascript'>
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {'calltype':'async[2]','publisher':'Relatables','width':728,'height':90,'sid':'Chitika Default'};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write("<div id='chitikaAdBlock-" + placement_id + "'></div>");
-						}());
-						</script>
 						<nav id='pagination-nav' class='hidden-xs' style='text-align:center;'>
 							<ul class="pagination">
 								<li data-p='prev'>
@@ -244,7 +236,6 @@
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<?php GlobalUtils::getJS('/index'); ?>
-		<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 		
 		<script>
 			var page 		= <?php echo $page; ?>;

@@ -15,12 +15,25 @@ body {
   background-color: inherit;
   color: black !important;
 }
-.hero > h2, .hero > h3 {
-  font-size: 24px;
+.hero > h1, .hero > h2, .hero > h3 {
+  font-family: "Open Sans", serif;
+  font-size: 22px;
   padding-bottom:50px;
   text-align: center;
   color: white;
-  text-shadow: 1px 3px 3px #606060;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.hero > h1 {
+  font-size: 40px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+}
+@media (max-width: 768px) {
+  .hero > h2 {
+	letter-spacing: -1px;
+    font-size: 19px;
+  }
 }
 .hero > .input-group {
   width: 100%;
@@ -37,7 +50,7 @@ body {
   margin: 4px 0px 0px -54px;
 }
 .hero .container-fluid.hero {
-  padding-top: 5em;
+  padding-top: 3.5em;
 }
 .hero .container-fluid.hero, .main-content {
   max-width: 745px;
@@ -45,7 +58,7 @@ body {
 .hero.row {
   background-image: url('/images/media/hero.png');
   background-position: center;
-  height: 400px;
+  height: 350px;
 }
 .main-content.container-fluid, .hero.container-fluid, .row.posts > .col-md-12 {
   padding-left: 2px;

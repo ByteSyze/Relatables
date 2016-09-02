@@ -82,6 +82,7 @@
 			echo "\r\n<meta property=\"og:title\"          content=\"Am I the Only One?\" />";
 			echo "\r\n<meta property=\"og:description\"    content=\"$fdesc\" />";
 			echo "\r\n<meta property=\"og:image\"          content=\"http://www.relatables.com/images/media/logo-large.png\" />";
+			echo "\r\n<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans'>";
 			
 			echo "\r\n<meta name='viewport' content='width=device-width, initial-scale=1'>";
 		}

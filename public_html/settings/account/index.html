@@ -45,7 +45,7 @@
 												<input type="password" id='currentpass_input' type='password' name='oldpassword' autocomplete='off' />
 												<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='currentpass-popup'></div></div>
 											</div>
-											</div>
+										</div>
 										<div>
 											<label for="pass_input">New Password</label>
 											<div>
@@ -59,13 +59,15 @@
 											</div>
 										</div>
 									</div>
-
-									<label for="">Email</label>
 									<div>
-										<input id='email_input' name='email' type='text' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>' />
-										<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
+										<label for="email_input">Email</label>
+										<div>
+											<input id='email_input' name='email' type='text' onkeydown='checkLimit(event,this,32,false);' placeholder='<?php echo GlobalUtils::$user->getEmail(); ?>' />
+											<div class='verify marker nomark' data-err-popup ></div><div class='popup-offset'><div class='error-popup' id='email-popup'></div></div>
+										</div>
 									</div>
-								</form><br>
+								</form>
+								<br>
 								<div class="buttons">
 									<button class="button red-hover" id='delete-button' data-togg='#delete-account-popup'>Delete Account</button>
 									<input class="button blue-hover pull-right" id='save-button' type='submit' value='Save Changes' />
